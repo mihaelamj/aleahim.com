@@ -22,7 +22,7 @@ struct AleahimCom: Website {
     var description = "Senior iOS Dev, OpenAPI, FCP"
     var language: Language { .english }
     var imagePath: Path? { nil }
-    var contactMe: [ContactMe] { [.myLocation, .email, .youTube, .linkedIn, .twitter] }
+    var contactMe: [ContactMe] { [.myLocation, .email, /*.youTube, */ .linkedIn, .twitter] }
 }
 
 // This will generate your website using the built-in Foundation theme:
