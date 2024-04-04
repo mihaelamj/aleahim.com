@@ -13,7 +13,7 @@ extension Node where Context == HTML.BodyContext {
                         .class("pure-u-md-1-1 pure-u-1-4"),
                         .class("author__avatar"),
                         .img(
-                            .src("https://i.ibb.co/RBBk4Z5/IMG-3074.jpg")
+                            .src("https://i.ibb.co/njw4VFn/IMG-2918.png")
                         )
                     ),
                     .div(

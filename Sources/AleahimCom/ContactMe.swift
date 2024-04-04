@@ -16,8 +16,8 @@ struct ContactMe {
 extension ContactMe {
     static var myLocation: ContactMe {
         return ContactMe(
-            title: "St. Louis, MO",
-            url: "https://en.wikipedia.org/wiki/St._Louis",
+            title: "Zagreb, Croatia",
+            url: "https://hr.wikipedia.org/wiki/Zagreb",
             icon: "fas fa-map-marker-alt")
     }
     
@@ -26,7 +26,7 @@ extension ContactMe {
     static var email: ContactMe {
         return ContactMe(
             title: "Email",
-            url: "mailto:joshkinney@kinneykare.com",
+            url: "mailto:mihaelamj@gmail.com",
             icon: "fas fa-envelope-open-text")
     }
     
@@ -34,7 +34,7 @@ extension ContactMe {
     static var linkedIn: ContactMe {
         return ContactMe(
             title: "LinkedIn",
-            url: "https://www.linkedin.com/in/josh-kinney-99bb30121/",
+            url: "https://www.linkedin.com/in/mihaelamj/",
             icon: "fab fa-linkedin"
         )
     }
@@ -43,7 +43,7 @@ extension ContactMe {
     static var youTube: ContactMe {
         return ContactMe(
             title: "YouTube",
-            url: "https://www.youtube.com/channel/UCEvKUEDjoZCtFZCWmmPpqCA",
+            url: "https://www.youtube.com/channe",
             icon: "fab fa-youtube"
         )
     }
@@ -52,7 +52,7 @@ extension ContactMe {
     static var twitter: ContactMe {
         return ContactMe(
             title: "Twitter",
-            url: "https://twitter.com/joshkinney_",
+            url: "https://twitter.com/civeljahim",
             icon: "fab fa-twitter-square"
         )
     }
