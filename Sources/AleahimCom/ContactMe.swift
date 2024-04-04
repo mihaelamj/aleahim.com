@@ -43,7 +43,7 @@ extension ContactMe {
     static var youTube: ContactMe {
         return ContactMe(
             title: "YouTube",
-            url: "https://www.youtube.com/channe",
+            url: "https://www.youtube.com/channel",
             icon: "fab fa-youtube"
         )
     }
