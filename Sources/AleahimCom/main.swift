@@ -3,7 +3,7 @@ import Publish
 import Plot
 
 // This type acts as the configuration for your website.
-struct Publish: Website {
+struct AleahimCom: Website {
     enum SectionID: String, WebsiteSectionID {
         // Add the sections that you want your website to contain here:
         case posts
@@ -15,11 +15,11 @@ struct Publish: Website {
 
     // Update these properties to configure your website:
     var url = URL(string: "https://your-website-url.com")!
-    var name = "Publish"
-    var description = "A description of Publish"
+    var name = "AleahimCom"
+    var description = "A description of AleahimCom"
     var language: Language { .english }
     var imagePath: Path? { nil }
 }
 
 // This will generate your website using the built-in Foundation theme:
-try Publish().publish(withTheme: .foundation)
+try AleahimCom().publish(withTheme: .foundation)
