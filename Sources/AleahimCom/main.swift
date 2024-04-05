@@ -26,7 +26,7 @@ struct AleahimCom: Website {
 }
 
 // This will generate your website using the built-in Foundation theme:
-try AleahimCom().publish(withTheme: .aleahimTheme,
+try AleahimCom().publish(withTheme: .aleahimTheme, // .foundation, //.demoTheme,
                          //additionalSteps: [.deploy(using: .gitHub(""))],
                          plugins: [.splash(withClassPrefix: "")]
 )
