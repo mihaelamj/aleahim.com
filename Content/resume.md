@@ -120,7 +120,7 @@ University of Zagreb Faculty of Humanities and Social Sciences
 - Daily SCRUM Skype meetings with client's team.
 - https://www.imore.com/purchx-rolls-together-product-reviews-comparisons-and-shopping
 
-### Freelance Senior iOS developer, Zagreb (Croatia), Token d.o.o., May 2014 – Present
+### Freelance Senior iOS developer, Zagreb (Croatia), Token d.o.o., May 2014 – January 2015
 
 #### Christian Resources, December 2014 - January 2015
 
