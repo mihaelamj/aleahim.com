@@ -43,6 +43,21 @@ struct AleahimHTMLFactory: HTMLFactory {
         )
     }
     
+    func makeSectionHTMLOriginal(for section: Publish.Section<AleahimCom>, context: Publish.PublishingContext<AleahimCom>) throws -> Plot.HTML {
+        HTML(
+            .lang(context.site.language),
+            .head(for: section, on: context.site),
+            .body {
+                SiteHeader(context: context, selectedSelectionID: section.id)
+                Wrapper {
+                    H1(section.title)
+                    ItemList(items: section.items, site: context.site)
+                }
+                SiteFooter()
+            }
+        )
+    }
+    
     func makeSectionHTML(for section: Publish.Section<AleahimCom>, context: Publish.PublishingContext<AleahimCom>) throws -> Plot.HTML {
         HTML(
             .lang(context.site.language),
@@ -52,6 +67,11 @@ struct AleahimHTMLFactory: HTMLFactory {
                 Wrapper {
                     H1(section.title)
                     ItemList(items: section.items, site: context.site)
+                    if section.id == .about {
+                        let conts = context.site.contactMe
+//                        contactList(context.site.contactMe)
+                        ContactMeItemList(contacts: conts, site: context.site)
+                    }
                 }
                 SiteFooter()
             }
@@ -228,3 +248,7 @@ private struct SiteFooter: Component {
         }
     }
 }
+
+
+
+

@@ -167,3 +167,43 @@ footer {
         padding: 40px 20px;
     }
 }
+
+pre code {
+    color: hsl(180,12%,70%);
+}
+
+.preprocessing {
+    color: hsl(45,100%,36%);
+}
+
+.comment {
+    color: hsl(195,16%,50%);
+}
+
+.number {
+    color: hsl(11,65%,60%);
+}
+
+.call {
+    color: hsl(209,77%,55%);
+}
+
+.property {
+    color: hsl(174,68%,40%);
+}
+
+.keyword {
+    color: hsl(331,79%,57%);
+}
+
+.dotAccess {
+    color: hsl(71,100%,35%);
+}
+
+.type {
+    color: hsl(241,41%,65%);
+}
+
+.string {
+    color: hsl(19,96%,55%);
+}
