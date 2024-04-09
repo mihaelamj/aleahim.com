@@ -43,10 +43,12 @@ struct Education {
 struct Responsibility {
     let title: String
     let url: URL?
+    let items: [String]?
     
-    init(title: String, url: URL? = nil) {
+    init(title: String, url: URL? = nil, items: [String]? = nil) {
         self.title = title
         self.url = url
+        self.items = items
     }
 }
 
@@ -108,7 +110,7 @@ struct WorkExperience {
             responsibilities: [
                 Responsibility(title: "Refactored the whole app"),
                 Responsibility(title: "Made a Swift package to generate the complete networking layer from the OpenAPI specs (JSON or YML)"),
-                Responsibility(title: "Worked on the Birch Finance app (https://apps.apple.com/us/app/birch-finance/id1159533933)", 
+                Responsibility(title: "Worked on the Birch Finance app",
                                url: URL(string:"https://apps.apple.com/us/app/birch-finance/id1159533933"))
             ]
         ),
@@ -165,13 +167,32 @@ struct WorkExperience {
             startDate: "September 2013",
             endDate: "June 2104",
             responsibilities: [
-                Responsibility(title: "Worked on the Josip Broz Tito app (https://itunes.apple.com/us/app/josip-broz-tito/id803115184?mt=8)", 
-                               url: URL(string: "https://itunes.apple.com/us/app/josip-broz-tito/id803115184?mt=8")),
-                Responsibility(title: "Worked on the wogibtswas.at app (https://itunes.apple.com/de/app/wogibtswas.at-aktionen-angebote/id771962700?mt=8)",
-                               url: URL(string: "https://itunes.apple.com/de/app/wogibtswas.at-aktionen-angebote/id771962700?mt=8")),
-                Responsibility(title: "Worked on the Blade Soho app (https://itunes.apple.com/us/app/blade-soho/id895751630)",
-                               url: URL(string: "https://itunes.apple.com/us/app/blade-soho/id895751630")),
-                Responsibility(title: "Worked on the Coachlette app")
+                Responsibility(title: "Worked on the Josip Broz Tito app",
+                               url: URL(string: "https://itunes.apple.com/us/app/josip-broz-tito/id803115184?mt=8"),
+                              items: [
+                                "iOS (iPad) book application about the life of Josip Broz Tito.",
+                                "Developed major part of the app.",
+                                "Implemented custom UI in code (from design sheets), Cocoapods."
+                              ]),
+                Responsibility(title: "Worked on the wogibtswas.at app",
+                               url: URL(string: "https://itunes.apple.com/de/app/wogibtswas.at-aktionen-angebote/id771962700?mt=8"), 
+                               items: [
+                                "wogibtswas.at, Austria’s biggest “what’s on offer” portal.",
+                                "Participated (25% GitStats) in implementing iOS app.",
+                                "Worked on implementing custom UI design in code, AFNetworking, REST services, Cocoapods"
+                               ]),
+                Responsibility(title: "Worked on the Blade Soho app",
+                               url: URL(string: "https://itunes.apple.com/us/app/blade-soho/id895751630"), 
+                               items: [
+                                "Custom app for one of leading London hair salons [http://www.bladesoho.co.uk](http://www.bladesoho.co.uk)",
+                                "Developed major part of the app.",
+                                "Implemented custom UI in code (from design sheets), AFNetworking, REST services, Cocoapods"
+                               ]),
+                Responsibility(title: "Worked on the Coachlette app",
+                               items: [
+                    "Custom app for a client.",
+                    "Developed 35% of the app."
+                ])
             ]
         ),
         WorkExperience(
@@ -181,25 +202,59 @@ struct WorkExperience {
             startDate: "February 2015",
             endDate: "October 2018",
             responsibilities: [
-                Responsibility(title: "Worked on the Shopsavvy App (https://itunes.apple.com/us/app/shop-savvy-barcode-scanner/id338828953?mt=8)",
-                              url: URL(string: "https://itunes.apple.com/us/app/shop-savvy-barcode-scanner/id338828953?mt=8")),
-                Responsibility(title: "Worked on the QR Code Reader and Scanner App (https://itunes.apple.com/us/app/qr-code-reader-and-scanner/id388175979?mt=8)",
-                               url: URL(string: "https://itunes.apple.com/us/app/qr-code-reader-and-scanner/id388175979?mt=8")),
-                Responsibility(title: "Worked on the Consumr App (https://itunes.apple.com/us/app/consumr-reviews-product-barcode/id519874080)",
-                               url: URL(string: "https://itunes.apple.com/us/app/consumr-reviews-product-barcode/id519874080"))
+                Responsibility(title: "Shopsavvy App",
+                              url: URL(string: "https://itunes.apple.com/us/app/shop-savvy-barcode-scanner/id338828953?mt=8"), 
+                               items: [
+                                "Worked on parts of the app that include: barcode scanning, QR code scanning and creation, general bug fixing."
+                              ]),
+                Responsibility(title: "QR Code Reader and Scanner App",
+                               url: URL(string: "https://itunes.apple.com/us/app/qr-code-reader-and-scanner/id388175979?mt=8"), 
+                               items: [
+                                "Worked on parts of the app that include: QR code scanning and creation, adding new features."
+                               ]),
+                Responsibility(title: "Consumr App",
+                               url: URL(string: "https://itunes.apple.com/us/app/consumr-reviews-product-barcode/id519874080"), 
+                               items: [
+                                "Adapting existing client application for iOS 8, for a client through ODesk.",
+                                "Implemented detailed Gap analysis for the application including iOS frontend and REST API backend differences.",
+                                "Implemented custom UI design code (from design sheets).",
+                                "REST API implementation.",
+                                "Used Core Animation, Auto Layout, AFNetworking, Push notifications.",
+                                "Additional tools used: PaintCode, Sketch, Scrivener, HockeyApp.",
+                                "Daily SCRUM Skype meetings with client's team."
+                               ])
             ]
         ),
         WorkExperience(
             title: "Freelance iOS developer",
-            company: "Toked d.o.o. for a client via UpWork",
+            company: "Toked d.o.o. for various clients",
             location: "Zagreb (Croatia)",
             startDate: "May 2014",
-            endDate: "Present",
+            endDate: "January 2015",
             responsibilities: [
-                Responsibility(title: "Worked on the Christian Resources app (https://itunes.apple.com/us/app/bible-study-tools-christian/id600610494?mt=8)",
-                               url: URL(string: "https://itunes.apple.com/us/app/bible-study-tools-christian/id600610494?mt=8")),
-                Responsibility(title: "Worked on the Whatt social network app (https://itunes.apple.com/us/app/whatt/id739776660?ls=1&mt=8)",
-                               url: URL(string: "https://itunes.apple.com/us/app/whatt/id739776660?ls=1&mt=8"))
+                Responsibility(title: "Christian Resources App (https://itunes.apple.com/us/app/bible-study-tools-christian/id600610494?mt=8)",
+                               url: URL(string: "https://itunes.apple.com/us/app/bible-study-tools-christian/id600610494?mt=8"),
+                              items: [
+                                "Universal iOS app (iPhone and iPad), for a client through ODesk",
+                                "Developed the application(100%)",
+                                "Created design in Sketch and implemented it in the application, dynamic UI for iPhone 4, iPhone 5, iPhone 6, iPhone 6 Plus and iPads.",
+                                "Used Core Animation, Auto Layout, AFNetworking, remote audio streaming.",
+                                "Client changed parts of the UI afterwards."
+                              ]),
+                Responsibility(title: "Whatt social network app (https://itunes.apple.com/us/app/whatt/id739776660?ls=1&mt=8)",
+                               url: URL(string: "https://itunes.apple.com/us/app/whatt/id739776660?ls=1&mt=8"),
+                              items: [
+                                "iOS app for social network",
+                                "Added features to the app: custom UITextView with links and tagging functionality, custom UI in code"
+                              ]),
+                Responsibility(title: "Kindergarten - iPhone app (cancelled)",
+                              items: [
+                                "iOS app for Croatian company, for managing kindergartens.",
+                                "Developed 90% of the app.",
+                                "Designed REST APIs and implemented it in the app.",
+                                "Implemented custom UI design code (from design sheets).",
+                                "Used Core Animation, Auto Layout, Cocoapods."
+                              ])
             ]
         ),
         WorkExperience(
@@ -210,8 +265,36 @@ struct WorkExperience {
             endDate: "June 2104",
             responsibilities: [
                 Responsibility(title: "Worked on the HRTecaj app (https://itunes.apple.com/us/app/hrtecaj/id672455645)",
-                               url: URL(string: "https://itunes.apple.com/us/app/hrtecaj/id672455645"))
+                               url: URL(string: "https://itunes.apple.com/us/app/hrtecaj/id672455645"),
+                              items: [
+                                "Universal iOS application (iPhone and iPad) for showing exchange rates of main Croatian banks _(100%)",
+                                "Fetching and parsing exchange rates from the web.",
+                                "Storyboard GUI for iPhone and iPad"
+                              ])
             ]
         )
     ]
+}
+
+struct PreviousExperience {
+    let projects: [Project]
+    let employments: [String]
+
+    struct Project {
+        let title: String
+        let description: String
+    }
+    
+    static let me = PreviousExperience(
+        projects: [
+            PreviousExperience.Project(
+                title: "SAM Reports",
+                description: "Windows desktop application for Asterisk business intelligence (BI) and reporting on multiple Asterisk machines simultaneously. Developed application, web site and payment 100."
+            )
+        ],
+        employments: [
+            "Php backend developer for 1.5 years. Worked mainly developing desktop (Windows) ERP applications.",
+            "Asterisk integrator for 2 years. More information on my LinkedIn profile."
+        ]
+    )
 }
