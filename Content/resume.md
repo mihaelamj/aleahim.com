@@ -1,6 +1,6 @@
 ---
 date: 2024-04-04 22:14
-description: A description of my first post.
+description: Mihaela Mihaljevic's Resume.
 tags: resume
 ---
 # Resume
@@ -27,7 +27,6 @@ University of Zagreb Faculty of Humanities and Social Sciences
 - Swift Network client code generation from OpenAPI specs [https://github.com/mihaelamj/iolapopenapiswift] (https://github.com/mihaelamj/iolapopenapiswift)
 - Refatcoring legacy app 
 - Unit testing critical parts of the app
-
 
 ### Senior iOS architect, Cherishing Studio SP (Sole Proprietor) Zagreb (Croatia), September 2021 – October 2022.
 
