@@ -108,7 +108,8 @@ struct WorkExperience {
             responsibilities: [
                 Responsibility(title: "Refactored the whole app"),
                 Responsibility(title: "Made a Swift package to generate the complete networking layer from the OpenAPI specs (JSON or YML)"),
-                Responsibility(title: "Worked on the Birch Finance app (https://apps.apple.com/us/app/birch-finance/id1159533933)")
+                Responsibility(title: "Worked on the Birch Finance app (https://apps.apple.com/us/app/birch-finance/id1159533933)", 
+                               url: URL(string:"https://apps.apple.com/us/app/birch-finance/id1159533933"))
             ]
         ),
         WorkExperience(
@@ -118,13 +119,14 @@ struct WorkExperience {
             startDate: "August 2019",
             endDate: "2020",
             responsibilities: [
-                Responsibility(title: "Worked on the Wheels Up app (https://apps.apple.com/us/app/wheels-up/id956615077)")
+                Responsibility(title: "Worked on the Wheels Up app (https://apps.apple.com/us/app/wheels-up/id956615077)", 
+                               url: URL(string: "https://apps.apple.com/us/app/wheels-up/id956615077"))
             ]
         ),
         WorkExperience(
             title: "Freelance Senior iOS developer",
-            company: "Zagreb (Croatia)",
-            location: "",
+            company: "Toked d.o.o. for a client via UpWork",
+            location: "Zagreb (Croatia)",
             startDate: "May 2019",
             endDate: "July 2019",
             responsibilities: [
@@ -139,8 +141,10 @@ struct WorkExperience {
             startDate: "November 2018",
             endDate: "May 2019",
             responsibilities: [
-                Responsibility(title: "Worked on the Birthdayrama App (https://apps.apple.com/my/app/birthdayrama/id1466195825)"),
-                Responsibility(title: "Worked on the Huxly App (https://itunes.apple.com/us/app/huxly-brief-factual-news/id1317721937?ls=1&mt=8)")
+                Responsibility(title: "Worked on the Birthdayrama App (https://apps.apple.com/my/app/birthdayrama/id1466195825)",
+                               url: URL(string: "https://apps.apple.com/my/app/birthdayrama/id1466195825")),
+                Responsibility(title: "Worked on the Huxly App (https://itunes.apple.com/us/app/huxly-brief-factual-news/id1317721937?ls=1&mt=8)",
+                               url: URL(string: "https://itunes.apple.com/us/app/huxly-brief-factual-news/id1317721937?ls=1&mt=8"))
             ]
         ),
         WorkExperience(
@@ -156,16 +160,58 @@ struct WorkExperience {
         ),
         WorkExperience(
             title: "iOS developer",
-            company: "Zagreb (Croatia)",
-            location: "",
+            company: "Undabot d.o.o.",
+            location: "Zagreb (Croatia)",
             startDate: "September 2013",
             endDate: "June 2104",
             responsibilities: [
-                Responsibility(title: "Worked on the Josip Broz Tito app (https://itunes.apple.com/us/app/josip-broz-tito/id803115184?mt=8)"),
-                Responsibility(title: "Worked on the wogibtswas.at app (https://itunes.apple.com/de/app/wogibtswas.at-aktionen-angebote/id771962700?mt=8)"),
-                Responsibility(title: "Worked on the Blade Soho app (https://itunes.apple.com/us/app/blade-soho/id895751630)"),
+                Responsibility(title: "Worked on the Josip Broz Tito app (https://itunes.apple.com/us/app/josip-broz-tito/id803115184?mt=8)", 
+                               url: URL(string: "https://itunes.apple.com/us/app/josip-broz-tito/id803115184?mt=8")),
+                Responsibility(title: "Worked on the wogibtswas.at app (https://itunes.apple.com/de/app/wogibtswas.at-aktionen-angebote/id771962700?mt=8)",
+                               url: URL(string: "https://itunes.apple.com/de/app/wogibtswas.at-aktionen-angebote/id771962700?mt=8")),
+                Responsibility(title: "Worked on the Blade Soho app (https://itunes.apple.com/us/app/blade-soho/id895751630)",
+                               url: URL(string: "https://itunes.apple.com/us/app/blade-soho/id895751630")),
                 Responsibility(title: "Worked on the Coachlette app")
             ]
         ),
+        WorkExperience(
+            title: "Senior iOS Developer (remote)",
+            company: "PURCH",
+            location: "New York City (USA)",
+            startDate: "February 2015",
+            endDate: "October 2018",
+            responsibilities: [
+                Responsibility(title: "Worked on the Shopsavvy App (https://itunes.apple.com/us/app/shop-savvy-barcode-scanner/id338828953?mt=8)",
+                              url: URL(string: "https://itunes.apple.com/us/app/shop-savvy-barcode-scanner/id338828953?mt=8")),
+                Responsibility(title: "Worked on the QR Code Reader and Scanner App (https://itunes.apple.com/us/app/qr-code-reader-and-scanner/id388175979?mt=8)",
+                               url: URL(string: "https://itunes.apple.com/us/app/qr-code-reader-and-scanner/id388175979?mt=8")),
+                Responsibility(title: "Worked on the Consumr App (https://itunes.apple.com/us/app/consumr-reviews-product-barcode/id519874080)",
+                               url: URL(string: "https://itunes.apple.com/us/app/consumr-reviews-product-barcode/id519874080"))
+            ]
+        ),
+        WorkExperience(
+            title: "Freelance iOS developer",
+            company: "Toked d.o.o. for a client via UpWork",
+            location: "Zagreb (Croatia)",
+            startDate: "May 2014",
+            endDate: "Present",
+            responsibilities: [
+                Responsibility(title: "Worked on the Christian Resources app (https://itunes.apple.com/us/app/bible-study-tools-christian/id600610494?mt=8)",
+                               url: URL(string: "https://itunes.apple.com/us/app/bible-study-tools-christian/id600610494?mt=8")),
+                Responsibility(title: "Worked on the Whatt social network app (https://itunes.apple.com/us/app/whatt/id739776660?ls=1&mt=8)",
+                               url: URL(string: "https://itunes.apple.com/us/app/whatt/id739776660?ls=1&mt=8"))
+            ]
+        ),
+        WorkExperience(
+            title: "iOS developer",
+            company: "Toked d.o.o.",
+            location: "Zagreb (Croatia)",
+            startDate: "September 2013",
+            endDate: "June 2104",
+            responsibilities: [
+                Responsibility(title: "Worked on the HRTecaj app (https://itunes.apple.com/us/app/hrtecaj/id672455645)",
+                               url: URL(string: "https://itunes.apple.com/us/app/hrtecaj/id672455645"))
+            ]
+        )
     ]
 }
