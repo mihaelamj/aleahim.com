@@ -7,6 +7,15 @@
 
 import Foundation
 
+struct FullResume {
+    let perfonalInformation = PersonalInfo.me
+    let education = Education.me
+    let workExperiences = WorkExperience.me
+    let previousExperiences = PreviousExperience.me
+    
+    static let me = FullResume()
+}
+
 // Define struct for personal information
 struct PersonalInfo {
     let address: String
@@ -50,6 +59,29 @@ struct Responsibility {
         self.url = url
         self.items = items
     }
+}
+
+struct PreviousExperience {
+    let projects: [Project]
+    let employments: [String]
+
+    struct Project {
+        let title: String
+        let description: String
+    }
+    
+    static let me = PreviousExperience(
+        projects: [
+            PreviousExperience.Project(
+                title: "SAM Reports",
+                description: "Windows desktop application for Asterisk business intelligence (BI) and reporting on multiple Asterisk machines simultaneously. Developed application, web site and payment 100."
+            )
+        ],
+        employments: [
+            "Php backend developer for 1.5 years. Worked mainly developing desktop (Windows) ERP applications.",
+            "Asterisk integrator for 2 years. More information on my LinkedIn profile."
+        ]
+    )
 }
 
 struct WorkExperience {
@@ -276,25 +308,3 @@ struct WorkExperience {
     ]
 }
 
-struct PreviousExperience {
-    let projects: [Project]
-    let employments: [String]
-
-    struct Project {
-        let title: String
-        let description: String
-    }
-    
-    static let me = PreviousExperience(
-        projects: [
-            PreviousExperience.Project(
-                title: "SAM Reports",
-                description: "Windows desktop application for Asterisk business intelligence (BI) and reporting on multiple Asterisk machines simultaneously. Developed application, web site and payment 100."
-            )
-        ],
-        employments: [
-            "Php backend developer for 1.5 years. Worked mainly developing desktop (Windows) ERP applications.",
-            "Asterisk integrator for 2 years. More information on my LinkedIn profile."
-        ]
-    )
-}
