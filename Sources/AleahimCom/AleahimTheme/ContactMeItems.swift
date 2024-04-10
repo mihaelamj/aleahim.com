@@ -23,7 +23,6 @@ extension Node where Context == HTML.BodyContext {
     }
 }
 
-
 import Publish
 
 struct ContactMeItemList<Site: Website>: Component {
