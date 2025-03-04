@@ -1,9 +1,3 @@
 [build]
   command = "echo 'Skipping build process'"  # Fake command that does nothing
   publish = "Output"
-
-[build.environment]
-  NODE_ENV = "production"  # Set environment to avoid Node.js installs
-  NODE_VERSION = "false"  # Prevents Netlify from installing Node.js
-  SWIFT_VERSION = "false"  # Prevents Netlify from installing Swift
-  GO_VERSION = "false"     # Prevents Netlify from installing Go
