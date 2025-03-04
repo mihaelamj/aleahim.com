@@ -4,3 +4,4 @@
 
 [build.environment]
   NODE_VERSION = ""
+  SWIFT_VERSION = ""  # Prevents Netlify from installing Swift
