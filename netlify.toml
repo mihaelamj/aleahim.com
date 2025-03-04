@@ -1,0 +1,6 @@
+[build]
+  command = ""
+  publish = "Output"
+
+[build.environment]
+  NODE_VERSION = ""
