@@ -3,5 +3,6 @@
   publish = "Output"
 
 [build.environment]
-  NODE_VERSION = ""
-  SWIFT_VERSION = ""  # Prevents Netlify from installing Swift
+	SWIFT_VERSION = ""  # Prevents Netlify from installing Swift
+	NODE_VERSION = ""   # Ensures no Node.js is installed
+	GO_VERSION = ""     # Stops Go installation
