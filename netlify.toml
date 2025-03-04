@@ -1,10 +1,2 @@
 [build]
   command = "echo 'Skipping build process'"  # Skips Netlify build step
-  publish = "Output"  # Deploys only the Output folder
-
-[build.environment]
-  NODE_ENV = "false"  # Prevents Netlify from installing Node.js
-  SWIFT_ENV = "false"  # Prevents Netlify from installing Swift
-  GO_ENV = "false"  # Prevents Netlify from installing Go
-  RUBY_ENV = "false"  # Prevents Netlify from installing Ruby
-  PYTHON_ENV = "false"  # Prevents Netlify from installing Python
