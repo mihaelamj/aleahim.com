@@ -1,16 +1,9 @@
-# macOS system files
 .DS_Store
-
-# Xcode build artifacts
-/build
-/.build
-/.swiftpm
-/*.xcodeproj
+Build
+.build
+Packages
+xcuserdata/
 DerivedData/
-
-# Publish-generated files
-.publish
-Output/
-**/Output/
-*/Output/
-/Output
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
