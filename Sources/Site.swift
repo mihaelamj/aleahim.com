@@ -24,4 +24,8 @@ struct AleahimSite: Site {
 
     var homePage = Home()
     var layout = MainLayout()
+    
+    var staticPages: [any StaticPage] {
+        return Pages.all
+    }
 }

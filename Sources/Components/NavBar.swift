@@ -14,9 +14,9 @@ struct NavBar: HTML {
     
     var body: some HTML {
         NavigationBar(logo: logo) {
-            Link(target: "https://github.com/twostraws/Ignite") {
-                Text("Ignite on GitHub")
-                    .foregroundStyle(.white)
+            for item in Categories.allCases {
+                Link(item.rawValue, target: item.page)
+
             }
         }
         .navigationItemAlignment(.trailing)
