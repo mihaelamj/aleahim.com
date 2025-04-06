@@ -11,7 +11,6 @@ struct MainLayout: Layout {
             
             Section {
                 SocialFooter()
-                IgniteFooter()
                     .margin(.bottom, 80)
             }
         }

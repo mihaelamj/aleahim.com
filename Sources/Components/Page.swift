@@ -1,7 +1,7 @@
 import Foundation
 import Ignite
 
-enum Pages: String, CaseIterable {
+enum Page: String, CaseIterable {
     case blog = "Home"
     case about = "About"
     case cv = "CV"

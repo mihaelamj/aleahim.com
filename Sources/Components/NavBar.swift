@@ -14,13 +14,13 @@ struct NavBar: HTML {
     
     var body: some HTML {
         NavigationBar(logo: logo) {
-            for item in Categories.allCases {
+            for item in Page.allCases {
                 Link(item.rawValue, target: item.page)
 
             }
         }
         .navigationItemAlignment(.trailing)
-        .background(.firebrick)
+        .background(.dodgerBlue)
         .position(.fixedTop)
     }
 }

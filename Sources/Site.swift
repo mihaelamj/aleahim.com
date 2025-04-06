@@ -19,6 +19,8 @@ struct AleahimSite: Site {
     var titleSuffix = " – Mihaela's Site"
     var url = URL(static: "https://www.aleahim.com")
     var builtInIconsEnabled = true
+    
+    var syntaxHighlighterConfiguration: SyntaxHighlighterConfiguration = .init(languages: [.swift, .python, .ruby])
 
     var author = "Mihaela Mihaljevic"
 
@@ -26,6 +28,6 @@ struct AleahimSite: Site {
     var layout = MainLayout()
     
     var staticPages: [any StaticPage] {
-        return Pages.all
+        return Page.all
     }
 }
