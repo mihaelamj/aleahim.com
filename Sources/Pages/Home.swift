@@ -5,7 +5,7 @@ struct Home: StaticPage {
     var title = "Mihaela's Blog"
 
     var body: some HTML {
-        Text("Mihaela's Apple Delepoment Blog")
+        Text("Mihaela's Apple Dev Blog")
             .font(.title1)
     }
 }
