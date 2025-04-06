@@ -3,20 +3,12 @@ import Foundation
 public extension Project {
     var descriptions: [String] {
         switch self {
-        case .birthdayrama:
-            return ["A fun way to share your birthday wishes with friends and family."]
         case .tito:
             return [
                 "iOS (iPad) book application about the life of Josip Broz Tito",
                 "Objective-C, Cocoapods",
                 "Implemented custom UI in code (from design sheets)",
                 "CoreText custom page layouts"
-            ]
-        case .coachlette:
-            return [
-                "Custom app for a personal trainers and coaches",
-                "Objective-C, AFNetworking, REST services, Cocoapods",
-                "Implemented custom UI in code"
             ]
         case .wogibtswas:
             return [
@@ -29,6 +21,12 @@ public extension Project {
                 "Custom app for one of leading London hair salons",
                 "Objective-C, AFNetworking, REST services, Cocoapods",
                 "Implemented custom UI in code (from design sheets)"
+            ]
+        case .coachlette:
+            return [
+                "Custom app for a personal trainers and coaches",
+                "Objective-C, AFNetworking, REST services, Cocoapods",
+                "Implemented custom UI in code"
             ]
         case .kindergarten:
             return [
@@ -50,13 +48,17 @@ public extension Project {
             return []
         case .shopsavvy:
             return []
+        case .birthdayrama:
+            return ["A fun way to share your birthday wishes with friends and family."]
         case .huxly:
+            return []
+        case .breckWorld:
             return []
         case .servicepal:
             return []
-        case .budtz:
-            return []
         case .wheelsup:
+            return []
+        case .budtz:
             return []
         case .birch:
             return []
@@ -64,9 +66,9 @@ public extension Project {
             return []
         case .responsumchat:
             return []
-        case .irobot:
-            return []
         case .germanProject:
+            return []
+        case .irobot:
             return []
         }
     }
