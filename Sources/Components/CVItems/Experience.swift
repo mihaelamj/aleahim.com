@@ -1,6 +1,6 @@
 import Foundation
 
-struct ExperienceItem: Codable, Identifiable {
+struct ExperienceItem: Codable, Identifiable, Hashable {
     let project: Project
     let company: Company
     let period: Period
@@ -10,7 +10,7 @@ struct ExperienceItem: Codable, Identifiable {
     let descriptions: [String]
     
     var id: String {
-        "\(company.rawValue)-\(project.rawValue)-\(role.rawValue)-\(period)"
+        "\(company.rawValue)-\(project.rawValue)-\(role.rawValue)-\(period.id)"
     }
 }
 

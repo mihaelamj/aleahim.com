@@ -1,6 +1,6 @@
 import Foundation
 
-enum Company: String, CaseIterable, Codable, Identifiable {
+enum Company: String, CaseIterable, Codable, Identifiable, Hashable {
     case undabot
     case token
     case purch

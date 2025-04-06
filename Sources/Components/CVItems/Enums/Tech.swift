@@ -1,6 +1,6 @@
 import Foundation
 
-enum Tech: String, CaseIterable, Codable, Identifiable {
+enum Tech: String, CaseIterable, Codable, Identifiable, Hashable {
     case swift
     case swiftui
     case objc
