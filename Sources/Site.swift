@@ -1,6 +1,6 @@
 import Foundation
 import Ignite
-
+import mycv
 @main
 struct IgniteWebsite {
     static func main() async {
@@ -15,6 +15,8 @@ struct IgniteWebsite {
 }
 
 struct AleahimSite: Site {
+    let mmcv = CV.createForMihaela()
+    
     var name = "Aleahim.com"
     var titleSuffix = " – Mihaela's Site"
     var url = URL(static: "https://www.aleahim.com")

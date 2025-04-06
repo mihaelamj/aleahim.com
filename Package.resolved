@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "mycv",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mihaelamj/mycv.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "ce64a3aef08d5b372903f59e417e8a32adfa1e5e"
+      }
+    },
+    {
       "identity" : "swift-argument-parser",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser.git",
