@@ -1,13 +1,13 @@
 import Foundation
 
 enum Project: String, CaseIterable, Codable, Identifiable, Hashable {
-    case cachlette
     case tito
+    case coachlette
     case wogibtswas
     case bladesoho
     case kindergarten
     case whatt
-    case chistresources
+    case christresources
     case consumr
     case qrcode
     case shopsavvy
