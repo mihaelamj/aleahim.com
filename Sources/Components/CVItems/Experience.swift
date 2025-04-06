@@ -9,10 +9,10 @@ public struct Experience: Codable, Identifiable, Hashable {
     }
     
     public init(projects: [Project]) {
-        self.projects = Self.assebleProjects(projects)
+        self.projects = Self.assembleProjects(projects)
     }
     
-    private static func assebleProjects(_ projects: [Project]) -> [Project] {
+    private static func assembleProjects(_ projects: [Project]) -> [Project] {
         return []
     }
 }
