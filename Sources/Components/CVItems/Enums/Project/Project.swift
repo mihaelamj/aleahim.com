@@ -2,9 +2,9 @@ import Foundation
 
 public enum Project: String, CaseIterable, Codable, Identifiable, Hashable {
     case tito
-    case coachlette
     case wogibtswas
     case bladesoho
+    case coachlette
     case kindergarten
     case whatt
     case christresources
@@ -13,15 +13,15 @@ public enum Project: String, CaseIterable, Codable, Identifiable, Hashable {
     case shopsavvy
     case birthdayrama
     case huxly
+    case breckWorld
     case servicepal
-    case budtz
     case wheelsup
+    case budtz
     case birch
     case zumiez
     case responsumchat
-    case irobot
     case germanProject
-    case breckWorld
+    case irobot
     
     public var id: String { self.rawValue }
     

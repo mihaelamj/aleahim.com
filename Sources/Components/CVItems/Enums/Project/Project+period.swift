@@ -4,9 +4,9 @@ public extension Project {
     var period: Period {
         switch self {
         case .tito:
-            return .init(start: .init(month: 0, year: 0), end: .init(month: 0, year: 0))
+            return .init(start: .init(month: 9, year: 2013), end: .init(month: 12, year: 2013))
         case .wogibtswas:
-            return .init(start: .init(month: 0, year: 0), end: .init(month: 0, year: 0))
+            return .init(start: .init(month: 12, year: 2013), end: .init(month: 1, year: 2014))
         case .bladesoho:
             return .init(start: .init(month: 0, year: 0), end: .init(month: 0, year: 0))
         case .coachlette:
@@ -27,6 +27,8 @@ public extension Project {
             return .init(start: .init(month: 0, year: 0), end: .init(month: 0, year: 0))
         case .huxly:
             return .init(start: .init(month: 0, year: 0), end: .init(month: 0, year: 0))
+        case .breckWorld:
+            return .init(start: .init(month: 0, year: 0), end: .init(month: 0, year: 0))
         case .servicepal:
             return .init(start: .init(month: 0, year: 0), end: .init(month: 0, year: 0))
         case .wheelsup:
@@ -39,11 +41,9 @@ public extension Project {
             return .init(start: .init(month: 0, year: 0), end: .init(month: 0, year: 0))
         case .responsumchat:
             return .init(start: .init(month: 0, year: 0), end: .init(month: 0, year: 0))
-        case .irobot:
-            return .init(start: .init(month: 0, year: 0), end: .init(month: 0, year: 0))
         case .germanProject:
             return .init(start: .init(month: 0, year: 0), end: .init(month: 0, year: 0))
-        case .breckWorld:
+        case .irobot:
             return .init(start: .init(month: 0, year: 0), end: .init(month: 0, year: 0))
         }
     }
