@@ -1,6 +1,6 @@
 import Foundation
 
-enum Tech: String, CaseIterable, Codable, Identifiable, Hashable {
+public enum Tech: String, CaseIterable, Codable, Identifiable, Hashable {
     case swift
     case swiftui
     case objc
@@ -19,6 +19,12 @@ enum Tech: String, CaseIterable, Codable, Identifiable, Hashable {
     case autolayout
     case afnet
     case structconcurrency
+    case coredata
+    case avfoundation
+    case websocket
+    case pushNotifications
+    case inAppPurchase
+    case barcodes
     
     var name: String {
         switch self {
@@ -40,9 +46,15 @@ enum Tech: String, CaseIterable, Codable, Identifiable, Hashable {
         case .autolayout: return "AutoLayout"
         case .afnet: return "AFNetworking"
         case .structconcurrency: return "Structured Concurrency"
+        case .coredata: return "CoreData"
+        case .avfoundation: return "AVFoundation"
+        case .websocket: return "WebSockets"
+        case .pushNotifications: return "Push Notifications"
+        case .inAppPurchase: return "In-App Purchase"
+        case .barcodes: return "Barcodes & QRCodes"
         }
     }
     
-    var id: String { self.rawValue }
+    public var id: String { self.rawValue }
 }
 
