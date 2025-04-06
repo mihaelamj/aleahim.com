@@ -41,6 +41,10 @@ public extension Project {
             return []
         case .irobot:
             return []
+        case .germanProject:
+            return []
+        case .breckWorld:
+            return []
         }
     }
 }

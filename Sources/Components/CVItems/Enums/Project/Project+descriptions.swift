@@ -66,6 +66,8 @@ public extension Project {
             return []
         case .irobot:
             return []
+        case .germanProject:
+            return []
         }
     }
 }

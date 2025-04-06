@@ -41,6 +41,10 @@ public extension Project {
             return .iolap
         case .irobot:
             return .iolap
+        case .germanProject:
+            return .germanCo
+        case .breckWorld:
+            return .cherishingStudio
         }
     }
 }

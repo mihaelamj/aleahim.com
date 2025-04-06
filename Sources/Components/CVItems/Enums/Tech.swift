@@ -25,6 +25,7 @@ public enum Tech: String, CaseIterable, Codable, Identifiable, Hashable {
     case pushNotifications
     case inAppPurchase
     case barcodes
+    case arkit
     
     var name: String {
         switch self {
@@ -52,6 +53,7 @@ public enum Tech: String, CaseIterable, Codable, Identifiable, Hashable {
         case .pushNotifications: return "Push Notifications"
         case .inAppPurchase: return "In-App Purchase"
         case .barcodes: return "Barcodes & QRCodes"
+        case .arkit: return "ARKit"
         }
     }
     

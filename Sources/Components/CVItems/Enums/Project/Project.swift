@@ -21,6 +21,7 @@ public enum Project: String, CaseIterable, Codable, Identifiable, Hashable {
     case responsumchat
     case irobot
     case germanProject
+    case breckWorld
     
     public var id: String { self.rawValue }
     
@@ -46,6 +47,7 @@ public enum Project: String, CaseIterable, Codable, Identifiable, Hashable {
         case .wheelsup: return "Wheels Up"
         case .birch: return "Birch Finance"
         case .germanProject: return "Anonymous Big EU Project"
+        case .breckWorld: return "Breck World"
         }
     }
 }

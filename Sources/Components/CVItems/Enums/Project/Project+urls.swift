@@ -53,6 +53,8 @@ public extension Project {
             ]
         case .birch:
             return [URL(string: "https://www.birchfinance.com")!]
+        case .germanProject:
+            return nil
         }
     }
 }
