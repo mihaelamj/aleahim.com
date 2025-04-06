@@ -1,6 +1,6 @@
 import Foundation
 
-enum Role: String, CaseIterable, Codable, Identifiable {
+enum Role: String, CaseIterable, Codable, Identifiable, Hashable {
     case junior
     case mid
     case senior

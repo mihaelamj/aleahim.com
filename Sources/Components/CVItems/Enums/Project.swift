@@ -1,6 +1,6 @@
 import Foundation
 
-enum Project: String, CaseIterable, Codable, Identifiable {
+enum Project: String, CaseIterable, Codable, Identifiable, Hashable {
     case cachlette
     case tito
     case wogibtswas

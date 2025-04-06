@@ -1,7 +1,7 @@
 import Foundation
 
-struct Period: Codable, Identifiable {
-    struct SimpleDate: Codable, Identifiable {
+struct Period: Codable, Identifiable, Equatable, Hashable {
+    struct SimpleDate: Codable, Identifiable, Hashable, Equatable {
         let month: Int
         let year: Int
         
