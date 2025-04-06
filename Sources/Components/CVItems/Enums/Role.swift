@@ -1,11 +1,11 @@
 import Foundation
 
-enum Role: String, CaseIterable, Codable, Identifiable, Hashable {
+public enum Role: String, CaseIterable, Codable, Identifiable, Hashable {
     case junior
     case mid
     case senior
     
-    var name: String {
+    public var name: String {
         switch self {
         case .junior:
             return "Junior iOS Developer"
@@ -16,6 +16,6 @@ enum Role: String, CaseIterable, Codable, Identifiable, Hashable {
         }
     }
     
-    var id: String { self.rawValue }
+    public var id: String { self.rawValue }
 }
 

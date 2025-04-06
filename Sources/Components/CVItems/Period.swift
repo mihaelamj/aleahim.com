@@ -1,19 +1,19 @@
 import Foundation
 
-struct Period: Codable, Identifiable, Equatable, Hashable {
-    struct SimpleDate: Codable, Identifiable, Hashable, Equatable {
-        let month: Int
-        let year: Int
+public struct Period: Codable, Identifiable, Equatable, Hashable {
+    public struct SimpleDate: Codable, Identifiable, Hashable, Equatable {
+        public let month: Int
+        public let year: Int
         
-        var id: String {
+        public var id: String {
             "\(year)-\(String(format: "%02d", month))"
         }
     }
 
-    let start: SimpleDate
-    let end: SimpleDate
+    public let start: SimpleDate
+    public let end: SimpleDate
 
-    var id: String {
+    public var id: String {
         "\(start.id)_to_\(end.id)"
     }
 }
