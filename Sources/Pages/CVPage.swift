@@ -1,7 +1,7 @@
 import Foundation
 import Ignite
 
-struct CV: StaticPage {
+struct CVPage: StaticPage {
     var title = "CV"
 
     var body: some HTML {

@@ -12,7 +12,7 @@ enum Page: String, CaseIterable {
         switch self {
         case .blog: return Home()
         case .about: return About()
-        case .cv: return CV()
+        case .cv: return CVPage()
         case .contact: return Contact()
         }
     }
