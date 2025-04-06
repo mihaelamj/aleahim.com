@@ -26,6 +26,8 @@ public enum Tech: String, CaseIterable, Codable, Identifiable, Hashable {
     case inAppPurchase
     case barcodes
     case arkit
+    case ai
+    case macos
     
     var name: String {
         switch self {
@@ -54,6 +56,8 @@ public enum Tech: String, CaseIterable, Codable, Identifiable, Hashable {
         case .inAppPurchase: return "In-App Purchase"
         case .barcodes: return "Barcodes & QRCodes"
         case .arkit: return "ARKit"
+        case .ai: return "Artificial Intelligence"
+        case .macos: return "macOS"
         }
     }
     
