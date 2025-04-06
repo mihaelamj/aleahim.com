@@ -24,25 +24,25 @@ public extension Project {
         case .shopsavvy:
             return [.swift, .uikit, .uiincode, .barcodes, .autolayout, .coreanimation, .rest]
         case .birthdayrama:
-            return [.swift, .uikit, .uiincode, .coredata]
+            return [.swift, .uikit, .uiincode, .coredata, .autolayout]
         case .huxly:
             return [.swift, .uikit, .uiincode, .autolayout, .rest]
         case .breckWorld:
-            return []
+            return [.swift, .uikit, .autolayout, .arkit, .rest]
         case .servicepal:
             return [.objc, .uikit, .uiincode, .coredata, .rest]
         case .wheelsup:
             return [.objc, .swift, .uikit, .uiincode, .pushNotifications, .rest, .afnet, .openapi]
         case .budtz:
-            return []
+            return [.swift, .rest, .uikit, .uiincode]
         case .birch:
-            return []
+            return [.swift, .rest, .uikit, .coreanimation, .uiincode]
         case .zumiez:
-            return []
+            return [.swift, .rest, .openapi, .graphql, .uikit, .uiincode, .swiftpm]
         case .responsumchat:
-            return []
+            return [.websocket, .swift, .uikit, .ai, .swiftpm, .macos]
         case .germanProject:
-            return []
+            return [.swift, .swiftui, .rest, .openapi, .swiftpm]
         case .irobot:
             return []
         }

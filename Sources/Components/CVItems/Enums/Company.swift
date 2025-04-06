@@ -9,7 +9,7 @@ public enum Company: String, CaseIterable, Codable, Identifiable, Hashable {
     case iolap
     case codeweaver
     case personal
-    case germanCo
+    case codeWeaver
     
     public var id: String { self.rawValue }
     
@@ -23,7 +23,7 @@ public enum Company: String, CaseIterable, Codable, Identifiable, Hashable {
         case .iolap: return "iOLAP"
         case .codeweaver: return "Code Weaver"
         case .personal: return "Personal Projects"
-        case .germanCo: return "Anonymous EU Company"
+        case .codeWeaver: return "CodeWeaver"
         }
     }
 }
