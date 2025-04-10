@@ -1,6 +1,4 @@
-// swift-tools-version: 5.9
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
+// swift-tools-version:5.9
 import PackageDescription
 
 let package = Package(
@@ -8,11 +6,15 @@ let package = Package(
     platforms: [.macOS(.v13)],
     dependencies: [
         .package(url: "https://github.com/twostraws/Ignite.git", branch: "main"),
-        .package(url: "https://github.com/mihaelamj/mycv.git", branch: "main")
+        .package(url: "https://github.com/mihaelamj/cvbuilder.git", branch: "main")
     ],
     targets: [
         .executableTarget(
             name: "IgniteStarter",
-            dependencies: ["Ignite", "mycv"]),
+            dependencies: [
+                .product(name: "Ignite", package: "Ignite"),
+                .product(name: "CVBuilder", package: "cvbuilder")
+            ]
+        ),
     ]
 )

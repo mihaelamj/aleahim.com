@@ -1,6 +1,7 @@
 import Foundation
 import Ignite
-import mycv
+import CVBuilder
+
 @main
 struct IgniteWebsite {
     static func main() async {
