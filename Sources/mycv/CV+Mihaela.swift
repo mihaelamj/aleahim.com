@@ -12,21 +12,6 @@ public extension CV {
             location: "Crna Voda 38A, 10000 Zagreb, Croatia"
         )
         
-        let per = Period(
-            start: .init(month: 9, year: 2010),
-            end: .init(month: 6, year: 2014)
-        )
-        
-        let education1 = Education(
-            institution: "Stanford University",
-            degree: "B.S.",
-            field: "Computer Science",
-            period: Period(
-                start: .init(month: 9, year: 2010),
-                end: .init(month: 6, year: 2014)
-            )
-        )
-
         let education = Education(
             institution: "University of Zagreb, Faculty of Humanities and Social Sciences",
             degree: "M.Sc.",
