@@ -1,21 +1,21 @@
 {
   "pins" : [
     {
+      "identity" : "cvbuilder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mihaelamj/cvbuilder.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "90faaf81700ab39123ed9e9171bb7b7aa60275a4"
+      }
+    },
+    {
       "identity" : "ignite",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/twostraws/Ignite.git",
       "state" : {
         "branch" : "main",
         "revision" : "f7699fe2ba1b5b28f06d50389b5b273d28f12f55"
-      }
-    },
-    {
-      "identity" : "mycv",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mihaelamj/mycv.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "ce64a3aef08d5b372903f59e417e8a32adfa1e5e"
       }
     },
     {
