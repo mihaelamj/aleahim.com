@@ -1,6 +1,7 @@
 import Foundation
 import Ignite
 import CVBuilder
+import CVBuilderIgnite
 
 struct CVPage: StaticPage {
     var title = "CV"
@@ -11,7 +12,7 @@ struct CVPage: StaticPage {
             Text("Mihaela's CV")
                 .font(.title1)
             
-            CVIgniteRenderer(cv: CV.createForMihaela()).body
+            IgniteRenderer(cv: CV.createForMihaela()).body
         }
     }
 }
