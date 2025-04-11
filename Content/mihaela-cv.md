@@ -14,7 +14,7 @@ University of Zagreb, Faculty of Humanities and Social Sciences, M.Sc. in Inform
 
 ## EXPERIENCE
 
-### iOLAP (Nov 2022 - Mar 2025) – Senior iOS Developer
+### iOLAP (Nov 2022 - Mar 2025) – Senior Senior iOS Developer
 
 ####  ZUMIEZ Stash App
 - Worked on the Zumiez Stash app as a Senior iOS Engineer
@@ -41,7 +41,7 @@ University of Zagreb, Faculty of Humanities and Social Sciences, M.Sc. in Inform
 - | Swift | SwiftUI | Swift Package Manager | Objective-C | UIKit | UI in code | Unit Testing |
 
 
-### Code Weaver (May 2024 - Dec 2024) – Senior iOS Developer
+### Code Weaver (May 2024 - Dec 2024) – Senior Senior iOS Developer
 
 #### Anonymous Big EU Project
 - Refactored client backend OpenAPI specs and built a Swift networking package
@@ -52,7 +52,7 @@ University of Zagreb, Faculty of Humanities and Social Sciences, M.Sc. in Inform
 - | Swift | SwiftUI | REST | OpenAPI | Swift Package Manager | Unit Testing | UI Testing | Structured Concurrency |
 
 
-### Cherishing Studio (Jul 2019 - Oct 2022) – Senior iOS Developer
+### Cherishing Studio (Jul 2019 - Oct 2022) – Senior Senior iOS Developer
 
 #### Wheels Up
 - Modernized and refactored legacy Objective-C codebase to Swift
@@ -78,7 +78,7 @@ University of Zagreb, Faculty of Humanities and Social Sciences, M.Sc. in Inform
 - | Swift | REST | UIKit | UI in code |
 
 
-### Token (Jun 2014 - Aug 2019) – Senior iOS Developer
+### Token (Jun 2014 - Aug 2019) – Senior Senior iOS Developer
 
 #### Kindergarten (Cancelled)
 - iOS app for a Croatian company, for managing kindergartens
@@ -116,7 +116,7 @@ University of Zagreb, Faculty of Humanities and Social Sciences, M.Sc. in Inform
 - | Swift | UIKit | UI in code | CoreData | AutoLayout | REST | ARKit |
 
 
-### Masinerija (Nov 2018 - May 2019) – Senior iOS Developer
+### Masinerija (Nov 2018 - May 2019) – Senior Senior iOS Developer
 
 #### Birthdayrama App
 - A fun way to share birthday wishes with friends and family
@@ -136,7 +136,7 @@ University of Zagreb, Faculty of Humanities and Social Sciences, M.Sc. in Inform
 - | Swift | UIKit | UI in code | CoreData | AutoLayout | REST | CocoaPods |
 
 
-### Purch (Mar 2015 - Oct 2018) – Mid iOS Developer
+### Purch (Mar 2015 - Oct 2018) – Mid Mid iOS Developer
 
 #### Consumr App
 - Adapted existing client application for iOS 8+
@@ -162,7 +162,7 @@ University of Zagreb, Faculty of Humanities and Social Sciences, M.Sc. in Inform
 - | Objective-C | UIKit | UI in code | CoreAnimation | REST | Unit Testing | AutoLayout | Barcodes & QRCodes |
 
 
-### Undabot (Sep 2013 - Jun 2014) – Junior iOS Developer
+### Undabot (Sep 2013 - Jun 2014) – Junior Junior iOS Developer
 
 #### Tito
 - iOS (iPad) book application about the life of Josip Broz Tito

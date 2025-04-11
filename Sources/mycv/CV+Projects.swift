@@ -47,10 +47,10 @@ public extension CV {
         let webSocket = Tech(name: "WebSockets", category: .concept)
        
         // Create role types
-        let juniorIOS = Role(title: "iOS Developer", seniority: .junior)
-        let midIOS = Role(title: "iOS Developer", seniority: .mid)
-        let seniorIOS = Role(title: "iOS Developer", seniority: .senior)
-        let leadIOS = Role(title: "iOS Developer", seniority: .lead)
+        let juniorIOS = Role(title: "Junior iOS Developer", seniority: .junior)
+        let midIOS = Role(title: "Mid iOS Developer", seniority: .mid)
+        let seniorIOS = Role(title: "Senior iOS Developer", seniority: .senior)
+        let leadIOS = Role(title: "Lead iOS Developer", seniority: .lead)
         
         let tito = try! Project.Builder()
             .withName("Tito")

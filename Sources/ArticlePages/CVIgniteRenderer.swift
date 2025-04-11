@@ -32,16 +32,22 @@ struct CVIgniteRenderer {
                 Text(cv.contactInfo.phone)
                 Text(cv.contactInfo.location)
                 
-                if let linkedIn = cv.contactInfo.linkedIn {
-                    Link("LinkedIn", target: linkedIn)
-                }
-                
-                if let github = cv.contactInfo.github {
-                    Link("GitHub", target: github)
-                }
-                
-                if let website = cv.contactInfo.website {
-                    Link("Website", target: website)
+                if cv.contactInfo.linkedIn != nil || cv.contactInfo.github != nil || cv.contactInfo.website != nil {
+                    List {
+                        if let linkedIn = cv.contactInfo.linkedIn {
+                            Link("LinkedIn", target: linkedIn)
+                        }
+                        
+                        if let github = cv.contactInfo.github {
+                            Link("GitHub", target: github)
+                        }
+                        
+                        if let website = cv.contactInfo.website {
+                            Link("Website", target: website)
+                        }
+                    }
+                    .listMarkerStyle(.unordered(.automatic))
+                    .margin(.leading, .medium)
                 }
             }
             .margin(.vertical, .large)
@@ -55,6 +61,7 @@ struct CVIgniteRenderer {
                 Text(cv.summary)
             }
             .margin(.bottom, .large)
+            .padding()
             
             // Experience
             Section {
@@ -79,6 +86,7 @@ struct CVIgniteRenderer {
                                 Text(project.project.name)
                                     .fontWeight(.semibold)
                                 
+                                // Project descriptions
                                 List {
                                     ForEach(project.project.descriptions) { description in
                                         Text(description)
@@ -86,6 +94,17 @@ struct CVIgniteRenderer {
                                 }
                                 .listMarkerStyle(.unordered(.automatic))
                                 .margin(.leading, .medium)
+                                
+                                if let urls = project.project.urls, !urls.isEmpty {
+                                    // Project URLs
+                                    List {
+                                        ForEach(urls) { url in
+                                            Link(url.absoluteString, target: url)
+                                        }
+                                    }
+                                    .listMarkerStyle(.unordered(.automatic))
+                                    .margin(.leading, .medium)
+                                }
                                 
                                 if !project.project.techs.isEmpty {
                                     Section {
@@ -98,11 +117,14 @@ struct CVIgniteRenderer {
                             }
                             .margin(.leading, .medium)
                         }
+                        .padding()
                     }
                     .margin(.bottom, .large)
                 }
+                .padding()
             }
             .margin(.bottom, .large)
+            .padding()
             
             // Education
             Section {
@@ -142,6 +164,6 @@ struct CVIgniteRenderer {
         }
         .padding(.vertical, .xLarge)
         .frame(maxWidth: .percent(80%))
-        .horizontalAlignment(.center)
+        .horizontalAlignment(.leading)
     }
 } 
