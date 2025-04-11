@@ -46,7 +46,7 @@ struct AleahimSite: Site {
     
     // Add article pages for Markdown content
     var articlePages: [any ArticlePage] {
-        // This will automatically include any Markdown files in the Content directory
+        CVArticle()
     }
 }
 
