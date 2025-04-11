@@ -1,8 +1,10 @@
 import Foundation
-import Ignite
 import CVBuilder
 
-struct CVIgniteRenderer {
+#if canImport(Ignite)
+import Ignite
+
+public struct CVIgniteRenderer {
     let cv: CV
     
     private func formatDate(_ date: Period.SimpleDate) -> String {
@@ -14,7 +16,7 @@ struct CVIgniteRenderer {
         return formatter.string(from: actualDate)
     }
     
-    @MainActor var body: some HTML {
+    @MainActor public var body: some HTML {
         Section {
             // Header with name and title
             Section {
@@ -167,3 +169,4 @@ struct CVIgniteRenderer {
         .horizontalAlignment(.leading)
     }
 } 
+#endif
