@@ -8,6 +8,9 @@ struct IgniteWebsite {
         var site = AleahimSite()
 
         do {
+            // Generate the CV Markdown before publishing the site
+            generateMihaelasCVMarkdownInContentFolder()
+            
             try await site.publish()
         } catch {
             print(error.localizedDescription)
@@ -24,7 +27,14 @@ struct AleahimSite: Site {
     var builtInIconsEnabled = true
     
     var syntaxHighlighterConfiguration: SyntaxHighlighterConfiguration = .init(languages: [.swift, .python, .ruby])
-
+    
+    // Add feed configuration for blog posts
+    var feedConfiguration = FeedConfiguration(
+        mode: .full,
+        contentCount: 20,
+        image: .init(url: "https://www.aleahim.com/images/icon32.png", width: 32, height: 32)
+    )
+    
     var author = "Mihaela Mihaljevic"
 
     var homePage = Home()
@@ -33,4 +43,10 @@ struct AleahimSite: Site {
     var staticPages: [any StaticPage] {
         return Page.all
     }
+    
+    // Add article pages for Markdown content
+    var articlePages: [any ArticlePage] {
+        // This will automatically include any Markdown files in the Content directory
+    }
 }
+
