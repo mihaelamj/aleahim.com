@@ -14,10 +14,10 @@ struct CVIgniteRenderer {
         return formatter.string(from: actualDate)
     }
     
-    var body: some HTML {
-        Article {
+    @MainActor var body: some HTML {
+        Section {
             // Header with name and title
-            Header {
+            Section {
                 Text(cv.name)
                     .font(.title1)
                 
@@ -44,7 +44,7 @@ struct CVIgniteRenderer {
                     Link("Website", target: website)
                 }
             }
-            .margin(.vertical, 20)
+            .margin(.vertical, .large)
             
             // Summary
             Section {
@@ -54,7 +54,7 @@ struct CVIgniteRenderer {
                 
                 Text(cv.summary)
             }
-            .margin(.bottom, 20)
+            .margin(.bottom, .large)
             
             // Experience
             Section {
@@ -81,28 +81,28 @@ struct CVIgniteRenderer {
                                 
                                 List {
                                     ForEach(project.project.descriptions) { description in
-                                        ListItem(description)
+                                        Text(description)
                                     }
                                 }
-                                .listStyle(.unordered)
-                                .margin(.leading, 20)
+                                .listMarkerStyle(.unordered(.automatic))
+                                .margin(.leading, .medium)
                                 
                                 if !project.project.techs.isEmpty {
                                     Section {
                                         ForEach(project.project.techs) { tech in
                                             Badge(tech.name)
-                                                .margin(.trailing, 5)
+                                                .margin(.trailing, .small)
                                         }
                                     }
                                 }
                             }
-                            .margin(.leading, 20)
+                            .margin(.leading, .medium)
                         }
                     }
-                    .margin(.bottom, 20)
+                    .margin(.bottom, .large)
                 }
             }
-            .margin(.bottom, 20)
+            .margin(.bottom, .large)
             
             // Education
             Section {
@@ -118,13 +118,13 @@ struct CVIgniteRenderer {
                         
                         Text(education.degree)
                         
-                        Text("\(education.startYear) - \(education.endYear)")
+                        Text("\(formatDate(education.period.start)) - \(formatDate(education.period.end))")
                             .foregroundStyle(.secondary)
                     }
-                    .margin(.bottom, 10)
+                    .margin(.bottom, .medium)
                 }
             }
-            .margin(.bottom, 20)
+            .margin(.bottom, .large)
             
             // Skills
             Section {
@@ -135,13 +135,13 @@ struct CVIgniteRenderer {
                 Section {
                     ForEach(cv.skills) { skill in
                         Badge(skill.name)
-                            .margin(.trailing, 5)
+                            .margin(.trailing, .small)
                     }
                 }
             }
         }
-        .padding(.vertical, 40)
-        .container(.large)
-        .margin(.horizontal, .auto)
+        .padding(.vertical, .xLarge)
+        .frame(maxWidth: .percent(80%))
+        .horizontalAlignment(.center)
     }
 } 
