@@ -13,7 +13,8 @@ let package = Package(
             name: "IgniteStarter",
             dependencies: [
                 .product(name: "Ignite", package: "Ignite"),
-                .product(name: "CVBuilder", package: "cvbuilder")
+                .product(name: "CVBuilder", package: "cvbuilder"),
+                .product(name: "CVBuilderIgnite", package: "cvbuilder")
             ]
         ),
     ]
