@@ -8,10 +8,3 @@
 /*.xcodeproj
 DerivedData/
 
-# Publish-generated files
-.publish
-Output/
-**/Output/
-*/Output/
-/Output
-/_samples
