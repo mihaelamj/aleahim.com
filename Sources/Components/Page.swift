@@ -2,18 +2,16 @@ import Foundation
 import Ignite
 
 enum Page: String, CaseIterable {
-    case blog = "Home"
+    case home = "Home"
     case about = "About"
     case cv = "CV"
-    case contact = "Contact"
     
     @MainActor
     var page: any StaticPage {
         switch self {
-        case .blog: return Home()
+        case .home: return Home()
         case .about: return About()
         case .cv: return CVPage()
-        case .contact: return Contact()
         }
     }
     
