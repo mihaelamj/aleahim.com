@@ -2,9 +2,12 @@
 .DS_Store
 
 # Xcode build artifacts
-/build
 /.build
 /.swiftpm
 /*.xcodeproj
 DerivedData/
+
+# Ignore all Build directories except the root one
+Build/*
+!Build/
 
