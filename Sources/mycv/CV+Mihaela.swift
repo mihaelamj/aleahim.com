@@ -9,7 +9,7 @@ public extension CV {
             linkedIn: URL(string: "https://www.linkedin.com/in/mihaelamj"),
             github: URL(string: "https://github.com/mihaelamj"),
             website: URL(string: "https://aleahim.com"),
-            location: "Crna Voda 38A, 10000 Zagreb, Croatia"
+            location: "Zagreb, Croatia"
         )
         
         let education = Education(

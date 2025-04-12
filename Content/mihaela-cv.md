@@ -5,7 +5,7 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 
 mihaelamj@me.com
 +385995491157
-Crna Voda 38A, 10000 Zagreb, Croatia
+Zagreb, Croatia
 [LinkedIn](https://www.linkedin.com/in/mihaelamj)
 [GitHub](https://github.com/mihaelamj)
 [Website](https://aleahim.com)
