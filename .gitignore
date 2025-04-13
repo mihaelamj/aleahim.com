@@ -8,7 +8,4 @@
 /_sources
 DerivedData/
 
-# Ignore all Build directories except the root one
-Build/*
-!Build/
 
