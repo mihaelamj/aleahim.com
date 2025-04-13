@@ -47,6 +47,7 @@ struct AleahimSite: Site {
     // Add article pages for Markdown content
     var articlePages: [any ArticlePage] {
         CoreAnimation3DCube()
+        CVBuilder()
     }
 }
 
