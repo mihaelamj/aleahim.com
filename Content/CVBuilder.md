@@ -156,6 +156,132 @@ let swiftUI = Tech(name: "SwiftUI", category: .framework)
 let restAPI = Tech(name: "REST API", category: .concept)
 ```
 
+## How I Use It on This Webpage
+
+My blog is built using [Ignite](https://github.com/twostraws/Ignite), a static site generator for Swift. I've integrated CVBuilder into my website to maintain and display my CV in a clean, professional format.
+
+### Package Dependencies
+
+I include CVBuilder in my website's package file:
+
+```swift
+let package = Package(
+    name: "IgniteStarter",
+    platforms: [.macOS(.v13)],
+    dependencies: [
+        .package(url: "https://github.com/twostraws/Ignite.git", branch: "main"),
+        .package(url: "https://github.com/mihaelamj/cvbuilder.git", branch: "main")
+    ],
+    targets: [
+        .executableTarget(
+            name: "IgniteStarter",
+            dependencies: [
+                .product(name: "Ignite", package: "Ignite"),
+                .product(name: "CVBuilder", package: "cvbuilder"),
+                .product(name: "CVBuilderIgnite", package: "cvbuilder")
+            ]
+        ),
+    ]
+)
+```
+
+### Personal Information
+
+I maintain my personal information in a dedicated Swift file (`CV+Mihaela.swift`):
+
+```swift
+public extension CV {
+    static func createForMihaela() -> CV {
+        let contactInfo = ContactInfo(
+            email: "me@me.com",
+            phone: "+12233445566",
+            linkedIn: URL(string: "https://www.linkedin.com/in/mylinkedin"),
+            github: URL(string: "https://github.com/mygithub"),
+            website: URL(string: "https://mywebsite.com"),
+            location: "City, Country"
+        )
+        
+        let education = Education(...)
+        
+        // ... rest of the implementation
+    }
+}
+```
+![](/images/cvbuilder/cv01.png)
+
+
+### Project History
+
+My professional experience is organized in a separate file (`CV+Projects.swift`), which contains detailed information about all my projects:
+
+```swift
+public extension CV {
+    static func createMihaelasProjects() -> [Project] {
+        var result = [Project]()
+        
+        // Create companies
+        let undabot = Company(name: "Undabot")
+        let token = Company(name: "Token")
+        // ... more companies
+        
+        // Create tech skills
+        let swift = Tech(name: "Swift", category: .language)
+        let uiKit = Tech(name: "UIKit", category: .framework)
+        // ... more tech skills
+        
+        // Create projects using the builder pattern
+        let project1 = try! Project.Builder()
+            .withName("SomeProject")
+            .withCompany(Company name)
+            .withRole(juniorIOS)
+            .withPeriod(start: (month: 9, year: 20XX), end: (month: 12, year: 20XX))
+            .addDescription("iOS (iPad) book application about...)
+            .withTechs([swift, uiKit])
+            .build()
+        
+        // ... more projects
+        
+        return result
+    }
+}
+```
+
+This modular approach allows me to:
+1. Keep my CV data in a strongly-typed format
+2. Easily update my experience and skills
+3. Generate both HTML and Markdown versions of my CV
+4. Maintain consistency across different platforms
+
+The CV is automatically generated when the website is built, ensuring that my professional information is always up-to-date and consistently formatted.
+
+### Markdown Generation
+
+I also generate a Markdown version of my CV that I can use to create a fresh PDF whenever needed. This is done using a simple function:
+
+```swift
+func generateMihaelasCVMarkdownInContentFolder() {
+    let cv = CV.createForMihaela()
+    let markdown = MarkdownCVRenderer().render(cv: cv)
+
+    let fileURL = URL(fileURLWithPath: "Assets/mihaela-cv.md")
+
+    do {
+        try markdown.write(to: fileURL, atomically: true, encoding: .utf8)
+        print("✅ Written to \(fileURL.path)")
+    } catch {
+        print("❌ Failed to write Mihaela's CV: \(error.localizedDescription)")
+    }
+}
+```
+
+This function:
+1. Creates my CV using the `createForMihaela()` function
+2. Renders it to Markdown using `MarkdownCVRenderer`
+3. Saves the output to `Assets/mihaela-cv.md`
+4. Provides feedback about the success or failure of the operation
+
+I can then use this Markdown file to generate a fresh PDF whenever I need to update my CV for job applications or other purposes.
+
 ## Future Plans
 
 CVBuilder is actively maintained and has several planned improvements:
