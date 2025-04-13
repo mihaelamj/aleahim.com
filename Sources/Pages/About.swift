@@ -29,17 +29,17 @@ struct About: StaticPage {
                 
                 List {
                     ListItem {
-                        Link("GitHub", target: "https://github.com/mmj")
+                        Link("GitHub", target: "https://github.com/mihaelamj")
                             .margin(.trailing, .small)
                         Text("for code samples and projects")
                     }
                     ListItem {
-                        Link("LinkedIn", target: "https://linkedin.com/in/mmj")
+                        Link("LinkedIn", target: "https://www.linkedin.com/in/mihaelamj")
                             .margin(.trailing, .small)
                         Text("for professional networking")
                     }
                     ListItem {
-                        Link("Email", target: "mailto:contact@aleahim.com")
+                        Link("Email", target: "mailto:mihaelamj@gmail.com")
                             .margin(.trailing, .small)
                         Text("for direct communication")
                     }
