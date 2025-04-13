@@ -65,7 +65,83 @@ let html = IgniteRenderer(cv: cv).render()
 </code></pre><h3>Tech Stack Management</h3><p>The package includes a <code>Tech</code> type for managing technical skills:</p><pre><code class="language-swift">let swift = Tech(name: "Swift", category: .language)
 let swiftUI = Tech(name: "SwiftUI", category: .framework)
 let restAPI = Tech(name: "REST API", category: .concept)
-</code></pre><h2>Future Plans</h2><p>CVBuilder is actively maintained and has several planned improvements:</p><ol><li>Command-line interface for CV generation</li><li>Additional renderers (PDF, LaTeX)</li><li>Import/export functionality for common formats</li><li>Template system for customizing output</li></ol><h2>Conclusion</h2><p>CVBuilder provides a robust solution for managing professional CVs in Swift. Its type-safe design, multiple renderers, and modular architecture make it an excellent choice for developers who want to maintain their CVs programmatically.</p><p>Whether you’re building a personal website, managing multiple CV versions, or creating a CV management system, CVBuilder can help streamline your workflow and ensure consistency across all your professional documents.</p><h2>Resources</h2><ul><li><a href="https://github.com/mihaelamj/cvbuilder">GitHub Repository</a></li><li><a href="https://github.com/mihaelamj/cvbuilder/blob/main/SampleCV.md">Sample CV</a></li><li><a href="https://github.com/mihaelamj/cvbuilder#readme">Documentation</a></li></ul>]]></content:encoded></item><item><guid isPermaLink="true">https://www.aleahim.com/SwiftUILabAdvancedAnimations</guid><title>Bringing Advanced SwiftUI Animations to macOS</title><link>https://www.aleahim.com/SwiftUILabAdvancedAnimations</link><description><![CDATA[When I first discovered SwiftUILab’s Advanced Animations, I was impressed by the beautiful animations and transitions it demonstrated. However, I noticed that these examples were primarily focused on iOS, leaving macOS developers without a clear path to implement similar effects. This inspired me to create SwiftUILab_AdvancedAnimations, a port of these animations that works seamlessly on both iOS and macOS.]]></description><pubDate>Sun, 13 Feb 2022 16:30:00 +0000</pubDate><dc:creator><![CDATA[Mihaela Mihaljeevic]]></dc:creator><category><![CDATA[Swift]]></category><category><![CDATA[SwiftUI]]></category><category><![CDATA[Animation]]></category><category><![CDATA[macOS]]></category><category><![CDATA[iOS]]></category><content:encoded><![CDATA[<p>When I first discovered <a href="https://swiftui-lab.com/advanced-animations/">SwiftUILab’s Advanced Animations</a>, I was impressed by the beautiful animations and transitions it demonstrated. However, I noticed that these examples were primarily focused on iOS, leaving macOS developers without a clear path to implement similar effects. This inspired me to create <a href="https://github.com/mihaelamj/SwiftUILab_AdvancedAnimations">SwiftUILab_AdvancedAnimations</a>, a port of these animations that works seamlessly on both iOS and macOS.</p><h2>The Challenge</h2><p>SwiftUI’s animation system is powerful but can behave differently across platforms. While iOS and macOS share the same SwiftUI framework, there are subtle differences in how animations are handled, especially when dealing with:</p><ul><li>Gesture recognizers</li><li>View transitions</li><li>Animation timing</li><li>Platform-specific UI elements</li></ul><p>My goal was to create a unified codebase that would work flawlessly on both platforms while maintaining the original animations’ elegance and performance.</p><h2>Project Structure</h2><p>I organized the project to make it easy to understand and extend:</p><pre><code>SwiftUILab_AA/
+</code></pre><h2>How I Use It on This Webpage</h2><p>My blog is built using <a href="https://github.com/twostraws/Ignite">Ignite</a>, a static site generator for Swift. I’ve integrated CVBuilder into my website to maintain and display my CV in a clean, professional format.</p><h3>Package Dependencies</h3><p>I include CVBuilder in my website’s package file:</p><pre><code class="language-swift">let package = Package(
+    name: "IgniteStarter",
+    platforms: [.macOS(.v13)],
+    dependencies: [
+        .package(url: "https://github.com/twostraws/Ignite.git", branch: "main"),
+        .package(url: "https://github.com/mihaelamj/cvbuilder.git", branch: "main")
+    ],
+    targets: [
+        .executableTarget(
+            name: "IgniteStarter",
+            dependencies: [
+                .product(name: "Ignite", package: "Ignite"),
+                .product(name: "CVBuilder", package: "cvbuilder"),
+                .product(name: "CVBuilderIgnite", package: "cvbuilder")
+            ]
+        ),
+    ]
+)
+</code></pre><h3>Personal Information</h3><p>I maintain my personal information in a dedicated Swift file (<code>CV+Mihaela.swift</code>):</p><pre><code class="language-swift">public extension CV {
+    static func createForMihaela() -> CV {
+        let contactInfo = ContactInfo(
+            email: "me@me.com",
+            phone: "+12233445566",
+            linkedIn: URL(string: "https://www.linkedin.com/in/mylinkedin"),
+            github: URL(string: "https://github.com/mygithub"),
+            website: URL(string: "https://mywebsite.com"),
+            location: "City, Country"
+        )
+        
+        let education = Education(...)
+        
+        // ... rest of the implementation
+    }
+}
+</code></pre><p><img src="https://www.aleahim.com/images/cvbuilder/cv01.png" alt="" class="img-fluid"></p><h3>Project History</h3><p>My professional experience is organized in a separate file (<code>CV+Projects.swift</code>), which contains detailed information about all my projects:</p><pre><code class="language-swift">public extension CV {
+    static func createMihaelasProjects() -> [Project] {
+        var result = [Project]()
+        
+        // Create companies
+        let undabot = Company(name: "Undabot")
+        let token = Company(name: "Token")
+        // ... more companies
+        
+        // Create tech skills
+        let swift = Tech(name: "Swift", category: .language)
+        let uiKit = Tech(name: "UIKit", category: .framework)
+        // ... more tech skills
+        
+        // Create projects using the builder pattern
+        let project1 = try! Project.Builder()
+            .withName("SomeProject")
+            .withCompany(Company name)
+            .withRole(juniorIOS)
+            .withPeriod(start: (month: 9, year: 20XX), end: (month: 12, year: 20XX))
+            .addDescription("iOS (iPad) book application about...)
+            .withTechs([swift, uiKit])
+            .build()
+        
+        // ... more projects
+        
+        return result
+    }
+}
+</code></pre><p>This modular approach allows me to:</p><ol><li>Keep my CV data in a strongly-typed format</li><li>Easily update my experience and skills</li><li>Generate both HTML and Markdown versions of my CV</li><li>Maintain consistency across different platforms</li></ol><p>The CV is automatically generated when the website is built, ensuring that my professional information is always up-to-date and consistently formatted.</p><h3>Markdown Generation</h3><p>I also generate a Markdown version of my CV that I can use to create a fresh PDF whenever needed. This is done using a simple function:</p><pre><code class="language-swift">func generateMihaelasCVMarkdownInContentFolder() {
+    let cv = CV.createForMihaela()
+    let markdown = MarkdownCVRenderer().render(cv: cv)
+
+    let fileURL = URL(fileURLWithPath: "Assets/mihaela-cv.md")
+
+    do {
+        try markdown.write(to: fileURL, atomically: true, encoding: .utf8)
+        print("✅ Written to \(fileURL.path)")
+    } catch {
+        print("❌ Failed to write Mihaela's CV: \(error.localizedDescription)")
+    }
+}
+</code></pre><p>This function:</p><ol><li>Creates my CV using the <code>createForMihaela()</code> function</li><li>Renders it to Markdown using <code>MarkdownCVRenderer</code></li><li>Saves the output to <code>Assets/mihaela-cv.md</code></li><li>Provides feedback about the success or failure of the operation</li></ol><p>I can then use this Markdown file to generate a fresh PDF whenever I need to update my CV for job applications or other purposes.</p><h2>Future Plans</h2><p>CVBuilder is actively maintained and has several planned improvements:</p><ol><li>Command-line interface for CV generation</li><li>Additional renderers (PDF, LaTeX)</li><li>Import/export functionality for common formats</li><li>Template system for customizing output</li></ol><h2>Conclusion</h2><p>CVBuilder provides a robust solution for managing professional CVs in Swift. Its type-safe design, multiple renderers, and modular architecture make it an excellent choice for developers who want to maintain their CVs programmatically.</p><p>Whether you’re building a personal website, managing multiple CV versions, or creating a CV management system, CVBuilder can help streamline your workflow and ensure consistency across all your professional documents.</p><h2>Resources</h2><ul><li><a href="https://github.com/mihaelamj/cvbuilder">GitHub Repository</a></li><li><a href="https://github.com/mihaelamj/cvbuilder/blob/main/SampleCV.md">Sample CV</a></li><li><a href="https://github.com/mihaelamj/cvbuilder#readme">Documentation</a></li></ul>]]></content:encoded></item><item><guid isPermaLink="true">https://www.aleahim.com/SwiftUILabAdvancedAnimations</guid><title>Bringing Advanced SwiftUI Animations to macOS</title><link>https://www.aleahim.com/SwiftUILabAdvancedAnimations</link><description><![CDATA[When I first discovered SwiftUILab’s Advanced Animations, I was impressed by the beautiful animations and transitions it demonstrated. However, I noticed that these examples were primarily focused on iOS, leaving macOS developers without a clear path to implement similar effects. This inspired me to create SwiftUILab_AdvancedAnimations, a port of these animations that works seamlessly on both iOS and macOS.]]></description><pubDate>Sun, 13 Feb 2022 16:30:00 +0000</pubDate><dc:creator><![CDATA[Mihaela Mihaljeevic]]></dc:creator><category><![CDATA[Swift]]></category><category><![CDATA[SwiftUI]]></category><category><![CDATA[Animation]]></category><category><![CDATA[macOS]]></category><category><![CDATA[iOS]]></category><content:encoded><![CDATA[<p>When I first discovered <a href="https://swiftui-lab.com/advanced-animations/">SwiftUILab’s Advanced Animations</a>, I was impressed by the beautiful animations and transitions it demonstrated. However, I noticed that these examples were primarily focused on iOS, leaving macOS developers without a clear path to implement similar effects. This inspired me to create <a href="https://github.com/mihaelamj/SwiftUILab_AdvancedAnimations">SwiftUILab_AdvancedAnimations</a>, a port of these animations that works seamlessly on both iOS and macOS.</p><h2>The Challenge</h2><p>SwiftUI’s animation system is powerful but can behave differently across platforms. While iOS and macOS share the same SwiftUI framework, there are subtle differences in how animations are handled, especially when dealing with:</p><ul><li>Gesture recognizers</li><li>View transitions</li><li>Animation timing</li><li>Platform-specific UI elements</li></ul><p>My goal was to create a unified codebase that would work flawlessly on both platforms while maintaining the original animations’ elegance and performance.</p><h2>Project Structure</h2><p>I organized the project to make it easy to understand and extend:</p><pre><code>SwiftUILab_AA/
 ├── Examples/
 │   ├── Animation1/
 │   ├── Animation2/
