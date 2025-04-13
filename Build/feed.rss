@@ -65,7 +65,102 @@ let html = IgniteRenderer(cv: cv).render()
 </code></pre><h3>Tech Stack Management</h3><p>The package includes a <code>Tech</code> type for managing technical skills:</p><pre><code class="language-swift">let swift = Tech(name: "Swift", category: .language)
 let swiftUI = Tech(name: "SwiftUI", category: .framework)
 let restAPI = Tech(name: "REST API", category: .concept)
-</code></pre><h2>Future Plans</h2><p>CVBuilder is actively maintained and has several planned improvements:</p><ol><li>Command-line interface for CV generation</li><li>Additional renderers (PDF, LaTeX)</li><li>Import/export functionality for common formats</li><li>Template system for customizing output</li></ol><h2>Conclusion</h2><p>CVBuilder provides a robust solution for managing professional CVs in Swift. Its type-safe design, multiple renderers, and modular architecture make it an excellent choice for developers who want to maintain their CVs programmatically.</p><p>Whether you’re building a personal website, managing multiple CV versions, or creating a CV management system, CVBuilder can help streamline your workflow and ensure consistency across all your professional documents.</p><h2>Resources</h2><ul><li><a href="https://github.com/mihaelamj/cvbuilder">GitHub Repository</a></li><li><a href="https://github.com/mihaelamj/cvbuilder/blob/main/SampleCV.md">Sample CV</a></li><li><a href="https://github.com/mihaelamj/cvbuilder#readme">Documentation</a></li></ul>]]></content:encoded></item><item><guid isPermaLink="true">https://www.aleahim.com/CoreAnimation3DCube</guid><title>Core Animation Layers forming a 3D cube</title><link>https://www.aleahim.com/CoreAnimation3DCube</link><description><![CDATA[]]></description><pubDate>Sat, 06 Mar 2021 15:30:00 +0000</pubDate><dc:creator><![CDATA[Mihaela Mihaljeevic]]></dc:creator><category><![CDATA[Core Animation]]></category><category><![CDATA[Swift]]></category><category><![CDATA[Objective-C]]></category><category><![CDATA[UIKit]]></category><category><![CDATA[AppKit]]></category><content:encoded><![CDATA[<p><img src="https://www.aleahim.com/images/cacube/01_cube_iOS_3D.png" alt="" class="img-fluid"></p><p>I’ve been researching <code>Core Animation</code> framework for the past few months.<br />I’ve started with several books on the subject, but I found watching related WWDC videos most rewarding. The presenters put the content in a relevant context which  makes it easier to apprehend and learn from it.</p><h2>1. Introduction</h2><p>One WWDC session particularly intrigued me: “2011–421 Core Animation Essentials”. They presented their demo named: “Layers in Perspective”, and it showed six layers, forming a flattened cube: <img src="https://www.aleahim.com/images/cacube/02_cube_5sides.png" alt="" class="img-fluid"></p><p>The sixth layer is hiding behind the layer number 5. It has a lower <code>zPosition</code> then the layer above it.</p><p><img src="https://www.aleahim.com/images/cacube/03_cube_6sides.png" alt="" class="img-fluid"></p><p>They have also demonstrated opening and closing the cube formation.</p><p><img src="https://www.aleahim.com/images/cacube/04_cube_filmstrip.png" alt="" class="img-fluid"></p><p>So, I have decided to demonstrate that.</p><p>Here’s a link to a GitHub repo with the source code:<br /><a href="https://github.com/mihaelamj/CubeIn3DWithCoreAnimation">Core Animation 3D Cube</a></p><p>Here’s the animation:</p><p><img src="https://www.aleahim.com/images/cacube/05_CoreAnimation_3D_Cube.gif" alt="" class="img-fluid"></p><p>You can also see it on <a href="https://www.youtube.com/watch?v=exIGbi36_bk">You Tube</a></p><p>Layers in <code>Core Animation</code> live in <code>3D</code> geometry. But a layer is a <code>2D</code> construct, so <code>Core Animation</code> coordinate space is called a <code>2.5D</code> geometry.</p><p>To illustrate that just see what happens when you mess up your transformations.</p><p><img src="https://www.aleahim.com/images/cacube/06_Intersecting_Layers.png" alt="" class="img-fluid"></p><p>Layers are <code>2D</code> objects, they don’t understand the third dimension.<br />They are like playing cards in space., and there is no <code>depth buffer</code> available.</p><p>And also, intersecting layers should be avoided because in the image above, Core Animation needs to do a lot of work. So just to draw the <code>red</code> layer intersecting only the <code>blue</code> layer, Core Animation needs to</p><ul><li>cut the <code>red</code> layer into two pieces</li><li>render back part of the <code>red</code> layer</li><li>then render the full <code>blue</code> layer</li><li>then render the front part of the <code>red</code> layer again And all that work is for just intersection, and here we have multiple.</li></ul><h2>2. Building the Cube in 3D</h2><h3>2.1. Setting up the multi-platform project</h3><p>I wanted the project to fun on the <code>macOS</code> , <code>iOS</code> and <code>iPadOS</code>, so I used <a href="https://github.com/mihaelamj/allapples">AllApples</a> Swift package.</p><p>After removing the storyboards and pimping up the <code>AppDelegate</code> and <code>main.swift</code> for the <code>macOS</code> version, and <code>SceneDelegate</code> for the mobile versions, I was ready to start.</p><h4>2.1.1. <code>main.swift</code> for the macOS</h4><pre><code class="language-swift">import Cocoa
+</code></pre><h2>Future Plans</h2><p>CVBuilder is actively maintained and has several planned improvements:</p><ol><li>Command-line interface for CV generation</li><li>Additional renderers (PDF, LaTeX)</li><li>Import/export functionality for common formats</li><li>Template system for customizing output</li></ol><h2>Conclusion</h2><p>CVBuilder provides a robust solution for managing professional CVs in Swift. Its type-safe design, multiple renderers, and modular architecture make it an excellent choice for developers who want to maintain their CVs programmatically.</p><p>Whether you’re building a personal website, managing multiple CV versions, or creating a CV management system, CVBuilder can help streamline your workflow and ensure consistency across all your professional documents.</p><h2>Resources</h2><ul><li><a href="https://github.com/mihaelamj/cvbuilder">GitHub Repository</a></li><li><a href="https://github.com/mihaelamj/cvbuilder/blob/main/SampleCV.md">Sample CV</a></li><li><a href="https://github.com/mihaelamj/cvbuilder#readme">Documentation</a></li></ul>]]></content:encoded></item><item><guid isPermaLink="true">https://www.aleahim.com/SwiftUILabAdvancedAnimations</guid><title>Bringing Advanced SwiftUI Animations to macOS</title><link>https://www.aleahim.com/SwiftUILabAdvancedAnimations</link><description><![CDATA[When I first discovered SwiftUILab’s Advanced Animations, I was impressed by the beautiful animations and transitions it demonstrated. However, I noticed that these examples were primarily focused on iOS, leaving macOS developers without a clear path to implement similar effects. This inspired me to create SwiftUILab_AdvancedAnimations, a port of these animations that works seamlessly on both iOS and macOS.]]></description><pubDate>Sun, 13 Feb 2022 16:30:00 +0000</pubDate><dc:creator><![CDATA[Mihaela Mihaljeevic]]></dc:creator><category><![CDATA[Swift]]></category><category><![CDATA[SwiftUI]]></category><category><![CDATA[Animation]]></category><category><![CDATA[macOS]]></category><category><![CDATA[iOS]]></category><content:encoded><![CDATA[<p>When I first discovered <a href="https://swiftui-lab.com/advanced-animations/">SwiftUILab’s Advanced Animations</a>, I was impressed by the beautiful animations and transitions it demonstrated. However, I noticed that these examples were primarily focused on iOS, leaving macOS developers without a clear path to implement similar effects. This inspired me to create <a href="https://github.com/mihaelamj/SwiftUILab_AdvancedAnimations">SwiftUILab_AdvancedAnimations</a>, a port of these animations that works seamlessly on both iOS and macOS.</p><h2>The Challenge</h2><p>SwiftUI’s animation system is powerful but can behave differently across platforms. While iOS and macOS share the same SwiftUI framework, there are subtle differences in how animations are handled, especially when dealing with:</p><ul><li>Gesture recognizers</li><li>View transitions</li><li>Animation timing</li><li>Platform-specific UI elements</li></ul><p>My goal was to create a unified codebase that would work flawlessly on both platforms while maintaining the original animations’ elegance and performance.</p><h2>Project Structure</h2><p>I organized the project to make it easy to understand and extend:</p><pre><code>SwiftUILab_AA/
+├── Examples/
+│   ├── Animation1/
+│   ├── Animation2/
+│   └── ...
+├── Shared/
+│   ├── Views/
+│   ├── Models/
+│   └── Extensions/
+└── App/
+    ├── iOS/
+    └── macOS/
+</code></pre><p>Each animation example has its own folder, making it easy to:</p><ul><li>Study individual animations in isolation</li><li>Copy and paste specific animations into other projects</li><li>Modify and experiment with different parameters</li></ul><h2>Key Features</h2><h3>1. Cross-Platform Compatibility</h3><p>The project uses SwiftUI’s platform-agnostic features while handling platform-specific requirements:</p><pre><code class="language-swift">#if os(iOS)
+    // iOS-specific code
+#elseif os(macOS)
+    // macOS-specific code
+#endif
+</code></pre><h3>2. Reusable Components</h3><p>I created a set of reusable components that work on both platforms:</p><pre><code class="language-swift">struct AnimatedButton: View {
+    @State private var isPressed = false
+    
+    var body: some View {
+        Button(action: {}) {
+            Text("Animate")
+                .scaleEffect(isPressed ? 0.95 : 1.0)
+                .animation(.spring(), value: isPressed)
+        }
+        .buttonStyle(PlainButtonStyle())
+        .onHover { hovering in
+            isPressed = hovering
+        }
+    }
+}
+</code></pre><h3>3. Gesture Handling</h3><p>The project includes platform-appropriate gesture handling:</p><pre><code class="language-swift">struct DragGestureView: View {
+    @State private var offset = CGSize.zero
+    
+    var body: some View {
+        Rectangle()
+            .fill(Color.blue)
+            .frame(width: 100, height: 100)
+            .offset(offset)
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        offset = value.translation
+                    }
+                    .onEnded { _ in
+                        withAnimation(.spring()) {
+                            offset = .zero
+                        }
+                    }
+            )
+    }
+}
+</code></pre><h2>Example Animations</h2><h3>1. Morphing Shapes</h3><p>One of the most impressive animations is the shape morphing effect:</p><pre><code class="language-swift">struct MorphingShape: View {
+    @State private var isMorphed = false
+    
+    var body: some View {
+        Circle()
+            .fill(Color.blue)
+            .frame(width: 100, height: 100)
+            .scaleEffect(isMorphed ? 1.5 : 1.0)
+            .animation(.spring(response: 0.6, dampingFraction: 0.6), value: isMorphed)
+            .onTapGesture {
+                isMorphed.toggle()
+            }
+    }
+}
+</code></pre><h3>2. Custom Transitions</h3><p>The project includes several custom transitions that work on both platforms:</p><pre><code class="language-swift">extension AnyTransition {
+    static var customScale: AnyTransition {
+        .scale(scale: 0.1)
+        .combined(with: .opacity)
+    }
+}
+</code></pre><h2>Implementation Details</h2><h3>1. View Extensions</h3><p>I created several extensions to make animations more reusable:</p><pre><code class="language-swift">extension View {
+    func animateOnHover() -> some View {
+        self.modifier(HoverAnimationModifier())
+    }
+}
+</code></pre><h3>2. Animation Timing</h3><p>Careful attention was paid to animation timing to ensure smooth performance:</p><pre><code class="language-swift">struct TimingAnimation: View {
+    @State private var isAnimating = false
+    
+    var body: some View {
+        Circle()
+            .fill(Color.red)
+            .frame(width: 50, height: 50)
+            .offset(y: isAnimating ? -100 : 0)
+            .animation(
+                .timingCurve(0.68, -0.6, 0.32, 1.6, duration: 1),
+                value: isAnimating
+            )
+            .onAppear {
+                isAnimating = true
+            }
+    }
+}
+</code></pre><h2>Benefits for Developers</h2><ol><li><strong>Cross-Platform Learning</strong>: Developers can learn SwiftUI animations that work on both iOS and macOS</li><li><strong>Ready-to-Use Examples</strong>: Each animation is self-contained and can be easily copied into other projects</li><li><strong>Performance Optimized</strong>: Animations are optimized for smooth performance on both platforms</li><li><strong>Educational Resource</strong>: The project serves as a comprehensive guide to SwiftUI animations</li></ol><h2>Future Improvements</h2><p>The project is actively maintained with several planned enhancements:</p><ol><li>Adding more complex animation examples</li><li>Implementing accessibility features</li><li>Creating a documentation site with interactive examples</li><li>Adding support for visionOS</li></ol><h2>Conclusion</h2><p>SwiftUILab_AdvancedAnimations bridges the gap between iOS and macOS animation development in SwiftUI. By providing a unified codebase and clear examples, it helps developers create beautiful, performant animations that work across Apple’s platforms.</p><p>Whether you’re building for iOS, macOS, or both, this project provides valuable insights into SwiftUI’s animation capabilities and best practices for cross-platform development.</p><h2>Resources</h2><ul><li><a href="https://github.com/mihaelamj/SwiftUILab_AdvancedAnimations">GitHub Repository</a></li><li><a href="https://swiftui-lab.com/advanced-animations/">Original SwiftUILab Article</a></li><li><a href="https://developer.apple.com/documentation/swiftui">SwiftUI Documentation</a></li></ul>]]></content:encoded></item><item><guid isPermaLink="true">https://www.aleahim.com/CoreAnimation3DCube</guid><title>Core Animation Layers forming a 3D cube</title><link>https://www.aleahim.com/CoreAnimation3DCube</link><description><![CDATA[]]></description><pubDate>Sat, 06 Mar 2021 15:30:00 +0000</pubDate><dc:creator><![CDATA[Mihaela Mihaljeevic]]></dc:creator><category><![CDATA[Core Animation]]></category><category><![CDATA[Swift]]></category><category><![CDATA[Objective-C]]></category><category><![CDATA[UIKit]]></category><category><![CDATA[AppKit]]></category><content:encoded><![CDATA[<p><img src="https://www.aleahim.com/images/cacube/01_cube_iOS_3D.png" alt="" class="img-fluid"></p><p>I’ve been researching <code>Core Animation</code> framework for the past few months.<br />I’ve started with several books on the subject, but I found watching related WWDC videos most rewarding. The presenters put the content in a relevant context which  makes it easier to apprehend and learn from it.</p><h2>1. Introduction</h2><p>One WWDC session particularly intrigued me: “2011–421 Core Animation Essentials”. They presented their demo named: “Layers in Perspective”, and it showed six layers, forming a flattened cube: <img src="https://www.aleahim.com/images/cacube/02_cube_5sides.png" alt="" class="img-fluid"></p><p>The sixth layer is hiding behind the layer number 5. It has a lower <code>zPosition</code> then the layer above it.</p><p><img src="https://www.aleahim.com/images/cacube/03_cube_6sides.png" alt="" class="img-fluid"></p><p>They have also demonstrated opening and closing the cube formation.</p><p><img src="https://www.aleahim.com/images/cacube/04_cube_filmstrip.png" alt="" class="img-fluid"></p><p>So, I have decided to demonstrate that.</p><p>Here’s a link to a GitHub repo with the source code:<br /><a href="https://github.com/mihaelamj/CubeIn3DWithCoreAnimation">Core Animation 3D Cube</a></p><p>Here’s the animation:</p><p><img src="https://www.aleahim.com/images/cacube/05_CoreAnimation_3D_Cube.gif" alt="" class="img-fluid"></p><p>You can also see it on <a href="https://www.youtube.com/watch?v=exIGbi36_bk">You Tube</a></p><p>Layers in <code>Core Animation</code> live in <code>3D</code> geometry. But a layer is a <code>2D</code> construct, so <code>Core Animation</code> coordinate space is called a <code>2.5D</code> geometry.</p><p>To illustrate that just see what happens when you mess up your transformations.</p><p><img src="https://www.aleahim.com/images/cacube/06_Intersecting_Layers.png" alt="" class="img-fluid"></p><p>Layers are <code>2D</code> objects, they don’t understand the third dimension.<br />They are like playing cards in space., and there is no <code>depth buffer</code> available.</p><p>And also, intersecting layers should be avoided because in the image above, Core Animation needs to do a lot of work. So just to draw the <code>red</code> layer intersecting only the <code>blue</code> layer, Core Animation needs to</p><ul><li>cut the <code>red</code> layer into two pieces</li><li>render back part of the <code>red</code> layer</li><li>then render the full <code>blue</code> layer</li><li>then render the front part of the <code>red</code> layer again And all that work is for just intersection, and here we have multiple.</li></ul><h2>2. Building the Cube in 3D</h2><h3>2.1. Setting up the multi-platform project</h3><p>I wanted the project to fun on the <code>macOS</code> , <code>iOS</code> and <code>iPadOS</code>, so I used <a href="https://github.com/mihaelamj/allapples">AllApples</a> Swift package.</p><p>After removing the storyboards and pimping up the <code>AppDelegate</code> and <code>main.swift</code> for the <code>macOS</code> version, and <code>SceneDelegate</code> for the mobile versions, I was ready to start.</p><h4>2.1.1. <code>main.swift</code> for the macOS</h4><pre><code class="language-swift">import Cocoa
 let delegate = AppDelegate()
 NSApplication.shared.delegate = delegate
 _ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
