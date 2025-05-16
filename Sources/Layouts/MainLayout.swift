@@ -3,7 +3,7 @@ import Ignite
 
 struct MainLayout: Layout {
     
-    var body: some HTML {
+    var body: some Document {
         Body {
             NavBar(name: "Aleahim")
                 .padding(.bottom, 80)
@@ -17,3 +17,4 @@ struct MainLayout: Layout {
         }
     }
 }
+

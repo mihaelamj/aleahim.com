@@ -196,3 +196,7 @@ University of Zagreb, Faculty of Humanities and Social Sciences, M.Sc. in Inform
 ### SKILLS
 - | AFNetworking | ARKit | AVFoundation | AppKit | Artificial Intelligence | AutoLayout | Barcodes & QRCodes | Carthage | CocoaPods | CoreAnimation | CoreData | CoreGraphics | CoreText | GraphQL | In-App Purchase | Objective-C | OpenAPI | Push Notifications | REST | Structured Concurrency | Swift | Swift Package Manager | SwiftUI | UI Testing | UI in code | UIKit | Unit Testing | WebSockets | macOS |
 
+
+
+---
+Created with [CVBuilder](https://github.com/mihaelamj/cvbuilder)
