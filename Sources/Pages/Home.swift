@@ -12,7 +12,7 @@ struct Home: StaticPage {
         
         List {
             ForEach(articles.sortedByDate) { article in
-                Link(target: article) {
+                Section {
                     BlogCard(article: article)
                 }
             }

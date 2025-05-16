@@ -6,7 +6,7 @@
       "location" : "https://github.com/mihaelamj/cvbuilder.git",
       "state" : {
         "branch" : "main",
-        "revision" : "ce0421cab03b43a1ffa369d63030f07f38cef3ff"
+        "revision" : "626d4dbc3c514ec20a9b02a7dd52c481fef90a28"
       }
     },
     {
@@ -15,7 +15,7 @@
       "location" : "https://github.com/twostraws/Ignite.git",
       "state" : {
         "branch" : "main",
-        "revision" : "f7699fe2ba1b5b28f06d50389b5b273d28f12f55"
+        "revision" : "4ac74d1dc8d7ba1b12917993a2b5812b0da87b61"
       }
     },
     {
