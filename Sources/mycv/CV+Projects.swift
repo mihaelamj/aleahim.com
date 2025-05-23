@@ -36,7 +36,9 @@ public extension CV {
         let openapi = Tech(name: "OpenAPI", category: .concept)
         let pushNotifications = Tech(name: "Push Notifications", category: .concept)
         let rest = Tech(name: "REST", category: .concept)
+        let sse = Tech(name: "SSE", category: .concept)
         let swift = Tech(name: "Swift", category: .language)
+        let swiftServer = Tech(name: "Swift Server", category: .concept)
         let swiftUI = Tech(name: "SwiftUI", category: .framework)
         let structConcurrency = Tech(name: "Structured Concurrency", category: .concept)
         let swiftpm = Tech(name: "Swift Package Manager", category: .tool)
@@ -320,7 +322,7 @@ public extension CV {
             .addDescription("Created a modular Swift package to encapsulate networking logic, designed for clean separation of concerns, testability, and reuse across projects")
             .addDescription("Integrated Swift OpenAPI Generator to automatically generate type-safe API client code from OpenAPI specs, enabling seamless updates and minimizing manual maintenance")
             .addDescription("Streamlined the build process to regenerate client code automatically upon spec changes, aligning with CI/CD pipelines and reducing the risk of contract drift")
-            .withTechs([swift, swiftUI, rest, openapi, swiftpm, unittest, uitest, structConcurrency])
+            .withTechs([swift, swiftUI, rest, openapi, swiftpm, swiftServer, unittest, uitest, structConcurrency])
             .build()
         result.append(germanProject)
         
@@ -335,6 +337,22 @@ public extension CV {
             .withTechs([swift, swiftUI, swiftpm, objc, uiKit, uiInCode, unittest])
             .build()
         result.append(irobot)
+        
+        let everlivProject = try! Project.Builder()
+            .withName("Everliv AI Fitness Chat")
+            .withCompany(codeWeaver)
+            .withRole(seniorIOS)
+            .withPeriod(start: (month: 5, year: 2024), end: (month: 12, year: 2024))
+            .addDescription("Developed comprehensive OpenAPI YAML specifications defining REST and Server-Sent Events endpoints for real-time chat functionality")
+            .addDescription("Built mock Swift Vapor server implementation with REST API and SSE streaming capabilities for development and testing workflows")
+            .addDescription("Integrated Swift OpenAPI Generator to automatically generate type-safe server code from YAML specifications, enabling seamless API contract enforcement")
+            .addDescription("Generated modular Swift networking layer from OpenAPI specs, providing clean separation of concerns and automatic client code updates")
+            .addDescription("Developed cross-platform SwiftUI chat clients for macOS and iOS with real-time messaging, error handling, and responsive user interfaces")
+            .addDescription("Implemented comprehensive preview and testing systems with mock data scenarios, ensuring robust development workflow and UI validation across platforms")
+            .withTechs([swift, swiftUI, rest, openapi, swiftpm, unittest, uitest, structConcurrency, sse, openapi, swiftServer])
+        
+            .build()
+        
         return result
     }
 }
