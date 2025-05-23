@@ -342,7 +342,7 @@ public extension CV {
             .withName("Everliv AI Fitness Chat")
             .withCompany(codeWeaver)
             .withRole(seniorIOS)
-            .withPeriod(start: (month: 5, year: 2024), end: (month: 12, year: 2024))
+            .withPeriod(start: (month: 4, year: 2025), end: (month: 6, year: 2025))
             .addDescription("Developed comprehensive OpenAPI YAML specifications defining REST and Server-Sent Events endpoints for real-time chat functionality")
             .addDescription("Built mock Swift Vapor server implementation with REST API and SSE streaming capabilities for development and testing workflows")
             .addDescription("Integrated Swift OpenAPI Generator to automatically generate type-safe server code from YAML specifications, enabling seamless API contract enforcement")
@@ -350,8 +350,8 @@ public extension CV {
             .addDescription("Developed cross-platform SwiftUI chat clients for macOS and iOS with real-time messaging, error handling, and responsive user interfaces")
             .addDescription("Implemented comprehensive preview and testing systems with mock data scenarios, ensuring robust development workflow and UI validation across platforms")
             .withTechs([swift, swiftUI, rest, openapi, swiftpm, unittest, uitest, structConcurrency, sse, openapi, swiftServer])
-        
             .build()
+        result.append(everlivProject)
         
         return result
     }

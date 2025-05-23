@@ -14,6 +14,26 @@ University of Zagreb, Faculty of Humanities and Social Sciences, M.Sc. in Inform
 
 ## EXPERIENCE
 
+### Code Weaver (May 2024 - Jun 2025) – Senior Senior iOS Developer
+
+#### Anonymous Big EU Project
+- Refactored client backend OpenAPI specs and built a Swift networking package
+- Reorganized and clarified existing OpenAPI specifications to better reflect backend capabilities and client requirements. Ensured consistency and accuracy across endpoints and models
+- Created a modular Swift package to encapsulate networking logic, designed for clean separation of concerns, testability, and reuse across projects
+- Integrated Swift OpenAPI Generator to automatically generate type-safe API client code from OpenAPI specs, enabling seamless updates and minimizing manual maintenance
+- Streamlined the build process to regenerate client code automatically upon spec changes, aligning with CI/CD pipelines and reducing the risk of contract drift
+- | Swift | SwiftUI | REST | OpenAPI | Swift Package Manager | Swift Server | Unit Testing | UI Testing | Structured Concurrency |
+
+#### Everliv AI Fitness Chat
+- Developed comprehensive OpenAPI YAML specifications defining REST and Server-Sent Events endpoints for real-time chat functionality
+- Built mock Swift Vapor server implementation with REST API and SSE streaming capabilities for development and testing workflows
+- Integrated Swift OpenAPI Generator to automatically generate type-safe server code from YAML specifications, enabling seamless API contract enforcement
+- Generated modular Swift networking layer from OpenAPI specs, providing clean separation of concerns and automatic client code updates
+- Developed cross-platform SwiftUI chat clients for macOS and iOS with real-time messaging, error handling, and responsive user interfaces
+- Implemented comprehensive preview and testing systems with mock data scenarios, ensuring robust development workflow and UI validation across platforms
+- | Swift | SwiftUI | REST | OpenAPI | Swift Package Manager | Unit Testing | UI Testing | Structured Concurrency | SSE | OpenAPI | Swift Server |
+
+
 ### iOLAP (Nov 2022 - Mar 2025) – Senior Senior iOS Developer
 
 ####  ZUMIEZ Stash App
@@ -39,17 +59,6 @@ University of Zagreb, Faculty of Humanities and Social Sciences, M.Sc. in Inform
 - Added features for the onboarding process
 - Automated localization
 - | Swift | SwiftUI | Swift Package Manager | Objective-C | UIKit | UI in code | Unit Testing |
-
-
-### Code Weaver (May 2024 - Dec 2024) – Senior Senior iOS Developer
-
-#### Anonymous Big EU Project
-- Refactored client backend OpenAPI specs and built a Swift networking package
-- Reorganized and clarified existing OpenAPI specifications to better reflect backend capabilities and client requirements. Ensured consistency and accuracy across endpoints and models
-- Created a modular Swift package to encapsulate networking logic, designed for clean separation of concerns, testability, and reuse across projects
-- Integrated Swift OpenAPI Generator to automatically generate type-safe API client code from OpenAPI specs, enabling seamless updates and minimizing manual maintenance
-- Streamlined the build process to regenerate client code automatically upon spec changes, aligning with CI/CD pipelines and reducing the risk of contract drift
-- | Swift | SwiftUI | REST | OpenAPI | Swift Package Manager | Unit Testing | UI Testing | Structured Concurrency |
 
 
 ### Cherishing Studio (Jul 2019 - Oct 2022) – Senior Senior iOS Developer
@@ -194,7 +203,7 @@ University of Zagreb, Faculty of Humanities and Social Sciences, M.Sc. in Inform
 
 
 ### SKILLS
-- | AFNetworking | ARKit | AVFoundation | AppKit | Artificial Intelligence | AutoLayout | Barcodes & QRCodes | Carthage | CocoaPods | CoreAnimation | CoreData | CoreGraphics | CoreText | GraphQL | In-App Purchase | Objective-C | OpenAPI | Push Notifications | REST | Structured Concurrency | Swift | Swift Package Manager | SwiftUI | UI Testing | UI in code | UIKit | Unit Testing | WebSockets | macOS |
+- | AFNetworking | ARKit | AVFoundation | AppKit | Artificial Intelligence | AutoLayout | Barcodes & QRCodes | Carthage | CocoaPods | CoreAnimation | CoreData | CoreGraphics | CoreText | GraphQL | In-App Purchase | Objective-C | OpenAPI | Push Notifications | REST | SSE | Structured Concurrency | Swift | Swift Package Manager | Swift Server | SwiftUI | UI Testing | UI in code | UIKit | Unit Testing | WebSockets | macOS |
 
 
 
