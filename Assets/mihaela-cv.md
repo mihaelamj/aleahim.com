@@ -31,6 +31,10 @@ University of Zagreb, Faculty of Humanities and Social Sciences, M.Sc. in Inform
 - Generated modular Swift networking layer from OpenAPI specs, providing clean separation of concerns and automatic client code updates
 - Developed cross-platform SwiftUI chat clients for macOS and iOS with real-time messaging, error handling, and responsive user interfaces
 - Implemented comprehensive preview and testing systems with mock data scenarios, ensuring robust development workflow and UI validation across platforms
+- Engineered a custom Server-Sent Events (SSE) client with fine-grained streaming management, async/await handling, and resilient error propagation for real-time interactions
+- Refactored chat architecture using actors, modular components, and adaptive UI to ensure a scalable, maintainable, and clean codebase
+- Designed and implemented a rich ActionCard system supporting multiple types (nutrition, goal, measurement, etc.) with expandable content and platform-optimized UX
+- Enhanced user experience with image upload workflows, previews, adaptive layouts, and cross-platform interaction consistency
 - | Swift | SwiftUI | REST | OpenAPI | Swift Package Manager | Unit Testing | UI Testing | Structured Concurrency | SSE | OpenAPI | Swift Server |
 
 
