@@ -41,6 +41,7 @@ struct AleahimSite: Site {
     var layout = MainLayout()
     
     var staticPages: [any StaticPage] {
+        print("Pages:", Page.all.count)
         return Page.all
     }
     
