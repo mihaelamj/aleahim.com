@@ -15,26 +15,34 @@ struct BlogCard: HTML {
         ZStack(alignment: .bottom) {
             if let image = article.image {
                 Image(image)
-                    .imageFit(.fit, anchor: .topTrailing)
+                    .imageFit(.fit, anchor: .top)
+                    .frame(height: 320)
+                    .frame(maxWidth: .percent(100%))
+                    .opacity(0.8)
             }
             VStack(spacing: 6) {
                 Text(article.date.formatted(date: .abbreviated, time: .omitted))
                     .fontWeight(.medium)
                     .foregroundStyle(.secondary)
-                Text(article.title)
-                    .font(.title4)
-                    .fontWeight(Font.Weight.bold)
+                Link(article.title, target: article.path)
+                    .font(.title3)
+                    .fontWeight(.bold)
                 if let subtitle = article.subtitle {
                     Text(subtitle)
                 }
             }
             .lineSpacing(1.2)
             .padding(.horizontal, .medium)
-            .padding(.vertical, .medium)
+            .padding(.vertical, .small)
             .background(.regularMaterial)
-            .frame(maxWidth: .percent(30%))
+            .frame(maxWidth: .percent(100%))
         }
+        .frame(width: 480)
         .clipped()
         .cornerRadius(15)
+        .margin(.bottom, .medium)
     }
 }
+
+
+
