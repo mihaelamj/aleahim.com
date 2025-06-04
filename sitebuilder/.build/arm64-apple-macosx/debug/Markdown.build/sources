@@ -1,0 +1,69 @@
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Base/ChildIndexPath.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Base/DirectiveArgument.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Base/Document.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Base/LiteralMarkup.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Base/Markup.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Base/MarkupChildren.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Base/MarkupData.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Base/PlainTextConvertibleMarkup.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Base/RawMarkup.swift
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Block Container Blocks/BlockDirective.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Block Container Blocks/BlockQuote.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Block Container Blocks/CustomBlock.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Block Container Blocks/Doxygen Commands/DoxygenDiscussion.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Block Container Blocks/Doxygen Commands/DoxygenNote.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Block Container Blocks/Doxygen Commands/DoxygenParameter.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Block Container Blocks/Doxygen Commands/DoxygenReturns.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Block Container Blocks/ListItem.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Block Container Blocks/OrderedList.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Block Container Blocks/UnorderedList.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Inline Container Blocks/Paragraph.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Leaf Blocks/CodeBlock.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Leaf Blocks/HTMLBlock.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Leaf Blocks/Heading.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Leaf Blocks/ThematicBreak.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Tables/Table.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Tables/TableBody.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Tables/TableCell.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Tables/TableCellContainer.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Tables/TableHead.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Block Nodes/Tables/TableRow.swift'
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Infrastructure/Replacement.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Infrastructure/SourceLocation.swift
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Containers/Emphasis.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Containers/Image.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Containers/InlineAttributes.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Containers/Link.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Containers/Strikethrough.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Containers/Strong.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Leaves/CustomInline.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Leaves/InlineCode.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Leaves/InlineHTML.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Leaves/LineBreak.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Leaves/SoftBreak.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Leaves/SymbolLink.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Inline Nodes/Inline Leaves/Text.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Interpretive Nodes/Aside.swift'
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Parser/BlockDirectiveParser.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Parser/CommonMarkConverter.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Parser/LazySplitLines.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Parser/ParseOptions.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Parser/RangeAdjuster.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Parser/RangerTracker.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Rewriter/MarkupRewriter.swift
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Structural Restrictions/BasicBlockContainer.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Structural Restrictions/BasicInlineContainer.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Structural Restrictions/BlockContainer.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Structural Restrictions/BlockMarkup.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Structural Restrictions/InlineContainer.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Structural Restrictions/InlineMarkup.swift'
+'/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Structural Restrictions/ListItemContainer.swift'
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Utility/AtomicCounter.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Utility/CharacterExtensions.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Utility/CollectionExtensions.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Utility/StringExtensions.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Visitor/MarkupVisitor.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Walker/MarkupWalker.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Walker/Walkers/HTMLFormatter.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Walker/Walkers/MarkupFormatter.swift
+/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-markdown/Sources/Markdown/Walker/Walkers/MarkupTreeDumper.swift

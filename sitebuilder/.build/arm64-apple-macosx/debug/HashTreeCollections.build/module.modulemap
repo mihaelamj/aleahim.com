@@ -1,0 +1,4 @@
+module HashTreeCollections {
+    header "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/HashTreeCollections.build/HashTreeCollections-Swift.h"
+    requires objc
+}

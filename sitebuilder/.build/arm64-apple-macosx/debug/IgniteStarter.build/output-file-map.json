@@ -1,0 +1,95 @@
+{
+  "": {
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/master.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/ArticlePages/CVBuilder.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CVBuilder.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CVBuilder.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CVBuilder~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CVBuilder.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/ArticlePages/CoreAnimation3DCube.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CoreAnimation3DCube.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CoreAnimation3DCube.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CoreAnimation3DCube~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CoreAnimation3DCube.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/ArticlePages/SwiftUILabAdvancedAnimations.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/SwiftUILabAdvancedAnimations.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/SwiftUILabAdvancedAnimations.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/SwiftUILabAdvancedAnimations~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/SwiftUILabAdvancedAnimations.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/Components/Article+Extra.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Article+Extra.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Article+Extra.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Article+Extra~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Article+Extra.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/Components/NavBar.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/NavBar.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/NavBar.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/NavBar~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/NavBar.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/Components/Page.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Page.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Page.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Page~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Page.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/Components/SocialItems.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/SocialItems.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/SocialItems.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/SocialItems~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/SocialItems.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/Layouts/MainLayout.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/MainLayout.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/MainLayout.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/MainLayout~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/MainLayout.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/Pages/About.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/About.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/About.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/About~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/About.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/Pages/CVPage.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CVPage.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CVPage.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CVPage~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CVPage.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/Pages/Home.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Home.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Home.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Home~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Home.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/Site.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Site.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Site.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Site~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/Site.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/mycv/CV+Mihaela.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CV+Mihaela.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CV+Mihaela.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CV+Mihaela~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CV+Mihaela.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/mycv/CV+Projects.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CV+Projects.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CV+Projects.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CV+Projects~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/CV+Projects.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/Sources/mycv/MyCV.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/MyCV.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/MyCV.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/MyCV~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/IgniteStarter.build/MyCV.swiftdeps"
+  }
+}

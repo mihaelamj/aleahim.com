@@ -1,0 +1,257 @@
+{
+  "": {
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/master.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Completions/BashCompletionsGenerator.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/BashCompletionsGenerator.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/BashCompletionsGenerator.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/BashCompletionsGenerator~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/BashCompletionsGenerator.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Completions/CompletionsGenerator.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CompletionsGenerator.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CompletionsGenerator.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CompletionsGenerator~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CompletionsGenerator.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Completions/FishCompletionsGenerator.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/FishCompletionsGenerator.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/FishCompletionsGenerator.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/FishCompletionsGenerator~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/FishCompletionsGenerator.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Completions/ZshCompletionsGenerator.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ZshCompletionsGenerator.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ZshCompletionsGenerator.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ZshCompletionsGenerator~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ZshCompletionsGenerator.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Properties/Argument.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Argument.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Argument.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Argument~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Argument.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Properties/ArgumentHelp.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentHelp.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentHelp.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentHelp~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentHelp.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Properties/ArgumentVisibility.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentVisibility.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentVisibility.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentVisibility~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentVisibility.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Properties/CompletionKind.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CompletionKind.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CompletionKind.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CompletionKind~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CompletionKind.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Properties/Errors.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Errors.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Errors.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Errors~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Errors.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Properties/Flag.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Flag.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Flag.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Flag~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Flag.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Properties/NameSpecification.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/NameSpecification.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/NameSpecification.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/NameSpecification~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/NameSpecification.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Properties/Option.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Option.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Option.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Option~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Option.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Properties/OptionGroup.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/OptionGroup.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/OptionGroup.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/OptionGroup~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/OptionGroup.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Types/AsyncParsableCommand.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/AsyncParsableCommand.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/AsyncParsableCommand.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/AsyncParsableCommand~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/AsyncParsableCommand.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Types/CommandConfiguration.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CommandConfiguration.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CommandConfiguration.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CommandConfiguration~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CommandConfiguration.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Types/CommandGroup.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CommandGroup.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CommandGroup.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CommandGroup~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CommandGroup.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Types/EnumerableFlag.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/EnumerableFlag.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/EnumerableFlag.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/EnumerableFlag~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/EnumerableFlag.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Types/ExpressibleByArgument.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ExpressibleByArgument.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ExpressibleByArgument.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ExpressibleByArgument~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ExpressibleByArgument.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Types/ParsableArguments.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsableArguments.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsableArguments.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsableArguments~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsableArguments.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Types/ParsableArgumentsValidation.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsableArgumentsValidation.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsableArgumentsValidation.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsableArgumentsValidation~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsableArgumentsValidation.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsable Types/ParsableCommand.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsableCommand.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsableCommand.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsableCommand~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsableCommand.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsing/ArgumentDecoder.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentDecoder.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentDecoder.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentDecoder~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentDecoder.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsing/ArgumentDefinition.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentDefinition.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentDefinition.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentDefinition~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentDefinition.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsing/ArgumentSet.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentSet.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentSet.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentSet~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ArgumentSet.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsing/CommandParser.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CommandParser.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CommandParser.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CommandParser~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CommandParser.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsing/InputKey.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/InputKey.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/InputKey.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/InputKey~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/InputKey.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsing/InputOrigin.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/InputOrigin.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/InputOrigin.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/InputOrigin~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/InputOrigin.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsing/Name.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Name.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Name.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Name~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Name.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsing/Parsed.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Parsed.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Parsed.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Parsed~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Parsed.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsing/ParsedValues.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsedValues.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsedValues.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsedValues~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParsedValues.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsing/ParserError.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParserError.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParserError.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParserError~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/ParserError.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Parsing/SplitArguments.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/SplitArguments.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/SplitArguments.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/SplitArguments~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/SplitArguments.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Usage/DumpHelpGenerator.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/DumpHelpGenerator.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/DumpHelpGenerator.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/DumpHelpGenerator~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/DumpHelpGenerator.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Usage/HelpCommand.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/HelpCommand.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/HelpCommand.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/HelpCommand~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/HelpCommand.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Usage/HelpGenerator.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/HelpGenerator.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/HelpGenerator.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/HelpGenerator~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/HelpGenerator.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Usage/MessageInfo.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/MessageInfo.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/MessageInfo.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/MessageInfo~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/MessageInfo.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Usage/UsageGenerator.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/UsageGenerator.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/UsageGenerator.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/UsageGenerator~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/UsageGenerator.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Utilities/CollectionExtensions.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CollectionExtensions.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CollectionExtensions.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CollectionExtensions~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/CollectionExtensions.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Utilities/Platform.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Platform.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Platform.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Platform~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Platform.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Utilities/SequenceExtensions.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/SequenceExtensions.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/SequenceExtensions.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/SequenceExtensions~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/SequenceExtensions.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Utilities/StringExtensions.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/StringExtensions.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/StringExtensions.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/StringExtensions~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/StringExtensions.swiftdeps"
+  },
+  "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/swift-argument-parser/Sources/ArgumentParser/Utilities/Tree.swift": {
+    "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Tree.d",
+    "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Tree.swift.o",
+    "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Tree~partial.swiftmodule",
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/ArgumentParser-tool.build/Tree.swiftdeps"
+  }
+}
