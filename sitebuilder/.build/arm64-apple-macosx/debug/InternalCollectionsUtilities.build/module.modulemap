@@ -1,0 +1,4 @@
+module InternalCollectionsUtilities {
+    header "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/InternalCollectionsUtilities.build/InternalCollectionsUtilities-Swift.h"
+    requires objc
+}

@@ -1,0 +1,4 @@
+module CVBuilderIgnite {
+    header "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilderIgnite.build/CVBuilderIgnite-Swift.h"
+    requires objc
+}
