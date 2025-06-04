@@ -25,6 +25,7 @@ struct BlogCard: HTML {
                     .fontWeight(.medium)
                     .foregroundStyle(.secondary)
                 Link(article.title, target: article.path)
+                    .role(.primary)
                     .font(.title3)
                     .fontWeight(.bold)
                 if let subtitle = article.subtitle {
