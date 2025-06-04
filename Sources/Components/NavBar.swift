@@ -12,10 +12,10 @@ struct NavBar: HTML {
         NavigationBar(logo: logo) {
             for item in Page.allCases {
                 Link(item.rawValue, target: item.page)
+                    .role(.primary)
             }
         }
         .navigationItemAlignment(.trailing)
-        .background(.dodgerBlue)
         .position(.fixedTop)
     }
 }
