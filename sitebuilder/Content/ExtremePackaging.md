@@ -11,8 +11,6 @@ image: /images/xpack/extreme_packaging_1.png
 A Modular Architecture Methodology for Swift Projects
 By Mihaela Mihaljevic
 
-![](/images/xpack/extreme_packaging_1.png)
-
 ## Introduction
 
 **Extreme Packaging** is a methodology for structuring Swift projects with *maximal modularity and minimal responsibility per module.*
