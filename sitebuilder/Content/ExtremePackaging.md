@@ -1,7 +1,7 @@
 ---
 author: Mihaela Mihaljeevic
-description: A Swift package for building and rendering CVs in multiple formats
-date: 2025-07-13 15:30
+description: Example of Extreme Packaging in Swift
+date: 2025-09-13 15:30
 tags: Swift, Package, extreme, Packaging, SPM
 published: true
 image: /images/xpack/extreme_packaging_1.png
