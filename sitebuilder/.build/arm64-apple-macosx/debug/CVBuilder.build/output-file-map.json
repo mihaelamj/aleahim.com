@@ -6,78 +6,91 @@
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/CV.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/CV.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/CV~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/CV.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/CV.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/CV.dia"
   },
   "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/cvbuilder/Sources/CVBuilder/Company.swift": {
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Company.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Company.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Company~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Company.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Company.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Company.dia"
   },
   "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/cvbuilder/Sources/CVBuilder/ContactInfo.swift": {
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/ContactInfo.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/ContactInfo.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/ContactInfo~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/ContactInfo.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/ContactInfo.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/ContactInfo.dia"
   },
   "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/cvbuilder/Sources/CVBuilder/Education.swift": {
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Education.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Education.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Education~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Education.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Education.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Education.dia"
   },
   "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/cvbuilder/Sources/CVBuilder/Period.swift": {
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Period.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Period.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Period~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Period.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Period.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Period.dia"
   },
   "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/cvbuilder/Sources/CVBuilder/Project.swift": {
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Project.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Project.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Project~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Project.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Project.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Project.dia"
   },
   "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/cvbuilder/Sources/CVBuilder/ProjectExperience.swift": {
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/ProjectExperience.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/ProjectExperience.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/ProjectExperience~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/ProjectExperience.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/ProjectExperience.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/ProjectExperience.dia"
   },
   "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/cvbuilder/Sources/CVBuilder/Rendering/CVRendering.swift": {
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/CVRendering.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/CVRendering.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/CVRendering~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/CVRendering.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/CVRendering.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/CVRendering.dia"
   },
   "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/cvbuilder/Sources/CVBuilder/Rendering/MarkdownCVRenderer.swift": {
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/MarkdownCVRenderer.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/MarkdownCVRenderer.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/MarkdownCVRenderer~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/MarkdownCVRenderer.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/MarkdownCVRenderer.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/MarkdownCVRenderer.dia"
   },
   "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/cvbuilder/Sources/CVBuilder/Rendering/StringCVRenderer.swift": {
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/StringCVRenderer.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/StringCVRenderer.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/StringCVRenderer~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/StringCVRenderer.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/StringCVRenderer.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/StringCVRenderer.dia"
   },
   "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/cvbuilder/Sources/CVBuilder/Role.swift": {
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Role.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Role.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Role~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Role.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Role.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Role.dia"
   },
   "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/cvbuilder/Sources/CVBuilder/Tech.swift": {
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Tech.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Tech.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Tech~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Tech.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Tech.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/Tech.dia"
   },
   "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/checkouts/cvbuilder/Sources/CVBuilder/WorkExperience.swift": {
     "dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/WorkExperience.d",
     "object": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/WorkExperience.swift.o",
     "swiftmodule": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/WorkExperience~partial.swiftmodule",
-    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/WorkExperience.swiftdeps"
+    "swift-dependencies": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/WorkExperience.swiftdeps",
+    "diagnostics": "/Volumes/Code/DeveloperExt/aleahim.com/sitebuilder/.build/arm64-apple-macosx/debug/CVBuilder.build/WorkExperience.dia"
   }
 }
