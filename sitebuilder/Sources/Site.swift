@@ -49,6 +49,7 @@ struct AleahimSite: Site {
     var articlePages: [any ArticlePage] {
         CoreAnimation3DCube()
         CVBuilder()
+        ExtremePackages()
     }
 }
 
