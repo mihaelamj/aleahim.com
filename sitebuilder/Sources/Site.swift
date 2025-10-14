@@ -23,7 +23,7 @@ struct AleahimSite: Site {
     
     var name = "Aleahim.com"
     var titleSuffix = " – Mihaela's Site"
-    var url = URL(static: "https://www.aleahim.com")
+    var url = URL(static: "https://aleahim.com")
     var builtInIconsEnabled = true
     
     var syntaxHighlighterConfiguration: SyntaxHighlighterConfiguration = .init(languages: [.swift, .python, .ruby])
@@ -32,7 +32,7 @@ struct AleahimSite: Site {
     var feedConfiguration = FeedConfiguration(
         mode: .full,
         contentCount: 20,
-        image: .init(url: "https://www.aleahim.com/images/icon32.png", width: 32, height: 32)
+        image: .init(url: "/images/icon32.png", width: 32, height: 32)
     )
     
     var author = "Mihaela Mihaljevic"
