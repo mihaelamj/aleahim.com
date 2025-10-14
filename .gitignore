@@ -9,3 +9,6 @@
 DerivedData/
 
 
+sitebuilder/.build/
+sitebuilder/.swiftpm/
+*.xcuserstate
