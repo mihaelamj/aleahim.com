@@ -1,11 +1,28 @@
 # macOS system files
 .DS_Store
 
-# Xcode build artifacts
-/.build
-/.swiftpm
-/*.xcodeproj
-/_sources
+# Xcode / SwiftPM build artifacts (root)
+.build/
+.swiftpm/
 DerivedData/
+*.xcodeproj
+_sources/
 
+# --- sitebuilder (Ignite) ---
+sitebuilder/.build/
+sitebuilder/.swiftpm/
+sitebuilder/.xcodeproj/
+sitebuilder/DerivedData/
 
+# Swift package manager artifacts
+Package.resolved
+
+# Local state
+*.xcuserstate
+*.xcuserdata/
+*.swp
+*~
+
+# GitHub Pages helper files
+!.nojekyll
+!CNAME
