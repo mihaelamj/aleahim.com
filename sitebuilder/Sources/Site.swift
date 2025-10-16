@@ -50,6 +50,7 @@ struct AleahimSite: Site {
         CoreAnimation3DCube()
         CVBuilder()
         ExtremePackages()
+        LoggingMiddleware()
     }
 }
 
