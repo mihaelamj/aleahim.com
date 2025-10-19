@@ -1,7 +1,7 @@
 ---
 author: Mihaela Mihaljeevic
 description: A Swift package for building and rendering CVs in multiple formats
-date: 2024-04-13 15:30
+date: 2025-04-13 15:30
 tags: Swift, Package, CV, Markdown, HTML, SPM
 published: true
 image: /images/cvbuilder.png
