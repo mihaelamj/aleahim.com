@@ -37,14 +37,6 @@ struct AleahimSite: Site {
     
     var author = "Mihaela Mihaljevic"
 
-    var head: [any HeadElement] {
-        [
-            Analytics(.custom("""
-            <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
-            """))
-        ]
-    }
-
     var homePage = Home()
     var layout = MainLayout()
     
