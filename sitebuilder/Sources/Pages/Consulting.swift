@@ -85,8 +85,9 @@ struct Consulting: StaticPage {
                 Text("Send me a note about your API goals, and we’ll schedule a short call to scope the work.")
                     .margin(.bottom, .small)
 
-                Link("Book a call", target: "mailto:mihaelamj@gmail.com")
+                Link("Book a call", target: "https://calendly.com/mihaelamj/30min")
                     .role(.primary)
+                    .target(.blank)
             }
         }
         .padding(.vertical, .xLarge)
