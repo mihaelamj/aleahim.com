@@ -5,6 +5,7 @@ enum Page: String, CaseIterable {
     case home = "Home"
     case about = "About"
     case cv = "CV"
+    case consulting = "Consulting"
     
     @MainActor
     var page: any StaticPage {
@@ -12,6 +13,7 @@ enum Page: String, CaseIterable {
         case .home: return Home()
         case .about: return About()
         case .cv: return CVPage()
+        case .consulting: return Consulting()
         }
     }
     
@@ -20,4 +22,3 @@ enum Page: String, CaseIterable {
         Self.allCases.map { $0.page }
     }
 }
-
