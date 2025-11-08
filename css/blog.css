@@ -1,0 +1,330 @@
+/* Blog Styles - Gothic Apple Design */
+
+/* Blog Post */
+.blog-post {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.post-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.title-with-thumbnail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.post-thumbnail {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--purple);
+}
+
+.post-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.title-wrapper {
+    flex: 1;
+}
+
+.blog-post h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    background: linear-gradient(135deg, var(--white) 0%, var(--purple-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.post-hero-image {
+    margin: 0 0 3rem 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.post-hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.post-meta {
+    color: var(--tan);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.post-meta time {
+    font-style: normal;
+}
+
+.post-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #FFFFFF;
+}
+
+.post-content h2 {
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+}
+
+.post-content h3 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.post-content h4 {
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+.post-content p {
+    margin-bottom: 1.8rem;
+}
+
+.post-content strong {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.post-content em {
+    color: var(--tan);
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 3rem 0;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.post-footer {
+    margin-top: 6rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(139, 92, 246, 0.3);
+    text-align: center;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--purple-light);
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: var(--purple);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* Blog Listing */
+.blog-listing {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.blog-header {
+    text-align: center;
+    margin-bottom: 6rem;
+    padding: 4rem 0;
+}
+
+.blog-header h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--white) 0%, var(--tan) 50%, var(--purple-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.blog-header p {
+    color: var(--tan);
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.posts-list {
+    display: grid;
+    gap: 4rem;
+}
+
+.post-preview {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    padding: 2rem;
+    background: rgba(45, 45, 45, 0.3);
+    border-radius: 16px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.3s ease;
+}
+
+.post-preview:hover {
+    background: rgba(45, 45, 45, 0.5);
+    border-color: var(--purple);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(139, 92, 246, 0.2);
+}
+
+.preview-image {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.preview-image img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+    margin: 0;
+}
+
+.post-preview:hover .preview-image img {
+    transform: scale(1.05);
+}
+
+.preview-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.preview-content h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.preview-content h2 a {
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.preview-content h2 a:hover {
+    color: var(--purple-light);
+    text-decoration: none;
+}
+
+.post-date {
+    display: block;
+    color: var(--tan);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.post-description {
+    color: #FFFFFF;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+.read-more {
+    display: inline-block;
+    color: var(--purple-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+}
+
+.read-more::after {
+    content: ' →';
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+.read-more:hover {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+.read-more:hover::after {
+    transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .post-preview {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .preview-image img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-post h1 {
+        font-size: 1.5rem;
+    }
+
+    .blog-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .post-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .post-content h3 {
+        font-size: 1.4rem;
+    }
+
+    .post-preview {
+        padding: 1.5rem;
+    }
+
+    .preview-image img {
+        height: 200px;
+    }
+
+    .title-with-thumbnail {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .post-thumbnail {
+        width: 100px;
+        height: 100px;
+    }
+}
