@@ -1,0 +1,44 @@
+id: html
+
+scopes:
+
+queries:
+    posts:
+        contentType: blog-post
+        scope: list
+        orderBy:
+            - key: date
+              direction: desc
+        limit: 100 
+
+dataTypes:
+    date:
+        formats:
+            full: 
+                format: "yyyy/MM/dd"
+            year: 
+                format: "y"
+
+contentTypes:
+    include: []
+    exclude:
+        - sitemap
+        - not-found
+        - redirect
+
+iterators:
+
+transformers:
+
+engine:
+    id: mustache
+    options:
+        contentTypes:
+            page:
+                view: "pages.default"
+            blog-post:
+                view: "pages.blog-post"
+output:
+    path: "{{slug}}"
+    file: index
+    ext: html
