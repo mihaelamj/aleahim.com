@@ -1,12 +1,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-            <loc>http://localhost:3000/services/</loc>
+            <loc>https://aleahim.com/services/</loc>
             <lastmod>2025-11-08</lastmod>
-            <loc>http://localhost:3000/cv/</loc>
+            <loc>https://aleahim.com/cv/</loc>
             <lastmod>2025-11-08</lastmod>
-            <loc>http://localhost:3000/about/</loc>
+            <loc>https://aleahim.com/about/</loc>
             <lastmod>2025-11-08</lastmod>
-            <loc>http://localhost:3000/</loc>
+            <loc>https://aleahim.com/</loc>
             <lastmod>2025-11-08</lastmod>
     </url>
 </urlset>

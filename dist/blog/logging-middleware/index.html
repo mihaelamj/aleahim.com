@@ -7,7 +7,7 @@
     <title>Introducing OpenAPILoggingMiddleware - Aleahim</title>
     <meta name="description" content="Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers">
 
-    <meta property="og:url" content="http://localhost:3000/blog/logging-middleware/">
+    <meta property="og:url" content="https://aleahim.com/blog/logging-middleware/">
     <meta property="og:title" content="Introducing OpenAPILoggingMiddleware - Aleahim">
     <meta property="og:description" content="Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers">
     
@@ -17,9 +17,9 @@
     <meta name="twitter:description" content="Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers">
     
 
-    <link rel="stylesheet" href="http://localhost:3000/css/theme.css">
-    <link rel="stylesheet" href="http://localhost:3000/css/style.css">
-    <link rel="stylesheet" href="http://localhost:3000/css/blog.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     
 
@@ -30,9 +30,9 @@
 <body>
     <header>
         <div class="header-content">
-            <a id="logo" href="http://localhost:3000">
+            <a id="logo" href="https://aleahim.com">
                 <img
-                    src="http://localhost:3000/images/logo.svg"
+                    src="https://aleahim.com/images/logo.svg"
                     alt="Aleahim"
                     title="Aleahim"
                 >
@@ -41,10 +41,10 @@
     
             <nav>
                 <div class="navigation">
-                    <a href="http://localhost:3000/">Home</a>
-                <a href="http://localhost:3000/cv/">CV</a>
-                <a href="http://localhost:3000/services/">Services</a>
-                <a href="http://localhost:3000/about/">About</a>
+                    <a href="https://aleahim.com/">Home</a>
+                <a href="https://aleahim.com/cv/">CV</a>
+                <a href="https://aleahim.com/services/">Services</a>
+                <a href="https://aleahim.com/about/">About</a>
                 </div>
             </nav>
         </div>
@@ -55,7 +55,7 @@
         <header class="post-header">
             <div class="title-with-thumbnail">
                 <div class="post-thumbnail">
-                    <img src="http://localhost:3000/images/logg/logging-middleware.jpg" alt="Introducing OpenAPILoggingMiddleware">
+                    <img src="https://aleahim.com/images/logg/logging-middleware.jpg" alt="Introducing OpenAPILoggingMiddleware">
                 </div>
                 <div class="title-wrapper">
                     <h1>Introducing OpenAPILoggingMiddleware</h1>
@@ -68,7 +68,7 @@
     
         <div class="post-content">
             <div class="post-hero-image">
-                <img src="http://localhost:3000/images/logg/logging-middleware.jpg" alt="Introducing OpenAPILoggingMiddleware">
+                <img src="https://aleahim.com/images/logg/logging-middleware.jpg" alt="Introducing OpenAPILoggingMiddleware">
             </div>
     
             <h2 id="introduction">Introduction</h2><p>In the world of <strong>OpenAPI-driven Swift servers</strong>, visibility is everything.<br>You can’t fix what you can’t see — and you can’t optimize what you don’t understand.</p><p>When I started building modular, OpenAPI-first architectures in Swift, one thing stood out: <strong>logging was either overwhelming or absent</strong>.<br>Either you got a raw dump of everything (headers, binary data, and stack traces), or you got nothing at all. Neither is particularly helpful when debugging or tracing an issue across microservices.</p><p>Frameworks like <strong>OpenAPIRuntime</strong> and <strong>OpenAPIVapor</strong> provide a strong foundation, but they deliberately avoid opinions about logging. They leave that up to you.<br>And that’s where most developers end up adding scattered <code>print()</code> statements or ad-hoc <code>logger.info()</code> calls inside handlers just to see what’s going on.</p><p>That’s not clean architecture. It’s noise.</p><p>So I built <strong>OpenAPILoggingMiddleware</strong>, a small, composable middleware that gives you <em>just enough visibility</em> — not too much, not too little — when working with OpenAPI-based servers.</p><hr><h2 id="the-problem-logging-in-a-generated-world">The Problem: Logging in a Generated World</h2><p>OpenAPI code generation has revolutionized how backend systems are written. You define your contracts, generate both server and client, and everything should “just work.”<br>But once requests start flowing, visibility often becomes a blind spot.</p><p>If you’ve ever tried debugging an OpenAPI-generated Swift server, you might recognize these problems:</p><ul><li>Middleware logs every byte of the body, even binary data.</li><li>Multi-part and SSE requests produce unreadable noise.</li><li>Response logs are buried under system output.</li><li>There’s no consistent way to see request duration or endpoint performance.</li><li>You can’t easily toggle verbosity levels or redact sensitive data.</li></ul><p>You end up either drowning in log output or adding <code>print</code> calls just to survive the debugging process.</p><p>This middleware solves that.</p><hr><h2 id="the-solution-a-lightweight-logging-layer">The Solution: A Lightweight Logging Layer</h2><p><code>OpenAPILoggingMiddleware</code> sits quietly in the pipeline — between your generated routes and the transport layer.<br>It listens to every incoming request and outgoing response, measures duration, and prints a <strong>structured summary</strong> of what happened.</p><p>At its core, the idea is simple:</p><blockquote><p>Log exactly what you’d want to see if you were reading someone else’s code.</p></blockquote><p>Here’s how it looks in your Vapor or OpenAPI setup:</p><pre><code class="language-swift">import OpenAPILoggingMiddleware
@@ -135,7 +135,7 @@ Duration: 96 ms
         </div>
     
         <footer class="post-footer">
-            <a href="http://localhost:3000/blog/" class="back-link">← Back to Blog</a>
+            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
         </footer>
     </article>
 
