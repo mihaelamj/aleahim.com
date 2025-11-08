@@ -1,0 +1,20 @@
+id: page
+default: true
+paths:
+  - "contents/[home]/*.md"
+  - "contents/about/*.md"
+  - "contents/cv/*.md"
+  - "contents/blog-list/*.md"
+
+properties:
+    title:
+        type: string
+        required: true
+
+    description:
+        type: string
+        required: true
+
+    image:
+        type: asset
+        required: false

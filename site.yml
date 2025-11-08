@@ -1,0 +1,11 @@
+name: "Aleahim"
+language: "en-US"
+navigation:
+  - label: "Home"
+    url: "/"
+  - label: "CV"
+    url: "/cv/"
+  - label: "Services"
+    url: "/services/"
+  - label: "About"
+    url: "/about/"

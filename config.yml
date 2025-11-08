@@ -1,0 +1,7 @@
+dataTypes:
+    date:
+        input:
+            format: "yyyy-MM-dd HH:mm:ss"
+        formats:
+            full:
+                format: "yyyy-MM-dd"

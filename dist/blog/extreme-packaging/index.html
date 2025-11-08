@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ExtremePackaging - Aleahim</title>
+    <meta name="description" content="Example of Extreme Packaging in Swift">
+
+    <meta property="og:url" content="http://localhost:3000/blog/extreme-packaging/">
+    <meta property="og:title" content="ExtremePackaging - Aleahim">
+    <meta property="og:description" content="Example of Extreme Packaging in Swift">
+    
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ExtremePackaging - Aleahim">
+    <meta name="twitter:description" content="Example of Extreme Packaging in Swift">
+    
+
+    <link rel="stylesheet" href="http://localhost:3000/css/theme.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/style.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a id="logo" href="http://localhost:3000">
+                <img
+                    src="http://localhost:3000/images/logo.svg"
+                    alt="Aleahim"
+                    title="Aleahim"
+                >
+                <h1 class="site-title">Aleahim.com</h1>
+            </a>
+    
+            <nav>
+                <div class="navigation">
+                    <a href="http://localhost:3000/">Home</a>
+                <a href="http://localhost:3000/cv/">CV</a>
+                <a href="http://localhost:3000/services/">Services</a>
+                <a href="http://localhost:3000/about/">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <article class="blog-post">
+        <header class="post-header">
+            <div class="title-with-thumbnail">
+                <div class="post-thumbnail">
+                    <img src="http://localhost:3000/images/xpack/extreme_packaging_1.png" alt="ExtremePackaging">
+                </div>
+                <div class="title-wrapper">
+                    <h1>ExtremePackaging</h1>
+                    <div class="post-meta">
+                        <time datetime="2025-09-13T00:00:00.000Z">September 13, 2025</time>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="post-content">
+            <div class="post-hero-image">
+                <img src="http://localhost:3000/images/xpack/extreme_packaging_1.png" alt="ExtremePackaging">
+            </div>
+    
+            <p>A Modular Architecture Methodology for Swift Projects<br>By Mihaela Mihaljevic</p><h2 id="introduction">Introduction</h2><p><strong>Extreme Packaging</strong> is a methodology for structuring Swift projects with <em>maximal modularity and minimal responsibility per module.</em><br>Each module represents a single, isolated unit of logic — small enough to reason about, easy to test, and replaceable without side effects.</p><p>The core idea is <strong>separation</strong>:<br>modules depend on stable interfaces, not on each other’s implementations. This enables scalable architectures that remain flexible as projects evolve, while keeping build times short and dependencies explicit.</p><p><strong>Table Of Contents:</strong></p><ul><li><a href="#part-1--project-setup">Part 1 — Project Setup</a></li><li><a href="#part-2--tooling">Part 2 — Tooling</a></li></ul><h3 id="goals">Goals</h3><ul><li>Promote clean boundaries between domains and features</li><li>Enable independent development and testing per package</li><li>Simplify refactoring and dependency management</li><li>Keep compilation fast and the architecture transparent</li></ul><h3 id="process">Process</h3><p>The repository is organized into <strong>stages</strong>, each representing a self-contained checkpoint in the project’s evolution.<br>When moving between stages — especially when reverting to earlier ones — always reset and clean your workspace to ensure it matches the intended state.</p><p>Here’s the example for <strong>stage 01</strong>:</p><pre><code class="language-bash"># Ensure you're on the branch you want
+git checkout stage/01-init-packages
+
+# Fetch the latest version
+git fetch origin
+
+# Reset your branch to the remote version
+git reset --hard stage/01-init-packages
+
+# Delete untracked files and directories
+git clean -fdx
+</code></pre><h3 id="philosophy">Philosophy</h3><p>In most projects, modularization is an afterthought — introduced when the codebase becomes too large to manage.<br><strong>Extreme Packaging</strong> inverts that approach: modularization is the starting point.<br>By treating each package as an autonomous component from day one, you gain clarity, resilience, and a foundation that naturally scales with complexity.</p><h2 id="part-1-project-setup">Part 1 — Project Setup</h2><p>The first step in <strong>Extreme Packaging</strong> is establishing a clear and reproducible project structure that can evolve gradually through defined stages.<br>Each stage in the repository builds upon the previous one — from the initial package setup, to workspace creation, and finally to adding the app target that ties everything together.</p><h3 id="overview">Overview</h3><p>The project begins as a <strong>Swift Package Manager–based structure</strong>, designed for modularity from the start.<br>At its core is a single <code>Packages</code> directory that houses all functional modules (such as <code>AppFeature</code>, <code>SharedModels</code>, and later others).<br>Every addition to the project — whether a new feature, UI layer, or platform target — is layered on top of this foundation in small, trackable increments.</p><p>Here is the link to the project used:<br><a href="https://github.com/mihaelamj/ExtremePackaging/tree/stage/01-init-packages" target="_blank">https://github.com/mihaelamj/ExtremePackaging</a></p><h3 id="1.1-stage-01-initialize-packages">1.1 Stage 01 — Initialize Packages</h3><h4>Purpose</h4><p>This stage ensures a working, self-contained Swift package that compiles and passes initial linting checks.</p><h4>Parts</h4><p>At <strong>stage/01-init-packages</strong>, the repository contains:</p><ul><li>A minimal <strong>package structure</strong> with <code>Sources</code> and <code>Tests</code></li><li><strong>Core configuration file</strong>s:<ul><li><code>.swiftlint.yml</code> for linting rules</li><li><code>.swiftformat</code> for consistent formatting</li><li><code>.gitignore</code>, <code>LICENSE</code>, and <code>README.md</code></li></ul></li><li><strong>Two base modules</strong>:<ul><li><code>AppFeature</code> — serves as the entry feature for the app</li><li><code>SharedModels</code> — holds simple model definitions</li></ul></li></ul><h4>Folder Structure snapshot</h4><p>Example folder structure:<br><img src="http://localhost:3000/images/xpack/Screenshot%202025-03-31%20at%2017.07.23.png" alt=""></p><p>Inside the  folder:</p><pre><code class="language-bash">
+➜  ExtremePackaging git:(main) ✗ ls -all
+ .
+ ..
+ .git
+ .gitignore
+ .swiftformat
+ .swiftlint.yml
+ Apps
+ LICENSE
+ Packages
+ README.md
+</code></pre><p>Inside the <code>Packages</code> folder:</p><pre><code class="language-bash">➜  ExtremePackaging git:(main) cd Packages
+➜  Packages git:(main) ls -all
+ .
+ ..
+ Package.swift
+ Sources
+ Tests
+</code></pre><p>Inside the <code>Apps</code> folder:</p><pre><code class="language-bash">.
+..
+.gitkeep
+</code></pre><h4>Basic Package Code:</h4><p>I start with package structure like this:</p><pre><code class="language-swift">// swift-tools-version: 6.0
+
+import PackageDescription
+
+let package = Package(
+    name: "Main",
+    platforms: [
+        .iOS(.v17),
+        .macOS(.v14),
+    ],
+    products: [
+        .singleTargetLibrary("AppFeature"),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/realm/SwiftLint", exact: "0.52.3"),
+    ],
+    targets: [
+        .target(
+            name: "AppFeature",
+            dependencies: [
+                "SharedModels",
+            ]
+        ),
+        .testTarget(
+            name: "AppFeatureTests",
+            dependencies: [
+                "AppFeature"
+            ]
+        ),
+        .target(
+            name: "SharedModels"
+        )
+    ]
+)
+
+// Inject base plugins into each target
+package.targets = package.targets.map { target in
+    var plugins = target.plugins ?? []
+    plugins.append(.plugin(name: "SwiftLintPlugin", package: "SwiftLint"))
+    target.plugins = plugins
+    return target
+}
+
+extension Product {
+    static func singleTargetLibrary(_ name: String) -&gt; Product {
+        .library(name: name, targets: [name])
+    }
+}
+</code></pre><h4>Dummy Files</h4><h5>AppView</h5><pre><code class="language-swift">import SharedModels
+import SharedViews
+import SwiftUI
+
+public struct AppView: View {
+    public var body: some View {
+        VStack {
+            Text("Extreme Packaging!")
+                .font(.title)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+                .padding()
+        }
+    }
+}
+</code></pre><h5>DummyModel</h5><pre><code class="language-swift">import Foundation
+
+public struct DummyModel: Identifiable {
+    public var id: UUID = .init()
+    public var title: String
+    public init(
+        id: UUID = .init(),
+        title: String
+    ) {
+        self.id = id
+        self.title = title
+    }
+}
+</code></pre><h4>Stage 01-init-packages</h4><p>Here’s the code for <strong>stage 01</strong>:</p><pre><code class="language-bash">
+# Clone repo if needed
+git clone git@github.com:mihaelamj/ExtremePackaging.git
+
+# Ensure you're on the branch you want
+git checkout stage/01-init-packages
+
+# Fetch the latest version
+git fetch origin
+
+# Reset your branch to the remote version
+git reset --hard stage/01-init-packages
+
+# Delete untracked files and directories
+git clean -fdx
+</code></pre><p>To see how it looks in <strong>Xcode</strong> we need to switch to subfolder <code>packages</code>, since we haven’t created the workspace yet.</p><pre><code class="language-bash">➜  ExtremePackaging git:(stage/01-init-packages) ✗ cd Packages
+➜  Packages git:(stage/01-init-packages) ✗ xed .
+</code></pre><h3 id="1.2-stage-02-add-workspace">1.2 Stage 02 — Add Workspace</h3><h4>Purpose</h4><p>In <strong>stage/02-workspace-added</strong>, an Xcode <strong>workspace</strong> named <code>Main.xcworkspace</code> is introduced at the project root.<br>It includes the <code>Packages</code> folder, allowing smooth integration of multiple modules while keeping them decoupled.<br>This step establishes the foundation for a multi-target environment.</p><h4>Workspace creation steps</h4><p>Create a new workspace (I name it <code>Main</code>), in the root of our folder.</p><p><img src="http://localhost:3000/images/xpack/workspace.png" alt=""></p><p>Add folder <code>Packages</code> to the workspace.<br>It will add our package structure to the project:</p><p><img src="http://localhost:3000/images/xpack/Screenshot%202025-03-31%20at%2018.33.55.png" alt=""></p><h4>Stage 02-add—to-workspace</h4><p>Here’s the code for <strong>stage 02</strong>:</p><pre><code class="language-bash">
+# Clone repo if needed
+git clone git@github.com:mihaelamj/ExtremePackaging.git
+
+# Ensure you're on the branch you want
+git checkout stage/02-add—to-workspace
+
+# Fetch the latest version
+git fetch origin
+
+# Reset your branch to the remote version
+git reset --hard stage/02-add—to-workspace
+
+# Delete untracked files and directories
+git clean -fdx
+</code></pre><p>Now we have the <strong>workspace</strong>, so we just need to open <strong>Xcode</strong>:</p><pre><code class="language-bash">➜  Packages git:(stage/02-add—to-workspace) ✗ xed .
+➜  Packages git:(stage/02-add—to-workspace) ✗
+</code></pre><h3 id="1.3-stage-03-add-ios-and-macos-app-targets">1.3 Stage 03 — Add iOS and macOS App Targets</h3><h4>Platform targets creation</h4><p><strong>Add new iOS and a new macOS project</strong><br>Repeat this for each target:</p><p>Create a new project in Xcode:</p><p><img src="http://localhost:3000/images/xpack/macos1.jpg" alt=""></p><p><img src="http://localhost:3000/images/xpack/macos2.jpg" alt=""></p><p>Add each to <code>Apps</code> folder:</p><p><img src="http://localhost:3000/images/xpack/macosFolder.jpg" alt=""></p><h4>Adding them to workspace</h4><p>We will be adding each app target to the workspace, below <em>Packages</em>.<br>Open the current repository folder and drag both new projects (iOS and macOS) into the workspace sidebar.</p><p>Each target remains isolated within its own folder, but both share the same logic through the <em>AppFeature</em> module.<br>This ensures that all common code — views, models, and reducers — stays within shared packages, while each platform target keeps its own configuration files.</p><p>Open the current repo folder:<br><img src="http://localhost:3000/images/xpack/show_in_finder.jpg" alt=""></p><p><img src="http://localhost:3000/images/xpack/folders_on_disk.jpg" alt=""></p><p>Add <strong>macOS</strong> target:</p><p><img src="http://localhost:3000/images/xpack/add_macos.jpg" alt=""></p><p>Choose “Reference files in place”</p><p><img src="http://localhost:3000/images/xpack/reference_files.jpg" alt=""></p><p>This is how it looks when added:</p><p><img src="http://localhost:3000/images/xpack/add_macOS_done.jpg" alt=""></p><p>Add <strong>iOS</strong> target:</p><p><img src="http://localhost:3000/images/xpack/add_iOS.jpg" alt=""></p><p>This is how it looks when added:</p><p><img src="http://localhost:3000/images/xpack/add_iOS_done.jpg" alt=""></p><h4>Explanation: Why separate targets</h4><p>Keeping iOS and macOS projects distinct allows:</p><ul><li>Independent platform configuration (e.g. Info.plist, app icons, signing settings)</li><li>Platform-specific features when needed (e.g. menu commands on macOS, touch gestures on iOS)</li><li>Consistent architecture and shared logic through modular Swift packages</li></ul><p>This structure aligns perfectly with the <strong>Extreme Packaging</strong> philosophy — shared foundation, platform-specific shells.</p><h4>Configuration steps</h4><ul><li>Delete automatically added <code>ContentView.swift</code></li><li>Add <code>AppFeature</code> package to the our target:</li></ul><p><img src="http://localhost:3000/images/xpack/AppTarget05.png" alt=""></p><p>Now our project looks like this:<br><img src="http://localhost:3000/images/xpack/AppTarget06.png" alt=""></p><p>And the main app starts with the fully testable <code>AppFeature</code></p><p><img src="http://localhost:3000/images/xpack/AppTarget07.png" alt=""></p><pre><code class="language-swift">import SwiftUI
+import AppFeature
+
+@main
+struct SwiftUIAppApp: App {
+    var body: some Scene {
+        WindowGroup {
+            AppView()
+        }
+    }
+}
+</code></pre><h4>Final structure</h4><p>At this point, the project has evolved into a fully cross-platform modular setup.</p><p>The screenshot below illustrates the final structure after completing <strong>Stage 03 (iOS & macOS targets added)</strong>:</p><p><img src="http://localhost:3000/images/xpack/final_struc.jpg" alt=""></p><ul><li>The <strong>Packages</strong> directory defines the shared Swift Package with <code>AppFeature</code> and <code>SharedModels</code> modules.</li><li>Both <strong>iOS</strong> and <strong>macOS</strong> apps live inside the <code>Apps</code> folder, each with its own assets, entry point, and platform-specific configuration files.</li><li>The <strong><code>Package.swift</code></strong> file defines a single modular product, with SwiftLint integrated as a plugin and dependencies kept cleanly separated.</li><li>This structure enables both platforms to share logic and UI built with <strong>SwiftUI</strong>, while still allowing native customization per platform.</li></ul><p><strong>Result:</strong><br>A clean, modular workspace where shared code resides in packages, and each platform acts only as a thin presentation shell — the essence of <em>Extreme Packaging</em>.</p><h4>Stage 03-apps-added</h4><p>In <strong>stage/03-apps-added</strong>, we create two separate app targets — one for <strong>iOS</strong> and one for <strong>macOS</strong> — both sharing the same SwiftUI core logic.</p><p>Each app lives inside the <code>Apps</code> folder and imports the <code>AppFeature</code> module, demonstrating how the same feature package can power multiple platforms with no duplicated code.</p><p>After adding the targets:</p><ul><li>Delete the automatically generated <code>ContentView.swift</code></li><li>Add the <code>AppFeature</code> package dependency to both targets</li><li>Verify that both apps build successfully</li></ul><p>This stage concludes with a fully functional cross-platform setup where both iOS and macOS share a unified architecture driven by modular packages.</p><p>Here’s the code for <strong>stage 03</strong>:</p><pre><code class="language-bash">
+# Clone repo if needed
+git clone git@github.com:mihaelamj/ExtremePackaging.git
+
+# Ensure you're on the branch you want
+git checkout stage/03-apps-added
+
+# Fetch the latest version
+git fetch origin
+
+# Reset your branch to the remote version
+git reset --hard stage/03-apps-added
+
+# Delete untracked files and directories
+git clean -fdx
+</code></pre><h3 id="summary">Summary</h3><table><thead><td>Stage</td><td>Description</td><td>Key Additions</td></thead><tbody><tr><td><strong>01</strong></td><td>Initial package setup</td><td><code>Package.swift</code>, SwiftLint & SwiftFormat configs, dummy modules (<code>AppFeature</code>, <code>SharedModels</code>)</td></tr><tr><td><strong>02</strong></td><td>Workspace creation</td><td><code>Main.xcworkspace</code>, integrated <code>Packages</code> folder for modular management</td></tr><tr><td><strong>03</strong></td><td>iOS & macOS app targets added</td><td>Separate iOS and macOS apps in <code>Apps/</code>, both using <code>AppFeature</code> for shared SwiftUI logic</td></tr></tbody></table><p>Each stage corresponds to a dedicated branch in the repository, allowing you to switch between checkpoints and observe the project’s evolution step by step.<br>This structure provides a transparent history of how a modular Swift project grows from a single package into a fully multi-platform architecture.</p><h2 id="part-2-tooling">Part 2 — Tooling</h2><ul><li>Every project includes <strong>SwiftLint</strong> and <strong>SwiftFormat</strong> for enforcing consistent code style and quality</li><li>Each stage of the repository introduces incremental improvements, from initializing packages to adding app targets and integrations</li><li>These are applied from the very first stage but can be customized at any point.</li></ul><h3 id="gitignore">GitIgnore</h3><pre><code class="language-bash"># Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## User settings
+xcuserdata/
+
+## Obj-C/Swift specific
+*.hmap
+
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Xcode workspace & projects
+*.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+*.xcworkspace/xcuserdata/
+DerivedData/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+# macOS system files
+.DS_Store
+
+# Carthage
+Carthage/Build/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Custom folders used in ExtremePackaging
+Stage/
+Tasks/.build/
+</code></pre><h3 id="swiftformat-config">SwiftFormat Config</h3><p>This is my <code>.swiftformat</code></p><pre><code class="language-yaml"># General Options
+--swiftversion 5.7
+
+# File Options
+--exclude Stage,Tasks/.build,ThirdParty,**/SwiftGen/*,**/Sourcery/*,Frameworks/swift-composable-architecture,**.generated.swift
+
+# Format Options
+
+--allman false
+--binarygrouping none
+--closingparen balanced
+--commas always
+--conflictmarkers reject
+--decimalgrouping none
+--elseposition same-line
+--exponentcase lowercase
+--exponentgrouping disabled
+--fractiongrouping disabled
+--fragment false
+--header ignore
+--hexgrouping none
+--hexliteralcase lowercase
+--ifdef no-indent
+--importgrouping alphabetized
+--indent 4
+--indentcase false
+# make sure this matches .swiftlint
+--maxwidth 180
+--nospaceoperators ..&lt;,...
+--octalgrouping none
+--operatorfunc no-space
+--selfrequired
+--stripunusedargs closure-only
+--trailingclosures
+--wraparguments before-first
+--wrapcollections before-first
+--wrapparameters before-first
+
+# Rules
+--disable hoistAwait
+--disable hoistPatternLet
+--disable hoistTry
+--disable wrapMultilineStatementBraces
+--disable extensionAccessControl
+</code></pre><h3 id="swiftlint-config">SwiftLint Config</h3><pre><code class="language-yaml">disabled_rules: # rule identifiers to exclude from running
+  - opening_brace
+  - operator_whitespace
+  - orphaned_doc_comment
+
+opt_in_rules:
+  - empty_count
+  - force_unwrapping
+  - shorthand_optional_binding
+  - weak_delegate
+
+excluded:
+  - "*.generated"
+
+custom_rules:
+  # check's for Combine's .assign(to: xxx, on: self) ref-cycle
+  combine_assign_to_self:
+    included: ".*\\.swift"
+    name: "`assign` to self"
+    regex: '\.assign\(to: [^,]*, on: self\)'
+    message: "For assigning on self, use assignNoRetain(to: ..., on: self)."
+    severity: error
+  duplicate_remove_duplicates:
+    included: ".*\\.swift"
+    name: "Duplicate `removeDuplicates()`"
+    message: "ViewStore's publisher already does `removeDuplicates()`"
+    regex: 'publisher\.[^(|{|,]*removeDuplicates\(\)'
+    severity: error
+  dont_scale_to_zero:
+    included: ".*\\.swift"
+    name: "Don't scale down to 0."
+    regex: "\\.scaleEffect\\([^\\)]*(\\ 0\\ [^\\)]*\\)|0.0(\\ |\\))|\\ 0(\\)|,))"
+    message: "Please make sure to pass a number not equal zero, so transformations don't throw warnings like `ignoring singular matrix`."
+    severity: error
+  use_data_constructor_over_string_member:
+    included: ".*\\.swift"
+    name: "Do not use String.data(using: .utf8)"
+    regex: "\\.?data\\(using: \\.utf8\\)"
+    message: "Please use Data(string.utf8) instead of String.data(using: .utf8) because the Data constructor is non-optional and Strings are guaranteed to be encodable as .utf8"
+    severity: error
+  tca_explicit_generics_reducer:
+    included: ".*\\.swift"
+    name: "Explicit Generics for Reducer"
+    regex: 'Reduce\s+\{'
+    message: "Use explicit generics in ReducerBuilder (Reduce&lt;State, Action&gt;) for successful autocompletion."
+    severity: error
+  tca_scope_unused_closure_parameter:
+    name: "TCA Scope Unused Closure Parameter"
+    regex: '\.scope\(\s*state\s*:\s*\{\s*\_'
+    message: "Explicitly use closure parameter when scoping store (ensures the right state is being mutated)"
+    severity: error
+  tca_use_observe_viewstore_api:
+    name: "TCA ViewStore observe API"
+    regex: 'ViewStore\(store\.scope'
+    message: "Use modern observe: api instead of store.scope"
+    severity: error
+
+trailing_comma:
+    mandatory_comma: true
+
+cyclomatic_complexity:
+  ignores_case_statements: true
+  warning: 20
+
+file_length:
+  warning: 1000
+  error: 1000
+
+identifier_name:
+  severity: warning
+  allowed_symbols: "_"
+  min_length: 2
+  max_length:
+    warning: 90
+    error: 90
+  excluded:
+    - iO
+    - id
+    - vc
+    - x
+    - y
+    - i
+    - pi
+    - d
+
+legacy_constant: error
+legacy_constructor: error
+
+line_length:
+  warning: 180
+  error: 180
+  ignores_comments: true
+  ignores_urls: true
+
+nesting:
+  type_level:
+    warning: 3
+    error: 3
+  function_level:
+    warning: 5
+    error: 5
+
+function_parameter_count:
+  warning: 5
+
+force_cast: warning
+force_unwrapping: warning
+
+type_body_length:
+  - 300 # warning
+  - 300 # error
+
+large_tuple:
+  - 3  # warning
+  - 10 # error%
+</code></pre>
+        </div>
+    
+        <footer class="post-footer">
+            <a href="http://localhost:3000/blog/" class="back-link">← Back to Blog</a>
+        </footer>
+    </article>
+
+    </main>
+
+    <footer>
+        <p>This site was generated using <a href="https://www.swift.org/" target="_blank">Swift</a> & <a href="https://github.com/toucansites/toucan" target="_blank">Toucan</a>.</p>
+    
+        <p class="small">Aleahim &copy; 2025.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    
+</body>
+</html>
