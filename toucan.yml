@@ -3,5 +3,5 @@ targets:
       default: true
     
     - name: live
-      output: ./dist
+      output: /tmp/output
       url: "https://aleahim.com/"
