@@ -1,0 +1,42 @@
+{{<html}}
+{{$main}}
+<div class="blog-listing">
+    <header class="blog-header">
+        <h1>{{page.title}}</h1>
+        <p>{{page.description}}</p>
+    </header>
+
+    <div class="posts-list">
+        {{#context.posts}}
+        <article class="post-preview">
+            {{#image}}
+            <div class="preview-image">
+                <a href="{{permalink}}">
+                    <img src="{{baseUrl}}{{image}}" alt="{{title}}">
+                </a>
+            </div>
+            {{/image}}
+
+            <div class="preview-content">
+                <h2><a href="{{permalink}}">{{title}}</a></h2>
+
+                {{#date}}
+                <time datetime="{{iso8601}}" class="post-date">{{date.short}}</time>
+                {{/date}}
+
+                {{#description}}
+                <p class="post-description">{{description}}</p>
+                {{/description}}
+
+                <a href="{{permalink}}" class="read-more">Read more</a>
+            </div>
+        </article>
+        {{/context.posts}}
+
+        {{^context.posts}}
+        <p>No blog posts yet.</p>
+        {{/context.posts}}
+    </div>
+</div>
+{{/main}}
+{{/html}}

@@ -1,0 +1,27 @@
+id: blog-post
+paths:
+  - "blog/"
+
+properties:
+    draft:
+        type: bool
+        required: false
+        defaultValue: false
+
+    title:
+        type: string
+        required: true
+
+    description:
+        type: string
+        required: true
+
+    date:
+        type: date
+        required: true
+        config:
+            format: "yyyy-MM-dd"
+
+    image:
+        type: string
+        required: false
