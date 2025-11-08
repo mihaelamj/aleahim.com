@@ -7,7 +7,7 @@
     <title>From ExtremePackaging to OpenAPI Integration - Aleahim</title>
     <meta name="description" content="Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture">
 
-    <meta property="og:url" content="http://localhost:3000/blog/extreme-packaging-open-a-p-i/">
+    <meta property="og:url" content="https://aleahim.com/blog/extreme-packaging-open-a-p-i/">
     <meta property="og:title" content="From ExtremePackaging to OpenAPI Integration - Aleahim">
     <meta property="og:description" content="Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture">
     
@@ -17,9 +17,9 @@
     <meta name="twitter:description" content="Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture">
     
 
-    <link rel="stylesheet" href="http://localhost:3000/css/theme.css">
-    <link rel="stylesheet" href="http://localhost:3000/css/style.css">
-    <link rel="stylesheet" href="http://localhost:3000/css/blog.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     
 
@@ -30,9 +30,9 @@
 <body>
     <header>
         <div class="header-content">
-            <a id="logo" href="http://localhost:3000">
+            <a id="logo" href="https://aleahim.com">
                 <img
-                    src="http://localhost:3000/images/logo.svg"
+                    src="https://aleahim.com/images/logo.svg"
                     alt="Aleahim"
                     title="Aleahim"
                 >
@@ -41,10 +41,10 @@
     
             <nav>
                 <div class="navigation">
-                    <a href="http://localhost:3000/">Home</a>
-                <a href="http://localhost:3000/cv/">CV</a>
-                <a href="http://localhost:3000/services/">Services</a>
-                <a href="http://localhost:3000/about/">About</a>
+                    <a href="https://aleahim.com/">Home</a>
+                <a href="https://aleahim.com/cv/">CV</a>
+                <a href="https://aleahim.com/services/">Services</a>
+                <a href="https://aleahim.com/about/">About</a>
                 </div>
             </nav>
         </div>
@@ -55,7 +55,7 @@
         <header class="post-header">
             <div class="title-with-thumbnail">
                 <div class="post-thumbnail">
-                    <img src="http://localhost:3000/images/xpackopenapi/expack_openapi.png" alt="From ExtremePackaging to OpenAPI Integration">
+                    <img src="https://aleahim.com/images/xpackopenapi/expack_openapi.png" alt="From ExtremePackaging to OpenAPI Integration">
                 </div>
                 <div class="title-wrapper">
                     <h1>From ExtremePackaging to OpenAPI Integration</h1>
@@ -68,7 +68,7 @@
     
         <div class="post-content">
             <div class="post-hero-image">
-                <img src="http://localhost:3000/images/xpackopenapi/expack_openapi.png" alt="From ExtremePackaging to OpenAPI Integration">
+                <img src="https://aleahim.com/images/xpackopenapi/expack_openapi.png" alt="From ExtremePackaging to OpenAPI Integration">
             </div>
     
             <p>When I first published <a href="https://github.com/mihaelamj/ExtremePackaging" target="_blank">ExtremePackaging</a>, the goal was simple — to prove that <strong>highly modular Swift architectures</strong> can scale across platforms while keeping build times fast, dependencies isolated, and the mental model crystal clear.</p><p>But then came the next step: <em>Could this same architecture host a complete OpenAPI workflow — with generated clients, servers, and full middleware integration — without losing its elegance?</em></p><p>That’s how the new reference implementation, <strong>swift-openapi-extremepackaging-example</strong>, was born.</p><hr><h2 id="the-foundation-extremepackaging">🧩 The Foundation — ExtremePackaging</h2><p>The original ExtremePackaging repository introduced a clean, layered structure:</p><ul><li><strong>Shared packages</strong> for models and protocols</li><li><strong>Independent feature modules</strong> for UI, data, and networking</li><li><strong>No cross-package leaks</strong></li><li><strong>Unified Xcode workspace</strong> that felt like a monolith but built like microservices</li></ul><p>The guiding philosophy: <em>Each feature should be an island, communicating only through well-defined contracts.</em></p><p>That foundation made it ideal for integrating OpenAPI-generated code — which naturally fits into modular boundaries like <code>SharedApiModels</code>, <code>ApiClient</code>, and <code>ApiServer</code>.</p><hr><h2 id="evolving-toward-openapi">🚀 Evolving Toward OpenAPI</h2><p>The OpenAPI version added an entire new layer of automation and functionality — transforming a static architecture into a <strong>living, self-describing API ecosystem</strong>.</p><h3 id="1.-openapi-schema-code-generation">1. OpenAPI Schema & Code Generation</h3><p>At the heart of the project is the <strong>OpenAPI specification (<code>openapi.yaml</code>)</strong> — defining endpoints, models, and responses for a DummyJSON-compatible API.</p><p>Newly introduced elements:</p><ul><li>🧱 Full schema definitions for <code>Users</code>, <code>Posts</code>, <code>Products</code>, <code>Todos</code>, and <code>Carts</code></li><li>🧩 Error schemas (404, validation, authentication)</li><li>⚙️ Integration with <strong>Swift OpenAPI Generator</strong></li><li>🔁 Automatic generation of clients, models, and server stubs</li><li>📦 Separation of generated code into <code>SharedApiModels</code></li></ul><p>This turned the architecture into a self-contained API ecosystem — one that can <strong>generate, serve, and consume</strong> its own endpoints.</p><hr><h3 id="2.-api-server-implementation">2. API Server Implementation</h3><p>A complete <strong>Vapor-based local server</strong> (<code>ApiServer</code>) was added to simulate real-world backend behavior:</p><ul><li>17 endpoints fully implemented from the OpenAPI spec</li><li>Realistic mock data mirroring DummyJSON</li><li>Pagination and validation logic</li><li>Centralized error responses</li><li>🖥️ Prefixed logging for easy tracing in the console</li></ul><p>The server runs locally at <code>http://localhost:8080</code>, serving as both a mock backend and a test harness for the generated client.</p><hr><h3 id="3.-enhanced-api-client-architecture">3. Enhanced API Client Architecture</h3><p>The client evolved from a simple abstraction into a <strong>fully concurrent, actor-based networking layer</strong>.</p><h4>Highlights</h4><ul><li><code>ApiClient</code> actor manages shared state safely across async contexts</li><li>Middleware chain introduced: <strong>Logging → Authentication → Correction</strong></li><li>Runtime environment switching between <code>.production</code>, <code>.local</code>, and <code>.mock</code></li><li>Shared singleton <code>ApiClientState</code> stores token, settings, and preferences</li></ul><p>Example flow:</p><pre><code class="language-swift">try await ApiClient.initializeShared(environment: .production)
@@ -98,7 +98,7 @@ let users = try await client.getUsers(limit: 10)
         </div>
     
         <footer class="post-footer">
-            <a href="http://localhost:3000/blog/" class="back-link">← Back to Blog</a>
+            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
         </footer>
     </article>
 

@@ -3,5 +3,5 @@ targets:
       default: true
     
     - name: live
-      output: /tmp/output
-      url: "https://toucansites.github.io/minimal-template-demo/"
+      output: ./dist
+      url: "https://aleahim.com/"
