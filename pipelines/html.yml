@@ -25,6 +25,7 @@ contentTypes:
         - sitemap
         - not-found
         - redirect
+        - rss
 
 iterators:
 

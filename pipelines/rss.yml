@@ -1,0 +1,33 @@
+id: rss
+definesType: true
+contentTypes:
+    include:
+        - rss
+
+scopes:
+
+dataTypes:
+    date:
+        formats:
+            rss:
+                format: "EEE, dd MMM yyyy HH:mm:ss Z"
+
+queries:
+    posts:
+        contentType: blog-post
+        scope: list
+        orderBy:
+            - key: date
+              direction: desc
+        limit: 20
+
+engine:
+    id: mustache
+    options:
+        contentTypes:
+            rss:
+                view: "rss"
+output:
+    path: ""
+    file: rss
+    ext: xml
