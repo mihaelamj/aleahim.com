@@ -7,7 +7,7 @@
     <title>Cupertino: 27 Issues Down, Just Getting Started - Aleahim</title>
     <meta name="description" content="From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects">
 
-    <meta property="og:url" content="http://localhost:3000/blog/cupertino-ecosystem/">
+    <meta property="og:url" content="https://aleahim.com/blog/cupertino-ecosystem/">
     <meta property="og:title" content="Cupertino: 27 Issues Down, Just Getting Started - Aleahim">
     <meta property="og:description" content="From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects">
     
@@ -17,9 +17,9 @@
     <meta name="twitter:description" content="From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects">
     
 
-    <link rel="stylesheet" href="http://localhost:3000/css/theme.css">
-    <link rel="stylesheet" href="http://localhost:3000/css/style.css">
-    <link rel="stylesheet" href="http://localhost:3000/css/blog.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     
 
@@ -30,9 +30,9 @@
 <body>
     <header>
         <div class="header-content">
-            <a id="logo" href="http://localhost:3000">
+            <a id="logo" href="https://aleahim.com">
                 <img
-                    src="http://localhost:3000/images/logo.svg"
+                    src="https://aleahim.com/images/logo.svg"
                     alt="Aleahim"
                     title="Aleahim"
                 >
@@ -41,10 +41,10 @@
     
             <nav>
                 <div class="navigation">
-                    <a href="http://localhost:3000/">Home</a>
-                <a href="http://localhost:3000/cv/">CV</a>
-                <a href="http://localhost:3000/services/">Services</a>
-                <a href="http://localhost:3000/about/">About</a>
+                    <a href="https://aleahim.com/">Home</a>
+                <a href="https://aleahim.com/cv/">CV</a>
+                <a href="https://aleahim.com/services/">Services</a>
+                <a href="https://aleahim.com/about/">About</a>
                 </div>
             </nav>
         </div>
@@ -55,7 +55,7 @@
         <header class="post-header">
             <div class="title-with-thumbnail">
                 <div class="post-thumbnail">
-                    <img src="http://localhost:3000/images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png" alt="Cupertino: 27 Issues Down, Just Getting Started">
+                    <img src="https://aleahim.com/images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png" alt="Cupertino: 27 Issues Down, Just Getting Started">
                 </div>
                 <div class="title-wrapper">
                     <h1>Cupertino: 27 Issues Down, Just Getting Started</h1>
@@ -68,10 +68,10 @@
     
         <div class="post-content">
             <div class="post-hero-image">
-                <img src="http://localhost:3000/images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png" alt="Cupertino: 27 Issues Down, Just Getting Started">
+                <img src="https://aleahim.com/images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png" alt="Cupertino: 27 Issues Down, Just Getting Started">
             </div>
     
-            <p>I’m currently working on two macOS apps, and I rely heavily on Claude Code to help me ship faster. But here’s the thing—I kept hitting the same wall: hallucinated APIs, outdated patterns, confident suggestions for methods that don’t exist.</p><p>I’m not alone. Developers everywhere report the same issues: AI suggesting <code>@ObservableObject</code> and <code>@Published</code> when Apple now recommends <code>@Observable</code>. Xcode 26’s AI integration <a href="https://www.fline.dev/why-im-not-using-xcode-26s-ai-chat-integration-and-what-could-change-my-mind/" target="_blank">hallucinating 100% of the time</a> when asked about new 2025 frameworks. One developer described fixing AI-generated Swift code as <a href="https://medium.com/@agnislav/one-more-chatgpt-vs-claude-comparison-for-macos-development-8cae53ec7c3e" target="_blank">“whack-a-mole”</a>—fix one obsolete API, another pops up.</p><p>That frustration is why I built Cupertino.</p><p>In my <a href="http://localhost:3000/cupertino/">previous post</a>, I introduced it—an MCP server that gives Claude offline access to 22,000+ Apple documentation pages. That was version 0.1.x. Since then, things have evolved rapidly: nine releases in 72 hours, two new companion repositories, and a complete ecosystem for AI-assisted Apple development.</p><p>I need this tool. I use it every day. And I’m building it in public because I know I’m not the only one frustrated with AI that hallucinates Apple APIs.</p><h2 id="what-changed-v0.1.6-v0.2.3">What Changed: v0.1.6 → v0.2.3</h2><p>The original Cupertino solved the core problem—searching Apple docs locally. But real-world usage revealed gaps: ranking wasn’t smart enough, storage was bloated, and legacy documentation was missing. Here’s what shipped:</p><h3 id="intelligent-ranking-v0.2.1">Intelligent Ranking (v0.2.1)</h3><p>The initial BM25 search treated all documents equally. A query for “View” might return some random extension before <code>SwiftUI.View</code> itself. Eight ranking heuristics now prioritize:</p><ul><li><strong>Core types over extensions</strong> - <code>View</code> ranks above <code>View+Accessibility</code></li><li><strong>URL depth analysis</strong> - <code>/documentation/swiftui/view</code> beats <code>/documentation/swiftui/view/some/nested/thing</code></li><li><strong>Title pattern detection</strong> - Exact matches surface first</li><li><strong>Modern over deprecated</strong> - Current APIs rank higher</li></ul><p>The result: sub-100ms queries that actually return what you’re looking for.</p><h3 id="storage-cleanup-v0.1.8-v0.2.0">Storage Cleanup (v0.1.8, v0.2.0)</h3><p>The initial crawl produced ~27GB of data. Most of it was cruft: <code>.git</code> folders from sample code downloads, <code>.DS_Store</code> files, Xcode user data. A new <code>cleanup</code> command reduced storage to 2-3GB—a 90% reduction.</p><p>Version 0.2.0 fixed a critical bug where cleanup was accidentally deleting source code instead of just metadata. Now 99.8% of sample ZIPs retain intact source.</p><h3 id="language-filtering-v0.1.9">Language Filtering (v0.1.9)</h3><p>Not everyone wants Objective-C results. The CLI and MCP tools now accept a <code>language</code> parameter:</p><pre><code class="language-bash">cupertino search "NSObject" --language swift
+            <p>I’m currently working on two macOS apps, and I rely heavily on Claude Code to help me ship faster. But here’s the thing—I kept hitting the same wall: hallucinated APIs, outdated patterns, confident suggestions for methods that don’t exist.</p><p>I’m not alone. Developers everywhere report the same issues: AI suggesting <code>@ObservableObject</code> and <code>@Published</code> when Apple now recommends <code>@Observable</code>. Xcode 26’s AI integration <a href="https://www.fline.dev/why-im-not-using-xcode-26s-ai-chat-integration-and-what-could-change-my-mind/" target="_blank">hallucinating 100% of the time</a> when asked about new 2025 frameworks. One developer described fixing AI-generated Swift code as <a href="https://medium.com/@agnislav/one-more-chatgpt-vs-claude-comparison-for-macos-development-8cae53ec7c3e" target="_blank">“whack-a-mole”</a>—fix one obsolete API, another pops up.</p><p>That frustration is why I built Cupertino.</p><p>In my <a href="https://aleahim.com/blog/cupertino/">previous post</a>, I introduced it—an MCP server that gives Claude offline access to 22,000+ Apple documentation pages. That was version 0.1.x. Since then, things have evolved rapidly: nine releases in 72 hours, two new companion repositories, and a complete ecosystem for AI-assisted Apple development.</p><p>I need this tool. I use it every day. And I’m building it in public because I know I’m not the only one frustrated with AI that hallucinates Apple APIs.</p><h2 id="what-changed-v0.1.6-v0.2.3">What Changed: v0.1.6 → v0.2.3</h2><p>The original Cupertino solved the core problem—searching Apple docs locally. But real-world usage revealed gaps: ranking wasn’t smart enough, storage was bloated, and legacy documentation was missing. Here’s what shipped:</p><h3 id="intelligent-ranking-v0.2.1">Intelligent Ranking (v0.2.1)</h3><p>The initial BM25 search treated all documents equally. A query for “View” might return some random extension before <code>SwiftUI.View</code> itself. Eight ranking heuristics now prioritize:</p><ul><li><strong>Core types over extensions</strong> - <code>View</code> ranks above <code>View+Accessibility</code></li><li><strong>URL depth analysis</strong> - <code>/documentation/swiftui/view</code> beats <code>/documentation/swiftui/view/some/nested/thing</code></li><li><strong>Title pattern detection</strong> - Exact matches surface first</li><li><strong>Modern over deprecated</strong> - Current APIs rank higher</li></ul><p>The result: sub-100ms queries that actually return what you’re looking for.</p><h3 id="storage-cleanup-v0.1.8-v0.2.0">Storage Cleanup (v0.1.8, v0.2.0)</h3><p>The initial crawl produced ~27GB of data. Most of it was cruft: <code>.git</code> folders from sample code downloads, <code>.DS_Store</code> files, Xcode user data. A new <code>cleanup</code> command reduced storage to 2-3GB—a 90% reduction.</p><p>Version 0.2.0 fixed a critical bug where cleanup was accidentally deleting source code instead of just metadata. Now 99.8% of sample ZIPs retain intact source.</p><h3 id="language-filtering-v0.1.9">Language Filtering (v0.1.9)</h3><p>Not everyone wants Objective-C results. The CLI and MCP tools now accept a <code>language</code> parameter:</p><pre><code class="language-bash">cupertino search "NSObject" --language swift
 </code></pre><p>Claude can filter too—just ask for “Swift-only results.”</p><h3 id="apple-archive-support-v0.2.3">Apple Archive Support (v0.2.3)</h3><p>Apple’s modern documentation is great, but some topics only exist in the legacy archive: Core Animation Programming Guide, Quartz 2D Programming Guide, Core Text Programming Guide. These are still the authoritative sources for low-level graphics work.</p><p>Cupertino now crawls <code>developer.apple.com/library/archive/</code> and integrates results with smart ranking that prioritizes modern docs while keeping legacy content searchable.</p><h2 id="the-ecosystem-three-repositories">The Ecosystem: Three Repositories</h2><p>Cupertino grew from one repo to three:</p><h3 id="cupertino-the-mcp-server"><a href="https://github.com/mihaelamj/cupertino" target="_blank">cupertino</a> — The MCP Server</h3><p>The main Swift package. Crawls, indexes, and serves documentation via MCP protocol. Install it, point Claude at it, done.</p><pre><code class="language-bash"># Quick setup with Claude Code
 claude mcp add cupertino --scope user -- /usr/local/bin/cupertino
 </code></pre><h3 id="cupertino-docs-pre-crawled-documentation"><a href="https://github.com/mihaelamj/cupertino-docs" target="_blank">cupertino-docs</a> — Pre-Crawled Documentation</h3><p>Don’t want to crawl everything yourself? Clone this repo:</p><pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino-docs ~/.cupertino
@@ -93,7 +93,7 @@ git clone https://github.com/mihaelamj/cupertino-sample-code ~/Apple-Samples
         </div>
     
         <footer class="post-footer">
-            <a href="http://localhost:3000/blog/" class="back-link">← Back to Blog</a>
+            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
         </footer>
     </article>
 

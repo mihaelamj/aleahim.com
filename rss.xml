@@ -8,66 +8,66 @@
     <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Cupertino: 27 Issues Down, Just Getting Started</title>
-      <link>http://localhost:3000/blog/cupertino-ecosystem/</link>
+      <link>https://aleahim.com/blog/cupertino-ecosystem/</link>
       <description>From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects</description>
       <pubDate>Wed, 03 Dec 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/cupertino-ecosystem/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-ecosystem/</guid>
     </item>
     <item>
       <title>Cupertino: Offline Apple Documentation for AI Agents</title>
-      <link>http://localhost:3000/cupertino/</link>
+      <link>https://aleahim.com/blog/cupertino/</link>
       <description>An MCP server that gives Claude Desktop offline access to 22,000+ Apple documentation pages</description>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/cupertino/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino/</guid>
     </item>
     <item>
       <title>Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients</title>
-      <link>http://localhost:3000/blog/token-middleware/</link>
+      <link>https://aleahim.com/blog/token-middleware/</link>
       <description>Elegant, Thread-Safe Authentication for OpenAPI Runtime</description>
       <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/token-middleware/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/token-middleware/</guid>
     </item>
     <item>
       <title>From ExtremePackaging to OpenAPI Integration</title>
-      <link>http://localhost:3000/blog/extreme-packaging-open-a-p-i/</link>
+      <link>https://aleahim.com/blog/extreme-packaging-open-a-p-i/</link>
       <description>Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture</description>
       <pubDate>Tue, 23 Sep 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/extreme-packaging-open-a-p-i/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/extreme-packaging-open-a-p-i/</guid>
     </item>
     <item>
       <title>Introducing OpenAPILoggingMiddleware</title>
-      <link>http://localhost:3000/blog/logging-middleware/</link>
+      <link>https://aleahim.com/blog/logging-middleware/</link>
       <description>Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers</description>
       <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/logging-middleware/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/logging-middleware/</guid>
     </item>
     <item>
       <title>ExtremePackaging</title>
-      <link>http://localhost:3000/blog/extreme-packaging/</link>
+      <link>https://aleahim.com/blog/extreme-packaging/</link>
       <description>Example of Extreme Packaging in Swift</description>
       <pubDate>Sat, 13 Sep 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/extreme-packaging/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/extreme-packaging/</guid>
     </item>
     <item>
       <title>CVBuilder: A Swift Package for Professional CV Management</title>
-      <link>http://localhost:3000/blog/c-v-builder/</link>
+      <link>https://aleahim.com/blog/c-v-builder/</link>
       <description>A Swift package for building and rendering CVs in multiple formats</description>
       <pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/c-v-builder/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/c-v-builder/</guid>
     </item>
     <item>
       <title>Bringing Advanced SwiftUI Animations to macOS</title>
-      <link>http://localhost:3000/blog/swift-u-i-lab-advanced-animations/</link>
+      <link>https://aleahim.com/blog/swift-u-i-lab-advanced-animations/</link>
       <description>A port of SwiftUILab&#39;s Advanced Animations that also supports macOS</description>
       <pubDate>Sun, 13 Feb 2022 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/swift-u-i-lab-advanced-animations/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/swift-u-i-lab-advanced-animations/</guid>
     </item>
     <item>
       <title>Core Animation Layers forming a 3D cube</title>
-      <link>http://localhost:3000/blog/core-animation-3d-cube/</link>
+      <link>https://aleahim.com/blog/core-animation-3d-cube/</link>
       <description>Core Animation in 2.5D</description>
       <pubDate>Sat, 06 Mar 2021 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/core-animation-3d-cube/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/core-animation-3d-cube/</guid>
     </item>
   </channel>
 </rss>
