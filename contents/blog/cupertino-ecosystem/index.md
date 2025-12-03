@@ -13,7 +13,7 @@ I'm not alone. Developers everywhere report the same issues: AI suggesting `@Obs
 
 That frustration is why I built Cupertino.
 
-In my [previous post](/cupertino/), I introduced it—an MCP server that gives Claude offline access to 22,000+ Apple documentation pages. That was version 0.1.x. Since then, things have evolved rapidly: nine releases in 72 hours, two new companion repositories, and a complete ecosystem for AI-assisted Apple development.
+In my [previous post](/blog/cupertino/), I introduced it—an MCP server that gives Claude offline access to 22,000+ Apple documentation pages. That was version 0.1.x. Since then, things have evolved rapidly: nine releases in 72 hours, two new companion repositories, and a complete ecosystem for AI-assisted Apple development.
 
 I need this tool. I use it every day. And I'm building it in public because I know I'm not the only one frustrated with AI that hallucinates Apple APIs.
 
