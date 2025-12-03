@@ -7,7 +7,7 @@
     <title>Cupertino: Offline Apple Documentation for AI Agents - Aleahim</title>
     <meta name="description" content="An MCP server that gives Claude Desktop offline access to 22,000+ Apple documentation pages">
 
-    <meta property="og:url" content="http://localhost:3000/cupertino/">
+    <meta property="og:url" content="https://aleahim.com/blog/cupertino/">
     <meta property="og:title" content="Cupertino: Offline Apple Documentation for AI Agents - Aleahim">
     <meta property="og:description" content="An MCP server that gives Claude Desktop offline access to 22,000+ Apple documentation pages">
     
@@ -17,9 +17,9 @@
     <meta name="twitter:description" content="An MCP server that gives Claude Desktop offline access to 22,000+ Apple documentation pages">
     
 
-    <link rel="stylesheet" href="http://localhost:3000/css/theme.css">
-    <link rel="stylesheet" href="http://localhost:3000/css/style.css">
-    <link rel="stylesheet" href="http://localhost:3000/css/blog.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     
 
@@ -30,9 +30,9 @@
 <body>
     <header>
         <div class="header-content">
-            <a id="logo" href="http://localhost:3000">
+            <a id="logo" href="https://aleahim.com">
                 <img
-                    src="http://localhost:3000/images/logo.svg"
+                    src="https://aleahim.com/images/logo.svg"
                     alt="Aleahim"
                     title="Aleahim"
                 >
@@ -41,10 +41,10 @@
     
             <nav>
                 <div class="navigation">
-                    <a href="http://localhost:3000/">Home</a>
-                <a href="http://localhost:3000/cv/">CV</a>
-                <a href="http://localhost:3000/services/">Services</a>
-                <a href="http://localhost:3000/about/">About</a>
+                    <a href="https://aleahim.com/">Home</a>
+                <a href="https://aleahim.com/cv/">CV</a>
+                <a href="https://aleahim.com/services/">Services</a>
+                <a href="https://aleahim.com/about/">About</a>
                 </div>
             </nav>
         </div>
@@ -55,7 +55,7 @@
         <header class="post-header">
             <div class="title-with-thumbnail">
                 <div class="post-thumbnail">
-                    <img src="http://localhost:3000/images/blog/cupertino/hero.jpg" alt="Cupertino: Offline Apple Documentation for AI Agents">
+                    <img src="https://aleahim.com/images/blog/cupertino/hero.jpg" alt="Cupertino: Offline Apple Documentation for AI Agents">
                 </div>
                 <div class="title-wrapper">
                     <h1>Cupertino: Offline Apple Documentation for AI Agents</h1>
@@ -68,10 +68,10 @@
     
         <div class="post-content">
             <div class="post-hero-image">
-                <img src="http://localhost:3000/images/blog/cupertino/hero.jpg" alt="Cupertino: Offline Apple Documentation for AI Agents">
+                <img src="https://aleahim.com/images/blog/cupertino/hero.jpg" alt="Cupertino: Offline Apple Documentation for AI Agents">
             </div>
     
-            <h1>Cupertino: Offline Apple Documentation for AI Agents</h1><p><strong>TL;DR:</strong> I built an MCP server that gives Claude Desktop offline access to 22,000+ Apple documentation pages across 261 frameworks. No more hallucinated APIs.</p><h2 id="the-problem">The Problem</h2><p>If you’ve used Claude or ChatGPT for Swift/iOS development, you’ve seen this:</p><blockquote><p>“Use the <code>NavigationView</code> with <code>.navigationBarTitle()</code> modifier…”</p></blockquote><p>Except <code>NavigationView</code> is deprecated. It’s <code>NavigationStack</code> now. And the modifier is <code>.navigationTitle()</code>.</p><p>AI models hallucinate APIs. They mix up iOS 14 patterns with iOS 17. They invent methods that don’t exist. And when you’re deep in a coding session, these small errors cost you hours.</p><h2 id="the-solution-cupertino">The Solution: Cupertino</h2><p>Cupertino is an MCP (Model Context Protocol) server that:</p><ol><li><strong>Crawls</strong> Apple Developer documentation, Swift Evolution proposals, and Swift.org</li><li><strong>Indexes</strong> everything into a local SQLite FTS5 database with BM25 ranking</li><li><strong>Serves</strong> documentation to Claude Desktop via MCP</li></ol><p>When Claude needs to answer a SwiftUI question, it searches your local documentation instead of relying on training data.</p><h2 id="what-you-get">What You Get</h2><p><strong>22,044 documents across 223 frameworks:</strong></p><p><img src="http://localhost:3000/images/blog/cupertino/frameworks.png" alt="Available Frameworks"><br><em>The documentation index contains 22,044 documents across 223 frameworks, including all major Apple platforms.</em></p><table><thead><td>Framework</td><td>Documents</td></thead><tbody><tr><td>SwiftUI</td><td>5,853</td></tr><tr><td>Swift</td><td>2,814</td></tr><tr><td>UIKit</td><td>1,906</td></tr><tr><td>AppKit</td><td>1,316</td></tr><tr><td>Foundation</td><td>1,219</td></tr><tr><td>Swift.org</td><td>501</td></tr><tr><td>Swift Evolution</td><td>429</td></tr><tr><td>RealityKit</td><td>423</td></tr><tr><td>…</td><td>…</td></tr></tbody></table><p><strong>Two MCP tools:</strong></p><ul><li><code>search_docs</code> - Full-text search with BM25 ranking</li><li><code>list_frameworks</code> - Discover available documentation</li></ul><p><strong>Example search result:</strong></p><pre><code># Search Results for "SwiftUI View"
+            <h1>Cupertino: Offline Apple Documentation for AI Agents</h1><p><strong>TL;DR:</strong> I built an MCP server that gives Claude Desktop offline access to 22,000+ Apple documentation pages across 261 frameworks. No more hallucinated APIs.</p><h2 id="the-problem">The Problem</h2><p>If you’ve used Claude or ChatGPT for Swift/iOS development, you’ve seen this:</p><blockquote><p>“Use the <code>NavigationView</code> with <code>.navigationBarTitle()</code> modifier…”</p></blockquote><p>Except <code>NavigationView</code> is deprecated. It’s <code>NavigationStack</code> now. And the modifier is <code>.navigationTitle()</code>.</p><p>AI models hallucinate APIs. They mix up iOS 14 patterns with iOS 17. They invent methods that don’t exist. And when you’re deep in a coding session, these small errors cost you hours.</p><h2 id="the-solution-cupertino">The Solution: Cupertino</h2><p>Cupertino is an MCP (Model Context Protocol) server that:</p><ol><li><strong>Crawls</strong> Apple Developer documentation, Swift Evolution proposals, and Swift.org</li><li><strong>Indexes</strong> everything into a local SQLite FTS5 database with BM25 ranking</li><li><strong>Serves</strong> documentation to Claude Desktop via MCP</li></ol><p>When Claude needs to answer a SwiftUI question, it searches your local documentation instead of relying on training data.</p><h2 id="what-you-get">What You Get</h2><p><strong>22,044 documents across 223 frameworks:</strong></p><p><img src="https://aleahim.com/images/blog/cupertino/frameworks.png" alt="Available Frameworks"><br><em>The documentation index contains 22,044 documents across 223 frameworks, including all major Apple platforms.</em></p><table><thead><td>Framework</td><td>Documents</td></thead><tbody><tr><td>SwiftUI</td><td>5,853</td></tr><tr><td>Swift</td><td>2,814</td></tr><tr><td>UIKit</td><td>1,906</td></tr><tr><td>AppKit</td><td>1,316</td></tr><tr><td>Foundation</td><td>1,219</td></tr><tr><td>Swift.org</td><td>501</td></tr><tr><td>Swift Evolution</td><td>429</td></tr><tr><td>RealityKit</td><td>423</td></tr><tr><td>…</td><td>…</td></tr></tbody></table><p><strong>Two MCP tools:</strong></p><ul><li><code>search_docs</code> - Full-text search with BM25 ranking</li><li><code>list_frameworks</code> - Discover available documentation</li></ul><p><strong>Example search result:</strong></p><pre><code># Search Results for "SwiftUI View"
 
 ## 1. View | Apple Developer Documentation
 - **Framework:** swiftui
@@ -81,7 +81,7 @@
 
 Protocol# View
 A type that represents part of your app's user interface...
-</code></pre><p><img src="http://localhost:3000/images/blog/cupertino/mcp-tools.png" alt="Claude Desktop using Cupertino MCP tools"><br><em>Claude Desktop using Cupertino’s MCP tools to search documentation and list available frameworks</em></p><h2 id="installation">Installation</h2><h3 id="1.-build-from-source">1. Build from source</h3><pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino.git
+</code></pre><p><img src="https://aleahim.com/images/blog/cupertino/mcp-tools.png" alt="Claude Desktop using Cupertino MCP tools"><br><em>Claude Desktop using Cupertino’s MCP tools to search documentation and list available frameworks</em></p><h2 id="installation">Installation</h2><h3 id="1.-build-from-source">1. Build from source</h3><pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino.git
 cd cupertino
 make build
 sudo make install
@@ -147,7 +147,7 @@ cupertino save
         </div>
     
         <footer class="post-footer">
-            <a href="http://localhost:3000/blog/" class="back-link">← Back to Blog</a>
+            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
         </footer>
     </article>
 
