@@ -7,6 +7,13 @@
     <language>en-US</language>
     <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Cupertino v0.3.0: From 20 Hours to 30 Seconds</title>
+      <link>https://aleahim.com/blog/cupertino-instant-setup/</link>
+      <description>The new setup command downloads pre-built databases instantly - no more crawling Apple&#39;s documentation for hours</description>
+      <pubDate>Fri, 05 Dec 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-instant-setup/</guid>
+    </item>
+    <item>
       <title>Cupertino: 27 Issues Down, Just Getting Started</title>
       <link>https://aleahim.com/blog/cupertino-ecosystem/</link>
       <description>From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects</description>
