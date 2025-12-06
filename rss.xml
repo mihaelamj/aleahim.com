@@ -7,6 +7,13 @@
     <language>en-US</language>
     <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs</title>
+      <link>https://aleahim.com/blog/cupertino-one-line-install/</link>
+      <description>Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.</description>
+      <pubDate>Sat, 06 Dec 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-one-line-install/</guid>
+    </item>
+    <item>
       <title>Cupertino v0.3.0: From 20 Hours to 30 Seconds</title>
       <link>https://aleahim.com/blog/cupertino-instant-setup/</link>
       <description>The new setup command downloads pre-built databases instantly - no more crawling Apple&#39;s documentation for hours</description>
