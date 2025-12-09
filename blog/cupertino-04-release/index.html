@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons - Aleahim</title>
+    <meta name="description" content="New features for Apple documentation search, plus a cautionary tale about release processes and why order matters when tagging.">
+
+    <meta property="og:url" content="https://aleahim.com/blog/cupertino-04-release/">
+    <meta property="og:title" content="Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons - Aleahim">
+    <meta property="og:description" content="New features for Apple documentation search, plus a cautionary tale about release processes and why order matters when tagging.">
+    
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons - Aleahim">
+    <meta name="twitter:description" content="New features for Apple documentation search, plus a cautionary tale about release processes and why order matters when tagging.">
+    
+
+    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a id="logo" href="https://aleahim.com">
+                <img
+                    src="https://aleahim.com/images/logo.svg"
+                    alt="Aleahim"
+                    title="Aleahim"
+                >
+                <h1 class="site-title">Aleahim.com</h1>
+            </a>
+    
+            <nav>
+                <div class="navigation">
+                    <a href="https://aleahim.com/">Home</a>
+                <a href="https://aleahim.com/cv/">CV</a>
+                <a href="https://aleahim.com/services/">Services</a>
+                <a href="https://aleahim.com/about/">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <article class="blog-post">
+        <header class="post-header">
+            <div class="title-with-thumbnail">
+                <div class="post-thumbnail">
+                    <img src="https://aleahim.com/images/blog/cupertino-04-release/cupertino-04-release-hero.jpg" alt="Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons">
+                </div>
+                <div class="title-wrapper">
+                    <h1>Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons</h1>
+                    <div class="post-meta">
+                        <time datetime="2025-12-09T00:00:00.000Z">December 9, 2025</time>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="post-content">
+            <div class="post-hero-image">
+                <img src="https://aleahim.com/images/blog/cupertino-04-release/cupertino-04-release-hero.jpg" alt="Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons">
+            </div>
+    
+            <h1>Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons</h1><p><strong>TL;DR:</strong> Human Interface Guidelines support, smarter framework search, and a hard lesson about release engineering.</p><p>Why jump from 0.3.4 to 0.4.0? Five issues closed: HIG support (#69), framework aliases (#91, #92), and Swift.org fixes (#93, #94). Enough new functionality to warrant a minor version bump.</p><h2 id="what-s-new">What’s New</h2><h3 id="human-interface-guidelines-support">Human Interface Guidelines Support</h3><p>Cupertino can now crawl and index Apple’s Human Interface Guidelines:</p><pre><code class="language-bash">cupertino fetch --type hig
+</code></pre><p>There’s also a new <code>search_hig</code> MCP tool that lets AI agents search design guidelines with platform and category filters. When you ask Claude “what are Apple’s recommendations for buttons?”, it can actually look it up instead of guessing from training data.</p><p>Everything available via MCP tools is also available via command line:</p><pre><code class="language-bash">cupertino search "buttons" --source hig
+</code></pre><p>This is something people might not realize: you can query Cupertino the same way AI does. Every MCP tool has a CLI equivalent. Want to see exactly what Claude sees when it searches? Run the same query yourself. Useful for testing, debugging, or when you just want quick answers without a conversation.</p><h3 id="framework-aliases">Framework Aliases</h3><p>Before, searching for “Core Animation” might not find results indexed under “QuartzCore” (the actual import name). Now there are 249 framework aliases in the database:</p><ul><li><code>QuartzCore</code> ↔ <code>CoreAnimation</code> ↔ <code>Core Animation</code></li><li><code>CoreGraphics</code> ↔ <code>Quartz2D</code> ↔ <code>Quartz 2D</code></li></ul><p>Search works regardless of which name variant you use.</p><h3 id="swift.org-fixes">Swift.org Fixes</h3><p>The Swift.org crawler was broken. The base URL had changed from <code>docs.swift.org</code> to <code>www.swift.org/documentation/</code>, and the indexer was looking for <code>.md</code> files when the crawler was saving <code>.json</code> files. Fixed.</p><h2 id="why-this-matters">Why This Matters</h2><p>Here’s a real example from today. I asked Claude about Apple’s Foundation Models framework - the new on-device ML APIs. Claude’s response:</p><blockquote><p>“The MCP server pulls the complete Foundation Models sample code documentation - straight from Apple’s current docs. No hallucinated API names!”</p></blockquote><p>More examples of documentation you can search:</p><ul><li><strong>FoundationModels</strong> - Apple’s new on-device ML framework</li><li><strong>Writing Tools</strong> - System-wide AI writing assistance</li><li><strong>Genmoji</strong> - Custom emoji generation</li><li><strong>Image Playground</strong> - On-device image generation</li></ul><p>This is also why Cupertino needs a human touch - it can’t be fully automated. Someone has to notice when Apple adds new frameworks, when URLs change (like Swift.org did), when documentation structures shift. The crawler is automated, but the awareness isn’t.</p><p>That’s the whole point: deterministic, up-to-date docs instead of training data guesses.</p><h3 id="token-efficiency">Token Efficiency</h3><p>A side benefit: Cupertino is more token-efficient than you’d expect.</p><p>Yes, tool results use tokens - documentation goes into context. But:</p><ul><li><strong>Accurate = fewer turns</strong> - No hallucination means no correction loop</li><li><strong>Curated content</strong> - Returns exactly what’s needed, not web search noise</li><li><strong>Local search is free</strong> - No API cost for the search operation itself</li><li><strong>Truncated summaries</strong> - Results are summarized; full doc only when you call <code>read_document</code></li></ul><p>So not zero tokens, but more <em>efficient</em> token use. And no external API costs for search.</p><h2 id="the-archive-discovery-problem">The Archive Discovery Problem</h2><p>Here’s something interesting I discovered while testing. When Claude searched for “CALayer animation”, it got API reference pages - classes, methods, properties. Claude wanted to dig deeper:</p><blockquote><p>“Let me try a more targeted search - something like the layer tree architecture or model/presentation layers that would be covered in the Core Animation Programming Guide.”</p></blockquote><p>Then I suggested searching with <code>source: "apple-archive"</code>. Claude’s reaction:</p><blockquote><p>“Now THAT’s the difference! When searching with source: apple-archive, we get the Core Animation Programming Guide and the Animation Types and Timing Programming Guide - the real meat.”</p></blockquote><p>The conceptual deep-dives that explain <em>why</em> things work the way they do.</p><p>Modern Apple docs = API reference (the <em>what</em>)<br>Archive docs = Conceptual guides (the <em>why</em>)</p><p>The problem? AI agents don’t know to search the archive. It’s an opt-in parameter buried in the tool description.</p><h3 id="the-solution-auto-surface-archive-teasers">The Solution: Auto-Surface Archive Teasers</h3><p>I’m planning to modify search results to automatically hint at archive content:</p><pre><code class="language-markdown"># Search Results for "CALayer animation"
+
+## Modern Documentation
+[1] CALayer - API reference...
+[2] CABasicAnimation - API reference...
+
+---
+
+## 📚 Related Archive Guides
+
+**Core Animation Programming Guide** - Layer geometry, animation timing...
+
+&gt; For full archive content, search with `source: "apple-archive"`
+</code></pre><p>This way:</p><ul><li>Modern docs still come first</li><li>AI agents always see archive exists</li><li>They learn how to get more, in context</li></ul><p>Only show the archive section if there are relevant results. Same principle could apply to sample code, Swift packages, or any other source.</p><h2 id="the-release-process-disaster">The Release Process Disaster</h2><p>Here’s where it gets interesting. I had all the code ready, all the tests passing, and I was ready to ship.</p><p>The process seemed simple:</p><ol><li>Bump version in <code>Constants.swift</code></li><li>Update <code>README.md</code> and <code>CHANGELOG.md</code></li><li>Create git tag</li><li>Push tag (triggers GitHub Actions build)</li><li>Upload databases to <code>cupertino-docs</code></li><li>Update Homebrew formula</li></ol><p>What could go wrong?</p><h3 id="the-tag-timing-problem">The Tag Timing Problem</h3><p>I merged my feature branch, created the tag, pushed it… and then realized I hadn’t committed the version bump to <code>main</code> yet. The tag pointed to a commit where <code>Constants.swift</code> still said <code>0.3.5</code>.</p><p>GitHub Actions dutifully built a beautiful, signed, notarized universal binary… that reported version <code>0.3.5</code>.</p><pre><code class="language-bash">$ cupertino --version
+0.3.5
+</code></pre><p>When users ran <code>cupertino setup</code>, it tried to download databases from <code>v0.3.5</code> instead of <code>v0.4.0</code>. Everything was broken.</p><h3 id="the-fix">The Fix</h3><p>I had to:</p><ol><li>Delete the tag on GitHub</li><li>Delete the local tag</li><li>Make sure the version bump commit was pushed to <code>main</code></li><li>Verify the built binary reports correct version <strong>before</strong> tagging</li><li>Recreate the tag</li><li>Wait for GitHub Actions to rebuild</li><li>Update the Homebrew formula with the new SHA256</li></ol><h3 id="the-sha256-dance">The SHA256 Dance</h3><p>When I first updated the Homebrew formula, I grabbed the SHA256 from the old (broken) binary. After rebuilding, the checksum changed. Users got:</p><pre><code>Error: Formula reports different checksum: cf035352...
+SHA-256 checksum of downloaded file: 5c5cf7ab...
+</code></pre><p>Another round of updating the tap.</p><h2 id="the-11-step-release-process">The 11-Step Release Process</h2><p>After today’s adventures, here’s what the release process actually looks like:</p><ol><li>Update version in <code>Constants.swift</code>, <code>README.md</code>, <code>CHANGELOG.md</code></li><li>Commit and push to main</li><li>Build locally and verify <code>--version</code> matches</li><li>Create and push tag</li><li>Wait for GitHub Actions (~5 min)</li><li>Create GitHub release with notes</li><li>Build locally and install</li><li>Upload databases with <code>cupertino release</code></li><li>Get new SHA256 from release</li><li>Update Homebrew tap formula</li><li>Verify on fresh machine</li></ol><p>That’s 11 steps across 4 repositories. Miss one, and you’re rebuilding everything.</p><h2 id="time-for-automation">Time for Automation?</h2><p>I’m seriously considering writing a release script. Swift or Bash?</p><p>The pragmatic choice is Bash - it’s just orchestrating CLI commands. But I’m a Swift purist. The <code>cupertino release</code> command already handles database uploads with proper GitHub API integration. Extending it to handle the full workflow feels right.</p><p>Something like <code>cupertino release --full</code> that:</p><ol><li>Checks for uncommitted changes</li><li>Verifies version consistency</li><li>Builds and validates <code>--version</code></li><li>Creates and pushes the tag</li><li>Waits for GitHub Actions</li><li>Uploads databases</li><li>Updates the Homebrew tap</li></ol><p>One command. No mistakes. Written in Swift.</p><h2 id="lessons-learned">Lessons Learned</h2><ol><li><strong>Order matters.</strong> Commit the version bump before creating the tag.</li><li><strong>Verify before you ship.</strong> Build locally and check <code>--version</code> before tagging.</li><li><strong>Document your release process.</strong> I now have a detailed <code>DEPLOYMENT.md</code> with warnings.</li><li><strong>Automate what hurts.</strong> If you make the same mistake twice, write a script.</li></ol><h2 id="what-s-next">What’s Next</h2><ul><li><strong><a href="https://github.com/mihaelamj/cupertino/issues/97" target="_blank">Enhanced search results</a></strong> - Auto-surface archive, samples, packages in every search (high priority)</li><li><strong>Release automation</strong> - <code>cupertino release --full</code> in Swift</li><li><strong>Fix setup animations</strong> - They’re broken</li><li><strong>Keep crawling</strong> - Fresh docs matter</li></ul><p>This release taught me a lot. Not just about release engineering, but about how AI agents actually use documentation. The archive discovery problem was a surprise - valuable content hidden behind an opt-in flag that agents don’t know to use.</p><p>Building tools for AI is different. You’re not just building for humans who read documentation. You’re building for agents that learn from tool descriptions and in-context hints.</p><p>Key discovery: Claude reads tool descriptions once, but reads search results every time. If you want agents to use a feature, put it in the output - not buried in documentation they’ll forget. Every search result is a teaching moment.</p><p>Next up: implementing enhanced search results. Once that ships, every search will auto-surface relevant content from archives, samples, and packages - with the exact commands to dig deeper. No more hidden treasure.</p><hr><p><em>Cupertino is an Apple Documentation MCP Server. Install with <code>brew install mihaelamj/tap/cupertino</code>. Check it out at <a href="https://github.com/mihaelamj/cupertino" target="_blank">github.com/mihaelamj/cupertino</a>.</em></p>
+        </div>
+    
+        <footer class="post-footer">
+            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
+        </footer>
+    </article>
+
+    </main>
+
+    <footer>
+        <p>This site was generated using <a href="https://www.swift.org/" target="_blank">Swift</a> & <a href="https://github.com/toucansites/toucan" target="_blank">Toucan</a>.</p>
+    
+        <p class="small">Aleahim &copy; 2025.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    
+</body>
+</html>

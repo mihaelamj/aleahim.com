@@ -3,12 +3,14 @@ slug: blog/cupertino-04-release
 title: "Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons"
 description: New features for Apple documentation search, plus a cautionary tale about release processes and why order matters when tagging.
 date: 2025-12-09
-image: /images/blog/cupertino-04-release/hero.png
+image: /images/blog/cupertino-04-release/cupertino-04-release-hero.jpg
 ---
 
 # Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons
 
 **TL;DR:** Human Interface Guidelines support, smarter framework search, and a hard lesson about release engineering.
+
+Why jump from 0.3.4 to 0.4.0? Five issues closed: HIG support (#69), framework aliases (#91, #92), and Swift.org fixes (#93, #94). Enough new functionality to warrant a minor version bump.
 
 ## What's New
 
@@ -21,6 +23,14 @@ cupertino fetch --type hig
 ```
 
 There's also a new `search_hig` MCP tool that lets AI agents search design guidelines with platform and category filters. When you ask Claude "what are Apple's recommendations for buttons?", it can actually look it up instead of guessing from training data.
+
+Everything available via MCP tools is also available via command line:
+
+```bash
+cupertino search "buttons" --source hig
+```
+
+This is something people might not realize: you can query Cupertino the same way AI does. Every MCP tool has a CLI equivalent. Want to see exactly what Claude sees when it searches? Run the same query yourself. Useful for testing, debugging, or when you just want quick answers without a conversation.
 
 ### Framework Aliases
 
@@ -39,15 +49,13 @@ The Swift.org crawler was broken. The base URL had changed from `docs.swift.org`
 
 Here's a real example from today. I asked Claude about Apple's Foundation Models framework - the new on-device ML APIs. Claude's response:
 
-> "The MCP server pulls the complete Foundation Models sample code documentation, crawled just a week ago (December 2nd). No hallucinated API names!"
+> "The MCP server pulls the complete Foundation Models sample code documentation - straight from Apple's current docs. No hallucinated API names!"
 
-More examples of fresh documentation (crawled ~2 weeks ago):
+More examples of documentation you can search:
 - **FoundationModels** - Apple's new on-device ML framework
 - **Writing Tools** - System-wide AI writing assistance
 - **Genmoji** - Custom emoji generation
 - **Image Playground** - On-device image generation
-
-This is WWDC 2024 stuff that's barely in any training data. But Cupertino has it.
 
 This is also why Cupertino needs a human touch - it can't be fully automated. Someone has to notice when Apple adds new frameworks, when URLs change (like Swift.org did), when documentation structures shift. The crawler is automated, but the awareness isn't.
 
@@ -68,11 +76,11 @@ So not zero tokens, but more *efficient* token use. And no external API costs fo
 
 ## The Archive Discovery Problem
 
-Here's something interesting I discovered while testing. When Claude searched for "CALayer animation", it got API reference pages - classes, methods, properties. At first, Claude thought:
+Here's something interesting I discovered while testing. When Claude searched for "CALayer animation", it got API reference pages - classes, methods, properties. Claude wanted to dig deeper:
 
-> "Interesting - the results look nearly identical! Let me try a more targeted search that should clearly show the difference - something like the layer tree architecture or model/presentation layers that would be covered in the Core Animation Programming Guide."
+> "Let me try a more targeted search - something like the layer tree architecture or model/presentation layers that would be covered in the Core Animation Programming Guide."
 
-Then I tried searching with `source: "apple-archive"`. Claude's reaction:
+Then I suggested searching with `source: "apple-archive"`. Claude's reaction:
 
 > "Now THAT's the difference! When searching with source: apple-archive, we get the Core Animation Programming Guide and the Animation Types and Timing Programming Guide - the real meat."
 
@@ -203,7 +211,7 @@ One command. No mistakes. Written in Swift.
 
 ## What's Next
 
-- **Enhanced search results** - Auto-surface archive, samples, packages in every search (high priority)
+- **[Enhanced search results](https://github.com/mihaelamj/cupertino/issues/97)** - Auto-surface archive, samples, packages in every search (high priority)
 - **Release automation** - `cupertino release --full` in Swift
 - **Fix setup animations** - They're broken
 - **Keep crawling** - Fresh docs matter

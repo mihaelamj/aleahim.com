@@ -7,6 +7,13 @@
     <language>en-US</language>
     <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons</title>
+      <link>https://aleahim.com/blog/cupertino-04-release/</link>
+      <description>New features for Apple documentation search, plus a cautionary tale about release processes and why order matters when tagging.</description>
+      <pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-04-release/</guid>
+    </item>
+    <item>
       <title>Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs</title>
       <link>https://aleahim.com/blog/cupertino-one-line-install/</link>
       <description>Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.</description>
