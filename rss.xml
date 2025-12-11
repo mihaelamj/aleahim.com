@@ -7,6 +7,13 @@
     <language>en-US</language>
     <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead</title>
+      <link>https://aleahim.com/blog/cupertino-05-release/</link>
+      <description>The biggest documentation update yet - nearly double the docs, plus what&#39;s coming next for the Apple documentation MCP server.</description>
+      <pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-05-release/</guid>
+    </item>
+    <item>
       <title>Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons</title>
       <link>https://aleahim.com/blog/cupertino-04-release/</link>
       <description>New features for Apple documentation search, plus a cautionary tale about release processes and why order matters when tagging.</description>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead - Aleahim</title>
+    <meta name="description" content="The biggest documentation update yet - nearly double the docs, plus what&#39;s coming next for the Apple documentation MCP server.">
+
+    <meta property="og:url" content="https://aleahim.com/blog/cupertino-05-release/">
+    <meta property="og:title" content="Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead - Aleahim">
+    <meta property="og:description" content="The biggest documentation update yet - nearly double the docs, plus what&#39;s coming next for the Apple documentation MCP server.">
+    
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead - Aleahim">
+    <meta name="twitter:description" content="The biggest documentation update yet - nearly double the docs, plus what&#39;s coming next for the Apple documentation MCP server.">
+    
+
+    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a id="logo" href="https://aleahim.com">
+                <img
+                    src="https://aleahim.com/images/logo.svg"
+                    alt="Aleahim"
+                    title="Aleahim"
+                >
+                <h1 class="site-title">Aleahim.com</h1>
+            </a>
+    
+            <nav>
+                <div class="navigation">
+                    <a href="https://aleahim.com/">Home</a>
+                <a href="https://aleahim.com/cv/">CV</a>
+                <a href="https://aleahim.com/services/">Services</a>
+                <a href="https://aleahim.com/about/">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <article class="blog-post">
+        <header class="post-header">
+            <div class="title-with-thumbnail">
+                <div class="post-thumbnail">
+                    <img src="https://aleahim.com/images/blog/cupertino-05-release/cupertino-05-release-hero.jpg" alt="Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead">
+                </div>
+                <div class="title-wrapper">
+                    <h1>Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead</h1>
+                    <div class="post-meta">
+                        <time datetime="2025-12-11T00:00:00.000Z">December 11, 2025</time>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="post-content">
+            <div class="post-hero-image">
+                <img src="https://aleahim.com/images/blog/cupertino-05-release/cupertino-05-release-hero.jpg" alt="Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead">
+            </div>
+    
+            <h1>Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead</h1><p><strong>TL;DR:</strong> Documentation database nearly doubled. New release tooling. A roadmap for what’s next.</p><p>Two days after v0.4.0, we’re shipping v0.5.0. Why so fast? Because I finally finished a 5-day deep crawl of Apple’s documentation.</p><h2 id="the-numbers">The Numbers</h2><table><thead><td>Metric</td><td>v0.4.0</td><td>v0.5.0</td><td>Change</td></thead><tbody><tr><td>Total Documents</td><td>138,000</td><td>234,331</td><td>+70%</td></tr><tr><td>Frameworks</td><td>263</td><td>287</td><td>+24</td></tr><tr><td>Database Size</td><td>~1.2GB</td><td>~1.9GB</td><td>+58%</td></tr><tr><td>Crawl Time</td><td>20-24 hours</td><td>32-48 hours</td><td>Deeper</td></tr></tbody></table><p>The crawl ran for 5 days because I wanted <em>everything</em>. Every framework, every page, every deprecated API. The result: nearly 100,000 more documents than before.</p><h3 id="top-frameworks-by-document-count">Top Frameworks by Document Count</h3><ol><li><strong>Kernel</strong> - 24,747 docs</li><li><strong>Matter</strong> - 22,013 docs</li><li><strong>Swift</strong> - 17,466 docs</li><li><strong>Foundation</strong> - 14,892 docs</li><li><strong>UIKit</strong> - 12,341 docs</li></ol><p>Kernel documentation alone has almost 25,000 pages. That’s IOKit, BSD interfaces, Mach APIs - the stuff that’s usually impossible to find.</p><h2 id="what-this-means-for-ai">What This Means for AI</h2><p>When Claude searches Cupertino now, it has access to:</p><ul><li><strong>Low-level APIs</strong> - Kernel programming, IOKit drivers, Mach ports</li><li><strong>Hardware interfaces</strong> - Matter protocol (24k+ docs for smart home development)</li><li><strong>Complete Swift coverage</strong> - Every proposal, every standard library type</li><li><strong>Obscure frameworks</strong> - The ones you forget exist until you need them</li></ul><p>This is deterministic access to Apple’s documentation. No hallucination, no guessing from training data. Just the actual docs.</p><h2 id="why-i-built-release-automation">Why I Built Release Automation</h2><p>I remember the release oopsie from v0.4.0 like it was just a few days ago. Wait, it <em>was</em> just a few days ago. 😅 I tagged before committing the version bump, had to delete tags, rebuild everything, update SHA256 checksums twice…</p><p>Almost happened again with v0.5.0. Caught it in time, but the close call was enough.</p><p>So I finally wrote the automation I’d been putting off. Not because users need it - they don’t. But because <em>I</em> was losing hours to release mechanics instead of building features.</p><p>The release process now touches 4 repositories (main repo, cupertino-docs for databases, Homebrew tap, and the blog). Miss one step, wrong order, typo in a version number - and you’re starting over.</p><p>Now it’s one command. I run it, go make coffee, come back to a published release. That’s the dream, anyway. We’ll see how v0.6.0 goes.</p><h2 id="the-roadmap">The Roadmap</h2><p>The full roadmap is tracked in the <a href="https://github.com/users/mihaelamj/projects/1" target="_blank">Cupertino Roadmap</a> GitHub project. Here’s what’s coming next, in dependency order:</p><h3 id="phase-1-complete-the-crawl-88">Phase 1: Complete the Crawl (#88)</h3><p>The crawl is extensive but not complete. Some frameworks have deep hierarchies that weren’t fully traversed. The goal is 100% coverage of Apple’s public documentation.</p><p><strong>Status:</strong> In progress. Currently at depth level 8. No idea when it finishes - some frameworks go deep.</p><h3 id="phase-2-prune-the-database-87">Phase 2: Prune the Database (#87)</h3><p>Once we have everything, we need to clean it up. The database has:</p><ul><li>Duplicate entries (same doc indexed multiple times)</li><li>Misclassified documents (wrong framework attribution)</li><li>Orphaned entries from URL changes</li></ul><p>This is blocked by #88 - no point pruning until the crawl is complete.</p><h3 id="phase-3-api-version-tracking-99">Phase 3: API Version Tracking (#99)</h3><p>This is the big one. Apple’s documentation includes version information - which iOS/macOS version introduced each API. We can extract this.</p><p>Imagine searching with:</p><pre><code class="language-bash">cupertino search "async" --min-os ios16
+</code></pre><p>Or having Claude automatically filter out deprecated APIs when you’re targeting iOS 17+.</p><p>I’ve been investigating Apple’s <code>/tutorials/data/documentation/</code> endpoint. It returns JSON with version metadata for most frameworks. Some older frameworks (Kernel, IOKit) don’t have it, but the coverage is good.</p><p><strong>Status:</strong> Research complete. Implementation pending.</p><h3 id="phase-4-version-filtered-search-100">Phase 4: Version-Filtered Search (#100)</h3><p>Once we have version data in the database, we can expose it as a search filter. Both CLI and MCP tool would support filtering by minimum OS version.</p><p><strong>Blocked by:</strong> #99 (need the data first)</p><h3 id="phase-5-semantic-code-search-81">Phase 5: Semantic Code Search (#81)</h3><p>The end goal: search sample code by what it <em>does</em>, not just by keyword.</p><pre><code class="language-bash">cupertino search "async image loading with caching"
+</code></pre><p>This requires:</p><ol><li>Complete documentation (#88)</li><li>Clean database (#87)</li><li>SwiftSyntax AST indexing of sample code</li></ol><p>It’s ambitious, but the foundation is being laid with each release.</p><h2 id="install-or-update">Install or Update</h2><pre><code class="language-bash"># New install
+brew install mihaelamj/tap/cupertino
+
+# Update
+brew upgrade cupertino
+
+# Or instant setup
+bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><p>After installing, databases download automatically:</p><pre><code class="language-bash">cupertino setup
+</code></pre><p>Takes about 30 seconds to download the pre-built 1.9GB database.</p><h2 id="the-vision-human-curated-developer-docs">The Vision: Human-Curated Developer Docs</h2><p>Here’s what I’ve learned: having <em>all</em> the docs isn’t enough. We need them <em>in context</em>.</p><p>When you’re building an app targeting iOS 15+, you don’t want to see iOS 12 APIs. When you’re learning Core Animation, you want the conceptual guides from Apple Archive, not just the API reference. When you’re debugging a Matter integration, you need the 22,000 Matter docs filtered to what’s actually relevant.</p><p>Raw documentation is noise. Curated documentation is signal.</p><p>That’s where Cupertino is heading. Not just “here’s 234,331 docs” but “here’s what you actually need for your specific context.” Version filtering is coming - ask for iOS 16+ APIs only. Source awareness is coming - archive guides surfaced alongside modern reference. Framework relationships are coming - search UIKit and get relevant Foundation results too.</p><p>The crawl is the foundation. The curation is the value.</p><p>234,331 documents today. Context-aware, version-filtered, human-curated search tomorrow.</p><hr><p><em>Cupertino is an Apple Documentation MCP Server. Install with <code>brew install mihaelamj/tap/cupertino</code>. Source at <a href="https://github.com/mihaelamj/cupertino" target="_blank">github.com/mihaelamj/cupertino</a>.</em></p>
+        </div>
+    
+        <footer class="post-footer">
+            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
+        </footer>
+    </article>
+
+    </main>
+
+    <footer>
+        <p>This site was generated using <a href="https://www.swift.org/" target="_blank">Swift</a> & <a href="https://github.com/toucansites/toucan" target="_blank">Toucan</a>.</p>
+    
+        <p class="small">Aleahim &copy; 2025.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    
+</body>
+</html>
