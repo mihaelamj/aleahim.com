@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper - Aleahim</title>
+    <meta name="description" content="The complete Apple documentation crawl is done. Now you can filter by iOS 17+ and Claude finally knows where to look for answers.">
+
+    <meta property="og:url" content="https://aleahim.com/blog/cupertino-07-release/">
+    <meta property="og:title" content="Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper - Aleahim">
+    <meta property="og:description" content="The complete Apple documentation crawl is done. Now you can filter by iOS 17+ and Claude finally knows where to look for answers.">
+    
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper - Aleahim">
+    <meta name="twitter:description" content="The complete Apple documentation crawl is done. Now you can filter by iOS 17+ and Claude finally knows where to look for answers.">
+    
+
+    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a id="logo" href="https://aleahim.com">
+                <img
+                    src="https://aleahim.com/images/logo.svg"
+                    alt="Aleahim"
+                    title="Aleahim"
+                >
+                <h1 class="site-title">Aleahim.com</h1>
+            </a>
+    
+            <nav>
+                <div class="navigation">
+                    <a href="https://aleahim.com/">Home</a>
+                <a href="https://aleahim.com/cv/">CV</a>
+                <a href="https://aleahim.com/services/">Services</a>
+                <a href="https://aleahim.com/about/">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <article class="blog-post">
+        <header class="post-header">
+            <div class="title-with-thumbnail">
+                <div class="post-thumbnail">
+                    <img src="https://aleahim.com/images/blog/cupertino-07-release/cupertino-07-release-hero.jpg" alt="Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper">
+                </div>
+                <div class="title-wrapper">
+                    <h1>Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper</h1>
+                    <div class="post-meta">
+                        <time datetime="2025-12-15T00:00:00.000Z">December 15, 2025</time>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="post-content">
+            <div class="post-hero-image">
+                <img src="https://aleahim.com/images/blog/cupertino-07-release/cupertino-07-release-hero.jpg" alt="Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper">
+            </div>
+    
+            <h1>Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper</h1><p><strong>TL;DR:</strong> Finally crawled all of Apple’s docs. Added OS version filtering. Made AI agents smarter about finding the right documentation.</p><p>Four days after v0.5.0, and I’ve shipped two more releases. At this point I’m not sure if this is momentum or obsession. Let’s call it momentum.</p><h2 id="the-numbers">The Numbers</h2><table><thead><td>Metric</td><td>v0.5.0</td><td>v0.7.0</td><td>Change</td></thead><tbody><tr><td>Total Documents</td><td>234,331</td><td>302,424</td><td>+29%</td></tr><tr><td>Frameworks</td><td>287</td><td>307</td><td>+20</td></tr><tr><td>Database Size</td><td>~1.9GB</td><td>~2.3GB</td><td>+21%</td></tr></tbody></table><p>Three hundred thousand pages. That’s every framework, every class, every method Apple has documented. The crawl ran for almost two weeks total across multiple sessions.</p><h3 id="top-frameworks-by-document-count">Top Frameworks by Document Count</h3><table><thead><td>Framework</td><td>Documents</td></thead><tbody><tr><td>Kernel</td><td>39,396</td></tr><tr><td>Matter</td><td>24,320</td></tr><tr><td>Swift</td><td>17,466</td></tr><tr><td>AppKit</td><td>12,443</td></tr><tr><td>Foundation</td><td>12,423</td></tr><tr><td>UIKit</td><td>11,158</td></tr><tr><td>Accelerate</td><td>9,114</td></tr><tr><td>SwiftUI</td><td>7,062</td></tr></tbody></table><p>Kernel jumped from 25,000 to nearly 40,000 pages. That’s IOKit, BSD interfaces, Mach APIs, driver development - the low-level stuff that’s hardest to find and most valuable when you need it. Matter has 24,000+ docs for smart home development. Accelerate and SIMD documentation is fully indexed now - performance optimization guides that AI models probably didn’t see much of during training.</p><h2 id="the-feature-i-ve-been-waiting-for-os-version-filtering">The Feature I’ve Been Waiting For: OS Version Filtering</h2><p>This was issue #99, and it’s been on my mind since day one. Apple’s documentation includes version information - which iOS/macOS version introduced each API. We now extract this.</p><pre><code class="language-bash">cupertino search "async" --min-ios 16
+</code></pre><p>Or in Claude:</p><blockquote><p>“Search for SwiftUI navigation APIs available in iOS 17+”</p></blockquote><p>The AI agent can now filter results by platform version. No more suggestions for deprecated iOS 12 APIs when you’re building for iOS 17.</p><h3 id="how-it-works">How It Works</h3><p>Different documentation sources need different strategies:</p><table><thead><td>Source</td><td>Strategy</td></thead><tbody><tr><td>apple-docs</td><td>Apple’s JSON API + fallbacks</td></tr><tr><td>sample-code</td><td>Derived from framework</td></tr><tr><td>apple-archive</td><td>Derived from framework</td></tr><tr><td>swift-evolution</td><td>Swift version mapping</td></tr><tr><td>swift-book/hig</td><td>Universal (all platforms)</td></tr></tbody></table><p>For Apple’s modern docs, there’s a hidden JSON endpoint at <code>/tutorials/data/documentation/</code> that returns structured metadata including availability. For older stuff, we derive from the framework - if it’s UIKit, we know the minimum versions.</p><p>The cool part? You can filter by <em>any</em> platform:</p><ul><li><code>--min-ios 16</code></li><li><code>--min-macos 14</code></li><li><code>--min-tvos 17</code></li><li><code>--min-watchos 10</code></li><li><code>--min-visionos 1</code></li></ul><p>visionOS filtering. For when you’re building spatial computing apps and need APIs that actually exist on the platform.</p><h2 id="teaching-ai-where-to-look">Teaching AI Where to Look</h2><p>Here’s something I discovered while using Cupertino with Claude: the AI doesn’t know what it doesn’t know.</p><p>When Claude searches for “CALayer animation”, it gets API reference - classes, methods, properties. Good stuff. But the <em>conceptual</em> documentation - the “why” behind Core Animation - lives in Apple Archive. And Claude had no idea.</p><h3 id="the-problem">The Problem</h3><p>I had added archive support in v0.2.3. Users could search with <code>--source apple-archive</code>. But AI agents don’t read release notes. They read tool descriptions once, then forget. Every search was missing the deep conceptual guides.</p><h3 id="the-solution-teasers">The Solution: Teasers</h3><p>Now every search result includes hints from alternate sources:</p><pre><code class="language-markdown"># Search Results for "CALayer animation"
+
+## Results from apple-docs (5 found)
+
+1. **CALayer** - The basic object for managing and presenting drawable content...
+2. **CABasicAnimation** - An animation that applies a single keyframe...
+
+---
+
+**Other sources to explore:**
+
+- **apple-archive**: 3 results (Core Animation Programming Guide, Animation Types...)
+- **samples**: 2 results (LayerPlayer, AnimationExplorer)
+- **swift-evolution**: 1 result (SE-0421: Generalize async sequence...)
+
+Use `source` parameter to search: apple-archive, samples, hig, swift-evolution...
+</code></pre><p>Every search response is now a teaching moment. Claude sees there are archive guides available. It sees sample code exists. It learns <em>in context</em> how to dig deeper.</p><h2 id="human-interface-guidelines-design-docs-for-ai">Human Interface Guidelines: Design Docs for AI</h2><p>Here’s something I didn’t expect to matter as much as it does: HIG support.</p><p>Apple’s Human Interface Guidelines aren’t just for designers. When Claude is helping you build a button, a navigation pattern, or a settings screen, it should know Apple’s design recommendations - not just the API.</p><pre><code class="language-bash">cupertino search "buttons" --source hig
+</code></pre><p>Now when you ask “what’s the recommended button style for destructive actions?”, Claude can actually look it up instead of guessing. Platform-specific guidance for iOS, macOS, watchOS, visionOS - all searchable.</p><p>The HIG docs are marked as “universal” for availability - they apply across all OS versions. Design principles don’t deprecate like APIs do.</p><h2 id="one-tool-to-rule-them-all">One Tool to Rule Them All</h2><p>Speaking of simplification - I consolidated the search tools.</p><p>Before v0.7.0:</p><ul><li><code>search_docs</code> - Apple documentation</li><li><code>search_hig</code> - Human Interface Guidelines</li><li><code>search_samples</code> - Sample code</li><li>…and more</li></ul><p>Now:</p><ul><li><code>search</code> - Everything, with a <code>source</code> parameter</li></ul><pre><code class="language-bash"># CLI
+cupertino search "buttons" --source hig
+cupertino search "networking" --source samples
+cupertino search "actors" --source swift-evolution
+cupertino search "everything" --source all
+</code></pre><p>One tool, eight sources, cleaner mental model. The <code>source</code> parameter accepts:</p><ul><li><code>apple-docs</code> (default) - API reference</li><li><code>samples</code> - Working code examples</li><li><code>hig</code> - Design guidelines</li><li><code>apple-archive</code> - Legacy conceptual guides</li><li><code>swift-evolution</code> - Language proposals</li><li><code>swift-org</code> - Swift.org documentation</li><li><code>swift-book</code> - The Swift Programming Language</li><li><code>packages</code> - Swift package docs</li><li><code>all</code> (searches everything)</li></ul><p>The <code>all</code> option is surprisingly useful. When you’re not sure where something lives, just search everywhere.</p><h2 id="what-i-learned">What I Learned</h2><p>Building for AI is different than building for humans.</p><p>Humans read documentation. They explore. They remember “oh yeah, there’s an archive section I should check.” AI agents don’t work that way. They have tool descriptions and search results. That’s it.</p><p>The best way to teach an AI agent? Put the lesson in every response it sees. Not in documentation it reads once. Not in tool descriptions it might forget. In the actual output, every single time.</p><p>That’s why teasers matter. That’s why source-aware messaging matters. Every search result is documentation.</p><h2 id="the-road-ahead">The Road Ahead</h2><p>With 302,424 pages indexed and version filtering working, the foundation is solid. What’s next:</p><ol><li><strong>Semantic code search</strong> - Search sample code by what it <em>does</em>, not just keywords</li><li><strong>Framework relationships</strong> - Search UIKit, get relevant Foundation results too</li><li><strong>Smarter ranking</strong> - Weight results by your target platform</li></ol><p>The crawl is complete. The curation continues.</p><h2 id="install-or-update">Install or Update</h2><pre><code class="language-bash"># New install
+brew install mihaelamj/tap/cupertino
+
+# Update existing
+brew upgrade cupertino
+
+# Or one-line install
+bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><p>Then:</p><pre><code class="language-bash">cupertino setup  # Download 2.3GB database (~30 seconds)
+cupertino serve  # Start MCP server
+</code></pre><p>Try the new features:</p><pre><code class="language-bash"># Filter by OS version
+cupertino search "SwiftUI navigation" --min-ios 17
+
+# Search design guidelines
+cupertino search "buttons destructive" --source hig
+
+# Search legacy conceptual guides
+cupertino search "Core Animation" --source apple-archive
+
+# Search everything at once
+cupertino search "async await" --source all
+</code></pre><hr><p><em>Cupertino is an Apple Documentation MCP Server. 302,424 pages of Apple documentation, searchable by AI. Source at <a href="https://github.com/mihaelamj/cupertino" target="_blank">github.com/mihaelamj/cupertino</a>.</em></p>
+        </div>
+    
+        <footer class="post-footer">
+            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
+        </footer>
+    </article>
+
+    </main>
+
+    <footer>
+        <p>This site was generated using <a href="https://www.swift.org/" target="_blank">Swift</a> & <a href="https://github.com/toucansites/toucan" target="_blank">Toucan</a>.</p>
+    
+        <p class="small">Aleahim &copy; 2025.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    
+</body>
+</html>
