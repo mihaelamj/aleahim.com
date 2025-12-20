@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor - Aleahim</title>
+    <meta name="description" content="SwiftSyntax enables semantic code search. A deep refactoring of the codebase delivers cleaner results and better AI capabilities.">
+
+    <meta property="og:url" content="https://aleahim.com/blog/cupertino-08-release/">
+    <meta property="og:title" content="Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor - Aleahim">
+    <meta property="og:description" content="SwiftSyntax enables semantic code search. A deep refactoring of the codebase delivers cleaner results and better AI capabilities.">
+    
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor - Aleahim">
+    <meta name="twitter:description" content="SwiftSyntax enables semantic code search. A deep refactoring of the codebase delivers cleaner results and better AI capabilities.">
+    
+
+    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a id="logo" href="https://aleahim.com">
+                <img
+                    src="https://aleahim.com/images/logo.svg"
+                    alt="Aleahim"
+                    title="Aleahim"
+                >
+                <h1 class="site-title">Aleahim.com</h1>
+            </a>
+    
+            <nav>
+                <div class="navigation">
+                    <a href="https://aleahim.com/">Home</a>
+                <a href="https://aleahim.com/cv/">CV</a>
+                <a href="https://aleahim.com/services/">Services</a>
+                <a href="https://aleahim.com/about/">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <article class="blog-post">
+        <header class="post-header">
+            <div class="title-with-thumbnail">
+                <div class="post-thumbnail">
+                    <img src="https://aleahim.com/images/blog/cupertino-08-release/cupertino-8.png" alt="Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor">
+                </div>
+                <div class="title-wrapper">
+                    <h1>Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor</h1>
+                    <div class="post-meta">
+                        <time datetime="2025-12-20T00:00:00.000Z">December 20, 2025</time>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="post-content">
+            <div class="post-hero-image">
+                <img src="https://aleahim.com/images/blog/cupertino-08-release/cupertino-8.png" alt="Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor">
+            </div>
+    
+            <h1>Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor</h1><p><strong>TL;DR:</strong> SwiftSyntax-based AST indexing. Major codebase refactoring. Cleaner search results. Test suite grew from 93 to 698 tests.</p><p>This release is about foundations. Less visible features, more architectural work that makes everything else possible.</p><h2 id="the-big-feature-ast-indexing">The Big Feature: AST Indexing</h2><p>This is issue #81, and it’s been brewing for a while. Sample code search was purely keyword-based - you search “async”, you get files containing “async”. Comments, strings, documentation, actual code - all treated equally.</p><p>Now Cupertino extracts structured symbol data from Swift source:</p><pre><code class="language-swift">// SwiftSourceExtractor analyzes this:
+@MainActor
+class NetworkManager: ObservableObject {
+    @Published var isLoading = false
+
+    func fetch() async throws -&gt; Data { ... }
+}
+</code></pre><p>And extracts:</p><table><thead><td>Symbol</td><td>Kind</td><td>Attributes</td></thead><tbody><tr><td><code>NetworkManager</code></td><td>class</td><td><code>@MainActor</code></td></tr><tr><td><code>isLoading</code></td><td>property</td><td><code>@Published</code></td></tr><tr><td><code>fetch()</code></td><td>function</td><td>async, throws</td></tr></tbody></table><h3 id="what-this-enables">What This Enables</h3><p><strong>Better ranking, not magic.</strong> When you search “@Observable”, plain text search finds every file mentioning “Observable” - comments, strings, documentation, actual declarations. All ranked equally.</p><p>With AST indexing, Cupertino knows which results contain actual <code>@Observable</code> class declarations. These get boosted in ranking. The real symbol usages surface first.</p><pre><code class="language-bash">$ cupertino search "@Observable" --source samples --format markdown
+</code></pre><pre><code class="language-markdown">## Projects (5 found)
+
+### 1. Migrating from the Observable Object protocol to the Observable macro
+- **Frameworks:** swiftui
+- **Files:** 14
+
+## Matching Files
+
+### Library.swift
+&gt; @Observable final class Library {
+&gt;     var books: [Book] = [Book(), Book(), Book()]
+&gt; }
+
+### Book.swift
+&gt; @Observable final class Book: Identifiable {
+&gt;     var title = "Sample Book Title"
+&gt;     let id = UUID()
+&gt; }
+</code></pre><p>The search still matches text, but files with actual <code>@Observable</code> declarations rank higher than files that just mention the word in comments.</p><p><strong>Dedicated semantic tools.</strong> The symbol tables power these MCP tools:</p><ul><li><code>search_symbols</code> - query by symbol type and attributes</li><li><code>search_property_wrappers</code> - find <code>@Published</code>, <code>@State</code>, <code>@Binding</code> usage</li><li><code>search_conformances</code> - find protocol implementations</li><li><code>search_concurrency</code> - find async/await patterns</li></ul><p>These query extracted symbol data directly, not text. AI assistants can ask “find all async functions in SwiftUI samples” and get structured results.</p><h3 id="how-it-works">How It Works</h3><p>The new <code>ASTIndexer</code> package uses SwiftSyntax to parse Swift files and extract:</p><ul><li><strong>Symbols</strong>: Classes, structs, enums, actors, protocols, functions</li><li><strong>Attributes</strong>: <code>@MainActor</code>, <code>@Published</code>, <code>@Observable</code>, etc.</li><li><strong>Conformances</strong>: Protocol adoptions</li><li><strong>Modifiers</strong>: async, throws, static, public</li></ul><p>SwiftSyntax is Apple’s official Swift parser - the same one the compiler uses. No regex hacks, no fragile pattern matching.</p><p>The tradeoff? Build times. SwiftSyntax is a beast. First release build takes 10-15 minutes now. But the capability is worth it.</p><h2 id="the-refactoring-story">The Refactoring Story</h2><p>This release involved substantial architectural changes that touch almost every part of the codebase. The goal: make search results cleaner and the system more capable.</p><h3 id="unified-search-service">Unified Search Service</h3><p>Previously, each search source (docs, HIG, samples, videos) had its own formatting logic scattered across the codebase. Now there’s a unified <code>SearchService</code> that handles all sources consistently:</p><ul><li>Single entry point for all search types</li><li>Consistent result formatting across sources</li><li>Shared footer generation with tips and guidance</li><li>Hierarchical numbering that works across all result types</li></ul><h3 id="package-architecture-cleanup">Package Architecture Cleanup</h3><p>The package structure got significant attention:</p><ul><li>Consolidated duplicate functionality across modules</li><li>Clearer boundaries between <code>Services</code>, <code>Core</code>, and domain packages</li><li>Better separation of CLI concerns from library logic</li><li>Removed dead code paths and unused types</li></ul><h3 id="result-formatter-protocol">Result Formatter Protocol</h3><p>A new <code>ResultFormatter</code> protocol standardizes how search results become output:</p><pre><code class="language-swift">protocol ResultFormatter {
+    associatedtype Input
+    func format(_ result: Input) -&gt; String
+}
+</code></pre><p>This enabled reusable formatters for different output contexts (CLI text, MCP markdown, JSON) while keeping the core search logic unchanged.</p><p>The refactoring wasn’t glamorous work, but it paid off immediately in cleaner search results and faster feature development.</p><h2 id="smarter-search-output">Smarter Search Output</h2><p>Here’s a subtle change that matters more than it sounds: hierarchical result numbering.</p><p>Before:</p><pre><code>## Apple Documentation
+### UIButton
+### UIView
+### UIControl
+
+## Sample Code
+### ButtonStyles
+### CustomControls
+</code></pre><p>After:</p><pre><code>## 1. Apple Documentation (20)
+### 1.1 UIButton
+### 1.2 UIView
+### 1.3 UIControl
+
+## 2. Sample Code (5)
+### 2.1 ButtonStyles
+### 2.2 CustomControls
+</code></pre><p>Why does this matter? When Claude is navigating search results, it can now reference specific items: “Looking at result 1.3…” or “Sample 2.1 shows this pattern…”</p><p>The count in headers (<code>20</code>, <code>5</code>) also helps the AI understand result distribution. If one source has 50 results and another has 2, that’s useful context.</p><p>Small formatting changes, big impact on AI reasoning.</p><h2 id="display-bugs-death-by-a-thousand-cuts">Display Bugs: Death by a Thousand Cuts</h2><p>Sometimes bugs accumulate in strange ways. I noticed search results had weird formatting artifacts:</p><ul><li><code>Tabbars|AppleDeveloperDocumentation###</code> - trailing garbage</li><li><code>Tab  bars</code> - double spaces</li><li><code>Goingfull screen</code> - missing space in HIG titles</li><li><code>Framework# SwiftUI</code> - inline markdown headers</li></ul><p>Each individually minor. Together, they made results look unprofessional and confused AI parsing.</p><p>The fix was a string extension that cleans display text:</p><pre><code class="language-swift">var cleanedForDisplay: String {
+    var result = self
+
+    // Remove trailing ###
+    while result.hasSuffix("###") { ... }
+
+    // Remove |AppleDeveloperDocumentation
+    result = result.replacingOccurrences(of: "|AppleDeveloperDocumentation", with: "")
+
+    // Fix "Goingfull" -&gt; "Going full"
+    result = result.addingSpacesToCamelCase
+
+    // Collapse double spaces
+    while result.contains("  ") { ... }
+
+    return result
+}
+</code></pre><p>Now there are 34 unit tests just for string formatting. Because every edge case that slipped through was a papercut in every search result.</p><h2 id="the-test-suite-story">The Test Suite Story</h2><table><thead><td>Metric</td><td>v0.7.0</td><td>v0.8.0</td></thead><tbody><tr><td>Tests</td><td>93</td><td>698</td></tr><tr><td>Suites</td><td>7</td><td>73</td></tr><tr><td>Duration</td><td>~5 min</td><td>~35 sec</td></tr></tbody></table><p>That’s not a typo. We went from 93 tests to 698.</p><p>Where did they come from?</p><ol><li><strong>AST Indexer tests</strong> - SwiftSyntax extraction needs thorough testing</li><li><strong>String formatter tests</strong> - All those display edge cases</li><li><strong>Service layer tests</strong> - Unified search service coverage</li><li><strong>Symbol database tests</strong> - Integration tests for code analysis</li></ol><p>The duration dropped despite 7x more tests because I fixed a race condition in the <code>PriorityPackagesCatalog</code> tests. The old code used <code>defer { Task { await ... } }</code> which created detached async tasks that didn’t complete before the next test ran. State leaked between tests, causing random failures.</p><p>The fix was embarrassingly simple: don’t use <code>defer</code> with async cleanup. Just await at the end of the test.</p><h2 id="doctor-command-gets-smarter">Doctor Command Gets Smarter</h2><p>The <code>cupertino doctor</code> command now diagnoses package-related issues:</p><pre><code class="language-bash">$ cupertino doctor
+
+Cupertino v0.8.0 - Health Check
+
+Databases:
+  ✅ search.db (2.3GB, 302,424 docs)
+  ✅ sample.db (156MB, 606 projects)
+
+Package Status:
+  ✅ User selections: ~/.cupertino/selected-packages.json (12 packages)
+  ✅ Downloaded READMEs: 12/12
+  ⚠️  Orphaned READMEs: 3 (packages no longer selected)
+
+Priority Breakdown:
+  📦 Apple Official: 31 packages
+  📦 Ecosystem: 5 packages
+
+MCP Tools: 8 registered
+Resources: 3 providers active
+</code></pre><p>The “orphaned READMEs” warning catches when you’ve unselected packages but their downloaded docs remain. Helpful for debugging unexpected search results.</p><h2 id="what-s-next">What’s Next</h2><p>The semantic tools (<code>search_symbols</code>, <code>search_conformances</code>, etc.) are built. Next steps:</p><ol><li><strong>Index all sample code</strong> - Run AST extraction across all 606 projects to populate symbol tables</li><li><strong>Cross-referencing</strong> - Link extracted symbols to their documentation pages</li><li><strong>Symbol coverage</strong> - Expand extraction to catch more edge cases</li></ol><p>The infrastructure is in place. Now to fill the database and refine the queries.</p><h2 id="install-or-update">Install or Update</h2><pre><code class="language-bash"># New install
+brew install mihaelamj/tap/cupertino
+
+# Update existing
+brew upgrade cupertino
+
+# Or one-line install
+bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><p>Then:</p><pre><code class="language-bash">cupertino setup  # Download databases (~30 seconds)
+cupertino serve  # Start MCP server
+</code></pre><p>Try the improved search:</p><pre><code class="language-bash"># See hierarchical numbering
+cupertino search "SwiftUI navigation" --source all
+
+# Clean HIG results
+cupertino search "tab bar" --source hig
+
+# Check your installation health
+cupertino doctor
+</code></pre><hr><p><em>Cupertino is an Apple Documentation MCP Server. 302,424 pages of Apple documentation, searchable by AI. Source at <a href="https://github.com/mihaelamj/cupertino" target="_blank">github.com/mihaelamj/cupertino</a>.</em></p>
+        </div>
+    
+        <footer class="post-footer">
+            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
+        </footer>
+    </article>
+
+    </main>
+
+    <footer>
+        <p>This site was generated using <a href="https://www.swift.org/" target="_blank">Swift</a> & <a href="https://github.com/toucansites/toucan" target="_blank">Toucan</a>.</p>
+    
+        <p class="small">Aleahim &copy; 2025.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    
+</body>
+</html>

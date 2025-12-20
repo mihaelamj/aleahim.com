@@ -7,6 +7,13 @@
     <language>en-US</language>
     <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor</title>
+      <link>https://aleahim.com/blog/cupertino-08-release/</link>
+      <description>SwiftSyntax enables semantic code search. A deep refactoring of the codebase delivers cleaner results and better AI capabilities.</description>
+      <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-08-release/</guid>
+    </item>
+    <item>
       <title>Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper</title>
       <link>https://aleahim.com/blog/cupertino-07-release/</link>
       <description>The complete Apple documentation crawl is done. Now you can filter by iOS 17+ and Claude finally knows where to look for answers.</description>
