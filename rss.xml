@@ -7,6 +7,13 @@
     <language>en-US</language>
     <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade</title>
+      <link>https://aleahim.com/blog/cupertino-09-release/</link>
+      <description>Cupertino now works with OpenAI Codex, Cursor, VS Code Copilot, Zed, Windsurf, and opencode. Plus MCP protocol upgrade to 2025-06-18.</description>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-09-release/</guid>
+    </item>
+    <item>
       <title>Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor</title>
       <link>https://aleahim.com/blog/cupertino-08-release/</link>
       <description>SwiftSyntax enables semantic code search. A deep refactoring of the codebase delivers cleaner results and better AI capabilities.</description>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade - Aleahim</title>
+    <meta name="description" content="Cupertino now works with OpenAI Codex, Cursor, VS Code Copilot, Zed, Windsurf, and opencode. Plus MCP protocol upgrade to 2025-06-18.">
+
+    <meta property="og:url" content="https://aleahim.com/blog/cupertino-09-release/">
+    <meta property="og:title" content="Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade - Aleahim">
+    <meta property="og:description" content="Cupertino now works with OpenAI Codex, Cursor, VS Code Copilot, Zed, Windsurf, and opencode. Plus MCP protocol upgrade to 2025-06-18.">
+    
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade - Aleahim">
+    <meta name="twitter:description" content="Cupertino now works with OpenAI Codex, Cursor, VS Code Copilot, Zed, Windsurf, and opencode. Plus MCP protocol upgrade to 2025-06-18.">
+    
+
+    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a id="logo" href="https://aleahim.com">
+                <img
+                    src="https://aleahim.com/images/logo.svg"
+                    alt="Aleahim"
+                    title="Aleahim"
+                >
+                <h1 class="site-title">Aleahim.com</h1>
+            </a>
+    
+            <nav>
+                <div class="navigation">
+                    <a href="https://aleahim.com/">Home</a>
+                <a href="https://aleahim.com/cv/">CV</a>
+                <a href="https://aleahim.com/services/">Services</a>
+                <a href="https://aleahim.com/about/">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <article class="blog-post">
+        <header class="post-header">
+            <div class="title-with-thumbnail">
+                <div class="post-thumbnail">
+                    <img src="https://aleahim.com/images/blog/cupertino-09-release/hero.jpg" alt="Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade">
+                </div>
+                <div class="title-wrapper">
+                    <h1>Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade</h1>
+                    <div class="post-meta">
+                        <time datetime="2026-01-25T00:00:00.000Z">January 25, 2026</time>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="post-content">
+            <div class="post-hero-image">
+                <img src="https://aleahim.com/images/blog/cupertino-09-release/hero.jpg" alt="Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade">
+            </div>
+    
+            <h1>Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade</h1><p><strong>TL;DR:</strong> Cupertino now has setup guides for 8 different AI tools. MCP protocol upgraded to 2025-06-18. Comprehensive documentation for all binaries. No more Node.js in the codebase.</p><p>This release focuses on reach. More AI tools can use Cupertino. Better documentation. Cleaner internals.</p><h2 id="release-summary">Release Summary</h2><p>Since v0.8.0, Cupertino has had 5 releases:</p><table><thead><td>Version</td><td>Date</td><td>Highlights</td></thead><tbody><tr><td>0.8.1</td><td>2025-12-28</td><td>Installer color fix</td></tr><tr><td>0.8.2</td><td>2025-12-31</td><td>Download progress animation</td></tr><tr><td>0.8.3</td><td>2025-12-31</td><td>Swift-only tests, no Node.js</td></tr><tr><td>0.9.0</td><td>2025-12-31</td><td>MCP protocol 2025-06-18</td></tr><tr><td>0.9.1</td><td>2026-01-25</td><td>Multi-agent docs, binary docs</td></tr></tbody></table><h2 id="multi-agent-support-v0.9.1">Multi-Agent Support (v0.9.1)</h2><p>The most requested feature: “How do I use Cupertino with X?”</p><p>Cupertino started as a Claude tool. But MCP is an open protocol. Any AI assistant that speaks MCP can use it.</p><p>v0.9.1 adds setup guides for 8 AI tools:</p><table><thead><td>Tool</td><td>Config Location</td></thead><tbody><tr><td>Claude Desktop</td><td><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></td></tr><tr><td>Claude Code</td><td><code>claude mcp add cupertino</code></td></tr><tr><td>OpenAI Codex</td><td><code>codex mcp add cupertino</code> or <code>~/.codex/config.toml</code></td></tr><tr><td>Cursor</td><td><code>.cursor/mcp.json</code></td></tr><tr><td>VS Code (Copilot)</td><td><code>.vscode/mcp.json</code></td></tr><tr><td>Zed</td><td><code>settings.json</code></td></tr><tr><td>Windsurf</td><td><code>~/.codeium/windsurf/mcp_config.json</code></td></tr><tr><td>opencode</td><td><code>opencode.jsonc</code></td></tr></tbody></table><h3 id="quick-setup">Quick Setup</h3><p>For most tools, configuration is a JSON object:</p><pre><code class="language-json">{
+  "mcpServers": {
+    "cupertino": {
+      "command": "/opt/homebrew/bin/cupertino",
+      "args": ["serve"]
+    }
+  }
+}
+</code></pre><p>The exact structure varies by tool. Full examples are in the <a href="https://github.com/mihaelamj/cupertino/blob/main/docs/commands/serve/README.md" target="_blank">serve command documentation</a>.</p><h3 id="dynamic-path-detection">Dynamic Path Detection</h3><p>If you’re not sure where cupertino is installed:</p><pre><code class="language-bash">claude mcp add cupertino -- $(which cupertino)
+codex mcp add cupertino -- $(which cupertino) serve
+</code></pre><p>The <code>$(which cupertino)</code> expands to the actual binary path. Works for Homebrew installs on both Apple Silicon (<code>/opt/homebrew/bin</code>) and Intel (<code>/usr/local/bin</code>).</p><h2 id="mcp-protocol-upgrade-v0.9.0">MCP Protocol Upgrade (v0.9.0)</h2><p>v0.9.0 upgrades the MCP protocol from <code>2024-11-05</code> to <code>2025-06-18</code>.</p><p>This matters because newer AI tools expect the newer protocol. Without this upgrade, Cupertino would fail to initialize with clients that only support <code>2025-06-18</code>.</p><p>The upgrade includes backward compatibility:</p><pre><code class="language-swift">// Server negotiates with client
+public let MCPProtocolVersion = "2025-06-18"
+public let MCPProtocolVersionsSupported = ["2025-06-18", "2024-11-05"]
+
+// During initialization, find common version
+let negotiatedVersion = clientVersions
+    .first { MCPProtocolVersionsSupported.contains($0) }
+</code></pre><p>If a client requests <code>2024-11-05</code>, Cupertino still works. If it requests <code>2025-06-18</code>, that works too. The <code>MCPClient</code> and <code>MockAIAgent</code> also support version fallback when connecting to servers.</p><p>Thanks to <a href="https://github.com/erikmackinnon" target="_blank">@erikmackinnon</a> for the contribution (#130).</p><h2 id="binary-documentation-v0.9.1">Binary Documentation (v0.9.1)</h2><p>Cupertino ships 4 executables. Until now, only <code>cupertino</code> had proper documentation.</p><p>v0.9.1 adds 48 documentation files covering all binaries:</p><h3 id="cupertino">cupertino</h3><p>The main CLI with 12 commands. Already documented, but now with updated MCP client configuration examples.</p><h3 id="cupertino-tui">cupertino-tui</h3><p>The terminal UI for browsing and selecting packages:</p><pre><code class="language-bash">cupertino-tui
+cupertino-tui --version
+</code></pre><p>5 views documented:</p><ul><li><strong>Dashboard</strong> - Overview and quick actions</li><li><strong>Packages</strong> - Browse and select Swift packages</li><li><strong>Archive</strong> - Apple Archive documentation selection</li><li><strong>Videos</strong> - WWDC video selection</li><li><strong>Settings</strong> - Configuration options</li></ul><h3 id="mock-ai-agent">mock-ai-agent</h3><p>A testing tool that simulates MCP client behavior:</p><pre><code class="language-bash">mock-ai-agent search "SwiftUI navigation"
+mock-ai-agent list-tools
+mock-ai-agent --server /path/to/cupertino
+mock-ai-agent --version  # New in v0.9.1
+</code></pre><p>Arguments documented:</p><ul><li><code>&lt;query&gt;</code> - Search query to execute</li><li><code>--server</code> - Path to MCP server binary</li></ul><p>Useful for testing MCP servers without a full AI client.</p><h3 id="cupertino-rel">cupertino-rel</h3><p>The release automation tool (maintainer-only):</p><pre><code class="language-bash">cupertino-rel bump patch          # Bump version
+cupertino-rel tag --version 0.9.1 --push  # Create and push tag
+cupertino-rel homebrew --version 0.9.1    # Update Homebrew formula
+cupertino-rel databases --version 0.9.1   # Upload database release
+cupertino-rel docs-update patch   # Documentation-only release
+cupertino-rel full 0.10.0         # Complete release workflow
+</code></pre><p>6 subcommands with all options documented:</p><ul><li><code>bump</code> - Update version in all files</li><li><code>tag</code> - Create and push git tags</li><li><code>homebrew</code> - Update Homebrew formula</li><li><code>databases</code> - Upload databases to cupertino-docs</li><li><code>docs-update</code> - Documentation-only releases</li><li><code>full</code> - Complete release workflow</li></ul><h3 id="documentation-structure">Documentation Structure</h3><p>The documentation follows the same granular folder structure as the main CLI:</p><pre><code>docs/binaries/
+├── README.md
+├── cupertino-tui/
+│   ├── README.md
+│   ├── option (--)/
+│   │   └── version.md
+│   └── view/
+│       ├── dashboard.md
+│       ├── packages.md
+│       ├── archive.md
+│       ├── videos.md
+│       └── settings.md
+├── mock-ai-agent/
+│   ├── README.md
+│   ├── option (--)/
+│   │   ├── server.md
+│   │   └── version.md
+│   └── argument (&lt;&gt;)/
+│       └── query.md
+└── cupertino-rel/
+    ├── README.md
+    ├── option (--)/
+    │   └── version.md
+    └── subcommand/
+        ├── bump/
+        ├── tag/
+        ├── homebrew/
+        ├── databases/
+        ├── docs-update/
+        └── full/
+</code></pre><h2 id="no-more-node.js-v0.8.3">No More Node.js (v0.8.3)</h2><p>v0.8.3 removed the last Node.js dependency from the codebase.</p><p>The MCP integration tests previously used npm packages to simulate client behavior. Now they use <code>cupertino serve</code> directly:</p><pre><code class="language-swift">@Test("Initialize handshake with cupertino server")
+func cupertinoServerInitialize() async throws {
+    let process = Process()
+    process.executableURL = URL(fileURLWithPath: ".build/debug/cupertino")
+    process.arguments = ["serve"]
+
+    let stdinPipe = Pipe()
+    let stdoutPipe = Pipe()
+    process.standardInput = stdinPipe
+    process.standardOutput = stdoutPipe
+
+    try process.run()
+
+    // Send initialize request (compact JSON + newline)
+    let initRequest = """
+    {"jsonrpc":"2.0","id":1,"method":"initialize","params":{...}}\n
+    """
+    stdinPipe.fileHandleForWriting.write(Data(initRequest.utf8))
+
+    // Parse and verify response
+    let response = try JSONDecoder().decode(JSONRPCResponse.self, from: responseData)
+    #expect(response.serverInfo.name == "cupertino")
+}
+</code></pre><p>The tests verify:</p><ul><li>MCP initialize handshake</li><li><code>tools/list</code> responses</li><li>Protocol version negotiation</li><li>Server info and tool registration</li></ul><p>Swift-only tests. No npm. No node_modules. No package-lock.json.</p><p>This is now policy in AGENTS.md: <strong>no Node.js or npm in the Cupertino codebase</strong>.</p><h2 id="setup-progress-animation-v0.8.2">Setup Progress Animation (v0.8.2)</h2><p>Database downloads are ~400MB. Previously, <code>cupertino setup</code> showed nothing while downloading.</p><p>Now you get real-time feedback:</p><p><strong>Download progress with bar:</strong></p><pre><code>⠹ [████████████░░░░░░░░░░░░░░░░░░] 42% (168MB/400MB)
+</code></pre><p><strong>Extraction spinner:</strong></p><pre><code>⠧ Extracting databases...
+</code></pre><p>Implementation details:</p><ul><li><code>DownloadProgressDelegate</code> implements <code>URLSessionDownloadDelegate</code> for real-time progress</li><li><code>ExtractionSpinner</code> shows animated feedback during unzip</li><li>Extended download timeout to 10 minutes for large database files</li><li>Uses ANSI escape codes for in-place updates</li></ul><p>Small things that make the tool feel responsive.</p><h2 id="installer-ansi-fix-v0.8.1">Installer ANSI Fix (v0.8.1)</h2><p>The one-line installer had broken ANSI colors:</p><p><strong>Before:</strong></p><pre><code>\033[32m✓ Installation complete\033[0m
+</code></pre><p><strong>After:</strong></p><pre><code>✓ Installation complete  (in green)
+</code></pre><p>Two <code>echo</code> statements were missing the <code>-e</code> flag for escape sequence interpretation. Fixed in #124.</p><h2 id="database-compatibility">Database Compatibility</h2><p>This release uses the same database schema as v0.8.2. No migration needed.</p><p>When you run <code>cupertino setup</code>, it downloads databases from the v0.8.2 release. The CLI version (0.9.1) and database version (0.8.2) are now decoupled.</p><table><thead><td>Version Type</td><td>Current</td><td>Purpose</td></thead><tbody><tr><td>CLI version</td><td>0.9.1</td><td>Binary release</td></tr><tr><td>Database version</td><td>0.8.2</td><td>Pre-built database release</td></tr><tr><td>Schema version</td><td>9</td><td>SQLite schema</td></tr></tbody></table><p>This means:</p><ul><li>CLI updates don’t require database re-downloads</li><li>Database updates don’t require CLI updates</li><li>Schema changes are tracked separately</li></ul><h2 id="install-or-update">Install or Update</h2><pre><code class="language-bash"># New install
+brew install mihaelamj/tap/cupertino
+
+# Update existing
+brew update && brew upgrade cupertino
+
+# Or one-line install
+bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><p>Then:</p><pre><code class="language-bash">cupertino setup  # Download databases (~30 seconds)
+cupertino serve  # Start MCP server
+</code></pre><p>Configure your AI tool using the guides above, and you’re ready.</p><h2 id="issues-closed">Issues Closed</h2><ul><li>#124 - Installer ANSI escape sequences</li><li>#96 - Setup progress animation</li><li>#131 - Remove Node.js dependency from MCP integration tests</li><li>#130 - MCP protocol mismatch (2025-06-18 support)</li><li>#134 - Better documentation for use with different agents</li><li>#137 - Documentation improvements: MCP client configs and binary documentation</li></ul><h2 id="links">Links</h2><ul><li><a href="https://github.com/mihaelamj/cupertino" target="_blank">GitHub Repository</a></li><li><a href="https://github.com/mihaelamj/cupertino/tree/main/docs" target="_blank">Documentation</a></li><li><a href="https://github.com/mihaelamj/cupertino/releases/tag/v0.9.1" target="_blank">Release Notes</a></li></ul>
+        </div>
+    
+        <footer class="post-footer">
+            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
+        </footer>
+    </article>
+
+    </main>
+
+    <footer>
+        <p>This site was generated using <a href="https://www.swift.org/" target="_blank">Swift</a> & <a href="https://github.com/toucansites/toucan" target="_blank">Toucan</a>.</p>
+    
+        <p class="small">Aleahim &copy; 2026.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    
+</body>
+</html>
