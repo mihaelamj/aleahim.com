@@ -1,38 +1,50 @@
 ---
 slug: services
 title: Services
-description: OpenAPI consulting and Swift development services
+description: OpenAPI consulting, AI integration, and Swift development services
 ---
 
 # Build Your Server and Client From One OpenAPI Spec
 
-I help teams ship a fully integrated OpenAPI workflow—designing the spec, generating a Vapor server, and producing Swift clients that share the same contracts. The workflow comes straight from the ExtremePackaging + OpenAPI reference implementation, adapted to fit your stack.
+I help teams ship a fully integrated OpenAPI workflow — from designing the spec to generating a production-ready Vapor server and type-safe Swift clients, all sharing the same contracts.
 
-## What We Assemble Together
+## What You Get
 
-- **OpenAPI schema design and modular folder layout** powered by YamlMerger
-- **Automated Swift OpenAPI Generator pipeline** with shared models, clients, and server stubs
-- **Vapor-based API server** that mirrors your spec with production-style logging and validation
-- **Concurrency-safe Swift client** featuring logging, auth, and request correction middleware
-- **Testing strategy** covering local server and remote environments so regressions get caught early
+- **OpenAPI schema design** with a clean, modular folder layout
+- **Automated code generation pipeline** — shared models, clients, and server stubs from a single source of truth
+- **Vapor-based API server** with production logging and validation
+- **Type-safe Swift client** with auth, logging, and request middleware
+- **Testing strategy** covering local and remote environments
+
+---
+
+## AI Integration for Swift Teams
+
+I build MCP servers, AI-assisted developer tooling, and LLM integrations for Apple-platform teams.
+
+- **Custom MCP servers** — give AI assistants access to your internal docs, APIs, or codebase
+- **AI-augmented developer workflows** — code generation pipelines, documentation crawlers, and prompt engineering for Swift codebases
+- **On-device AI integration** — CoreML pipelines and cloud-to-device AI workflows
+
+---
 
 ## Engagement Options
 
 ### Architecture Hour • €150/hour
-Targeted pairing on spec design, generator setup, or module layout decisions.
+Pairing session on spec design, generator setup, or architecture decisions.
 
-*Need a quick-turn review? Priority sessions land at €200/hour.*
+*Short on time? Priority sessions at €200/hour.*
 
-### Build Day • €1,200/day
-Hands-on implementation sprint to wire the OpenAPI toolchain into your codebase.
+### Build Day • €1,000/day
+One focused day to integrate the toolchain into your codebase. You walk away with a working setup.
 
-### Delivery Week • €6,000/week
-End-to-end engagement that ships the server, client, middleware, and tests with your team.
+### Delivery Week • €5,000/week
+Full engagement — I deliver the server, client, middleware, and tests, integrated with your team's workflow. Production-ready by Friday.
 
-All engagements require a minimum two-week lead time from booking to project kick-off.
+All engagements require two weeks' notice before kick-off.
 
-## Ready to align your server and client?
+## Let's build
 
-Send me a note about your API goals, and we'll schedule a short call to scope the work.
+Tell me about your project and we'll scope it on a short call.
 
 [Book a call](https://calendly.com/mihaelamj/30min)
