@@ -18,16 +18,18 @@ I help teams ship a fully integrated OpenAPI workflow—designing the spec, gene
 
 ## Engagement Options
 
-### Architecture Hour • starting at €80/hour
+### Architecture Hour • €150/hour
 Targeted pairing on spec design, generator setup, or module layout decisions.
 
-*Need a quick-turn review? Priority sessions land at €100–€130/hour.*
+*Need a quick-turn review? Priority sessions land at €200/hour.*
 
-### Build Day • €640/day
+### Build Day • €1,200/day
 Hands-on implementation sprint to wire the OpenAPI toolchain into your codebase.
 
-### Delivery Week • €2,800/week
+### Delivery Week • €6,000/week
 End-to-end engagement that ships the server, client, middleware, and tests with your team.
+
+All engagements require a minimum two-week lead time from booking to project kick-off.
 
 ## Ready to align your server and client?
 
