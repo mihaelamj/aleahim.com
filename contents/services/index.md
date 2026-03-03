@@ -6,6 +6,8 @@ description: OpenAPI consulting, AI integration, and Swift development services
 
 # Build Your Server and Client From One OpenAPI Spec
 
+Senior Swift engineer with 15+ years on Apple platforms. Creator of [Cupertino](https://github.com/mihaelamj/cupertino), an open-source MCP server serving 22,000+ Apple documentation pages to AI assistants.
+
 I help teams ship a fully integrated OpenAPI workflow — from designing the spec to generating a production-ready Vapor server and type-safe Swift clients, all sharing the same contracts.
 
 ## What You Get
@@ -31,17 +33,27 @@ I build MCP servers, AI-assisted developer tooling, and LLM integrations for App
 ## Engagement Options
 
 ### Architecture Hour • €150/hour
-Pairing session on spec design, generator setup, or architecture decisions.
+I review your spec, debug your pipeline, or solve a specific technical problem. You get answers and working code, not a slide deck.
 
 *Short on time? Priority sessions at €200/hour.*
 
 ### Build Day • €1,000/day
-One focused day to integrate the toolchain into your codebase. You walk away with a working setup.
+I integrate the toolchain into your codebase. By end of day, your pipeline generates code from spec and your first endpoints are running.
 
 ### Delivery Week • €5,000/week
-Full engagement — I deliver the server, client, middleware, and tests, integrated with your team's workflow. Production-ready by Friday.
+I ship the full stack — server, client, middleware, and tests — integrated with your team's workflow. Production-ready by Friday.
 
 All engagements require two weeks' notice before kick-off.
+
+---
+
+## Selected Projects
+
+- **[Cupertino](https://github.com/mihaelamj/cupertino)** — MCP server for Apple documentation (600+ stars)
+- **[ExtremePackaging](https://github.com/mihaelamj/ExtremePackaging)** — OpenAPI reference implementation with Vapor + Swift client
+- **[OpenAPILoggingMiddleware](https://github.com/mihaelamj/OpenAPILoggingMiddleware)** — Reusable logging middleware for OpenAPI pipelines
+
+---
 
 ## Let's build
 
