@@ -4,7 +4,7 @@ title: Services
 description: OpenAPI consulting, AI integration, and Swift development services
 ---
 
-# Build Your Server and Client From One OpenAPI Spec
+# OpenAPI Pipelines and AI Tooling for Swift Teams
 
 Senior Swift engineer with 15+ years on Apple platforms. Creator of [Cupertino](https://github.com/mihaelamj/cupertino), an open-source MCP server serving 22,000+ Apple documentation pages to AI assistants.
 
