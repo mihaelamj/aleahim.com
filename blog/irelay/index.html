@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>iRelay: Text Your Mac, Run an AI Agent - Aleahim</title>
+    <meta name="description" content="A Swift daemon that turns iMessage into a remote terminal for Claude Code">
+
+    <meta property="og:url" content="http://localhost:3000/blog/irelay/">
+    <meta property="og:title" content="iRelay: Text Your Mac, Run an AI Agent - Aleahim">
+    <meta property="og:description" content="A Swift daemon that turns iMessage into a remote terminal for Claude Code">
+    
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="iRelay: Text Your Mac, Run an AI Agent - Aleahim">
+    <meta name="twitter:description" content="A Swift daemon that turns iMessage into a remote terminal for Claude Code">
+    
+
+    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="http://localhost:3000/rss.xml">
+
+    <link rel="stylesheet" href="http://localhost:3000/css/theme.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/style.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a id="logo" href="http://localhost:3000">
+                <img
+                    src="http://localhost:3000/images/logo.svg"
+                    alt="Aleahim"
+                    title="Aleahim"
+                >
+                <h1 class="site-title">Aleahim.com</h1>
+            </a>
+    
+            <nav>
+                <div class="navigation">
+                    <a href="http://localhost:3000/">Home</a>
+                <a href="http://localhost:3000/cv/">CV</a>
+                <a href="http://localhost:3000/services/">Services</a>
+                <a href="http://localhost:3000/about/">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <article class="blog-post">
+        <header class="post-header">
+            <div class="title-with-thumbnail">
+                <div class="post-thumbnail">
+                    <img src="http://localhost:3000/images/blog/irelay/hero.jpg" alt="iRelay: Text Your Mac, Run an AI Agent">
+                </div>
+                <div class="title-wrapper">
+                    <h1>iRelay: Text Your Mac, Run an AI Agent</h1>
+                    <div class="post-meta">
+                        <time datetime="2026-03-13T00:00:00.000Z">March 13, 2026</time>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="post-content">
+            <div class="post-hero-image">
+                <img src="http://localhost:3000/images/blog/irelay/hero.jpg" alt="iRelay: Text Your Mac, Run an AI Agent">
+            </div>
+    
+            <h1>iRelay: Text Your Mac, Run an AI Agent</h1><p>I created a GitHub repo from my phone while walking around the house. No terminal, no SSH, no laptop open. Just iMessage.</p><p><strong>iRelay</strong> is a Swift daemon that listens for iMessages on your Mac, spawns Claude Code in your project directory, and sends the result back as a text. You message your Mac like you’d message a person, except it writes code.</p><p><strong>GitHub:</strong> <a href="https://github.com/mihaelamj/iRelay" target="_blank">github.com/mihaelamj/iRelay</a></p><h2 id="demo">Demo</h2><iframe width="315" height="560" src="https://www.youtube.com/embed/ehOY7BnPOf0" frameborder="0" allowfullscreen></iframe>
+<h2 id="how-it-works">How It Works</h2><p>The flow is simple:</p><pre><code>iPhone (iMessage) → Mac (iRelay daemon) → Claude Code → response → iMessage
+</code></pre><p>You send something like <code>irelayy fix the failing test</code> from your phone. Your Mac picks it up, runs Claude Code against your project, and texts you back with what it did.</p><p>That’s it. No web UI, no port forwarding, no VPN. Just iMessage as a transport layer.</p><h2 id="why-the-double-y">Why the Double Y</h2><p>I already run <a href="https://github.com/nicklama/openclaw" target="_blank">OpenClaw</a> on the same Mac for iMessage automation. Two daemons listening to the same iMessage account would fight over every incoming message.</p><p>The fix: a prefix. iRelay claims any message starting with <code>irelayy</code> (double y). OpenClaw ignores those. Everything else goes to OpenClaw. Simple namespace partitioning over a shared channel.</p><h2 id="what-i-actually-did-with-it">What I Actually Did With It</h2><p>First real test: I asked it to investigate my repos and suggest a business idea. It came back with MCPMe. Then I told it to create the repo, write the README, and push it. All from iMessage. The Mac did the work while I made coffee.</p><p>That’s the use case — you’re away from your desk but you want something done <em>now</em>. A quick fix, a repo setup, a refactor. Text it, walk away, get the result back on your phone.</p><h2 id="architecture">Architecture</h2><p>iRelay is designed around channels and providers:</p><ul><li><strong>Channels</strong> handle message transport — iMessage is the one that works today. The architecture supports Telegram, Slack, Discord, Signal, Matrix, IRC, and WebChat, but those are scaffolded, not wired up yet.</li><li><strong>Providers</strong> handle LLM execution — Claude Code is the primary one. OpenAI, Ollama, and Gemini slots exist for future use.</li></ul><p>Conversation history is preserved across messages, so context carries over. You can also save and restore sessions.</p><h2 id="what-s-next">What’s Next</h2><p>iRelay pairs well with <a href="https://github.com/mihaelamj/cupertino" target="_blank">Cupertino</a> — when Claude Code has offline access to Apple’s documentation, the responses you get back over iMessage are significantly better. No hallucinated APIs, no deprecated patterns. I’ve been quietly working on a major Cupertino update that nearly doubles framework coverage, which will make this combination even stronger. More on that soon.</p><hr><p><em>Built in a day. Used from the couch.</em></p>
+        </div>
+    
+        <footer class="post-footer">
+            <a href="http://localhost:3000/blog/" class="back-link">← Back to Blog</a>
+        </footer>
+    </article>
+
+    </main>
+
+    <footer>
+        <p>This site was generated using <a href="https://www.swift.org/" target="_blank">Swift</a> & <a href="https://github.com/toucansites/toucan" target="_blank">Toucan</a>.</p>
+    
+        <p class="small">Aleahim &copy; 2026.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    
+</body>
+</html>

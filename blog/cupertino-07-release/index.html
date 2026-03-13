@@ -7,7 +7,7 @@
     <title>Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper - Aleahim</title>
     <meta name="description" content="The complete Apple documentation crawl is done. Now you can filter by iOS 17+ and Claude finally knows where to look for answers.">
 
-    <meta property="og:url" content="https://aleahim.com/blog/cupertino-07-release/">
+    <meta property="og:url" content="http://localhost:3000/blog/cupertino-07-release/">
     <meta property="og:title" content="Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper - Aleahim">
     <meta property="og:description" content="The complete Apple documentation crawl is done. Now you can filter by iOS 17+ and Claude finally knows where to look for answers.">
     
@@ -17,11 +17,11 @@
     <meta name="twitter:description" content="The complete Apple documentation crawl is done. Now you can filter by iOS 17+ and Claude finally knows where to look for answers.">
     
 
-    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
+    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="http://localhost:3000/rss.xml">
 
-    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/theme.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/style.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/blog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     
 
@@ -32,9 +32,9 @@
 <body>
     <header>
         <div class="header-content">
-            <a id="logo" href="https://aleahim.com">
+            <a id="logo" href="http://localhost:3000">
                 <img
-                    src="https://aleahim.com/images/logo.svg"
+                    src="http://localhost:3000/images/logo.svg"
                     alt="Aleahim"
                     title="Aleahim"
                 >
@@ -43,10 +43,10 @@
     
             <nav>
                 <div class="navigation">
-                    <a href="https://aleahim.com/">Home</a>
-                <a href="https://aleahim.com/cv/">CV</a>
-                <a href="https://aleahim.com/services/">Services</a>
-                <a href="https://aleahim.com/about/">About</a>
+                    <a href="http://localhost:3000/">Home</a>
+                <a href="http://localhost:3000/cv/">CV</a>
+                <a href="http://localhost:3000/services/">Services</a>
+                <a href="http://localhost:3000/about/">About</a>
                 </div>
             </nav>
         </div>
@@ -57,7 +57,7 @@
         <header class="post-header">
             <div class="title-with-thumbnail">
                 <div class="post-thumbnail">
-                    <img src="https://aleahim.com/images/blog/cupertino-07-release/cupertino-07-release-hero.jpg" alt="Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper">
+                    <img src="http://localhost:3000/images/blog/cupertino-07-release/cupertino-07-release-hero.jpg" alt="Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper">
                 </div>
                 <div class="title-wrapper">
                     <h1>Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper</h1>
@@ -70,7 +70,7 @@
     
         <div class="post-content">
             <div class="post-hero-image">
-                <img src="https://aleahim.com/images/blog/cupertino-07-release/cupertino-07-release-hero.jpg" alt="Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper">
+                <img src="http://localhost:3000/images/blog/cupertino-07-release/cupertino-07-release-hero.jpg" alt="Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper">
             </div>
     
             <h1>Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper</h1><p><strong>TL;DR:</strong> Finally crawled all of Apple’s docs. Added OS version filtering. Made AI agents smarter about finding the right documentation.</p><p>Four days after v0.5.0, and I’ve shipped two more releases. At this point I’m not sure if this is momentum or obsession. Let’s call it momentum.</p><h2 id="the-numbers">The Numbers</h2><table><thead><td>Metric</td><td>v0.5.0</td><td>v0.7.0</td><td>Change</td></thead><tbody><tr><td>Total Documents</td><td>234,331</td><td>302,424</td><td>+29%</td></tr><tr><td>Frameworks</td><td>287</td><td>307</td><td>+20</td></tr><tr><td>Database Size</td><td>~1.9GB</td><td>~2.3GB</td><td>+21%</td></tr></tbody></table><p>Three hundred thousand pages. That’s every framework, every class, every method Apple has documented. The crawl ran for almost two weeks total across multiple sessions.</p><h3 id="top-frameworks-by-document-count">Top Frameworks by Document Count</h3><table><thead><td>Framework</td><td>Documents</td></thead><tbody><tr><td>Kernel</td><td>39,396</td></tr><tr><td>Matter</td><td>24,320</td></tr><tr><td>Swift</td><td>17,466</td></tr><tr><td>AppKit</td><td>12,443</td></tr><tr><td>Foundation</td><td>12,423</td></tr><tr><td>UIKit</td><td>11,158</td></tr><tr><td>Accelerate</td><td>9,114</td></tr><tr><td>SwiftUI</td><td>7,062</td></tr></tbody></table><p>Kernel jumped from 25,000 to nearly 40,000 pages. That’s IOKit, BSD interfaces, Mach APIs, driver development - the low-level stuff that’s hardest to find and most valuable when you need it. Matter has 24,000+ docs for smart home development. Accelerate and SIMD documentation is fully indexed now - performance optimization guides that AI models probably didn’t see much of during training.</p><h2 id="the-feature-i-ve-been-waiting-for-os-version-filtering">The Feature I’ve Been Waiting For: OS Version Filtering</h2><p>This was issue #99, and it’s been on my mind since day one. Apple’s documentation includes version information - which iOS/macOS version introduced each API. We now extract this.</p><pre><code class="language-bash">cupertino search "async" --min-ios 16
@@ -121,7 +121,7 @@ cupertino search "async await" --source all
         </div>
     
         <footer class="post-footer">
-            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
+            <a href="http://localhost:3000/blog/" class="back-link">← Back to Blog</a>
         </footer>
     </article>
 
