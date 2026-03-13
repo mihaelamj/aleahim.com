@@ -6,16 +6,26 @@ description: About Mihaela Mihaljević Jakić
 
 # About Me
 
-I'm a Senior iOS Architect & Developer with a deep commitment to modular architecture and elegant code. I specialize in:
+I'm a Senior iOS Architect & Developer who builds AI-powered developer tools for the Apple ecosystem. I work across the full stack — from iOS and macOS apps to Swift server backends — with a focus on making AI agents more useful for real development workflows.
 
-- **OpenAPI-driven development** - Building robust, type-safe Swift applications
-- **Modular architectures** - Extreme packaging methodologies for scalable projects
+I specialize in:
+
+- **AI developer tooling** - MCP servers, agent orchestration, and tools that give AI models access to real documentation and local environments
+- **Apple ecosystem development** - iOS, macOS, visionOS, and Swift on the server
+- **OpenAPI-driven development** - Type-safe Swift clients and servers with generated code, middleware, and structured APIs
+- **Modular architectures** - Extreme packaging methodologies for scalable Swift projects
 - **Swift concurrency** - Thread-safe solutions with actors and structured concurrency
-- **Multi-platform development** - iOS, macOS, and Swift server applications
+
+## Projects
+
+- **[Cupertino](https://github.com/mihaelamj/cupertino)** - An MCP server that gives AI agents offline access to 90,000+ Apple documentation pages across 385 frameworks
+- **[iRelay](https://github.com/mihaelamj/iRelay)** - Text your Mac from your phone, run Claude Code via iMessage
+- **[BearerTokenAuthMiddleware](https://github.com/mihaelamj/BearerTokenAuthMiddleware)** - Concurrency-safe authentication middleware for Swift OpenAPI clients
+- **[OpenAPILoggingMiddleware](https://github.com/mihaelamj/OpenAPILoggingMiddleware)** - Structured request logging for OpenAPI-driven Swift servers
 
 ## Open Source
 
-I actively contribute to and maintain several Swift packages focusing on API clients, middleware solutions, and developer tooling.
+I actively contribute to and maintain Swift packages spanning AI tooling, API clients, middleware, and developer infrastructure.
 
 ## Contact
 

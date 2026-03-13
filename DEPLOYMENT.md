@@ -4,6 +4,10 @@
 
 This site uses Toucan static site generator and is deployed to GitHub Pages at https://aleahim.com
 
+GitHub Pages is configured to deploy from the `main` branch, root `/` folder. Built HTML files must be committed to the repo root.
+
+There is also a GitHub Actions workflow (`.github/workflows/deploy.yml`) that triggers on version tags (`v*`). Both deploy methods coexist — branch deploys handle content updates, tag deploys are optional.
+
 ## Deployment Setup
 
 - **Source**: Deploy from a branch
@@ -12,114 +16,104 @@ This site uses Toucan static site generator and is deployed to GitHub Pages at h
 - **Custom Domain**: aleahim.com
 - **HTTPS**: Enforced
 
-## Adding New Content
+## Build Targets
 
-### 1. Add/Edit Content
+The `toucan.yml` file defines two targets:
 
-Add your content in the `contents/` directory:
-- Blog posts: `contents/blog/[post-name]/index.md`
-- Pages: `contents/[page-name]/index.md`
+| Target | Output Directory | Base URL |
+|--------|-----------------|----------|
+| `dev` (default) | `dist/` | `http://localhost:3000` |
+| `live` | `/tmp/output/` | `https://aleahim.com/` |
 
-See `CONTENT-GUIDE.md` for detailed content instructions.
+**The `live` target outputs to `/tmp/output/`, NOT `dist/`.** This is the most common deployment mistake — copying from `dist/` will deploy localhost URLs to production.
 
-### 2. Build the Site
+## Deploy to Production
 
-Build the site for production with the `live` target:
+### Step 1: Build with live target
 
 ```bash
 toucan generate --target live
 ```
 
-This generates the site in `dist/` with the correct URLs for https://aleahim.com
-
-### 3. Copy Built Files to Root
-
-Copy the built site files to the repository root (required for GitHub Pages):
+### Step 2: Copy from `/tmp/output/` to repo root
 
 ```bash
-cp -r dist/* .
+cp -r /tmp/output/* .
 ```
 
-### 4. Commit and Push
-
-Add the changes and push to GitHub:
+### Step 3: Verify no localhost URLs leaked
 
 ```bash
-# Stage all changes
+grep -c "localhost" index.html
+# Must be 0
+```
+
+### Step 4: Commit and push
+
+```bash
 git add .
-
-# Commit with a descriptive message
-git commit -m "Add new blog post: [post title]"
-
-# Push to main branch
+git commit -m "Deploy: [describe what changed]"
 git push origin main
 ```
 
-GitHub Pages will automatically deploy the changes within 30-60 seconds.
+GitHub Pages deploys within 30-60 seconds.
 
-### 5. Verify Deployment
-
-Visit https://aleahim.com to see your changes live.
-
-You can also check deployment status at:
-https://github.com/mihaelamj/aleahim.com/actions
-
-## Quick Deployment Commands
+### Step 5: Verify
 
 ```bash
-# Build site
+curl -s https://aleahim.com/ | grep -c "localhost"
+# Must be 0
+```
+
+## Quick Deploy (copy-paste)
+
+```bash
 toucan generate --target live
-
-# Copy to root
-cp -r dist/* .
-
-# Deploy
+cp -r /tmp/output/* .
+grep -c "localhost" index.html  # verify: must be 0
 git add .
-git commit -m "Update site content"
+git commit -m "Deploy: update site"
 git push origin main
 ```
 
 ## Local Development
 
-For local development and testing:
-
 ```bash
-# Build and watch for changes
-make watch
-
-# Or manually build for dev
-toucan generate
+# Build for dev (outputs to dist/ with localhost URLs)
+make dev
 
 # Serve locally at http://localhost:3000
-toucan serve
+make serve
+
+# Or watch for changes
+make watch
 ```
 
-**Note**: The dev build uses `http://localhost:3000` URLs. Always use `toucan generate --target live` before deploying to production.
+**Never deploy the dev build.** It uses `http://localhost:3000` URLs.
 
 ## Configuration Files
 
-- **toucan.yml**: Site build configuration
-  - `dev` target: For local development (default)
-  - `live` target: For production deployment to https://aleahim.com
-
-- **site.yml**: Site metadata and settings
+- **toucan.yml**: Build targets (dev → `dist/`, live → `/tmp/output/`)
+- **site.yml**: Site metadata and navigation
 - **config.yml**: Content configuration
 
 ## Troubleshooting
 
+### Site shows localhost URLs in production
+- You copied from `dist/` instead of `/tmp/output/`
+- Fix: rebuild with `toucan generate --target live`, then `cp -r /tmp/output/* .`
+
 ### Site shows old content after deployment
-- Hard refresh: `Cmd + Shift + R` (Mac) or `Ctrl + Shift + R` (Windows)
+- Hard refresh: `Cmd + Shift + R`
 - Or open in incognito/private window
 
 ### Site shows README instead of homepage
-- Ensure you ran `cp -r dist/* .` to copy built files to root
+- Ensure you ran `cp -r /tmp/output/* .`
 - Verify `index.html` exists in the repository root
-- Check that GitHub Pages is set to deploy from `main` branch, `/` (root) folder
 
 ### CSS not loading
-- Verify you built with `--target live` (not the dev target)
+- Verify you built with `--target live` (not dev)
 - Check that `toucan.yml` has the correct URL: `https://aleahim.com/`
-- Ensure CSS files are in the repository root under `css/` directory
 
 ## GitHub Pages Settings
 
@@ -130,7 +124,7 @@ Current configuration:
 - **Branch**: main
 - **Path**: / (root)
 - **Custom domain**: aleahim.com
-- **Enforce HTTPS**: ✓ Enabled
+- **Enforce HTTPS**: Enabled
 
 ## DNS Configuration
 

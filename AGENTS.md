@@ -39,7 +39,8 @@ make serve
 # Build with live URLs
 toucan generate --target live
 
-# Copy built files to root (required for GitHub Pages)
+# Copy built files from /tmp/output/ to root (required for GitHub Pages)
+# IMPORTANT: live target outputs to /tmp/output/, NOT dist/
 cp -r /tmp/output/* .
 
 # Commit and push
@@ -59,7 +60,7 @@ git push --tags
 - **Slug format**: Use `slug: blog/post-name` for blog posts (NOT just `post-name`)
 - **Image paths**: Put images in `assets/images/blog/post-name/`, reference as `/images/blog/post-name/`
 - **Live build**: Always use `toucan generate --target live` for production (uses aleahim.com URLs)
-- **Copy to root**: Must copy from `/tmp/output/` or `dist/` to repo root for GitHub Pages
+- **Copy to root**: Must copy from `/tmp/output/` to repo root for GitHub Pages (NOT `dist/` — that's the dev build)
 - **Cache**: After deploy, hard refresh (`Cmd+Shift+R`) to see changes
 
 ## Content Types
