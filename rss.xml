@@ -8,122 +8,122 @@
     <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>iRelay: Text Your Mac, Run an AI Agent</title>
-      <link>http://localhost:3000/blog/irelay/</link>
+      <link>https://aleahim.com/blog/irelay/</link>
       <description>A Swift daemon that turns iMessage into a remote terminal for Claude Code</description>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/irelay/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/irelay/</guid>
     </item>
     <item>
       <title>Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade</title>
-      <link>http://localhost:3000/blog/cupertino-09-release/</link>
+      <link>https://aleahim.com/blog/cupertino-09-release/</link>
       <description>Cupertino now works with OpenAI Codex, Cursor, VS Code Copilot, Zed, Windsurf, and opencode. Plus MCP protocol upgrade to 2025-06-18.</description>
       <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/cupertino-09-release/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-09-release/</guid>
     </item>
     <item>
       <title>Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor</title>
-      <link>http://localhost:3000/blog/cupertino-08-release/</link>
+      <link>https://aleahim.com/blog/cupertino-08-release/</link>
       <description>SwiftSyntax enables semantic code search. A deep refactoring of the codebase delivers cleaner results and better AI capabilities.</description>
       <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/cupertino-08-release/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-08-release/</guid>
     </item>
     <item>
       <title>Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper</title>
-      <link>http://localhost:3000/blog/cupertino-07-release/</link>
+      <link>https://aleahim.com/blog/cupertino-07-release/</link>
       <description>The complete Apple documentation crawl is done. Now you can filter by iOS 17+ and Claude finally knows where to look for answers.</description>
       <pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/cupertino-07-release/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-07-release/</guid>
     </item>
     <item>
       <title>Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead</title>
-      <link>http://localhost:3000/blog/cupertino-05-release/</link>
+      <link>https://aleahim.com/blog/cupertino-05-release/</link>
       <description>The biggest documentation update yet - nearly double the docs, plus what&#39;s coming next for the Apple documentation MCP server.</description>
       <pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/cupertino-05-release/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-05-release/</guid>
     </item>
     <item>
       <title>Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons</title>
-      <link>http://localhost:3000/blog/cupertino-04-release/</link>
+      <link>https://aleahim.com/blog/cupertino-04-release/</link>
       <description>New features for Apple documentation search, plus a cautionary tale about release processes and why order matters when tagging.</description>
       <pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/cupertino-04-release/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-04-release/</guid>
     </item>
     <item>
       <title>Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs</title>
-      <link>http://localhost:3000/blog/cupertino-one-line-install/</link>
+      <link>https://aleahim.com/blog/cupertino-one-line-install/</link>
       <description>Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.</description>
       <pubDate>Sat, 06 Dec 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/cupertino-one-line-install/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-one-line-install/</guid>
     </item>
     <item>
       <title>Cupertino v0.3.0: From 20 Hours to 30 Seconds</title>
-      <link>http://localhost:3000/blog/cupertino-instant-setup/</link>
+      <link>https://aleahim.com/blog/cupertino-instant-setup/</link>
       <description>The new setup command downloads pre-built databases instantly - no more crawling Apple&#39;s documentation for hours</description>
       <pubDate>Fri, 05 Dec 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/cupertino-instant-setup/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-instant-setup/</guid>
     </item>
     <item>
       <title>Cupertino: 27 Issues Down, Just Getting Started</title>
-      <link>http://localhost:3000/blog/cupertino-ecosystem/</link>
+      <link>https://aleahim.com/blog/cupertino-ecosystem/</link>
       <description>From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects</description>
       <pubDate>Wed, 03 Dec 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/cupertino-ecosystem/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-ecosystem/</guid>
     </item>
     <item>
       <title>Cupertino: Offline Apple Documentation for AI Agents</title>
-      <link>http://localhost:3000/blog/cupertino/</link>
+      <link>https://aleahim.com/blog/cupertino/</link>
       <description>An MCP server that gives Claude Desktop offline access to 22,000+ Apple documentation pages</description>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/cupertino/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino/</guid>
     </item>
     <item>
       <title>Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients</title>
-      <link>http://localhost:3000/blog/token-middleware/</link>
+      <link>https://aleahim.com/blog/token-middleware/</link>
       <description>Elegant, Thread-Safe Authentication for OpenAPI Runtime</description>
       <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/token-middleware/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/token-middleware/</guid>
     </item>
     <item>
       <title>From ExtremePackaging to OpenAPI Integration</title>
-      <link>http://localhost:3000/blog/extreme-packaging-open-a-p-i/</link>
+      <link>https://aleahim.com/blog/extreme-packaging-open-a-p-i/</link>
       <description>Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture</description>
       <pubDate>Tue, 23 Sep 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/extreme-packaging-open-a-p-i/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/extreme-packaging-open-a-p-i/</guid>
     </item>
     <item>
       <title>Introducing OpenAPILoggingMiddleware</title>
-      <link>http://localhost:3000/blog/logging-middleware/</link>
+      <link>https://aleahim.com/blog/logging-middleware/</link>
       <description>Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers</description>
       <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/logging-middleware/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/logging-middleware/</guid>
     </item>
     <item>
       <title>ExtremePackaging</title>
-      <link>http://localhost:3000/blog/extreme-packaging/</link>
+      <link>https://aleahim.com/blog/extreme-packaging/</link>
       <description>Example of Extreme Packaging in Swift</description>
       <pubDate>Sat, 13 Sep 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/extreme-packaging/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/extreme-packaging/</guid>
     </item>
     <item>
       <title>CVBuilder: A Swift Package for Professional CV Management</title>
-      <link>http://localhost:3000/blog/c-v-builder/</link>
+      <link>https://aleahim.com/blog/c-v-builder/</link>
       <description>A Swift package for building and rendering CVs in multiple formats</description>
       <pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/c-v-builder/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/c-v-builder/</guid>
     </item>
     <item>
       <title>Bringing Advanced SwiftUI Animations to macOS</title>
-      <link>http://localhost:3000/blog/swift-u-i-lab-advanced-animations/</link>
+      <link>https://aleahim.com/blog/swift-u-i-lab-advanced-animations/</link>
       <description>A port of SwiftUILab&#39;s Advanced Animations that also supports macOS</description>
       <pubDate>Sun, 13 Feb 2022 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/swift-u-i-lab-advanced-animations/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/swift-u-i-lab-advanced-animations/</guid>
     </item>
     <item>
       <title>Core Animation Layers forming a 3D cube</title>
-      <link>http://localhost:3000/blog/core-animation-3d-cube/</link>
+      <link>https://aleahim.com/blog/core-animation-3d-cube/</link>
       <description>Core Animation in 2.5D</description>
       <pubDate>Sat, 06 Mar 2021 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">http://localhost:3000/blog/core-animation-3d-cube/</guid>
+      <guid isPermaLink="true">https://aleahim.com/blog/core-animation-3d-cube/</guid>
     </item>
   </channel>
 </rss>
