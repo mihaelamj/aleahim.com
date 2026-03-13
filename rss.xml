@@ -7,6 +7,13 @@
     <language>en-US</language>
     <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Cupertino v0.10: Full Coverage and Community Contributions</title>
+      <link>https://aleahim.com/blog/cupertino-10-release/</link>
+      <description>307 frameworks, 302,424 docs, Agent Skills, Claude Code plugin, and the first community PRs.</description>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-10-release/</guid>
+    </item>
+    <item>
       <title>iRelay: Text Your Mac, Run an AI Agent</title>
       <link>https://aleahim.com/blog/irelay/</link>
       <description>A Swift daemon that turns iMessage into a remote terminal for Claude Code</description>

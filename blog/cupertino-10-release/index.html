@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cupertino v0.10: Full Coverage and Community Contributions - Aleahim</title>
+    <meta name="description" content="307 frameworks, 302,424 docs, Agent Skills, Claude Code plugin, and the first community PRs.">
+
+    <meta property="og:url" content="https://aleahim.com/blog/cupertino-10-release/">
+    <meta property="og:title" content="Cupertino v0.10: Full Coverage and Community Contributions - Aleahim">
+    <meta property="og:description" content="307 frameworks, 302,424 docs, Agent Skills, Claude Code plugin, and the first community PRs.">
+    
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cupertino v0.10: Full Coverage and Community Contributions - Aleahim">
+    <meta name="twitter:description" content="307 frameworks, 302,424 docs, Agent Skills, Claude Code plugin, and the first community PRs.">
+    
+
+    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
+
+    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a id="logo" href="https://aleahim.com">
+                <img
+                    src="https://aleahim.com/images/logo.svg"
+                    alt="Aleahim"
+                    title="Aleahim"
+                >
+                <h1 class="site-title">Aleahim.com</h1>
+            </a>
+    
+            <nav>
+                <div class="navigation">
+                    <a href="https://aleahim.com/">Home</a>
+                <a href="https://aleahim.com/cv/">CV</a>
+                <a href="https://aleahim.com/services/">Services</a>
+                <a href="https://aleahim.com/about/">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <article class="blog-post">
+        <header class="post-header">
+            <div class="title-with-thumbnail">
+                <div class="post-thumbnail">
+                    <img src="https://aleahim.com/images/blog/cupertino-10-release/hero.jpg" alt="Cupertino v0.10: Full Coverage and Community Contributions">
+                </div>
+                <div class="title-wrapper">
+                    <h1>Cupertino v0.10: Full Coverage and Community Contributions</h1>
+                    <div class="post-meta">
+                        <time datetime="2026-03-13T00:00:00.000Z">March 13, 2026</time>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="post-content">
+            <div class="post-hero-image">
+                <img src="https://aleahim.com/images/blog/cupertino-10-release/hero.jpg" alt="Cupertino v0.10: Full Coverage and Community Contributions">
+            </div>
+    
+            <h1>Cupertino v0.10: Full Coverage and Community Contributions</h1><p><strong>TL;DR:</strong> All 307 Apple frameworks are now indexed. 302,424 documentation pages searchable. Community contributors added Agent Skill support and a Claude Code plugin. Homebrew resource bundle fix.</p><h2 id="the-completionist-achievement-unlocked">The Completionist Achievement: Unlocked</h2><p>I wanted every Apple framework in the index. Not most of them. <em>All</em> of them.</p><p>Turns out, the crawler was only finding ~20 frameworks by following links from Apple’s developer homepage. That’s like exploring a library by only reading the “Staff Picks” shelf. The rest of Apple’s documentation was sitting there, patiently waiting to be discovered.</p><p>The fix: seed the crawler from Apple’s own <code>technologies.json</code> – their internal index of every framework. Feed that to the BFS crawler, and suddenly the whole library opens up.</p><p>But that was just the first of five bugs hiding in the crawl engine:</p><table><thead><td>Bug</td><td>What Went Wrong</td><td>Fix</td></thead><tbody><tr><td>Session resume ignored <code>startURL</code></td><td>Resumed any session, even for wrong URLs</td><td>Check URL match before resuming</td></tr><tr><td>BFS-only discovery</td><td>Homepage links only find ~20 frameworks</td><td>Seed from <code>technologies.json</code></td></tr><tr><td>Case-sensitive URL matching</td><td>Apple’s JSON returns mixed-case paths</td><td><code>shouldVisit()</code> now case-insensitive</td></tr><tr><td>0.5s request delay</td><td>Life is short</td><td>Reduced to 0.05s</td></tr><tr><td>Skip without enqueue</td><td>Content-unchanged pages never enqueued their links</td><td>Moved link enqueue before skip check</td></tr></tbody></table><p>That last one was sneaky. If a page’s content hadn’t changed since the last crawl, the crawler skipped it – but skipped <em>before</em> adding its child links to the queue. Entire subtrees silently disappeared.</p><p>The result: 13 previously missing frameworks crawled and indexed. CoreGraphics, CoreMedia, CoreVideo, CoreText, CoreAudio, dnssd, Hypervisor, IOBluetooth, HIDDriverKit, Matter, OpenGLES, USBDriverKit, and CoreAudioTypes.</p><p>Yes, even OpenGLES. Deprecated, but completionism has no room for judgment.</p><table><thead><td>Framework</td><td>Documents</td></thead><tbody><tr><td>Kernel</td><td>39,396</td></tr><tr><td>Matter</td><td>24,320</td></tr><tr><td>Swift</td><td>17,466</td></tr><tr><td>AppKit</td><td>12,443</td></tr><tr><td>Foundation</td><td>12,423</td></tr><tr><td>UIKit</td><td>11,158</td></tr><tr><td>SwiftUI</td><td>7,062</td></tr><tr><td>IOBluetooth</td><td>3,895</td></tr><tr><td>CoreGraphics</td><td>3,500+</td></tr><tr><td>CoreMedia</td><td>2,800+</td></tr><tr><td>…</td><td>…</td></tr><tr><td><strong>307 Frameworks</strong></td><td><strong>302,424</strong></td></tr></tbody></table><p>Your AI agent can now answer questions about Hypervisor’s vCPU mapping <em>and</em> IOBluetooth’s RFCOMM channels. You’re welcome.</p><h2 id="community-contributions">Community Contributions</h2><p>This release marks a milestone I’m genuinely excited about: the first external contributions to Cupertino.</p><p>Both add new ways to use Apple documentation without running an MCP server. Two contributors saw something they wanted, built it, and sent a PR. That’s the open source dream right there.</p><h3 id="agent-skill-support-pr-167">Agent Skill Support (PR #167)</h3><p><a href="https://github.com/tijs" target="_blank">Tijs Teulings</a> added support for using Cupertino as a stateless <a href="https://agentskills.io" target="_blank">Agent Skill</a>. AI coding agents get direct access to Apple documentation via CLI commands with JSON output – no MCP server process needed.</p><p>Install with <a href="https://github.com/numman-ali/openskills" target="_blank">OpenSkills</a>:</p><pre><code class="language-bash">npx openskills install mihaelamj/cupertino
+</code></pre><p>Or manually copy the skill definition to <code>.claude/skills/cupertino/</code>.</p><p>No daemon. No stdio pipe. Just <code>cupertino search "SwiftUI" --format json</code> and you’re done.</p><h3 id="claude-code-plugin-pr-169">Claude Code Plugin (PR #169)</h3><p><a href="https://github.com/gpambrozio" target="_blank">Gustavo Ambrozio</a> took Tijs’s skill and leveled it up into a proper Claude Code plugin with marketplace support.</p><pre><code class="language-bash">claude /plugin marketplace add https://github.com/mihaelamj/cupertino.git
+</code></pre><p>The plugin adds a manifest, marketplace metadata, and improved skill descriptions with better trigger phrases. One command to install, zero configuration after that.</p><p>Thank you Tijs and Gustavo. It’s a great feeling to see the project grow beyond a single-maintainer effort.</p><h2 id="the-homebrew-symlink-saga">The Homebrew Symlink Saga</h2><p>Here’s a fun one. After the v0.10 release, <code>brew install cupertino</code> worked fine… until you actually ran any command. Instant crash:</p><pre><code>Fatal error: could not load resource bundle:
+from /opt/homebrew/bin/Cupertino_Resources.bundle
+</code></pre><p>The problem: Homebrew symlinks <em>files</em> from the Cellar to <code>/opt/homebrew/bin/</code>, but not <em>directories</em>. The resource bundle was sitting happily in the Cellar, but <code>Bundle.main.bundleURL</code> (which doesn’t resolve symlinks) was looking in <code>/opt/homebrew/bin/</code> where the symlink lives. Two ships passing in the night.</p><p>The fix was two-pronged:</p><ol><li><strong>Formula</strong>: Added a <code>post_install</code> hook that manually creates the symlink for the resource bundle directory</li><li><strong>Code</strong>: <code>CupertinoResources.bundle</code> now resolves symlinks via <code>executableURL.resolvingSymlinksInPath()</code> before falling back to <code>Bundle.module</code></li></ol><p>Belt and suspenders. If you had the crash, <code>brew update && brew upgrade cupertino</code> fixes it.</p><h2 id="search-improvements">Search Improvements</h2><p>Framework search now includes synonym matching. Because nobody remembers if it’s “CoreGraphics” or “Core Graphics”:</p><table><thead><td>You search for</td><td>Finds</td></thead><tbody><tr><td>“Core Graphics”</td><td>coregraphics</td></tr><tr><td>“UIKit”</td><td>uikit</td></tr><tr><td>“SwiftUI”</td><td>swiftui</td></tr><tr><td>“Core Data”</td><td>coredata</td></tr></tbody></table><p>Case-insensitive, space-tolerant. Type it however you remember it.</p><h2 id="install-or-update">Install or Update</h2><pre><code class="language-bash"># New install
+brew install mihaelamj/tap/cupertino
+
+# Update existing
+brew update && brew upgrade cupertino
+
+# Or one-line install
+bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><p>Then:</p><pre><code class="language-bash">cupertino setup  # Download databases (~30 seconds)
+cupertino serve  # Start MCP server
+</code></pre><h2 id="issues-and-prs-closed">Issues and PRs Closed</h2><ul><li>#159 - Missing framework documentation</li><li>#160 - Crawler improvements for full coverage</li><li>#167 - Agent Skill support (<a href="https://github.com/tijs" target="_blank">@tijs</a>)</li><li>#169 - Claude Code plugin (<a href="https://github.com/gpambrozio" target="_blank">@gpambrozio</a>)</li><li>#162 - CONTRIBUTING.md (<a href="https://github.com/William-Laverty" target="_blank">@William-Laverty</a>)</li><li>#133 - README link fix (<a href="https://github.com/lwdupont" target="_blank">@lwdupont</a>)</li><li>#172 - Crawler session resume and delay fixes</li></ul><h2 id="links">Links</h2><ul><li><a href="https://github.com/mihaelamj/cupertino" target="_blank">GitHub Repository</a></li><li><a href="https://github.com/mihaelamj/cupertino/tree/main/docs" target="_blank">Documentation</a></li><li><a href="https://github.com/mihaelamj/cupertino/releases/tag/v0.10.0" target="_blank">Release Notes</a></li></ul>
+        </div>
+    
+        <footer class="post-footer">
+            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
+        </footer>
+    </article>
+
+    </main>
+
+    <footer>
+        <p>This site was generated using <a href="https://www.swift.org/" target="_blank">Swift</a> & <a href="https://github.com/toucansites/toucan" target="_blank">Toucan</a>.</p>
+    
+        <p class="small">Aleahim &copy; 2026.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    
+</body>
+</html>
