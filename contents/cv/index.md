@@ -242,8 +242,8 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 ## CONFERENCES
 
 ### NSSpain XIII (Sep 2025) – Speaker
-- Speaker at NSSpain XIII, Logroño, Spain
-- Premier non-profit technical conference for Apple platform developers
+- "API-Driven Development Refactored: Scaling Server and Client Code in Highly Modular Architectures"
+- NSSpain XIII, Logroño, Spain
 - [NSSpain](https://nsspain.com)
 
 ## OPEN SOURCE
