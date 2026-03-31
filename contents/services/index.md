@@ -32,15 +32,15 @@ I build MCP servers, AI-assisted developer tooling, and LLM integrations for App
 
 ## Engagement Options
 
-### Architecture Hour • €150/hour
+### Architecture Hour • €80/hour + VAT
 I review your spec, debug your pipeline, or solve a specific technical problem. You get answers and working code, not a slide deck.
 
-*Short on time? Priority sessions at €200/hour.*
+*Short on time? Priority sessions at €105/hour + VAT.*
 
-### Build Day • €1,000/day
+### Build Day • €640/day + VAT
 I integrate the toolchain into your codebase. By end of day, your pipeline generates code from spec and your first endpoints are running.
 
-### Delivery Week • €5,000/week
+### Delivery Week • €3,200/week + VAT
 I ship the full stack — server, client, middleware, and tests — integrated with your team's workflow. Production-ready by Friday.
 
 All engagements require two weeks' notice before kick-off.
