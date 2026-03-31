@@ -241,6 +241,11 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 
 ## CONFERENCES
 
+### iOSKonf26 (May 2026) – Speaker
+- iOSKonf26, Skopje, North Macedonia
+- Premier iOS conference in the Balkans, Philharmonic of the Republic of Macedonia
+- [iOSKonf](https://ioskonf.mk)
+
 ### NSSpain XIII (Sep 2025) – Speaker
 - "API-Driven Development Refactored: Scaling Server and Client Code in Highly Modular Architectures"
 - NSSpain XIII, Logroño, Spain
