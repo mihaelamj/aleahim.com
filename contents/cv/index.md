@@ -23,6 +23,16 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 
 ## EXPERIENCE
 
+### Maurer Electronics (Sep 2025 - Present) – Senior iOS Architect
+
+#### ID Document Systems
+- Architecting and developing iOS applications for secure ID document capture, personalisation, and verification
+- Building mobile solutions for Bundesdruckerei GmbH's identity systems platform
+- Designing modular, scalable architectures for security-critical mobile applications
+- Remote from Zagreb, Croatia
+
+**Technologies:** Swift, SwiftUI, UIKit, Swift Package Manager, Structured Concurrency, Unit Testing
+
 ### Code Weaver (May 2024 - Jun 2025) – Senior iOS Developer
 
 #### Anonymous Big EU Project
@@ -229,9 +239,32 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 
 **Technologies:** Objective-C, UIKit, UI in code, AFNetworking, AutoLayout, REST, Carthage, Unit Testing
 
+## CONFERENCES
+
+### NSSpain XIII (Sep 2025) – Speaker
+- Speaker at NSSpain XIII, Logroño, Spain
+- Premier non-profit technical conference for Apple platform developers
+- [NSSpain](https://nsspain.com)
+
+## OPEN SOURCE
+
+### Cupertino
+- A local Apple Documentation crawler and MCP server, written in Swift
+- CLI tool providing offline access to Apple developer documentation for AI assistants
+- [GitHub](https://github.com/mihaelamj/cupertino)
+
+**Technologies:** Swift, Swift Package Manager, MCP
+
+### iRelay
+- Apple-native personal AI assistant, pure Swift
+- Cross-platform macOS and iOS application
+- [GitHub](https://github.com/mihaelamj/iRelay)
+
+**Technologies:** Swift, SwiftUI, AppKit
+
 ## SKILLS
 
-AFNetworking | ARKit | AVFoundation | AppKit | Artificial Intelligence | AutoLayout | Barcodes & QRCodes | Carthage | CocoaPods | CoreAnimation | CoreData | CoreGraphics | CoreText | GraphQL | In-App Purchase | Objective-C | OpenAPI | Push Notifications | REST | SSE | Structured Concurrency | Swift | Swift Package Manager | Swift Server | SwiftUI | UI Testing | UI in code | UIKit | Unit Testing | WebSockets | macOS
+AFNetworking | ARKit | AVFoundation | AppKit | Artificial Intelligence | AutoLayout | Barcodes & QRCodes | Carthage | CocoaPods | CoreAnimation | CoreData | CoreGraphics | CoreText | GraphQL | In-App Purchase | MCP | Objective-C | OpenAPI | Push Notifications | REST | SSE | Structured Concurrency | Swift | Swift Package Manager | Swift Server | SwiftUI | UI Testing | UI in code | UIKit | Unit Testing | WebSockets | macOS
 
 ---
 
