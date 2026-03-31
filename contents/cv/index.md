@@ -250,6 +250,7 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 - "API-Driven Development Refactored: Scaling Server and Client Code in Highly Modular Architectures"
 - NSSpain XIII, Logroño, Spain
 - [NSSpain](https://nsspain.com)
+- [Talk recording](https://www.youtube.com/watch?v=RyRKItIIADc&list=PLztE34GS_piKKQ6y1dkkuhW76jLBHm3NV&index=17)
 
 ## OPEN SOURCE
 
