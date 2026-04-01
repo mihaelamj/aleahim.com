@@ -2,7 +2,10 @@ SHELL=/bin/bash
 
 # brew install optipng jpegoptim
 
-dev:
+cv:
+	swift run GenerateCV
+
+dev: cv
 	toucan generate --target dev
 
 dist:
