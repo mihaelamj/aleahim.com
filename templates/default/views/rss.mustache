@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Aleahim - iOS Development Blog</title>
     <link>https://aleahim.com/</link>
@@ -13,6 +13,7 @@
       <description>{{description}}</description>
       <pubDate>{{date.formats.rss}}</pubDate>
       <guid isPermaLink="true">{{permalink}}</guid>
+      <content:encoded><![CDATA[{{{contents.html}}}]]></content:encoded>
     </item>
     {{/context.posts}}
   </channel>
