@@ -1,54 +1,33 @@
 # Aleahim.com — Priority Check First
 
-## Known discoverability issue: RSS feed is excerpt-only (2026-04-23)
+## RSS full-text feed (fixed 2026-04-23)
 
-**Status: open. Fix before next blog post push.**
+**Status: deployed on `main` in commit `1461c507`.**
 
-Context: `aleahim.com/rss.xml` is what feeds search engines like [appledevsearch.com](https://appledevsearch.com/) and [iosdevsearch.com](https://iosdevsearch.com/) (both pull from [iOS Dev Directory](https://iosdevdirectory.com/)). The blog is already indexed in the directory as "Mihaela MJ's Blog" under English Language > Development Blogs.
+`aleahim.com/rss.xml` now emits `<content:encoded>` (CDATA) with the full rendered post HTML for every item. This feeds [appledevsearch.com](https://appledevsearch.com/) and [iosdevsearch.com](https://iosdevsearch.com/) via the [iOS Dev Directory](https://iosdevdirectory.com/).
 
-### The problem
+### What changed
 
-The RSS template at `templates/default/views/rss.mustache` emits only `<description>` (the short front-matter blurb, ~92 chars), and no `<content:encoded>` element:
+- `templates/default/views/rss.mustache`:
+  - Added `xmlns:content="http://purl.org/rss/1.0/modules/content/"` to `<rss>`.
+  - Added `<content:encoded><![CDATA[{{{contents.html}}}]]></content:encoded>` inside each `<item>`.
+- No pipeline change was needed — Toucan 1.0.0-rc.1's `list` scope already hydrates `contents.html`.
 
-```xml
-<item>
-  <title>{{title}}</title>
-  <link>{{permalink}}</link>
-  <description>{{description}}</description>
-  <pubDate>{{date.formats.rss}}</pubDate>
-  <guid isPermaLink="true">{{permalink}}</guid>
-</item>
+### Verify
+
+```bash
+curl -s https://aleahim.com/rss.xml | grep -c '<content:encoded>'
+# Must equal the number of <item> tags (currently 18).
 ```
 
-Appledevsearch explicitly requires *full-text RSS feeds with complete history*. Currently only titles + excerpts are searchable, which is why 30-day referrals from appledevsearch.com are 1 visit despite ~999 blogs competing and our content being directly on-topic (Swift, Cupertino, modular architecture).
+48h after deploy, search appledevsearch.com for a distinctive phrase from an old post body (not in its title). If it matches, full-content indexing is working. Track `appledevsearch.com` referrer count in `mihaela-analytics/umami/aleahim/raw/*/metrics-referrer.json` week-over-week.
 
-### The fix
+### Still open: iOS Dev Directory entry
 
-1. In `templates/default/views/rss.mustache`:
-   - Add the content namespace to `<rss>`: `xmlns:content="http://purl.org/rss/1.0/modules/content/"`
-   - Inside each `<item>`, add: `<content:encoded><![CDATA[{{{body_html_variable}}}]]></content:encoded>`
-   - Confirm the actual Toucan variable name for rendered post body HTML (check other views for how post content is rendered; it's likely `{{{contents}}}` or `{{{body}}}` — grep templates/default for a view that renders full post content).
-2. The `{{{ }}}` triple-mustache is required to skip HTML-escaping so the CDATA holds real HTML.
-3. After edit: `make dev`, verify `rss.xml` has `<content:encoded>` blocks, `make serve` and curl locally, then deploy.
+The directory entry in `blogs.json` at [iOSDevDirectory/iOSDevDirectory](https://github.com/iOSDevDirectory/iOSDevDirectory), category "English Language > Development Blogs", is stale:
 
-### Directory entry also needs updating (separate PR to iOS Dev Directory)
-
-File: `blogs.json` in [iOSDevDirectory/iOSDevDirectory](https://github.com/iOSDevDirectory/iOSDevDirectory), category "English Language > Development Blogs".
-
-Current entry is incomplete / stale:
-```json
-{
-  "title": "Mihaela MJ's Blog",
-  "author": "Mihaela MJ",
-  "site_url": "https://aleahim.com",
-  "feed_url": "https://aleahim.com/rss.xml",
-  "x_url": "https://x.com/civeljahim"
-}
-```
-
-Issues:
-- `x_url` is `@civeljahim` — verify whether this is a retired handle. Current X handle is `@diyamantina`.
-- Missing `bluesky_url`, `mastodon_url`, `github_url`, `linkedin_url` (directory supports all of these).
+- `x_url` is `@civeljahim` (retired handle). Current X handle is `@diyamantina`.
+- Missing `bluesky_url`, `mastodon_url`, `github_url`, `linkedin_url`.
 
 Target entry:
 ```json
@@ -65,11 +44,7 @@ Target entry:
 }
 ```
 
-### How to verify the fix worked
-
-- After deploying, `curl -s https://aleahim.com/rss.xml | grep -c '<content:encoded>'` should return the number of items in the feed (currently 18).
-- Appledevsearch re-indexes via RSS poll (cadence unknown; likely daily). Give it 48h, then search appledevsearch.com for a distinctive phrase from an old post that's NOT in its title (e.g., a phrase from the body of the ExtremePackaging post). If it matches, full-content indexing is working.
-- Track the `appledevsearch.com` referrer count in `mihaela-analytics/umami/aleahim/raw/*/metrics-referrer.json` week-over-week.
+Fork the repo, edit `blogs.json`, open a PR.
 
 ## General agent instructions
 
