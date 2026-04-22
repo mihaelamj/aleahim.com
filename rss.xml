@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Aleahim - iOS Development Blog</title>
     <link>https://aleahim.com/</link>
@@ -12,6 +12,21 @@
       <description>307 frameworks, 302,424 docs, Agent Skills, Claude Code plugin, and the first community PRs.</description>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/cupertino-10-release/</guid>
+      <content:encoded><![CDATA[<h1>Cupertino v0.10: Full Coverage and Community Contributions</h1><p><strong>TL;DR:</strong> All 307 Apple frameworks are now indexed. 302,424 documentation pages searchable. Community contributors added Agent Skill support and a Claude Code plugin. Homebrew resource bundle fix.</p><h2 id="the-completionist-achievement-unlocked">The Completionist Achievement: Unlocked</h2><p>I wanted every Apple framework in the index. Not most of them. <em>All</em> of them.</p><p>Turns out, the crawler was only finding ~20 frameworks by following links from Apple’s developer homepage. That’s like exploring a library by only reading the “Staff Picks” shelf. The rest of Apple’s documentation was sitting there, patiently waiting to be discovered.</p><p>The fix: seed the crawler from Apple’s own <code>technologies.json</code> – their internal index of every framework. Feed that to the BFS crawler, and suddenly the whole library opens up.</p><p>But that was just the first of five bugs hiding in the crawl engine:</p><table><thead><td>Bug</td><td>What Went Wrong</td><td>Fix</td></thead><tbody><tr><td>Session resume ignored <code>startURL</code></td><td>Resumed any session, even for wrong URLs</td><td>Check URL match before resuming</td></tr><tr><td>BFS-only discovery</td><td>Homepage links only find ~20 frameworks</td><td>Seed from <code>technologies.json</code></td></tr><tr><td>Case-sensitive URL matching</td><td>Apple’s JSON returns mixed-case paths</td><td><code>shouldVisit()</code> now case-insensitive</td></tr><tr><td>0.5s request delay</td><td>Life is short</td><td>Reduced to 0.05s</td></tr><tr><td>Skip without enqueue</td><td>Content-unchanged pages never enqueued their links</td><td>Moved link enqueue before skip check</td></tr></tbody></table><p>That last one was sneaky. If a page’s content hadn’t changed since the last crawl, the crawler skipped it – but skipped <em>before</em> adding its child links to the queue. Entire subtrees silently disappeared.</p><p>The result: 13 previously missing frameworks crawled and indexed. CoreGraphics, CoreMedia, CoreVideo, CoreText, CoreAudio, dnssd, Hypervisor, IOBluetooth, HIDDriverKit, Matter, OpenGLES, USBDriverKit, and CoreAudioTypes.</p><p>Yes, even OpenGLES. Deprecated, but completionism has no room for judgment.</p><table><thead><td>Framework</td><td>Documents</td></thead><tbody><tr><td>Kernel</td><td>39,396</td></tr><tr><td>Matter</td><td>24,320</td></tr><tr><td>Swift</td><td>17,466</td></tr><tr><td>AppKit</td><td>12,443</td></tr><tr><td>Foundation</td><td>12,423</td></tr><tr><td>UIKit</td><td>11,158</td></tr><tr><td>SwiftUI</td><td>7,062</td></tr><tr><td>IOBluetooth</td><td>3,895</td></tr><tr><td>CoreGraphics</td><td>3,500+</td></tr><tr><td>CoreMedia</td><td>2,800+</td></tr><tr><td>…</td><td>…</td></tr><tr><td><strong>307 Frameworks</strong></td><td><strong>302,424</strong></td></tr></tbody></table><p>Your AI agent can now answer questions about Hypervisor’s vCPU mapping <em>and</em> IOBluetooth’s RFCOMM channels. You’re welcome.</p><h2 id="community-contributions">Community Contributions</h2><p>This release marks a milestone I’m genuinely excited about: the first external contributions to Cupertino.</p><p>Both add new ways to use Apple documentation without running an MCP server. Two contributors saw something they wanted, built it, and sent a PR. That’s the open source dream right there.</p><h3 id="agent-skill-support-pr-167">Agent Skill Support (PR #167)</h3><p><a href="https://github.com/tijs" target="_blank">Tijs Teulings</a> added support for using Cupertino as a stateless <a href="https://agentskills.io" target="_blank">Agent Skill</a>. AI coding agents get direct access to Apple documentation via CLI commands with JSON output – no MCP server process needed.</p><p>Install with <a href="https://github.com/numman-ali/openskills" target="_blank">OpenSkills</a>:</p><pre><code class="language-bash">npx openskills install mihaelamj/cupertino
+</code></pre><p>Or manually copy the skill definition to <code>.claude/skills/cupertino/</code>.</p><p>No daemon. No stdio pipe. Just <code>cupertino search "SwiftUI" --format json</code> and you’re done.</p><h3 id="claude-code-plugin-pr-169">Claude Code Plugin (PR #169)</h3><p><a href="https://github.com/gpambrozio" target="_blank">Gustavo Ambrozio</a> took Tijs’s skill and leveled it up into a proper Claude Code plugin with marketplace support.</p><pre><code class="language-bash">claude /plugin marketplace add https://github.com/mihaelamj/cupertino.git
+</code></pre><p>The plugin adds a manifest, marketplace metadata, and improved skill descriptions with better trigger phrases. One command to install, zero configuration after that.</p><p>Thank you Tijs and Gustavo. It’s a great feeling to see the project grow beyond a single-maintainer effort.</p><h2 id="the-homebrew-symlink-saga">The Homebrew Symlink Saga</h2><p>Here’s a fun one. After the v0.10 release, <code>brew install cupertino</code> worked fine… until you actually ran any command. Instant crash:</p><pre><code>Fatal error: could not load resource bundle:
+from /opt/homebrew/bin/Cupertino_Resources.bundle
+</code></pre><p>The problem: Homebrew symlinks <em>files</em> from the Cellar to <code>/opt/homebrew/bin/</code>, but not <em>directories</em>. The resource bundle was sitting happily in the Cellar, but <code>Bundle.main.bundleURL</code> (which doesn’t resolve symlinks) was looking in <code>/opt/homebrew/bin/</code> where the symlink lives. Two ships passing in the night.</p><p>The fix was two-pronged:</p><ol><li><strong>Formula</strong>: Added a <code>post_install</code> hook that manually creates the symlink for the resource bundle directory</li><li><strong>Code</strong>: <code>CupertinoResources.bundle</code> now resolves symlinks via <code>executableURL.resolvingSymlinksInPath()</code> before falling back to <code>Bundle.module</code></li></ol><p>Belt and suspenders. If you had the crash, <code>brew update && brew upgrade cupertino</code> fixes it.</p><h2 id="search-improvements">Search Improvements</h2><p>Framework search now includes synonym matching. Because nobody remembers if it’s “CoreGraphics” or “Core Graphics”:</p><table><thead><td>You search for</td><td>Finds</td></thead><tbody><tr><td>“Core Graphics”</td><td>coregraphics</td></tr><tr><td>“UIKit”</td><td>uikit</td></tr><tr><td>“SwiftUI”</td><td>swiftui</td></tr><tr><td>“Core Data”</td><td>coredata</td></tr></tbody></table><p>Case-insensitive, space-tolerant. Type it however you remember it.</p><h2 id="install-or-update">Install or Update</h2><pre><code class="language-bash"># New install
+brew install mihaelamj/tap/cupertino
+
+# Update existing
+brew update && brew upgrade cupertino
+
+# Or one-line install
+bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><p>Then:</p><pre><code class="language-bash">cupertino setup  # Download databases (~30 seconds)
+cupertino serve  # Start MCP server
+</code></pre><h2 id="issues-and-prs-closed">Issues and PRs Closed</h2><ul><li>#159 - Missing framework documentation</li><li>#160 - Crawler improvements for full coverage</li><li>#167 - Agent Skill support (<a href="https://github.com/tijs" target="_blank">@tijs</a>)</li><li>#169 - Claude Code plugin (<a href="https://github.com/gpambrozio" target="_blank">@gpambrozio</a>)</li><li>#162 - CONTRIBUTING.md (<a href="https://github.com/William-Laverty" target="_blank">@William-Laverty</a>)</li><li>#133 - README link fix (<a href="https://github.com/lwdupont" target="_blank">@lwdupont</a>)</li><li>#172 - Crawler session resume and delay fixes</li></ul><h2 id="links">Links</h2><ul><li><a href="https://github.com/mihaelamj/cupertino" target="_blank">GitHub Repository</a></li><li><a href="https://github.com/mihaelamj/cupertino/tree/main/docs" target="_blank">Documentation</a></li><li><a href="https://github.com/mihaelamj/cupertino/releases/tag/v0.10.0" target="_blank">Release Notes</a></li></ul>]]></content:encoded>
     </item>
     <item>
       <title>iRelay: Text Your Mac, Run an AI Agent</title>
@@ -19,6 +34,9 @@
       <description>A Swift daemon that turns iMessage into a remote terminal for Claude Code</description>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/irelay/</guid>
+      <content:encoded><![CDATA[<h1>iRelay: Text Your Mac, Run an AI Agent</h1><p>I created a GitHub repo from my phone while walking around the house. No terminal, no SSH, no laptop open. Just iMessage.</p><p><strong>iRelay</strong> is a Swift daemon that listens for iMessages on your Mac, spawns Claude Code in your project directory, and sends the result back as a text. You message your Mac like you’d message a person, except it writes code.</p><p><strong>GitHub:</strong> <a href="https://github.com/mihaelamj/iRelay" target="_blank">github.com/mihaelamj/iRelay</a></p><h2 id="demo">Demo</h2><iframe width="315" height="560" src="https://www.youtube.com/embed/ehOY7BnPOf0" frameborder="0" allowfullscreen></iframe>
+<h2 id="how-it-works">How It Works</h2><p>The flow is simple:</p><pre><code>iPhone (iMessage) → Mac (iRelay daemon) → Claude Code → response → iMessage
+</code></pre><p>You send something like <code>irelayy fix the failing test</code> from your phone. Your Mac picks it up, runs Claude Code against your project, and texts you back with what it did.</p><p>That’s it. No web UI, no port forwarding, no VPN. Just iMessage as a transport layer.</p><h2 id="why-the-double-y">Why the Double Y</h2><p>I already run <a href="https://github.com/nicklama/openclaw" target="_blank">OpenClaw</a> on the same Mac for iMessage automation. Two daemons listening to the same iMessage account would fight over every incoming message.</p><p>The fix: a prefix. iRelay claims any message starting with <code>irelayy</code> (double y). OpenClaw ignores those. Everything else goes to OpenClaw. Simple namespace partitioning over a shared channel.</p><h2 id="what-i-actually-did-with-it">What I Actually Did With It</h2><p>First real test: I asked it to investigate my repos and suggest a business idea. It came back with MCPMe. Then I told it to create the repo, write the README, and push it. All from iMessage. The Mac did the work while I made coffee.</p><p>That’s the use case — you’re away from your desk but you want something done <em>now</em>. A quick fix, a repo setup, a refactor. Text it, walk away, get the result back on your phone.</p><h2 id="architecture">Architecture</h2><p>iRelay is designed around channels and providers:</p><ul><li><strong>Channels</strong> handle message transport — iMessage is the one that works today. The architecture supports Telegram, Slack, Discord, Signal, Matrix, IRC, and WebChat, but those are scaffolded, not wired up yet.</li><li><strong>Providers</strong> handle LLM execution — Claude Code is the primary one. OpenAI, Ollama, and Gemini slots exist for future use.</li></ul><p>Conversation history is preserved across messages, so context carries over. You can also save and restore sessions.</p><h2 id="what-s-next">What’s Next</h2><p>iRelay pairs well with <a href="https://github.com/mihaelamj/cupertino" target="_blank">Cupertino</a> — when Claude Code has offline access to Apple’s documentation, the responses you get back over iMessage are significantly better. No hallucinated APIs, no deprecated patterns. I’ve been quietly working on a major Cupertino update that nearly doubles framework coverage, which will make this combination even stronger. More on that soon.</p><hr><p><em>Built in a day. Used from the couch.</em></p>]]></content:encoded>
     </item>
     <item>
       <title>Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade</title>
@@ -26,6 +44,103 @@
       <description>Cupertino now works with OpenAI Codex, Cursor, VS Code Copilot, Zed, Windsurf, and opencode. Plus MCP protocol upgrade to 2025-06-18.</description>
       <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/cupertino-09-release/</guid>
+      <content:encoded><![CDATA[<h1>Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade</h1><p><strong>TL;DR:</strong> Cupertino now has setup guides for 8 different AI tools. MCP protocol upgraded to 2025-06-18. Comprehensive documentation for all binaries. No more Node.js in the codebase.</p><p>This release focuses on reach. More AI tools can use Cupertino. Better documentation. Cleaner internals.</p><h2 id="release-summary">Release Summary</h2><p>Since v0.8.0, Cupertino has had 5 releases:</p><table><thead><td>Version</td><td>Date</td><td>Highlights</td></thead><tbody><tr><td>0.8.1</td><td>2025-12-28</td><td>Installer color fix</td></tr><tr><td>0.8.2</td><td>2025-12-31</td><td>Download progress animation</td></tr><tr><td>0.8.3</td><td>2025-12-31</td><td>Swift-only tests, no Node.js</td></tr><tr><td>0.9.0</td><td>2025-12-31</td><td>MCP protocol 2025-06-18</td></tr><tr><td>0.9.1</td><td>2026-01-25</td><td>Multi-agent docs, binary docs</td></tr></tbody></table><h2 id="multi-agent-support-v0.9.1">Multi-Agent Support (v0.9.1)</h2><p>The most requested feature: “How do I use Cupertino with X?”</p><p>Cupertino started as a Claude tool. But MCP is an open protocol. Any AI assistant that speaks MCP can use it.</p><p>v0.9.1 adds setup guides for 8 AI tools:</p><table><thead><td>Tool</td><td>Config Location</td></thead><tbody><tr><td>Claude Desktop</td><td><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></td></tr><tr><td>Claude Code</td><td><code>claude mcp add cupertino</code></td></tr><tr><td>OpenAI Codex</td><td><code>codex mcp add cupertino</code> or <code>~/.codex/config.toml</code></td></tr><tr><td>Cursor</td><td><code>.cursor/mcp.json</code></td></tr><tr><td>VS Code (Copilot)</td><td><code>.vscode/mcp.json</code></td></tr><tr><td>Zed</td><td><code>settings.json</code></td></tr><tr><td>Windsurf</td><td><code>~/.codeium/windsurf/mcp_config.json</code></td></tr><tr><td>opencode</td><td><code>opencode.jsonc</code></td></tr></tbody></table><h3 id="quick-setup">Quick Setup</h3><p>For most tools, configuration is a JSON object:</p><pre><code class="language-json">{
+  "mcpServers": {
+    "cupertino": {
+      "command": "/opt/homebrew/bin/cupertino",
+      "args": ["serve"]
+    }
+  }
+}
+</code></pre><p>The exact structure varies by tool. Full examples are in the <a href="https://github.com/mihaelamj/cupertino/blob/main/docs/commands/serve/README.md" target="_blank">serve command documentation</a>.</p><h3 id="dynamic-path-detection">Dynamic Path Detection</h3><p>If you’re not sure where cupertino is installed:</p><pre><code class="language-bash">claude mcp add cupertino -- $(which cupertino)
+codex mcp add cupertino -- $(which cupertino) serve
+</code></pre><p>The <code>$(which cupertino)</code> expands to the actual binary path. Works for Homebrew installs on both Apple Silicon (<code>/opt/homebrew/bin</code>) and Intel (<code>/usr/local/bin</code>).</p><h2 id="mcp-protocol-upgrade-v0.9.0">MCP Protocol Upgrade (v0.9.0)</h2><p>v0.9.0 upgrades the MCP protocol from <code>2024-11-05</code> to <code>2025-06-18</code>.</p><p>This matters because newer AI tools expect the newer protocol. Without this upgrade, Cupertino would fail to initialize with clients that only support <code>2025-06-18</code>.</p><p>The upgrade includes backward compatibility:</p><pre><code class="language-swift">// Server negotiates with client
+public let MCPProtocolVersion = "2025-06-18"
+public let MCPProtocolVersionsSupported = ["2025-06-18", "2024-11-05"]
+
+// During initialization, find common version
+let negotiatedVersion = clientVersions
+    .first { MCPProtocolVersionsSupported.contains($0) }
+</code></pre><p>If a client requests <code>2024-11-05</code>, Cupertino still works. If it requests <code>2025-06-18</code>, that works too. The <code>MCPClient</code> and <code>MockAIAgent</code> also support version fallback when connecting to servers.</p><p>Thanks to <a href="https://github.com/erikmackinnon" target="_blank">@erikmackinnon</a> for the contribution (#130).</p><h2 id="binary-documentation-v0.9.1">Binary Documentation (v0.9.1)</h2><p>Cupertino ships 4 executables. Until now, only <code>cupertino</code> had proper documentation.</p><p>v0.9.1 adds 48 documentation files covering all binaries:</p><h3 id="cupertino">cupertino</h3><p>The main CLI with 12 commands. Already documented, but now with updated MCP client configuration examples.</p><h3 id="cupertino-tui">cupertino-tui</h3><p>The terminal UI for browsing and selecting packages:</p><pre><code class="language-bash">cupertino-tui
+cupertino-tui --version
+</code></pre><p>5 views documented:</p><ul><li><strong>Dashboard</strong> - Overview and quick actions</li><li><strong>Packages</strong> - Browse and select Swift packages</li><li><strong>Archive</strong> - Apple Archive documentation selection</li><li><strong>Videos</strong> - WWDC video selection</li><li><strong>Settings</strong> - Configuration options</li></ul><h3 id="mock-ai-agent">mock-ai-agent</h3><p>A testing tool that simulates MCP client behavior:</p><pre><code class="language-bash">mock-ai-agent search "SwiftUI navigation"
+mock-ai-agent list-tools
+mock-ai-agent --server /path/to/cupertino
+mock-ai-agent --version  # New in v0.9.1
+</code></pre><p>Arguments documented:</p><ul><li><code>&lt;query&gt;</code> - Search query to execute</li><li><code>--server</code> - Path to MCP server binary</li></ul><p>Useful for testing MCP servers without a full AI client.</p><h3 id="cupertino-rel">cupertino-rel</h3><p>The release automation tool (maintainer-only):</p><pre><code class="language-bash">cupertino-rel bump patch          # Bump version
+cupertino-rel tag --version 0.9.1 --push  # Create and push tag
+cupertino-rel homebrew --version 0.9.1    # Update Homebrew formula
+cupertino-rel databases --version 0.9.1   # Upload database release
+cupertino-rel docs-update patch   # Documentation-only release
+cupertino-rel full 0.10.0         # Complete release workflow
+</code></pre><p>6 subcommands with all options documented:</p><ul><li><code>bump</code> - Update version in all files</li><li><code>tag</code> - Create and push git tags</li><li><code>homebrew</code> - Update Homebrew formula</li><li><code>databases</code> - Upload databases to cupertino-docs</li><li><code>docs-update</code> - Documentation-only releases</li><li><code>full</code> - Complete release workflow</li></ul><h3 id="documentation-structure">Documentation Structure</h3><p>The documentation follows the same granular folder structure as the main CLI:</p><pre><code>docs/binaries/
+├── README.md
+├── cupertino-tui/
+│   ├── README.md
+│   ├── option (--)/
+│   │   └── version.md
+│   └── view/
+│       ├── dashboard.md
+│       ├── packages.md
+│       ├── archive.md
+│       ├── videos.md
+│       └── settings.md
+├── mock-ai-agent/
+│   ├── README.md
+│   ├── option (--)/
+│   │   ├── server.md
+│   │   └── version.md
+│   └── argument (&lt;&gt;)/
+│       └── query.md
+└── cupertino-rel/
+    ├── README.md
+    ├── option (--)/
+    │   └── version.md
+    └── subcommand/
+        ├── bump/
+        ├── tag/
+        ├── homebrew/
+        ├── databases/
+        ├── docs-update/
+        └── full/
+</code></pre><h2 id="no-more-node.js-v0.8.3">No More Node.js (v0.8.3)</h2><p>v0.8.3 removed the last Node.js dependency from the codebase.</p><p>The MCP integration tests previously used npm packages to simulate client behavior. Now they use <code>cupertino serve</code> directly:</p><pre><code class="language-swift">@Test("Initialize handshake with cupertino server")
+func cupertinoServerInitialize() async throws {
+    let process = Process()
+    process.executableURL = URL(fileURLWithPath: ".build/debug/cupertino")
+    process.arguments = ["serve"]
+
+    let stdinPipe = Pipe()
+    let stdoutPipe = Pipe()
+    process.standardInput = stdinPipe
+    process.standardOutput = stdoutPipe
+
+    try process.run()
+
+    // Send initialize request (compact JSON + newline)
+    let initRequest = """
+    {"jsonrpc":"2.0","id":1,"method":"initialize","params":{...}}\n
+    """
+    stdinPipe.fileHandleForWriting.write(Data(initRequest.utf8))
+
+    // Parse and verify response
+    let response = try JSONDecoder().decode(JSONRPCResponse.self, from: responseData)
+    #expect(response.serverInfo.name == "cupertino")
+}
+</code></pre><p>The tests verify:</p><ul><li>MCP initialize handshake</li><li><code>tools/list</code> responses</li><li>Protocol version negotiation</li><li>Server info and tool registration</li></ul><p>Swift-only tests. No npm. No node_modules. No package-lock.json.</p><p>This is now policy in AGENTS.md: <strong>no Node.js or npm in the Cupertino codebase</strong>.</p><h2 id="setup-progress-animation-v0.8.2">Setup Progress Animation (v0.8.2)</h2><p>Database downloads are ~400MB. Previously, <code>cupertino setup</code> showed nothing while downloading.</p><p>Now you get real-time feedback:</p><p><strong>Download progress with bar:</strong></p><pre><code>⠹ [████████████░░░░░░░░░░░░░░░░░░] 42% (168MB/400MB)
+</code></pre><p><strong>Extraction spinner:</strong></p><pre><code>⠧ Extracting databases...
+</code></pre><p>Implementation details:</p><ul><li><code>DownloadProgressDelegate</code> implements <code>URLSessionDownloadDelegate</code> for real-time progress</li><li><code>ExtractionSpinner</code> shows animated feedback during unzip</li><li>Extended download timeout to 10 minutes for large database files</li><li>Uses ANSI escape codes for in-place updates</li></ul><p>Small things that make the tool feel responsive.</p><h2 id="installer-ansi-fix-v0.8.1">Installer ANSI Fix (v0.8.1)</h2><p>The one-line installer had broken ANSI colors:</p><p><strong>Before:</strong></p><pre><code>\033[32m✓ Installation complete\033[0m
+</code></pre><p><strong>After:</strong></p><pre><code>✓ Installation complete  (in green)
+</code></pre><p>Two <code>echo</code> statements were missing the <code>-e</code> flag for escape sequence interpretation. Fixed in #124.</p><h2 id="database-compatibility">Database Compatibility</h2><p>This release uses the same database schema as v0.8.2. No migration needed.</p><p>When you run <code>cupertino setup</code>, it downloads databases from the v0.8.2 release. The CLI version (0.9.1) and database version (0.8.2) are now decoupled.</p><table><thead><td>Version Type</td><td>Current</td><td>Purpose</td></thead><tbody><tr><td>CLI version</td><td>0.9.1</td><td>Binary release</td></tr><tr><td>Database version</td><td>0.8.2</td><td>Pre-built database release</td></tr><tr><td>Schema version</td><td>9</td><td>SQLite schema</td></tr></tbody></table><p>This means:</p><ul><li>CLI updates don’t require database re-downloads</li><li>Database updates don’t require CLI updates</li><li>Schema changes are tracked separately</li></ul><h2 id="install-or-update">Install or Update</h2><pre><code class="language-bash"># New install
+brew install mihaelamj/tap/cupertino
+
+# Update existing
+brew update && brew upgrade cupertino
+
+# Or one-line install
+bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><p>Then:</p><pre><code class="language-bash">cupertino setup  # Download databases (~30 seconds)
+cupertino serve  # Start MCP server
+</code></pre><p>Configure your AI tool using the guides above, and you’re ready.</p><h2 id="issues-closed">Issues Closed</h2><ul><li>#124 - Installer ANSI escape sequences</li><li>#96 - Setup progress animation</li><li>#131 - Remove Node.js dependency from MCP integration tests</li><li>#130 - MCP protocol mismatch (2025-06-18 support)</li><li>#134 - Better documentation for use with different agents</li><li>#137 - Documentation improvements: MCP client configs and binary documentation</li></ul><h2 id="links">Links</h2><ul><li><a href="https://github.com/mihaelamj/cupertino" target="_blank">GitHub Repository</a></li><li><a href="https://github.com/mihaelamj/cupertino/tree/main/docs" target="_blank">Documentation</a></li><li><a href="https://github.com/mihaelamj/cupertino/releases/tag/v0.9.1" target="_blank">Release Notes</a></li></ul>]]></content:encoded>
     </item>
     <item>
       <title>Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor</title>
@@ -33,6 +148,107 @@
       <description>SwiftSyntax enables semantic code search. A deep refactoring of the codebase delivers cleaner results and better AI capabilities.</description>
       <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/cupertino-08-release/</guid>
+      <content:encoded><![CDATA[<h1>Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor</h1><p><strong>TL;DR:</strong> SwiftSyntax-based AST indexing. Major codebase refactoring. Cleaner search results. Test suite grew from 93 to 698 tests.</p><p>This release is about foundations. Less visible features, more architectural work that makes everything else possible.</p><h2 id="the-big-feature-ast-indexing">The Big Feature: AST Indexing</h2><p>This is issue #81, and it’s been brewing for a while. Sample code search was purely keyword-based - you search “async”, you get files containing “async”. Comments, strings, documentation, actual code - all treated equally.</p><p>Now Cupertino extracts structured symbol data from Swift source:</p><pre><code class="language-swift">// SwiftSourceExtractor analyzes this:
+@MainActor
+class NetworkManager: ObservableObject {
+    @Published var isLoading = false
+
+    func fetch() async throws -&gt; Data { ... }
+}
+</code></pre><p>And extracts:</p><table><thead><td>Symbol</td><td>Kind</td><td>Attributes</td></thead><tbody><tr><td><code>NetworkManager</code></td><td>class</td><td><code>@MainActor</code></td></tr><tr><td><code>isLoading</code></td><td>property</td><td><code>@Published</code></td></tr><tr><td><code>fetch()</code></td><td>function</td><td>async, throws</td></tr></tbody></table><h3 id="what-this-enables">What This Enables</h3><p><strong>Better ranking, not magic.</strong> When you search “@Observable”, plain text search finds every file mentioning “Observable” - comments, strings, documentation, actual declarations. All ranked equally.</p><p>With AST indexing, Cupertino knows which results contain actual <code>@Observable</code> class declarations. These get boosted in ranking. The real symbol usages surface first.</p><pre><code class="language-bash">$ cupertino search "@Observable" --source samples --format markdown
+</code></pre><pre><code class="language-markdown">## Projects (5 found)
+
+### 1. Migrating from the Observable Object protocol to the Observable macro
+- **Frameworks:** swiftui
+- **Files:** 14
+
+## Matching Files
+
+### Library.swift
+&gt; @Observable final class Library {
+&gt;     var books: [Book] = [Book(), Book(), Book()]
+&gt; }
+
+### Book.swift
+&gt; @Observable final class Book: Identifiable {
+&gt;     var title = "Sample Book Title"
+&gt;     let id = UUID()
+&gt; }
+</code></pre><p>The search still matches text, but files with actual <code>@Observable</code> declarations rank higher than files that just mention the word in comments.</p><p><strong>Dedicated semantic tools.</strong> The symbol tables power these MCP tools:</p><ul><li><code>search_symbols</code> - query by symbol type and attributes</li><li><code>search_property_wrappers</code> - find <code>@Published</code>, <code>@State</code>, <code>@Binding</code> usage</li><li><code>search_conformances</code> - find protocol implementations</li><li><code>search_concurrency</code> - find async/await patterns</li></ul><p>These query extracted symbol data directly, not text. AI assistants can ask “find all async functions in SwiftUI samples” and get structured results.</p><h3 id="how-it-works">How It Works</h3><p>The new <code>ASTIndexer</code> package uses SwiftSyntax to parse Swift files and extract:</p><ul><li><strong>Symbols</strong>: Classes, structs, enums, actors, protocols, functions</li><li><strong>Attributes</strong>: <code>@MainActor</code>, <code>@Published</code>, <code>@Observable</code>, etc.</li><li><strong>Conformances</strong>: Protocol adoptions</li><li><strong>Modifiers</strong>: async, throws, static, public</li></ul><p>SwiftSyntax is Apple’s official Swift parser - the same one the compiler uses. No regex hacks, no fragile pattern matching.</p><p>The tradeoff? Build times. SwiftSyntax is a beast. First release build takes 10-15 minutes now. But the capability is worth it.</p><h2 id="the-refactoring-story">The Refactoring Story</h2><p>This release involved substantial architectural changes that touch almost every part of the codebase. The goal: make search results cleaner and the system more capable.</p><h3 id="unified-search-service">Unified Search Service</h3><p>Previously, each search source (docs, HIG, samples, videos) had its own formatting logic scattered across the codebase. Now there’s a unified <code>SearchService</code> that handles all sources consistently:</p><ul><li>Single entry point for all search types</li><li>Consistent result formatting across sources</li><li>Shared footer generation with tips and guidance</li><li>Hierarchical numbering that works across all result types</li></ul><h3 id="package-architecture-cleanup">Package Architecture Cleanup</h3><p>The package structure got significant attention:</p><ul><li>Consolidated duplicate functionality across modules</li><li>Clearer boundaries between <code>Services</code>, <code>Core</code>, and domain packages</li><li>Better separation of CLI concerns from library logic</li><li>Removed dead code paths and unused types</li></ul><h3 id="result-formatter-protocol">Result Formatter Protocol</h3><p>A new <code>ResultFormatter</code> protocol standardizes how search results become output:</p><pre><code class="language-swift">protocol ResultFormatter {
+    associatedtype Input
+    func format(_ result: Input) -&gt; String
+}
+</code></pre><p>This enabled reusable formatters for different output contexts (CLI text, MCP markdown, JSON) while keeping the core search logic unchanged.</p><p>The refactoring wasn’t glamorous work, but it paid off immediately in cleaner search results and faster feature development.</p><h2 id="smarter-search-output">Smarter Search Output</h2><p>Here’s a subtle change that matters more than it sounds: hierarchical result numbering.</p><p>Before:</p><pre><code>## Apple Documentation
+### UIButton
+### UIView
+### UIControl
+
+## Sample Code
+### ButtonStyles
+### CustomControls
+</code></pre><p>After:</p><pre><code>## 1. Apple Documentation (20)
+### 1.1 UIButton
+### 1.2 UIView
+### 1.3 UIControl
+
+## 2. Sample Code (5)
+### 2.1 ButtonStyles
+### 2.2 CustomControls
+</code></pre><p>Why does this matter? When Claude is navigating search results, it can now reference specific items: “Looking at result 1.3…” or “Sample 2.1 shows this pattern…”</p><p>The count in headers (<code>20</code>, <code>5</code>) also helps the AI understand result distribution. If one source has 50 results and another has 2, that’s useful context.</p><p>Small formatting changes, big impact on AI reasoning.</p><h2 id="display-bugs-death-by-a-thousand-cuts">Display Bugs: Death by a Thousand Cuts</h2><p>Sometimes bugs accumulate in strange ways. I noticed search results had weird formatting artifacts:</p><ul><li><code>Tabbars|AppleDeveloperDocumentation###</code> - trailing garbage</li><li><code>Tab  bars</code> - double spaces</li><li><code>Goingfull screen</code> - missing space in HIG titles</li><li><code>Framework# SwiftUI</code> - inline markdown headers</li></ul><p>Each individually minor. Together, they made results look unprofessional and confused AI parsing.</p><p>The fix was a string extension that cleans display text:</p><pre><code class="language-swift">var cleanedForDisplay: String {
+    var result = self
+
+    // Remove trailing ###
+    while result.hasSuffix("###") { ... }
+
+    // Remove |AppleDeveloperDocumentation
+    result = result.replacingOccurrences(of: "|AppleDeveloperDocumentation", with: "")
+
+    // Fix "Goingfull" -&gt; "Going full"
+    result = result.addingSpacesToCamelCase
+
+    // Collapse double spaces
+    while result.contains("  ") { ... }
+
+    return result
+}
+</code></pre><p>Now there are 34 unit tests just for string formatting. Because every edge case that slipped through was a papercut in every search result.</p><h2 id="the-test-suite-story">The Test Suite Story</h2><table><thead><td>Metric</td><td>v0.7.0</td><td>v0.8.0</td></thead><tbody><tr><td>Tests</td><td>93</td><td>698</td></tr><tr><td>Suites</td><td>7</td><td>73</td></tr><tr><td>Duration</td><td>~5 min</td><td>~35 sec</td></tr></tbody></table><p>That’s not a typo. We went from 93 tests to 698.</p><p>Where did they come from?</p><ol><li><strong>AST Indexer tests</strong> - SwiftSyntax extraction needs thorough testing</li><li><strong>String formatter tests</strong> - All those display edge cases</li><li><strong>Service layer tests</strong> - Unified search service coverage</li><li><strong>Symbol database tests</strong> - Integration tests for code analysis</li></ol><p>The duration dropped despite 7x more tests because I fixed a race condition in the <code>PriorityPackagesCatalog</code> tests. The old code used <code>defer { Task { await ... } }</code> which created detached async tasks that didn’t complete before the next test ran. State leaked between tests, causing random failures.</p><p>The fix was embarrassingly simple: don’t use <code>defer</code> with async cleanup. Just await at the end of the test.</p><h2 id="doctor-command-gets-smarter">Doctor Command Gets Smarter</h2><p>The <code>cupertino doctor</code> command now diagnoses package-related issues:</p><pre><code class="language-bash">$ cupertino doctor
+
+Cupertino v0.8.0 - Health Check
+
+Databases:
+  ✅ search.db (2.3GB, 302,424 docs)
+  ✅ sample.db (156MB, 606 projects)
+
+Package Status:
+  ✅ User selections: ~/.cupertino/selected-packages.json (12 packages)
+  ✅ Downloaded READMEs: 12/12
+  ⚠️  Orphaned READMEs: 3 (packages no longer selected)
+
+Priority Breakdown:
+  📦 Apple Official: 31 packages
+  📦 Ecosystem: 5 packages
+
+MCP Tools: 8 registered
+Resources: 3 providers active
+</code></pre><p>The “orphaned READMEs” warning catches when you’ve unselected packages but their downloaded docs remain. Helpful for debugging unexpected search results.</p><h2 id="what-s-next">What’s Next</h2><p>The semantic tools (<code>search_symbols</code>, <code>search_conformances</code>, etc.) are built. Next steps:</p><ol><li><strong>Index all sample code</strong> - Run AST extraction across all 606 projects to populate symbol tables</li><li><strong>Cross-referencing</strong> - Link extracted symbols to their documentation pages</li><li><strong>Symbol coverage</strong> - Expand extraction to catch more edge cases</li></ol><p>The infrastructure is in place. Now to fill the database and refine the queries.</p><h2 id="install-or-update">Install or Update</h2><pre><code class="language-bash"># New install
+brew install mihaelamj/tap/cupertino
+
+# Update existing
+brew upgrade cupertino
+
+# Or one-line install
+bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><p>Then:</p><pre><code class="language-bash">cupertino setup  # Download databases (~30 seconds)
+cupertino serve  # Start MCP server
+</code></pre><p>Try the improved search:</p><pre><code class="language-bash"># See hierarchical numbering
+cupertino search "SwiftUI navigation" --source all
+
+# Clean HIG results
+cupertino search "tab bar" --source hig
+
+# Check your installation health
+cupertino doctor
+</code></pre><hr><p><em>Cupertino is an Apple Documentation MCP Server. 302,424 pages of Apple documentation, searchable by AI. Source at <a href="https://github.com/mihaelamj/cupertino" target="_blank">github.com/mihaelamj/cupertino</a>.</em></p>]]></content:encoded>
     </item>
     <item>
       <title>Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper</title>
@@ -40,6 +256,51 @@
       <description>The complete Apple documentation crawl is done. Now you can filter by iOS 17+ and Claude finally knows where to look for answers.</description>
       <pubDate>Mon, 15 Dec 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/cupertino-07-release/</guid>
+      <content:encoded><![CDATA[<h1>Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper</h1><p><strong>TL;DR:</strong> Finally crawled all of Apple’s docs. Added OS version filtering. Made AI agents smarter about finding the right documentation.</p><p>Four days after v0.5.0, and I’ve shipped two more releases. At this point I’m not sure if this is momentum or obsession. Let’s call it momentum.</p><h2 id="the-numbers">The Numbers</h2><table><thead><td>Metric</td><td>v0.5.0</td><td>v0.7.0</td><td>Change</td></thead><tbody><tr><td>Total Documents</td><td>234,331</td><td>302,424</td><td>+29%</td></tr><tr><td>Frameworks</td><td>287</td><td>307</td><td>+20</td></tr><tr><td>Database Size</td><td>~1.9GB</td><td>~2.3GB</td><td>+21%</td></tr></tbody></table><p>Three hundred thousand pages. That’s every framework, every class, every method Apple has documented. The crawl ran for almost two weeks total across multiple sessions.</p><h3 id="top-frameworks-by-document-count">Top Frameworks by Document Count</h3><table><thead><td>Framework</td><td>Documents</td></thead><tbody><tr><td>Kernel</td><td>39,396</td></tr><tr><td>Matter</td><td>24,320</td></tr><tr><td>Swift</td><td>17,466</td></tr><tr><td>AppKit</td><td>12,443</td></tr><tr><td>Foundation</td><td>12,423</td></tr><tr><td>UIKit</td><td>11,158</td></tr><tr><td>Accelerate</td><td>9,114</td></tr><tr><td>SwiftUI</td><td>7,062</td></tr></tbody></table><p>Kernel jumped from 25,000 to nearly 40,000 pages. That’s IOKit, BSD interfaces, Mach APIs, driver development - the low-level stuff that’s hardest to find and most valuable when you need it. Matter has 24,000+ docs for smart home development. Accelerate and SIMD documentation is fully indexed now - performance optimization guides that AI models probably didn’t see much of during training.</p><h2 id="the-feature-i-ve-been-waiting-for-os-version-filtering">The Feature I’ve Been Waiting For: OS Version Filtering</h2><p>This was issue #99, and it’s been on my mind since day one. Apple’s documentation includes version information - which iOS/macOS version introduced each API. We now extract this.</p><pre><code class="language-bash">cupertino search "async" --min-ios 16
+</code></pre><p>Or in Claude:</p><blockquote><p>“Search for SwiftUI navigation APIs available in iOS 17+”</p></blockquote><p>The AI agent can now filter results by platform version. No more suggestions for deprecated iOS 12 APIs when you’re building for iOS 17.</p><h3 id="how-it-works">How It Works</h3><p>Different documentation sources need different strategies:</p><table><thead><td>Source</td><td>Strategy</td></thead><tbody><tr><td>apple-docs</td><td>Apple’s JSON API + fallbacks</td></tr><tr><td>sample-code</td><td>Derived from framework</td></tr><tr><td>apple-archive</td><td>Derived from framework</td></tr><tr><td>swift-evolution</td><td>Swift version mapping</td></tr><tr><td>swift-book/hig</td><td>Universal (all platforms)</td></tr></tbody></table><p>For Apple’s modern docs, there’s a hidden JSON endpoint at <code>/tutorials/data/documentation/</code> that returns structured metadata including availability. For older stuff, we derive from the framework - if it’s UIKit, we know the minimum versions.</p><p>The cool part? You can filter by <em>any</em> platform:</p><ul><li><code>--min-ios 16</code></li><li><code>--min-macos 14</code></li><li><code>--min-tvos 17</code></li><li><code>--min-watchos 10</code></li><li><code>--min-visionos 1</code></li></ul><p>visionOS filtering. For when you’re building spatial computing apps and need APIs that actually exist on the platform.</p><h2 id="teaching-ai-where-to-look">Teaching AI Where to Look</h2><p>Here’s something I discovered while using Cupertino with Claude: the AI doesn’t know what it doesn’t know.</p><p>When Claude searches for “CALayer animation”, it gets API reference - classes, methods, properties. Good stuff. But the <em>conceptual</em> documentation - the “why” behind Core Animation - lives in Apple Archive. And Claude had no idea.</p><h3 id="the-problem">The Problem</h3><p>I had added archive support in v0.2.3. Users could search with <code>--source apple-archive</code>. But AI agents don’t read release notes. They read tool descriptions once, then forget. Every search was missing the deep conceptual guides.</p><h3 id="the-solution-teasers">The Solution: Teasers</h3><p>Now every search result includes hints from alternate sources:</p><pre><code class="language-markdown"># Search Results for "CALayer animation"
+
+## Results from apple-docs (5 found)
+
+1. **CALayer** - The basic object for managing and presenting drawable content...
+2. **CABasicAnimation** - An animation that applies a single keyframe...
+
+---
+
+**Other sources to explore:**
+
+- **apple-archive**: 3 results (Core Animation Programming Guide, Animation Types...)
+- **samples**: 2 results (LayerPlayer, AnimationExplorer)
+- **swift-evolution**: 1 result (SE-0421: Generalize async sequence...)
+
+Use `source` parameter to search: apple-archive, samples, hig, swift-evolution...
+</code></pre><p>Every search response is now a teaching moment. Claude sees there are archive guides available. It sees sample code exists. It learns <em>in context</em> how to dig deeper.</p><h2 id="human-interface-guidelines-design-docs-for-ai">Human Interface Guidelines: Design Docs for AI</h2><p>Here’s something I didn’t expect to matter as much as it does: HIG support.</p><p>Apple’s Human Interface Guidelines aren’t just for designers. When Claude is helping you build a button, a navigation pattern, or a settings screen, it should know Apple’s design recommendations - not just the API.</p><pre><code class="language-bash">cupertino search "buttons" --source hig
+</code></pre><p>Now when you ask “what’s the recommended button style for destructive actions?”, Claude can actually look it up instead of guessing. Platform-specific guidance for iOS, macOS, watchOS, visionOS - all searchable.</p><p>The HIG docs are marked as “universal” for availability - they apply across all OS versions. Design principles don’t deprecate like APIs do.</p><h2 id="one-tool-to-rule-them-all">One Tool to Rule Them All</h2><p>Speaking of simplification - I consolidated the search tools.</p><p>Before v0.7.0:</p><ul><li><code>search_docs</code> - Apple documentation</li><li><code>search_hig</code> - Human Interface Guidelines</li><li><code>search_samples</code> - Sample code</li><li>…and more</li></ul><p>Now:</p><ul><li><code>search</code> - Everything, with a <code>source</code> parameter</li></ul><pre><code class="language-bash"># CLI
+cupertino search "buttons" --source hig
+cupertino search "networking" --source samples
+cupertino search "actors" --source swift-evolution
+cupertino search "everything" --source all
+</code></pre><p>One tool, eight sources, cleaner mental model. The <code>source</code> parameter accepts:</p><ul><li><code>apple-docs</code> (default) - API reference</li><li><code>samples</code> - Working code examples</li><li><code>hig</code> - Design guidelines</li><li><code>apple-archive</code> - Legacy conceptual guides</li><li><code>swift-evolution</code> - Language proposals</li><li><code>swift-org</code> - Swift.org documentation</li><li><code>swift-book</code> - The Swift Programming Language</li><li><code>packages</code> - Swift package docs</li><li><code>all</code> (searches everything)</li></ul><p>The <code>all</code> option is surprisingly useful. When you’re not sure where something lives, just search everywhere.</p><h2 id="what-i-learned">What I Learned</h2><p>Building for AI is different than building for humans.</p><p>Humans read documentation. They explore. They remember “oh yeah, there’s an archive section I should check.” AI agents don’t work that way. They have tool descriptions and search results. That’s it.</p><p>The best way to teach an AI agent? Put the lesson in every response it sees. Not in documentation it reads once. Not in tool descriptions it might forget. In the actual output, every single time.</p><p>That’s why teasers matter. That’s why source-aware messaging matters. Every search result is documentation.</p><h2 id="the-road-ahead">The Road Ahead</h2><p>With 302,424 pages indexed and version filtering working, the foundation is solid. What’s next:</p><ol><li><strong>Semantic code search</strong> - Search sample code by what it <em>does</em>, not just keywords</li><li><strong>Framework relationships</strong> - Search UIKit, get relevant Foundation results too</li><li><strong>Smarter ranking</strong> - Weight results by your target platform</li></ol><p>The crawl is complete. The curation continues.</p><h2 id="install-or-update">Install or Update</h2><pre><code class="language-bash"># New install
+brew install mihaelamj/tap/cupertino
+
+# Update existing
+brew upgrade cupertino
+
+# Or one-line install
+bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><p>Then:</p><pre><code class="language-bash">cupertino setup  # Download 2.3GB database (~30 seconds)
+cupertino serve  # Start MCP server
+</code></pre><p>Try the new features:</p><pre><code class="language-bash"># Filter by OS version
+cupertino search "SwiftUI navigation" --min-ios 17
+
+# Search design guidelines
+cupertino search "buttons destructive" --source hig
+
+# Search legacy conceptual guides
+cupertino search "Core Animation" --source apple-archive
+
+# Search everything at once
+cupertino search "async await" --source all
+</code></pre><hr><p><em>Cupertino is an Apple Documentation MCP Server. 302,424 pages of Apple documentation, searchable by AI. Source at <a href="https://github.com/mihaelamj/cupertino" target="_blank">github.com/mihaelamj/cupertino</a>.</em></p>]]></content:encoded>
     </item>
     <item>
       <title>Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead</title>
@@ -47,6 +308,18 @@
       <description>The biggest documentation update yet - nearly double the docs, plus what&#39;s coming next for the Apple documentation MCP server.</description>
       <pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/cupertino-05-release/</guid>
+      <content:encoded><![CDATA[<h1>Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead</h1><p><strong>TL;DR:</strong> Documentation database nearly doubled. New release tooling. A roadmap for what’s next.</p><p>Two days after v0.4.0, we’re shipping v0.5.0. Why so fast? Because I finally finished a 5-day deep crawl of Apple’s documentation.</p><h2 id="the-numbers">The Numbers</h2><table><thead><td>Metric</td><td>v0.4.0</td><td>v0.5.0</td><td>Change</td></thead><tbody><tr><td>Total Documents</td><td>138,000</td><td>234,331</td><td>+70%</td></tr><tr><td>Frameworks</td><td>263</td><td>287</td><td>+24</td></tr><tr><td>Database Size</td><td>~1.2GB</td><td>~1.9GB</td><td>+58%</td></tr><tr><td>Crawl Time</td><td>20-24 hours</td><td>32-48 hours</td><td>Deeper</td></tr></tbody></table><p>The crawl ran for 5 days because I wanted <em>everything</em>. Every framework, every page, every deprecated API. The result: nearly 100,000 more documents than before.</p><h3 id="top-frameworks-by-document-count">Top Frameworks by Document Count</h3><ol><li><strong>Kernel</strong> - 24,747 docs</li><li><strong>Matter</strong> - 22,013 docs</li><li><strong>Swift</strong> - 17,466 docs</li><li><strong>Foundation</strong> - 14,892 docs</li><li><strong>UIKit</strong> - 12,341 docs</li></ol><p>Kernel documentation alone has almost 25,000 pages. That’s IOKit, BSD interfaces, Mach APIs - the stuff that’s usually impossible to find.</p><h2 id="what-this-means-for-ai">What This Means for AI</h2><p>When Claude searches Cupertino now, it has access to:</p><ul><li><strong>Low-level APIs</strong> - Kernel programming, IOKit drivers, Mach ports</li><li><strong>Hardware interfaces</strong> - Matter protocol (24k+ docs for smart home development)</li><li><strong>Complete Swift coverage</strong> - Every proposal, every standard library type</li><li><strong>Obscure frameworks</strong> - The ones you forget exist until you need them</li></ul><p>This is deterministic access to Apple’s documentation. No hallucination, no guessing from training data. Just the actual docs.</p><h2 id="why-i-built-release-automation">Why I Built Release Automation</h2><p>I remember the release oopsie from v0.4.0 like it was just a few days ago. Wait, it <em>was</em> just a few days ago. 😅 I tagged before committing the version bump, had to delete tags, rebuild everything, update SHA256 checksums twice…</p><p>Almost happened again with v0.5.0. Caught it in time, but the close call was enough.</p><p>So I finally wrote the automation I’d been putting off. Not because users need it - they don’t. But because <em>I</em> was losing hours to release mechanics instead of building features.</p><p>The release process now touches 4 repositories (main repo, cupertino-docs for databases, Homebrew tap, and the blog). Miss one step, wrong order, typo in a version number - and you’re starting over.</p><p>Now it’s one command. I run it, go make coffee, come back to a published release. That’s the dream, anyway. We’ll see how v0.6.0 goes.</p><h2 id="the-roadmap">The Roadmap</h2><p>The full roadmap is tracked in the <a href="https://github.com/users/mihaelamj/projects/1" target="_blank">Cupertino Roadmap</a> GitHub project. Here’s what’s coming next, in dependency order:</p><h3 id="phase-1-complete-the-crawl-88">Phase 1: Complete the Crawl (#88)</h3><p>The crawl is extensive but not complete. Some frameworks have deep hierarchies that weren’t fully traversed. The goal is 100% coverage of Apple’s public documentation.</p><p><strong>Status:</strong> In progress. Currently at depth level 8. No idea when it finishes - some frameworks go deep.</p><h3 id="phase-2-prune-the-database-87">Phase 2: Prune the Database (#87)</h3><p>Once we have everything, we need to clean it up. The database has:</p><ul><li>Duplicate entries (same doc indexed multiple times)</li><li>Misclassified documents (wrong framework attribution)</li><li>Orphaned entries from URL changes</li></ul><p>This is blocked by #88 - no point pruning until the crawl is complete.</p><h3 id="phase-3-api-version-tracking-99">Phase 3: API Version Tracking (#99)</h3><p>This is the big one. Apple’s documentation includes version information - which iOS/macOS version introduced each API. We can extract this.</p><p>Imagine searching with:</p><pre><code class="language-bash">cupertino search "async" --min-os ios16
+</code></pre><p>Or having Claude automatically filter out deprecated APIs when you’re targeting iOS 17+.</p><p>I’ve been investigating Apple’s <code>/tutorials/data/documentation/</code> endpoint. It returns JSON with version metadata for most frameworks. Some older frameworks (Kernel, IOKit) don’t have it, but the coverage is good.</p><p><strong>Status:</strong> Research complete. Implementation pending.</p><h3 id="phase-4-version-filtered-search-100">Phase 4: Version-Filtered Search (#100)</h3><p>Once we have version data in the database, we can expose it as a search filter. Both CLI and MCP tool would support filtering by minimum OS version.</p><p><strong>Blocked by:</strong> #99 (need the data first)</p><h3 id="phase-5-semantic-code-search-81">Phase 5: Semantic Code Search (#81)</h3><p>The end goal: search sample code by what it <em>does</em>, not just by keyword.</p><pre><code class="language-bash">cupertino search "async image loading with caching"
+</code></pre><p>This requires:</p><ol><li>Complete documentation (#88)</li><li>Clean database (#87)</li><li>SwiftSyntax AST indexing of sample code</li></ol><p>It’s ambitious, but the foundation is being laid with each release.</p><h2 id="install-or-update">Install or Update</h2><pre><code class="language-bash"># New install
+brew install mihaelamj/tap/cupertino
+
+# Update
+brew upgrade cupertino
+
+# Or instant setup
+bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><p>After installing, databases download automatically:</p><pre><code class="language-bash">cupertino setup
+</code></pre><p>Takes about 30 seconds to download the pre-built 1.9GB database.</p><h2 id="the-vision-human-curated-developer-docs">The Vision: Human-Curated Developer Docs</h2><p>Here’s what I’ve learned: having <em>all</em> the docs isn’t enough. We need them <em>in context</em>.</p><p>When you’re building an app targeting iOS 15+, you don’t want to see iOS 12 APIs. When you’re learning Core Animation, you want the conceptual guides from Apple Archive, not just the API reference. When you’re debugging a Matter integration, you need the 22,000 Matter docs filtered to what’s actually relevant.</p><p>Raw documentation is noise. Curated documentation is signal.</p><p>That’s where Cupertino is heading. Not just “here’s 234,331 docs” but “here’s what you actually need for your specific context.” Version filtering is coming - ask for iOS 16+ APIs only. Source awareness is coming - archive guides surfaced alongside modern reference. Framework relationships are coming - search UIKit and get relevant Foundation results too.</p><p>The crawl is the foundation. The curation is the value.</p><p>234,331 documents today. Context-aware, version-filtered, human-curated search tomorrow.</p><hr><p><em>Cupertino is an Apple Documentation MCP Server. Install with <code>brew install mihaelamj/tap/cupertino</code>. Source at <a href="https://github.com/mihaelamj/cupertino" target="_blank">github.com/mihaelamj/cupertino</a>.</em></p>]]></content:encoded>
     </item>
     <item>
       <title>Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons</title>
@@ -54,6 +327,26 @@
       <description>New features for Apple documentation search, plus a cautionary tale about release processes and why order matters when tagging.</description>
       <pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/cupertino-04-release/</guid>
+      <content:encoded><![CDATA[<h1>Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons</h1><p><strong>TL;DR:</strong> Human Interface Guidelines support, smarter framework search, and a hard lesson about release engineering.</p><p>Why jump from 0.3.4 to 0.4.0? Five issues closed: HIG support (#69), framework aliases (#91, #92), and Swift.org fixes (#93, #94). Enough new functionality to warrant a minor version bump.</p><h2 id="what-s-new">What’s New</h2><h3 id="human-interface-guidelines-support">Human Interface Guidelines Support</h3><p>Cupertino can now crawl and index Apple’s Human Interface Guidelines:</p><pre><code class="language-bash">cupertino fetch --type hig
+</code></pre><p>There’s also a new <code>search_hig</code> MCP tool that lets AI agents search design guidelines with platform and category filters. When you ask Claude “what are Apple’s recommendations for buttons?”, it can actually look it up instead of guessing from training data.</p><p>Everything available via MCP tools is also available via command line:</p><pre><code class="language-bash">cupertino search "buttons" --source hig
+</code></pre><p>This is something people might not realize: you can query Cupertino the same way AI does. Every MCP tool has a CLI equivalent. Want to see exactly what Claude sees when it searches? Run the same query yourself. Useful for testing, debugging, or when you just want quick answers without a conversation.</p><h3 id="framework-aliases">Framework Aliases</h3><p>Before, searching for “Core Animation” might not find results indexed under “QuartzCore” (the actual import name). Now there are 249 framework aliases in the database:</p><ul><li><code>QuartzCore</code> ↔ <code>CoreAnimation</code> ↔ <code>Core Animation</code></li><li><code>CoreGraphics</code> ↔ <code>Quartz2D</code> ↔ <code>Quartz 2D</code></li></ul><p>Search works regardless of which name variant you use.</p><h3 id="swift.org-fixes">Swift.org Fixes</h3><p>The Swift.org crawler was broken. The base URL had changed from <code>docs.swift.org</code> to <code>www.swift.org/documentation/</code>, and the indexer was looking for <code>.md</code> files when the crawler was saving <code>.json</code> files. Fixed.</p><h2 id="why-this-matters">Why This Matters</h2><p>Here’s a real example from today. I asked Claude about Apple’s Foundation Models framework - the new on-device ML APIs. Claude’s response:</p><blockquote><p>“The MCP server pulls the complete Foundation Models sample code documentation - straight from Apple’s current docs. No hallucinated API names!”</p></blockquote><p>More examples of documentation you can search:</p><ul><li><strong>FoundationModels</strong> - Apple’s new on-device ML framework</li><li><strong>Writing Tools</strong> - System-wide AI writing assistance</li><li><strong>Genmoji</strong> - Custom emoji generation</li><li><strong>Image Playground</strong> - On-device image generation</li></ul><p>This is also why Cupertino needs a human touch - it can’t be fully automated. Someone has to notice when Apple adds new frameworks, when URLs change (like Swift.org did), when documentation structures shift. The crawler is automated, but the awareness isn’t.</p><p>That’s the whole point: deterministic, up-to-date docs instead of training data guesses.</p><h3 id="token-efficiency">Token Efficiency</h3><p>A side benefit: Cupertino is more token-efficient than you’d expect.</p><p>Yes, tool results use tokens - documentation goes into context. But:</p><ul><li><strong>Accurate = fewer turns</strong> - No hallucination means no correction loop</li><li><strong>Curated content</strong> - Returns exactly what’s needed, not web search noise</li><li><strong>Local search is free</strong> - No API cost for the search operation itself</li><li><strong>Truncated summaries</strong> - Results are summarized; full doc only when you call <code>read_document</code></li></ul><p>So not zero tokens, but more <em>efficient</em> token use. And no external API costs for search.</p><h2 id="the-archive-discovery-problem">The Archive Discovery Problem</h2><p>Here’s something interesting I discovered while testing. When Claude searched for “CALayer animation”, it got API reference pages - classes, methods, properties. Claude wanted to dig deeper:</p><blockquote><p>“Let me try a more targeted search - something like the layer tree architecture or model/presentation layers that would be covered in the Core Animation Programming Guide.”</p></blockquote><p>Then I suggested searching with <code>source: "apple-archive"</code>. Claude’s reaction:</p><blockquote><p>“Now THAT’s the difference! When searching with source: apple-archive, we get the Core Animation Programming Guide and the Animation Types and Timing Programming Guide - the real meat.”</p></blockquote><p>The conceptual deep-dives that explain <em>why</em> things work the way they do.</p><p>Modern Apple docs = API reference (the <em>what</em>)<br>Archive docs = Conceptual guides (the <em>why</em>)</p><p>The problem? AI agents don’t know to search the archive. It’s an opt-in parameter buried in the tool description.</p><h3 id="the-solution-auto-surface-archive-teasers">The Solution: Auto-Surface Archive Teasers</h3><p>I’m planning to modify search results to automatically hint at archive content:</p><pre><code class="language-markdown"># Search Results for "CALayer animation"
+
+## Modern Documentation
+[1] CALayer - API reference...
+[2] CABasicAnimation - API reference...
+
+---
+
+## 📚 Related Archive Guides
+
+**Core Animation Programming Guide** - Layer geometry, animation timing...
+
+&gt; For full archive content, search with `source: "apple-archive"`
+</code></pre><p>This way:</p><ul><li>Modern docs still come first</li><li>AI agents always see archive exists</li><li>They learn how to get more, in context</li></ul><p>Only show the archive section if there are relevant results. Same principle could apply to sample code, Swift packages, or any other source.</p><h2 id="the-release-process-disaster">The Release Process Disaster</h2><p>Here’s where it gets interesting. I had all the code ready, all the tests passing, and I was ready to ship.</p><p>The process seemed simple:</p><ol><li>Bump version in <code>Constants.swift</code></li><li>Update <code>README.md</code> and <code>CHANGELOG.md</code></li><li>Create git tag</li><li>Push tag (triggers GitHub Actions build)</li><li>Upload databases to <code>cupertino-docs</code></li><li>Update Homebrew formula</li></ol><p>What could go wrong?</p><h3 id="the-tag-timing-problem">The Tag Timing Problem</h3><p>I merged my feature branch, created the tag, pushed it… and then realized I hadn’t committed the version bump to <code>main</code> yet. The tag pointed to a commit where <code>Constants.swift</code> still said <code>0.3.5</code>.</p><p>GitHub Actions dutifully built a beautiful, signed, notarized universal binary… that reported version <code>0.3.5</code>.</p><pre><code class="language-bash">$ cupertino --version
+0.3.5
+</code></pre><p>When users ran <code>cupertino setup</code>, it tried to download databases from <code>v0.3.5</code> instead of <code>v0.4.0</code>. Everything was broken.</p><h3 id="the-fix">The Fix</h3><p>I had to:</p><ol><li>Delete the tag on GitHub</li><li>Delete the local tag</li><li>Make sure the version bump commit was pushed to <code>main</code></li><li>Verify the built binary reports correct version <strong>before</strong> tagging</li><li>Recreate the tag</li><li>Wait for GitHub Actions to rebuild</li><li>Update the Homebrew formula with the new SHA256</li></ol><h3 id="the-sha256-dance">The SHA256 Dance</h3><p>When I first updated the Homebrew formula, I grabbed the SHA256 from the old (broken) binary. After rebuilding, the checksum changed. Users got:</p><pre><code>Error: Formula reports different checksum: cf035352...
+SHA-256 checksum of downloaded file: 5c5cf7ab...
+</code></pre><p>Another round of updating the tap.</p><h2 id="the-11-step-release-process">The 11-Step Release Process</h2><p>After today’s adventures, here’s what the release process actually looks like:</p><ol><li>Update version in <code>Constants.swift</code>, <code>README.md</code>, <code>CHANGELOG.md</code></li><li>Commit and push to main</li><li>Build locally and verify <code>--version</code> matches</li><li>Create and push tag</li><li>Wait for GitHub Actions (~5 min)</li><li>Create GitHub release with notes</li><li>Build locally and install</li><li>Upload databases with <code>cupertino release</code></li><li>Get new SHA256 from release</li><li>Update Homebrew tap formula</li><li>Verify on fresh machine</li></ol><p>That’s 11 steps across 4 repositories. Miss one, and you’re rebuilding everything.</p><h2 id="time-for-automation">Time for Automation?</h2><p>I’m seriously considering writing a release script. Swift or Bash?</p><p>The pragmatic choice is Bash - it’s just orchestrating CLI commands. But I’m a Swift purist. The <code>cupertino release</code> command already handles database uploads with proper GitHub API integration. Extending it to handle the full workflow feels right.</p><p>Something like <code>cupertino release --full</code> that:</p><ol><li>Checks for uncommitted changes</li><li>Verifies version consistency</li><li>Builds and validates <code>--version</code></li><li>Creates and pushes the tag</li><li>Waits for GitHub Actions</li><li>Uploads databases</li><li>Updates the Homebrew tap</li></ol><p>One command. No mistakes. Written in Swift.</p><h2 id="lessons-learned">Lessons Learned</h2><ol><li><strong>Order matters.</strong> Commit the version bump before creating the tag.</li><li><strong>Verify before you ship.</strong> Build locally and check <code>--version</code> before tagging.</li><li><strong>Document your release process.</strong> I now have a detailed <code>DEPLOYMENT.md</code> with warnings.</li><li><strong>Automate what hurts.</strong> If you make the same mistake twice, write a script.</li></ol><h2 id="what-s-next">What’s Next</h2><ul><li><strong><a href="https://github.com/mihaelamj/cupertino/issues/97" target="_blank">Enhanced search results</a></strong> - Auto-surface archive, samples, packages in every search (high priority)</li><li><strong>Release automation</strong> - <code>cupertino release --full</code> in Swift</li><li><strong>Fix setup animations</strong> - They’re broken</li><li><strong>Keep crawling</strong> - Fresh docs matter</li></ul><p>This release taught me a lot. Not just about release engineering, but about how AI agents actually use documentation. The archive discovery problem was a surprise - valuable content hidden behind an opt-in flag that agents don’t know to use.</p><p>Building tools for AI is different. You’re not just building for humans who read documentation. You’re building for agents that learn from tool descriptions and in-context hints.</p><p>Key discovery: Claude reads tool descriptions once, but reads search results every time. If you want agents to use a feature, put it in the output - not buried in documentation they’ll forget. Every search result is a teaching moment.</p><p>Next up: implementing enhanced search results. Once that ships, every search will auto-surface relevant content from archives, samples, and packages - with the exact commands to dig deeper. No more hidden treasure.</p><hr><p><em>Cupertino is an Apple Documentation MCP Server. Install with <code>brew install mihaelamj/tap/cupertino</code>. Check it out at <a href="https://github.com/mihaelamj/cupertino" target="_blank">github.com/mihaelamj/cupertino</a>.</em></p>]]></content:encoded>
     </item>
     <item>
       <title>Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs</title>
@@ -61,6 +354,27 @@
       <description>Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.</description>
       <pubDate>Sat, 06 Dec 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/cupertino-one-line-install/</guid>
+      <content:encoded><![CDATA[<h1>Cupertino v0.3.4: One-Line Install & 150K+ Apple Docs</h1><p><strong>TL;DR:</strong> One command installs everything. Homebrew is also available.</p><pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><h2 id="what-changed">What Changed</h2><p>In v0.3.0, I introduced <code>cupertino setup</code> to download pre-built databases. But you still had to clone the repo and build from source first. That’s two steps too many.</p><p>Now it’s one line:</p><pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><p>This:</p><ol><li>Downloads a pre-built universal binary (arm64 + x86_64)</li><li>Installs to <code>/usr/local/bin</code></li><li>Downloads documentation databases (~230 MB)</li></ol><p>Total time: under a minute.</p><h2 id="signed-and-notarized">Signed and Notarized</h2><p>Getting a command-line tool to “just work” on macOS is harder than it sounds. Without proper signing, users see scary “unidentified developer” warnings. Without notarization, Gatekeeper blocks execution entirely.</p><p>The release workflow now handles this automatically:</p><ol><li><strong>GitHub Actions</strong> builds a universal binary (arm64 + x86_64) on every release tag</li><li><strong>Developer ID signing</strong> with my Apple Developer certificate</li><li><strong>Apple notarization</strong> submits to Apple’s servers for malware scanning</li><li><strong>Preserved signatures</strong> using <code>ditto</code> instead of <code>cp</code> to maintain code signing through the install process</li></ol><p>The result: download, install, run. No security dialogs. No right-click workarounds. No “are you sure?” prompts.</p><p>This took several iterations to get right—the signing must happen in CI, notarization requires waiting for Apple’s servers, and even copying the file wrong can strip the signature. But now it’s automated and works every time.</p><h2 id="homebrew-support">Homebrew Support</h2><p>Prefer Homebrew? Now available:</p><pre><code class="language-bash">brew tap mihaelamj/tap
+brew install cupertino
+cupertino setup
+</code></pre><p>Three lines instead of one, but integrates with your existing Homebrew workflow.</p><h2 id="150-000-apple-documentation-pages">150,000+ Apple Documentation Pages</h2><p>The database has grown significantly:</p><table><thead><td>Version</td><td>Documentation Pages</td><td>Sample Projects</td></thead><tbody><tr><td>v0.2.x</td><td>~21,000</td><td>606</td></tr><tr><td>v0.3.0</td><td>~138,000</td><td>606</td></tr><tr><td>v0.3.4</td><td>~150,000+</td><td>606</td></tr></tbody></table><p>More coverage means better search results for your AI assistant.</p><h2 id="demo-video">Demo Video</h2><p>Watch the one-line install and Claude Desktop in action:</p><p><a href="https://youtu.be/B-mRdainTMA" target="_blank"><img src="https://img.youtube.com/vi/B-mRdainTMA/0.jpg" alt="Demo Video"></a></p><h2 id="three-install-methods">Three Install Methods</h2><h3 id="1.-one-line-install-recommended">1. One-Line Install (Recommended)</h3><pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
+</code></pre><p>Downloads binary and databases. Ready in under a minute.</p><h3 id="2.-homebrew">2. Homebrew</h3><pre><code class="language-bash">brew tap mihaelamj/tap
+brew install cupertino
+cupertino setup
+</code></pre><p>Integrates with Homebrew for updates via <code>brew upgrade cupertino</code>.</p><h3 id="3.-build-from-source">3. Build from Source</h3><pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino.git
+cd cupertino && make build && sudo make install
+cupertino setup
+</code></pre><p>For those who want to inspect or modify the code.</p><h2 id="what-s-inside">What’s Inside</h2><p>After installation, you have:</p><ul><li><code>/usr/local/bin/cupertino</code> - The MCP server binary</li><li><code>~/.cupertino/search.db</code> - 150K+ documentation pages</li><li><code>~/.cupertino/samples.db</code> - 606 sample projects, 18K+ source files</li></ul><p>Start the server and configure Claude Desktop:</p><pre><code class="language-bash">cupertino serve
+</code></pre><pre><code class="language-json">{
+  "mcpServers": {
+    "cupertino": {
+      "command": "/usr/local/bin/cupertino"
+    }
+  }
+}
+</code></pre><h2 id="registry-submissions">Registry Submissions</h2><p>I’ve submitted Cupertino to the major MCP server registries:</p><ul><li><a href="https://mcpservers.org" target="_blank">mcpservers.org</a></li><li><a href="https://pulsemcp.com" target="_blank">PulseMCP</a></li><li><a href="https://github.com/punkpeye/awesome-mcp-servers" target="_blank">awesome-mcp-servers</a></li></ul><p>These directories help developers discover MCP servers—getting listed would bring more visibility to the Apple developer community.</p><h2 id="links">Links</h2><ul><li><strong>GitHub:</strong> <a href="https://github.com/mihaelamj/cupertino" target="_blank">github.com/mihaelamj/cupertino</a></li><li><strong>Homebrew Tap:</strong> <a href="https://github.com/mihaelamj/homebrew-tap" target="_blank">github.com/mihaelamj/homebrew-tap</a></li><li><strong>Demo Video:</strong> <a href="https://youtu.be/B-mRdainTMA" target="_blank">YouTube</a></li></ul><hr><p><em>The best install experience is no install experience. One line is close enough.</em></p>]]></content:encoded>
     </item>
     <item>
       <title>Cupertino v0.3.0: From 20 Hours to 30 Seconds</title>
@@ -68,6 +382,74 @@
       <description>The new setup command downloads pre-built databases instantly - no more crawling Apple&#39;s documentation for hours</description>
       <pubDate>Fri, 05 Dec 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/cupertino-instant-setup/</guid>
+      <content:encoded><![CDATA[<h1>Cupertino v0.3.0: From 20 Hours to 30 Seconds</h1><p><strong>TL;DR:</strong> <code>cupertino setup</code> now downloads pre-built databases in ~30 seconds. No more 20-hour crawls.</p><h2 id="the-problem-with-v0.2.x">The Problem With v0.2.x</h2><p>When I released Cupertino, the setup process looked like this:</p><pre><code class="language-bash">cupertino fetch --type docs --max-pages 15000  # ~20-24 hours
+cupertino fetch --type evolution               # ~5 minutes
+cupertino save                                 # ~5 minutes
+</code></pre><p>Twenty hours. To respect Apple’s servers, the crawler waits 0.5 seconds between requests. 21,000 pages × 0.5s = a very long initial setup.</p><p>Users loved the tool but hated the onboarding. Fair.</p><h2 id="the-solution-pre-built-databases">The Solution: Pre-built Databases</h2><p>Instead of everyone crawling Apple’s documentation independently, I now publish pre-built databases on GitHub Releases. The new setup flow:</p><pre><code class="language-bash">cupertino setup   # ~30 seconds
+cupertino serve   # Start MCP server
+</code></pre><p>That’s it. Two commands. Under a minute.</p><h2 id="how-it-works">How It Works</h2><h3 id="for-users">For Users</h3><p>The <code>setup</code> command downloads a zip file from GitHub Releases containing:</p><ul><li><code>search.db</code> (~1.1 GB) - 138,000+ documentation pages</li><li><code>samples.db</code> (~183 MB) - 606 sample projects, 18,000+ source files</li></ul><pre><code class="language-bash">$ cupertino setup
+
+📦 Cupertino Setup
+
+⬇️  Downloading Databases...
+   ⠹ [████████████████░░░░░░░░░░░░░░]  53% (121.0 MB/228.1 MB)
+   ✓ Databases (228.1 MB)
+📂 Extracting databases...
+   ✓ Extracted
+
+✅ Setup complete!
+   Documentation: /Users/you/.cupertino/search.db
+   Sample code:   /Users/you/.cupertino/samples.db
+
+💡 Start the server with: cupertino serve
+</code></pre><p>If databases already exist, it skips the download:</p><pre><code class="language-bash">$ cupertino setup
+
+📦 Cupertino Setup
+
+✅ Databases already exist
+   Documentation: /Users/you/.cupertino/search.db
+   Sample code:   /Users/you/.cupertino/samples.db
+
+💡 Use --force to overwrite with latest version
+💡 Start the server with: cupertino serve
+</code></pre><h3 id="for-me-maintainer">For Me (Maintainer)</h3><p>A new <code>release</code> command automates publishing:</p><pre><code class="language-bash">$ cupertino release
+
+📦 Cupertino Release v0.3.0
+
+📊 Database sizes:
+   search.db:  1.2 GB
+   samples.db: 192.2 MB
+
+📁 Creating cupertino-databases-v0.3.0.zip...
+   ✓ Created (228.3 MB)
+
+🔐 Calculating SHA256...
+   17dac4b84adaa04b5f976a7d1b9126630545f0101fe84ca5423163da886386a6
+
+🚀 Creating release v0.3.0...
+   ✓ Release created
+
+⬆️  Uploading cupertino-databases-v0.3.0.zip...
+   ✓ Upload complete
+
+✅ Release v0.3.0 published!
+   https://github.com/mihaelamj/cupertino-docs/releases/tag/v0.3.0
+</code></pre><p>When I refresh the documentation (re-crawl Apple’s docs), I bump the version and run <code>cupertino release</code>. Users get the update with <code>cupertino setup --force</code>.</p><h2 id="version-parity">Version Parity</h2><p>The CLI version matches the database release tag:</p><table><thead><td>CLI Version</td><td>Release Tag</td><td>Database</td></thead><tbody><tr><td>0.3.0</td><td>v0.3.0</td><td>cupertino-databases-v0.3.0.zip</td></tr><tr><td>0.4.0</td><td>v0.4.0</td><td>cupertino-databases-v0.4.0.zip</td></tr></tbody></table><p>This ensures schema compatibility. If I change the database structure in v0.4.0, users with CLI v0.4.0 will download v0.4.0 databases.</p><h2 id="three-ways-to-set-up-cupertino">Three Ways to Set Up Cupertino</h2><p>Now you have options:</p><h3 id="1.-instant-setup-recommended">1. Instant Setup (Recommended)</h3><pre><code class="language-bash">cupertino setup    # ~30 seconds
+cupertino serve
+</code></pre><p>Download pre-built databases. Fastest option.</p><h3 id="2.-build-from-github">2. Build from GitHub</h3><pre><code class="language-bash">cupertino save --remote    # ~45 minutes
+cupertino serve
+</code></pre><p>Stream documentation from GitHub and build locally. Useful if you want to verify the build process or can’t download the 228MB zip.</p><h3 id="3.-full-crawl-advanced">3. Full Crawl (Advanced)</h3><pre><code class="language-bash">cupertino fetch --type docs --max-pages 15000    # ~20-24 hours
+cupertino fetch --type evolution
+cupertino save
+cupertino serve
+</code></pre><p>Crawl Apple’s documentation yourself. Only needed if you want to modify the crawler or need documentation not in the pre-built database.</p><h2 id="compression-matters">Compression Matters</h2><p>The uncompressed databases total ~1.3 GB. The zip file is 228 MB - about 1/6 the size. SQLite databases compress extremely well because they contain repetitive text data.</p><p>This makes the download fast and keeps GitHub Release storage reasonable.</p><h2 id="database-updates">Database Updates</h2><p>I’m actively crawling Apple’s documentation and updating the databases several times a week. Run <code>cupertino setup --force</code> to get the latest version.</p><p>The documentation is hosted in two public repositories:</p><ul><li><strong><a href="https://github.com/mihaelamj/cupertino-docs" target="_blank">cupertino-docs</a></strong> - Pre-crawled documentation and database releases</li><li><strong><a href="https://github.com/mihaelamj/cupertino-sample-code" target="_blank">cupertino-sample-code</a></strong> - 606 Apple sample code projects</li></ul><h2 id="what-s-next">What’s Next</h2><ul><li><strong>Automatic updates</strong> - Check for new database versions on startup</li><li><strong>Delta updates</strong> - Download only changed documents instead of full database</li><li><strong>More documentation sources</strong> - WWDC transcripts, Apple Tech Notes</li></ul><h2 id="try-it">Try It</h2><pre><code class="language-bash"># Install
+git clone https://github.com/mihaelamj/cupertino.git
+cd cupertino && make build && sudo make install
+
+# Setup (the new way)
+cupertino setup
+cupertino serve
+</code></pre><p>Configure Claude Desktop and you’re done. Full Apple documentation access in under a minute.</p><h2 id="links">Links</h2><ul><li><strong>GitHub:</strong> <a href="https://github.com/mihaelamj/cupertino" target="_blank">github.com/mihaelamj/cupertino</a></li><li><strong>Release:</strong> <a href="https://github.com/mihaelamj/cupertino/releases/tag/v0.3.0" target="_blank">v0.3.0</a></li><li><strong>Databases:</strong> <a href="https://github.com/mihaelamj/cupertino-docs/releases" target="_blank">cupertino-docs releases</a></li></ul><hr><p><em>The best feature is the one that removes friction. Twenty hours of crawling was friction.</em></p>]]></content:encoded>
     </item>
     <item>
       <title>Cupertino: 27 Issues Down, Just Getting Started</title>
@@ -75,6 +457,25 @@
       <description>From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects</description>
       <pubDate>Wed, 03 Dec 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/cupertino-ecosystem/</guid>
+      <content:encoded><![CDATA[<p>I’m currently working on two macOS apps, and I rely heavily on Claude Code to help me ship faster. But here’s the thing—I kept hitting the same wall: hallucinated APIs, outdated patterns, confident suggestions for methods that don’t exist.</p><p>I’m not alone. Developers everywhere report the same issues: AI suggesting <code>@ObservableObject</code> and <code>@Published</code> when Apple now recommends <code>@Observable</code>. Xcode 26’s AI integration <a href="https://www.fline.dev/why-im-not-using-xcode-26s-ai-chat-integration-and-what-could-change-my-mind/" target="_blank">hallucinating 100% of the time</a> when asked about new 2025 frameworks. One developer described fixing AI-generated Swift code as <a href="https://medium.com/@agnislav/one-more-chatgpt-vs-claude-comparison-for-macos-development-8cae53ec7c3e" target="_blank">“whack-a-mole”</a>—fix one obsolete API, another pops up.</p><p>That frustration is why I built Cupertino.</p><p>In my <a href="https://aleahim.com/blog/cupertino/">previous post</a>, I introduced it—an MCP server that gives Claude offline access to 22,000+ Apple documentation pages. That was version 0.1.x. Since then, things have evolved rapidly: nine releases in 72 hours, two new companion repositories, and a complete ecosystem for AI-assisted Apple development.</p><p>I need this tool. I use it every day. And I’m building it in public because I know I’m not the only one frustrated with AI that hallucinates Apple APIs.</p><h2 id="what-changed-v0.1.6-v0.2.3">What Changed: v0.1.6 → v0.2.3</h2><p>The original Cupertino solved the core problem—searching Apple docs locally. But real-world usage revealed gaps: ranking wasn’t smart enough, storage was bloated, and legacy documentation was missing. Here’s what shipped:</p><h3 id="intelligent-ranking-v0.2.1">Intelligent Ranking (v0.2.1)</h3><p>The initial BM25 search treated all documents equally. A query for “View” might return some random extension before <code>SwiftUI.View</code> itself. Eight ranking heuristics now prioritize:</p><ul><li><strong>Core types over extensions</strong> - <code>View</code> ranks above <code>View+Accessibility</code></li><li><strong>URL depth analysis</strong> - <code>/documentation/swiftui/view</code> beats <code>/documentation/swiftui/view/some/nested/thing</code></li><li><strong>Title pattern detection</strong> - Exact matches surface first</li><li><strong>Modern over deprecated</strong> - Current APIs rank higher</li></ul><p>The result: sub-100ms queries that actually return what you’re looking for.</p><h3 id="storage-cleanup-v0.1.8-v0.2.0">Storage Cleanup (v0.1.8, v0.2.0)</h3><p>The initial crawl produced ~27GB of data. Most of it was cruft: <code>.git</code> folders from sample code downloads, <code>.DS_Store</code> files, Xcode user data. A new <code>cleanup</code> command reduced storage to 2-3GB—a 90% reduction.</p><p>Version 0.2.0 fixed a critical bug where cleanup was accidentally deleting source code instead of just metadata. Now 99.8% of sample ZIPs retain intact source.</p><h3 id="language-filtering-v0.1.9">Language Filtering (v0.1.9)</h3><p>Not everyone wants Objective-C results. The CLI and MCP tools now accept a <code>language</code> parameter:</p><pre><code class="language-bash">cupertino search "NSObject" --language swift
+</code></pre><p>Claude can filter too—just ask for “Swift-only results.”</p><h3 id="apple-archive-support-v0.2.3">Apple Archive Support (v0.2.3)</h3><p>Apple’s modern documentation is great, but some topics only exist in the legacy archive: Core Animation Programming Guide, Quartz 2D Programming Guide, Core Text Programming Guide. These are still the authoritative sources for low-level graphics work.</p><p>Cupertino now crawls <code>developer.apple.com/library/archive/</code> and integrates results with smart ranking that prioritizes modern docs while keeping legacy content searchable.</p><h2 id="the-ecosystem-three-repositories">The Ecosystem: Three Repositories</h2><p>Cupertino grew from one repo to three:</p><h3 id="cupertino-the-mcp-server"><a href="https://github.com/mihaelamj/cupertino" target="_blank">cupertino</a> — The MCP Server</h3><p>The main Swift package. Crawls, indexes, and serves documentation via MCP protocol. Install it, point Claude at it, done.</p><pre><code class="language-bash"># Quick setup with Claude Code
+claude mcp add cupertino --scope user -- /usr/local/bin/cupertino
+</code></pre><h3 id="cupertino-docs-pre-crawled-documentation"><a href="https://github.com/mihaelamj/cupertino-docs" target="_blank">cupertino-docs</a> — Pre-Crawled Documentation</h3><p>Don’t want to crawl everything yourself? Clone this repo:</p><pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino-docs ~/.cupertino
+</code></pre><p>Currently includes:</p><table><thead><td>Source</td><td>Content</td><td>Status</td></thead><tbody><tr><td><code>swift-evolution/</code></td><td>All Swift proposals (~400)</td><td>Ready</td></tr><tr><td><code>swift-org/</code></td><td>Swift.org language docs</td><td>Ready</td></tr><tr><td><code>packages/</code></td><td>Swift Package Index metadata</td><td>Ready</td></tr><tr><td><code>docs/</code></td><td>Apple Developer Documentation (13K+ pages)</td><td>WIP - requires manual crawl</td></tr><tr><td><code>archive/</code></td><td>Legacy Apple guides</td><td>WIP - requires manual crawl</td></tr></tbody></table><p>Swift Evolution, Swift.org, and package docs are pre-indexed and ready. Apple Developer Documentation and Archive still require running <code>cupertino fetch</code> yourself due to size—but having the infrastructure in place is a start. The tooling exists; full pre-crawled distribution is coming.</p><h3 id="cupertino-sample-code-606-apple-samples"><a href="https://github.com/mihaelamj/cupertino-sample-code" target="_blank">cupertino-sample-code</a> — 606 Apple Samples</h3><p>This is the fun one. Every official Apple sample code project, cleaned and ready to build:</p><ul><li><strong>100+ frameworks covered</strong>: SwiftUI, ARKit, RealityKit, Metal, CoreML, Vision, AVFoundation, HealthKit, HomeKit, and more</li><li><strong>606 projects</strong>: From “Hello World” to complex GPU shaders</li><li><strong>Build-ready</strong>: No <code>.git</code> folders, no xcuserdata, no cruft</li><li><strong>MIT Licensed</strong>: Use them however you want</li></ul><p>When you ask Claude “show me how Apple implements ARKit face tracking,” it can now search actual Apple sample code—not hallucinate an approximation.</p><p>Example projects include:</p><ul><li><code>arkit-*</code> — Augmented reality implementations</li><li><code>swiftui-*</code> — Modern UI patterns</li><li><code>metal-*</code> — GPU programming examples</li><li><code>coreml-*</code> — Machine learning integrations</li><li><code>avfoundation-*</code> — Video and audio capture</li></ul><h2 id="the-72-hour-sprint">The 72-Hour Sprint</h2><p>Nine releases shipped in three days. Here’s the changelog:</p><table><thead><td>Version</td><td>Key Changes</td></thead><tbody><tr><td>v0.1.6</td><td>JSON-first crawling, WKWebView memory fixes</td></tr><tr><td>v0.1.7</td><td>Swift Book content retrieval fixes</td></tr><tr><td>v0.1.8</td><td>Cleanup command (27GB → 2-3GB)</td></tr><tr><td>v0.1.9</td><td>Language filtering (Swift/ObjC)</td></tr><tr><td>v0.2.0</td><td>Critical fix: source code retention</td></tr><tr><td>v0.2.1</td><td>Eight ranking heuristics</td></tr><tr><td>v0.2.2</td><td>URL depth analysis, resume fixes</td></tr><tr><td>v0.2.3</td><td>Apple Archive legacy docs</td></tr></tbody></table><p>Each release addressed real issues discovered while using Cupertino with Claude Code. Fast iteration, real-world testing.</p><h2 id="using-the-full-ecosystem">Using the Full Ecosystem</h2><p>Here’s the quickest path to AI-assisted Apple development with accurate documentation:</p><pre><code class="language-bash"># 1. Get pre-crawled docs (skip the 20-hour crawl)
+git clone https://github.com/mihaelamj/cupertino-docs ~/.cupertino
+
+# 2. Build the MCP server
+git clone https://github.com/mihaelamj/cupertino
+cd cupertino
+swift build -c release
+sudo cp .build/release/cupertino /usr/local/bin/
+
+# 3. Configure Claude Code
+claude mcp add cupertino --scope user -- /usr/local/bin/cupertino
+
+# 4. (Optional) Get sample code for reference
+git clone https://github.com/mihaelamj/cupertino-sample-code ~/Apple-Samples
+</code></pre><p>Now when you ask Claude about Apple APIs, it searches 22,000+ pages of real documentation. No hallucinations. No deprecated patterns. Just accurate, current information.</p><h2 id="what-s-next">What’s Next</h2><p>The ranking heuristics work well but aren’t perfect. Planned improvements:</p><ul><li><strong><code>make install</code></strong> — One command to install everything: the MCP server, pre-crawled docs from cupertino-docs, and sample code from cupertino-sample-code</li><li><strong>Semantic search</strong> — Embeddings-based similarity for conceptual queries</li><li><strong>Version awareness</strong> — Filter by iOS/macOS version</li><li><strong>Cross-reference linking</strong> — “See also” connections between related docs</li><li><strong>Sample code search</strong> — Full-text search across all 606 projects</li></ul><h2 id="join-me">Join Me</h2><p>If you’re an Apple developer tired of AI hallucinations, give Cupertino a try. If you find bugs or have ideas, open an issue—27 closed so far, plenty more to go.</p><p>This isn’t a polished product yet. It’s a tool I’m building because I need it, and I’m sharing it because you might need it too.</p><h2 id="repositories">Repositories</h2><ul><li><a href="https://github.com/mihaelamj/cupertino" target="_blank">cupertino</a> — MCP Server (Swift)</li><li><a href="https://github.com/mihaelamj/cupertino-docs" target="_blank">cupertino-docs</a> — Pre-crawled documentation</li><li><a href="https://github.com/mihaelamj/cupertino-sample-code" target="_blank">cupertino-sample-code</a> — 606 Apple samples (MIT)</li></ul><p>No more AI hallucinations about Apple APIs. Just real documentation that compiles.</p>]]></content:encoded>
     </item>
     <item>
       <title>Cupertino: Offline Apple Documentation for AI Agents</title>
@@ -82,6 +483,79 @@
       <description>An MCP server that gives Claude Desktop offline access to 22,000+ Apple documentation pages</description>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/cupertino/</guid>
+      <content:encoded><![CDATA[<h1>Cupertino: Offline Apple Documentation for AI Agents</h1><p><strong>TL;DR:</strong> I built an MCP server that gives Claude Desktop offline access to 22,000+ Apple documentation pages across 261 frameworks. No more hallucinated APIs.</p><h2 id="the-problem">The Problem</h2><p>If you’ve used Claude or ChatGPT for Swift/iOS development, you’ve seen this:</p><blockquote><p>“Use the <code>NavigationView</code> with <code>.navigationBarTitle()</code> modifier…”</p></blockquote><p>Except <code>NavigationView</code> is deprecated. It’s <code>NavigationStack</code> now. And the modifier is <code>.navigationTitle()</code>.</p><p>AI models hallucinate APIs. They mix up iOS 14 patterns with iOS 17. They invent methods that don’t exist. And when you’re deep in a coding session, these small errors cost you hours.</p><h2 id="the-solution-cupertino">The Solution: Cupertino</h2><p>Cupertino is an MCP (Model Context Protocol) server that:</p><ol><li><strong>Crawls</strong> Apple Developer documentation, Swift Evolution proposals, and Swift.org</li><li><strong>Indexes</strong> everything into a local SQLite FTS5 database with BM25 ranking</li><li><strong>Serves</strong> documentation to Claude Desktop via MCP</li></ol><p>When Claude needs to answer a SwiftUI question, it searches your local documentation instead of relying on training data.</p><h2 id="what-you-get">What You Get</h2><p><strong>22,044 documents across 223 frameworks:</strong></p><p><img src="https://aleahim.com/images/blog/cupertino/frameworks.png" alt="Available Frameworks"><br><em>The documentation index contains 22,044 documents across 223 frameworks, including all major Apple platforms.</em></p><table><thead><td>Framework</td><td>Documents</td></thead><tbody><tr><td>SwiftUI</td><td>5,853</td></tr><tr><td>Swift</td><td>2,814</td></tr><tr><td>UIKit</td><td>1,906</td></tr><tr><td>AppKit</td><td>1,316</td></tr><tr><td>Foundation</td><td>1,219</td></tr><tr><td>Swift.org</td><td>501</td></tr><tr><td>Swift Evolution</td><td>429</td></tr><tr><td>RealityKit</td><td>423</td></tr><tr><td>…</td><td>…</td></tr></tbody></table><p><strong>Two MCP tools:</strong></p><ul><li><code>search_docs</code> - Full-text search with BM25 ranking</li><li><code>list_frameworks</code> - Discover available documentation</li></ul><p><strong>Example search result:</strong></p><pre><code># Search Results for "SwiftUI View"
+
+## 1. View | Apple Developer Documentation
+- **Framework:** swiftui
+- **URI:** apple-docs://swiftui/documentation_swiftui_view
+- **Score:** 1.82
+- **Words:** 2,682
+
+Protocol# View
+A type that represents part of your app's user interface...
+</code></pre><p><img src="https://aleahim.com/images/blog/cupertino/mcp-tools.png" alt="Claude Desktop using Cupertino MCP tools"><br><em>Claude Desktop using Cupertino’s MCP tools to search documentation and list available frameworks</em></p><h2 id="installation">Installation</h2><h3 id="1.-build-from-source">1. Build from source</h3><pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino.git
+cd cupertino
+make build
+sudo make install
+</code></pre><h3 id="2.-fetch-documentation">2. Fetch documentation</h3><pre><code class="language-bash"># Quick start: Swift Evolution only (~5 minutes)
+cupertino fetch --type evolution
+cupertino save
+
+# Full documentation (~20-24 hours, one-time)
+cupertino fetch --type docs --max-pages 15000
+cupertino fetch --type evolution
+cupertino save
+</code></pre><p><strong>Expected output after indexing:</strong></p><pre><code>✅ Search index built successfully!
+   Total documents: 22044
+   Frameworks: 261
+   Database: /Users/mm/.cupertino/search.db
+   Size: 163.6 MB
+
+💡 Tip: Start the MCP server with 'cupertino serve' to enable search
+</code></pre><p>Why 20+ hours? The crawler respects Apple’s servers with a 0.5s delay between requests. 21,000 pages × 0.5s = many hours. But it’s a one-time operation.</p><h3 id="3.-configure-claude-desktop">3. Configure Claude Desktop</h3><p>Edit <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>:</p><pre><code class="language-json">{
+  "mcpServers": {
+    "cupertino": {
+      "command": "/usr/local/bin/cupertino"
+    }
+  }
+}
+</code></pre><p>Restart Claude Desktop. Done.</p><h3 id="4.-verify-it-works">4. Verify it works</h3><pre><code class="language-bash">cupertino doctor
+</code></pre><pre><code>✅ MCP Server
+   ✓ Server can initialize
+   ✓ Transport: stdio
+   ✓ Protocol version: 2024-11-05
+
+📚 Documentation Directories
+   ✓ Apple docs: ~/.cupertino/docs (21,114 files)
+   ✓ Swift Evolution: ~/.cupertino/swift-evolution (429 proposals)
+
+🔍 Search Index
+   ✓ Database: ~/.cupertino/search.db
+   ✓ Size: 156.0 MB
+   ✓ Frameworks: 261
+
+✅ All checks passed - MCP server ready
+</code></pre><h2 id="how-it-works">How It Works</h2><pre><code>1. Fetch:  cupertino fetch --type docs
+   → WKWebView renders JavaScript-heavy pages
+   → HTML converted to Markdown
+   → Saved to ~/.cupertino/docs/
+
+2. Save:   cupertino save
+   → Markdown files indexed into SQLite FTS5
+   → BM25 ranking for relevance scoring
+   → ~160MB database for full index
+
+3. Serve:  cupertino serve
+   → MCP server starts on stdio
+   → Claude Desktop connects via JSON-RPC
+   → Search queries hit local database
+</code></pre><h2 id="architecture">Architecture</h2><p>Built with Swift 6.2 and strict concurrency:</p><pre><code>Packages/
+├── MCP/                 # Model Context Protocol implementation
+├── Search/              # SQLite FTS5 search engine
+├── Core/                # Crawlers (WKWebView, GitHub API)
+├── CLI/                 # Command-line interface
+└── Resources/           # Bundled catalogs (9,699 packages, 606 samples)
+</code></pre><p>Key decisions:</p><ul><li><strong>Swift 6.2</strong> with 100% strict concurrency checking</li><li><strong>Actor isolation</strong> for thread-safe state management</li><li><strong>SQLite FTS5</strong> with BM25 for fast, relevant search</li><li><strong>WKWebView</strong> to render Apple’s JavaScript-heavy documentation</li></ul><h2 id="room-for-improvement">Room for Improvement</h2><p>Honest feedback from testing: the search works, but it’s not perfect.</p><p><strong>Current limitation:</strong> BM25 treats all documents equally. A search for “SwiftUI” returns <code>mouseEntered(with:)</code> alongside <code>View</code> protocol because both contain “SwiftUI” with similar frequency.</p><p><strong>Planned improvements:</strong></p><ol><li><strong>Boost by word count</strong> - Comprehensive docs (2000+ words) rank higher than stub pages (61 words)</li><li><strong>Boost by path depth</strong> - <code>/swiftui/view</code> ranks higher than <code>/swiftui/nshostingview/mouseentered</code></li><li><strong>Document type weighting</strong> - Overview pages rank higher than individual method docs</li><li><strong>Curated importance flags</strong> - Mark foundational docs for priority ranking</li></ol><p>The search is still useful for targeted queries like “SwiftUI NavigationStack” or “SE-0001”. Broad queries need work.</p><h2 id="why-i-built-this">Why I Built This</h2><p>I was tired of:</p><ul><li>Claude inventing deprecated APIs</li><li>Switching to Safari to verify every code suggestion</li><li>Losing flow state to documentation lookups</li></ul><p>Now Claude searches my local 160MB documentation database. Same query, same results, every time. Offline. Fast.</p><h2 id="links">Links</h2><ul><li><strong>GitHub:</strong> <a href="https://github.com/mihaelamj/cupertino" target="_blank">github.com/mihaelamj/cupertino</a></li><li><strong>Requirements:</strong> macOS 15+, Swift 6.2+, Xcode 16+</li><li><strong>License:</strong> MIT</li></ul><hr><p><em>Built with Swift, frustration, and too many hours debugging WKWebView concurrency issues.</em></p>]]></content:encoded>
     </item>
     <item>
       <title>Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients</title>
@@ -89,6 +563,30 @@
       <description>Elegant, Thread-Safe Authentication for OpenAPI Runtime</description>
       <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/token-middleware/</guid>
+      <content:encoded><![CDATA[<p>Authentication is one of those things that every API client needs, yet implementing it cleanly and safely can be surprisingly tricky—especially in Swift’s modern concurrency world. Today, I’m sharing a lightweight middleware solution that handles Bearer token authentication for OpenAPI-generated Swift clients in a thread-safe, composable way.</p><h2 id="the-problem">The Problem</h2><p>When working with OpenAPI Runtime in Swift, you often need to:</p><ul><li>Inject an <code>Authorization: Bearer &lt;token&gt;</code> header into API requests</li><li>Update tokens dynamically (after login, token refresh, etc.)</li><li>Skip authentication for certain endpoints (like login or public routes)</li><li>Ensure thread-safety in concurrent environments</li></ul><p>While this sounds straightforward, getting it right with Swift 6’s strict concurrency checking requires careful design. You need proper actor isolation, Sendable conformance, and a clean API that doesn’t fight the type system.</p><h2 id="the-solution-bearertokenauthenticationmiddleware">The Solution: BearerTokenAuthenticationMiddleware</h2><p>I built <code>BearerTokenAuthenticationMiddleware</code>—a minimal, zero-dependency package that solves these problems elegantly. Here’s what makes it special:</p><h3 id="1.-actor-isolated-token-storage">1. Actor-Isolated Token Storage</h3><p>The heart of the middleware is a private <code>TokenStorage</code> actor that manages the authentication token:</p><pre><code class="language-swift">private actor TokenStorage {
+    var token: String?
+
+    func getToken() -&gt; String? {
+        token
+    }
+
+    func setToken(_ newToken: String?) {
+        token = newToken
+    }
+}
+</code></pre><p>This ensures that token reads and writes are <strong>never concurrent</strong>, eliminating race conditions completely.</p><h3 id="2.-clean-composable-api">2. Clean, Composable API</h3><p>Setting up the middleware is straightforward:</p><pre><code class="language-swift">import OpenAPIRuntime
+import BearerTokenAuthMiddleware
+
+let authMiddleware = BearerTokenAuthenticationMiddleware(
+    initialToken: "my-secret-token"
+)
+
+let client = Client(
+    serverURL: URL(string: "https://api.example.com")!,
+    transport: AsyncHTTPClientTransport(),
+    middlewares: [authMiddleware]
+)
+</code></pre><p>Every request now automatically includes <code>Authorization: Bearer my-secret-token</code>.</p><h2 id="wrapping-up">Wrapping Up</h2><p>Building authentication middleware might seem like boilerplate, but doing it right—especially with modern Swift concurrency—requires thoughtful design. <code>BearerTokenAuthenticationMiddleware</code> provides:</p><ul><li>Thread-safe token management via actors</li><li>Selective authentication with operation-level control</li><li>Dynamic token updates</li><li>Zero dependencies</li><li>Clean composition with other middlewares</li></ul><p><strong>Repository</strong>: <a href="https://github.com/mihaelamj/BearerTokenAuthMiddleware" target="_blank">github.com/mihaelamj/BearerTokenAuthMiddleware</a></p>]]></content:encoded>
     </item>
     <item>
       <title>From ExtremePackaging to OpenAPI Integration</title>
@@ -96,6 +594,30 @@
       <description>Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture</description>
       <pubDate>Tue, 23 Sep 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/extreme-packaging-open-a-p-i/</guid>
+      <content:encoded><![CDATA[<p>When I first published <a href="https://github.com/mihaelamj/ExtremePackaging" target="_blank">ExtremePackaging</a>, the goal was simple — to prove that <strong>highly modular Swift architectures</strong> can scale across platforms while keeping build times fast, dependencies isolated, and the mental model crystal clear.</p><p>But then came the next step: <em>Could this same architecture host a complete OpenAPI workflow — with generated clients, servers, and full middleware integration — without losing its elegance?</em></p><p>That’s how the new reference implementation, <strong>swift-openapi-extremepackaging-example</strong>, was born.</p><hr><h2 id="the-foundation-extremepackaging">🧩 The Foundation — ExtremePackaging</h2><p>The original ExtremePackaging repository introduced a clean, layered structure:</p><ul><li><strong>Shared packages</strong> for models and protocols</li><li><strong>Independent feature modules</strong> for UI, data, and networking</li><li><strong>No cross-package leaks</strong></li><li><strong>Unified Xcode workspace</strong> that felt like a monolith but built like microservices</li></ul><p>The guiding philosophy: <em>Each feature should be an island, communicating only through well-defined contracts.</em></p><p>That foundation made it ideal for integrating OpenAPI-generated code — which naturally fits into modular boundaries like <code>SharedApiModels</code>, <code>ApiClient</code>, and <code>ApiServer</code>.</p><hr><h2 id="evolving-toward-openapi">🚀 Evolving Toward OpenAPI</h2><p>The OpenAPI version added an entire new layer of automation and functionality — transforming a static architecture into a <strong>living, self-describing API ecosystem</strong>.</p><h3 id="1.-openapi-schema-code-generation">1. OpenAPI Schema & Code Generation</h3><p>At the heart of the project is the <strong>OpenAPI specification (<code>openapi.yaml</code>)</strong> — defining endpoints, models, and responses for a DummyJSON-compatible API.</p><p>Newly introduced elements:</p><ul><li>🧱 Full schema definitions for <code>Users</code>, <code>Posts</code>, <code>Products</code>, <code>Todos</code>, and <code>Carts</code></li><li>🧩 Error schemas (404, validation, authentication)</li><li>⚙️ Integration with <strong>Swift OpenAPI Generator</strong></li><li>🔁 Automatic generation of clients, models, and server stubs</li><li>📦 Separation of generated code into <code>SharedApiModels</code></li></ul><p>This turned the architecture into a self-contained API ecosystem — one that can <strong>generate, serve, and consume</strong> its own endpoints.</p><hr><h3 id="2.-api-server-implementation">2. API Server Implementation</h3><p>A complete <strong>Vapor-based local server</strong> (<code>ApiServer</code>) was added to simulate real-world backend behavior:</p><ul><li>17 endpoints fully implemented from the OpenAPI spec</li><li>Realistic mock data mirroring DummyJSON</li><li>Pagination and validation logic</li><li>Centralized error responses</li><li>🖥️ Prefixed logging for easy tracing in the console</li></ul><p>The server runs locally at <code>http://localhost:8080</code>, serving as both a mock backend and a test harness for the generated client.</p><hr><h3 id="3.-enhanced-api-client-architecture">3. Enhanced API Client Architecture</h3><p>The client evolved from a simple abstraction into a <strong>fully concurrent, actor-based networking layer</strong>.</p><h4>Highlights</h4><ul><li><code>ApiClient</code> actor manages shared state safely across async contexts</li><li>Middleware chain introduced: <strong>Logging → Authentication → Correction</strong></li><li>Runtime environment switching between <code>.production</code>, <code>.local</code>, and <code>.mock</code></li><li>Shared singleton <code>ApiClientState</code> stores token, settings, and preferences</li></ul><p>Example flow:</p><pre><code class="language-swift">try await ApiClient.initializeShared(environment: .production)
+let client = ApiClient.shared!
+let auth = try await client.login(username: "emilys", password: "emilyspass")
+await ApiClient.setToken(auth.accessToken)
+let users = try await client.getUsers(limit: 10)
+</code></pre><p>A clear separation between environment configuration and runtime state ensures deterministic, thread-safe behavior.</p><hr><h3 id="4.-middleware-integration">4. Middleware Integration</h3><p>The client leverages two reusable middlewares from sibling packages:</p><ul><li><strong><a href="https://github.com/mihaelamj/OpenAPILoggingMiddleware" target="_blank">OpenAPILoggingMiddleware</a></strong><br>Provides structured, console + JSON logging with full request/response capture.</li><li><strong><a href="https://github.com/mihaelamj/BearerTokenAuthMiddleware" target="_blank">BearerTokenAuthMiddleware</a></strong><br>Manages JWT token injection with a concurrency-safe actor and public operation rules.</li></ul><p>Together, they demonstrate the power of <strong>middleware chaining</strong> in OpenAPI Runtime — clean, modular extensions without inheritance or global state.</p><hr><h3 id="5.-yamlmerger-the-key-to-structured-api-specs">5. YAMLMerger — The Key to Structured API Specs</h3><p>The project uses <strong><a href="https://github.com/mihaelamj/YamlMerger" target="_blank">YamlMerger</a></strong> — a Swift package that merges multiple YAML files into a single combined OpenAPI specification.<br>If your project doesn’t already include an <code>openapi.yaml</code>, YamlMerger ensures you have one — and helps you maintain a <strong>structured, predictable folder layout</strong> under <code>Tests/</code> or <code>Sources/SharedApiModels/schemas/</code>.</p><h4>🧠 Why It Must Be Copied into the Project</h4><p>YamlMerger cannot simply be added as a SwiftPM dependency for build-time merging because of <strong>SPM’s read-only resolution model</strong>:</p><ol><li>Swift Package Manager stores dependencies in a <strong>cached, read-only</strong> location (<code>.build/checkouts/</code>).</li><li>The OpenAPI generator, however, needs <strong>write access</strong> to output the merged <code>openapi.yaml</code> file directly into your source tree.</li><li>SPM build scripts are not allowed to write to source folders outside their sandboxed build directory.</li></ol><p>✅ <strong>Solution:</strong> Copy the YamlMerger executable directly into your project (e.g. <code>Tools/YamlMerger/</code>) and call it from a pre-build script or CI pipeline.<br>This guarantees write permissions and makes the tool available to everyone checking out the repo.</p><h4>🧩 What It Does</h4><p>YamlMerger scans subdirectories (01 → 08) and merges YAML fragments in deterministic order:</p><ol><li>Folders are processed numerically.</li><li><code>__*.yaml</code> files merge first within each folder.</li><li>Remaining files merge alphabetically.</li><li>The final output is a complete OpenAPI spec, suitable for Swift OpenAPI Generator.</li></ol><h4>🧱 Example Schema Layout</h4><pre><code>Schema/
+├── 01_Info/
+├── 02_Servers/
+├── 03_Tags/
+├── 04_Paths/
+├── 05_Webhooks/
+├── 06_Components/
+├── 07_Security/
+└── 08_ExternalDocs/
+</code></pre><p>Each folder corresponds to a section of the OpenAPI spec, allowing multiple developers to work on different endpoints, schemas, or components without conflicts.</p><h4>⚙️ Typical Workflow</h4><pre><code class="language-bash"># Merge schemas before build
+./Tools/YamlMerger merge   --input Sources/SharedApiModels/schemas/   --output Sources/SharedApiModels/openapi.yaml
+</code></pre><p>You can run this manually, in a pre-build phase, or as part of CI/CD automation.</p><h4>💡 Pro Tip</h4><p>If your project starts <strong>without</strong> an <code>openapi.yaml</code>, placing schema fragments in structured folders under <code>Tests/</code> ensures your API structure remains organized — even before full code generation.<br>YamlMerger gives your tests (and your teammates) a <strong>shared, visual map</strong> of your API’s evolving shape.</p><hr><h3 id="6.-test-coverage-expansion">6. Test Coverage Expansion</h3><p>Two new test suites validate both local and production APIs:</p><ul><li>🧪 <code>ApiClientLocalTests.swift</code> — 25 tests targeting the local Vapor server</li><li>🌐 <code>ApiClientProductionTests.swift</code> — 29 integration tests against DummyJSON API</li></ul><p>Tests cover:</p><ul><li>Authentication and token persistence</li><li>Pagination behavior</li><li>Error responses and invalid IDs</li><li>Concurrent request handling</li></ul><p>Together they form a <strong>54-test safety net</strong> proving both architecture and OpenAPI compliance.</p><hr><h2 id="architecture-snapshot">🧠 Architecture Snapshot</h2><pre><code>Packages/
+├── Sources/
+│   ├── ApiClient/
+│   ├── ApiServer/
+│   └── SharedApiModels/
+└── Tests/
+    └── ApiClientTests/
+</code></pre><p>Each target is self-contained — just like in the original ExtremePackaging — but now with full OpenAPI integration, client/server symmetry, and end-to-end testability.</p><hr><h2 id="key-improvements-over-extremepackaging">⚡ Key Improvements Over ExtremePackaging</h2><table><thead><td>Area</td><td>Before</td><td>After</td></thead><tbody><tr><td>API Definition</td><td>Manual protocol layer</td><td>Generated OpenAPI spec</td></tr><tr><td>Networking</td><td>Custom client</td><td>Actor-based client w/ middlewares</td></tr><tr><td>Server</td><td>None</td><td>Vapor mock server (17 endpoints)</td></tr><tr><td>Authentication</td><td>Static token</td><td>BearerTokenAuthMiddleware</td></tr><tr><td>Logging</td><td>Simple print logs</td><td>Structured OpenAPILoggingMiddleware</td></tr><tr><td>Testing</td><td>Minimal unit tests</td><td>Full integration tests (54 total)</td></tr><tr><td>Schema Management</td><td>Handwritten</td><td>Modular YAML + YamlMerger</td></tr><tr><td>Tooling</td><td>Swift only</td><td>Swift + OpenAPI toolchain</td></tr></tbody></table><hr><h2 id="lessons-learned">🧭 Lessons Learned</h2><ol><li><strong>OpenAPI fits perfectly into modular Swift architectures</strong> — generated code belongs in its own layer, and SwiftPM makes that separation effortless.</li><li><strong>Actors are the future of shared state</strong> — simple, safe, and transparent.</li><li><strong>Middleware > Managers</strong> — function composition scales better than class hierarchies.</li><li><strong>Automation beats documentation</strong> — with OpenAPI, the spec <em>is</em> the documentation.</li></ol><hr><h2 id="closing-thoughts">💬 Closing Thoughts</h2><p>This evolution of ExtremePackaging into a full OpenAPI reference app is more than a demo — it’s a <strong>blueprint for modular API-driven development in Swift</strong>.</p><p>From YAML schemas to live servers and typed clients, everything now exists in one unified, testable ecosystem — powered by Apple’s official OpenAPI tools and guided by the ExtremePackaging philosophy.</p><p>👉 Explore the project: <a href="https://github.com/mihaelamj/swift-openapi-extremepackaging-example" target="_blank">swift-openapi-extremepackaging-example</a></p><hr><p><em>“Architecture should scale not by adding layers, but by removing assumptions.”</em></p>]]></content:encoded>
     </item>
     <item>
       <title>Introducing OpenAPILoggingMiddleware</title>
@@ -103,6 +625,67 @@
       <description>Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers</description>
       <pubDate>Tue, 16 Sep 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/logging-middleware/</guid>
+      <content:encoded><![CDATA[<h2 id="introduction">Introduction</h2><p>In the world of <strong>OpenAPI-driven Swift servers</strong>, visibility is everything.<br>You can’t fix what you can’t see — and you can’t optimize what you don’t understand.</p><p>When I started building modular, OpenAPI-first architectures in Swift, one thing stood out: <strong>logging was either overwhelming or absent</strong>.<br>Either you got a raw dump of everything (headers, binary data, and stack traces), or you got nothing at all. Neither is particularly helpful when debugging or tracing an issue across microservices.</p><p>Frameworks like <strong>OpenAPIRuntime</strong> and <strong>OpenAPIVapor</strong> provide a strong foundation, but they deliberately avoid opinions about logging. They leave that up to you.<br>And that’s where most developers end up adding scattered <code>print()</code> statements or ad-hoc <code>logger.info()</code> calls inside handlers just to see what’s going on.</p><p>That’s not clean architecture. It’s noise.</p><p>So I built <strong>OpenAPILoggingMiddleware</strong>, a small, composable middleware that gives you <em>just enough visibility</em> — not too much, not too little — when working with OpenAPI-based servers.</p><hr><h2 id="the-problem-logging-in-a-generated-world">The Problem: Logging in a Generated World</h2><p>OpenAPI code generation has revolutionized how backend systems are written. You define your contracts, generate both server and client, and everything should “just work.”<br>But once requests start flowing, visibility often becomes a blind spot.</p><p>If you’ve ever tried debugging an OpenAPI-generated Swift server, you might recognize these problems:</p><ul><li>Middleware logs every byte of the body, even binary data.</li><li>Multi-part and SSE requests produce unreadable noise.</li><li>Response logs are buried under system output.</li><li>There’s no consistent way to see request duration or endpoint performance.</li><li>You can’t easily toggle verbosity levels or redact sensitive data.</li></ul><p>You end up either drowning in log output or adding <code>print</code> calls just to survive the debugging process.</p><p>This middleware solves that.</p><hr><h2 id="the-solution-a-lightweight-logging-layer">The Solution: A Lightweight Logging Layer</h2><p><code>OpenAPILoggingMiddleware</code> sits quietly in the pipeline — between your generated routes and the transport layer.<br>It listens to every incoming request and outgoing response, measures duration, and prints a <strong>structured summary</strong> of what happened.</p><p>At its core, the idea is simple:</p><blockquote><p>Log exactly what you’d want to see if you were reading someone else’s code.</p></blockquote><p>Here’s how it looks in your Vapor or OpenAPI setup:</p><pre><code class="language-swift">import OpenAPILoggingMiddleware
+
+app.middleware.use(OpenAPILoggingMiddleware(level: .info))
+</code></pre><p>That one line transforms your debugging experience.</p><hr><h2 id="under-the-hood">Under the Hood</h2><p>The middleware implements the <code>OpenAPIMiddleware</code> protocol, which lets it intercept the lifecycle of each OpenAPI operation — before the request is handled and after the response is sent.</p><p>Here’s a conceptual overview:</p><pre><code class="language-swift">public struct OpenAPILoggingMiddleware: OpenAPIMiddleware {
+    public func intercept(
+        _ request: Request,
+        operationID: String,
+        next: (Request) async throws -&gt; Response
+    ) async throws -&gt; Response {
+        let start = Date()
+        let response = try await next(request)
+        let duration = Date().timeIntervalSince(start) * 1000
+
+        print("[\(request.method)] \(request.url.path) -&gt; \(response.status.code) [\(Int(duration)) ms]")
+        return response
+    }
+}
+</code></pre><p>Of course, the real implementation handles errors, structured formatting, and configurable verbosity, but the essence is the same:<br>it’s a <em>transparent layer of introspection</em> that doesn’t alter your data flow.</p><hr><h2 id="logging-philosophy">Logging Philosophy</h2><p>There’s a fine balance between too much and too little information.</p><p>Traditional logging tools either <strong>dump everything</strong> (which nobody reads) or <strong>show too little</strong> (which leaves you guessing).<br><code>OpenAPILoggingMiddleware</code> follows a <em>minimalist</em> principle inspired by Apple’s own frameworks — log what matters, hide what doesn’t.</p><p>It’s designed around three key ideas:</p><ol><li><strong>Contextual logging</strong> — every entry includes method, path, status, and duration.</li><li><strong>Progressive verbosity</strong> — higher log levels show headers and bodies.</li><li><strong>Human readability first</strong> — logs are meant to be scanned, not parsed by machines.</li></ol><p>Here’s an example of what a single request looks like in <code>.info</code> mode:</p><pre><code class="language-text">[POST] /mocks/messages/agent-responses (200 OK)
+Duration: 123 ms
+Body: {"message":"You shall not pass!"}
+</code></pre><p>And at <code>.debug</code> level, you get more detail:</p><pre><code class="language-text">[POST] /mocks/messages/agent-responses
+Headers:
+  Content-Type: application/json
+  Authorization: Bearer Gandalf-Was-Here-1
+Duration: 123 ms
+Body: {"message":"You shall not pass!"}
+</code></pre><p>Readable. Structured. Useful.</p><hr><h2 id="why-not-just-use-vapor-s-logger">Why Not Just Use Vapor’s Logger?</h2><p>That’s a valid question.</p><p>Vapor already includes a powerful logging system based on SwiftLog, so why add another layer?<br>Because Vapor’s logger is <strong>request-agnostic</strong> — it’s not aware of OpenAPI operations, generated endpoints, or typed models.</p><p><code>OpenAPILoggingMiddleware</code> is <strong>contract-aware</strong>.<br>It sits in the OpenAPI pipeline, so it can access the operation ID, typed body, and structured response — all without touching your route handlers. That distinction is crucial for OpenAPI-based architectures, where most of your server logic is generated.</p><hr><h2 id="integration-examples">Integration Examples</h2><p>Adding it to a Vapor-based OpenAPI server is trivial:</p><pre><code class="language-swift">import Vapor
+import OpenAPIRuntime
+import OpenAPIVapor
+import OpenAPILoggingMiddleware
+
+let app = try Application(.detect())
+
+let server = try! MyOpenAPIServer(app: app)
+
+app.middleware.use(OpenAPILoggingMiddleware(level: .info))
+try app.run()
+</code></pre><p>If you’re using <code>OpenAPIRuntime</code> directly (without Vapor), it’s equally simple:</p><pre><code class="language-swift">var server = try OpenAPIServer()
+server.middleware.append(OpenAPILoggingMiddleware(level: .debug))
+try server.start()
+</code></pre><p>No configuration files. No dependencies. It just works.</p><hr><h2 id="extensibility-and-customization">Extensibility and Customization</h2><p>Logging needs vary between environments.<br>In development, you might want to see every detail. In production, you want concise summaries. The middleware supports multiple log levels, allowing you to tailor verbosity to your needs:</p><ul><li><code>.error</code> — log only failed requests.</li><li><code>.info</code> — log all requests with method, path, duration, and status.</li><li><code>.debug</code> — include headers and bodies.</li></ul><p>In future releases, I plan to add <strong>filters</strong> and <strong>formatters</strong> — so you could, for instance, redact specific headers (<code>Authorization</code>, <code>Cookie</code>) or export logs in JSON format for ingestion into a centralized system.</p><p>Example:</p><pre><code class="language-swift">let middleware = OpenAPILoggingMiddleware(
+    level: .debug,
+    redactHeaders: ["Authorization", "Cookie"]
+)
+</code></pre><hr><h2 id="design-details-why-simplicity-wins">Design Details: Why Simplicity Wins</h2><p>Many logging libraries start small and end up as frameworks. They introduce dependency graphs, adapters, output sinks, configuration DSLs — and complexity sneaks in through the back door.</p><p>I deliberately avoided that path.</p><p><code>OpenAPILoggingMiddleware</code> does one thing: <strong>it shows what your OpenAPI server is doing</strong>.<br>Nothing else.</p><p>No JSON serialization frameworks. No dependency injection. No external configuration.<br>Just clean Swift and a single dependency on <code>OpenAPIRuntime</code>.</p><p>The codebase is small enough to read in one sitting — and that’s intentional. In my opinion, <strong>you should be able to understand every line of code that runs in your server’s core path</strong>.</p><hr><h2 id="performance-considerations">Performance Considerations</h2><p>Logging always comes at a cost, but the impact here is minimal.<br>The middleware measures request duration using <code>Date().timeIntervalSince(start)</code>, which is negligible compared to network latency or I/O.</p><p>You can safely keep it enabled even in staging or pre-production environments.<br>In production, switching to <code>.error</code> mode will keep your logs clean while still providing visibility into failures.</p><hr><h2 id="testing-and-debugging">Testing and Debugging</h2><p>The middleware is fully testable using Vapor’s <code>Application</code> test harness or plain <code>XCTest</code> with mock requests.<br>Here’s a simple test that validates duration and structure:</p><pre><code class="language-swift">func testMiddlewareLogsRequestAndResponse() async throws {
+    let app = Application(.testing)
+    app.middleware.use(OpenAPILoggingMiddleware(level: .info))
+    try await app.test(.POST, "/ping", afterResponse: { res in
+        XCTAssertEqual(res.status, .ok)
+    })
+}
+</code></pre><p>You can also inject your own logger conforming to <code>LogHandler</code> if you prefer structured output rather than printing to stdout.</p><hr><h2 id="future-work">Future Work</h2><p>The roadmap includes:</p><ol><li><strong>JSON Formatter</strong> — for structured logs in production environments.</li><li><strong>Redaction Rules</strong> — for headers and sensitive body fields.</li><li><strong>Metrics Hooks</strong> — integration with Swift Metrics or Prometheus.</li><li><strong>Pluggable Output Destinations</strong> — allowing streaming to files or external monitoring systems.</li><li><strong>Async Logging</strong> — offloading logging I/O to background tasks for ultra-high performance scenarios.</li></ol><p>Each of these will follow the same guiding principles: clarity, composability, and minimalism.</p><hr><h2 id="philosophy-clean-visibility">Philosophy: Clean Visibility</h2><p>Logging is not just a developer tool — it’s part of the interface between humans and systems.<br>A well-designed logging layer doesn’t scream for attention; it quietly reveals how the system behaves.</p><p>When I was designing this package, I thought about the elegance of Apple’s own frameworks — the way their APIs feel inevitable, obvious in hindsight. That’s what I aim for here: <strong>a logging middleware that feels invisible until you need it, and indispensable once you use it.</strong></p><hr><h2 id="example-output-in-context">Example Output in Context</h2><p>Here’s a real-world example of multiple concurrent requests hitting the same endpoint:</p><pre><code class="language-text">[GET] /user/profile (200 OK)
+Duration: 87 ms
+
+[POST] /mocks/messages/agent-responses (200 OK)
+Duration: 121 ms
+Body: {"message":"You shall not pass!"}
+
+[PATCH] /user/preferences (204 No Content)
+Duration: 96 ms
+</code></pre><p>Notice how easy it is to see patterns — which endpoints are slow, which ones are frequent, which ones failed.<br>That’s the essence of <strong>observability</strong> — not more data, but <em>useful</em> data.</p><hr><h2 id="real-world-use">Real-World Use</h2><p>I use <code>OpenAPILoggingMiddleware</code> in all my OpenAPI projects — from small prototypes to complex SSE (Server-Sent Events) systems. It’s particularly valuable when debugging <strong>streamed responses</strong> or <strong>multipart form uploads</strong>, where conventional logs become unreadable.</p><p>Because it’s a simple <code>OpenAPIMiddleware</code>, it works with any generated server conforming to the OpenAPI ecosystem — including custom transports and pure SwiftNIO backends.</p><hr><h2 id="closing-thoughts">Closing Thoughts</h2><p>This middleware is a reminder that sometimes the simplest tools make the biggest difference.<br>It’s easy to underestimate the power of <strong>well-designed visibility</strong> — until you remove it and start guessing again.</p><p>Whether you’re debugging mock routes, profiling API latency, or simply curious about what your server is doing, <code>OpenAPILoggingMiddleware</code> gives you that quiet transparency every developer deserves.</p><p>👉 <strong>GitHub:</strong> <a href="https://github.com/mihaelamj/OpenAPILoggingMiddleware" target="_blank">mihaelamj/OpenAPILoggingMiddleware</a></p><hr><p><em>“Clean code should be composable, testable, and visible when it runs.”</em></p>]]></content:encoded>
     </item>
     <item>
       <title>ExtremePackaging</title>
@@ -110,6 +693,382 @@
       <description>Example of Extreme Packaging in Swift</description>
       <pubDate>Sat, 13 Sep 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/extreme-packaging/</guid>
+      <content:encoded><![CDATA[<p>A Modular Architecture Methodology for Swift Projects<br>By Mihaela Mihaljevic</p><h2 id="introduction">Introduction</h2><p><strong>Extreme Packaging</strong> is a methodology for structuring Swift projects with <em>maximal modularity and minimal responsibility per module.</em><br>Each module represents a single, isolated unit of logic — small enough to reason about, easy to test, and replaceable without side effects.</p><p>The core idea is <strong>separation</strong>:<br>modules depend on stable interfaces, not on each other’s implementations. This enables scalable architectures that remain flexible as projects evolve, while keeping build times short and dependencies explicit.</p><p><strong>Table Of Contents:</strong></p><ul><li><a href="#part-1--project-setup">Part 1 — Project Setup</a></li><li><a href="#part-2--tooling">Part 2 — Tooling</a></li></ul><h3 id="goals">Goals</h3><ul><li>Promote clean boundaries between domains and features</li><li>Enable independent development and testing per package</li><li>Simplify refactoring and dependency management</li><li>Keep compilation fast and the architecture transparent</li></ul><h3 id="process">Process</h3><p>The repository is organized into <strong>stages</strong>, each representing a self-contained checkpoint in the project’s evolution.<br>When moving between stages — especially when reverting to earlier ones — always reset and clean your workspace to ensure it matches the intended state.</p><p>Here’s the example for <strong>stage 01</strong>:</p><pre><code class="language-bash"># Ensure you're on the branch you want
+git checkout stage/01-init-packages
+
+# Fetch the latest version
+git fetch origin
+
+# Reset your branch to the remote version
+git reset --hard stage/01-init-packages
+
+# Delete untracked files and directories
+git clean -fdx
+</code></pre><h3 id="philosophy">Philosophy</h3><p>In most projects, modularization is an afterthought — introduced when the codebase becomes too large to manage.<br><strong>Extreme Packaging</strong> inverts that approach: modularization is the starting point.<br>By treating each package as an autonomous component from day one, you gain clarity, resilience, and a foundation that naturally scales with complexity.</p><h2 id="part-1-project-setup">Part 1 — Project Setup</h2><p>The first step in <strong>Extreme Packaging</strong> is establishing a clear and reproducible project structure that can evolve gradually through defined stages.<br>Each stage in the repository builds upon the previous one — from the initial package setup, to workspace creation, and finally to adding the app target that ties everything together.</p><h3 id="overview">Overview</h3><p>The project begins as a <strong>Swift Package Manager–based structure</strong>, designed for modularity from the start.<br>At its core is a single <code>Packages</code> directory that houses all functional modules (such as <code>AppFeature</code>, <code>SharedModels</code>, and later others).<br>Every addition to the project — whether a new feature, UI layer, or platform target — is layered on top of this foundation in small, trackable increments.</p><p>Here is the link to the project used:<br><a href="https://github.com/mihaelamj/ExtremePackaging/tree/stage/01-init-packages" target="_blank">https://github.com/mihaelamj/ExtremePackaging</a></p><h3 id="1.1-stage-01-initialize-packages">1.1 Stage 01 — Initialize Packages</h3><h4>Purpose</h4><p>This stage ensures a working, self-contained Swift package that compiles and passes initial linting checks.</p><h4>Parts</h4><p>At <strong>stage/01-init-packages</strong>, the repository contains:</p><ul><li>A minimal <strong>package structure</strong> with <code>Sources</code> and <code>Tests</code></li><li><strong>Core configuration file</strong>s:<ul><li><code>.swiftlint.yml</code> for linting rules</li><li><code>.swiftformat</code> for consistent formatting</li><li><code>.gitignore</code>, <code>LICENSE</code>, and <code>README.md</code></li></ul></li><li><strong>Two base modules</strong>:<ul><li><code>AppFeature</code> — serves as the entry feature for the app</li><li><code>SharedModels</code> — holds simple model definitions</li></ul></li></ul><h4>Folder Structure snapshot</h4><p>Example folder structure:<br><img src="https://aleahim.com/images/xpack/Screenshot%202025-03-31%20at%2017.07.23.png" alt=""></p><p>Inside the  folder:</p><pre><code class="language-bash">
+➜  ExtremePackaging git:(main) ✗ ls -all
+ .
+ ..
+ .git
+ .gitignore
+ .swiftformat
+ .swiftlint.yml
+ Apps
+ LICENSE
+ Packages
+ README.md
+</code></pre><p>Inside the <code>Packages</code> folder:</p><pre><code class="language-bash">➜  ExtremePackaging git:(main) cd Packages
+➜  Packages git:(main) ls -all
+ .
+ ..
+ Package.swift
+ Sources
+ Tests
+</code></pre><p>Inside the <code>Apps</code> folder:</p><pre><code class="language-bash">.
+..
+.gitkeep
+</code></pre><h4>Basic Package Code:</h4><p>I start with package structure like this:</p><pre><code class="language-swift">// swift-tools-version: 6.0
+
+import PackageDescription
+
+let package = Package(
+    name: "Main",
+    platforms: [
+        .iOS(.v17),
+        .macOS(.v14),
+    ],
+    products: [
+        .singleTargetLibrary("AppFeature"),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/realm/SwiftLint", exact: "0.52.3"),
+    ],
+    targets: [
+        .target(
+            name: "AppFeature",
+            dependencies: [
+                "SharedModels",
+            ]
+        ),
+        .testTarget(
+            name: "AppFeatureTests",
+            dependencies: [
+                "AppFeature"
+            ]
+        ),
+        .target(
+            name: "SharedModels"
+        )
+    ]
+)
+
+// Inject base plugins into each target
+package.targets = package.targets.map { target in
+    var plugins = target.plugins ?? []
+    plugins.append(.plugin(name: "SwiftLintPlugin", package: "SwiftLint"))
+    target.plugins = plugins
+    return target
+}
+
+extension Product {
+    static func singleTargetLibrary(_ name: String) -&gt; Product {
+        .library(name: name, targets: [name])
+    }
+}
+</code></pre><h4>Dummy Files</h4><h5>AppView</h5><pre><code class="language-swift">import SharedModels
+import SharedViews
+import SwiftUI
+
+public struct AppView: View {
+    public var body: some View {
+        VStack {
+            Text("Extreme Packaging!")
+                .font(.title)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
+                .padding()
+        }
+    }
+}
+</code></pre><h5>DummyModel</h5><pre><code class="language-swift">import Foundation
+
+public struct DummyModel: Identifiable {
+    public var id: UUID = .init()
+    public var title: String
+    public init(
+        id: UUID = .init(),
+        title: String
+    ) {
+        self.id = id
+        self.title = title
+    }
+}
+</code></pre><h4>Stage 01-init-packages</h4><p>Here’s the code for <strong>stage 01</strong>:</p><pre><code class="language-bash">
+# Clone repo if needed
+git clone git@github.com:mihaelamj/ExtremePackaging.git
+
+# Ensure you're on the branch you want
+git checkout stage/01-init-packages
+
+# Fetch the latest version
+git fetch origin
+
+# Reset your branch to the remote version
+git reset --hard stage/01-init-packages
+
+# Delete untracked files and directories
+git clean -fdx
+</code></pre><p>To see how it looks in <strong>Xcode</strong> we need to switch to subfolder <code>packages</code>, since we haven’t created the workspace yet.</p><pre><code class="language-bash">➜  ExtremePackaging git:(stage/01-init-packages) ✗ cd Packages
+➜  Packages git:(stage/01-init-packages) ✗ xed .
+</code></pre><h3 id="1.2-stage-02-add-workspace">1.2 Stage 02 — Add Workspace</h3><h4>Purpose</h4><p>In <strong>stage/02-workspace-added</strong>, an Xcode <strong>workspace</strong> named <code>Main.xcworkspace</code> is introduced at the project root.<br>It includes the <code>Packages</code> folder, allowing smooth integration of multiple modules while keeping them decoupled.<br>This step establishes the foundation for a multi-target environment.</p><h4>Workspace creation steps</h4><p>Create a new workspace (I name it <code>Main</code>), in the root of our folder.</p><p><img src="https://aleahim.com/images/xpack/workspace.png" alt=""></p><p>Add folder <code>Packages</code> to the workspace.<br>It will add our package structure to the project:</p><p><img src="https://aleahim.com/images/xpack/Screenshot%202025-03-31%20at%2018.33.55.png" alt=""></p><h4>Stage 02-add—to-workspace</h4><p>Here’s the code for <strong>stage 02</strong>:</p><pre><code class="language-bash">
+# Clone repo if needed
+git clone git@github.com:mihaelamj/ExtremePackaging.git
+
+# Ensure you're on the branch you want
+git checkout stage/02-add—to-workspace
+
+# Fetch the latest version
+git fetch origin
+
+# Reset your branch to the remote version
+git reset --hard stage/02-add—to-workspace
+
+# Delete untracked files and directories
+git clean -fdx
+</code></pre><p>Now we have the <strong>workspace</strong>, so we just need to open <strong>Xcode</strong>:</p><pre><code class="language-bash">➜  Packages git:(stage/02-add—to-workspace) ✗ xed .
+➜  Packages git:(stage/02-add—to-workspace) ✗
+</code></pre><h3 id="1.3-stage-03-add-ios-and-macos-app-targets">1.3 Stage 03 — Add iOS and macOS App Targets</h3><h4>Platform targets creation</h4><p><strong>Add new iOS and a new macOS project</strong><br>Repeat this for each target:</p><p>Create a new project in Xcode:</p><p><img src="https://aleahim.com/images/xpack/macos1.jpg" alt=""></p><p><img src="https://aleahim.com/images/xpack/macos2.jpg" alt=""></p><p>Add each to <code>Apps</code> folder:</p><p><img src="https://aleahim.com/images/xpack/macosFolder.jpg" alt=""></p><h4>Adding them to workspace</h4><p>We will be adding each app target to the workspace, below <em>Packages</em>.<br>Open the current repository folder and drag both new projects (iOS and macOS) into the workspace sidebar.</p><p>Each target remains isolated within its own folder, but both share the same logic through the <em>AppFeature</em> module.<br>This ensures that all common code — views, models, and reducers — stays within shared packages, while each platform target keeps its own configuration files.</p><p>Open the current repo folder:<br><img src="https://aleahim.com/images/xpack/show_in_finder.jpg" alt=""></p><p><img src="https://aleahim.com/images/xpack/folders_on_disk.jpg" alt=""></p><p>Add <strong>macOS</strong> target:</p><p><img src="https://aleahim.com/images/xpack/add_macos.jpg" alt=""></p><p>Choose “Reference files in place”</p><p><img src="https://aleahim.com/images/xpack/reference_files.jpg" alt=""></p><p>This is how it looks when added:</p><p><img src="https://aleahim.com/images/xpack/add_macOS_done.jpg" alt=""></p><p>Add <strong>iOS</strong> target:</p><p><img src="https://aleahim.com/images/xpack/add_iOS.jpg" alt=""></p><p>This is how it looks when added:</p><p><img src="https://aleahim.com/images/xpack/add_iOS_done.jpg" alt=""></p><h4>Explanation: Why separate targets</h4><p>Keeping iOS and macOS projects distinct allows:</p><ul><li>Independent platform configuration (e.g. Info.plist, app icons, signing settings)</li><li>Platform-specific features when needed (e.g. menu commands on macOS, touch gestures on iOS)</li><li>Consistent architecture and shared logic through modular Swift packages</li></ul><p>This structure aligns perfectly with the <strong>Extreme Packaging</strong> philosophy — shared foundation, platform-specific shells.</p><h4>Configuration steps</h4><ul><li>Delete automatically added <code>ContentView.swift</code></li><li>Add <code>AppFeature</code> package to the our target:</li></ul><p><img src="https://aleahim.com/images/xpack/AppTarget05.png" alt=""></p><p>Now our project looks like this:<br><img src="https://aleahim.com/images/xpack/AppTarget06.png" alt=""></p><p>And the main app starts with the fully testable <code>AppFeature</code></p><p><img src="https://aleahim.com/images/xpack/AppTarget07.png" alt=""></p><pre><code class="language-swift">import SwiftUI
+import AppFeature
+
+@main
+struct SwiftUIAppApp: App {
+    var body: some Scene {
+        WindowGroup {
+            AppView()
+        }
+    }
+}
+</code></pre><h4>Final structure</h4><p>At this point, the project has evolved into a fully cross-platform modular setup.</p><p>The screenshot below illustrates the final structure after completing <strong>Stage 03 (iOS & macOS targets added)</strong>:</p><p><img src="https://aleahim.com/images/xpack/final_struc.jpg" alt=""></p><ul><li>The <strong>Packages</strong> directory defines the shared Swift Package with <code>AppFeature</code> and <code>SharedModels</code> modules.</li><li>Both <strong>iOS</strong> and <strong>macOS</strong> apps live inside the <code>Apps</code> folder, each with its own assets, entry point, and platform-specific configuration files.</li><li>The <strong><code>Package.swift</code></strong> file defines a single modular product, with SwiftLint integrated as a plugin and dependencies kept cleanly separated.</li><li>This structure enables both platforms to share logic and UI built with <strong>SwiftUI</strong>, while still allowing native customization per platform.</li></ul><p><strong>Result:</strong><br>A clean, modular workspace where shared code resides in packages, and each platform acts only as a thin presentation shell — the essence of <em>Extreme Packaging</em>.</p><h4>Stage 03-apps-added</h4><p>In <strong>stage/03-apps-added</strong>, we create two separate app targets — one for <strong>iOS</strong> and one for <strong>macOS</strong> — both sharing the same SwiftUI core logic.</p><p>Each app lives inside the <code>Apps</code> folder and imports the <code>AppFeature</code> module, demonstrating how the same feature package can power multiple platforms with no duplicated code.</p><p>After adding the targets:</p><ul><li>Delete the automatically generated <code>ContentView.swift</code></li><li>Add the <code>AppFeature</code> package dependency to both targets</li><li>Verify that both apps build successfully</li></ul><p>This stage concludes with a fully functional cross-platform setup where both iOS and macOS share a unified architecture driven by modular packages.</p><p>Here’s the code for <strong>stage 03</strong>:</p><pre><code class="language-bash">
+# Clone repo if needed
+git clone git@github.com:mihaelamj/ExtremePackaging.git
+
+# Ensure you're on the branch you want
+git checkout stage/03-apps-added
+
+# Fetch the latest version
+git fetch origin
+
+# Reset your branch to the remote version
+git reset --hard stage/03-apps-added
+
+# Delete untracked files and directories
+git clean -fdx
+</code></pre><h3 id="summary">Summary</h3><table><thead><td>Stage</td><td>Description</td><td>Key Additions</td></thead><tbody><tr><td><strong>01</strong></td><td>Initial package setup</td><td><code>Package.swift</code>, SwiftLint & SwiftFormat configs, dummy modules (<code>AppFeature</code>, <code>SharedModels</code>)</td></tr><tr><td><strong>02</strong></td><td>Workspace creation</td><td><code>Main.xcworkspace</code>, integrated <code>Packages</code> folder for modular management</td></tr><tr><td><strong>03</strong></td><td>iOS & macOS app targets added</td><td>Separate iOS and macOS apps in <code>Apps/</code>, both using <code>AppFeature</code> for shared SwiftUI logic</td></tr></tbody></table><p>Each stage corresponds to a dedicated branch in the repository, allowing you to switch between checkpoints and observe the project’s evolution step by step.<br>This structure provides a transparent history of how a modular Swift project grows from a single package into a fully multi-platform architecture.</p><h2 id="part-2-tooling">Part 2 — Tooling</h2><ul><li>Every project includes <strong>SwiftLint</strong> and <strong>SwiftFormat</strong> for enforcing consistent code style and quality</li><li>Each stage of the repository introduces incremental improvements, from initializing packages to adding app targets and integrations</li><li>These are applied from the very first stage but can be customized at any point.</li></ul><h3 id="gitignore">GitIgnore</h3><pre><code class="language-bash"># Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## User settings
+xcuserdata/
+
+## Obj-C/Swift specific
+*.hmap
+
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Xcode workspace & projects
+*.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+*.xcworkspace/xcuserdata/
+DerivedData/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+# macOS system files
+.DS_Store
+
+# Carthage
+Carthage/Build/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Custom folders used in ExtremePackaging
+Stage/
+Tasks/.build/
+</code></pre><h3 id="swiftformat-config">SwiftFormat Config</h3><p>This is my <code>.swiftformat</code></p><pre><code class="language-yaml"># General Options
+--swiftversion 5.7
+
+# File Options
+--exclude Stage,Tasks/.build,ThirdParty,**/SwiftGen/*,**/Sourcery/*,Frameworks/swift-composable-architecture,**.generated.swift
+
+# Format Options
+
+--allman false
+--binarygrouping none
+--closingparen balanced
+--commas always
+--conflictmarkers reject
+--decimalgrouping none
+--elseposition same-line
+--exponentcase lowercase
+--exponentgrouping disabled
+--fractiongrouping disabled
+--fragment false
+--header ignore
+--hexgrouping none
+--hexliteralcase lowercase
+--ifdef no-indent
+--importgrouping alphabetized
+--indent 4
+--indentcase false
+# make sure this matches .swiftlint
+--maxwidth 180
+--nospaceoperators ..&lt;,...
+--octalgrouping none
+--operatorfunc no-space
+--selfrequired
+--stripunusedargs closure-only
+--trailingclosures
+--wraparguments before-first
+--wrapcollections before-first
+--wrapparameters before-first
+
+# Rules
+--disable hoistAwait
+--disable hoistPatternLet
+--disable hoistTry
+--disable wrapMultilineStatementBraces
+--disable extensionAccessControl
+</code></pre><h3 id="swiftlint-config">SwiftLint Config</h3><pre><code class="language-yaml">disabled_rules: # rule identifiers to exclude from running
+  - opening_brace
+  - operator_whitespace
+  - orphaned_doc_comment
+
+opt_in_rules:
+  - empty_count
+  - force_unwrapping
+  - shorthand_optional_binding
+  - weak_delegate
+
+excluded:
+  - "*.generated"
+
+custom_rules:
+  # check's for Combine's .assign(to: xxx, on: self) ref-cycle
+  combine_assign_to_self:
+    included: ".*\\.swift"
+    name: "`assign` to self"
+    regex: '\.assign\(to: [^,]*, on: self\)'
+    message: "For assigning on self, use assignNoRetain(to: ..., on: self)."
+    severity: error
+  duplicate_remove_duplicates:
+    included: ".*\\.swift"
+    name: "Duplicate `removeDuplicates()`"
+    message: "ViewStore's publisher already does `removeDuplicates()`"
+    regex: 'publisher\.[^(|{|,]*removeDuplicates\(\)'
+    severity: error
+  dont_scale_to_zero:
+    included: ".*\\.swift"
+    name: "Don't scale down to 0."
+    regex: "\\.scaleEffect\\([^\\)]*(\\ 0\\ [^\\)]*\\)|0.0(\\ |\\))|\\ 0(\\)|,))"
+    message: "Please make sure to pass a number not equal zero, so transformations don't throw warnings like `ignoring singular matrix`."
+    severity: error
+  use_data_constructor_over_string_member:
+    included: ".*\\.swift"
+    name: "Do not use String.data(using: .utf8)"
+    regex: "\\.?data\\(using: \\.utf8\\)"
+    message: "Please use Data(string.utf8) instead of String.data(using: .utf8) because the Data constructor is non-optional and Strings are guaranteed to be encodable as .utf8"
+    severity: error
+  tca_explicit_generics_reducer:
+    included: ".*\\.swift"
+    name: "Explicit Generics for Reducer"
+    regex: 'Reduce\s+\{'
+    message: "Use explicit generics in ReducerBuilder (Reduce&lt;State, Action&gt;) for successful autocompletion."
+    severity: error
+  tca_scope_unused_closure_parameter:
+    name: "TCA Scope Unused Closure Parameter"
+    regex: '\.scope\(\s*state\s*:\s*\{\s*\_'
+    message: "Explicitly use closure parameter when scoping store (ensures the right state is being mutated)"
+    severity: error
+  tca_use_observe_viewstore_api:
+    name: "TCA ViewStore observe API"
+    regex: 'ViewStore\(store\.scope'
+    message: "Use modern observe: api instead of store.scope"
+    severity: error
+
+trailing_comma:
+    mandatory_comma: true
+
+cyclomatic_complexity:
+  ignores_case_statements: true
+  warning: 20
+
+file_length:
+  warning: 1000
+  error: 1000
+
+identifier_name:
+  severity: warning
+  allowed_symbols: "_"
+  min_length: 2
+  max_length:
+    warning: 90
+    error: 90
+  excluded:
+    - iO
+    - id
+    - vc
+    - x
+    - y
+    - i
+    - pi
+    - d
+
+legacy_constant: error
+legacy_constructor: error
+
+line_length:
+  warning: 180
+  error: 180
+  ignores_comments: true
+  ignores_urls: true
+
+nesting:
+  type_level:
+    warning: 3
+    error: 3
+  function_level:
+    warning: 5
+    error: 5
+
+function_parameter_count:
+  warning: 5
+
+force_cast: warning
+force_unwrapping: warning
+
+type_body_length:
+  - 300 # warning
+  - 300 # error
+
+large_tuple:
+  - 3  # warning
+  - 10 # error%
+</code></pre>]]></content:encoded>
     </item>
     <item>
       <title>CVBuilder: A Swift Package for Professional CV Management</title>
@@ -117,6 +1076,147 @@
       <description>A Swift package for building and rendering CVs in multiple formats</description>
       <pubDate>Sun, 13 Apr 2025 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/c-v-builder/</guid>
+      <content:encoded><![CDATA[<p>CVBuilder is a powerful Swift package that I developed to solve a common problem: managing and rendering professional CVs in multiple formats. Whether you need to generate a Markdown CV for GitHub, an HTML version for your website, or a plain text version for job applications, CVBuilder has you covered.</p><h2 id="why-cvbuilder">Why CVBuilder?</h2><p>In today’s digital world, professionals often need to maintain their CVs in multiple formats and keep them in sync. Traditional word processors make this process tedious and error-prone. CVBuilder solves this by:</p><ul><li>Providing a strongly-typed data model for CVs</li><li>Supporting multiple output formats (Markdown, HTML, plain text)</li><li>Making it easy to maintain a single source of truth</li><li>Enabling programmatic CV generation and updates</li></ul><h2 id="core-features">Core Features</h2><h3 id="1.-strongly-typed-data-model">1. Strongly Typed Data Model</h3><p>CVBuilder provides a comprehensive data model that covers all aspects of a professional CV:</p><pre><code class="language-swift">CV
+├── ContactInfo
+├── Education
+├── WorkExperience
+│   ├── Company
+│   ├── Role
+│   └── ProjectExperience
+│       ├── Project
+│       └── Tech
+└── Period
+</code></pre><p>Each component is strongly typed, ensuring data integrity and making it impossible to create invalid CVs.</p><h3 id="2.-multiple-renderers">2. Multiple Renderers</h3><p>CVBuilder supports three different renderers out of the box:</p><ol><li><strong>MarkdownCVRenderer</strong>: Generates clean, well-formatted Markdown</li><li><strong>StringCVRenderer</strong>: Produces plain text output</li><li><strong>IgniteRenderer</strong>: Creates beautiful HTML using the Ignite static site generator</li></ol><h3 id="3.-modular-architecture">3. Modular Architecture</h3><p>The package is split into two main components:</p><ul><li><code>CVBuilder</code>: Core types and basic rendering</li><li><code>CVBuilderIgnite</code>: Optional HTML rendering support</li></ul><p>This separation ensures that projects that don’t need HTML rendering don’t have to pull in unnecessary dependencies.</p><h2 id="getting-started">Getting Started</h2><h3 id="installation">Installation</h3><p>Add CVBuilder to your project using Swift Package Manager:</p><pre><code class="language-swift">.package(url: "https://github.com/mihaelamj/cvbuilder.git", branch: "main")
+</code></pre><p>Then add the desired product:</p><pre><code class="language-swift">.product(name: "CVBuilder", package: "cvbuilder"),
+.product(name: "CVBuilderIgnite", package: "cvbuilder") // if using Ignite
+</code></pre><h3 id="creating-a-cv">Creating a CV</h3><p>Here’s a simple example of creating a CV:</p><pre><code class="language-swift">import CVBuilder
+
+// Create contact info
+let contactInfo = ContactInfo(
+    email: "jane.doe@example.com",
+    phone: "+1 (555) 123-4567",
+    linkedIn: URL(string: "https://linkedin.com/in/janedoe"),
+    github: URL(string: "https://github.com/janedoe"),
+    website: URL(string: "https://janedoe.dev"),
+    location: "San Francisco, CA"
+)
+
+// Create education
+let education = Education(
+    institution: "Stanford University",
+    degree: "B.S.",
+    field: "Computer Science",
+    period: Period(
+        start: .init(month: 9, year: 2010),
+        end: .init(month: 6, year: 2014)
+    )
+)
+
+// Create the CV
+let cv = CV.create(
+    name: "Jane Doe",
+    title: "Senior Mobile Developer",
+    summary: "Passionate mobile developer with 5+ years experience...",
+    contactInfo: contactInfo,
+    education: [education],
+    projects: [project1, project2]
+)
+</code></pre><h3 id="generating-output">Generating Output</h3><p>Once you have your CV data model, generating different formats is straightforward:</p><pre><code class="language-swift">// Generate Markdown
+let markdown = MarkdownCVRenderer(cv: cv).render()
+
+// Generate plain text
+let plainText = StringCVRenderer(cv: cv).render()
+
+// Generate HTML (requires CVBuilderIgnite)
+let html = IgniteRenderer(cv: cv).render()
+</code></pre><h2 id="advanced-features">Advanced Features</h2><h3 id="project-builder-pattern">Project Builder Pattern</h3><p>CVBuilder includes a builder pattern for creating project experiences:</p><pre><code class="language-swift">let project = try! Project.Builder()
+    .withName("iOS App Redesign")
+    .withCompany(appleCompany)
+    .withRole(seniorIOS)
+    .withPeriod(start: (month: 3, year: 2020), end: (month: 9, year: 2021))
+    .addDescription("Led a team of 5 developers...")
+    .withTechs([swift, swiftUI])
+    .build()
+</code></pre><h3 id="tech-stack-management">Tech Stack Management</h3><p>The package includes a <code>Tech</code> type for managing technical skills:</p><pre><code class="language-swift">let swift = Tech(name: "Swift", category: .language)
+let swiftUI = Tech(name: "SwiftUI", category: .framework)
+let restAPI = Tech(name: "REST API", category: .concept)
+</code></pre><h2 id="how-i-use-it-on-this-webpage">How I Use It on This Webpage</h2><p>My blog is built using <a href="https://github.com/twostraws/Ignite" target="_blank">Ignite</a>, a static site generator for Swift. I’ve integrated CVBuilder into my website to maintain and display my CV in a clean, professional format.</p><h3 id="package-dependencies">Package Dependencies</h3><p>I include CVBuilder in my website’s package file:</p><pre><code class="language-swift">let package = Package(
+    name: "IgniteStarter",
+    platforms: [.macOS(.v13)],
+    dependencies: [
+        .package(url: "https://github.com/twostraws/Ignite.git", branch: "main"),
+        .package(url: "https://github.com/mihaelamj/cvbuilder.git", branch: "main")
+    ],
+    targets: [
+        .executableTarget(
+            name: "IgniteStarter",
+            dependencies: [
+                .product(name: "Ignite", package: "Ignite"),
+                .product(name: "CVBuilder", package: "cvbuilder"),
+                .product(name: "CVBuilderIgnite", package: "cvbuilder")
+            ]
+        ),
+    ]
+)
+</code></pre><h3 id="personal-information">Personal Information</h3><p>I maintain my personal information in a dedicated Swift file (<code>CV+Mihaela.swift</code>):</p><pre><code class="language-swift">public extension CV {
+    static func createForMihaela() -&gt; CV {
+        let contactInfo = ContactInfo(
+            email: "me@me.com",
+            phone: "+12233445566",
+            linkedIn: URL(string: "https://www.linkedin.com/in/mylinkedin"),
+            github: URL(string: "https://github.com/mygithub"),
+            website: URL(string: "https://mywebsite.com"),
+            location: "City, Country"
+        )
+        
+        let education = Education(...)
+        
+        // ... rest of the implementation
+    }
+}
+</code></pre><p><img src="https://aleahim.com/images/cvbuilder/cv01.png" alt=""></p><h3 id="project-history">Project History</h3><p>My professional experience is organized in a separate file (<code>CV+Projects.swift</code>), which contains detailed information about all my projects:</p><pre><code class="language-swift">public extension CV {
+    static func createMihaelasProjects() -&gt; [Project] {
+        var result = [Project]()
+        
+        // Create companies
+        let undabot = Company(name: "Undabot")
+        let token = Company(name: "Token")
+        // ... more companies
+        
+        // Create tech skills
+        let swift = Tech(name: "Swift", category: .language)
+        let uiKit = Tech(name: "UIKit", category: .framework)
+        // ... more tech skills
+        
+        // Create projects using the builder pattern
+        let project1 = try! Project.Builder()
+            .withName("SomeProject")
+            .withCompany(Company name)
+            .withRole(juniorIOS)
+            .withPeriod(start: (month: 9, year: 20XX), end: (month: 12, year: 20XX))
+            .addDescription("iOS (iPad) book application about...)
+            .withTechs([swift, uiKit])
+            .build()
+        
+        // ... more projects
+        
+        return result
+    }
+}
+</code></pre><p>This modular approach allows me to:</p><ol><li>Keep my CV data in a strongly-typed format</li><li>Easily update my experience and skills</li><li>Generate both HTML and Markdown versions of my CV</li><li>Maintain consistency across different platforms</li></ol><p>The CV is automatically generated when the website is built, ensuring that my professional information is always up-to-date and consistently formatted.</p><h3 id="markdown-generation">Markdown Generation</h3><p>I also generate a Markdown version of my CV that I can use to create a fresh PDF whenever needed. This is done using a simple function:</p><pre><code class="language-swift">func generateMihaelasCVMarkdownInContentFolder() {
+    let cv = CV.createForMihaela()
+    let markdown = MarkdownCVRenderer().render(cv: cv)
+
+    let fileURL = URL(fileURLWithPath: "Assets/mihaela-cv.md")
+
+    do {
+        try markdown.write(to: fileURL, atomically: true, encoding: .utf8)
+        print("✅ Written to \(fileURL.path)")
+    } catch {
+        print("❌ Failed to write Mihaela's CV: \(error.localizedDescription)")
+    }
+}
+</code></pre><p>This function:</p><ol><li>Creates my CV using the <code>createForMihaela()</code> function</li><li>Renders it to Markdown using <code>MarkdownCVRenderer</code></li><li>Saves the output to <code>Assets/mihaela-cv.md</code></li><li>Provides feedback about the success or failure of the operation</li></ol><p>I can then use this Markdown file to generate a fresh PDF whenever I need to update my CV for job applications or other purposes.</p><h2 id="future-plans">Future Plans</h2><p>CVBuilder is actively maintained and has several planned improvements:</p><ol><li>Command-line interface for CV generation</li><li>Additional renderers (PDF, LaTeX)</li><li>Import/export functionality for common formats</li><li>Template system for customizing output</li></ol><h2 id="conclusion">Conclusion</h2><p>CVBuilder provides a robust solution for managing professional CVs in Swift. Its type-safe design, multiple renderers, and modular architecture make it an excellent choice for developers who want to maintain their CVs programmatically.</p><p>Whether you’re building a personal website, managing multiple CV versions, or creating a CV management system, CVBuilder can help streamline your workflow and ensure consistency across all your professional documents.</p><h2 id="resources">Resources</h2><ul><li><a href="https://github.com/mihaelamj/cvbuilder" target="_blank">GitHub Repository</a></li><li><a href="https://github.com/mihaelamj/cvbuilder/blob/main/SampleCV.md" target="_blank">Sample CV</a></li><li><a href="https://github.com/mihaelamj/cvbuilder#readme" target="_blank">Documentation</a></li></ul>]]></content:encoded>
     </item>
     <item>
       <title>Bringing Advanced SwiftUI Animations to macOS</title>
@@ -124,6 +1224,102 @@
       <description>A port of SwiftUILab&#39;s Advanced Animations that also supports macOS</description>
       <pubDate>Sun, 13 Feb 2022 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/swift-u-i-lab-advanced-animations/</guid>
+      <content:encoded><![CDATA[<p>When I first discovered <a href="https://swiftui-lab.com/advanced-animations/" target="_blank">SwiftUILab’s Advanced Animations</a>, I was impressed by the beautiful animations and transitions it demonstrated. However, I noticed that these examples were primarily focused on iOS, leaving macOS developers without a clear path to implement similar effects. This inspired me to create <a href="https://github.com/mihaelamj/SwiftUILab_AdvancedAnimations" target="_blank">SwiftUILab_AdvancedAnimations</a>, a port of these animations that works seamlessly on both iOS and macOS.</p><h2 id="the-challenge">The Challenge</h2><p>SwiftUI’s animation system is powerful but can behave differently across platforms. While iOS and macOS share the same SwiftUI framework, there are subtle differences in how animations are handled, especially when dealing with:</p><ul><li>Gesture recognizers</li><li>View transitions</li><li>Animation timing</li><li>Platform-specific UI elements</li></ul><p>My goal was to create a unified codebase that would work flawlessly on both platforms while maintaining the original animations’ elegance and performance.</p><h2 id="project-structure">Project Structure</h2><p>I organized the project to make it easy to understand and extend:</p><pre><code>SwiftUILab_AA/
+├── Examples/
+│   ├── Animation1/
+│   ├── Animation2/
+│   └── ...
+├── Shared/
+│   ├── Views/
+│   ├── Models/
+│   └── Extensions/
+└── App/
+    ├── iOS/
+    └── macOS/
+</code></pre><p>Each animation example has its own folder, making it easy to:</p><ul><li>Study individual animations in isolation</li><li>Copy and paste specific animations into other projects</li><li>Modify and experiment with different parameters</li></ul><h2 id="key-features">Key Features</h2><h3 id="1.-cross-platform-compatibility">1. Cross-Platform Compatibility</h3><p>The project uses SwiftUI’s platform-agnostic features while handling platform-specific requirements:</p><pre><code class="language-swift">#if os(iOS)
+    // iOS-specific code
+#elseif os(macOS)
+    // macOS-specific code
+#endif
+</code></pre><h3 id="2.-reusable-components">2. Reusable Components</h3><p>I created a set of reusable components that work on both platforms:</p><pre><code class="language-swift">struct AnimatedButton: View {
+    @State private var isPressed = false
+    
+    var body: some View {
+        Button(action: {}) {
+            Text("Animate")
+                .scaleEffect(isPressed ? 0.95 : 1.0)
+                .animation(.spring(), value: isPressed)
+        }
+        .buttonStyle(PlainButtonStyle())
+        .onHover { hovering in
+            isPressed = hovering
+        }
+    }
+}
+</code></pre><h3 id="3.-gesture-handling">3. Gesture Handling</h3><p>The project includes platform-appropriate gesture handling:</p><pre><code class="language-swift">struct DragGestureView: View {
+    @State private var offset = CGSize.zero
+    
+    var body: some View {
+        Rectangle()
+            .fill(Color.blue)
+            .frame(width: 100, height: 100)
+            .offset(offset)
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        offset = value.translation
+                    }
+                    .onEnded { _ in
+                        withAnimation(.spring()) {
+                            offset = .zero
+                        }
+                    }
+            )
+    }
+}
+</code></pre><h2 id="example-animations">Example Animations</h2><h3 id="1.-morphing-shapes">1. Morphing Shapes</h3><p>One of the most impressive animations is the shape morphing effect:</p><pre><code class="language-swift">struct MorphingShape: View {
+    @State private var isMorphed = false
+    
+    var body: some View {
+        Circle()
+            .fill(Color.blue)
+            .frame(width: 100, height: 100)
+            .scaleEffect(isMorphed ? 1.5 : 1.0)
+            .animation(.spring(response: 0.6, dampingFraction: 0.6), value: isMorphed)
+            .onTapGesture {
+                isMorphed.toggle()
+            }
+    }
+}
+</code></pre><h3 id="2.-custom-transitions">2. Custom Transitions</h3><p>The project includes several custom transitions that work on both platforms:</p><pre><code class="language-swift">extension AnyTransition {
+    static var customScale: AnyTransition {
+        .scale(scale: 0.1)
+        .combined(with: .opacity)
+    }
+}
+</code></pre><h2 id="implementation-details">Implementation Details</h2><h3 id="1.-view-extensions">1. View Extensions</h3><p>I created several extensions to make animations more reusable:</p><pre><code class="language-swift">extension View {
+    func animateOnHover() -&gt; some View {
+        self.modifier(HoverAnimationModifier())
+    }
+}
+</code></pre><h3 id="2.-animation-timing">2. Animation Timing</h3><p>Careful attention was paid to animation timing to ensure smooth performance:</p><pre><code class="language-swift">struct TimingAnimation: View {
+    @State private var isAnimating = false
+    
+    var body: some View {
+        Circle()
+            .fill(Color.red)
+            .frame(width: 50, height: 50)
+            .offset(y: isAnimating ? -100 : 0)
+            .animation(
+                .timingCurve(0.68, -0.6, 0.32, 1.6, duration: 1),
+                value: isAnimating
+            )
+            .onAppear {
+                isAnimating = true
+            }
+    }
+}
+</code></pre><h2 id="benefits-for-developers">Benefits for Developers</h2><ol><li><strong>Cross-Platform Learning</strong>: Developers can learn SwiftUI animations that work on both iOS and macOS</li><li><strong>Ready-to-Use Examples</strong>: Each animation is self-contained and can be easily copied into other projects</li><li><strong>Performance Optimized</strong>: Animations are optimized for smooth performance on both platforms</li><li><strong>Educational Resource</strong>: The project serves as a comprehensive guide to SwiftUI animations</li></ol><h2 id="future-improvements">Future Improvements</h2><p>The project is actively maintained with several planned enhancements:</p><ol><li>Adding more complex animation examples</li><li>Implementing accessibility features</li><li>Creating a documentation site with interactive examples</li><li>Adding support for visionOS</li></ol><h2 id="conclusion">Conclusion</h2><p>SwiftUILab_AdvancedAnimations bridges the gap between iOS and macOS animation development in SwiftUI. By providing a unified codebase and clear examples, it helps developers create beautiful, performant animations that work across Apple’s platforms.</p><p>Whether you’re building for iOS, macOS, or both, this project provides valuable insights into SwiftUI’s animation capabilities and best practices for cross-platform development.</p><h2 id="resources">Resources</h2><ul><li><a href="https://github.com/mihaelamj/SwiftUILab_AdvancedAnimations" target="_blank">GitHub Repository</a></li><li><a href="https://swiftui-lab.com/advanced-animations/" target="_blank">Original SwiftUILab Article</a></li><li><a href="https://developer.apple.com/documentation/swiftui" target="_blank">SwiftUI Documentation</a></li></ul>]]></content:encoded>
     </item>
     <item>
       <title>Core Animation Layers forming a 3D cube</title>
@@ -131,6 +1327,228 @@
       <description>Core Animation in 2.5D</description>
       <pubDate>Sat, 06 Mar 2021 00:00:00 +0000</pubDate>
       <guid isPermaLink="true">https://aleahim.com/blog/core-animation-3d-cube/</guid>
+      <content:encoded><![CDATA[<p><img src="https://aleahim.com/images/cacube/01_cube_iOS_3D.png" alt=""></p><p>I’ve been researching <code>Core Animation</code> framework for the past few months.<br>I’ve started with several books on the subject, but I found watching related WWDC videos most rewarding. The presenters put the content in a relevant context which  makes it easier to apprehend and learn from it.</p><h2 id="1.-introduction">1. Introduction</h2><p>One WWDC session particularly intrigued me: “2011–421 Core Animation Essentials”. They presented their demo named: “Layers in Perspective”, and it showed six layers, forming a flattened cube:<br><img src="https://aleahim.com/images/cacube/02_cube_5sides.png" alt=""></p><p>The sixth layer is hiding behind the layer number 5. It has a lower <code>zPosition</code> then the layer above it.</p><p><img src="https://aleahim.com/images/cacube/03_cube_6sides.png" alt=""></p><p>They have also demonstrated opening and closing the cube formation.</p><p><img src="https://aleahim.com/images/cacube/04_cube_filmstrip.png" alt=""></p><p>So, I have decided to demonstrate that.</p><p>Here’s a link to a GitHub repo with the source code:<br><a href="https://github.com/mihaelamj/CubeIn3DWithCoreAnimation" target="_blank">Core Animation 3D Cube</a></p><p>Here’s the animation:</p><p><img src="https://aleahim.com/images/cacube/05_CoreAnimation_3D_Cube.gif" alt=""></p><p>You can also see it on <a href="https://www.youtube.com/watch?v=exIGbi36_bk" target="_blank">You Tube</a></p><p>Layers in <code>Core Animation</code> live in <code>3D</code> geometry. But a layer is a <code>2D</code> construct, so <code>Core Animation</code> coordinate space is called a <code>2.5D</code> geometry.</p><p>To illustrate that just see what happens when you mess up your transformations.</p><p><img src="https://aleahim.com/images/cacube/06_Intersecting_Layers.png" alt=""></p><p>Layers are <code>2D</code> objects, they don’t understand the third dimension.<br>They are like playing cards in space., and there is no <code>depth buffer</code> available.</p><p>And also, intersecting layers should be avoided because in the image above, Core Animation needs to do a lot of work.<br>So just to draw the <code>red</code> layer intersecting only the <code>blue</code> layer, Core Animation needs to</p><ul><li>cut the <code>red</code> layer into two pieces</li><li>render back part of the <code>red</code> layer</li><li>then render the full <code>blue</code> layer</li><li>then render the front part of the <code>red</code> layer again<br>And all that work is for just intersection, and here we have multiple.</li></ul><h2 id="2.-building-the-cube-in-3d">2. Building the Cube in 3D</h2><h3 id="2.1.-setting-up-the-multi-platform-project">2.1. Setting up the multi-platform project</h3><p>I wanted the project to fun on the <code>macOS</code> , <code>iOS</code> and <code>iPadOS</code>, so I used <a href="https://github.com/mihaelamj/allapples" target="_blank">AllApples</a> Swift package.</p><p>After removing the storyboards and pimping up the <code>AppDelegate</code> and <code>main.swift</code> for the <code>macOS</code> version, and <code>SceneDelegate</code> for the mobile versions, I was ready to start.</p><h4>2.1.1. <code>main.swift</code> for the macOS</h4><pre><code class="language-swift">import Cocoa
+let delegate = AppDelegate()
+NSApplication.shared.delegate = delegate
+_ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
+</code></pre><h4>2.1.2. AppDelegate for the <code>macOS</code></h4><pre><code class="language-swift">import Cocoa
+import AllApples
+
+class AppDelegate: NSObject, NSApplicationDelegate {
+  private var window: NSWindow?
+  func applicationDidFinishLaunching(_ aNotification: Notification) {
+    window = AppSceneDelegate.makeWindow_Mac(theVC: CommonViewController())
+  }
+}
+</code></pre><h4>2.1.3. SceneDelegate for the <code>iOS</code> and <code>iPadOS</code></h4><pre><code class="language-swift">import UIKit
+import AllApples
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+  var window: UIWindow?
+  func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    guard let aScene = (scene as? UIWindowScene) else { return }
+    window = AppSceneDelegate.makeWindow_iOS(theScene: aScene, theVC: CommonViewController())
+  }
+}
+</code></pre><h3 id="2.2.-building-the-basic-blocks">2.2. Building the Basic Blocks</h3><p>The first I did is make a <code>PlainLayerView </code>.<br>It is an <code>AView</code> descendant, which means that it is <code>typedef-ed</code> to be either a <code>UIView</code> or a <code>NSView</code>.</p><p>It is an intermediary object just to set up a thing on the <code>macOS</code> as well (doesn’t work yet).</p><p>I then created <code>CustomLayerView</code> to have nice sides for the cube, with <code>CATextLayer</code> as the number of the cube side, and a nice rounded border, so that we can peek into our cube while rotating.</p><p>Here’s the image of all six layers drawn by using a <code>CustomLayerView</code></p><p><img src="https://aleahim.com/images/cacube/07_original_abandoned_cube_layout.png" alt=""></p><p>This layout was abandoned because I couldn’t make the transformation of <code>purple</code> view to work when transforming in <code>3D</code>.</p><p><img src="https://aleahim.com/images/cacube/08_side4_broken.png" alt=""></p><p>The solution is to add an additional <code>CATransformLayer</code> to the <code>green</code> layer, and mount the <code>purple</code> layer onto it. As explained in this blog post by Oliver Drobnik <a href="https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/" target="_blank"> Cubed CoreAnimation Conundrum.</a></p><p>But I didn’t want to lose the linearity of the solution, and I used the approach demonstrated in the mentioned WWDC session: “2011–421 Core Animation Essentials”</p><p>They used the <code>zOrder</code> property of a layer, and so I put <code>purple</code> layer on top of the <code>red</code> layer to achieve that.</p><pre><code class="language-swift">    if number == 4 {
+      view.layer.zPosition = 1
+    }
+</code></pre><p>As you can see in the image below, the <code>purple</code> layer is in front of the <code>red</code> layer, which is obvious when we rotate the flattened cube.</p><p><img src="https://aleahim.com/images/cacube/09_layers_zPosition.png" alt=""></p><h3 id="2.3.-turning-the-transform-on-and-off">2.3. Turning the Transform On and Off</h3><p>I did take the approach that Over Drobnik did in his article: <a href="https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/" target="_blank"> Cubed CoreAnimation Conundrum </a>, and used it like this:</p><pre><code class="language-swift">	side4.layer?.zPosition = on ? CACube3DView.sideWidth : 1
+    side1.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(1, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
+    side2.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(2, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
+    side3.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(3, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
+    side4.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(4, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
+    side5.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(5, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
+    side6.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(6, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
+</code></pre><h3 id="2.4.-transforming-the-layers-to-form-a-cube">2.4. Transforming the Layers to Form a Cube</h3><p>I didn’t use his transform code, since he used that additional <code>CATransformLayer</code>, so it wouldn’t work. So, here’s a small extension on the <code>CATransform3D</code></p><pre><code class="language-swift">public extension CATransform3D {
+  static func transformFor3DCubeSide(_ number: Int, zWidth: CGFloat) -&gt; CATransform3D {
+
+    let halfPi = CGFloat(Double.pi) / 2.0
+    var trans = CATransform3DIdentity
+    switch number {
+      case 1:
+        trans = CATransform3DMakeRotation(halfPi, 0, 1, 0)
+        break
+      case 2:
+        trans = CATransform3DIdentity
+        break
+      case 3:
+        trans = CATransform3DMakeRotation(-halfPi, 0, 1, 0)
+        break
+      case 4:
+        trans = CATransform3DMakeTranslation(0, 0, zWidth)
+        break
+      case 5:
+        trans = CATransform3DMakeRotation(-halfPi, 1, 0, 0)
+        break
+      case 6:
+        trans = CATransform3DMakeRotation(halfPi, 1, 0, 0)
+        break
+      default:
+        break
+    }
+    return trans
+  }
+}
+</code></pre><p>I actually used the approach form that WWDC session, and also used <code>anchorPoint</code> properties of the <code>CALayer</code>.</p><h3 id="2.5.-positioning-cube-sides">2.5. Positioning Cube Sides</h3><p>Here’s a little extension on <code>CGPoint</code> that returns a tuple of our cube side positions and anchor points:</p><pre><code class="language-swift">public extension CGPoint {
+  static func anchorPointAndPositionForCubeSideLayer(number: Int, sideSize: CGFloat) -&gt; (anchorPoint: CGPoint, position: CGPoint) {
+    var resultAnchorPoint = CGPoint(x:0.5, y:0.5)
+    var resultPosition = CGPoint(x:0.0, y:0.0)
+    let halfSideSize: CGFloat = sideSize / 2.0
+    switch number {
+      case 1:
+        resultAnchorPoint = CGPoint(x:1.0, y:0.5)
+        resultPosition = CGPoint(x:-halfSideSize, y:0.0)
+        break
+      case 2:
+        resultAnchorPoint = CGPoint(x:0.5, y:0.5)
+        resultPosition = CGPoint(x:0.0, y:0.0)
+        break
+      case 3:
+        resultAnchorPoint = CGPoint(x:0.0, y:0.5)
+        resultPosition = CGPoint(x:halfSideSize, y:0.0)
+        break
+      case 4:
+        resultAnchorPoint = CGPoint(x:0.5, y:0.5)
+        resultPosition = CGPoint(x:0.0, y:0.0)
+        break
+      case 5:
+        resultAnchorPoint = CGPoint(x:0.5, y:1.0)
+        resultPosition = CGPoint(x:0.0, y:-halfSideSize)
+        break
+      case 6:
+        resultAnchorPoint = CGPoint(x:0.5, y:0.0)
+        resultPosition = CGPoint(x:0.0, y:halfSideSize)
+        break
+      default:
+        break
+    }
+    return (anchorPoint: resultAnchorPoint, position: resultPosition)
+  }
+}
+</code></pre><p>In the image below I have marked where the <code>anchor points</code> are for each layer:</p><p><img src="https://aleahim.com/images/cacube/10_anchor_points.png" alt=""></p><p>The only fallacy in the image above, is that the <code>purple</code> layer is actually above our <code>red layer</code>, but I wanted to show where those anchor points are.<br>So, the actual image looks like this, but we now don’t see the <code>red</code> layer.<br><img src="https://aleahim.com/images/cacube/11_anchor_points.png" alt=""></p><p>An Anchor point is a center of rotation. It determines how will the layer rotate.<br>Imagine holding a playing card with two fingers. Then try to spin the card. The anchor point of that card is where you are holding it with fingers.</p><h2 id="3.-responding-to-gestures">3. Responding to Gestures</h2><p>I made a small <code>GestureRecognizerView</code> to be able to respond to gestures and move, rotate and scale our layers.</p><p>It hooks-up:</p><ul><li><code>NSPanGestureRecognizer</code> and <code>UIPanGestureRecognizer</code></li><li><code>func rotate(with event: NSEvent)</code> and <code>UIRotationGestureRecognizer</code></li><li><code>NSClickGestureRecognizer</code> and <code>UITapGestureRecognizer</code></li><li><code>func magnify(with event: NSEvent)</code> and <code>UIPinchGestureRecognizer</code></li></ul><p>It then exposes all those events to the developer to use:</p><pre><code class="language-swift">public extension GestureRecognizerView {
+  @objc func rotationChanged(degrees: Float) {}
+  @objc func rotationChanged(radians: Float) {}
+  @objc func displacementChanged(displacement: CGPoint) {}
+  @objc func scaleChanged(scale: CGFloat) {}
+  @objc func tapHappened() {}
+}
+</code></pre><h2 id="4.-building-a-layer-to-hold-a-cube">4. Building a Layer to hold a Cube</h2><p><code>CACube3DView</code> will hold the six layers than (can) make a cube.<br>In order for <code>Core Animation</code> to render the transformed views in perspective, there is a property <code>sublayerTransform</code>.</p><p>You either use that property of your parent layer, or add another layer class to your layer hierarchy: <code>CATransformLayer</code>. I opted to use that.</p><pre><code class="language-swift">private(set) public lazy var transformedLayer: CALayer = {
+    let l = CATransformLayer()
+    l.name = "Transform Layer"
+    #if os(OSX)
+    l.isGeometryFlipped = true
+    #endif
+    return l
+}()
+</code></pre><p>When adding sublayers, I add them to this <code>transformedLayer</code> property, and not my view’s layer.</p><pre><code class="language-swift">func addSideSubview(_ subview: AView) {
+    addSubview(subview)
+
+    #if os(iOS) || os(tvOS)
+    transformedLayer.addSublayer(subview.layer)
+    #endif
+
+    #if os(OSX)
+    if let aLayer = subview.layer {
+      transformedLayer.addSublayer(aLayer)
+    } else {
+      fatalError("`subview.layer` == `nil`")
+    }
+    #endif
+}
+</code></pre><h2 id="5.-perspective-rotation">5. Perspective & Rotation</h2><p>When the app first runs it shows in perspective.<br>I made a little extension:</p><pre><code class="language-swift">public extension CATransform3D {
+  static func somePerspectiveTransform() -&gt; CATransform3D {
+    var perspective = CATransform3DIdentity;
+    perspective.m34 = -1.0 / 500.0;
+    perspective = CATransform3DRotate(perspective, CGFloat(Double.pi) / 8, 1, 0, 0);
+    perspective = CATransform3DRotate(perspective, CGFloat(Double.pi) / 8, 0, 1, 0);
+    perspective = CATransform3DScale(perspective, 0.7, 0.7, 0.7)
+    return perspective
+  }
+}
+</code></pre><p>The part: <code>perspective.m34 = -1.0 / 500.0;</code> sets the perspective.<br>The <code>.34</code> field of a matrix shows the amount of perspective distortion applied.<br>The amount <code>500</code> is often used in examples. If it were smaller, the layers would seem very close and distorted, like a fish-eye effect.</p><p>This is the initial transform, but we want to be able to move and rotate our cube (flattened or not) with our fingers.</p><p>Here’s the code:</p><pre><code class="language-swift">public extension CATransform3D {
+
+  func rotationFromDisplacement(_ displacement: CGPoint, sideWidth: CGFloat, is3D: Bool) -&gt; CATransform3D {
+
+    var currentTransform = self
+
+    let totalRotation: CGFloat = sqrt(displacement.x * displacement.x + displacement.y * displacement.y)
+    let angle: CGFloat = totalRotation * .pi / 180.0
+
+    let xRotationFactor = displacement.x / angle
+    let yRotationFactor = displacement.y / angle
+
+    if is3D {
+      currentTransform = CATransform3DTranslate(currentTransform, 0, 0, sideWidth / 2.0)
+    }
+
+    var rotationalTransform = CATransform3DRotate(currentTransform, angle,
+                                                  (xRotationFactor * currentTransform.m12 - yRotationFactor * currentTransform.m11),
+                                                  (xRotationFactor * currentTransform.m22 - yRotationFactor * currentTransform.m21),
+                                                  (xRotationFactor * currentTransform.m32 - yRotationFactor * currentTransform.m31))
+
+    if (is3D) {
+      rotationalTransform = CATransform3DTranslate(rotationalTransform, 0, 0, -sideWidth / 2.0);
+    }
+
+    return rotationalTransform
+  }
+}
+</code></pre><p>We call it from our pan-gesture methods</p><pre><code class="language-swift">  override func displacementChanged(displacement: CGPoint) {
+    guard !(displacement.x == 0 && displacement.y == 0) else { return }
+
+    let rotationTransform = transformedLayer.sublayerTransform.rotationFromDisplacement(displacement, sideWidth: CACube3DView.sideWidth, is3D: isOn)
+    transformedLayer.sublayerTransform = rotationTransform
+  }
+</code></pre><p>We hooked up the pan-gestures prior:</p><pre><code class="language-swift">#if os(OSX)
+private func setupPanGestureRecognizer() {
+    let panGR = NSPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+    addGestureRecognizer(panGR)
+}
+@objc func handlePanGesture(_ gestureRecognizer: NSPanGestureRecognizer) {
+    let displacement: CGPoint = gestureRecognizer.translation(in: self)
+    handlePan(displacement: displacement, changed: gestureRecognizer.state == .changed)
+}
+#endif
+
+#if os(iOS) || os(tvOS)
+private func setupPanGestureRecognizer() {
+    let panGR = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+    addGestureRecognizer(panGR)
+}
+
+@objc func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
+    let displacement: CGPoint = gestureRecognizer.translation(in: self)
+
+    handlePan(displacement: displacement, changed: gestureRecognizer.state == .changed)
+
+    if gestureRecognizer.state == .changed {
+      gestureRecognizer.setTranslation(.zero, in: self)
+    }
+}
+#endif
+</code></pre><p>We can also add a simple rotation transform for the rotation events/ gestures.</p><pre><code class="language-swift">  override func rotationChanged(radians: Float) {
+    let transform = transformedLayer.sublayerTransform
+    let rot = CATransform3DRotate(transform, CGFloat(radians), 0, 1, 0)
+    transformedLayer.sublayerTransform = rot
+  }
+</code></pre><p>And scale, in all three axes:</p><pre><code class="language-swift">  override func scaleChanged(scale: CGFloat) {
+    let scaleTransform = CATransform3DScale(transformedLayer.sublayerTransform, scale, scale, scale)
+    transformedLayer.sublayerTransform = scaleTransform
+  }
+</code></pre><p>The <code>tap</code> turns on and off our 3D transform</p><pre><code class="language-swift">  override func tapHappened() {
+    set3DCube(on: isOn)
+  }
+</code></pre><p>Here’s the 3D cube code</p><pre><code class="language-swift">  func set3DCube(on: Bool) {
+    side4.layer.zPosition = on ? CACube3DView.sideWidth : 1
+    side1.layer.transform = on ? CATransform3D.transformFor3DCubeSide(1, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
+    side2.layer.transform = on ? CATransform3D.transformFor3DCubeSide(2, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
+    side3.layer.transform = on ? CATransform3D.transformFor3DCubeSide(3, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
+    side4.layer.transform = on ? CATransform3D.transformFor3DCubeSide(4, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
+    side5.layer.transform = on ? CATransform3D.transformFor3DCubeSide(5, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
+    side6.layer.transform = on ? CATransform3D.transformFor3DCubeSide(6, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
+  }
+</code></pre><p>We either set the <code>identity transform</code>, which means <code>no transform</code>, to our cube sides, or the transform appropriate for that particular side.</p><h2 id="6.-macos-troubles">6. macOS Troubles</h2><p>I suppose I need to do further investigation in how <code>macOS</code> treats layers of <code>NSView</code>, for this little experiment is not working on the <code>macOS</code>, yet.<br>Here’s how the flattened cube looks on the <code>macOS</code></p><p><img src="https://aleahim.com/images/cacube/12_cube_macOS_flat_messed_up.png" alt=""></p><p>So, the positioning of the layers is not respected.</p><p>And here is the cube in 3D:</p><p><img src="https://aleahim.com/images/cacube/13_cube_macOS_3D_messed_up.png" alt=""></p><p>I did try to force the <code>isGeometryFlipped = true</code> everywhere. Anyway this needs more work.</p><p>If you want to help with the <code>macOS</code> implementation, please, be my guest.</p><p>Here’s a link to a GitHub repo with the source code:<br><a href="https://github.com/mihaelamj/CubeIn3DWithCoreAnimation" target="_blank">Core Animation 3D Cube</a></p>]]></content:encoded>
     </item>
   </channel>
 </rss>
