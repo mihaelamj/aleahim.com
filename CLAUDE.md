@@ -49,3 +49,7 @@ Fork the repo, edit `blogs.json`, open a PR.
 ## General agent instructions
 
 See `AGENTS.md` in this repo for post-creation and deploy workflow.
+
+## Imported Rules
+
+@../../private/mihaela-agents/Rules/AGENTS.md
