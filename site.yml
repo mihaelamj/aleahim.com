@@ -5,7 +5,8 @@ navigation:
     url: "/"
   - label: "CV"
     url: "/cv/"
-  - label: "Services"
-    url: "/services/"
+  - label: "Hire me"
+    url: "https://codeweaver.info/"
+    external: true
   - label: "About"
     url: "/about/"

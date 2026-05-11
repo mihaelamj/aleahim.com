@@ -1,11 +1,14 @@
 id: redirect
 
 properties:
-    to: 
+    to:
         type: string
         required: true
     code:
         type: int
         required: false
         defaultValue: 301
-
+    external:
+        type: bool
+        required: false
+        defaultValue: false
