@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cupertino v1.1.0: my Apple docs index was 30% lies and I didn&#39;t know - Aleahim</title>
+    <meta name="description" content="A 3 a.m. SQL query found one row of HTTP poison in the search index. Pulling on that thread unraveled 13 ways Apple&#39;s CDN lies to crawlers, plus a release bug where the binary cheerfully downgraded every user to the previous bundle.">
+
+    <meta property="og:url" content="https://aleahim.com/blog/cupertino-v1-1-0-poison-cleanup/">
+    <meta property="og:title" content="Cupertino v1.1.0: my Apple docs index was 30% lies and I didn&#39;t know - Aleahim">
+    <meta property="og:description" content="A 3 a.m. SQL query found one row of HTTP poison in the search index. Pulling on that thread unraveled 13 ways Apple&#39;s CDN lies to crawlers, plus a release bug where the binary cheerfully downgraded every user to the previous bundle.">
+    
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cupertino v1.1.0: my Apple docs index was 30% lies and I didn&#39;t know - Aleahim">
+    <meta name="twitter:description" content="A 3 a.m. SQL query found one row of HTTP poison in the search index. Pulling on that thread unraveled 13 ways Apple&#39;s CDN lies to crawlers, plus a release bug where the binary cheerfully downgraded every user to the previous bundle.">
+    
+
+    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
+
+    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a id="logo" href="https://aleahim.com">
+                <img
+                    src="https://aleahim.com/images/logo.svg"
+                    alt="Aleahim"
+                    title="Aleahim"
+                >
+                <h1 class="site-title">Aleahim.com</h1>
+            </a>
+    
+            <nav>
+                <div class="navigation">
+                    <a href="https://aleahim.com/">Home</a>
+                <a href="https://aleahim.com/cv/">CV</a>
+                <a href="https://codeweaver.info/" rel="noopener">Hire me</a>
+                <a href="https://aleahim.com/about/">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <article class="blog-post">
+        <header class="post-header">
+            <div class="title-with-thumbnail">
+                <div class="post-thumbnail">
+                    <img src="https://aleahim.com/images/blog/cupertino-v1-1-0-poison-cleanup/hero.png" alt="Cupertino v1.1.0: my Apple docs index was 30% lies and I didn&#39;t know">
+                </div>
+                <div class="title-wrapper">
+                    <h1>Cupertino v1.1.0: my Apple docs index was 30% lies and I didn&#39;t know</h1>
+                    <div class="post-meta">
+                        <time datetime="2026-05-14T00:00:00.000Z">May 14, 2026</time>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="post-content">
+            <div class="post-hero-image">
+                <img src="https://aleahim.com/images/blog/cupertino-v1-1-0-poison-cleanup/hero.png" alt="Cupertino v1.1.0: my Apple docs index was 30% lies and I didn&#39;t know">
+            </div>
+    
+            <h1>Cupertino v1.1.0: my Apple docs index was 30% lies and I didn’t know</h1><p><code>brew upgrade cupertino</code> this week and your local Apple docs database is 7,095 documents richer and zero rows are HTTP error pages pretending to be documentation. You will not notice. Searches feel the same. <code>cupertino doctor</code> was already green. The MCP server returns the same shape.</p><p>That gap, between “looks fine” and “actually fine”, is the whole post.</p><h2 id="tl-dr">TL;DR</h2><pre><code>brew update
+brew upgrade cupertino
+cupertino setup     # downloads cupertino-databases-v1.1.0.zip (685 MB)
+cupertino doctor    # "Bundled version: 1.1.0", apple-docs: 284,518
+</code></pre><p>Done. The rest is how I found out the index was lying to me.</p><h2 id="the-3-a.m.-query">The 3 a.m. query</h2><p>I was confident about v1.0.2. Audit clean. Bundle rebuilt. Counts verified. Shipped.</p><p>Then I ran one more query against the v1.0.2 <code>search.db</code>, the kind you only run when you can’t sleep:</p><pre><code class="language-sql">SELECT uri, title, abstract, source
+FROM docs_metadata m JOIN docs_structured s ON s.uri = m.uri
+WHERE s.title IN ('Forbidden', '403 Forbidden', '404 Not Found',
+                  'Bad Gateway', '502 Bad Gateway');
+</code></pre><p>One row came back.</p><pre><code>uri:      swift-org://docc_documentation
+title:    Forbidden
+abstract: You don't have permission to access this resource.
+source:   swift-org
+</code></pre><p>That is not Apple’s DocC documentation. That is an HTTP 403 page indexed as canonical content for the DocC URL. Anyone querying cupertino for DocC would get a result with a correct URL, a plausible title, and a body of pure garbage. The worst kind of indexing bug: silent and authoritative.</p><p>The mistake was small and embarrassing. My poison scan walked <code>~/.cupertino/docs/</code>. The bundle is built from <strong>six</strong> sibling directories. I had been auditing one out of six.</p><pre><code>~/.cupertino/
+  docs/             # 412k JSON files
+  swift-evolution/  # 483 proposals
+  swift-org/        # 196 pages    ← never scanned
+  hig/              # 173 pages
+  archive/          # 406 legacy guides
+  packages/         # README files
+</code></pre><p>Sweeping the full tree turned up six poison files in <code>swift-org/</code>. Five of them had been shipping in every prior release. Nobody had noticed. But the six was the small problem. The big problem: my scanning was wrong, and I had no idea what else was hiding in 412,523 other files.</p><h2 id="the-13-ways-apple-poisons-your-crawler">The 13 ways Apple poisons your crawler</h2><p>I rebuilt the audit as a matrix: every pattern, every source, every file. Each row below came from a real failure I had already hit. None of it is theoretical.</p><table><thead><td>#</td><td>Pattern</td><td>What it actually is</td></thead><tbody><tr><td>1</td><td>Title <code>403 Forbidden</code>, <code>502 Bad Gateway</code>, <code>404 Not Found</code>, <code>500</code>, <code>503</code>, <code>504</code>, <code>429</code></td><td>Apple’s CDN serves an HTTP error page at status 200, gets indexed as a doc page</td></tr><tr><td>2</td><td>Title bare phrase: <code>Forbidden</code>, <code>Bad Gateway</code></td><td>Same as 1 minus the status code</td></tr><tr><td>3</td><td>Body: <code>Please turn on JavaScript in your browser…</code></td><td>React SPA noscript fallback</td></tr><tr><td>4</td><td>Body: <code>[ Skip Navigation ](#app-main)# An unknown error occurred.</code></td><td>React app’s generic error sub-view rendered as the whole body</td></tr><tr><td>5</td><td>Body contains <code>openresty</code></td><td>Apple’s edge CDN error template</td></tr><tr><td>6</td><td>Body contains <code>&lt;center&gt;nginx</code></td><td>Different nginx error template</td></tr><tr><td>7</td><td>Body: <code>You don't have permission to access this resource</code></td><td>Forbidden as plain prose</td></tr><tr><td>8</td><td>Body: <code>cf-error-code</code> / <code>Cloudflare Ray ID</code></td><td>Cloudflare error page</td></tr><tr><td>9</td><td>Body: <code>Reference&#32;&#35;</code> / <code>Akamai</code> markers</td><td>Akamai edge error</td></tr><tr><td>10</td><td>Body: <code>&lt;Code&gt;NoSuchKey&lt;/Code&gt;</code> / <code>&lt;Code&gt;AccessDenied&lt;/Code&gt;</code></td><td>AWS S3 XML errors for missing assets</td></tr><tr><td>11</td><td>Zero-byte files</td><td>Truncated writes from killed crawls</td></tr><tr><td>12</td><td>Files under 200 bytes</td><td>Almost-empty responses</td></tr><tr><td>13</td><td><code>.json</code> files not starting with <code>{</code> or <code>[</code></td><td>Corrupt JSON, sometimes HTML in disguise</td></tr></tbody></table><p>Against every expectation, <code>docs/</code> scanned clean across all 13. Earlier passes had actually stuck. The poison was concentrated in the small directories I had been ignoring.</p><p>(Quick footnote, since it cost me an hour. Category 13 is a byte read on 412k files. My first pass shelled out <code>head -c 1</code> per file. Projected wall time: about five hours. Rewriting as a single Python <code>os.walk</code> that stats, opens, and reads one byte inside one process: 41 seconds. The per-file fork was the entire cost.)</p><h2 id="how-apple-actually-poisons-you">How Apple actually poisons you</h2><p>Three failure modes. In the order they fooled me.</p><p><strong>Mode 1: the CDN returns an HTML error page at status 200.</strong> Title is <code>403 Forbidden</code>. A five-line title check catches it. Done in PR #289 last release.</p><p><strong>Mode 2: the SPA shell.</strong> Apple’s docs site is a client-rendered React app. Fetch without JS and you get a <code>&lt;noscript&gt;</code> blurb that politely asks you to enable JavaScript. v1.0.2 had 1,327 of these. PR #291 filtered them at indexing time, but it was scoped to the apple-docs path, which is exactly why the <code>swift-org</code> <code>Forbidden</code> row strolled past.</p><p><strong>Mode 3: the one that ate my Tuesday.</strong> JavaScript runs. The React app boots. The React app’s data API returns 404 for the URL. The React app cheerfully renders its own 404 sub-view as the page body:</p><pre><code class="language-html">&lt;h1&gt;Apple Developer Documentation&lt;/h1&gt;
+&lt;a href="#app-main"&gt;Skip Navigation&lt;/a&gt;
+&lt;h1&gt;The page you're looking for can't be found.&lt;/h1&gt;
+&lt;input placeholder="Search developer.apple.com"&gt;
+</code></pre><p>Title is generic. Body is the app announcing its own failure. No error markers. Status 200. HTML perfectly clean. Every defense I had waved this through, because from the network’s point of view Apple successfully served me a page. The page just happens to be Apple’s React app politely informing the user that the page doesn’t exist.</p><h2 id="the-fix-that-was-missing">The fix that was missing</h2><p>PR #432 is small. A substring check on the rendered HTML, before the crawler writes anything:</p><pre><code class="language-swift">public static func looksLikeJavaScriptFallback(html: String) -&gt; Bool {
+    if html.contains("The page you're looking for can't be found") { return true }
+    if html.contains("An unknown error occurred") { return true }
+    return false
+}
+</code></pre><p>Both phrases live exclusively inside Apple’s no-content sub-views. Real docs do not quote either sentence. The check runs after WebKit renders, so it sees the same bytes that would have hit disk. If it returns true, the crawler logs a skip and walks away.</p><p>Every skip writes one JSONL row to <code>&lt;output&gt;/.cupertino-rejected-urls.jsonl</code>:</p><pre><code class="language-json">{"url":"https://developer.apple.com/documentation/.../fetch-apple",
+ "framework":"accountorganizationaldatasharing",
+ "reason":"js_fallback",
+ "timestamp":"2026-05-13T11:53:42Z"}
+</code></pre><p>This is the part I think generalizes. Once a poison file lands on disk, every downstream consumer has to re-discover that it’s poison. Catch it at write time and it is nobody’s problem ever again. The JSONL puts the visibility back: <code>jq</code> over it and you have a retry list, a recrawl set, or a bug-report folder.</p><p>Targeted recrawl of 51 known-poison URLs from v1.0.2: 48 rejection rows, all correctly tagged <code>js_fallback</code>, zero new files on disk. Pre-fix, the same set wrote 9 poison files in 90 seconds before I killed the run.</p><p>One false-positive risk worth naming. Two real Apple symbol pages quote “An unknown error occurred” in their Discussion section (<code>cfnetworkserviceerrorunknown</code>, <code>generalinternalretryableerror</code>). Both are already in the v1.1.0 bundle, but a future recrawl of those exact URLs would currently get rejected. Filed for v1.2: tighten the match so the phrase has to sit in a standalone position (h1, adjacent to Skip Navigation) rather than anywhere in the HTML.</p><h2 id="the-reindex">The reindex</h2><p><code>cupertino save --docs --clear</code> on the cleaned corpus:</p><pre><code>documents:           285,735       (84.7% of 351,249 source, rest deduped)
+frameworks:          420
+db size:             2.36 GB
+defense trips:       0
+errors:              0
+warnings:            0
+runtime:             9h 39m
+</code></pre><p>The line I care about is <code>defense trips: 0</code>. Across 351,249 indexer reads the indexer-side gate from PR #291 did not fire once. The test wasn’t whether the defense works. The test was whether anything was left for it to filter. Nothing was.</p><p>(The 65,514 gap between source files and indexed rows is real deduplication. Apple’s docs ship hash-suffixed variants of overloaded methods (<code>equatable_-3axv1_de895d6c.json</code>) that all point at the same logical URL.)</p><h2 id="the-release-saga-or-what-databaseversion-actually-does">The release saga, or: what <code>databaseVersion</code> actually does</h2><p>This is the part I’d flag to anyone shipping a similar tool.</p><p>v1.1.0 first shipped tagged correctly, binary rebuilt correctly, bundle uploaded to a parallel GitHub release. I ran <code>cupertino setup</code> to test the upgrade. It cheerfully downloaded the <strong>old</strong> v1.0.2 bundle.</p><p>The bug was one line in <code>Shared.Constants.swift</code>:</p><pre><code class="language-swift">public static let databaseVersion = "1.0.2"
+</code></pre><p><code>cupertino setup</code> builds the download URL from this constant:</p><pre><code>{baseURL}/v{databaseVersion}/cupertino-databases-v{databaseVersion}.zip
+</code></pre><p>The release-tooling commit had explicitly not bumped it, with a confident note: “databaseVersion stays at 1.0.2 (no schema/content change).” Schema-wise that was true. Content-wise it was a confident lie. The corpus was the cleanest it had ever been, the bundle was genuinely new, and the binary was politely asking the CDN for last week’s poisoned one.</p><p>Fix: one-line change, fix branch, squash-merge, force-move the v1.1.0 tag to the new HEAD. <code>release.yml</code> rebuilds, codesigns, notarizes, and replaces the assets on tag push. Then a Homebrew bump for the new tarball SHA. About 25 minutes of clock time once I noticed. Approximately 25 minutes of dignity, also gone.</p><p><strong>The lesson:</strong> when the bundle changes, bump <code>databaseVersion</code>, even if the schema doesn’t. Otherwise your install path silently downgrades users to the previous bundle. No error. Doctor reports green. The binary asked for last week’s bundle, and last week’s bundle is exactly what it got.</p><h2 id="what-i-d-take-with-me">What I’d take with me</h2><p><strong>HTTP 200 doesn’t mean “valid content.”</strong> It means the CDN served some bytes. Documentation, error page, noscript fallback, React 404 sub-view: your problem to tell apart. Title checks miss two of three.</p><p><strong>Defense gates belong upstream.</strong> Catching poison at write time costs the same as catching it later, and prevents a class of bug instead of detecting one. Append an audit log so you keep the visibility.</p><p><strong>Bump <code>databaseVersion</code> when the bundle changes, even if the schema doesn’t.</strong> Then run <code>cupertino setup</code> end-to-end before the release is “shipped.” Trust the binary, not the release notes.</p><p>If you want to try it:</p><pre><code>brew install mihaelamj/tap/cupertino    # or brew upgrade
+cupertino setup
+cupertino search "your favorite Apple symbol"
+</code></pre><p>Three defense PRs: #289, #291, #432. About 350 lines of Swift including tests. The cleanup itself was one long afternoon of careful greps.</p>
+        </div>
+    
+        <footer class="post-footer">
+            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
+        </footer>
+    </article>
+
+    </main>
+
+    <footer>
+        <p>This site was generated using <a href="https://www.swift.org/" target="_blank">Swift</a> & <a href="https://github.com/toucansites/toucan" target="_blank">Toucan</a>.</p>
+    
+        <p class="small">Aleahim &copy; 2026.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    
+</body>
+</html>
