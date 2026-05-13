@@ -62,7 +62,7 @@ The mistake was small and embarrassing. My poison scan walked `~/.cupertino/docs
 
 Sweeping the full tree turned up six poison files in `swift-org/`. Five of them had been shipping in every prior release. Nobody had noticed. But the six was the small problem. The big problem: my scanning was wrong, and I had no idea what else was hiding in 412,523 other files.
 
-## The 13 ways Apple poisons your crawler
+## The 13 ways Apple's docs site poisons a crawler
 
 I rebuilt the audit as a matrix: every pattern, every source, every file. Each row below came from a real failure I had already hit. None of it is theoretical.
 
@@ -86,7 +86,7 @@ Against every expectation, `docs/` scanned clean across all 13. Earlier passes h
 
 (Quick footnote, since it cost me an hour. Category 13 is a byte read on 412k files. My first pass shelled out `head -c 1` per file. Projected wall time: about five hours. Rewriting as a single Python `os.walk` that stats, opens, and reads one byte inside one process: 41 seconds. The per-file fork was the entire cost.)
 
-## How Apple actually poisons you
+## How Apple's docs site actually poisons your index
 
 Three failure modes. In the order they fooled me.
 
