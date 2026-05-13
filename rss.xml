@@ -7,6 +7,58 @@
     <language>en-US</language>
     <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Cupertino v1.1.0: my Apple docs index was 30% lies and I didn&#39;t know</title>
+      <link>https://aleahim.com/blog/cupertino-v1-1-0-poison-cleanup/</link>
+      <description>A 3 a.m. SQL query found one row of HTTP poison in the search index. Pulling on that thread unraveled 13 ways Apple&#39;s CDN lies to crawlers, plus a release bug where the binary cheerfully downgraded every user to the previous bundle.</description>
+      <pubDate>Thu, 14 May 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://aleahim.com/blog/cupertino-v1-1-0-poison-cleanup/</guid>
+      <content:encoded><![CDATA[<h1>Cupertino v1.1.0: my Apple docs index was 30% lies and I didn’t know</h1><p><code>brew upgrade cupertino</code> this week and your local Apple docs database is 7,095 documents richer and zero rows are HTTP error pages pretending to be documentation. You will not notice. Searches feel the same. <code>cupertino doctor</code> was already green. The MCP server returns the same shape.</p><p>That gap, between “looks fine” and “actually fine”, is the whole post.</p><h2 id="tl-dr">TL;DR</h2><pre><code>brew update
+brew upgrade cupertino
+cupertino setup     # downloads cupertino-databases-v1.1.0.zip (685 MB)
+cupertino doctor    # "Bundled version: 1.1.0", apple-docs: 284,518
+</code></pre><p>Done. The rest is how I found out the index was lying to me.</p><h2 id="the-3-a.m.-query">The 3 a.m. query</h2><p>I was confident about v1.0.2. Audit clean. Bundle rebuilt. Counts verified. Shipped.</p><p>Then I ran one more query against the v1.0.2 <code>search.db</code>, the kind you only run when you can’t sleep:</p><pre><code class="language-sql">SELECT uri, title, abstract, source
+FROM docs_metadata m JOIN docs_structured s ON s.uri = m.uri
+WHERE s.title IN ('Forbidden', '403 Forbidden', '404 Not Found',
+                  'Bad Gateway', '502 Bad Gateway');
+</code></pre><p>One row came back.</p><pre><code>uri:      swift-org://docc_documentation
+title:    Forbidden
+abstract: You don't have permission to access this resource.
+source:   swift-org
+</code></pre><p>That is not Apple’s DocC documentation. That is an HTTP 403 page indexed as canonical content for the DocC URL. Anyone querying cupertino for DocC would get a result with a correct URL, a plausible title, and a body of pure garbage. The worst kind of indexing bug: silent and authoritative.</p><p>The mistake was small and embarrassing. My poison scan walked <code>~/.cupertino/docs/</code>. The bundle is built from <strong>six</strong> sibling directories. I had been auditing one out of six.</p><pre><code>~/.cupertino/
+  docs/             # 412k JSON files
+  swift-evolution/  # 483 proposals
+  swift-org/        # 196 pages    ← never scanned
+  hig/              # 173 pages
+  archive/          # 406 legacy guides
+  packages/         # README files
+</code></pre><p>Sweeping the full tree turned up six poison files in <code>swift-org/</code>. Five of them had been shipping in every prior release. Nobody had noticed. But the six was the small problem. The big problem: my scanning was wrong, and I had no idea what else was hiding in 412,523 other files.</p><h2 id="the-13-ways-apple-poisons-your-crawler">The 13 ways Apple poisons your crawler</h2><p>I rebuilt the audit as a matrix: every pattern, every source, every file. Each row below came from a real failure I had already hit. None of it is theoretical.</p><table><thead><td>#</td><td>Pattern</td><td>What it actually is</td></thead><tbody><tr><td>1</td><td>Title <code>403 Forbidden</code>, <code>502 Bad Gateway</code>, <code>404 Not Found</code>, <code>500</code>, <code>503</code>, <code>504</code>, <code>429</code></td><td>Apple’s CDN serves an HTTP error page at status 200, gets indexed as a doc page</td></tr><tr><td>2</td><td>Title bare phrase: <code>Forbidden</code>, <code>Bad Gateway</code></td><td>Same as 1 minus the status code</td></tr><tr><td>3</td><td>Body: <code>Please turn on JavaScript in your browser…</code></td><td>React SPA noscript fallback</td></tr><tr><td>4</td><td>Body: <code>[ Skip Navigation ](#app-main)# An unknown error occurred.</code></td><td>React app’s generic error sub-view rendered as the whole body</td></tr><tr><td>5</td><td>Body contains <code>openresty</code></td><td>Apple’s edge CDN error template</td></tr><tr><td>6</td><td>Body contains <code>&lt;center&gt;nginx</code></td><td>Different nginx error template</td></tr><tr><td>7</td><td>Body: <code>You don't have permission to access this resource</code></td><td>Forbidden as plain prose</td></tr><tr><td>8</td><td>Body: <code>cf-error-code</code> / <code>Cloudflare Ray ID</code></td><td>Cloudflare error page</td></tr><tr><td>9</td><td>Body: <code>Reference&#32;&#35;</code> / <code>Akamai</code> markers</td><td>Akamai edge error</td></tr><tr><td>10</td><td>Body: <code>&lt;Code&gt;NoSuchKey&lt;/Code&gt;</code> / <code>&lt;Code&gt;AccessDenied&lt;/Code&gt;</code></td><td>AWS S3 XML errors for missing assets</td></tr><tr><td>11</td><td>Zero-byte files</td><td>Truncated writes from killed crawls</td></tr><tr><td>12</td><td>Files under 200 bytes</td><td>Almost-empty responses</td></tr><tr><td>13</td><td><code>.json</code> files not starting with <code>{</code> or <code>[</code></td><td>Corrupt JSON, sometimes HTML in disguise</td></tr></tbody></table><p>Against every expectation, <code>docs/</code> scanned clean across all 13. Earlier passes had actually stuck. The poison was concentrated in the small directories I had been ignoring.</p><p>(Quick footnote, since it cost me an hour. Category 13 is a byte read on 412k files. My first pass shelled out <code>head -c 1</code> per file. Projected wall time: about five hours. Rewriting as a single Python <code>os.walk</code> that stats, opens, and reads one byte inside one process: 41 seconds. The per-file fork was the entire cost.)</p><h2 id="how-apple-actually-poisons-you">How Apple actually poisons you</h2><p>Three failure modes. In the order they fooled me.</p><p><strong>Mode 1: the CDN returns an HTML error page at status 200.</strong> Title is <code>403 Forbidden</code>. A five-line title check catches it. Done in PR #289 last release.</p><p><strong>Mode 2: the SPA shell.</strong> Apple’s docs site is a client-rendered React app. Fetch without JS and you get a <code>&lt;noscript&gt;</code> blurb that politely asks you to enable JavaScript. v1.0.2 had 1,327 of these. PR #291 filtered them at indexing time, but it was scoped to the apple-docs path, which is exactly why the <code>swift-org</code> <code>Forbidden</code> row strolled past.</p><p><strong>Mode 3: the one that ate my Tuesday.</strong> JavaScript runs. The React app boots. The React app’s data API returns 404 for the URL. The React app cheerfully renders its own 404 sub-view as the page body:</p><pre><code class="language-html">&lt;h1&gt;Apple Developer Documentation&lt;/h1&gt;
+&lt;a href="#app-main"&gt;Skip Navigation&lt;/a&gt;
+&lt;h1&gt;The page you're looking for can't be found.&lt;/h1&gt;
+&lt;input placeholder="Search developer.apple.com"&gt;
+</code></pre><p>Title is generic. Body is the app announcing its own failure. No error markers. Status 200. HTML perfectly clean. Every defense I had waved this through, because from the network’s point of view Apple successfully served me a page. The page just happens to be Apple’s React app politely informing the user that the page doesn’t exist.</p><h2 id="the-fix-that-was-missing">The fix that was missing</h2><p>PR #432 is small. A substring check on the rendered HTML, before the crawler writes anything:</p><pre><code class="language-swift">public static func looksLikeJavaScriptFallback(html: String) -&gt; Bool {
+    if html.contains("The page you're looking for can't be found") { return true }
+    if html.contains("An unknown error occurred") { return true }
+    return false
+}
+</code></pre><p>Both phrases live exclusively inside Apple’s no-content sub-views. Real docs do not quote either sentence. The check runs after WebKit renders, so it sees the same bytes that would have hit disk. If it returns true, the crawler logs a skip and walks away.</p><p>Every skip writes one JSONL row to <code>&lt;output&gt;/.cupertino-rejected-urls.jsonl</code>:</p><pre><code class="language-json">{"url":"https://developer.apple.com/documentation/.../fetch-apple",
+ "framework":"accountorganizationaldatasharing",
+ "reason":"js_fallback",
+ "timestamp":"2026-05-13T11:53:42Z"}
+</code></pre><p>This is the part I think generalizes. Once a poison file lands on disk, every downstream consumer has to re-discover that it’s poison. Catch it at write time and it is nobody’s problem ever again. The JSONL puts the visibility back: <code>jq</code> over it and you have a retry list, a recrawl set, or a bug-report folder.</p><p>Targeted recrawl of 51 known-poison URLs from v1.0.2: 48 rejection rows, all correctly tagged <code>js_fallback</code>, zero new files on disk. Pre-fix, the same set wrote 9 poison files in 90 seconds before I killed the run.</p><p>One false-positive risk worth naming. Two real Apple symbol pages quote “An unknown error occurred” in their Discussion section (<code>cfnetworkserviceerrorunknown</code>, <code>generalinternalretryableerror</code>). Both are already in the v1.1.0 bundle, but a future recrawl of those exact URLs would currently get rejected. Filed for v1.2: tighten the match so the phrase has to sit in a standalone position (h1, adjacent to Skip Navigation) rather than anywhere in the HTML.</p><h2 id="the-reindex">The reindex</h2><p><code>cupertino save --docs --clear</code> on the cleaned corpus:</p><pre><code>documents:           285,735       (84.7% of 351,249 source, rest deduped)
+frameworks:          420
+db size:             2.36 GB
+defense trips:       0
+errors:              0
+warnings:            0
+runtime:             9h 39m
+</code></pre><p>The line I care about is <code>defense trips: 0</code>. Across 351,249 indexer reads the indexer-side gate from PR #291 did not fire once. The test wasn’t whether the defense works. The test was whether anything was left for it to filter. Nothing was.</p><p>(The 65,514 gap between source files and indexed rows is real deduplication. Apple’s docs ship hash-suffixed variants of overloaded methods (<code>equatable_-3axv1_de895d6c.json</code>) that all point at the same logical URL.)</p><h2 id="the-release-saga-or-what-databaseversion-actually-does">The release saga, or: what <code>databaseVersion</code> actually does</h2><p>This is the part I’d flag to anyone shipping a similar tool.</p><p>v1.1.0 first shipped tagged correctly, binary rebuilt correctly, bundle uploaded to a parallel GitHub release. I ran <code>cupertino setup</code> to test the upgrade. It cheerfully downloaded the <strong>old</strong> v1.0.2 bundle.</p><p>The bug was one line in <code>Shared.Constants.swift</code>:</p><pre><code class="language-swift">public static let databaseVersion = "1.0.2"
+</code></pre><p><code>cupertino setup</code> builds the download URL from this constant:</p><pre><code>{baseURL}/v{databaseVersion}/cupertino-databases-v{databaseVersion}.zip
+</code></pre><p>The release-tooling commit had explicitly not bumped it, with a confident note: “databaseVersion stays at 1.0.2 (no schema/content change).” Schema-wise that was true. Content-wise it was a confident lie. The corpus was the cleanest it had ever been, the bundle was genuinely new, and the binary was politely asking the CDN for last week’s poisoned one.</p><p>Fix: one-line change, fix branch, squash-merge, force-move the v1.1.0 tag to the new HEAD. <code>release.yml</code> rebuilds, codesigns, notarizes, and replaces the assets on tag push. Then a Homebrew bump for the new tarball SHA. About 25 minutes of clock time once I noticed. Approximately 25 minutes of dignity, also gone.</p><p><strong>The lesson:</strong> when the bundle changes, bump <code>databaseVersion</code>, even if the schema doesn’t. Otherwise your install path silently downgrades users to the previous bundle. No error. Doctor reports green. The binary asked for last week’s bundle, and last week’s bundle is exactly what it got.</p><h2 id="what-i-d-take-with-me">What I’d take with me</h2><p><strong>HTTP 200 doesn’t mean “valid content.”</strong> It means the CDN served some bytes. Documentation, error page, noscript fallback, React 404 sub-view: your problem to tell apart. Title checks miss two of three.</p><p><strong>Defense gates belong upstream.</strong> Catching poison at write time costs the same as catching it later, and prevents a class of bug instead of detecting one. Append an audit log so you keep the visibility.</p><p><strong>Bump <code>databaseVersion</code> when the bundle changes, even if the schema doesn’t.</strong> Then run <code>cupertino setup</code> end-to-end before the release is “shipped.” Trust the binary, not the release notes.</p><p>If you want to try it:</p><pre><code>brew install mihaelamj/tap/cupertino    # or brew upgrade
+cupertino setup
+cupertino search "your favorite Apple symbol"
+</code></pre><p>Three defense PRs: #289, #291, #432. About 350 lines of Swift including tests. The cleanup itself was one long afternoon of careful greps.</p>]]></content:encoded>
+    </item>
+    <item>
       <title>Cupertino v1.0.2: the duplicate that `LOWER(uri)` could not see</title>
       <link>https://aleahim.com/blog/cupertino-v1-0-2/</link>
       <description>A third of the search index was the same Apple page indexed twice. The verification query that &quot;proved&quot; it wasn&#39;t could not have seen the bug. What v1.0.2 ships, and three takeaways from the audit.</description>
@@ -1377,235 +1429,6 @@ let restAPI = Tech(name: "REST API", category: .concept)
     }
 }
 </code></pre><h2 id="benefits-for-developers">Benefits for Developers</h2><ol><li><strong>Cross-Platform Learning</strong>: Developers can learn SwiftUI animations that work on both iOS and macOS</li><li><strong>Ready-to-Use Examples</strong>: Each animation is self-contained and can be easily copied into other projects</li><li><strong>Performance Optimized</strong>: Animations are optimized for smooth performance on both platforms</li><li><strong>Educational Resource</strong>: The project serves as a comprehensive guide to SwiftUI animations</li></ol><h2 id="future-improvements">Future Improvements</h2><p>The project is actively maintained with several planned enhancements:</p><ol><li>Adding more complex animation examples</li><li>Implementing accessibility features</li><li>Creating a documentation site with interactive examples</li><li>Adding support for visionOS</li></ol><h2 id="conclusion">Conclusion</h2><p>SwiftUILab_AdvancedAnimations bridges the gap between iOS and macOS animation development in SwiftUI. By providing a unified codebase and clear examples, it helps developers create beautiful, performant animations that work across Apple’s platforms.</p><p>Whether you’re building for iOS, macOS, or both, this project provides valuable insights into SwiftUI’s animation capabilities and best practices for cross-platform development.</p><h2 id="resources">Resources</h2><ul><li><a href="https://github.com/mihaelamj/SwiftUILab_AdvancedAnimations" target="_blank">GitHub Repository</a></li><li><a href="https://swiftui-lab.com/advanced-animations/" target="_blank">Original SwiftUILab Article</a></li><li><a href="https://developer.apple.com/documentation/swiftui" target="_blank">SwiftUI Documentation</a></li></ul>]]></content:encoded>
-    </item>
-    <item>
-      <title>Core Animation Layers forming a 3D cube</title>
-      <link>https://aleahim.com/blog/core-animation-3d-cube/</link>
-      <description>Core Animation in 2.5D</description>
-      <pubDate>Sat, 06 Mar 2021 00:00:00 +0000</pubDate>
-      <guid isPermaLink="true">https://aleahim.com/blog/core-animation-3d-cube/</guid>
-      <content:encoded><![CDATA[<p><img src="https://aleahim.com/images/cacube/01_cube_iOS_3D.png" alt=""></p><p>I’ve been researching <code>Core Animation</code> framework for the past few months.<br>I’ve started with several books on the subject, but I found watching related WWDC videos most rewarding. The presenters put the content in a relevant context which  makes it easier to apprehend and learn from it.</p><h2 id="1.-introduction">1. Introduction</h2><p>One WWDC session particularly intrigued me: “2011–421 Core Animation Essentials”. They presented their demo named: “Layers in Perspective”, and it showed six layers, forming a flattened cube:<br><img src="https://aleahim.com/images/cacube/02_cube_5sides.png" alt=""></p><p>The sixth layer is hiding behind the layer number 5. It has a lower <code>zPosition</code> then the layer above it.</p><p><img src="https://aleahim.com/images/cacube/03_cube_6sides.png" alt=""></p><p>They have also demonstrated opening and closing the cube formation.</p><p><img src="https://aleahim.com/images/cacube/04_cube_filmstrip.png" alt=""></p><p>So, I have decided to demonstrate that.</p><p>Here’s a link to a GitHub repo with the source code:<br><a href="https://github.com/mihaelamj/CubeIn3DWithCoreAnimation" target="_blank">Core Animation 3D Cube</a></p><p>Here’s the animation:</p><p><img src="https://aleahim.com/images/cacube/05_CoreAnimation_3D_Cube.gif" alt=""></p><p>You can also see it on <a href="https://www.youtube.com/watch?v=exIGbi36_bk" target="_blank">You Tube</a></p><p>Layers in <code>Core Animation</code> live in <code>3D</code> geometry. But a layer is a <code>2D</code> construct, so <code>Core Animation</code> coordinate space is called a <code>2.5D</code> geometry.</p><p>To illustrate that just see what happens when you mess up your transformations.</p><p><img src="https://aleahim.com/images/cacube/06_Intersecting_Layers.png" alt=""></p><p>Layers are <code>2D</code> objects, they don’t understand the third dimension.<br>They are like playing cards in space., and there is no <code>depth buffer</code> available.</p><p>And also, intersecting layers should be avoided because in the image above, Core Animation needs to do a lot of work.<br>So just to draw the <code>red</code> layer intersecting only the <code>blue</code> layer, Core Animation needs to</p><ul><li>cut the <code>red</code> layer into two pieces</li><li>render back part of the <code>red</code> layer</li><li>then render the full <code>blue</code> layer</li><li>then render the front part of the <code>red</code> layer again<br>And all that work is for just intersection, and here we have multiple.</li></ul><h2 id="2.-building-the-cube-in-3d">2. Building the Cube in 3D</h2><h3 id="2.1.-setting-up-the-multi-platform-project">2.1. Setting up the multi-platform project</h3><p>I wanted the project to fun on the <code>macOS</code> , <code>iOS</code> and <code>iPadOS</code>, so I used <a href="https://github.com/mihaelamj/allapples" target="_blank">AllApples</a> Swift package.</p><p>After removing the storyboards and pimping up the <code>AppDelegate</code> and <code>main.swift</code> for the <code>macOS</code> version, and <code>SceneDelegate</code> for the mobile versions, I was ready to start.</p><h4>2.1.1. <code>main.swift</code> for the macOS</h4><pre><code class="language-swift">import Cocoa
-let delegate = AppDelegate()
-NSApplication.shared.delegate = delegate
-_ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
-</code></pre><h4>2.1.2. AppDelegate for the <code>macOS</code></h4><pre><code class="language-swift">import Cocoa
-import AllApples
-
-class AppDelegate: NSObject, NSApplicationDelegate {
-  private var window: NSWindow?
-  func applicationDidFinishLaunching(_ aNotification: Notification) {
-    window = AppSceneDelegate.makeWindow_Mac(theVC: CommonViewController())
-  }
-}
-</code></pre><h4>2.1.3. SceneDelegate for the <code>iOS</code> and <code>iPadOS</code></h4><pre><code class="language-swift">import UIKit
-import AllApples
-
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-  var window: UIWindow?
-  func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    guard let aScene = (scene as? UIWindowScene) else { return }
-    window = AppSceneDelegate.makeWindow_iOS(theScene: aScene, theVC: CommonViewController())
-  }
-}
-</code></pre><h3 id="2.2.-building-the-basic-blocks">2.2. Building the Basic Blocks</h3><p>The first I did is make a <code>PlainLayerView </code>.<br>It is an <code>AView</code> descendant, which means that it is <code>typedef-ed</code> to be either a <code>UIView</code> or a <code>NSView</code>.</p><p>It is an intermediary object just to set up a thing on the <code>macOS</code> as well (doesn’t work yet).</p><p>I then created <code>CustomLayerView</code> to have nice sides for the cube, with <code>CATextLayer</code> as the number of the cube side, and a nice rounded border, so that we can peek into our cube while rotating.</p><p>Here’s the image of all six layers drawn by using a <code>CustomLayerView</code></p><p><img src="https://aleahim.com/images/cacube/07_original_abandoned_cube_layout.png" alt=""></p><p>This layout was abandoned because I couldn’t make the transformation of <code>purple</code> view to work when transforming in <code>3D</code>.</p><p><img src="https://aleahim.com/images/cacube/08_side4_broken.png" alt=""></p><p>The solution is to add an additional <code>CATransformLayer</code> to the <code>green</code> layer, and mount the <code>purple</code> layer onto it. As explained in this blog post by Oliver Drobnik <a href="https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/" target="_blank"> Cubed CoreAnimation Conundrum.</a></p><p>But I didn’t want to lose the linearity of the solution, and I used the approach demonstrated in the mentioned WWDC session: “2011–421 Core Animation Essentials”</p><p>They used the <code>zOrder</code> property of a layer, and so I put <code>purple</code> layer on top of the <code>red</code> layer to achieve that.</p><pre><code class="language-swift">    if number == 4 {
-      view.layer.zPosition = 1
-    }
-</code></pre><p>As you can see in the image below, the <code>purple</code> layer is in front of the <code>red</code> layer, which is obvious when we rotate the flattened cube.</p><p><img src="https://aleahim.com/images/cacube/09_layers_zPosition.png" alt=""></p><h3 id="2.3.-turning-the-transform-on-and-off">2.3. Turning the Transform On and Off</h3><p>I did take the approach that Over Drobnik did in his article: <a href="https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/" target="_blank"> Cubed CoreAnimation Conundrum </a>, and used it like this:</p><pre><code class="language-swift">	side4.layer?.zPosition = on ? CACube3DView.sideWidth : 1
-    side1.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(1, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
-    side2.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(2, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
-    side3.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(3, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
-    side4.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(4, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
-    side5.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(5, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
-    side6.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(6, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
-</code></pre><h3 id="2.4.-transforming-the-layers-to-form-a-cube">2.4. Transforming the Layers to Form a Cube</h3><p>I didn’t use his transform code, since he used that additional <code>CATransformLayer</code>, so it wouldn’t work. So, here’s a small extension on the <code>CATransform3D</code></p><pre><code class="language-swift">public extension CATransform3D {
-  static func transformFor3DCubeSide(_ number: Int, zWidth: CGFloat) -&gt; CATransform3D {
-
-    let halfPi = CGFloat(Double.pi) / 2.0
-    var trans = CATransform3DIdentity
-    switch number {
-      case 1:
-        trans = CATransform3DMakeRotation(halfPi, 0, 1, 0)
-        break
-      case 2:
-        trans = CATransform3DIdentity
-        break
-      case 3:
-        trans = CATransform3DMakeRotation(-halfPi, 0, 1, 0)
-        break
-      case 4:
-        trans = CATransform3DMakeTranslation(0, 0, zWidth)
-        break
-      case 5:
-        trans = CATransform3DMakeRotation(-halfPi, 1, 0, 0)
-        break
-      case 6:
-        trans = CATransform3DMakeRotation(halfPi, 1, 0, 0)
-        break
-      default:
-        break
-    }
-    return trans
-  }
-}
-</code></pre><p>I actually used the approach form that WWDC session, and also used <code>anchorPoint</code> properties of the <code>CALayer</code>.</p><h3 id="2.5.-positioning-cube-sides">2.5. Positioning Cube Sides</h3><p>Here’s a little extension on <code>CGPoint</code> that returns a tuple of our cube side positions and anchor points:</p><pre><code class="language-swift">public extension CGPoint {
-  static func anchorPointAndPositionForCubeSideLayer(number: Int, sideSize: CGFloat) -&gt; (anchorPoint: CGPoint, position: CGPoint) {
-    var resultAnchorPoint = CGPoint(x:0.5, y:0.5)
-    var resultPosition = CGPoint(x:0.0, y:0.0)
-    let halfSideSize: CGFloat = sideSize / 2.0
-    switch number {
-      case 1:
-        resultAnchorPoint = CGPoint(x:1.0, y:0.5)
-        resultPosition = CGPoint(x:-halfSideSize, y:0.0)
-        break
-      case 2:
-        resultAnchorPoint = CGPoint(x:0.5, y:0.5)
-        resultPosition = CGPoint(x:0.0, y:0.0)
-        break
-      case 3:
-        resultAnchorPoint = CGPoint(x:0.0, y:0.5)
-        resultPosition = CGPoint(x:halfSideSize, y:0.0)
-        break
-      case 4:
-        resultAnchorPoint = CGPoint(x:0.5, y:0.5)
-        resultPosition = CGPoint(x:0.0, y:0.0)
-        break
-      case 5:
-        resultAnchorPoint = CGPoint(x:0.5, y:1.0)
-        resultPosition = CGPoint(x:0.0, y:-halfSideSize)
-        break
-      case 6:
-        resultAnchorPoint = CGPoint(x:0.5, y:0.0)
-        resultPosition = CGPoint(x:0.0, y:halfSideSize)
-        break
-      default:
-        break
-    }
-    return (anchorPoint: resultAnchorPoint, position: resultPosition)
-  }
-}
-</code></pre><p>In the image below I have marked where the <code>anchor points</code> are for each layer:</p><p><img src="https://aleahim.com/images/cacube/10_anchor_points.png" alt=""></p><p>The only fallacy in the image above, is that the <code>purple</code> layer is actually above our <code>red layer</code>, but I wanted to show where those anchor points are.<br>So, the actual image looks like this, but we now don’t see the <code>red</code> layer.<br><img src="https://aleahim.com/images/cacube/11_anchor_points.png" alt=""></p><p>An Anchor point is a center of rotation. It determines how will the layer rotate.<br>Imagine holding a playing card with two fingers. Then try to spin the card. The anchor point of that card is where you are holding it with fingers.</p><h2 id="3.-responding-to-gestures">3. Responding to Gestures</h2><p>I made a small <code>GestureRecognizerView</code> to be able to respond to gestures and move, rotate and scale our layers.</p><p>It hooks-up:</p><ul><li><code>NSPanGestureRecognizer</code> and <code>UIPanGestureRecognizer</code></li><li><code>func rotate(with event: NSEvent)</code> and <code>UIRotationGestureRecognizer</code></li><li><code>NSClickGestureRecognizer</code> and <code>UITapGestureRecognizer</code></li><li><code>func magnify(with event: NSEvent)</code> and <code>UIPinchGestureRecognizer</code></li></ul><p>It then exposes all those events to the developer to use:</p><pre><code class="language-swift">public extension GestureRecognizerView {
-  @objc func rotationChanged(degrees: Float) {}
-  @objc func rotationChanged(radians: Float) {}
-  @objc func displacementChanged(displacement: CGPoint) {}
-  @objc func scaleChanged(scale: CGFloat) {}
-  @objc func tapHappened() {}
-}
-</code></pre><h2 id="4.-building-a-layer-to-hold-a-cube">4. Building a Layer to hold a Cube</h2><p><code>CACube3DView</code> will hold the six layers than (can) make a cube.<br>In order for <code>Core Animation</code> to render the transformed views in perspective, there is a property <code>sublayerTransform</code>.</p><p>You either use that property of your parent layer, or add another layer class to your layer hierarchy: <code>CATransformLayer</code>. I opted to use that.</p><pre><code class="language-swift">private(set) public lazy var transformedLayer: CALayer = {
-    let l = CATransformLayer()
-    l.name = "Transform Layer"
-    #if os(OSX)
-    l.isGeometryFlipped = true
-    #endif
-    return l
-}()
-</code></pre><p>When adding sublayers, I add them to this <code>transformedLayer</code> property, and not my view’s layer.</p><pre><code class="language-swift">func addSideSubview(_ subview: AView) {
-    addSubview(subview)
-
-    #if os(iOS) || os(tvOS)
-    transformedLayer.addSublayer(subview.layer)
-    #endif
-
-    #if os(OSX)
-    if let aLayer = subview.layer {
-      transformedLayer.addSublayer(aLayer)
-    } else {
-      fatalError("`subview.layer` == `nil`")
-    }
-    #endif
-}
-</code></pre><h2 id="5.-perspective-rotation">5. Perspective & Rotation</h2><p>When the app first runs it shows in perspective.<br>I made a little extension:</p><pre><code class="language-swift">public extension CATransform3D {
-  static func somePerspectiveTransform() -&gt; CATransform3D {
-    var perspective = CATransform3DIdentity;
-    perspective.m34 = -1.0 / 500.0;
-    perspective = CATransform3DRotate(perspective, CGFloat(Double.pi) / 8, 1, 0, 0);
-    perspective = CATransform3DRotate(perspective, CGFloat(Double.pi) / 8, 0, 1, 0);
-    perspective = CATransform3DScale(perspective, 0.7, 0.7, 0.7)
-    return perspective
-  }
-}
-</code></pre><p>The part: <code>perspective.m34 = -1.0 / 500.0;</code> sets the perspective.<br>The <code>.34</code> field of a matrix shows the amount of perspective distortion applied.<br>The amount <code>500</code> is often used in examples. If it were smaller, the layers would seem very close and distorted, like a fish-eye effect.</p><p>This is the initial transform, but we want to be able to move and rotate our cube (flattened or not) with our fingers.</p><p>Here’s the code:</p><pre><code class="language-swift">public extension CATransform3D {
-
-  func rotationFromDisplacement(_ displacement: CGPoint, sideWidth: CGFloat, is3D: Bool) -&gt; CATransform3D {
-
-    var currentTransform = self
-
-    let totalRotation: CGFloat = sqrt(displacement.x * displacement.x + displacement.y * displacement.y)
-    let angle: CGFloat = totalRotation * .pi / 180.0
-
-    let xRotationFactor = displacement.x / angle
-    let yRotationFactor = displacement.y / angle
-
-    if is3D {
-      currentTransform = CATransform3DTranslate(currentTransform, 0, 0, sideWidth / 2.0)
-    }
-
-    var rotationalTransform = CATransform3DRotate(currentTransform, angle,
-                                                  (xRotationFactor * currentTransform.m12 - yRotationFactor * currentTransform.m11),
-                                                  (xRotationFactor * currentTransform.m22 - yRotationFactor * currentTransform.m21),
-                                                  (xRotationFactor * currentTransform.m32 - yRotationFactor * currentTransform.m31))
-
-    if (is3D) {
-      rotationalTransform = CATransform3DTranslate(rotationalTransform, 0, 0, -sideWidth / 2.0);
-    }
-
-    return rotationalTransform
-  }
-}
-</code></pre><p>We call it from our pan-gesture methods</p><pre><code class="language-swift">  override func displacementChanged(displacement: CGPoint) {
-    guard !(displacement.x == 0 && displacement.y == 0) else { return }
-
-    let rotationTransform = transformedLayer.sublayerTransform.rotationFromDisplacement(displacement, sideWidth: CACube3DView.sideWidth, is3D: isOn)
-    transformedLayer.sublayerTransform = rotationTransform
-  }
-</code></pre><p>We hooked up the pan-gestures prior:</p><pre><code class="language-swift">#if os(OSX)
-private func setupPanGestureRecognizer() {
-    let panGR = NSPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-    addGestureRecognizer(panGR)
-}
-@objc func handlePanGesture(_ gestureRecognizer: NSPanGestureRecognizer) {
-    let displacement: CGPoint = gestureRecognizer.translation(in: self)
-    handlePan(displacement: displacement, changed: gestureRecognizer.state == .changed)
-}
-#endif
-
-#if os(iOS) || os(tvOS)
-private func setupPanGestureRecognizer() {
-    let panGR = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-    addGestureRecognizer(panGR)
-}
-
-@objc func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
-    let displacement: CGPoint = gestureRecognizer.translation(in: self)
-
-    handlePan(displacement: displacement, changed: gestureRecognizer.state == .changed)
-
-    if gestureRecognizer.state == .changed {
-      gestureRecognizer.setTranslation(.zero, in: self)
-    }
-}
-#endif
-</code></pre><p>We can also add a simple rotation transform for the rotation events/ gestures.</p><pre><code class="language-swift">  override func rotationChanged(radians: Float) {
-    let transform = transformedLayer.sublayerTransform
-    let rot = CATransform3DRotate(transform, CGFloat(radians), 0, 1, 0)
-    transformedLayer.sublayerTransform = rot
-  }
-</code></pre><p>And scale, in all three axes:</p><pre><code class="language-swift">  override func scaleChanged(scale: CGFloat) {
-    let scaleTransform = CATransform3DScale(transformedLayer.sublayerTransform, scale, scale, scale)
-    transformedLayer.sublayerTransform = scaleTransform
-  }
-</code></pre><p>The <code>tap</code> turns on and off our 3D transform</p><pre><code class="language-swift">  override func tapHappened() {
-    set3DCube(on: isOn)
-  }
-</code></pre><p>Here’s the 3D cube code</p><pre><code class="language-swift">  func set3DCube(on: Bool) {
-    side4.layer.zPosition = on ? CACube3DView.sideWidth : 1
-    side1.layer.transform = on ? CATransform3D.transformFor3DCubeSide(1, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
-    side2.layer.transform = on ? CATransform3D.transformFor3DCubeSide(2, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
-    side3.layer.transform = on ? CATransform3D.transformFor3DCubeSide(3, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
-    side4.layer.transform = on ? CATransform3D.transformFor3DCubeSide(4, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
-    side5.layer.transform = on ? CATransform3D.transformFor3DCubeSide(5, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
-    side6.layer.transform = on ? CATransform3D.transformFor3DCubeSide(6, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
-  }
-</code></pre><p>We either set the <code>identity transform</code>, which means <code>no transform</code>, to our cube sides, or the transform appropriate for that particular side.</p><h2 id="6.-macos-troubles">6. macOS Troubles</h2><p>I suppose I need to do further investigation in how <code>macOS</code> treats layers of <code>NSView</code>, for this little experiment is not working on the <code>macOS</code>, yet.<br>Here’s how the flattened cube looks on the <code>macOS</code></p><p><img src="https://aleahim.com/images/cacube/12_cube_macOS_flat_messed_up.png" alt=""></p><p>So, the positioning of the layers is not respected.</p><p>And here is the cube in 3D:</p><p><img src="https://aleahim.com/images/cacube/13_cube_macOS_3D_messed_up.png" alt=""></p><p>I did try to force the <code>isGeometryFlipped = true</code> everywhere. Anyway this needs more work.</p><p>If you want to help with the <code>macOS</code> implementation, please, be my guest.</p><p>Here’s a link to a GitHub repo with the source code:<br><a href="https://github.com/mihaelamj/CubeIn3DWithCoreAnimation" target="_blank">Core Animation 3D Cube</a></p>]]></content:encoded>
     </item>
   </channel>
 </rss>
