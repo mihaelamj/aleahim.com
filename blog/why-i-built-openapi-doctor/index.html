@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Why I built OpenAPIDoctor - Aleahim</title>
+    <meta name="description" content="OpenAPIKit&#39;s strict parser meets real-world specs. A typed diagnosis CLI with auto-repair, proven across 594 YAML files.">
+
+    <meta property="og:url" content="https://aleahim.com/blog/why-i-built-openapi-doctor/">
+    <meta property="og:title" content="Why I built OpenAPIDoctor - Aleahim">
+    <meta property="og:description" content="OpenAPIKit&#39;s strict parser meets real-world specs. A typed diagnosis CLI with auto-repair, proven across 594 YAML files.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aleahim">
+    
+    <meta property="og:image" content="https://aleahim.com/images/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="2048">
+    <meta property="og:image:height" content="1364">
+    <meta property="og:image:alt" content="Aleahim. Mihaela Mihaljević, Senior iOS Architect.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Why I built OpenAPIDoctor - Aleahim">
+    <meta name="twitter:description" content="OpenAPIKit&#39;s strict parser meets real-world specs. A typed diagnosis CLI with auto-repair, proven across 594 YAML files.">
+    
+    <meta name="twitter:image" content="https://aleahim.com/images/og-image.png">
+    <meta name="twitter:image:alt" content="Aleahim. Mihaela Mihaljević, Senior iOS Architect.">
+
+    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
+
+    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
+    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <a id="logo" href="https://aleahim.com">
+                <img
+                    src="https://aleahim.com/images/logo.svg"
+                    alt="Aleahim"
+                    title="Aleahim"
+                >
+                <h1 class="site-title">Aleahim.com</h1>
+            </a>
+    
+            <nav>
+                <div class="navigation">
+                    <a href="https://aleahim.com/">Home</a>
+                <a href="https://aleahim.com/cv/">CV</a>
+                <a href="https://aleahim.com/speaking/">Speaking</a>
+                <a href="https://codeweaver.info/" rel="noopener">Hire me</a>
+                <a href="https://aleahim.com/about/">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+    <article class="blog-post">
+        <header class="post-header">
+            <div class="title-with-thumbnail">
+                <div class="post-thumbnail">
+                    <img src="https://aleahim.com/images/blog/why-i-built-openapi-doctor/hero.png" alt="Why I built OpenAPIDoctor">
+                </div>
+                <div class="title-wrapper">
+                    <h1>Why I built OpenAPIDoctor</h1>
+                    <div class="post-meta">
+                        <time datetime="2026-05-14T00:00:00.000Z">May 14, 2026</time>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="post-content">
+            <div class="post-hero-image">
+                <img src="https://aleahim.com/images/blog/why-i-built-openapi-doctor/hero.png" alt="Why I built OpenAPIDoctor">
+            </div>
+    
+            <h1>Why I built OpenAPIDoctor</h1><h2 id="the-given-data-was-not-valid-yaml.">“The given data was not valid YAML.”</h2><p>The first time I saw this error, the YAML was fine.</p><p>I had pasted ten kilobytes of perfectly formed OpenAPI into a generator, watched it crash, and squinted at a stack trace that very confidently told me my document was malformed. It wasn’t. The document was a well-indented, schema-valid spec that someone had hand-edited the week before. The actual problem was a single stray key on a <code>Tag</code> object, eleven levels down, which <code>OpenAPIKit</code> had quietly rejected and which <code>Yams</code> had then wrapped in a <code>DecodingError.dataCorrupted</code> carrying a debug message that had nothing to do with the actual cause. The real error lived in <code>Context.underlyingError</code>, three more layers in.</p><p>I lost an afternoon to that error. Then I lost a morning to it again, a week later, on a different spec. Then I built OpenAPIDoctor.</p><h2 id="what-spec-first-swift-gets-you-and-what-it-costs">What spec-first Swift gets you, and what it costs</h2><p>When you generate Swift code from an OpenAPI document, the document is no longer documentation that lags behind the code. It <em>is</em> the code. Apple’s <a href="https://github.com/apple/swift-openapi-generator" target="_blank"><code>swift-openapi-generator</code></a> reads the spec, runs it through <a href="https://github.com/mattpolzin/OpenAPIKit" target="_blank"><code>mattpolzin/OpenAPIKit</code></a>, and emits typed Swift clients and servers from what it finds. Spec parses cleanly, the generated code compiles. Spec has any structural issue OpenAPIKit doesn’t like, the generator either fails outright or emits code that won’t compile.</p><p>That contract is what makes spec-first Swift worth doing. It is also what makes the spec a load-bearing artifact that nobody can afford to hand-edit carelessly. Which, of course, everybody does.</p><p>OpenAPIKit is a strict parser by design. It does not silently round-trip unknown keys, because that would let bugs through into your generated client. The trouble is that real-world specs accumulate small violations the moment more than one person edits them, or the moment anyone copy-pastes a fragment from another tool. A short, honest taxonomy:</p><ul><li>A <code>Tag</code> object carrying a <code>slug:</code> field. Not part of the spec. Strict parser rejects it.</li><li>A <code>Parameter</code> with stray <code>email:</code> and <code>phone:</code> keys left behind by a half-finished refactor. Strict parser rejects them.</li><li><code>nullable: true</code> on a spec that has been migrated to OpenAPI 3.1, where the keyword is no longer valid. Strict parser rejects it.</li><li>A response body declaring <code>application/x-www-form-urlencoded</code>, which the Swift OpenAPI runtime cannot serve. Parser accepts it; the runtime explodes downstream and writes you a different kind of letter.</li></ul><p>Each violation is small. None is the sort of structural problem a code review catches. All of them surface as <code>InconsistencyError</code> from OpenAPIKit, which is the right thing for OpenAPIKit to do. The wrong thing is what tends to happen next: the caller gets a stack trace, fixes the first key by hand, runs the generator again, hits the next key, fixes that, runs again. On a single-file spec it is tedious. On a spec split across folders with shared schemas it is a half-day exercise that involves opening seventeen files and remembering which one you were in.</p><p>There are excellent OpenAPI linters in the JavaScript world. They are also not OpenAPIKit. If I lint with one tool and generate with another, I am postponing the failure, not preventing it. The validator had to be OpenAPIKit, end of debate.</p><h2 id="what-i-wanted">What I wanted</h2><p>The shape was small and specific:</p><ol><li>Validate using the exact parser the generator uses. No second source of truth for “valid.”</li><li>Surface every failure as a typed value, not a stack trace.</li><li>Auto-repair the mechanical violations, with an audit trail of what changed.</li><li>Stop on the violations that need human judgement, and say clearly which ones.</li><li>Handle multi-file specs cleanly. Everything serious lives in more than one file.</li><li>Exit with codes a shell pipeline can use.</li></ol><p>That list looks obvious in hindsight. It mostly is. The interesting part is what stands between you and it.</p><h2 id="what-openapidoctor-does">What OpenAPIDoctor does</h2><p>OpenAPIDoctor is a Swift package and CLI built on <code>OpenAPIKit</code> and <code>Yams</code>. Three pieces, in increasing order of how much fun they were to write:</p><ul><li>A <strong>Validator</strong> that decodes the spec through OpenAPIKit and categorises every result.</li><li>A <strong>SpecLoader</strong> that handles multi-file specs.</li><li>A <strong>Repairer</strong> that runs validate, fix, revalidate in a loop until the spec is clean or it hits something it cannot touch.</li></ul><p>Every result comes back as a <code>DiagnosisKind</code>. Six cases. Only one is auto-repairable:</p><ul><li><code>.ok</code>: spec parses cleanly. Go home.</li><li><code>.vendorExtensionPrefix(codingPath, invalidKeys, subjectName)</code>: an extensible OpenAPI object carries keys that are not in the type’s documented set and do not start with <code>x-</code>. The diagnosis carries the exact coding path and the exact keys to strip. <code>isAutoRepairable == true</code>.</li><li><code>.inconsistency(codingPath, details, subjectName)</code>: every other <code>InconsistencyError</code> from OpenAPIKit. Unsupported <code>openapi:</code> version, malformed <code>$ref:</code> pointing at a component that does not exist. Needs a human.</li><li><code>.decodingError(codingPath, details)</code>: Foundation-level type mismatch or missing required field. No <code>title:</code> on <code>info:</code>. Wrong type for <code>version:</code>. Needs a human.</li><li><code>.fileError(details)</code>: the file is not there or cannot be read. Needs a different human.</li><li><code>.unknown(details)</code>: escape hatch. Nobody is happy about this case existing, but the alternative is lying.</li></ul><p>Having these as typed values changes how you write callers. You can pattern-match. You can ask <code>diagnosis.kind.isAutoRepairable</code> and route accordingly. From the CLI it looks like this:</p><pre><code class="language-bash">$ openapi-doctor my-spec.yaml
+{"status":"ok"}
+</code></pre><pre><code class="language-bash">$ openapi-doctor stray-tag-keys.yaml
+{"codingPath":["tags","Index 0"],"invalidKeys":["slug","timezone"],"kind":"vendor-extension-prefix","status":"inconsistency","subject":"Vendor Extension"}
+</code></pre><p>One line of JSON on stdout, always. Exit code 0 for clean, 1 for “fixable, try <code>--fix</code>”, 2 for “you need to edit this, or the file is missing.” Nothing to parse, nothing to grep through.</p><h2 id="the-seams-of-the-abstraction">The seams of the abstraction</h2><p>If you have read this far, you might enjoy the parts that didn’t come out as cleanly as the API suggests.</p><p><strong>OpenAPIKit tells you which keys are invalid in English.</strong> The error message contains a sentence like <code>Invalid properties: [slug, timezone]</code>. There is no <code>[String]</code> accessor for those keys; they live inside the human-readable <code>details</code> string, sitting between two brackets, separated by commas. So OpenAPIDoctor parses them back out:</p><pre><code class="language-swift">guard let openRange = details.range(of: "Invalid properties: [") else { return [] }
+let after = details[openRange.upperBound...]
+guard let closeRange = after.range(of: "]") else { return [] }
+return after[..&lt;closeRange.lowerBound]
+    .split(separator: ",")
+    .map { $0.trimmingCharacters(in: .whitespaces) }
+    .filter { !$0.isEmpty }
+</code></pre><p>This is honest engineering, not clever engineering. If OpenAPIKit ever exposes the rejected keys as structured data, this disappears in one commit. Until then, the seam is here and visible.</p><p><strong>Same applies to the classification.</strong> A vendor-extension-prefix violation is identified by <code>details.contains("vendor extension property")</code>. A substring match against an error message. I am aware of how that looks. I am also aware that it has worked perfectly across 594 spec files and counting.</p><p><strong>OpenAPIKit reports array positions as strings.</strong> A coding path looks like <code>["tags", "Index 0", "slug"]</code>. The <code>"Index 0"</code> segment is a literal string, not an integer wrapped in <code>Any</code>. The walker that descends into the YAML to delete keys has to parse that string back into an <code>Int</code>:</p><pre><code class="language-swift">static func parseIndex(_ segment: String) -&gt; Int? {
+    guard segment.hasPrefix("Index ") else { return nil }
+    return Int(segment.dropFirst("Index ".count))
+}
+</code></pre><p>Small, dumb, real. If you have ever shipped a tool that runs against someone else’s API, you know that almost all of the work is small and dumb and real.</p><p><strong>The 3.0 / 3.1 sniff.</strong> OpenAPIKit splits its Document types: <code>OpenAPIKit.OpenAPI.Document</code> is 3.1, <code>OpenAPIKit30.OpenAPI.Document</code> is 3.0. If you point the 3.1 decoder at a 3.0 spec, you get the immortal error <code>"Failed to parse Document Version 3.0.x as one of OpenAPIKit's supported options."</code> So OpenAPIDoctor scans the raw YAML for the <code>openapi:</code> line, picks a decoder, and only parses once. Cheap, deterministic, no second source of truth for what version the spec is.</p><p><strong>Yams.dump doesn’t preserve key order.</strong> A comment in the Repairer is candid about it: <em>“preserves enough of the structure for our auto-repair use case (the spec is regenerated on every round anyway). Stable key ordering isn’t guaranteed.”</em> In the auto-repair flow this doesn’t matter, because the source of truth after a repair is the repaired YAML, and you read what was just written. In a workflow that diffs the result against the original, you’ll see ordering churn. That tradeoff is documented in the code, not hidden in a footnote.</p><h2 id="repair-round-by-round">Repair, round by round</h2><p>The Repairer is my favourite part. It runs as a loop, capped at thirty rounds: validate, fix, revalidate, until either the spec is clean or it hits a diagnosis that is not auto-repairable. Each round removes exactly the keys OpenAPIKit reported, at exactly the coding path it reported them. No regex matches against the YAML, no guessing. A recursive walker descends to the target, deletes the listed keys from the dict at the leaf, and rebuilds the tree from the bottom up.</p><pre><code class="language-bash">$ openapi-doctor --fix multi-stray.yaml
+# stderr: one JSON per round, streamed as it happens
+# {"removedKeys":["slug"],"round":1,...}
+# {"removedKeys":["timezone","region"],"round":2,...}
+# stdout: aggregate result
+{"finalDiagnosis":"ok","roundsApplied":2,"status":"repaired","totalRemovedKeys":3,...}
+</code></pre><p>The 30-round cap is not arbitrary, but it is generous. The worst-shaped spec I have thrown at it cleared in five. The cap is there so that if the validator and the YAML ever disagree about shape and the loop starts looking like progress that isn’t, the tool stops with a real diagnosis instead of running forever.</p><p>For a destructive-free survey of how broken a spec is, there’s a dry-run mode that uses the same loop but discards the repaired YAML, keeping only the list of diagnoses found along the way:</p><pre><code class="language-bash">$ openapi-doctor --all my-spec.yaml 2&gt;/tmp/diagnoses.jsonl
+{"diagnosesFound":3,"fixableDiagnoses":2,"status":"ok","terminalKind":"ok"}
+</code></pre><p>Internally, <code>--all</code> and <code>--fix</code> share the strip implementation. The Validator’s <code>collectAll</code> reaches into <code>Repairer.stripKeys</code> directly. One source of truth for “how do you remove a vendor extension key from a YAML tree.” That is the kind of taste that doesn’t show up in the README, which is exactly why I am putting it here.</p><p><code>--output &lt;path&gt;</code> writes the repaired YAML to a side file and leaves the source untouched, useful for diffing before-and-after in CI. <code>--corpus &lt;dir&gt;</code> walks a directory of specs and reports per-file results with an aggregate summary, useful when you have inherited a folder of half-maintained specs and want a triage report before you touch anything.</p><h2 id="the-594-file-corpus">The 594-file corpus</h2><p>Multi-file specs are where the interesting bugs live. A serious API spans folders: a <code>finance</code> service that pulls <code>../core/parameters/id.yml</code>; an <code>analytics</code> service that pulls <code>../core/schemas/apiError.yml</code>; a <code>ledger</code> service that references both. <code>OpenAPIKit</code> expects one document. Without help, every external <code>$ref</code> would dangle.</p><p>The loader delegates to <a href="https://github.com/mihaelamj/Stitcher" target="_blank">Stitcher</a>, a separate library I published in November 2025 for exactly this problem. OpenAPIDoctor followed in May 2026 and took Stitcher as a dependency rather than re-implementing the resolver, which is the right division of labour: cross-file <code>$ref</code> resolution is a generic problem; OpenAPI validation is a specific one. Two libraries, two responsibilities, one composes the other.</p><p>To prove the two pieces actually agree about what “valid” means on the shape of spec I care about, the test suite drives an anonymised real-world corpus through the validator: <strong>594 YAML files across 22 services</strong>, of which <strong>146 contain at least one cross-folder <code>../</code> reference</strong>, all OpenAPI 3.0.3, the kind of layout you only get when humans have been editing for a year. The test asserts every entry point validates cleanly. When it does, I know Stitcher’s merged output and OpenAPIKit’s strict parser agree, in detail, across the whole tree, every commit.</p><p>You can flip Stitcher off with <code>--no-resolve-refs</code>, which loads the spec file as-is. Useful when the referenced files are not on disk, or when you want to isolate a problem to a single file and stop wondering if the resolver is the one lying to you.</p><h2 id="where-it-fits">Where it fits</h2><p>OpenAPIDoctor is one stage in a longer code-generation pipeline I run. Specs come in. Validation happens. Generation happens. Swift compiles. There is nothing exotic about that flow except the requirement that every stage produces something the next stage can use, without surprises.</p><p>OpenAPIDoctor’s contract is the simplest in the chain. After it runs, the spec is either clean, or the caller knows exactly what is wrong with it, whether a tool can fix it, and where in the document the problem lives. That contract is what lets the rest of the pipeline be boring. Boring pipelines are the only kind that ship.</p><h2 id="where-to-find-it">Where to find it</h2><p><a href="https://github.com/mihaelamj/OpenAPIDoctor" target="_blank">github.com/mihaelamj/OpenAPIDoctor</a>, tagged at <code>1.0.0</code>. MIT licensed. Library for embedding in your own pipeline, CLI for the shell:</p><pre><code class="language-swift">.package(url: "https://github.com/mihaelamj/OpenAPIDoctor", from: "1.0.0"),
+</code></pre><p>If you generate Swift from OpenAPI on anything bigger than a toy spec, you probably want this somewhere upstream of the generator. And if you ever see <em>“The given data was not valid YAML.”</em> in a stack trace, you now know two things: it is lying to you, and somebody already wrote the tool that tells you the truth.</p>
+        </div>
+    
+        <footer class="post-footer">
+            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
+        </footer>
+    </article>
+
+    </main>
+
+    <footer>
+        <p class="footer-links">
+            <a href="https://aleahim.com/rss.xml">RSS feed</a>
+            &nbsp;·&nbsp;
+            <a href="https://github.com/mihaelamj" target="_blank" rel="noopener">GitHub</a>
+            &nbsp;·&nbsp;
+            <a href="https://www.linkedin.com/in/mihaelamj" target="_blank" rel="noopener">LinkedIn</a>
+            &nbsp;·&nbsp;
+            <a href="https://x.com/diyamantina" target="_blank" rel="noopener">X</a>
+            &nbsp;·&nbsp;
+            <a href="https://mastodon.social/@ameahim" target="_blank" rel="noopener">Mastodon</a>
+            &nbsp;·&nbsp;
+            <a href="https://bsky.app/profile/dijamantina.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+        </p>
+    
+        <p class="small">
+            Built with <a href="https://www.swift.org/" target="_blank" rel="noopener">Swift</a> and <a href="https://github.com/toucansites/toucan" target="_blank" rel="noopener">Toucan</a>.
+            Aleahim &copy; 2026.
+        </p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    
+</body>
+</html>
