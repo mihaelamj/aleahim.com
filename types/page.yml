@@ -5,6 +5,7 @@ paths:
   - "contents/about/*.md"
   - "contents/cv/*.md"
   - "contents/blog-list/*.md"
+  - "contents/speaking/*.md"
 
 properties:
     title:
