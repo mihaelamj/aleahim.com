@@ -1,7 +1,7 @@
 ---
 slug: speaking
 title: Speaking
-description: Talks, podcasts, and conference appearances by Mihaela Mihaljević Jakić on Apple-platforms AI tooling, MCP servers in Swift, modular SPM architecture, and OpenAPI-first development.
+description: Talks, podcasts, and conference appearances by Mihaela Mihaljević on Apple-platforms AI tooling, MCP servers in Swift, modular SPM architecture, and OpenAPI-first development.
 ---
 
 # Speaking

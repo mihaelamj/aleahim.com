@@ -1,7 +1,7 @@
 ---
 slug: about
 title: About
-description: About Mihaela Mihaljević Jakić
+description: About Mihaela Mihaljević
 ---
 
 # About Me

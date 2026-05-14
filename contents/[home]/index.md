@@ -1,6 +1,6 @@
 ---
 slug: ""
-title: Mihaela Mihaljević Jakić
+title: Mihaela Mihaljević
 description: Senior iOS architect, 15+ years on Apple platforms. Building Cupertino, an open-source MCP server that gives AI assistants offline access to Apple's developer documentation. Featured in iOS Dev Weekly.
 hero: /images/og-image.png
 views:
