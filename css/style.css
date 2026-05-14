@@ -277,15 +277,23 @@ footer {
 
 footer a {
     color: var(--text-secondary);
+    border-bottom: none;
 }
 
 footer a:hover {
     color: var(--accent);
+    border-bottom: none;
 }
 
 footer p {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.6rem;
     color: var(--text-tertiary);
+}
+
+footer .footer-links {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
 }
 
 footer .small {
