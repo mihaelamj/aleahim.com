@@ -50,8 +50,8 @@
     margin-bottom: 0.6rem;
     margin-top: 0;
     color: var(--text-primary);
-    font-family: var(--font-serif);
-    font-weight: 500;
+    font-family: var(--font-sans);
+    font-weight: 600;
     letter-spacing: -0.02em;
 }
 
@@ -175,8 +175,8 @@
     margin-bottom: 0.75rem;
     margin-top: 0;
     color: var(--text-primary);
-    font-family: var(--font-serif);
-    font-weight: 500;
+    font-family: var(--font-sans);
+    font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.15;
 }
