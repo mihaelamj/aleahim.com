@@ -6,6 +6,12 @@
         <p>{{page.description}}</p>
     </header>
 
+    {{#page.contents.html}}
+    <div class="blog-intro">
+        {{& page.contents.html}}
+    </div>
+    {{/page.contents.html}}
+
     <div class="posts-list">
         {{#context.posts}}
         <article class="post-preview">
