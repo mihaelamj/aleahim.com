@@ -12,3 +12,5 @@ navigation:
     external: true
   - label: "About"
     url: "/about/"
+  - label: "Cupertino Quality"
+    url: "/cupertino/quality/"
