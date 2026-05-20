@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search-quality baseline: cross-source canonical (Phase 1.2, v1.2.0 candidate) · cupertino search quality</title>
+    <link rel="stylesheet" href="../_styles.css">
+</head>
+<body>
+    <div class="container">
+
+        <a class="back-link" href="../search-quality-v1.2.0.html">Back to dashboard</a>
+
+        <header>
+            <div class="eyebrow">`docs/design/search-quality-eval.md` §14.2 Phase 1.2 (cross-source canonical), query class F from…</div>
+            <h1>Search-quality baseline: cross-source canonical (Phase 1.2, v1.2.0 candidate)</h1>
+            <p class="subtitle">This audit tests <code>Search.SmartQuery.sourceWeights</code> (apple-docs=3.0, swift-evolution=1.5, packages=1.5, swift-book=1.0, swift-org=1.0, samples=1.0, apple-archive=0.5, hig=0.5) — the per-source authority bias applied during cross-source RRF fan-out. This machinery had no test coverage before today.</p>
+            <p class="meta">
+                <span>Measured 2026-05-20</span>·<span class="status status-mixed" style="margin: 0 8px;">Mixed</span>
+            </p>
+        </header>
+
+        <div class="kpi-strip">
+            <div class="kpi">
+                <div class="kpi-label">Headline result</div>
+                <div class="kpi-value orange">19 / 25 (76.0%)</div>
+                <div class="source-chip"><span class="source-chip-label">Method &amp; source</span><span class="source-chip-metric"><a href="../sources.html#rrf">Reciprocal Rank Fusion (k=60)</a></span><span class="source-chip-cite"><a href="../sources.html#rrf">Cormack, Clarke, Büttcher (2009), SIGIR</a></span></div>
+            </div>
+        </div>
+
+        
+
+        <section class="section-cards-section"><h2>Read in detail</h2><p class="section-cards-intro">Each card opens its own page. The headline and charts above are all you need at a glance; the cards are for the why and how.</p><div class="section-cards"><a class="section-card" href="crosssource-v1.2.0/aggregate.html"><div class="section-card-icon tint-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="section-card-body"><h3 class="section-card-title">Aggregate</h3><p class="section-card-summary">The 6 mismatches are not &quot;ranker chose wrong source from candidates&quot;; they are &quot;expected source had nothing in the top-10 at all because apple-docs&#x27;s source weight outcompetes the lower-weight sources.&quot; A deeper finding…</p><span class="section-card-cta">Read details →</span></div></a><a class="section-card" href="crosssource-v1.2.0/the-clean-wins-19-25.html"><div class="section-card-icon tint-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="section-card-body"><h3 class="section-card-title">The Clean Wins: 19 / 25</h3><p class="section-card-summary">For 19 queries where the expected top-1 source was apple-docs (weight 3.0), the actual top-1 was always apple-docs:</p><span class="section-card-cta">Read details →</span></div></a><a class="section-card" href="crosssource-v1.2.0/the-interesting-6-hig-and-apple-archive-starve.html"><div class="section-card-icon tint-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="section-card-body"><h3 class="section-card-title">The Interesting 6: Hig and Apple-archive Starve</h3><p class="section-card-summary">For each of these queries, the HIG or apple-archive corpus does have a relevant page (verified via cupertino search &quot;&lt;query&gt;&quot; --source hig and --source apple-archive):</p><span class="section-card-cta">Read details →</span></div></a><a class="section-card" href="crosssource-v1.2.0/method-recap.html"><div class="section-card-icon tint-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="section-card-body"><h3 class="section-card-title">Method Recap</h3><p class="section-card-summary">25 (query, expected_source, rationale) triples. For each: run cupertino search &quot;&lt;query&gt;&quot; --limit 10, extract top-1 URI, derive its source via the URI prefix, compare against expected.</p><span class="section-card-cta">Read details →</span></div></a><a class="section-card" href="crosssource-v1.2.0/implications-for-criterion-2.html"><div class="section-card-icon tint-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="section-card-body"><h3 class="section-card-title">Implications for Criterion 2 (anti-hallucination)</h3><p class="section-card-summary">For the LLM-agent consumer, this baseline is good news: the agent grounding on cupertino&#x27;s top-1 will always get apple-docs (the API reference) for any Swift-code-generation query that has an apple-docs answer.</p><span class="section-card-cta">Read details →</span></div></a><a class="section-card" href="crosssource-v1.2.0/combined-phase-1-baseline-coverage-on-v1-2-0.html"><div class="section-card-icon tint-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="section-card-body"><h3 class="section-card-title">Combined Phase 1 Baseline Coverage on V1.2.0</h3><p class="section-card-summary">Three of eight query classes from §1.4 now have documented baselines. Five remain: C (acronym), D (CamelCase fragment), G (prose), H (symbol-attribute), and Phase 1.7 agent-end-to-end.</p><span class="section-card-cta">Read details →</span></div></a></div></section>
+
+        <section><h2>Sources cited in this measurement</h2><p style="color: var(--text-secondary); margin-bottom: 20px;">Every metric and method this audit relies on, with a link to the foundational source. Auto-collected from the audit text.</p><div class="grid cols-2"><article class="card no-hover"><div class="card-icon tint-indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3 class="card-title">Reciprocal Rank Fusion (k=60)</h3><p class="card-finding">Cormack, Clarke, Büttcher (2009), SIGIR</p><a class="card-link" href="../sources.html#rrf">Open citation</a></article><article class="card no-hover"><div class="card-icon tint-indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3 class="card-title">Sign / binomial test</h3><p class="card-finding">Conover (1999), Practical Nonparametric Statistics</p><a class="card-link" href="../sources.html#sign-test">Open citation</a></article><article class="card no-hover"><div class="card-icon tint-indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3 class="card-title">Mean Reciprocal Rank</h3><p class="card-finding">Voorhees (1999), TREC-8 QA Report</p><a class="card-link" href="../sources.html#mrr">Open citation</a></article><article class="card no-hover"><div class="card-icon tint-indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3 class="card-title">P@k (Precision at k)</h3><p class="card-finding">Manning, Raghavan, Schütze (2008) IIR §8.4</p><a class="card-link" href="../sources.html#precision-at-k">Open citation</a></article></div></section>
+
+        <footer>
+            <p>
+                Generated from <a href="../../audits/search-quality-crosssource-baseline-v1.2.0.md">../../audits/search-quality-crosssource-baseline-v1.2.0.md</a> by <code>_render-audit-dashboard.py</code>.
+                Re-run after editing the audit; nothing here is hardcoded per-audit.
+            </p>
+            <p>
+                Part of <a href="../search-quality-v1.2.0.html">cupertino search-quality dashboards</a>.
+                Methodology in <a href="../docs/design-search-quality-eval.html">design/search-quality-eval</a>.
+            </p>
+        </footer>
+
+    </div>
+
+    <div class="chart-tooltip" id="chart-tooltip" role="tooltip" aria-hidden="true"></div>
+    <script>
+    (function() {
+        var tip = document.getElementById('chart-tooltip');
+        if (!tip) return;
+        function show(content, x, y) {
+            tip.innerHTML = content;
+            tip.style.left = x + 'px';
+            tip.style.top = y + 'px';
+            tip.classList.add('visible');
+        }
+        function hide() { tip.classList.remove('visible'); }
+        document.querySelectorAll('.chart-hoverable').forEach(function(el) {
+            el.addEventListener('mouseenter', function(ev) {
+                var content = el.getAttribute('data-tooltip') || '';
+                if (!content) return;
+                var rect = (ev.currentTarget.getBoundingClientRect && ev.currentTarget.getBoundingClientRect()) || { left: ev.clientX, top: ev.clientY, width: 0 };
+                var x = rect.left + rect.width / 2;
+                var y = rect.top;
+                show(content, x, y);
+            });
+            el.addEventListener('mousemove', function(ev) {
+                if (!tip.classList.contains('visible')) return;
+                tip.style.left = ev.clientX + 'px';
+                tip.style.top = (ev.clientY - 16) + 'px';
+            });
+            el.addEventListener('mouseleave', hide);
+        });
+    })();
+    </script>
+</body>
+</html>
