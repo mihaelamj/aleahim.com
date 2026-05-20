@@ -13,4 +13,5 @@ navigation:
   - label: "About"
     url: "/about/"
   - label: "Cupertino Quality"
-    url: "/cupertino/quality/"
+    url: "https://mihaelamj.github.io/cupertino/"
+    external: true
