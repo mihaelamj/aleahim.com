@@ -19,7 +19,7 @@ queries:
         orderBy:
             - key: date
               direction: desc
-        limit: 20
+        limit: 100
 
 engine:
     id: mustache
