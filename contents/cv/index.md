@@ -35,22 +35,6 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 
 **Technologies:** Swift, SwiftUI, UIKit, Swift Package Manager, Structured Concurrency, Unit Testing
 
-### Independent (Nov 2025 - Apr 2026) – Senior iOS Architect
-
-#### Cupertino
-- A local Apple Documentation crawler and MCP server, written in Swift
-- CLI tool providing offline access to Apple developer documentation for AI assistants
-- [https://github.com/mihaelamj/cupertino](https://github.com/mihaelamj/cupertino)
-
-**Technologies:** Swift, Swift Package Manager, MCP, AI Tooling
-
-#### iRelay
-- Apple-native personal AI assistant, pure Swift
-- Cross-platform macOS and iOS application
-- [https://github.com/mihaelamj/iRelay](https://github.com/mihaelamj/iRelay)
-
-**Technologies:** Swift, SwiftUI, AppKit, Artificial Intelligence, AI Tooling
-
 ### [Code Weaver](https://codeweaver.info) (May 2024 - Jun 2025) – Senior iOS Developer
 
 #### Everliv AI Fitness Chat
@@ -130,7 +114,33 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 - **Purch** (Mar 2015 - Oct 2018), Mid iOS Developer
 - **Undabot** (Sep 2013 - Jun 2014), Junior iOS Developer
 
-## CONFERENCES
+## OPEN SOURCE
+
+### [Cupertino](https://github.com/mihaelamj/cupertino)
+- Local Apple documentation crawler and MCP server in Swift, giving AI coding assistants offline, accurate Apple developer docs.
+**Technologies:** Swift, MCP, AI Tooling, Swift Package Manager
+
+### [iRelay](https://github.com/mihaelamj/iRelay)
+- Apple-native personal AI assistant in pure Swift, cross-platform macOS and iOS.
+**Technologies:** Swift, SwiftUI, AppKit, AI
+
+### [OpenAPIDoctor](https://github.com/mihaelamj/OpenAPIDoctor)
+- Typed validator and auto-repair CLI for OpenAPI specifications.
+**Technologies:** Swift, OpenAPI, CLI
+
+### [ExtremePackaging](https://github.com/mihaelamj/ExtremePackaging)
+- Modular Swift package architecture: single-responsibility targets with unidirectional dependencies, with a full OpenAPI integration example.
+**Technologies:** Swift, Swift Package Manager, OpenAPI
+
+### [OpenAPILoggingMiddleware](https://github.com/mihaelamj/OpenAPILoggingMiddleware)
+- Structured request logging middleware for OpenAPI-driven Swift servers.
+**Technologies:** Swift, OpenAPI, Swift Server
+
+### [CVBuilder](https://github.com/mihaelamj/cvbuilder)
+- Type-safe Swift package that models and renders a CV as data. It generates this CV.
+**Technologies:** Swift, Swift Package Manager
+
+## SPEAKING
 
 ### iOSKonf26 (May 2026) – Speaker
 - "Teaching AI to Read Apple Docs: Building Cupertino, an MCP Server in Swift"

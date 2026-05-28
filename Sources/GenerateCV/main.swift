@@ -42,6 +42,52 @@ let conferences = [
     ),
 ]
 
+struct OpenSourceProject {
+    let name: String
+    let description: String
+    let url: String
+    let techs: String
+}
+
+let openSourceProjects = [
+    OpenSourceProject(
+        name: "Cupertino",
+        description: "Local Apple documentation crawler and MCP server in Swift, giving AI coding assistants offline, accurate Apple developer docs.",
+        url: "https://github.com/mihaelamj/cupertino",
+        techs: "Swift, MCP, AI Tooling, Swift Package Manager"
+    ),
+    OpenSourceProject(
+        name: "iRelay",
+        description: "Apple-native personal AI assistant in pure Swift, cross-platform macOS and iOS.",
+        url: "https://github.com/mihaelamj/iRelay",
+        techs: "Swift, SwiftUI, AppKit, AI"
+    ),
+    OpenSourceProject(
+        name: "OpenAPIDoctor",
+        description: "Typed validator and auto-repair CLI for OpenAPI specifications.",
+        url: "https://github.com/mihaelamj/OpenAPIDoctor",
+        techs: "Swift, OpenAPI, CLI"
+    ),
+    OpenSourceProject(
+        name: "ExtremePackaging",
+        description: "Modular Swift package architecture: single-responsibility targets with unidirectional dependencies, with a full OpenAPI integration example.",
+        url: "https://github.com/mihaelamj/ExtremePackaging",
+        techs: "Swift, Swift Package Manager, OpenAPI"
+    ),
+    OpenSourceProject(
+        name: "OpenAPILoggingMiddleware",
+        description: "Structured request logging middleware for OpenAPI-driven Swift servers.",
+        url: "https://github.com/mihaelamj/OpenAPILoggingMiddleware",
+        techs: "Swift, OpenAPI, Swift Server"
+    ),
+    OpenSourceProject(
+        name: "CVBuilder",
+        description: "Type-safe Swift package that models and renders a CV as data. It generates this CV.",
+        url: "https://github.com/mihaelamj/cvbuilder",
+        techs: "Swift, Swift Package Manager"
+    ),
+]
+
 // MARK: - Render
 
 func renderWebsiteCV(_ cv: CV) -> String {
@@ -92,10 +138,14 @@ func renderWebsiteCV(_ cv: CV) -> String {
     // Length controls. The full work history stays in the data; the renderer
     // shows a recruiter-friendly subset. To go from a ~2-page CV to ~1 page,
     // lower these two numbers (e.g. recentCompanyCount = 3, maxBulletsPerProject = 2).
-    let recentCompanyCount = 5      // most-recent companies shown in full
+    let recentCompanyCount = 4      // most-recent companies shown in full
     let maxBulletsPerProject = 4    // cap on description bullets per project
 
-    let sortedExperience = cv.experience.sorted(by: { $0.period.end > $1.period.end })
+    // Independent open-source work (Cupertino, iRelay) gets its own OPEN SOURCE
+    // section below, so exclude it from the employment timeline here.
+    let sortedExperience = cv.experience
+        .filter { $0.company.name != "Independent" }
+        .sorted(by: { $0.period.end > $1.period.end })
     let recentExperience = sortedExperience.prefix(recentCompanyCount)
     let earlierExperience = sortedExperience.dropFirst(recentCompanyCount)
 
@@ -133,8 +183,16 @@ func renderWebsiteCV(_ cv: CV) -> String {
         out += "\n"
     }
 
-    // Conferences
-    out += "## CONFERENCES\n\n"
+    // Open Source
+    out += "## OPEN SOURCE\n\n"
+    for osp in openSourceProjects {
+        out += "### [\(osp.name)](\(osp.url))\n"
+        out += "- \(osp.description)\n"
+        out += "**Technologies:** \(osp.techs)\n\n"
+    }
+
+    // Speaking
+    out += "## SPEAKING\n\n"
     for conf in conferences {
         out += "### \(conf.name) (\(conf.date)) – \(conf.role)\n"
         out += "- \"\(conf.title)\"\n"
