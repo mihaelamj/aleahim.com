@@ -88,8 +88,19 @@ func renderWebsiteCV(_ cv: CV) -> String {
     out += "\n"
 
     // Experience
+    //
+    // Length controls. The full work history stays in the data; the renderer
+    // shows a recruiter-friendly subset. To go from a ~2-page CV to ~1 page,
+    // lower these two numbers (e.g. recentCompanyCount = 3, maxBulletsPerProject = 2).
+    let recentCompanyCount = 5      // most-recent companies shown in full
+    let maxBulletsPerProject = 4    // cap on description bullets per project
+
+    let sortedExperience = cv.experience.sorted(by: { $0.period.end > $1.period.end })
+    let recentExperience = sortedExperience.prefix(recentCompanyCount)
+    let earlierExperience = sortedExperience.dropFirst(recentCompanyCount)
+
     out += "## EXPERIENCE\n\n"
-    for exp in cv.experience.sorted(by: { $0.period.end > $1.period.end }) {
+    for exp in recentExperience {
         let companyName = exp.company.name
         if let url = companyURLs[companyName] {
             out += "### [\(companyName)](\(url)) (\(exp.formattedDateRange)) – \(exp.role.title)\n\n"
@@ -99,7 +110,7 @@ func renderWebsiteCV(_ cv: CV) -> String {
         for projectExp in exp.projects.sorted(by: { $0.period.start > $1.period.start }) {
             let project = projectExp.project
             out += "#### \(project.name)\n"
-            for desc in project.descriptions {
+            for desc in project.descriptions.prefix(maxBulletsPerProject) {
                 out += "- \(desc)\n"
             }
             if let urls = project.urls, !urls.isEmpty {
@@ -111,6 +122,15 @@ func renderWebsiteCV(_ cv: CV) -> String {
             let techLine = project.techs.map(\.name).joined(separator: ", ")
             out += "**Technologies:** \(techLine)\n\n"
         }
+    }
+
+    // Earlier roles, condensed to one line each (no project detail).
+    if !earlierExperience.isEmpty {
+        out += "## EARLIER EXPERIENCE\n\n"
+        for exp in earlierExperience {
+            out += "- **\(exp.company.name)** (\(exp.formattedDateRange)), \(exp.role.title)\n"
+        }
+        out += "\n"
     }
 
     // Conferences
