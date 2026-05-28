@@ -120,7 +120,7 @@ func renderWebsiteCV(_ cv: CV) -> String {
     }
     out += "- [X/Twitter](\(twitterURL))\n"
     if let website = cv.contactInfo.website {
-        out += "- [Website](\(website.absoluteString))\n"
+        out += "- [Blog](\(website.absoluteString))\n"
     }
     out += "- [Download CV (PDF)](\(pdfPath))\n"
     out += "\n"

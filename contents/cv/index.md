@@ -16,7 +16,7 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 - [LinkedIn](https://www.linkedin.com/in/mihaelamj)
 - [GitHub](https://github.com/mihaelamj)
 - [X/Twitter](https://x.com/diyamantina)
-- [Website](https://aleahim.com)
+- [Blog](https://aleahim.com)
 - [Download CV (PDF)](/assets/Mihaela_Mihaljevic_Jakic_CV.pdf)
 
 **Education:**
