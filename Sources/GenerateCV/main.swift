@@ -187,7 +187,7 @@ func renderWebsiteCV(_ cv: CV) -> String {
     out += "## OPEN SOURCE\n\n"
     for osp in openSourceProjects {
         out += "### [\(osp.name)](\(osp.url))\n"
-        out += "- \(osp.description)\n"
+        out += "- \(osp.description)\n\n"
         out += "**Technologies:** \(osp.techs)\n\n"
     }
 

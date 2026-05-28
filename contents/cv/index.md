@@ -118,26 +118,32 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 
 ### [Cupertino](https://github.com/mihaelamj/cupertino)
 - Local Apple documentation crawler and MCP server in Swift, giving AI coding assistants offline, accurate Apple developer docs.
+
 **Technologies:** Swift, MCP, AI Tooling, Swift Package Manager
 
 ### [iRelay](https://github.com/mihaelamj/iRelay)
 - Apple-native personal AI assistant in pure Swift, cross-platform macOS and iOS.
+
 **Technologies:** Swift, SwiftUI, AppKit, AI
 
 ### [OpenAPIDoctor](https://github.com/mihaelamj/OpenAPIDoctor)
 - Typed validator and auto-repair CLI for OpenAPI specifications.
+
 **Technologies:** Swift, OpenAPI, CLI
 
 ### [ExtremePackaging](https://github.com/mihaelamj/ExtremePackaging)
 - Modular Swift package architecture: single-responsibility targets with unidirectional dependencies, with a full OpenAPI integration example.
+
 **Technologies:** Swift, Swift Package Manager, OpenAPI
 
 ### [OpenAPILoggingMiddleware](https://github.com/mihaelamj/OpenAPILoggingMiddleware)
 - Structured request logging middleware for OpenAPI-driven Swift servers.
+
 **Technologies:** Swift, OpenAPI, Swift Server
 
 ### [CVBuilder](https://github.com/mihaelamj/cvbuilder)
 - Type-safe Swift package that models and renders a CV as data. It generates this CV.
+
 **Technologies:** Swift, Swift Package Manager
 
 ## SPEAKING
