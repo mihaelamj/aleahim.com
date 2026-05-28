@@ -25,7 +25,7 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 
 ## EXPERIENCE
 
-### [Maurer Electronics](https://www.maurer-electronics.de) (Sep 2025 - Apr 2026) – Senior iOS Architect
+### [Maurer Electronics](https://www.maurer-electronics.de) (Sep 2025 - Present) – Senior iOS Architect
 
 #### ID Document Systems
 - Architecting and developing iOS applications for secure ID document capture, personalisation, and verification
