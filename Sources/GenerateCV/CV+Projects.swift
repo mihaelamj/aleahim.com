@@ -64,6 +64,7 @@ public extension CV {
             .withCompany(maurerElectronics)
             .withRole(seniorArchitect)
             .withPeriod(start: (month: 9, year: 2025), end: (month: 4, year: 2026))
+            .withCurrent(true)
             .addDescription("Architecting and developing iOS applications for secure ID document capture, personalisation, and verification")
             .addDescription("Building mobile solutions for Bundesdruckerei GmbH's identity systems platform")
             .addDescription("Designing modular, scalable architectures for security-critical mobile applications")
