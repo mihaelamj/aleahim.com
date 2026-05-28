@@ -90,27 +90,58 @@ Read the post body. Pick a style from the seven Creator Studio styles based on t
 
 Always specify: **View = Any**, **Aspect = Landscape (16:9)**. This matches the recent posts (cupertino-09, cupertino-10, irelay are all 1280×720 = 16:9). If the user explicitly wants Square or Portrait for a specific post, honor that — but the default is Landscape.
 
+**Image model: OpenAI (ChatGPT), via Apple Creator Studio in Keynote.** Mihaela does not use the on-device Apple styles; she generates the hero through the OpenAI image model. So the style table above is mood guidance only: fold the chosen style word (for example "editorial illustration" or "bold poster art") directly into the prompt sentence, because the OpenAI model reads style from the prompt text, not from a style picker. Write one rich free-form paragraph, Landscape 16:9, no text, no logos, no readable letters.
+
 Output in this exact block:
 
 ```
 HERO IMAGE PROMPT (Apple Creator Studio)
 ────────────────────────────────────────
-Style:   <picked style>
+Style:   <picked style> (folded into the prompt, see note above)
 View:    Any
 Aspect:  Landscape (16:9)
+Model:   OpenAI (ChatGPT)
 
 Prompt:
-<2–4 sentence concrete visual prompt. Subject, mood, colour cues, no text,
-no logos. Avoid abstract words like "innovative". Reference the post's
+<one rich free-form paragraph. Subject, mood, colour cues, composition.
+Fold the style word into the sentence. No text, no logos, no readable
+letters. Avoid abstract words like "innovative". Reference the post's
 central concrete idea. No em dashes.>
 
 Why this style: <one sentence>
 ────────────────────────────────────────
 
-Next: open Apple Creator Studio → paste the Prompt → pick "<picked style>"
-→ set Aspect to Landscape → generate → drag into Keynote → adjust if needed
-→ export as PNG or JPG → save to ~/Downloads. Then tell me "image ready"
-(or "use <filename>" if you want a specific file).
+Next: in Keynote, insert an image via Apple Creator Studio → choose the
+OpenAI (ChatGPT) model → paste the Prompt → generate → place on a 16:9
+slide and adjust → export the slide as PNG (or JPG) to ~/Downloads. Then
+tell me "image ready" (or "use <filename>" for a specific file).
+```
+
+**Worked example** (first OpenAI-model run, post "The Morlocks Built SwiftUI"):
+
+```
+HERO IMAGE PROMPT (Apple Creator Studio)
+────────────────────────────────────────
+Style:   Editorial illustration (folded into the prompt)
+View:    Any
+Aspect:  Landscape (16:9)
+Model:   OpenAI (ChatGPT)
+
+Prompt:
+An editorial illustration in cinematic landscape composition: a serene,
+sunlit upper world of soft rounded pastel shapes floating effortlessly
+above a smooth glassy floor, and beneath that floor, revealed through a
+wide cutaway, an enormous intricate brass-and-steel machine of
+interlocking gears, pistons, pipes and softly glowing conduits that
+silently powers everything above. Warm golden daylight on the calm
+surface fades into cool teal shadow and amber machine-glow in the depths.
+The mood is quiet awe: the effortless surface is clearly driven by the
+vast hidden engine underneath. Clean flat-shaded vector-like rendering,
+rich sense of depth, no text, no logos, no readable letters.
+
+Why this style: technical/architecture piece; clean concept art sells the
+surface-over-hidden-machine idea without spelling it out.
+────────────────────────────────────────
 ```
 
 HARD PAUSE. Do not proceed. Speak: `say -v "Ava" "Ava: Prompt ready. Waiting for hero image."`
@@ -200,6 +231,15 @@ test "$LEAK" -eq 0 \
 # Sanity: the new post page must exist in the build.
 test -f "blog/<slug>/index.html" \
   || { echo "abort: blog/<slug>/index.html missing after build"; exit 1; }
+# RSS full-text invariant (CLAUDE.md): every <item> must carry <content:encoded>,
+# and the new post must be in the feed. The feed powers appledevsearch.com.
+RSS_ITEMS=$(grep -c "<item>" rss.xml)
+RSS_FULLTEXT=$(grep -c "<content:encoded>" rss.xml)
+test "$RSS_ITEMS" = "$RSS_FULLTEXT" \
+  || { echo "abort: rss.xml item/content:encoded mismatch ($RSS_ITEMS items, $RSS_FULLTEXT full-text)"; exit 1; }
+grep -q "blog/<slug>/" rss.xml \
+  || { echo "abort: new post slug missing from rss.xml after build"; exit 1; }
+echo "RSS OK: $RSS_ITEMS items, all carry content:encoded, new post present"
 ```
 
 Commit + push:
@@ -231,8 +271,15 @@ if [ "$CODE" != "200" ]; then
   CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://aleahim.com/blog/<slug>/")
   echo "Retry → $CODE"
 fi
-# RSS should include the new slug.
-curl -s https://aleahim.com/rss.xml | grep -c "<slug>" || echo "warning: slug not in RSS yet (cache?)"
+# RSS: new post present AND full-text invariant holds (feed powers appledevsearch.com, see CLAUDE.md).
+LIVE_RSS=$(curl -s https://aleahim.com/rss.xml)
+echo "$LIVE_RSS" | grep -q "blog/<slug>/" \
+  || echo "warning: new slug not in live RSS yet (Pages/CDN cache?)"
+LI=$(echo "$LIVE_RSS" | grep -c "<item>")
+LF=$(echo "$LIVE_RSS" | grep -c "<content:encoded>")
+echo "live RSS: $LI items, $LF content:encoded"
+test "$LI" = "$LF" \
+  || echo "warning: live RSS item/content:encoded mismatch ($LI/$LF), full-text feed may be broken"
 ```
 
 If still not 200 after retry: `gh run list --limit 3` to inspect Pages build status. Surface to user — do not loop forever.
