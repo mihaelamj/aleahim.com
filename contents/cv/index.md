@@ -25,7 +25,7 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 
 ## EXPERIENCE
 
-### [Maurer Electronics](https://www.maurer-electronics.de) (Sep 2025 - Present) – Senior iOS Architect
+### [Maurer Electronics](https://www.maurer-electronics.de) (Sep 2025 - Present), Senior iOS Architect
 
 #### ID Document Systems
 - Architecting and developing iOS applications for secure ID document capture, personalisation, and verification
@@ -35,7 +35,7 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 
 **Technologies:** Swift, SwiftUI, UIKit, Swift Package Manager, Structured Concurrency, Unit Testing
 
-### [Code Weaver](https://codeweaver.info) (May 2024 - Jun 2025) – Senior iOS Developer
+### [Code Weaver](https://codeweaver.info) (May 2024 - Jun 2025), Senior iOS Developer
 
 #### Everliv AI Fitness Chat
 - Developed comprehensive OpenAPI YAML specifications defining REST and Server-Sent Events endpoints for real-time chat functionality
@@ -53,7 +53,7 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 
 **Technologies:** Swift, SwiftUI, REST, OpenAPI, Swift Package Manager, Swift Server, Unit Testing, UI Testing, Structured Concurrency
 
-### iOLAP (Nov 2022 - Mar 2025) – Senior iOS Developer
+### iOLAP (Nov 2022 - Mar 2025), Senior iOS Developer
 
 #### iRobot App
 - Objective-C, Swift, SwiftUI, UIKit, C++
@@ -80,7 +80,7 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 
 **Technologies:** Swift, REST, OpenAPI, GraphQL, UIKit, UI in code, Swift Package Manager, Unit Testing
 
-### Cherishing Studio (Jul 2019 - Oct 2022) – Senior iOS Developer
+### Cherishing Studio (Jul 2019 - Oct 2022), Senior iOS Developer
 
 #### Budtz Innovation
 - Led the refactoring of a legacy iOS app's UI and networking stack using modern Swift paradigms
@@ -148,12 +148,12 @@ Experienced iOS engineer with a deep commitment to modular architecture and eleg
 
 ## SPEAKING
 
-### iOSKonf26 (May 2026) – Speaker
+### iOSKonf26 (May 2026), Speaker
 - "Teaching AI to Read Apple Docs: Building Cupertino, an MCP Server in Swift"
 - iOSKonf26, Skopje, North Macedonia
 - [iOSKonf](https://ioskonf.mk)
 
-### NSSpain XIII (Sep 2025) – Speaker
+### NSSpain XIII (Sep 2025), Speaker
 - "API-Driven Development Refactored: Scaling Server and Client Code in Highly Modular Architectures"
 - NSSpain XIII, Logroño, Spain
 - [NSSpain](https://nsspain.com)

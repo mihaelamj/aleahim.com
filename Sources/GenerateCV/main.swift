@@ -160,9 +160,9 @@ func renderWebsiteCV(_ cv: CV) -> String {
             ? (exp.formattedDateRange.components(separatedBy: " - ").first ?? exp.formattedDateRange) + " - Present"
             : exp.formattedDateRange
         if let url = companyURLs[companyName] {
-            out += "### [\(companyName)](\(url)) (\(dateRange)) – \(exp.role.title)\n\n"
+            out += "### [\(companyName)](\(url)) (\(dateRange)), \(exp.role.title)\n\n"
         } else {
-            out += "### \(companyName) (\(dateRange)) – \(exp.role.title)\n\n"
+            out += "### \(companyName) (\(dateRange)), \(exp.role.title)\n\n"
         }
         for projectExp in exp.projects.sorted(by: { $0.period.start > $1.period.start }) {
             let project = projectExp.project
@@ -201,7 +201,7 @@ func renderWebsiteCV(_ cv: CV) -> String {
     // Speaking
     out += "## SPEAKING\n\n"
     for conf in conferences {
-        out += "### \(conf.name) (\(conf.date)) – \(conf.role)\n"
+        out += "### \(conf.name) (\(conf.date)), \(conf.role)\n"
         out += "- \"\(conf.title)\"\n"
         out += "- \(conf.location)\n"
         out += "- [\(conf.website.label)](\(conf.website.url))\n"
