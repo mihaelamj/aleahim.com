@@ -267,7 +267,7 @@ public extension CV {
             .withRole(seniorIOS)
             .withPeriod(start: (month: 5, year: 2019), end: (month: 6, year: 2019))
             .addDescription("Added custom features using Objective-C, UIKit")
-            .addDescription("Dynamic Content Framework Developer – designed and implemented a template-based dynamic content creation system that allowed for real-time content generation and updates without requiring app redeployment")
+            .addDescription("Dynamic Content Framework Developer: designed and implemented a template-based dynamic content creation system that allowed for real-time content generation and updates without requiring app redeployment")
             .addDescription("Increased development efficiency by 35%")
             .addURL(URL(string: "https://servicepal.com")!)
             .withTechs([objc, uiInCode, uiKit, coreData, rest, unittest])
