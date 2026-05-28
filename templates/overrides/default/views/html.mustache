@@ -12,19 +12,21 @@
     <meta property="og:description" content="{{page.description}}">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{site.name}}">
-    {{#page.imageUrl}}<meta property="og:image" content="{{.}}">{{/page.imageUrl}}
-    {{^page.imageUrl}}<meta property="og:image" content="{{baseUrl}}/images/og-image.png">
+    {{#page.image}}<meta property="og:image" content="{{baseUrl}}{{page.image}}">
+    <meta property="og:image:alt" content="{{page.title}}">{{/page.image}}
+    {{^page.image}}<meta property="og:image" content="{{baseUrl}}/images/og-image.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="2048">
     <meta property="og:image:height" content="1364">
-    <meta property="og:image:alt" content="Aleahim. Mihaela Mihaljević, Senior iOS Architect.">{{/page.imageUrl}}
+    <meta property="og:image:alt" content="Aleahim. Mihaela Mihaljević, Senior iOS Architect.">{{/page.image}}
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{page.title}} - {{site.name}}">
     <meta name="twitter:description" content="{{page.description}}">
-    {{#page.imageUrl}}<meta name="twitter:image" content="{{.}}">{{/page.imageUrl}}
-    {{^page.imageUrl}}<meta name="twitter:image" content="{{baseUrl}}/images/og-image.png">
-    <meta name="twitter:image:alt" content="Aleahim. Mihaela Mihaljević, Senior iOS Architect.">{{/page.imageUrl}}
+    {{#page.image}}<meta name="twitter:image" content="{{baseUrl}}{{page.image}}">
+    <meta name="twitter:image:alt" content="{{page.title}}">{{/page.image}}
+    {{^page.image}}<meta name="twitter:image" content="{{baseUrl}}/images/og-image.png">
+    <meta name="twitter:image:alt" content="Aleahim. Mihaela Mihaljević, Senior iOS Architect.">{{/page.image}}
 
     <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="{{baseUrl}}/rss.xml">
 
