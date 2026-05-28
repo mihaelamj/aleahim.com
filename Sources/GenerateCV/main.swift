@@ -141,10 +141,6 @@ func renderWebsiteCV(_ cv: CV) -> String {
     let recentCompanyCount = 4      // most-recent companies shown in full
     let maxBulletsPerProject = 4    // cap on description bullets per project
 
-    // Companies where the role is ongoing, rendered as "... - Present".
-    // CVBuilder's Period requires a concrete end date, so this is a display override.
-    let currentRoles: Set<String> = ["Maurer Electronics"]
-
     // Independent open-source work (Cupertino, iRelay) gets its own OPEN SOURCE
     // section below, so exclude it from the employment timeline here.
     let sortedExperience = cv.experience
@@ -156,13 +152,10 @@ func renderWebsiteCV(_ cv: CV) -> String {
     out += "## EXPERIENCE\n\n"
     for exp in recentExperience {
         let companyName = exp.company.name
-        let dateRange = currentRoles.contains(companyName)
-            ? (exp.formattedDateRange.components(separatedBy: " - ").first ?? exp.formattedDateRange) + " - Present"
-            : exp.formattedDateRange
         if let url = companyURLs[companyName] {
-            out += "### [\(companyName)](\(url)) (\(dateRange)), \(exp.role.title)\n\n"
+            out += "### [\(companyName)](\(url)) (\(exp.formattedDateRange)), \(exp.role.title)\n\n"
         } else {
-            out += "### \(companyName) (\(dateRange)), \(exp.role.title)\n\n"
+            out += "### \(companyName) (\(exp.formattedDateRange)), \(exp.role.title)\n\n"
         }
         for projectExp in exp.projects.sorted(by: { $0.period.start > $1.period.start }) {
             let project = projectExp.project
