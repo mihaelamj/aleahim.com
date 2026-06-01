@@ -81,23 +81,27 @@ Aleahim.com production traffic moves away from Toucan.
 
 ## Static Redirect Pages
 
+The committed Toucan redirect pages emit absolute production URLs for internal
+targets. TileDown output should preserve the same browser-visible target URLs
+unless a redirect is intentionally redesigned.
+
 | Current Route | Target |
 | --- | --- |
-| `/CVBuilder/` | `/blog/c-v-builder/` |
-| `/CoreAnimation3DCube/` | `/blog/core-animation-3d-cube/` |
-| `/ExtremePackaging/` | `/blog/extreme-packaging/` |
-| `/ExtremePackagingOpenAPI/` | `/blog/extreme-packaging-open-a-p-i/` |
-| `/LoggingMiddleware/` | `/blog/logging-middleware/` |
-| `/SwiftUILabAdvancedAnimations/` | `/blog/swift-u-i-lab-advanced-animations/` |
-| `/TokenMiddeware/` | `/blog/token-middleware/` |
-| `/TokenMiddleware/` | `/blog/token-middleware/` |
-| `/blog/` | `/` |
-| `/c-v-page/` | `/blog/c-v-builder/` |
-| `/consulting/` | `/services/` |
-| `/contact/` | `/about/` |
-| `/core-animation-layers-forming-a-3d-cube/` | `/blog/core-animation-3d-cube/` |
-| `/home/` | `/` |
-| `/rss/` | `/rss.xml` |
+| `/CVBuilder/` | `https://aleahim.com/blog/c-v-builder/` |
+| `/CoreAnimation3DCube/` | `https://aleahim.com/blog/core-animation-3d-cube/` |
+| `/ExtremePackaging/` | `https://aleahim.com/blog/extreme-packaging/` |
+| `/ExtremePackagingOpenAPI/` | `https://aleahim.com/blog/extreme-packaging-open-a-p-i/` |
+| `/LoggingMiddleware/` | `https://aleahim.com/blog/logging-middleware/` |
+| `/SwiftUILabAdvancedAnimations/` | `https://aleahim.com/blog/swift-u-i-lab-advanced-animations/` |
+| `/TokenMiddeware/` | `https://aleahim.com/blog/token-middleware/` |
+| `/TokenMiddleware/` | `https://aleahim.com/blog/token-middleware/` |
+| `/blog/` | `https://aleahim.com/` |
+| `/c-v-page/` | `https://aleahim.com/blog/c-v-builder/` |
+| `/consulting/` | `https://aleahim.com/services/` |
+| `/contact/` | `https://aleahim.com/about/` |
+| `/core-animation-layers-forming-a-3d-cube/` | `https://aleahim.com/blog/core-animation-3d-cube/` |
+| `/home/` | `https://aleahim.com/` |
+| `/rss/` | `https://aleahim.com/rss.xml` |
 | `/services/` | `https://codeweaver.info/` |
 
 ## 404 Script Redirects
