@@ -17,6 +17,9 @@ That slug should continue to publish as:
 /blog/example-post/
 ```
 
+The current route inventory is captured in
+[`current-public-url-contract.md`](current-public-url-contract.md).
+
 Do not let the new generator infer a different path such as:
 
 ```text
@@ -53,4 +56,3 @@ Before switching production to TileDown:
 - RSS item links should use the final public URLs.
 - Canonical URLs should match the final public URLs.
 - Trailing slash behavior should match the existing Toucan site.
-
