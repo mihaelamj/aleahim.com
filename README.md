@@ -40,6 +40,7 @@ make browser
 
 The checks load `https://aleahim.com/...` in Chromium and serve those requests
 from the repository checkout, so production absolute URLs are tested locally.
+The same command runs in GitHub Actions on Linux.
 
 ## Adding Content
 
