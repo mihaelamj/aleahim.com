@@ -22,6 +22,8 @@ Aleahim.com production traffic moves away from Toucan.
   `contents/blog/*/index.md`.
 - The browser acceptance checks tracked by issue #15 should stay aligned with
   this inventory as routes are added or intentionally changed.
+- Run `make url-contract` after changing this file or any committed site output.
+  The checker reads this inventory and verifies the committed Toucan output.
 
 ## Primary Routes
 
