@@ -56,3 +56,5 @@ Before switching production to TileDown:
 - RSS item links should use the final public URLs.
 - Canonical URLs should match the final public URLs.
 - Trailing slash behavior should match the existing Toucan site.
+- Run `make url-contract` so the route inventory and committed output stay in
+  sync.

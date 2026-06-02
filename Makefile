@@ -20,6 +20,9 @@ watch:
 serve:
 	toucan serve ./dist -p 3000
 
+url-contract:
+	python3 Tests/URLContract/check_urls.py
+
 png:
 	find ./* -type f -name '*.png' -exec optipng -o7 {} \;
 
