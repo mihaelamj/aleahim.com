@@ -20,6 +20,9 @@ watch:
 serve:
 	toucan serve ./dist -p 3000
 
+browser:
+	./Tests/Browser/run.sh
+
 png:
 	find ./* -type f -name '*.png' -exec optipng -o7 {} \;
 

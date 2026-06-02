@@ -28,6 +28,20 @@ make serve
 # Visit: http://localhost:3000
 ```
 
+## Browser Acceptance Checks
+
+The migration to TileDown is guarded by local Playwright checks over the current
+public URL contract. They run through Python Playwright or `uv`, without Node or
+JavaScript build tooling:
+
+```bash
+make browser
+```
+
+The checks load `https://aleahim.com/...` in Chromium and serve those requests
+from the repository checkout, so production absolute URLs are tested locally.
+The same command runs in GitHub Actions on Linux.
+
 ## Adding Content
 
 See [CONTENT-GUIDE.md](CONTENT-GUIDE.md) for detailed instructions on:
