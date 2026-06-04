@@ -7,8 +7,6 @@ draft: false
 image: /images/cacube/01_cube_iOS_3D.png
 ---
 
-![](/images/cacube/01_cube_iOS_3D.png)
-
 I've been researching `Core Animation` framework for the past few months.
 I've started with several books on the subject, but I found watching related WWDC videos most rewarding. The presenters put the content in a relevant context which  makes it easier to apprehend and learn from it.
 

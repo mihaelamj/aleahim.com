@@ -2801,8 +2801,7 @@ Tasks<span class="tok-operator">/</span><span class="tok-operator">.</span>build
 <guid isPermaLink="true">https://aleahim.com/blog/core-animation-3d-cube/</guid>
 <pubDate>Sat, 06 Mar 2021 00:00:00 +0000</pubDate>
 <description>Core Animation in 2.5D</description>
-<content:encoded><![CDATA[<p><img src="https://aleahim.com/images/cacube/01_cube_iOS_3D.png" alt=""></p>
-<p>I’ve been researching <code>Core Animation</code> framework for the past few months.
+<content:encoded><![CDATA[<p>I’ve been researching <code>Core Animation</code> framework for the past few months.
 I’ve started with several books on the subject, but I found watching related WWDC videos most rewarding. The presenters put the content in a relevant context which  makes it easier to apprehend and learn from it.</p>
 <h2>1. Introduction</h2>
 <p>One WWDC session particularly intrigued me: “2011–421 Core Animation Essentials”. They presented their demo named: “Layers in Perspective”, and it showed six layers, forming a flattened cube:
