@@ -94,11 +94,17 @@ def check_pages():
             TILEDOWN / name / "index.md",
             ["slug", "title", "description", "image"],
         )
+    cv_values = front_matter(TILEDOWN / "cv" / "index.md")
+    check("CV page stays published but hidden from top nav", cv_values.get("nav") == "false")
     compare_keys(
         TOUCAN / "404" / "index.md",
         TILEDOWN / "404" / "index.md",
         ["title", "description", "type"],
     )
+    blog_values = front_matter(TILEDOWN / "blog" / "index.md")
+    check("Blog landing page exists", blog_values.get("slug") == "blog")
+    check("Blog landing page lists posts", blog_values.get("postList") == "true")
+    check("Blog landing page opts into tag bar", blog_values.get("tagBar") == "true")
 
 
 def check_posts():
@@ -113,13 +119,25 @@ def check_posts():
             ["slug", "title", "description", "date", "draft", "image"],
         )
         values = front_matter(destination)
+        check(
+            f"{destination.relative_to(ROOT)} has generated tags",
+            bool(values.get("tags") or values.get("tag")),
+        )
         if values.get("draft") == "true":
             output = ROOT / "TileDown" / "dist" / values["slug"] / "index.html"
             check(f"draft excluded from output: {values['slug']}", not output.exists())
 
 
 def check_redirects():
-    redirect_sources = sorted((TOUCAN / "redirects").glob("*/index.md"))
+    redirect_sources = sorted(
+        source
+        for source in (TOUCAN / "redirects").glob("*/index.md")
+        if source.parent.name != "blog-root"
+    )
+    check(
+        "legacy /blog/ redirect is replaced by Blog landing page",
+        not (TILEDOWN / "redirects" / "blog-root" / "index.md").exists(),
+    )
     for source in redirect_sources:
         destination = TILEDOWN / "redirects" / source.parent.name / "index.md"
         compare_keys(source, destination, ["type", "slug"])
@@ -139,6 +157,7 @@ def check_redirects():
 def check_config():
     config = (TILEDOWN / "tiledown.yml").read_text()
     check("TileDown postsDir preserves /blog/ routes", "postsDir: blog" in config)
+    check("TileDown nav labels posts as Blog", "postsLabel: Blog" in config)
     check("TileDown config keeps CV generator", "generate.cv:" in config)
     check("TileDown config keeps analytics", "analytics.head:" in config)
     check("TileDown config maps .nojekyll", "static..nojekyll: deployment/.nojekyll" in config)

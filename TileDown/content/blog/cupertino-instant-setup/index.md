@@ -4,6 +4,7 @@ title: Cupertino v0.3.0: From 20 Hours to 30 Seconds
 description: The new setup command downloads pre-built databases instantly - no more crawling Apple's documentation for hours
 date: 2025-12-05
 image: /images/blog/cupertino-instant-setup/hero.jpg
+tags: Cupertino, Apple Docs, AI
 ---
 
 # Cupertino v0.3.0: From 20 Hours to 30 Seconds

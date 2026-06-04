@@ -5,6 +5,7 @@ description: A third of the search index was the same Apple page indexed twice. 
 date: 2026-05-11
 draft: false
 image: /images/blog/cupertino-v1-0-2/hero.png
+tags: Cupertino, Apple Docs, AI
 ---
 
 # Cupertino v1.0.2: the duplicate that `LOWER(uri)` could not see

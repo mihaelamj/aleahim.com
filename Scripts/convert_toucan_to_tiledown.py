@@ -35,6 +35,15 @@ generate.cv: swift run --package-path {GENERATOR_PACKAGE_PATH} GenerateCV --outp
 static..nojekyll: deployment/.nojekyll
 """
 
+BLOG_INDEX = """---
+slug: blog
+title: Blog
+description: Blog posts by Mihaela Mihaljevic.
+postList: true
+tagBar: true
+---
+"""
+
 IFRAME_RE = re.compile(r"""<iframe\b(?P<attrs>[^>]*)>\s*</iframe>""", re.IGNORECASE)
 ATTR_RE = re.compile(r"""([A-Za-z_:][-A-Za-z0-9_:.]*)\s*=\s*["']([^"']*)["']""")
 
@@ -105,6 +114,61 @@ def ensure_field(lines, field):
     return lines + [field + "\n"]
 
 
+def has_field(lines, field_name):
+    key = field_name + ":"
+    return any(line.startswith(key) for line in lines)
+
+
+def front_matter_values(lines):
+    values = {}
+    for line in lines:
+        if ":" not in line or line.startswith((" ", "\t")):
+            continue
+        key, value = line.split(":", 1)
+        values[key.strip()] = normalized_scalar(value)
+    return values
+
+
+def post_tags(source, values):
+    haystack = " ".join(
+        [
+            source.parent.name,
+            values.get("title", ""),
+            values.get("description", ""),
+        ]
+    ).lower()
+    tags = []
+
+    def add(*items):
+        for item in items:
+            if item not in tags:
+                tags.append(item)
+
+    if "cupertino" in haystack:
+        add("Cupertino", "Apple Docs", "AI")
+    if "openapi" in haystack:
+        add("OpenAPI", "Swift")
+    if "swiftui" in haystack:
+        add("SwiftUI", "Apple Platforms")
+    if "core-animation" in haystack or "core animation" in haystack:
+        add("Core Animation", "iOS")
+    if "irelay" in haystack:
+        add("AI", "macOS", "Swift")
+    if "cvbuilder" in haystack or "c-v-builder" in haystack:
+        add("CVBuilder", "Swift", "Tooling")
+    if "extreme-packaging" in haystack:
+        add("Architecture", "Swift")
+    if "middleware" in haystack:
+        add("Middleware", "Swift")
+    if "token" in haystack or "concurrency" in haystack:
+        add("Concurrency")
+    if "doctor" in haystack:
+        add("Tooling")
+    if not tags:
+        add("Swift")
+    return tags
+
+
 def iframe_embed_lines(line):
     match = IFRAME_RE.search(line.strip())
     if not match:
@@ -164,7 +228,7 @@ def convert_body(lines, *, latest=False):
     return converted
 
 
-def write_markdown(source, destination, *, latest=False):
+def write_markdown(source, destination, *, latest=False, extra_fields=None, infer_post_tags=False):
     text = source.read_text()
     front_matter, body = split_front_matter(text)
     front_matter = strip_toucan_views(front_matter)
@@ -172,6 +236,11 @@ def write_markdown(source, destination, *, latest=False):
     body = convert_body(body, latest=latest)
     if latest:
         front_matter = ensure_field(front_matter, "latest: true")
+    if infer_post_tags and not has_field(front_matter, "tags") and not has_field(front_matter, "tag"):
+        tags = post_tags(source, front_matter_values(front_matter))
+        front_matter = ensure_field(front_matter, "tags: " + ", ".join(tags))
+    for field in extra_fields or []:
+        front_matter = ensure_field(front_matter, field)
     front_matter = strip_trailing_markdown_whitespace(front_matter)
     body = strip_trailing_markdown_whitespace(body)
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -209,10 +278,15 @@ def convert_redirect(source, destination):
     destination.write_text("---\n" + "".join(converted) + "---\n" + "".join(body))
 
 
-def copy_tree_files(source_root, destination_root):
+def copy_tree_files(source_root, destination_root, *, infer_post_tags=False):
     for source in sorted(source_root.rglob("index.md")):
         relative = source.relative_to(source_root)
-        write_markdown(source, destination_root / relative)
+        write_markdown(source, destination_root / relative, infer_post_tags=infer_post_tags)
+
+
+def write_blog_index():
+    (OUTPUT / "blog").mkdir(parents=True, exist_ok=True)
+    (OUTPUT / "blog" / "index.md").write_text(BLOG_INDEX)
 
 
 def ignored_names(_directory, names):
@@ -270,11 +344,15 @@ def convert():
     (OUTPUT / "tiledown.yml").write_text(CONFIG)
 
     write_markdown(TOUCAN / "[home]" / "index.md", OUTPUT / "index.md", latest=True)
-    for name in ["404", "about", "cv", "speaking"]:
+    for name in ["404", "about", "speaking"]:
         write_markdown(TOUCAN / name / "index.md", OUTPUT / name / "index.md")
-    copy_tree_files(TOUCAN / "blog", OUTPUT / "blog")
+    write_markdown(TOUCAN / "cv" / "index.md", OUTPUT / "cv" / "index.md", extra_fields=["nav: false"])
+    write_blog_index()
+    copy_tree_files(TOUCAN / "blog", OUTPUT / "blog", infer_post_tags=True)
     convert_redirect(TOUCAN / "services" / "index.md", OUTPUT / "services" / "index.md")
     for source in sorted((TOUCAN / "redirects").rglob("index.md")):
+        if source.parent.name == "blog-root":
+            continue
         relative = source.relative_to(TOUCAN / "redirects")
         convert_redirect(source, OUTPUT / "redirects" / relative)
     copy_static_assets()

@@ -5,6 +5,7 @@ description: From MCP server to a complete Apple documentation ecosystem with pr
 date: 2025-12-03
 draft: false
 image: /images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png
+tags: Cupertino, Apple Docs, AI
 ---
 
 I'm currently working on two macOS apps, and I rely heavily on Claude Code to help me ship faster. But here's the thing—I kept hitting the same wall: hallucinated APIs, outdated patterns, confident suggestions for methods that don't exist.

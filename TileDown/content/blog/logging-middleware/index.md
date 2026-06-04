@@ -5,6 +5,7 @@ description: Elegant, Structured Request Logging for OpenAPI-Driven Swift Server
 date: 2025-09-16
 draft: false
 image: /images/logg/logging-middleware.jpg
+tags: OpenAPI, Swift, Middleware
 ---
 
 ## Introduction

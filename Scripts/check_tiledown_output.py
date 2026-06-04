@@ -78,9 +78,9 @@ def check_route_parity():
     new = html_routes(TILEDOWN_DIST)
     missing = sorted(old - new)
     extra = sorted(new - old)
-    check("TileDown preserves Toucan HTML route count", len(old) == len(new), f"{len(old)} -> {len(new)}")
+    unexpected_extra = [route for route in extra if not route.startswith("tags/")]
     check("TileDown preserves every Toucan HTML route", not missing, ", ".join(missing[:10]))
-    check("TileDown introduces no extra HTML routes", not extra, ", ".join(extra[:10]))
+    check("TileDown only adds generated tag HTML routes", not unexpected_extra, ", ".join(unexpected_extra[:10]))
 
 
 def check_static_files():
@@ -150,8 +150,19 @@ def check_rss():
 
 def check_site_features():
     index = (TILEDOWN_DIST / "index.html").read_text(errors="replace")
+    blog = (TILEDOWN_DIST / "blog" / "index.html").read_text(errors="replace")
     irelay = (TILEDOWN_DIST / "blog" / "irelay" / "index.html").read_text(errors="replace")
+    expected_nav = (
+        '<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a>'
+        '<a class="td-nav-link" href="https://aleahim.com/blog/">Blog</a>'
+        '<a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>'
+    )
     check("analytics script is injected", "cloud.umami.is/script.js" in index)
+    check("top nav replaces CV with Blog in order", expected_nav in index)
+    check("top nav omits Curriculum Vitae", 'class="td-nav-link" href="https://aleahim.com/cv/">' not in index)
+    check("Blog page shows tag bar", 'class="td-tagbar"' in blog)
+    check("Blog page renders one heading", blog.count("<h1") == 1)
+    check("Blog page lists article cards", 'class="td-post-card"' in blog)
     check("homepage does not show stale Latest copy", "Latest:" not in index)
     check("homepage latest list starts with newest post", "blog/cupertino-v1-3-0-platform-filtering/" in index)
     check(

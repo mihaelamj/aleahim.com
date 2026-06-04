@@ -5,6 +5,7 @@ description: First release stable across crawl, index, rank, serve, and distribu
 date: 2026-05-05
 draft: false
 image: /images/blog/cupertino-first-light/hero.jpg
+tags: Cupertino, Apple Docs, AI
 ---
 
 # Cupertino v1.0.0 "First Light"

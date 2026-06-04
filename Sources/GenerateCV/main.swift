@@ -93,11 +93,12 @@ let openSourceProjects = [
 func renderWebsiteCV(_ cv: CV) -> String {
     var out = ""
 
-    // Toucan frontmatter
+    // TileDown front matter
     out += "---\n"
     out += "slug: cv\n"
     out += "title: Curriculum Vitae\n"
     out += "description: \(cv.name) - \(cv.title)\n"
+    out += "nav: false\n"
     out += "---\n\n"
 
     // Header

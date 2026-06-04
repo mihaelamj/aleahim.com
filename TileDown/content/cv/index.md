@@ -2,6 +2,7 @@
 slug: cv
 title: Curriculum Vitae
 description: Mihaela Mihaljević Jakić - Senior iOS Architect | Swift Server & OpenAPI | AI Tooling
+nav: false
 ---
 
 # Mihaela Mihaljević Jakić

@@ -5,6 +5,7 @@ description: A Swift package for building and rendering CVs in multiple formats
 date: 2025-04-13
 draft: false
 image: /images/cvbuilder.png
+tags: CVBuilder, Swift, Tooling
 ---
 
 CVBuilder is a powerful Swift package that I developed to solve a common problem: managing and rendering professional CVs in multiple formats. Whether you need to generate a Markdown CV for GitHub, an HTML version for your website, or a plain text version for job applications, CVBuilder has you covered.

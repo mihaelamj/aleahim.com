@@ -4,6 +4,7 @@ title: Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor
 description: SwiftSyntax enables semantic code search. A deep refactoring of the codebase delivers cleaner results and better AI capabilities.
 date: 2025-12-20
 image: /images/blog/cupertino-08-release/cupertino-8.png
+tags: Cupertino, Apple Docs, AI
 ---
 
 # Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor
