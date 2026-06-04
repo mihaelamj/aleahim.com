@@ -1,127 +1,134 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>cupertino v1.3.0: The Big Refactor - Aleahim</title>
-    <meta name="description" content="v1.3.0 is the architecture release: eight per-source databases derived from one registry, shipped read-only, with the legacy unified search.db retired for good.">
-
-    <link rel="canonical" href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">
-
-    <meta property="og:url" content="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">
-    <meta property="og:title" content="cupertino v1.3.0: The Big Refactor - Aleahim">
-    <meta property="og:description" content="v1.3.0 is the architecture release: eight per-source databases derived from one registry, shipped read-only, with the legacy unified search.db retired for good.">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Aleahim">
-    <meta property="og:image" content="https://aleahim.com/images/blog/cupertino-v1-3-0-platform-filtering/hero.png">
-    <meta property="og:image:alt" content="cupertino v1.3.0: The Big Refactor">
-    
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="cupertino v1.3.0: The Big Refactor - Aleahim">
-    <meta name="twitter:description" content="v1.3.0 is the architecture release: eight per-source databases derived from one registry, shipped read-only, with the legacy unified search.db retired for good.">
-    <meta name="twitter:image" content="https://aleahim.com/images/blog/cupertino-v1-3-0-platform-filtering/hero.png">
-    <meta name="twitter:image:alt" content="cupertino v1.3.0: The Big Refactor">
-    
-
-    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
-
-    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    
-
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>cupertino v1.3.0: The Big Refactor</title>
+<meta name="description" content="v1.3.0 is the architecture release: eight per-source databases derived from one registry, shipped read-only, with the legacy unified search.db retired for good.">
+<link rel="canonical" href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">
+<meta property="og:title" content="cupertino v1.3.0: The Big Refactor">
+<meta property="og:type" content="article">
+<meta property="og:description" content="v1.3.0 is the architecture release: eight per-source databases derived from one registry, shipped read-only, with the legacy unified search.db retired for good.">
+<meta property="og:url" content="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">
+<meta property="og:site_name" content="Aleahim">
+<meta property="og:image" content="https://aleahim.com/images/blog/cupertino-v1-3-0-platform-filtering/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="cupertino v1.3.0: The Big Refactor">
+<meta name="twitter:description" content="v1.3.0 is the architecture release: eight per-source databases derived from one registry, shipped read-only, with the legacy unified search.db retired for good.">
+<meta name="twitter:image" content="https://aleahim.com/images/blog/cupertino-v1-3-0-platform-filtering/hero.png">
+<meta property="article:published_time" content="2026-05-31T00:00:00Z">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <a id="logo" href="https://aleahim.com">
-                <img
-                    src="https://aleahim.com/images/logo.svg"
-                    alt="Aleahim"
-                    title="Aleahim"
-                >
-                <h1 class="site-title">Aleahim.com</h1>
-            </a>
-    
-            <nav>
-                <div class="navigation">
-                    <a href="https://aleahim.com/">Home</a>
-                <a href="https://aleahim.com/cv/">CV</a>
-                <a href="https://aleahim.com/speaking/">Speaking</a>
-                <a href="https://codeweaver.info/" rel="noopener">Hire me</a>
-                <a href="https://aleahim.com/about/">About</a>
-                <a href="https://mihaelamj.github.io/cupertino/" rel="noopener">Cupertino Quality</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<header class="td-header">
+<a class="td-brand" href="https://aleahim.com/">Aleahim</a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/cv/">Curriculum Vitae</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">May 31, 2026</time></div><h1 class="td-article-title">cupertino v1.3.0: The Big Refactor</h1><p class="td-article-dek">v1.3.0 is the architecture release: eight per-source databases derived from one registry, shipped read-only, with the legacy unified search.db retired for good.</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-v1-3-0-platform-filtering%2F&amp;text=cupertino%20v1.3.0%3A%20The%20Big%20Refactor" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-v1-3-0-platform-filtering%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-v1-3-0-platform-filtering%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=cupertino%20v1.3.0%3A%20The%20Big%20Refactor&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-v1-3-0-platform-filtering%2F" target="_blank" rel="noopener">Email</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/blog/cupertino-v1-3-0-platform-filtering/hero.png" alt="cupertino v1.3.0: The Big Refactor"></figure><div class="td-article-body"><p>This release started with a number that looked too small to matter.</p>
+<p>Back in v1.2.0 I had added deployment-aware search: ask cupertino for an API and tell it which OS you actually ship, and it filters out the answers that would not compile for you.</p>
+<pre><code class="language-bash">cupertino search swiftui --source samples --min-ios 16</code></pre>
+<p>The flag parsed. The database carried availability metadata. The command looked completely right. And yet, in the dev corpus, <code>--min-ios</code> handed back the same 88 results whether I asked for iOS 13 or iOS 18. A filter that returns the same set for every value is not filtering. It is decoration.</p>
+<p>That is the kind of bug that looks like a one-line fix until you ask why it was possible at all.</p>
+<p>A filter that does not filter is worse than no filter. It lets an assistant claim it respected your deployment target while quietly handing you an iOS 18 API for an app that still ships iOS 16. That is not an answer. It is a future compile error wearing a green checkmark.</p>
+<p>I could have found the missing parameter, threaded it through the one path that dropped it, added a test, and shipped. One path fixed. The reason that path could go missing in the first place: untouched.</p>
+<p>So I pulled on it instead.</p>
+<h2>The problem under the bug</h2>
+<p>cupertino had outgrown the shape it was born in.</p>
+<p>Early on, the whole thing fit one mental model: a big Apple documentation index with a few extra sources bolted on. Apple Developer Documentation, the HIG, Apple Archive, Swift Evolution, swift.org, and <em>The Swift Programming Language</em> all lived inside a single SQLite file. Samples and packages had their own databases, but most of the command surface still thought in three buckets:</p>
+<ul><li><p><code>search.db</code></p></li><li><p><code>samples.db</code></p></li><li><p><code>packages.db</code></p></li></ul>
+<p>That shape was fine when the project was small. It quietly stopped being fine the moment cupertino became a genuine multi-source tool, and the symptoms were everywhere if you knew to look. A platform filter honored in one source and silently dropped in another. A doctor probe pointed at a database filename that a per-source build no longer produced. A release script that knew the names of its databases by heart.</p>
+<p>Those were not five unrelated bugs. They were one disease with five rashes. Source identity was scattered across CLI switches, MCP handlers, setup checks, release manifests, and tests, each carrying its own hand-copied list of names. Change the world in one place and the other four kept believing the old map.</p>
+<p>The cure was already half-built. The <a href="https://github.com/mihaelamj/cupertino/issues/919">Source Independence Day</a> effort had been pushing toward a single source of truth in code: a registry every part of the system reads from, so adding a content source becomes one composition-root change instead of a scavenger hunt. The code was moving that way. The shipped artifact was not. The bundle users actually installed still wore the old three-bucket shape.</p>
+<p>So v1.3.0 became the release that drags the artifact up to meet the architecture.</p>
+<p>Not because retiring a database filename is exciting. It is not. Nobody installs cupertino to admire the shape of its SQLite files. It matters because that old shape was a tax. Every new source paid it. Every cross-source feature paid it. v1.3.0 is the refactor that stops collecting it.</p>
+<h2>One registry, eight databases</h2>
+<p>In v1.3.0 a source is no longer a string in a <code>source</code> column.</p>
+<p>It is a registered provider that declares everything about itself: where its data lives, how it fetches, how it reads, how it searches, which metadata it carries, and which filters it can honestly apply. One registry holds them all, and the rest of the system asks the registry instead of remembering.</p>
+<p>The release bundle now matches that model exactly. Instead of one giant docs database plus two siblings, v1.3.0 ships eight per-source databases:</p>
+<ul><li><p><code>apple-documentation.db</code></p></li><li><p><code>hig.db</code></p></li><li><p><code>apple-archive.db</code></p></li><li><p><code>swift-evolution.db</code></p></li><li><p><code>swift-org.db</code></p></li><li><p><code>swift-book.db</code></p></li><li><p><code>apple-sample-code.db</code></p></li><li><p><code>packages.db</code></p></li></ul>
+<p><code>cupertino setup</code> downloads <code>cupertino-databases-v1.3.0.zip</code>, a 742 MB bundle that expands to about 3.9 GB. Most of that is one file: <code>apple-documentation.db</code> weighs 2.6 GB and holds 351,505 documents and 240,543 symbols across 398 frameworks. Next is <code>packages.db</code> at 1.0 GB with 185 packages. The HIG, archive, Swift Evolution, swift.org, and Swift book databases are the small ones, a few megabytes each.</p>
+<p>The split is not cosmetic. It changes what can go wrong independently. If the HIG corpus is stale, the HIG database is stale and Apple API search is not dragged down with it. If packages need a schema bump, packages get one without reindexing everything else. And when a new source lands, the release tool derives its database straight from the registry. No human goes hunting for the one more filename list that forgot to grow.</p>
+<p>Users never see any of this. The fan-out search surface stays exactly as simple as it was. Underneath, SmartQuery dispatches across the independent source databases and fuses the results with reciprocal rank fusion, so one source can degrade without taking the whole query down with it. That is the trade the refactor buys: invisible to the person typing a query, decisive for the person adding the next source.</p>
+<h2>The old public shape had to break</h2>
+<p>Some flags described a world that no longer exists, so they had to go.</p>
+<p>The legacy <code>--search-db</code> override is gone from all six commands that carried it: <code>search</code>, <code>read</code>, <code>save</code>, <code>doctor</code>, <code>list-frameworks</code>, and <code>inheritance</code>. It made sense when there was one docs database to point at. It is meaningless when every source resolves through the registry to its own file, and keeping it around would only preserve the wrong mental model. Scripts that still pass <code>--search-db</code> now get a clear error instead of a silent misread.</p>
+<p>The same honesty went inward. Roughly 230 <code>searchDB</code> and <code>searchDb</code> identifiers across the CLI, services, indexer, and search layers became the generic <code>dbURL</code> and <code>dbPath</code>, because there is no longer a single “the db” to name. The release tool stopped bundling a hardcoded trio of filenames and now asks the production registry for every enabled source’s destination database. And <code>databaseVersion</code> moved to <code>1.3.0</code>, so a v1.3.0 binary pulls the per-source bundle while a v1.2.x binary keeps pulling the old unified one. Upgrades and downgrades both land on a bundle they understand.</p>
+<p>The one place the literal <code>search.db</code> name survives is the upgrade shim, which has to recognize a real pre-v1.3.0 file by its old name in order to migrate it. Everywhere else, the old name is finally just history.</p>
+<h2>Then SQLite made the refactor earn it</h2>
+<p>Splitting the bundle uncovered a second bug, the kind that only appears once you change how the file is born.</p>
+<p>The indexers build databases in WAL mode, which is great for local write workloads and awkward for a static read-only artifact. A freshly extracted WAL database usually arrives with no <code>-shm</code> sidecar, and a plain <code>SQLITE_OPEN_READONLY</code> cannot open it without conjuring that shared-memory state first. So a shipped database could be byte-for-byte intact, pass an integrity check, and still refuse to open on a clean install.</p>
+<p><code>packages.db</code> made it impossible to ignore. On a fresh setup, package search would report the database as unopenable while the file sat right there, perfectly valid.</p>
+<p>v1.3.0 fixes the artifact instead of teaching every reader a workaround. The release tool converts each bundled database to rollback journal mode before zipping, and rollback-mode databases open read-only with no <code>-shm</code> or <code>-wal</code> sidecar required. Then every query, read, and serve path opens through one shared helper, <code>SQLiteSupport.openReadOnly(at:)</code>, using <code>SQLITE_OPEN_READONLY</code>. <code>SELECT</code> works. <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, and any DDL fail with <code>SQLITE_READONLY</code>. The indexer and the setup migrator are the only writers; ordinary search and MCP reads physically cannot mutate the cache they read from.</p>
+<p>That is the invariant I want under a local documentation tool. The thing you query is the thing you shipped, and nothing in the read path can quietly rewrite it.</p>
+<h2>I did not trust any of this without batteries</h2>
+<p>The frightening part of a refactor this wide is never the code you remember touching. It is the assumption asleep in a path you forgot existed.</p>
+<p>So v1.3.0 leans on tests that behave more like release audits than unit checks.</p>
+<p><code>DatabaseBundleManifestTests</code> proves the bundle is derived from the production registry and excludes the retired <code>search.db</code>. <code>searchDBFlagRejectedEverywhere</code> proves the removed flag errors on every one of the six commands that used to take it. <code>ConvertToRollbackJournalTests</code> reproduces the WAL no-sidecar failure, then proves rollback conversion cures it. <code>SQLiteSupportReadOnlyTests</code> proves the shared helper can read and cannot write. <code>Issue1190PackageQueryReadOnlyOpenTests</code> proves a shipped rollback-mode <code>packages.db</code> answers a query the instant setup finishes.</p>
+<p>Then come the snapshot batteries, which run the real CLI against the real shipped databases.</p>
+<p><code>ReadOnlyReadBatteryTests</code> drives the actual binary across all eight databases through the read-only path, searching every source and then performing at least twenty reads from each. The assertions check shape, not whether the output was simply long enough to look alive.</p>
+<p><code>ExhaustiveEnrichmentBatteryTests</code> covers all 24 enrichments from the project’s enrichment inventory. Sixteen of them are proven end to end through the real CLI: lexical search, AST symbols, generic constraints, framework aliasing, conformances, inheritance, rank fusion, exact-title reranking, deployment floors for every <code>--min</code> platform, structured reads, and code examples. The other eight are internal columns the CLI never surfaces, so they are proven directly against the database with row-count probes rather than pretended through a command that cannot show them. The run writes the actual output into an HTML report, because a feature is not real until the artifact users install can demonstrate it.</p>
+<p>That is the whole point of a battery. The local corpus is the product, so the product has to prove itself against the corpus, not against a mock that always agrees.</p>
+<h2>One more footgun, while I was in there</h2>
+<p>The refactor also exposed a package-fetch default that had quietly stopped making sense.</p>
+<p>Before v1.3.0:</p>
+<pre><code class="language-bash">cupertino fetch --source packages</code></pre>
+<p>refreshed Swift Package Index metadata and star counts for 10,995 packages and <em>then</em> downloaded the curated archive closure the indexer actually consumes. The metadata refresh can take around four hours without a <code>GITHUB_TOKEN</code>. The archive stage took about 97 seconds for the 185-archive closure on a clean base. The four-hour stage was not the one doing the load-bearing work.</p>
+<p>So the default flipped. Now <code>cupertino fetch --source packages</code> just downloads the archives. If you want the metadata refresh, you ask for it:</p>
+<pre><code class="language-bash">cupertino fetch --source packages --refresh-metadata</code></pre>
+<p>The old <code>--skip-metadata</code> flag is gone, because skipping metadata is no longer the exception. It is the default.</p>
+<h2>The boundary work continues</h2>
+<p>v1.3.0 also documents three public Swift packages factored out of cupertino: <code>SwiftMCPCore</code>, <code>SwiftMCPClient</code>, and <code>CupertinoDataKit</code>.</p>
+<p><code>CupertinoDataKit</code> is the one that belongs to this release’s theme. It is the public read contract: the documentation and sample-code read protocols plus the value types they return. cupertino re-exports it through <code>SearchModels</code>, so the in-repo names stay put while the boundary becomes something real and external rather than implied.</p>
+<p>It is the same move as the database split, applied to code instead of files. Name the boundary out loud. Make the system derive from it. Stop asking every caller to carry the old map in its head.</p>
+<h2>Upgrade</h2>
+<pre><code class="language-bash">brew upgrade cupertino
+cupertino setup</code></pre>
+<p><code>setup</code> pulls the v1.3.0 per-source bundle. After that, search, read, and MCP serve all open the shipped databases read-only.</p>
+<p>Here is the short version. Source independence has always been a code goal, and it is still a work in progress there. v1.3.0 is the release where it stops being only a code goal and starts being true of the artifact you actually install: eight databases, one registry, nothing in the read path that can rewrite them, and no unified <code>search.db</code> left to leak the old shape back in.</p>
+<p>And the ninth database, whenever a new source earns one, is now a registry entry away instead of a refactor. That door is open now. I will walk through it soon.</p>
+<p>That is why this one is The Big Refactor.</p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a><time>May 28, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a><time>May 21, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-1-0-poison-cleanup/">Cupertino v1.1.0: my Apple docs index was 30% lies and I didn&#39;t know</a><time>May 14, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/cv/">Curriculum Vitae</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
 
-    <main>
-    <article class="blog-post">
-        <header class="post-header">
-            <div class="title-with-thumbnail">
-                <div class="post-thumbnail">
-                    <img src="https://aleahim.com/images/blog/cupertino-v1-3-0-platform-filtering/hero.png" alt="cupertino v1.3.0: The Big Refactor">
-                </div>
-                <div class="title-wrapper">
-                    <h1>cupertino v1.3.0: The Big Refactor</h1>
-                    <div class="post-meta">
-                        <time datetime="2026-05-31T00:00:00.000Z">May 31, 2026</time>
-                    </div>
-                </div>
-            </div>
-        </header>
-    
-        <div class="post-content">
-            <div class="post-hero-image">
-                <img src="https://aleahim.com/images/blog/cupertino-v1-3-0-platform-filtering/hero.png" alt="cupertino v1.3.0: The Big Refactor">
-            </div>
-    
-            <h1>cupertino v1.3.0: The Big Refactor</h1><p>This release started with a number that looked too small to matter.</p><p>Back in v1.2.0 I had added deployment-aware search: ask cupertino for an API and tell it which OS you actually ship, and it filters out the answers that would not compile for you.</p><pre><code class="language-bash">cupertino search swiftui --source samples --min-ios 16
-</code></pre><p>The flag parsed. The database carried availability metadata. The command looked completely right. And yet, in the dev corpus, <code>--min-ios</code> handed back the same 88 results whether I asked for iOS 13 or iOS 18. A filter that returns the same set for every value is not filtering. It is decoration.</p><p>That is the kind of bug that looks like a one-line fix until you ask why it was possible at all.</p><p>A filter that does not filter is worse than no filter. It lets an assistant claim it respected your deployment target while quietly handing you an iOS 18 API for an app that still ships iOS 16. That is not an answer. It is a future compile error wearing a green checkmark.</p><p>I could have found the missing parameter, threaded it through the one path that dropped it, added a test, and shipped. One path fixed. The reason that path could go missing in the first place: untouched.</p><p>So I pulled on it instead.</p><h2 id="the-problem-under-the-bug">The problem under the bug</h2><p>cupertino had outgrown the shape it was born in.</p><p>Early on, the whole thing fit one mental model: a big Apple documentation index with a few extra sources bolted on. Apple Developer Documentation, the HIG, Apple Archive, Swift Evolution, swift.org, and <em>The Swift Programming Language</em> all lived inside a single SQLite file. Samples and packages had their own databases, but most of the command surface still thought in three buckets:</p><ul><li><code>search.db</code></li><li><code>samples.db</code></li><li><code>packages.db</code></li></ul><p>That shape was fine when the project was small. It quietly stopped being fine the moment cupertino became a genuine multi-source tool, and the symptoms were everywhere if you knew to look. A platform filter honored in one source and silently dropped in another. A doctor probe pointed at a database filename that a per-source build no longer produced. A release script that knew the names of its databases by heart.</p><p>Those were not five unrelated bugs. They were one disease with five rashes. Source identity was scattered across CLI switches, MCP handlers, setup checks, release manifests, and tests, each carrying its own hand-copied list of names. Change the world in one place and the other four kept believing the old map.</p><p>The cure was already half-built. The <a href="https://github.com/mihaelamj/cupertino/issues/919" target="_blank">Source Independence Day</a> effort had been pushing toward a single source of truth in code: a registry every part of the system reads from, so adding a content source becomes one composition-root change instead of a scavenger hunt. The code was moving that way. The shipped artifact was not. The bundle users actually installed still wore the old three-bucket shape.</p><p>So v1.3.0 became the release that drags the artifact up to meet the architecture.</p><p>Not because retiring a database filename is exciting. It is not. Nobody installs cupertino to admire the shape of its SQLite files. It matters because that old shape was a tax. Every new source paid it. Every cross-source feature paid it. v1.3.0 is the refactor that stops collecting it.</p><h2 id="one-registry-eight-databases">One registry, eight databases</h2><p>In v1.3.0 a source is no longer a string in a <code>source</code> column.</p><p>It is a registered provider that declares everything about itself: where its data lives, how it fetches, how it reads, how it searches, which metadata it carries, and which filters it can honestly apply. One registry holds them all, and the rest of the system asks the registry instead of remembering.</p><p>The release bundle now matches that model exactly. Instead of one giant docs database plus two siblings, v1.3.0 ships eight per-source databases:</p><ul><li><code>apple-documentation.db</code></li><li><code>hig.db</code></li><li><code>apple-archive.db</code></li><li><code>swift-evolution.db</code></li><li><code>swift-org.db</code></li><li><code>swift-book.db</code></li><li><code>apple-sample-code.db</code></li><li><code>packages.db</code></li></ul><p><code>cupertino setup</code> downloads <code>cupertino-databases-v1.3.0.zip</code>, a 742 MB bundle that expands to about 3.9 GB. Most of that is one file: <code>apple-documentation.db</code> weighs 2.6 GB and holds 351,505 documents and 240,543 symbols across 398 frameworks. Next is <code>packages.db</code> at 1.0 GB with 185 packages. The HIG, archive, Swift Evolution, swift.org, and Swift book databases are the small ones, a few megabytes each.</p><p>The split is not cosmetic. It changes what can go wrong independently. If the HIG corpus is stale, the HIG database is stale and Apple API search is not dragged down with it. If packages need a schema bump, packages get one without reindexing everything else. And when a new source lands, the release tool derives its database straight from the registry. No human goes hunting for the one more filename list that forgot to grow.</p><p>Users never see any of this. The fan-out search surface stays exactly as simple as it was. Underneath, SmartQuery dispatches across the independent source databases and fuses the results with reciprocal rank fusion, so one source can degrade without taking the whole query down with it. That is the trade the refactor buys: invisible to the person typing a query, decisive for the person adding the next source.</p><h2 id="the-old-public-shape-had-to-break">The old public shape had to break</h2><p>Some flags described a world that no longer exists, so they had to go.</p><p>The legacy <code>--search-db</code> override is gone from all six commands that carried it: <code>search</code>, <code>read</code>, <code>save</code>, <code>doctor</code>, <code>list-frameworks</code>, and <code>inheritance</code>. It made sense when there was one docs database to point at. It is meaningless when every source resolves through the registry to its own file, and keeping it around would only preserve the wrong mental model. Scripts that still pass <code>--search-db</code> now get a clear error instead of a silent misread.</p><p>The same honesty went inward. Roughly 230 <code>searchDB</code> and <code>searchDb</code> identifiers across the CLI, services, indexer, and search layers became the generic <code>dbURL</code> and <code>dbPath</code>, because there is no longer a single “the db” to name. The release tool stopped bundling a hardcoded trio of filenames and now asks the production registry for every enabled source’s destination database. And <code>databaseVersion</code> moved to <code>1.3.0</code>, so a v1.3.0 binary pulls the per-source bundle while a v1.2.x binary keeps pulling the old unified one. Upgrades and downgrades both land on a bundle they understand.</p><p>The one place the literal <code>search.db</code> name survives is the upgrade shim, which has to recognize a real pre-v1.3.0 file by its old name in order to migrate it. Everywhere else, the old name is finally just history.</p><h2 id="then-sqlite-made-the-refactor-earn-it">Then SQLite made the refactor earn it</h2><p>Splitting the bundle uncovered a second bug, the kind that only appears once you change how the file is born.</p><p>The indexers build databases in WAL mode, which is great for local write workloads and awkward for a static read-only artifact. A freshly extracted WAL database usually arrives with no <code>-shm</code> sidecar, and a plain <code>SQLITE_OPEN_READONLY</code> cannot open it without conjuring that shared-memory state first. So a shipped database could be byte-for-byte intact, pass an integrity check, and still refuse to open on a clean install.</p><p><code>packages.db</code> made it impossible to ignore. On a fresh setup, package search would report the database as unopenable while the file sat right there, perfectly valid.</p><p>v1.3.0 fixes the artifact instead of teaching every reader a workaround. The release tool converts each bundled database to rollback journal mode before zipping, and rollback-mode databases open read-only with no <code>-shm</code> or <code>-wal</code> sidecar required. Then every query, read, and serve path opens through one shared helper, <code>SQLiteSupport.openReadOnly(at:)</code>, using <code>SQLITE_OPEN_READONLY</code>. <code>SELECT</code> works. <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, and any DDL fail with <code>SQLITE_READONLY</code>. The indexer and the setup migrator are the only writers; ordinary search and MCP reads physically cannot mutate the cache they read from.</p><p>That is the invariant I want under a local documentation tool. The thing you query is the thing you shipped, and nothing in the read path can quietly rewrite it.</p><h2 id="i-did-not-trust-any-of-this-without-batteries">I did not trust any of this without batteries</h2><p>The frightening part of a refactor this wide is never the code you remember touching. It is the assumption asleep in a path you forgot existed.</p><p>So v1.3.0 leans on tests that behave more like release audits than unit checks.</p><p><code>DatabaseBundleManifestTests</code> proves the bundle is derived from the production registry and excludes the retired <code>search.db</code>. <code>searchDBFlagRejectedEverywhere</code> proves the removed flag errors on every one of the six commands that used to take it. <code>ConvertToRollbackJournalTests</code> reproduces the WAL no-sidecar failure, then proves rollback conversion cures it. <code>SQLiteSupportReadOnlyTests</code> proves the shared helper can read and cannot write. <code>Issue1190PackageQueryReadOnlyOpenTests</code> proves a shipped rollback-mode <code>packages.db</code> answers a query the instant setup finishes.</p><p>Then come the snapshot batteries, which run the real CLI against the real shipped databases.</p><p><code>ReadOnlyReadBatteryTests</code> drives the actual binary across all eight databases through the read-only path, searching every source and then performing at least twenty reads from each. The assertions check shape, not whether the output was simply long enough to look alive.</p><p><code>ExhaustiveEnrichmentBatteryTests</code> covers all 24 enrichments from the project’s enrichment inventory. Sixteen of them are proven end to end through the real CLI: lexical search, AST symbols, generic constraints, framework aliasing, conformances, inheritance, rank fusion, exact-title reranking, deployment floors for every <code>--min</code> platform, structured reads, and code examples. The other eight are internal columns the CLI never surfaces, so they are proven directly against the database with row-count probes rather than pretended through a command that cannot show them. The run writes the actual output into an HTML report, because a feature is not real until the artifact users install can demonstrate it.</p><p>That is the whole point of a battery. The local corpus is the product, so the product has to prove itself against the corpus, not against a mock that always agrees.</p><h2 id="one-more-footgun-while-i-was-in-there">One more footgun, while I was in there</h2><p>The refactor also exposed a package-fetch default that had quietly stopped making sense.</p><p>Before v1.3.0:</p><pre><code class="language-bash">cupertino fetch --source packages
-</code></pre><p>refreshed Swift Package Index metadata and star counts for 10,995 packages and <em>then</em> downloaded the curated archive closure the indexer actually consumes. The metadata refresh can take around four hours without a <code>GITHUB_TOKEN</code>. The archive stage took about 97 seconds for the 185-archive closure on a clean base. The four-hour stage was not the one doing the load-bearing work.</p><p>So the default flipped. Now <code>cupertino fetch --source packages</code> just downloads the archives. If you want the metadata refresh, you ask for it:</p><pre><code class="language-bash">cupertino fetch --source packages --refresh-metadata
-</code></pre><p>The old <code>--skip-metadata</code> flag is gone, because skipping metadata is no longer the exception. It is the default.</p><h2 id="the-boundary-work-continues">The boundary work continues</h2><p>v1.3.0 also documents three public Swift packages factored out of cupertino: <code>SwiftMCPCore</code>, <code>SwiftMCPClient</code>, and <code>CupertinoDataKit</code>.</p><p><code>CupertinoDataKit</code> is the one that belongs to this release’s theme. It is the public read contract: the documentation and sample-code read protocols plus the value types they return. cupertino re-exports it through <code>SearchModels</code>, so the in-repo names stay put while the boundary becomes something real and external rather than implied.</p><p>It is the same move as the database split, applied to code instead of files. Name the boundary out loud. Make the system derive from it. Stop asking every caller to carry the old map in its head.</p><h2 id="upgrade">Upgrade</h2><pre><code class="language-bash">brew upgrade cupertino
-cupertino setup
-</code></pre><p><code>setup</code> pulls the v1.3.0 per-source bundle. After that, search, read, and MCP serve all open the shipped databases read-only.</p><p>Here is the short version. Source independence has always been a code goal, and it is still a work in progress there. v1.3.0 is the release where it stops being only a code goal and starts being true of the artifact you actually install: eight databases, one registry, nothing in the read path that can rewrite them, and no unified <code>search.db</code> left to leak the old shape back in.</p><p>And the ninth database, whenever a new source earns one, is now a registry entry away instead of a refactor. That door is open now. I will walk through it soon.</p><p>That is why this one is The Big Refactor.</p>
-        </div>
-    
-        <footer class="post-footer">
-            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
-        </footer>
-    </article>
 
-    </main>
 
-    <footer>
-        <p class="footer-links">
-            <a href="https://aleahim.com/rss.xml">RSS feed</a>
-            &nbsp;·&nbsp;
-            <a href="https://github.com/mihaelamj" target="_blank" rel="noopener">GitHub</a>
-            &nbsp;·&nbsp;
-            <a href="https://www.linkedin.com/in/mihaelamj" target="_blank" rel="noopener">LinkedIn</a>
-            &nbsp;·&nbsp;
-            <a href="https://x.com/diyamantina" target="_blank" rel="noopener">X</a>
-            &nbsp;·&nbsp;
-            <a href="https://mastodon.social/@ameahim" target="_blank" rel="noopener">Mastodon</a>
-            &nbsp;·&nbsp;
-            <a href="https://bsky.app/profile/dijamantina.bsky.social" target="_blank" rel="noopener">Bluesky</a>
-        </p>
-    
-        <p class="small">
-            Built with <a href="https://www.swift.org/" target="_blank" rel="noopener">Swift</a> and <a href="https://github.com/toucansites/toucan" target="_blank" rel="noopener">Toucan</a>.
-            Aleahim &copy; 2026.
-        </p>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    
 </body>
 </html>

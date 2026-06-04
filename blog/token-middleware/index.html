@@ -1,89 +1,78 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients - Aleahim</title>
-    <meta name="description" content="Elegant, Thread-Safe Authentication for OpenAPI Runtime">
-
-    <link rel="canonical" href="https://aleahim.com/blog/token-middleware/">
-
-    <meta property="og:url" content="https://aleahim.com/blog/token-middleware/">
-    <meta property="og:title" content="Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients - Aleahim">
-    <meta property="og:description" content="Elegant, Thread-Safe Authentication for OpenAPI Runtime">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Aleahim">
-    <meta property="og:image" content="https://aleahim.com/images/token/bearer_token1.jpg">
-    <meta property="og:image:alt" content="Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients">
-    
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients - Aleahim">
-    <meta name="twitter:description" content="Elegant, Thread-Safe Authentication for OpenAPI Runtime">
-    <meta name="twitter:image" content="https://aleahim.com/images/token/bearer_token1.jpg">
-    <meta name="twitter:image:alt" content="Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients">
-    
-
-    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
-
-    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    
-
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients</title>
+<meta name="description" content="Elegant, Thread-Safe Authentication for OpenAPI Runtime">
+<link rel="canonical" href="https://aleahim.com/blog/token-middleware/">
+<meta property="og:title" content="Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Elegant, Thread-Safe Authentication for OpenAPI Runtime">
+<meta property="og:url" content="https://aleahim.com/blog/token-middleware/">
+<meta property="og:site_name" content="Aleahim">
+<meta property="og:image" content="https://aleahim.com/images/token/bearer_token1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients">
+<meta name="twitter:description" content="Elegant, Thread-Safe Authentication for OpenAPI Runtime">
+<meta name="twitter:image" content="https://aleahim.com/images/token/bearer_token1.jpg">
+<meta property="article:published_time" content="2025-11-08T00:00:00Z">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <a id="logo" href="https://aleahim.com">
-                <img
-                    src="https://aleahim.com/images/logo.svg"
-                    alt="Aleahim"
-                    title="Aleahim"
-                >
-                <h1 class="site-title">Aleahim.com</h1>
-            </a>
-    
-            <nav>
-                <div class="navigation">
-                    <a href="https://aleahim.com/">Home</a>
-                <a href="https://aleahim.com/cv/">CV</a>
-                <a href="https://aleahim.com/speaking/">Speaking</a>
-                <a href="https://codeweaver.info/" rel="noopener">Hire me</a>
-                <a href="https://aleahim.com/about/">About</a>
-                <a href="https://mihaelamj.github.io/cupertino/" rel="noopener">Cupertino Quality</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-    <article class="blog-post">
-        <header class="post-header">
-            <div class="title-with-thumbnail">
-                <div class="post-thumbnail">
-                    <img src="https://aleahim.com/images/token/bearer_token1.jpg" alt="Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients">
-                </div>
-                <div class="title-wrapper">
-                    <h1>Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients</h1>
-                    <div class="post-meta">
-                        <time datetime="2025-11-08T00:00:00.000Z">November 8, 2025</time>
-                    </div>
-                </div>
-            </div>
-        </header>
-    
-        <div class="post-content">
-            <div class="post-hero-image">
-                <img src="https://aleahim.com/images/token/bearer_token1.jpg" alt="Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients">
-            </div>
-    
-            <p>Authentication is one of those things that every API client needs, yet implementing it cleanly and safely can be surprisingly tricky—especially in Swift’s modern concurrency world. Today, I’m sharing a lightweight middleware solution that handles Bearer token authentication for OpenAPI-generated Swift clients in a thread-safe, composable way.</p><h2 id="the-problem">The Problem</h2><p>When working with OpenAPI Runtime in Swift, you often need to:</p><ul><li>Inject an <code>Authorization: Bearer &lt;token&gt;</code> header into API requests</li><li>Update tokens dynamically (after login, token refresh, etc.)</li><li>Skip authentication for certain endpoints (like login or public routes)</li><li>Ensure thread-safety in concurrent environments</li></ul><p>While this sounds straightforward, getting it right with Swift 6’s strict concurrency checking requires careful design. You need proper actor isolation, Sendable conformance, and a clean API that doesn’t fight the type system.</p><h2 id="the-solution-bearertokenauthenticationmiddleware">The Solution: BearerTokenAuthenticationMiddleware</h2><p>I built <code>BearerTokenAuthenticationMiddleware</code>—a minimal, zero-dependency package that solves these problems elegantly. Here’s what makes it special:</p><h3 id="1.-actor-isolated-token-storage">1. Actor-Isolated Token Storage</h3><p>The heart of the middleware is a private <code>TokenStorage</code> actor that manages the authentication token:</p><pre><code class="language-swift">private actor TokenStorage {
+<header class="td-header">
+<a class="td-brand" href="https://aleahim.com/">Aleahim</a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/cv/">Curriculum Vitae</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">November 8, 2025</time></div><h1 class="td-article-title">Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients</h1><p class="td-article-dek">Elegant, Thread-Safe Authentication for OpenAPI Runtime</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/token-middleware/">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Ftoken-middleware%2F&amp;text=Building%20a%20Concurrency-Safe%20Bearer%20Token%20Middleware%20for%20Swift%20OpenAPI%20Clients" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Ftoken-middleware%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Ftoken-middleware%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=Building%20a%20Concurrency-Safe%20Bearer%20Token%20Middleware%20for%20Swift%20OpenAPI%20Clients&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Ftoken-middleware%2F" target="_blank" rel="noopener">Email</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/token/bearer_token1.jpg" alt="Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients"></figure><div class="td-article-body"><p>Authentication is one of those things that every API client needs, yet implementing it cleanly and safely can be surprisingly tricky—especially in Swift’s modern concurrency world. Today, I’m sharing a lightweight middleware solution that handles Bearer token authentication for OpenAPI-generated Swift clients in a thread-safe, composable way.</p>
+<h2>The Problem</h2>
+<p>When working with OpenAPI Runtime in Swift, you often need to:</p>
+<ul><li><p>Inject an <code>Authorization: Bearer &lt;token&gt;</code> header into API requests</p></li><li><p>Update tokens dynamically (after login, token refresh, etc.)</p></li><li><p>Skip authentication for certain endpoints (like login or public routes)</p></li><li><p>Ensure thread-safety in concurrent environments</p></li></ul>
+<p>While this sounds straightforward, getting it right with Swift 6’s strict concurrency checking requires careful design. You need proper actor isolation, Sendable conformance, and a clean API that doesn’t fight the type system.</p>
+<h2>The Solution: BearerTokenAuthenticationMiddleware</h2>
+<p>I built <code>BearerTokenAuthenticationMiddleware</code>—a minimal, zero-dependency package that solves these problems elegantly. Here’s what makes it special:</p>
+<h3>1. Actor-Isolated Token Storage</h3>
+<p>The heart of the middleware is a private <code>TokenStorage</code> actor that manages the authentication token:</p>
+<pre><code class="language-swift">private actor TokenStorage {
     var token: String?
 
     func getToken() -&gt; String? {
@@ -93,8 +82,11 @@
     func setToken(_ newToken: String?) {
         token = newToken
     }
-}
-</code></pre><p>This ensures that token reads and writes are <strong>never concurrent</strong>, eliminating race conditions completely.</p><h3 id="2.-clean-composable-api">2. Clean, Composable API</h3><p>Setting up the middleware is straightforward:</p><pre><code class="language-swift">import OpenAPIRuntime
+}</code></pre>
+<p>This ensures that token reads and writes are <strong>never concurrent</strong>, eliminating race conditions completely.</p>
+<h3>2. Clean, Composable API</h3>
+<p>Setting up the middleware is straightforward:</p>
+<pre><code class="language-swift">import OpenAPIRuntime
 import BearerTokenAuthMiddleware
 
 let authMiddleware = BearerTokenAuthenticationMiddleware(
@@ -105,41 +97,15 @@ let client = Client(
     serverURL: URL(string: "https://api.example.com")!,
     transport: AsyncHTTPClientTransport(),
     middlewares: [authMiddleware]
-)
-</code></pre><p>Every request now automatically includes <code>Authorization: Bearer my-secret-token</code>.</p><h2 id="wrapping-up">Wrapping Up</h2><p>Building authentication middleware might seem like boilerplate, but doing it right—especially with modern Swift concurrency—requires thoughtful design. <code>BearerTokenAuthenticationMiddleware</code> provides:</p><ul><li>Thread-safe token management via actors</li><li>Selective authentication with operation-level control</li><li>Dynamic token updates</li><li>Zero dependencies</li><li>Clean composition with other middlewares</li></ul><p><strong>Repository</strong>: <a href="https://github.com/mihaelamj/BearerTokenAuthMiddleware" target="_blank">github.com/mihaelamj/BearerTokenAuthMiddleware</a></p>
-        </div>
-    
-        <footer class="post-footer">
-            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
-        </footer>
-    </article>
+)</code></pre>
+<p>Every request now automatically includes <code>Authorization: Bearer my-secret-token</code>.</p>
+<h2>Wrapping Up</h2>
+<p>Building authentication middleware might seem like boilerplate, but doing it right—especially with modern Swift concurrency—requires thoughtful design. <code>BearerTokenAuthenticationMiddleware</code> provides:</p>
+<ul><li><p>Thread-safe token management via actors</p></li><li><p>Selective authentication with operation-level control</p></li><li><p>Dynamic token updates</p></li><li><p>Zero dependencies</p></li><li><p>Clean composition with other middlewares</p></li></ul>
+<p><strong>Repository</strong>: <a href="https://github.com/mihaelamj/BearerTokenAuthMiddleware">github.com/mihaelamj/BearerTokenAuthMiddleware</a></p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a><time>May 31, 2026</time></li><li><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a><time>May 28, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a><time>May 21, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/cv/">Curriculum Vitae</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
 
-    </main>
 
-    <footer>
-        <p class="footer-links">
-            <a href="https://aleahim.com/rss.xml">RSS feed</a>
-            &nbsp;·&nbsp;
-            <a href="https://github.com/mihaelamj" target="_blank" rel="noopener">GitHub</a>
-            &nbsp;·&nbsp;
-            <a href="https://www.linkedin.com/in/mihaelamj" target="_blank" rel="noopener">LinkedIn</a>
-            &nbsp;·&nbsp;
-            <a href="https://x.com/diyamantina" target="_blank" rel="noopener">X</a>
-            &nbsp;·&nbsp;
-            <a href="https://mastodon.social/@ameahim" target="_blank" rel="noopener">Mastodon</a>
-            &nbsp;·&nbsp;
-            <a href="https://bsky.app/profile/dijamantina.bsky.social" target="_blank" rel="noopener">Bluesky</a>
-        </p>
-    
-        <p class="small">
-            Built with <a href="https://www.swift.org/" target="_blank" rel="noopener">Swift</a> and <a href="https://github.com/toucansites/toucan" target="_blank" rel="noopener">Toucan</a>.
-            Aleahim &copy; 2026.
-        </p>
-    </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    
 </body>
 </html>

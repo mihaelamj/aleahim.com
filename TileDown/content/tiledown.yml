@@ -1,0 +1,18 @@
+title: Aleahim
+baseURL: https://aleahim.com
+layout: top-nav
+theme: system
+appearance: toggle
+postsDir: blog
+postsLabel: Blog
+fontScale: 1.1
+rss: true
+rssPath: rss.xml
+rssTitle: Aleahim
+rssDescription: Technical articles on Swift, OpenAPI, and iOS development by Mihaela Mihaljevic.
+shareLinks: true
+social.github: https://github.com/mihaelamj
+social.linkedin: https://www.linkedin.com/in/mihaelamj
+analytics.head: <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+generate.cv: swift run --package-path /Volumes/Code/DeveloperExt/public/aleahim.com GenerateCV --output cv/index.md
+static..nojekyll: deployment/.nojekyll

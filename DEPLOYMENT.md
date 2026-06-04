@@ -91,6 +91,37 @@ make watch
 
 **Never deploy the dev build.** It uses `http://localhost:3000` URLs.
 
+## TileDown Production Check
+
+The TileDown source lives under `TileDown/`. GitHub Pages still serves committed
+HTML from the repository root, so the deploy flow is: regenerate TileDown,
+verify it, then copy `TileDown/dist/` over the root generated files.
+
+```bash
+make tiledown-check
+```
+
+This regenerates `TileDown/content`, runs `tiledown doctor --publish
+--run-generators`, builds `TileDown/dist` with the adjacent `../TileDown/tile-down`
+engine checkout, and verifies route parity, root deployment files, images, CV
+PDFs, RSS full content, analytics, and the converted video embed. Override the
+engine location when needed:
+
+```bash
+TILEDOWN_REPO=/path/to/tile-down make tiledown-check
+```
+
+For local browser preview, use the preview target:
+
+```bash
+make tiledown-preview
+```
+
+Production `TileDown/content/tiledown.yml` keeps `baseURL` from
+`Scripts/tiledown_site.py` for canonical URLs, RSS, sitemap, and share links.
+The preview target builds from a temporary content copy with `baseURL` removed,
+so CSS and internal links are root-relative and work on localhost.
+
 ## Configuration Files
 
 - **toucan.yml**: Build targets (dev → `dist/`, live → `/tmp/output/`)

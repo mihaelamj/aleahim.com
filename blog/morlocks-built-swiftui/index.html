@@ -1,122 +1,92 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>The Morlocks Built SwiftUI - Aleahim</title>
-    <meta name="description" content="The cynical read is that Apple kept the real tools and handed us toys. But the same engineer built Core Animation in 2007 and co-built SwiftUI in 2019, and that one fact says the opposite. On why the foundation never left, and the debt that comes due the day the abstraction breaks.">
-
-    <link rel="canonical" href="https://aleahim.com/blog/morlocks-built-swiftui/">
-
-    <meta property="og:url" content="https://aleahim.com/blog/morlocks-built-swiftui/">
-    <meta property="og:title" content="The Morlocks Built SwiftUI - Aleahim">
-    <meta property="og:description" content="The cynical read is that Apple kept the real tools and handed us toys. But the same engineer built Core Animation in 2007 and co-built SwiftUI in 2019, and that one fact says the opposite. On why the foundation never left, and the debt that comes due the day the abstraction breaks.">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Aleahim">
-    <meta property="og:image" content="https://aleahim.com/images/blog/morlocks-built-swiftui/hero.png">
-    <meta property="og:image:alt" content="The Morlocks Built SwiftUI">
-    
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="The Morlocks Built SwiftUI - Aleahim">
-    <meta name="twitter:description" content="The cynical read is that Apple kept the real tools and handed us toys. But the same engineer built Core Animation in 2007 and co-built SwiftUI in 2019, and that one fact says the opposite. On why the foundation never left, and the debt that comes due the day the abstraction breaks.">
-    <meta name="twitter:image" content="https://aleahim.com/images/blog/morlocks-built-swiftui/hero.png">
-    <meta name="twitter:image:alt" content="The Morlocks Built SwiftUI">
-    
-
-    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
-
-    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    
-
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>The Morlocks Built SwiftUI</title>
+<meta name="description" content="The cynical read is that Apple kept the real tools and handed us toys. But the same engineer built Core Animation in 2007 and co-built SwiftUI in 2019, and that one fact says the opposite. On why the foundation never left, and the debt that comes due the day the abstraction breaks.">
+<link rel="canonical" href="https://aleahim.com/blog/morlocks-built-swiftui/">
+<meta property="og:title" content="The Morlocks Built SwiftUI">
+<meta property="og:type" content="article">
+<meta property="og:description" content="The cynical read is that Apple kept the real tools and handed us toys. But the same engineer built Core Animation in 2007 and co-built SwiftUI in 2019, and that one fact says the opposite. On why the foundation never left, and the debt that comes due the day the abstraction breaks.">
+<meta property="og:url" content="https://aleahim.com/blog/morlocks-built-swiftui/">
+<meta property="og:site_name" content="Aleahim">
+<meta property="og:image" content="https://aleahim.com/images/blog/morlocks-built-swiftui/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Morlocks Built SwiftUI">
+<meta name="twitter:description" content="The cynical read is that Apple kept the real tools and handed us toys. But the same engineer built Core Animation in 2007 and co-built SwiftUI in 2019, and that one fact says the opposite. On why the foundation never left, and the debt that comes due the day the abstraction breaks.">
+<meta name="twitter:image" content="https://aleahim.com/images/blog/morlocks-built-swiftui/hero.png">
+<meta property="article:published_time" content="2026-05-28T00:00:00Z">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <a id="logo" href="https://aleahim.com">
-                <img
-                    src="https://aleahim.com/images/logo.svg"
-                    alt="Aleahim"
-                    title="Aleahim"
-                >
-                <h1 class="site-title">Aleahim.com</h1>
-            </a>
-    
-            <nav>
-                <div class="navigation">
-                    <a href="https://aleahim.com/">Home</a>
-                <a href="https://aleahim.com/cv/">CV</a>
-                <a href="https://aleahim.com/speaking/">Speaking</a>
-                <a href="https://codeweaver.info/" rel="noopener">Hire me</a>
-                <a href="https://aleahim.com/about/">About</a>
-                <a href="https://mihaelamj.github.io/cupertino/" rel="noopener">Cupertino Quality</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<header class="td-header">
+<a class="td-brand" href="https://aleahim.com/">Aleahim</a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/cv/">Curriculum Vitae</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">May 28, 2026</time></div><h1 class="td-article-title">The Morlocks Built SwiftUI</h1><p class="td-article-dek">The cynical read is that Apple kept the real tools and handed us toys. But the same engineer built Core Animation in 2007 and co-built SwiftUI in 2019, and that one fact says the opposite. On why the foundation never left, and the debt that comes due the day the abstraction breaks.</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/morlocks-built-swiftui/">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fmorlocks-built-swiftui%2F&amp;text=The%20Morlocks%20Built%20SwiftUI" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fmorlocks-built-swiftui%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fmorlocks-built-swiftui%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=The%20Morlocks%20Built%20SwiftUI&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fmorlocks-built-swiftui%2F" target="_blank" rel="noopener">Email</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/blog/morlocks-built-swiftui/hero.png" alt="The Morlocks Built SwiftUI"></figure><div class="td-article-body"><p>Swift is for the Eloi.</p>
+<p>That is the cynical reading. There is a ladder here, and every rung hides more than the last:</p>
+<ul><li><p><strong>C</strong>: too dangerous. Pointers, manual memory, undefined behavior.</p></li><li><p><strong>Objective-C</strong>: too dynamic. A runtime that will happily message a deallocated object and crash you in production.</p></li><li><p><strong>Swift</strong>: safe by default, but the pointers are still there if you go looking.</p></li><li><p><strong>Swift 6 strict concurrency</strong>: the compiler now walks you across every actor boundary so you never have to reason about a data race yourself.</p></li><li><p><strong>SwiftUI</strong>: declarative. Stop thinking about the render loop.</p></li><li><p><strong>SwiftData</strong>: persistence without ever learning what an object graph is.</p></li></ul>
+<p>Most developers shipping apps today have never typed <code>CALayer</code>, because SwiftUI just works. Until it doesn’t.</p>
+<p>It is tempting to call this condescension: the toolmakers kept the real tools and handed us the Fisher-Price version. It is a satisfying story. It is also wrong.</p>
+<h2>The man who built both ends</h2>
+<p>Core Animation was created by an Apple engineer named John Harper, and it is older than the device that made it famous. He built it under the codename “LayerKit”, and Apple was already showing it running on the Mac at WWDC 2006, months before the iPhone was announced. The foundational patent, US 8,130,226 (“Framework for Graphics Animation and Compositing Operations”), traces its priority to an application filed on August 4, 2006, and its own text still notes that “Core Animation” is just the “LayerKit” of that earlier filing. It reached the public in 2007: in the first iPhone OS, and later that year on the Mac in OS X 10.5 Leopard.</p>
+<p>He left for Facebook in 2014. He came back to Apple and co-built SwiftUI: at WWDC 2019 he was on stage in “Building Custom Views with SwiftUI”, explaining how the view system actually works.</p>
+<p>The person who built the rendering foundation that shipped in 2007 was, twelve years later, on the team building the declarative layer that sits on top of it. The same hands on both ends of the abstraction.</p>
+<p>A Morlock in the daylight.</p>
+<p>SwiftUI is not what happens when the serious engineers go build silicon and leave the toy framework to someone junior. It is what happens when the people who understand the foundation best decide what you should usually not have to think about. The implicit animation system, the idea that a state change should animate by default, that you declare what the UI is and let the framework diff and interpolate, is not a dumbing-down of Core Animation. It is Core Animation’s own philosophy, made the default instead of the opt-in.</p>
+<h2>The foundations never left</h2>
+<p>Of all of Apple’s low-level frameworks, almost everything named <code>Core</code> is written in C and meant to be called from anywhere: Core Graphics, Core Text, Core Audio, Core Foundation. Close to the metal, language-agnostic, no object model in the way.</p>
+<p>Two are different. Core Animation and Core Data are written in Objective-C, object-model frameworks built around a tree of objects rather than a bag of C functions: Core Animation with its layer tree, Core Data with its managed-object graph. They were designed object-first because the problems they solve are object-shaped.</p>
+<p>Those two still do not have Swift-native replacements. SwiftUI does not replace Core Animation. It sits on top of it. Your <code>.animation()</code> modifier drives a <code>CAAnimation</code>. Your view hierarchy resolves to a layer tree and a render server that has been doing this job, more or less unchanged, since 2007. SwiftData does the same thing to Core Data. The friendly declarative surface is new. The foundation underneath is the same machine it always was.</p>
+<p>Core Animation did not need to change, because it was right the first time. The layer tree, the split between the model tree and the presentation tree, the separate render process, the implicit transactions: all still there, all still doing the work. What SwiftUI replaced was not Core Animation. It was UIKit’s interface to Core Animation: the manual animation blocks, the animator APIs, the layout system that had accreted cruft for a decade. The part that aged badly was how we talked to the machine, not the machine.</p>
+<h2>So what is the truth we can’t handle?</h2>
+<p>It is not that we are too stupid for pointers. Plenty of us could learn the layer tree in a weekend.</p>
+<p>The truth is quieter: the foundation is still there, you have just stopped being able to see it, and that is a debt, not a gift. It comes due on the specific day SwiftUI does something you cannot explain. A frame that drops. An animation that fights itself. A view that will not redraw when every rule you know says it should. On that day the abstraction has failed, and the only people who can fix it are the ones who know what is underneath: the layer tree, implicit versus explicit animation, transforms, compositing, the render server.</p>
+<p>Apple did not give us Swift and SwiftUI because we are too soft for the real thing. They gave them to us because the people who built the real thing learned, over fifteen years, which parts you genuinely should not have to touch most days. That is not contempt. It is the opposite. It is mastery deciding the default.</p>
+<p>A good enough abstraction does not insult you. It just makes you comfortable on the surface, and helpless the day the machinery underneath asks whether you were paying attention. The layer tree is a weekend’s study. Learn it before the day you need it, because the framework will not tell you, in advance, which kind of day today is.</p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a><time>May 31, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a><time>May 21, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-1-0-poison-cleanup/">Cupertino v1.1.0: my Apple docs index was 30% lies and I didn&#39;t know</a><time>May 14, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/cv/">Curriculum Vitae</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
 
-    <main>
-    <article class="blog-post">
-        <header class="post-header">
-            <div class="title-with-thumbnail">
-                <div class="post-thumbnail">
-                    <img src="https://aleahim.com/images/blog/morlocks-built-swiftui/hero.png" alt="The Morlocks Built SwiftUI">
-                </div>
-                <div class="title-wrapper">
-                    <h1>The Morlocks Built SwiftUI</h1>
-                    <div class="post-meta">
-                        <time datetime="2026-05-28T00:00:00.000Z">May 28, 2026</time>
-                    </div>
-                </div>
-            </div>
-        </header>
-    
-        <div class="post-content">
-            <div class="post-hero-image">
-                <img src="https://aleahim.com/images/blog/morlocks-built-swiftui/hero.png" alt="The Morlocks Built SwiftUI">
-            </div>
-    
-            <h1>The Morlocks Built SwiftUI</h1><p>Swift is for the Eloi.</p><p>That is the cynical reading. There is a ladder here, and every rung hides more than the last:</p><ul><li><strong>C</strong>: too dangerous. Pointers, manual memory, undefined behavior.</li><li><strong>Objective-C</strong>: too dynamic. A runtime that will happily message a deallocated object and crash you in production.</li><li><strong>Swift</strong>: safe by default, but the pointers are still there if you go looking.</li><li><strong>Swift 6 strict concurrency</strong>: the compiler now walks you across every actor boundary so you never have to reason about a data race yourself.</li><li><strong>SwiftUI</strong>: declarative. Stop thinking about the render loop.</li><li><strong>SwiftData</strong>: persistence without ever learning what an object graph is.</li></ul><p>Most developers shipping apps today have never typed <code>CALayer</code>, because SwiftUI just works. Until it doesn’t.</p><p>It is tempting to call this condescension: the toolmakers kept the real tools and handed us the Fisher-Price version. It is a satisfying story. It is also wrong.</p><h2 id="the-man-who-built-both-ends">The man who built both ends</h2><p>Core Animation was created by an Apple engineer named John Harper, and it is older than the device that made it famous. He built it under the codename “LayerKit”, and Apple was already showing it running on the Mac at WWDC 2006, months before the iPhone was announced. The foundational patent, US 8,130,226 (“Framework for Graphics Animation and Compositing Operations”), traces its priority to an application filed on August 4, 2006, and its own text still notes that “Core Animation” is just the “LayerKit” of that earlier filing. It reached the public in 2007: in the first iPhone OS, and later that year on the Mac in OS X 10.5 Leopard.</p><p>He left for Facebook in 2014. He came back to Apple and co-built SwiftUI: at WWDC 2019 he was on stage in “Building Custom Views with SwiftUI”, explaining how the view system actually works.</p><p>The person who built the rendering foundation that shipped in 2007 was, twelve years later, on the team building the declarative layer that sits on top of it. The same hands on both ends of the abstraction.</p><p>A Morlock in the daylight.</p><p>SwiftUI is not what happens when the serious engineers go build silicon and leave the toy framework to someone junior. It is what happens when the people who understand the foundation best decide what you should usually not have to think about. The implicit animation system, the idea that a state change should animate by default, that you declare what the UI is and let the framework diff and interpolate, is not a dumbing-down of Core Animation. It is Core Animation’s own philosophy, made the default instead of the opt-in.</p><h2 id="the-foundations-never-left">The foundations never left</h2><p>Of all of Apple’s low-level frameworks, almost everything named <code>Core</code> is written in C and meant to be called from anywhere: Core Graphics, Core Text, Core Audio, Core Foundation. Close to the metal, language-agnostic, no object model in the way.</p><p>Two are different. Core Animation and Core Data are written in Objective-C, object-model frameworks built around a tree of objects rather than a bag of C functions: Core Animation with its layer tree, Core Data with its managed-object graph. They were designed object-first because the problems they solve are object-shaped.</p><p>Those two still do not have Swift-native replacements. SwiftUI does not replace Core Animation. It sits on top of it. Your <code>.animation()</code> modifier drives a <code>CAAnimation</code>. Your view hierarchy resolves to a layer tree and a render server that has been doing this job, more or less unchanged, since 2007. SwiftData does the same thing to Core Data. The friendly declarative surface is new. The foundation underneath is the same machine it always was.</p><p>Core Animation did not need to change, because it was right the first time. The layer tree, the split between the model tree and the presentation tree, the separate render process, the implicit transactions: all still there, all still doing the work. What SwiftUI replaced was not Core Animation. It was UIKit’s interface to Core Animation: the manual animation blocks, the animator APIs, the layout system that had accreted cruft for a decade. The part that aged badly was how we talked to the machine, not the machine.</p><h2 id="so-what-is-the-truth-we-can-t-handle">So what is the truth we can’t handle?</h2><p>It is not that we are too stupid for pointers. Plenty of us could learn the layer tree in a weekend.</p><p>The truth is quieter: the foundation is still there, you have just stopped being able to see it, and that is a debt, not a gift. It comes due on the specific day SwiftUI does something you cannot explain. A frame that drops. An animation that fights itself. A view that will not redraw when every rule you know says it should. On that day the abstraction has failed, and the only people who can fix it are the ones who know what is underneath: the layer tree, implicit versus explicit animation, transforms, compositing, the render server.</p><p>Apple did not give us Swift and SwiftUI because we are too soft for the real thing. They gave them to us because the people who built the real thing learned, over fifteen years, which parts you genuinely should not have to touch most days. That is not contempt. It is the opposite. It is mastery deciding the default.</p><p>A good enough abstraction does not insult you. It just makes you comfortable on the surface, and helpless the day the machinery underneath asks whether you were paying attention. The layer tree is a weekend’s study. Learn it before the day you need it, because the framework will not tell you, in advance, which kind of day today is.</p>
-        </div>
-    
-        <footer class="post-footer">
-            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
-        </footer>
-    </article>
 
-    </main>
 
-    <footer>
-        <p class="footer-links">
-            <a href="https://aleahim.com/rss.xml">RSS feed</a>
-            &nbsp;·&nbsp;
-            <a href="https://github.com/mihaelamj" target="_blank" rel="noopener">GitHub</a>
-            &nbsp;·&nbsp;
-            <a href="https://www.linkedin.com/in/mihaelamj" target="_blank" rel="noopener">LinkedIn</a>
-            &nbsp;·&nbsp;
-            <a href="https://x.com/diyamantina" target="_blank" rel="noopener">X</a>
-            &nbsp;·&nbsp;
-            <a href="https://mastodon.social/@ameahim" target="_blank" rel="noopener">Mastodon</a>
-            &nbsp;·&nbsp;
-            <a href="https://bsky.app/profile/dijamantina.bsky.social" target="_blank" rel="noopener">Bluesky</a>
-        </p>
-    
-        <p class="small">
-            Built with <a href="https://www.swift.org/" target="_blank" rel="noopener">Swift</a> and <a href="https://github.com/toucansites/toucan" target="_blank" rel="noopener">Toucan</a>.
-            Aleahim &copy; 2026.
-        </p>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    
 </body>
 </html>

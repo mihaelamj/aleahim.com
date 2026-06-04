@@ -1,118 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://aleahim.com/cv/</loc>
-        <lastmod>2026-05-28</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/speaking/</loc>
-        <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/about/</loc>
-        <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/</loc>
-        <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/</loc>
-        <lastmod>2026-05-31</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/morlocks-built-swiftui/</loc>
-        <lastmod>2026-05-28</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-v1-2-0-ironclad/</loc>
-        <lastmod>2026-05-21</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-v1-1-0-poison-cleanup/</loc>
-        <lastmod>2026-05-13</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/why-i-built-openapi-doctor/</loc>
-        <lastmod>2026-05-14</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-v1-0-2/</loc>
-        <lastmod>2026-05-11</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-first-light/</loc>
-        <lastmod>2026-05-11</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-10-release/</loc>
-        <lastmod>2026-03-15</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/irelay/</loc>
-        <lastmod>2026-03-13</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-09-release/</loc>
-        <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-08-release/</loc>
-        <lastmod>2025-12-20</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-07-release/</loc>
-        <lastmod>2025-12-15</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-05-release/</loc>
-        <lastmod>2025-12-11</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-04-release/</loc>
-        <lastmod>2025-12-09</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-one-line-install/</loc>
-        <lastmod>2025-12-06</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-instant-setup/</loc>
-        <lastmod>2025-12-05</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino-ecosystem/</loc>
-        <lastmod>2025-12-03</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/cupertino/</loc>
-        <lastmod>2025-12-03</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/token-middleware/</loc>
-        <lastmod>2025-11-08</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/extreme-packaging-open-a-p-i/</loc>
-        <lastmod>2025-11-08</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/logging-middleware/</loc>
-        <lastmod>2025-11-08</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/extreme-packaging/</loc>
-        <lastmod>2025-11-08</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/c-v-builder/</loc>
-        <lastmod>2025-11-08</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/swift-u-i-lab-advanced-animations/</loc>
-        <lastmod>2025-11-08</lastmod>
-    </url>
-    <url>
-        <loc>https://aleahim.com/blog/core-animation-3d-cube/</loc>
-        <lastmod>2026-05-28</lastmod>
-    </url>
+<url>
+<loc>https://aleahim.com/</loc>
+</url>
+<url>
+<loc>https://aleahim.com/about/</loc>
+</url>
+<url>
+<loc>https://aleahim.com/blog/c-v-builder/</loc>
+<lastmod>2025-04-13</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/core-animation-3d-cube/</loc>
+<lastmod>2021-03-06</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino/</loc>
+<lastmod>2025-11-28</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-04-release/</loc>
+<lastmod>2025-12-09</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-05-release/</loc>
+<lastmod>2025-12-11</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-07-release/</loc>
+<lastmod>2025-12-15</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-08-release/</loc>
+<lastmod>2025-12-20</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-09-release/</loc>
+<lastmod>2026-01-25</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-10-release/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-ecosystem/</loc>
+<lastmod>2025-12-03</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-first-light/</loc>
+<lastmod>2026-05-05</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-instant-setup/</loc>
+<lastmod>2025-12-05</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-one-line-install/</loc>
+<lastmod>2025-12-06</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-v1-0-2/</loc>
+<lastmod>2026-05-11</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-v1-1-0-poison-cleanup/</loc>
+<lastmod>2026-05-14</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-v1-2-0-ironclad/</loc>
+<lastmod>2026-05-21</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/</loc>
+<lastmod>2026-05-31</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/extreme-packaging/</loc>
+<lastmod>2025-09-13</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/extreme-packaging-open-a-p-i/</loc>
+<lastmod>2025-09-23</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/irelay/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/logging-middleware/</loc>
+<lastmod>2025-09-16</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/morlocks-built-swiftui/</loc>
+<lastmod>2026-05-28</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/swift-u-i-lab-advanced-animations/</loc>
+<lastmod>2022-02-13</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/token-middleware/</loc>
+<lastmod>2025-11-08</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/blog/why-i-built-openapi-doctor/</loc>
+<lastmod>2026-05-14</lastmod>
+</url>
+<url>
+<loc>https://aleahim.com/cv/</loc>
+</url>
+<url>
+<loc>https://aleahim.com/speaking/</loc>
+</url>
 </urlset>
