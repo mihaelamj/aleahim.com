@@ -1,93 +1,114 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Cupertino: 27 Issues Down, Just Getting Started - Aleahim</title>
-    <meta name="description" content="From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects">
-
-    <link rel="canonical" href="https://aleahim.com/blog/cupertino-ecosystem/">
-
-    <meta property="og:url" content="https://aleahim.com/blog/cupertino-ecosystem/">
-    <meta property="og:title" content="Cupertino: 27 Issues Down, Just Getting Started - Aleahim">
-    <meta property="og:description" content="From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Aleahim">
-    <meta property="og:image" content="https://aleahim.com/images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png">
-    <meta property="og:image:alt" content="Cupertino: 27 Issues Down, Just Getting Started">
-    
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cupertino: 27 Issues Down, Just Getting Started - Aleahim">
-    <meta name="twitter:description" content="From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects">
-    <meta name="twitter:image" content="https://aleahim.com/images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png">
-    <meta name="twitter:image:alt" content="Cupertino: 27 Issues Down, Just Getting Started">
-    
-
-    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
-
-    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    
-
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>Cupertino: 27 Issues Down, Just Getting Started</title>
+<meta name="description" content="From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects">
+<link rel="canonical" href="https://aleahim.com/blog/cupertino-ecosystem/">
+<meta property="og:title" content="Cupertino: 27 Issues Down, Just Getting Started">
+<meta property="og:type" content="article">
+<meta property="og:description" content="From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects">
+<meta property="og:url" content="https://aleahim.com/blog/cupertino-ecosystem/">
+<meta property="og:site_name" content="Aleahim">
+<meta property="og:image" content="https://aleahim.com/images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cupertino: 27 Issues Down, Just Getting Started">
+<meta name="twitter:description" content="From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects">
+<meta name="twitter:image" content="https://aleahim.com/images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png">
+<meta property="article:published_time" content="2025-12-03T00:00:00Z">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <a id="logo" href="https://aleahim.com">
-                <img
-                    src="https://aleahim.com/images/logo.svg"
-                    alt="Aleahim"
-                    title="Aleahim"
-                >
-                <h1 class="site-title">Aleahim.com</h1>
-            </a>
-    
-            <nav>
-                <div class="navigation">
-                    <a href="https://aleahim.com/">Home</a>
-                <a href="https://aleahim.com/cv/">CV</a>
-                <a href="https://aleahim.com/speaking/">Speaking</a>
-                <a href="https://codeweaver.info/" rel="noopener">Hire me</a>
-                <a href="https://aleahim.com/about/">About</a>
-                <a href="https://mihaelamj.github.io/cupertino/" rel="noopener">Cupertino Quality</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-    <article class="blog-post">
-        <header class="post-header">
-            <div class="title-with-thumbnail">
-                <div class="post-thumbnail">
-                    <img src="https://aleahim.com/images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png" alt="Cupertino: 27 Issues Down, Just Getting Started">
-                </div>
-                <div class="title-wrapper">
-                    <h1>Cupertino: 27 Issues Down, Just Getting Started</h1>
-                    <div class="post-meta">
-                        <time datetime="2025-12-03T00:00:00.000Z">December 3, 2025</time>
-                    </div>
-                </div>
-            </div>
-        </header>
-    
-        <div class="post-content">
-            <div class="post-hero-image">
-                <img src="https://aleahim.com/images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png" alt="Cupertino: 27 Issues Down, Just Getting Started">
-            </div>
-    
-            <p>I’m currently working on two macOS apps, and I rely heavily on Claude Code to help me ship faster. But here’s the thing—I kept hitting the same wall: hallucinated APIs, outdated patterns, confident suggestions for methods that don’t exist.</p><p>I’m not alone. Developers everywhere report the same issues: AI suggesting <code>@ObservableObject</code> and <code>@Published</code> when Apple now recommends <code>@Observable</code>. Xcode 26’s AI integration <a href="https://www.fline.dev/why-im-not-using-xcode-26s-ai-chat-integration-and-what-could-change-my-mind/" target="_blank">hallucinating 100% of the time</a> when asked about new 2025 frameworks. One developer described fixing AI-generated Swift code as <a href="https://medium.com/@agnislav/one-more-chatgpt-vs-claude-comparison-for-macos-development-8cae53ec7c3e" target="_blank">“whack-a-mole”</a>—fix one obsolete API, another pops up.</p><p>That frustration is why I built Cupertino.</p><p>In my <a href="https://aleahim.com/blog/cupertino/">previous post</a>, I introduced it—an MCP server that gives Claude offline access to 22,000+ Apple documentation pages. That was version 0.1.x. Since then, things have evolved rapidly: nine releases in 72 hours, two new companion repositories, and a complete ecosystem for AI-assisted Apple development.</p><p>I need this tool. I use it every day. And I’m building it in public because I know I’m not the only one frustrated with AI that hallucinates Apple APIs.</p><h2 id="what-changed-v0.1.6-v0.2.3">What Changed: v0.1.6 → v0.2.3</h2><p>The original Cupertino solved the core problem—searching Apple docs locally. But real-world usage revealed gaps: ranking wasn’t smart enough, storage was bloated, and legacy documentation was missing. Here’s what shipped:</p><h3 id="intelligent-ranking-v0.2.1">Intelligent Ranking (v0.2.1)</h3><p>The initial BM25 search treated all documents equally. A query for “View” might return some random extension before <code>SwiftUI.View</code> itself. Eight ranking heuristics now prioritize:</p><ul><li><strong>Core types over extensions</strong> - <code>View</code> ranks above <code>View+Accessibility</code></li><li><strong>URL depth analysis</strong> - <code>/documentation/swiftui/view</code> beats <code>/documentation/swiftui/view/some/nested/thing</code></li><li><strong>Title pattern detection</strong> - Exact matches surface first</li><li><strong>Modern over deprecated</strong> - Current APIs rank higher</li></ul><p>The result: sub-100ms queries that actually return what you’re looking for.</p><h3 id="storage-cleanup-v0.1.8-v0.2.0">Storage Cleanup (v0.1.8, v0.2.0)</h3><p>The initial crawl produced ~27GB of data. Most of it was cruft: <code>.git</code> folders from sample code downloads, <code>.DS_Store</code> files, Xcode user data. A new <code>cleanup</code> command reduced storage to 2-3GB—a 90% reduction.</p><p>Version 0.2.0 fixed a critical bug where cleanup was accidentally deleting source code instead of just metadata. Now 99.8% of sample ZIPs retain intact source.</p><h3 id="language-filtering-v0.1.9">Language Filtering (v0.1.9)</h3><p>Not everyone wants Objective-C results. The CLI and MCP tools now accept a <code>language</code> parameter:</p><pre><code class="language-bash">cupertino search "NSObject" --language swift
-</code></pre><p>Claude can filter too—just ask for “Swift-only results.”</p><h3 id="apple-archive-support-v0.2.3">Apple Archive Support (v0.2.3)</h3><p>Apple’s modern documentation is great, but some topics only exist in the legacy archive: Core Animation Programming Guide, Quartz 2D Programming Guide, Core Text Programming Guide. These are still the authoritative sources for low-level graphics work.</p><p>Cupertino now crawls <code>developer.apple.com/library/archive/</code> and integrates results with smart ranking that prioritizes modern docs while keeping legacy content searchable.</p><h2 id="the-ecosystem-three-repositories">The Ecosystem: Three Repositories</h2><p>Cupertino grew from one repo to three:</p><h3 id="cupertino-the-mcp-server"><a href="https://github.com/mihaelamj/cupertino" target="_blank">cupertino</a> — The MCP Server</h3><p>The main Swift package. Crawls, indexes, and serves documentation via MCP protocol. Install it, point Claude at it, done.</p><pre><code class="language-bash"># Quick setup with Claude Code
-claude mcp add cupertino --scope user -- /usr/local/bin/cupertino
-</code></pre><h3 id="cupertino-docs-pre-crawled-documentation"><a href="https://github.com/mihaelamj/cupertino-docs" target="_blank">cupertino-docs</a> — Pre-Crawled Documentation</h3><p>Don’t want to crawl everything yourself? Clone this repo:</p><pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino-docs ~/.cupertino
-</code></pre><p>Currently includes:</p><table><thead><td>Source</td><td>Content</td><td>Status</td></thead><tbody><tr><td><code>swift-evolution/</code></td><td>All Swift proposals (~400)</td><td>Ready</td></tr><tr><td><code>swift-org/</code></td><td>Swift.org language docs</td><td>Ready</td></tr><tr><td><code>packages/</code></td><td>Swift Package Index metadata</td><td>Ready</td></tr><tr><td><code>docs/</code></td><td>Apple Developer Documentation (13K+ pages)</td><td>WIP - requires manual crawl</td></tr><tr><td><code>archive/</code></td><td>Legacy Apple guides</td><td>WIP - requires manual crawl</td></tr></tbody></table><p>Swift Evolution, Swift.org, and package docs are pre-indexed and ready. Apple Developer Documentation and Archive still require running <code>cupertino fetch</code> yourself due to size—but having the infrastructure in place is a start. The tooling exists; full pre-crawled distribution is coming.</p><h3 id="cupertino-sample-code-606-apple-samples"><a href="https://github.com/mihaelamj/cupertino-sample-code" target="_blank">cupertino-sample-code</a> — 606 Apple Samples</h3><p>This is the fun one. Every official Apple sample code project, cleaned and ready to build:</p><ul><li><strong>100+ frameworks covered</strong>: SwiftUI, ARKit, RealityKit, Metal, CoreML, Vision, AVFoundation, HealthKit, HomeKit, and more</li><li><strong>606 projects</strong>: From “Hello World” to complex GPU shaders</li><li><strong>Build-ready</strong>: No <code>.git</code> folders, no xcuserdata, no cruft</li><li><strong>MIT Licensed</strong>: Use them however you want</li></ul><p>When you ask Claude “show me how Apple implements ARKit face tracking,” it can now search actual Apple sample code—not hallucinate an approximation.</p><p>Example projects include:</p><ul><li><code>arkit-*</code> — Augmented reality implementations</li><li><code>swiftui-*</code> — Modern UI patterns</li><li><code>metal-*</code> — GPU programming examples</li><li><code>coreml-*</code> — Machine learning integrations</li><li><code>avfoundation-*</code> — Video and audio capture</li></ul><h2 id="the-72-hour-sprint">The 72-Hour Sprint</h2><p>Nine releases shipped in three days. Here’s the changelog:</p><table><thead><td>Version</td><td>Key Changes</td></thead><tbody><tr><td>v0.1.6</td><td>JSON-first crawling, WKWebView memory fixes</td></tr><tr><td>v0.1.7</td><td>Swift Book content retrieval fixes</td></tr><tr><td>v0.1.8</td><td>Cleanup command (27GB → 2-3GB)</td></tr><tr><td>v0.1.9</td><td>Language filtering (Swift/ObjC)</td></tr><tr><td>v0.2.0</td><td>Critical fix: source code retention</td></tr><tr><td>v0.2.1</td><td>Eight ranking heuristics</td></tr><tr><td>v0.2.2</td><td>URL depth analysis, resume fixes</td></tr><tr><td>v0.2.3</td><td>Apple Archive legacy docs</td></tr></tbody></table><p>Each release addressed real issues discovered while using Cupertino with Claude Code. Fast iteration, real-world testing.</p><h2 id="using-the-full-ecosystem">Using the Full Ecosystem</h2><p>Here’s the quickest path to AI-assisted Apple development with accurate documentation:</p><pre><code class="language-bash"># 1. Get pre-crawled docs (skip the 20-hour crawl)
+<header class="td-header">
+<a class="td-brand" href="https://aleahim.com/">Aleahim</a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/cv/">Curriculum Vitae</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">December 3, 2025</time></div><h1 class="td-article-title">Cupertino: 27 Issues Down, Just Getting Started</h1><p class="td-article-dek">From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/cupertino-ecosystem/">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-ecosystem%2F&amp;text=Cupertino%3A%2027%20Issues%20Down%2C%20Just%20Getting%20Started" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-ecosystem%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-ecosystem%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=Cupertino%3A%2027%20Issues%20Down%2C%20Just%20Getting%20Started&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-ecosystem%2F" target="_blank" rel="noopener">Email</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png" alt="Cupertino: 27 Issues Down, Just Getting Started"></figure><div class="td-article-body"><p>I’m currently working on two macOS apps, and I rely heavily on Claude Code to help me ship faster. But here’s the thing—I kept hitting the same wall: hallucinated APIs, outdated patterns, confident suggestions for methods that don’t exist.</p>
+<p>I’m not alone. Developers everywhere report the same issues: AI suggesting <code>@ObservableObject</code> and <code>@Published</code> when Apple now recommends <code>@Observable</code>. Xcode 26’s AI integration <a href="https://www.fline.dev/why-im-not-using-xcode-26s-ai-chat-integration-and-what-could-change-my-mind/">hallucinating 100% of the time</a> when asked about new 2025 frameworks. One developer described fixing AI-generated Swift code as <a href="https://medium.com/@agnislav/one-more-chatgpt-vs-claude-comparison-for-macos-development-8cae53ec7c3e">“whack-a-mole”</a>—fix one obsolete API, another pops up.</p>
+<p>That frustration is why I built Cupertino.</p>
+<p>In my <a href="https://aleahim.com/blog/cupertino/">previous post</a>, I introduced it—an MCP server that gives Claude offline access to 22,000+ Apple documentation pages. That was version 0.1.x. Since then, things have evolved rapidly: nine releases in 72 hours, two new companion repositories, and a complete ecosystem for AI-assisted Apple development.</p>
+<p>I need this tool. I use it every day. And I’m building it in public because I know I’m not the only one frustrated with AI that hallucinates Apple APIs.</p>
+<h2>What Changed: v0.1.6 → v0.2.3</h2>
+<p>The original Cupertino solved the core problem—searching Apple docs locally. But real-world usage revealed gaps: ranking wasn’t smart enough, storage was bloated, and legacy documentation was missing. Here’s what shipped:</p>
+<h3>Intelligent Ranking (v0.2.1)</h3>
+<p>The initial BM25 search treated all documents equally. A query for “View” might return some random extension before <code>SwiftUI.View</code> itself. Eight ranking heuristics now prioritize:</p>
+<ul><li><p><strong>Core types over extensions</strong> - <code>View</code> ranks above <code>View+Accessibility</code></p></li><li><p><strong>URL depth analysis</strong> - <code>/documentation/swiftui/view</code> beats <code>/documentation/swiftui/view/some/nested/thing</code></p></li><li><p><strong>Title pattern detection</strong> - Exact matches surface first</p></li><li><p><strong>Modern over deprecated</strong> - Current APIs rank higher</p></li></ul>
+<p>The result: sub-100ms queries that actually return what you’re looking for.</p>
+<h3>Storage Cleanup (v0.1.8, v0.2.0)</h3>
+<p>The initial crawl produced ~27GB of data. Most of it was cruft: <code>.git</code> folders from sample code downloads, <code>.DS_Store</code> files, Xcode user data. A new <code>cleanup</code> command reduced storage to 2-3GB—a 90% reduction.</p>
+<p>Version 0.2.0 fixed a critical bug where cleanup was accidentally deleting source code instead of just metadata. Now 99.8% of sample ZIPs retain intact source.</p>
+<h3>Language Filtering (v0.1.9)</h3>
+<p>Not everyone wants Objective-C results. The CLI and MCP tools now accept a <code>language</code> parameter:</p>
+<pre><code class="language-bash">cupertino search "NSObject" --language swift</code></pre>
+<p>Claude can filter too—just ask for “Swift-only results.”</p>
+<h3>Apple Archive Support (v0.2.3)</h3>
+<p>Apple’s modern documentation is great, but some topics only exist in the legacy archive: Core Animation Programming Guide, Quartz 2D Programming Guide, Core Text Programming Guide. These are still the authoritative sources for low-level graphics work.</p>
+<p>Cupertino now crawls <code>developer.apple.com/library/archive/</code> and integrates results with smart ranking that prioritizes modern docs while keeping legacy content searchable.</p>
+<h2>The Ecosystem: Three Repositories</h2>
+<p>Cupertino grew from one repo to three:</p>
+<h3><a href="https://github.com/mihaelamj/cupertino">cupertino</a> — The MCP Server</h3>
+<p>The main Swift package. Crawls, indexes, and serves documentation via MCP protocol. Install it, point Claude at it, done.</p>
+<pre><code class="language-bash"># Quick setup with Claude Code
+claude mcp add cupertino --scope user -- /usr/local/bin/cupertino</code></pre>
+<h3><a href="https://github.com/mihaelamj/cupertino-docs">cupertino-docs</a> — Pre-Crawled Documentation</h3>
+<p>Don’t want to crawl everything yourself? Clone this repo:</p>
+<pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino-docs ~/.cupertino</code></pre>
+<p>Currently includes:</p>
+<table><thead><tr><th>Source</th><th>Content</th><th>Status</th></tr></thead><tbody><tr><td><code>swift-evolution/</code></td><td>All Swift proposals (~400)</td><td>Ready</td></tr><tr><td><code>swift-org/</code></td><td>Swift.org language docs</td><td>Ready</td></tr><tr><td><code>packages/</code></td><td>Swift Package Index metadata</td><td>Ready</td></tr><tr><td><code>docs/</code></td><td>Apple Developer Documentation (13K+ pages)</td><td>WIP - requires manual crawl</td></tr><tr><td><code>archive/</code></td><td>Legacy Apple guides</td><td>WIP - requires manual crawl</td></tr></tbody></table>
+<p>Swift Evolution, Swift.org, and package docs are pre-indexed and ready. Apple Developer Documentation and Archive still require running <code>cupertino fetch</code> yourself due to size—but having the infrastructure in place is a start. The tooling exists; full pre-crawled distribution is coming.</p>
+<h3><a href="https://github.com/mihaelamj/cupertino-sample-code">cupertino-sample-code</a> — 606 Apple Samples</h3>
+<p>This is the fun one. Every official Apple sample code project, cleaned and ready to build:</p>
+<ul><li><p><strong>100+ frameworks covered</strong>: SwiftUI, ARKit, RealityKit, Metal, CoreML, Vision, AVFoundation, HealthKit, HomeKit, and more</p></li><li><p><strong>606 projects</strong>: From “Hello World” to complex GPU shaders</p></li><li><p><strong>Build-ready</strong>: No <code>.git</code> folders, no xcuserdata, no cruft</p></li><li><p><strong>MIT Licensed</strong>: Use them however you want</p></li></ul>
+<p>When you ask Claude “show me how Apple implements ARKit face tracking,” it can now search actual Apple sample code—not hallucinate an approximation.</p>
+<p>Example projects include:</p>
+<ul><li><p><code>arkit-*</code> — Augmented reality implementations</p></li><li><p><code>swiftui-*</code> — Modern UI patterns</p></li><li><p><code>metal-*</code> — GPU programming examples</p></li><li><p><code>coreml-*</code> — Machine learning integrations</p></li><li><p><code>avfoundation-*</code> — Video and audio capture</p></li></ul>
+<h2>The 72-Hour Sprint</h2>
+<p>Nine releases shipped in three days. Here’s the changelog:</p>
+<table><thead><tr><th>Version</th><th>Key Changes</th></tr></thead><tbody><tr><td>v0.1.6</td><td>JSON-first crawling, WKWebView memory fixes</td></tr><tr><td>v0.1.7</td><td>Swift Book content retrieval fixes</td></tr><tr><td>v0.1.8</td><td>Cleanup command (27GB → 2-3GB)</td></tr><tr><td>v0.1.9</td><td>Language filtering (Swift/ObjC)</td></tr><tr><td>v0.2.0</td><td>Critical fix: source code retention</td></tr><tr><td>v0.2.1</td><td>Eight ranking heuristics</td></tr><tr><td>v0.2.2</td><td>URL depth analysis, resume fixes</td></tr><tr><td>v0.2.3</td><td>Apple Archive legacy docs</td></tr></tbody></table>
+<p>Each release addressed real issues discovered while using Cupertino with Claude Code. Fast iteration, real-world testing.</p>
+<h2>Using the Full Ecosystem</h2>
+<p>Here’s the quickest path to AI-assisted Apple development with accurate documentation:</p>
+<pre><code class="language-bash"># 1. Get pre-crawled docs (skip the 20-hour crawl)
 git clone https://github.com/mihaelamj/cupertino-docs ~/.cupertino
 
 # 2. Build the MCP server
@@ -100,41 +121,20 @@ sudo cp .build/release/cupertino /usr/local/bin/
 claude mcp add cupertino --scope user -- /usr/local/bin/cupertino
 
 # 4. (Optional) Get sample code for reference
-git clone https://github.com/mihaelamj/cupertino-sample-code ~/Apple-Samples
-</code></pre><p>Now when you ask Claude about Apple APIs, it searches 22,000+ pages of real documentation. No hallucinations. No deprecated patterns. Just accurate, current information.</p><h2 id="what-s-next">What’s Next</h2><p>The ranking heuristics work well but aren’t perfect. Planned improvements:</p><ul><li><strong><code>make install</code></strong> — One command to install everything: the MCP server, pre-crawled docs from cupertino-docs, and sample code from cupertino-sample-code</li><li><strong>Semantic search</strong> — Embeddings-based similarity for conceptual queries</li><li><strong>Version awareness</strong> — Filter by iOS/macOS version</li><li><strong>Cross-reference linking</strong> — “See also” connections between related docs</li><li><strong>Sample code search</strong> — Full-text search across all 606 projects</li></ul><h2 id="join-me">Join Me</h2><p>If you’re an Apple developer tired of AI hallucinations, give Cupertino a try. If you find bugs or have ideas, open an issue—27 closed so far, plenty more to go.</p><p>This isn’t a polished product yet. It’s a tool I’m building because I need it, and I’m sharing it because you might need it too.</p><h2 id="repositories">Repositories</h2><ul><li><a href="https://github.com/mihaelamj/cupertino" target="_blank">cupertino</a> — MCP Server (Swift)</li><li><a href="https://github.com/mihaelamj/cupertino-docs" target="_blank">cupertino-docs</a> — Pre-crawled documentation</li><li><a href="https://github.com/mihaelamj/cupertino-sample-code" target="_blank">cupertino-sample-code</a> — 606 Apple samples (MIT)</li></ul><p>No more AI hallucinations about Apple APIs. Just real documentation that compiles.</p>
-        </div>
-    
-        <footer class="post-footer">
-            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
-        </footer>
-    </article>
+git clone https://github.com/mihaelamj/cupertino-sample-code ~/Apple-Samples</code></pre>
+<p>Now when you ask Claude about Apple APIs, it searches 22,000+ pages of real documentation. No hallucinations. No deprecated patterns. Just accurate, current information.</p>
+<h2>What’s Next</h2>
+<p>The ranking heuristics work well but aren’t perfect. Planned improvements:</p>
+<ul><li><p><strong><code>make install</code></strong> — One command to install everything: the MCP server, pre-crawled docs from cupertino-docs, and sample code from cupertino-sample-code</p></li><li><p><strong>Semantic search</strong> — Embeddings-based similarity for conceptual queries</p></li><li><p><strong>Version awareness</strong> — Filter by iOS/macOS version</p></li><li><p><strong>Cross-reference linking</strong> — “See also” connections between related docs</p></li><li><p><strong>Sample code search</strong> — Full-text search across all 606 projects</p></li></ul>
+<h2>Join Me</h2>
+<p>If you’re an Apple developer tired of AI hallucinations, give Cupertino a try. If you find bugs or have ideas, open an issue—27 closed so far, plenty more to go.</p>
+<p>This isn’t a polished product yet. It’s a tool I’m building because I need it, and I’m sharing it because you might need it too.</p>
+<h2>Repositories</h2>
+<ul><li><p><a href="https://github.com/mihaelamj/cupertino">cupertino</a> — MCP Server (Swift)</p></li><li><p><a href="https://github.com/mihaelamj/cupertino-docs">cupertino-docs</a> — Pre-crawled documentation</p></li><li><p><a href="https://github.com/mihaelamj/cupertino-sample-code">cupertino-sample-code</a> — 606 Apple samples (MIT)</p></li></ul>
+<p>No more AI hallucinations about Apple APIs. Just real documentation that compiles.</p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a><time>May 31, 2026</time></li><li><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a><time>May 28, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a><time>May 21, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/cv/">Curriculum Vitae</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
 
-    </main>
 
-    <footer>
-        <p class="footer-links">
-            <a href="https://aleahim.com/rss.xml">RSS feed</a>
-            &nbsp;·&nbsp;
-            <a href="https://github.com/mihaelamj" target="_blank" rel="noopener">GitHub</a>
-            &nbsp;·&nbsp;
-            <a href="https://www.linkedin.com/in/mihaelamj" target="_blank" rel="noopener">LinkedIn</a>
-            &nbsp;·&nbsp;
-            <a href="https://x.com/diyamantina" target="_blank" rel="noopener">X</a>
-            &nbsp;·&nbsp;
-            <a href="https://mastodon.social/@ameahim" target="_blank" rel="noopener">Mastodon</a>
-            &nbsp;·&nbsp;
-            <a href="https://bsky.app/profile/dijamantina.bsky.social" target="_blank" rel="noopener">Bluesky</a>
-        </p>
-    
-        <p class="small">
-            Built with <a href="https://www.swift.org/" target="_blank" rel="noopener">Swift</a> and <a href="https://github.com/toucansites/toucan" target="_blank" rel="noopener">Toucan</a>.
-            Aleahim &copy; 2026.
-        </p>
-    </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    
 </body>
 </html>

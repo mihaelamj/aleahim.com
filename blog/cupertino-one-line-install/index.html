@@ -1,142 +1,133 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs - Aleahim</title>
-    <meta name="description" content="Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.">
-
-    <link rel="canonical" href="https://aleahim.com/blog/cupertino-one-line-install/">
-
-    <meta property="og:url" content="https://aleahim.com/blog/cupertino-one-line-install/">
-    <meta property="og:title" content="Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs - Aleahim">
-    <meta property="og:description" content="Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Aleahim">
-    <meta property="og:image" content="https://aleahim.com/images/blog/cupertino-one-line-install/hero.png">
-    <meta property="og:image:alt" content="Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs">
-    
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs - Aleahim">
-    <meta name="twitter:description" content="Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.">
-    <meta name="twitter:image" content="https://aleahim.com/images/blog/cupertino-one-line-install/hero.png">
-    <meta name="twitter:image:alt" content="Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs">
-    
-
-    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
-
-    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    
-
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs</title>
+<meta name="description" content="Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.">
+<link rel="canonical" href="https://aleahim.com/blog/cupertino-one-line-install/">
+<meta property="og:title" content="Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.">
+<meta property="og:url" content="https://aleahim.com/blog/cupertino-one-line-install/">
+<meta property="og:site_name" content="Aleahim">
+<meta property="og:image" content="https://aleahim.com/images/blog/cupertino-one-line-install/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs">
+<meta name="twitter:description" content="Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.">
+<meta name="twitter:image" content="https://aleahim.com/images/blog/cupertino-one-line-install/hero.png">
+<meta property="article:published_time" content="2025-12-06T00:00:00Z">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <a id="logo" href="https://aleahim.com">
-                <img
-                    src="https://aleahim.com/images/logo.svg"
-                    alt="Aleahim"
-                    title="Aleahim"
-                >
-                <h1 class="site-title">Aleahim.com</h1>
-            </a>
-    
-            <nav>
-                <div class="navigation">
-                    <a href="https://aleahim.com/">Home</a>
-                <a href="https://aleahim.com/cv/">CV</a>
-                <a href="https://aleahim.com/speaking/">Speaking</a>
-                <a href="https://codeweaver.info/" rel="noopener">Hire me</a>
-                <a href="https://aleahim.com/about/">About</a>
-                <a href="https://mihaelamj.github.io/cupertino/" rel="noopener">Cupertino Quality</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-    <article class="blog-post">
-        <header class="post-header">
-            <div class="title-with-thumbnail">
-                <div class="post-thumbnail">
-                    <img src="https://aleahim.com/images/blog/cupertino-one-line-install/hero.png" alt="Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs">
-                </div>
-                <div class="title-wrapper">
-                    <h1>Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs</h1>
-                    <div class="post-meta">
-                        <time datetime="2025-12-06T00:00:00.000Z">December 6, 2025</time>
-                    </div>
-                </div>
-            </div>
-        </header>
-    
-        <div class="post-content">
-            <div class="post-hero-image">
-                <img src="https://aleahim.com/images/blog/cupertino-one-line-install/hero.png" alt="Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs">
-            </div>
-    
-            <h1>Cupertino v0.3.4: One-Line Install & 150K+ Apple Docs</h1><p><strong>TL;DR:</strong> One command installs everything. Homebrew is also available.</p><pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
-</code></pre><h2 id="what-changed">What Changed</h2><p>In v0.3.0, I introduced <code>cupertino setup</code> to download pre-built databases. But you still had to clone the repo and build from source first. That’s two steps too many.</p><p>Now it’s one line:</p><pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
-</code></pre><p>This:</p><ol><li>Downloads a pre-built universal binary (arm64 + x86_64)</li><li>Installs to <code>/usr/local/bin</code></li><li>Downloads documentation databases (~230 MB)</li></ol><p>Total time: under a minute.</p><h2 id="signed-and-notarized">Signed and Notarized</h2><p>Getting a command-line tool to “just work” on macOS is harder than it sounds. Without proper signing, users see scary “unidentified developer” warnings. Without notarization, Gatekeeper blocks execution entirely.</p><p>The release workflow now handles this automatically:</p><ol><li><strong>GitHub Actions</strong> builds a universal binary (arm64 + x86_64) on every release tag</li><li><strong>Developer ID signing</strong> with my Apple Developer certificate</li><li><strong>Apple notarization</strong> submits to Apple’s servers for malware scanning</li><li><strong>Preserved signatures</strong> using <code>ditto</code> instead of <code>cp</code> to maintain code signing through the install process</li></ol><p>The result: download, install, run. No security dialogs. No right-click workarounds. No “are you sure?” prompts.</p><p>This took several iterations to get right—the signing must happen in CI, notarization requires waiting for Apple’s servers, and even copying the file wrong can strip the signature. But now it’s automated and works every time.</p><h2 id="homebrew-support">Homebrew Support</h2><p>Prefer Homebrew? Now available:</p><pre><code class="language-bash">brew tap mihaelamj/tap
+<header class="td-header">
+<a class="td-brand" href="https://aleahim.com/">Aleahim</a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/cv/">Curriculum Vitae</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">December 6, 2025</time></div><h1 class="td-article-title">Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs</h1><p class="td-article-dek">Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/cupertino-one-line-install/">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-one-line-install%2F&amp;text=Cupertino%20v0.3.4%3A%20One-Line%20Install%20%26%20150K%2B%20Apple%20Docs" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-one-line-install%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-one-line-install%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=Cupertino%20v0.3.4%3A%20One-Line%20Install%20%26%20150K%2B%20Apple%20Docs&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-one-line-install%2F" target="_blank" rel="noopener">Email</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/blog/cupertino-one-line-install/hero.png" alt="Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs"></figure><div class="td-article-body"><p><strong>TL;DR:</strong> One command installs everything. Homebrew is also available.</p>
+<pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)</code></pre>
+<h2>What Changed</h2>
+<p>In v0.3.0, I introduced <code>cupertino setup</code> to download pre-built databases. But you still had to clone the repo and build from source first. That’s two steps too many.</p>
+<p>Now it’s one line:</p>
+<pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)</code></pre>
+<p>This:</p>
+<ol><li><p>Downloads a pre-built universal binary (arm64 + x86_64)</p></li><li><p>Installs to <code>/usr/local/bin</code></p></li><li><p>Downloads documentation databases (~230 MB)</p></li></ol>
+<p>Total time: under a minute.</p>
+<h2>Signed and Notarized</h2>
+<p>Getting a command-line tool to “just work” on macOS is harder than it sounds. Without proper signing, users see scary “unidentified developer” warnings. Without notarization, Gatekeeper blocks execution entirely.</p>
+<p>The release workflow now handles this automatically:</p>
+<ol><li><p><strong>GitHub Actions</strong> builds a universal binary (arm64 + x86_64) on every release tag</p></li><li><p><strong>Developer ID signing</strong> with my Apple Developer certificate</p></li><li><p><strong>Apple notarization</strong> submits to Apple’s servers for malware scanning</p></li><li><p><strong>Preserved signatures</strong> using <code>ditto</code> instead of <code>cp</code> to maintain code signing through the install process</p></li></ol>
+<p>The result: download, install, run. No security dialogs. No right-click workarounds. No “are you sure?” prompts.</p>
+<p>This took several iterations to get right—the signing must happen in CI, notarization requires waiting for Apple’s servers, and even copying the file wrong can strip the signature. But now it’s automated and works every time.</p>
+<h2>Homebrew Support</h2>
+<p>Prefer Homebrew? Now available:</p>
+<pre><code class="language-bash">brew tap mihaelamj/tap
 brew install cupertino
-cupertino setup
-</code></pre><p>Three lines instead of one, but integrates with your existing Homebrew workflow.</p><h2 id="150-000-apple-documentation-pages">150,000+ Apple Documentation Pages</h2><p>The database has grown significantly:</p><table><thead><td>Version</td><td>Documentation Pages</td><td>Sample Projects</td></thead><tbody><tr><td>v0.2.x</td><td>~21,000</td><td>606</td></tr><tr><td>v0.3.0</td><td>~138,000</td><td>606</td></tr><tr><td>v0.3.4</td><td>~150,000+</td><td>606</td></tr></tbody></table><p>More coverage means better search results for your AI assistant.</p><h2 id="demo-video">Demo Video</h2><p>Watch the one-line install and Claude Desktop in action:</p><p><a href="https://youtu.be/B-mRdainTMA" target="_blank"><img src="https://img.youtube.com/vi/B-mRdainTMA/0.jpg" alt="Demo Video"></a></p><h2 id="three-install-methods">Three Install Methods</h2><h3 id="1.-one-line-install-recommended">1. One-Line Install (Recommended)</h3><pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)
-</code></pre><p>Downloads binary and databases. Ready in under a minute.</p><h3 id="2.-homebrew">2. Homebrew</h3><pre><code class="language-bash">brew tap mihaelamj/tap
+cupertino setup</code></pre>
+<p>Three lines instead of one, but integrates with your existing Homebrew workflow.</p>
+<h2>150,000+ Apple Documentation Pages</h2>
+<p>The database has grown significantly:</p>
+<table><thead><tr><th>Version</th><th>Documentation Pages</th><th>Sample Projects</th></tr></thead><tbody><tr><td>v0.2.x</td><td>~21,000</td><td>606</td></tr><tr><td>v0.3.0</td><td>~138,000</td><td>606</td></tr><tr><td>v0.3.4</td><td>~150,000+</td><td>606</td></tr></tbody></table>
+<p>More coverage means better search results for your AI assistant.</p>
+<h2>Demo Video</h2>
+<p>Watch the one-line install and Claude Desktop in action:</p>
+<p><a href="https://youtu.be/B-mRdainTMA"><img src="https://img.youtube.com/vi/B-mRdainTMA/0.jpg" alt="Demo Video"></a></p>
+<h2>Three Install Methods</h2>
+<h3>1. One-Line Install (Recommended)</h3>
+<pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)</code></pre>
+<p>Downloads binary and databases. Ready in under a minute.</p>
+<h3>2. Homebrew</h3>
+<pre><code class="language-bash">brew tap mihaelamj/tap
 brew install cupertino
-cupertino setup
-</code></pre><p>Integrates with Homebrew for updates via <code>brew upgrade cupertino</code>.</p><h3 id="3.-build-from-source">3. Build from Source</h3><pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino.git
-cd cupertino && make build && sudo make install
-cupertino setup
-</code></pre><p>For those who want to inspect or modify the code.</p><h2 id="what-s-inside">What’s Inside</h2><p>After installation, you have:</p><ul><li><code>/usr/local/bin/cupertino</code> - The MCP server binary</li><li><code>~/.cupertino/search.db</code> - 150K+ documentation pages</li><li><code>~/.cupertino/samples.db</code> - 606 sample projects, 18K+ source files</li></ul><p>Start the server and configure Claude Desktop:</p><pre><code class="language-bash">cupertino serve
-</code></pre><pre><code class="language-json">{
+cupertino setup</code></pre>
+<p>Integrates with Homebrew for updates via <code>brew upgrade cupertino</code>.</p>
+<h3>3. Build from Source</h3>
+<pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino.git
+cd cupertino &amp;&amp; make build &amp;&amp; sudo make install
+cupertino setup</code></pre>
+<p>For those who want to inspect or modify the code.</p>
+<h2>What’s Inside</h2>
+<p>After installation, you have:</p>
+<ul><li><p><code>/usr/local/bin/cupertino</code> - The MCP server binary</p></li><li><p><code>~/.cupertino/search.db</code> - 150K+ documentation pages</p></li><li><p><code>~/.cupertino/samples.db</code> - 606 sample projects, 18K+ source files</p></li></ul>
+<p>Start the server and configure Claude Desktop:</p>
+<pre><code class="language-bash">cupertino serve</code></pre>
+<pre><code class="language-json">{
   "mcpServers": {
     "cupertino": {
       "command": "/usr/local/bin/cupertino"
     }
   }
-}
-</code></pre><h2 id="registry-submissions">Registry Submissions</h2><p>I’ve submitted Cupertino to the major MCP server registries:</p><ul><li><a href="https://mcpservers.org" target="_blank">mcpservers.org</a></li><li><a href="https://pulsemcp.com" target="_blank">PulseMCP</a></li><li><a href="https://github.com/punkpeye/awesome-mcp-servers" target="_blank">awesome-mcp-servers</a></li></ul><p>These directories help developers discover MCP servers—getting listed would bring more visibility to the Apple developer community.</p><h2 id="links">Links</h2><ul><li><strong>GitHub:</strong> <a href="https://github.com/mihaelamj/cupertino" target="_blank">github.com/mihaelamj/cupertino</a></li><li><strong>Homebrew Tap:</strong> <a href="https://github.com/mihaelamj/homebrew-tap" target="_blank">github.com/mihaelamj/homebrew-tap</a></li><li><strong>Demo Video:</strong> <a href="https://youtu.be/B-mRdainTMA" target="_blank">YouTube</a></li></ul><hr><p><em>The best install experience is no install experience. One line is close enough.</em></p>
-        </div>
-    
-        <footer class="post-footer">
-            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
-        </footer>
-    </article>
+}</code></pre>
+<h2>Registry Submissions</h2>
+<p>I’ve submitted Cupertino to the major MCP server registries:</p>
+<ul><li><p><a href="https://mcpservers.org">mcpservers.org</a></p></li><li><p><a href="https://pulsemcp.com">PulseMCP</a></p></li><li><p><a href="https://github.com/punkpeye/awesome-mcp-servers">awesome-mcp-servers</a></p></li></ul>
+<p>These directories help developers discover MCP servers—getting listed would bring more visibility to the Apple developer community.</p>
+<h2>Links</h2>
+<ul><li><p><strong>GitHub:</strong> <a href="https://github.com/mihaelamj/cupertino">github.com/mihaelamj/cupertino</a></p></li><li><p><strong>Homebrew Tap:</strong> <a href="https://github.com/mihaelamj/homebrew-tap">github.com/mihaelamj/homebrew-tap</a></p></li><li><p><strong>Demo Video:</strong> <a href="https://youtu.be/B-mRdainTMA">YouTube</a></p></li></ul>
+<hr>
+<p><em>The best install experience is no install experience. One line is close enough.</em></p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a><time>May 31, 2026</time></li><li><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a><time>May 28, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a><time>May 21, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/cv/">Curriculum Vitae</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
 
-    </main>
 
-    <footer>
-        <p class="footer-links">
-            <a href="https://aleahim.com/rss.xml">RSS feed</a>
-            &nbsp;·&nbsp;
-            <a href="https://github.com/mihaelamj" target="_blank" rel="noopener">GitHub</a>
-            &nbsp;·&nbsp;
-            <a href="https://www.linkedin.com/in/mihaelamj" target="_blank" rel="noopener">LinkedIn</a>
-            &nbsp;·&nbsp;
-            <a href="https://x.com/diyamantina" target="_blank" rel="noopener">X</a>
-            &nbsp;·&nbsp;
-            <a href="https://mastodon.social/@ameahim" target="_blank" rel="noopener">Mastodon</a>
-            &nbsp;·&nbsp;
-            <a href="https://bsky.app/profile/dijamantina.bsky.social" target="_blank" rel="noopener">Bluesky</a>
-        </p>
-    
-        <p class="small">
-            Built with <a href="https://www.swift.org/" target="_blank" rel="noopener">Swift</a> and <a href="https://github.com/toucansites/toucan" target="_blank" rel="noopener">Toucan</a>.
-            Aleahim &copy; 2026.
-        </p>
-    </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    
 </body>
 </html>

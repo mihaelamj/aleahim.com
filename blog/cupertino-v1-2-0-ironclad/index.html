@@ -1,125 +1,100 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>cupertino v1.2.0: lands the right Apple doc 9 times in 10 - Aleahim</title>
-    <meta name="description" content="Search-quality release. AI coding assistants now land the right Apple documentation page on the first try 9 times out of 10, up from 5 out of 10 in v1.1.0. Cross-validated on three independent corpora, zero regressions. The architecture, and what it still gets wrong, in writing.">
-
-    <link rel="canonical" href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">
-
-    <meta property="og:url" content="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">
-    <meta property="og:title" content="cupertino v1.2.0: lands the right Apple doc 9 times in 10 - Aleahim">
-    <meta property="og:description" content="Search-quality release. AI coding assistants now land the right Apple documentation page on the first try 9 times out of 10, up from 5 out of 10 in v1.1.0. Cross-validated on three independent corpora, zero regressions. The architecture, and what it still gets wrong, in writing.">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Aleahim">
-    <meta property="og:image" content="https://aleahim.com/images/blog/cupertino-v1-2-0-ironclad/hero.png">
-    <meta property="og:image:alt" content="cupertino v1.2.0: lands the right Apple doc 9 times in 10">
-    
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="cupertino v1.2.0: lands the right Apple doc 9 times in 10 - Aleahim">
-    <meta name="twitter:description" content="Search-quality release. AI coding assistants now land the right Apple documentation page on the first try 9 times out of 10, up from 5 out of 10 in v1.1.0. Cross-validated on three independent corpora, zero regressions. The architecture, and what it still gets wrong, in writing.">
-    <meta name="twitter:image" content="https://aleahim.com/images/blog/cupertino-v1-2-0-ironclad/hero.png">
-    <meta name="twitter:image:alt" content="cupertino v1.2.0: lands the right Apple doc 9 times in 10">
-    
-
-    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
-
-    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    
-
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>cupertino v1.2.0: lands the right Apple doc 9 times in 10</title>
+<meta name="description" content="Search-quality release. AI coding assistants now land the right Apple documentation page on the first try 9 times out of 10, up from 5 out of 10 in v1.1.0. Cross-validated on three independent corpora, zero regressions. The architecture, and what it still gets wrong, in writing.">
+<link rel="canonical" href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">
+<meta property="og:title" content="cupertino v1.2.0: lands the right Apple doc 9 times in 10">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Search-quality release. AI coding assistants now land the right Apple documentation page on the first try 9 times out of 10, up from 5 out of 10 in v1.1.0. Cross-validated on three independent corpora, zero regressions. The architecture, and what it still gets wrong, in writing.">
+<meta property="og:url" content="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">
+<meta property="og:site_name" content="Aleahim">
+<meta property="og:image" content="https://aleahim.com/images/blog/cupertino-v1-2-0-ironclad/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="cupertino v1.2.0: lands the right Apple doc 9 times in 10">
+<meta name="twitter:description" content="Search-quality release. AI coding assistants now land the right Apple documentation page on the first try 9 times out of 10, up from 5 out of 10 in v1.1.0. Cross-validated on three independent corpora, zero regressions. The architecture, and what it still gets wrong, in writing.">
+<meta name="twitter:image" content="https://aleahim.com/images/blog/cupertino-v1-2-0-ironclad/hero.png">
+<meta property="article:published_time" content="2026-05-21T00:00:00Z">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <a id="logo" href="https://aleahim.com">
-                <img
-                    src="https://aleahim.com/images/logo.svg"
-                    alt="Aleahim"
-                    title="Aleahim"
-                >
-                <h1 class="site-title">Aleahim.com</h1>
-            </a>
-    
-            <nav>
-                <div class="navigation">
-                    <a href="https://aleahim.com/">Home</a>
-                <a href="https://aleahim.com/cv/">CV</a>
-                <a href="https://aleahim.com/speaking/">Speaking</a>
-                <a href="https://codeweaver.info/" rel="noopener">Hire me</a>
-                <a href="https://aleahim.com/about/">About</a>
-                <a href="https://mihaelamj.github.io/cupertino/" rel="noopener">Cupertino Quality</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<header class="td-header">
+<a class="td-brand" href="https://aleahim.com/">Aleahim</a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/cv/">Curriculum Vitae</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">May 21, 2026</time></div><h1 class="td-article-title">cupertino v1.2.0: lands the right Apple doc 9 times in 10</h1><p class="td-article-dek">Search-quality release. AI coding assistants now land the right Apple documentation page on the first try 9 times out of 10, up from 5 out of 10 in v1.1.0. Cross-validated on three independent corpora, zero regressions. The architecture, and what it still gets wrong, in writing.</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-v1-2-0-ironclad%2F&amp;text=cupertino%20v1.2.0%3A%20lands%20the%20right%20Apple%20doc%209%20times%20in%2010" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-v1-2-0-ironclad%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-v1-2-0-ironclad%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=cupertino%20v1.2.0%3A%20lands%20the%20right%20Apple%20doc%209%20times%20in%2010&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-v1-2-0-ironclad%2F" target="_blank" rel="noopener">Email</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/blog/cupertino-v1-2-0-ironclad/hero.png" alt="cupertino v1.2.0: lands the right Apple doc 9 times in 10"></figure><div class="td-article-body"><p><em>Released 2026-05-21.</em></p>
+<h2>What you actually get</h2>
+<p>If you’ve ever asked an AI coding assistant about a Swift API and watched it confidently invent a method that doesn’t exist (or point you at a deprecated 2017 version), cupertino is what I built for that.</p>
+<p>This release: AI assistants using cupertino now land the right Apple documentation page on the first try <strong>9 times out of 10</strong>. Was 5 out of 10 in v1.1.0.</p>
+<p>A few concrete cases:</p>
+<ul><li><p>Ask about <code>URLSession</code> async/await, get the modern API. Not the completion-handler page from 2017.</p></li><li><p>Ask “what replaced <code>NSURLConnection</code>”, go straight to <code>URLSession</code>.</p></li><li><p>Ask about <code>@Observable</code>, don’t get it fused with the older <code>ObservableObject</code>.</p></li><li><p>Compare Combine and AsyncSequence, get both pages, not a hallucinated synthesis.</p></li></ul>
+<p>352,712 indexed Apple documentation pages, zero garbage rows on the merged corpus. Runs locally, no cloud, no subscription, free and open source.</p>
+<p>Upgrade is one command:</p>
+<pre><code class="language-bash">brew upgrade cupertino &amp;&amp; cupertino setup</code></pre>
+<p>The rest of this post is for the technically curious.</p>
+<h2>The measurement</h2>
+<p>Rank-1 accuracy on a 50-query canonical-lookup corpus (Swift stdlib types, Foundation, SwiftUI, UIKit, AppKit, Combine, framework roots) went from <strong>52% in v1.1.0</strong> to <strong>92% in v1.2.0</strong>. Cross-validated on two more corpora, zero regressions across 110 paired queries, statistically significant at McNemar p ≤ 1e-5 on the largest corpus.</p>
+<table><thead><tr><th>Corpus</th><th style="text-align:right">v1.1.0</th><th style="text-align:right">v1.2.0</th></tr></thead><tbody><tr><td>Canonical lookup (50 queries)</td><td style="text-align:right">26/50 rank-1</td><td style="text-align:right">46/50 rank-1</td></tr><tr><td>Canonical lookup V2 (30 queries, no overlap with the first set)</td><td style="text-align:right">19/30 rank-1</td><td style="text-align:right">28/30 rank-1</td></tr><tr><td>Deprecation pairs (30 modern/legacy triples like <code>URLSession</code> vs <code>NSURLConnection</code>)</td><td style="text-align:right">27/30 prefers modern</td><td style="text-align:right">30/30 prefers modern</td></tr></tbody></table>
+<p>Three independent samples, same direction, similar effect size. Not a fluke.</p>
+<p>Methodology lives at <code>docs/design/search-quality-eval.md</code>; per-query rank movements at <code>docs/audits/</code>. The live page at <a href="https://cupertino.aleahim.com/">https://cupertino.aleahim.com/</a> is a thin renderer over those files. If a number is wrong on the page, an audit markdown is wrong first.</p>
+<h2>How it works</h2>
+<p>cupertino is the retrieval layer of RAG, nothing else. The AI agent does the generation; cupertino just returns the right Apple page when one is asked for.</p>
+<p>The substrate is SQLite FTS5 with field-weighted BM25, populated by an AST extraction pass at index time that pulls symbol signatures, generic constraints, platform availability, and deprecation markers into queryable columns. No embeddings, no vector database, no reranker.</p>
+<p>Anthropic’s published RAG recipe (<a href="https://www.anthropic.com/news/contextual-retrieval">Contextual Retrieval</a>, September 2024) keeps a BM25 stage alongside the dense one as the non-optional floor. cupertino takes that floor and runs it without the rest, on a corpus class where that’s enough: identifier-heavy, terminology-precise, Apple API docs.</p>
+<h2>What it still gets wrong</h2>
+<table><thead><tr><th>Query class</th><th style="text-align:right">Rank-1</th><th>Status</th></tr></thead><tbody><tr><td>Prose / conceptual (“what’s the deal with…”)</td><td style="text-align:right">~27%</td><td>Open: candidate fix in design</td></tr><tr><td>Acronym / synonym (“KVO”, “GCD”, “CALayer”)</td><td style="text-align:right">~18%</td><td>Open: needs a new index pass</td></tr><tr><td>Querying by structural attribute (<code>actor type</code>, <code>initializer</code>, <code>Hashable conformance</code>)</td><td style="text-align:right">P@5 ~0.25</td><td>Open: search path doesn’t consult the symbol metadata table</td></tr></tbody></table>
+<p>These were weak in v1.1.0 too. The next release is meant to move them. If it does, the live page will say so. If it doesn’t, the same page will say that, in the same row, without anyone editing copy.</p>
+<p>This is not a feature roadmap. It is a list of things the tool does badly, published next to the things it does well.</p>
+<h2>Upgrade</h2>
+<pre><code class="language-bash">brew upgrade cupertino
+cupertino setup</code></pre>
+<p><code>cupertino setup</code> pulls the v1.2.0 database bundle from GitHub. If you had v1.1.0 installed locally, the migrator handles the schema bumps idempotently.</p>
+<hr>
+<p><em>Full release write-up: <a href="https://github.com/mihaelamj/cupertino/blob/main/docs/release-writeup-v1.2.0.md">docs/release-writeup-v1.2.0.md</a>. Source for every measurement: <a href="https://github.com/mihaelamj/cupertino/tree/main/docs/audits">docs/audits/</a>. Live page: <a href="https://cupertino.aleahim.com/">https://cupertino.aleahim.com/</a>.</em></p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a><time>May 31, 2026</time></li><li><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a><time>May 28, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-1-0-poison-cleanup/">Cupertino v1.1.0: my Apple docs index was 30% lies and I didn&#39;t know</a><time>May 14, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/cv/">Curriculum Vitae</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
 
-    <main>
-    <article class="blog-post">
-        <header class="post-header">
-            <div class="title-with-thumbnail">
-                <div class="post-thumbnail">
-                    <img src="https://aleahim.com/images/blog/cupertino-v1-2-0-ironclad/hero.png" alt="cupertino v1.2.0: lands the right Apple doc 9 times in 10">
-                </div>
-                <div class="title-wrapper">
-                    <h1>cupertino v1.2.0: lands the right Apple doc 9 times in 10</h1>
-                    <div class="post-meta">
-                        <time datetime="2026-05-21T00:00:00.000Z">May 21, 2026</time>
-                    </div>
-                </div>
-            </div>
-        </header>
-    
-        <div class="post-content">
-            <div class="post-hero-image">
-                <img src="https://aleahim.com/images/blog/cupertino-v1-2-0-ironclad/hero.png" alt="cupertino v1.2.0: lands the right Apple doc 9 times in 10">
-            </div>
-    
-            <h1>cupertino v1.2.0: lands the right Apple doc 9 times in 10</h1><p><em>Released 2026-05-21.</em></p><h2 id="what-you-actually-get">What you actually get</h2><p>If you’ve ever asked an AI coding assistant about a Swift API and watched it confidently invent a method that doesn’t exist (or point you at a deprecated 2017 version), cupertino is what I built for that.</p><p>This release: AI assistants using cupertino now land the right Apple documentation page on the first try <strong>9 times out of 10</strong>. Was 5 out of 10 in v1.1.0.</p><p>A few concrete cases:</p><ul><li>Ask about <code>URLSession</code> async/await, get the modern API. Not the completion-handler page from 2017.</li><li>Ask “what replaced <code>NSURLConnection</code>”, go straight to <code>URLSession</code>.</li><li>Ask about <code>@Observable</code>, don’t get it fused with the older <code>ObservableObject</code>.</li><li>Compare Combine and AsyncSequence, get both pages, not a hallucinated synthesis.</li></ul><p>352,712 indexed Apple documentation pages, zero garbage rows on the merged corpus. Runs locally, no cloud, no subscription, free and open source.</p><p>Upgrade is one command:</p><pre><code class="language-bash">brew upgrade cupertino && cupertino setup
-</code></pre><p>The rest of this post is for the technically curious.</p><h2 id="the-measurement">The measurement</h2><p>Rank-1 accuracy on a 50-query canonical-lookup corpus (Swift stdlib types, Foundation, SwiftUI, UIKit, AppKit, Combine, framework roots) went from <strong>52% in v1.1.0</strong> to <strong>92% in v1.2.0</strong>. Cross-validated on two more corpora, zero regressions across 110 paired queries, statistically significant at McNemar p ≤ 1e-5 on the largest corpus.</p><table><thead><td>Corpus</td><td>v1.1.0</td><td>v1.2.0</td></thead><tbody><tr><td>Canonical lookup (50 queries)</td><td>26/50 rank-1</td><td>46/50 rank-1</td></tr><tr><td>Canonical lookup V2 (30 queries, no overlap with the first set)</td><td>19/30 rank-1</td><td>28/30 rank-1</td></tr><tr><td>Deprecation pairs (30 modern/legacy triples like <code>URLSession</code> vs <code>NSURLConnection</code>)</td><td>27/30 prefers modern</td><td>30/30 prefers modern</td></tr></tbody></table><p>Three independent samples, same direction, similar effect size. Not a fluke.</p><p>Methodology lives at <code>docs/design/search-quality-eval.md</code>; per-query rank movements at <code>docs/audits/</code>. The live page at <a href="https://cupertino.aleahim.com/" target="_blank">https://cupertino.aleahim.com/</a> is a thin renderer over those files. If a number is wrong on the page, an audit markdown is wrong first.</p><h2 id="how-it-works">How it works</h2><p>cupertino is the retrieval layer of RAG, nothing else. The AI agent does the generation; cupertino just returns the right Apple page when one is asked for.</p><p>The substrate is SQLite FTS5 with field-weighted BM25, populated by an AST extraction pass at index time that pulls symbol signatures, generic constraints, platform availability, and deprecation markers into queryable columns. No embeddings, no vector database, no reranker.</p><p>Anthropic’s published RAG recipe (<a href="https://www.anthropic.com/news/contextual-retrieval" target="_blank">Contextual Retrieval</a>, September 2024) keeps a BM25 stage alongside the dense one as the non-optional floor. cupertino takes that floor and runs it without the rest, on a corpus class where that’s enough: identifier-heavy, terminology-precise, Apple API docs.</p><h2 id="what-it-still-gets-wrong">What it still gets wrong</h2><table><thead><td>Query class</td><td>Rank-1</td><td>Status</td></thead><tbody><tr><td>Prose / conceptual (“what’s the deal with…”)</td><td>~27%</td><td>Open: candidate fix in design</td></tr><tr><td>Acronym / synonym (“KVO”, “GCD”, “CALayer”)</td><td>~18%</td><td>Open: needs a new index pass</td></tr><tr><td>Querying by structural attribute (<code>actor type</code>, <code>initializer</code>, <code>Hashable conformance</code>)</td><td>P@5 ~0.25</td><td>Open: search path doesn’t consult the symbol metadata table</td></tr></tbody></table><p>These were weak in v1.1.0 too. The next release is meant to move them. If it does, the live page will say so. If it doesn’t, the same page will say that, in the same row, without anyone editing copy.</p><p>This is not a feature roadmap. It is a list of things the tool does badly, published next to the things it does well.</p><h2 id="upgrade">Upgrade</h2><pre><code class="language-bash">brew upgrade cupertino
-cupertino setup
-</code></pre><p><code>cupertino setup</code> pulls the v1.2.0 database bundle from GitHub. If you had v1.1.0 installed locally, the migrator handles the schema bumps idempotently.</p><hr><p><em>Full release write-up: <a href="https://github.com/mihaelamj/cupertino/blob/main/docs/release-writeup-v1.2.0.md" target="_blank">docs/release-writeup-v1.2.0.md</a>. Source for every measurement: <a href="https://github.com/mihaelamj/cupertino/tree/main/docs/audits" target="_blank">docs/audits/</a>. Live page: <a href="https://cupertino.aleahim.com/" target="_blank">https://cupertino.aleahim.com/</a>.</em></p>
-        </div>
-    
-        <footer class="post-footer">
-            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
-        </footer>
-    </article>
 
-    </main>
 
-    <footer>
-        <p class="footer-links">
-            <a href="https://aleahim.com/rss.xml">RSS feed</a>
-            &nbsp;·&nbsp;
-            <a href="https://github.com/mihaelamj" target="_blank" rel="noopener">GitHub</a>
-            &nbsp;·&nbsp;
-            <a href="https://www.linkedin.com/in/mihaelamj" target="_blank" rel="noopener">LinkedIn</a>
-            &nbsp;·&nbsp;
-            <a href="https://x.com/diyamantina" target="_blank" rel="noopener">X</a>
-            &nbsp;·&nbsp;
-            <a href="https://mastodon.social/@ameahim" target="_blank" rel="noopener">Mastodon</a>
-            &nbsp;·&nbsp;
-            <a href="https://bsky.app/profile/dijamantina.bsky.social" target="_blank" rel="noopener">Bluesky</a>
-        </p>
-    
-        <p class="small">
-            Built with <a href="https://www.swift.org/" target="_blank" rel="noopener">Swift</a> and <a href="https://github.com/toucansites/toucan" target="_blank" rel="noopener">Toucan</a>.
-            Aleahim &copy; 2026.
-        </p>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    
 </body>
 </html>

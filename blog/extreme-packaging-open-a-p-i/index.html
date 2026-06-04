@@ -1,94 +1,123 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>From ExtremePackaging to OpenAPI Integration - Aleahim</title>
-    <meta name="description" content="Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture">
-
-    <link rel="canonical" href="https://aleahim.com/blog/extreme-packaging-open-a-p-i/">
-
-    <meta property="og:url" content="https://aleahim.com/blog/extreme-packaging-open-a-p-i/">
-    <meta property="og:title" content="From ExtremePackaging to OpenAPI Integration - Aleahim">
-    <meta property="og:description" content="Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Aleahim">
-    <meta property="og:image" content="https://aleahim.com/images/xpackopenapi/expack_openapi.png">
-    <meta property="og:image:alt" content="From ExtremePackaging to OpenAPI Integration">
-    
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="From ExtremePackaging to OpenAPI Integration - Aleahim">
-    <meta name="twitter:description" content="Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture">
-    <meta name="twitter:image" content="https://aleahim.com/images/xpackopenapi/expack_openapi.png">
-    <meta name="twitter:image:alt" content="From ExtremePackaging to OpenAPI Integration">
-    
-
-    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
-
-    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    
-
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>From ExtremePackaging to OpenAPI Integration</title>
+<meta name="description" content="Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture">
+<link rel="canonical" href="https://aleahim.com/blog/extreme-packaging-open-a-p-i/">
+<meta property="og:title" content="From ExtremePackaging to OpenAPI Integration">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture">
+<meta property="og:url" content="https://aleahim.com/blog/extreme-packaging-open-a-p-i/">
+<meta property="og:site_name" content="Aleahim">
+<meta property="og:image" content="https://aleahim.com/images/xpackopenapi/expack_openapi.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="From ExtremePackaging to OpenAPI Integration">
+<meta name="twitter:description" content="Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture">
+<meta name="twitter:image" content="https://aleahim.com/images/xpackopenapi/expack_openapi.png">
+<meta property="article:published_time" content="2025-09-23T00:00:00Z">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <a id="logo" href="https://aleahim.com">
-                <img
-                    src="https://aleahim.com/images/logo.svg"
-                    alt="Aleahim"
-                    title="Aleahim"
-                >
-                <h1 class="site-title">Aleahim.com</h1>
-            </a>
-    
-            <nav>
-                <div class="navigation">
-                    <a href="https://aleahim.com/">Home</a>
-                <a href="https://aleahim.com/cv/">CV</a>
-                <a href="https://aleahim.com/speaking/">Speaking</a>
-                <a href="https://codeweaver.info/" rel="noopener">Hire me</a>
-                <a href="https://aleahim.com/about/">About</a>
-                <a href="https://mihaelamj.github.io/cupertino/" rel="noopener">Cupertino Quality</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-    <article class="blog-post">
-        <header class="post-header">
-            <div class="title-with-thumbnail">
-                <div class="post-thumbnail">
-                    <img src="https://aleahim.com/images/xpackopenapi/expack_openapi.png" alt="From ExtremePackaging to OpenAPI Integration">
-                </div>
-                <div class="title-wrapper">
-                    <h1>From ExtremePackaging to OpenAPI Integration</h1>
-                    <div class="post-meta">
-                        <time datetime="2025-09-23T00:00:00.000Z">September 23, 2025</time>
-                    </div>
-                </div>
-            </div>
-        </header>
-    
-        <div class="post-content">
-            <div class="post-hero-image">
-                <img src="https://aleahim.com/images/xpackopenapi/expack_openapi.png" alt="From ExtremePackaging to OpenAPI Integration">
-            </div>
-    
-            <p>When I first published <a href="https://github.com/mihaelamj/ExtremePackaging" target="_blank">ExtremePackaging</a>, the goal was simple — to prove that <strong>highly modular Swift architectures</strong> can scale across platforms while keeping build times fast, dependencies isolated, and the mental model crystal clear.</p><p>But then came the next step: <em>Could this same architecture host a complete OpenAPI workflow — with generated clients, servers, and full middleware integration — without losing its elegance?</em></p><p>That’s how the new reference implementation, <strong>swift-openapi-extremepackaging-example</strong>, was born.</p><hr><h2 id="the-foundation-extremepackaging">🧩 The Foundation — ExtremePackaging</h2><p>The original ExtremePackaging repository introduced a clean, layered structure:</p><ul><li><strong>Shared packages</strong> for models and protocols</li><li><strong>Independent feature modules</strong> for UI, data, and networking</li><li><strong>No cross-package leaks</strong></li><li><strong>Unified Xcode workspace</strong> that felt like a monolith but built like microservices</li></ul><p>The guiding philosophy: <em>Each feature should be an island, communicating only through well-defined contracts.</em></p><p>That foundation made it ideal for integrating OpenAPI-generated code — which naturally fits into modular boundaries like <code>SharedApiModels</code>, <code>ApiClient</code>, and <code>ApiServer</code>.</p><hr><h2 id="evolving-toward-openapi">🚀 Evolving Toward OpenAPI</h2><p>The OpenAPI version added an entire new layer of automation and functionality — transforming a static architecture into a <strong>living, self-describing API ecosystem</strong>.</p><h3 id="1.-openapi-schema-code-generation">1. OpenAPI Schema & Code Generation</h3><p>At the heart of the project is the <strong>OpenAPI specification (<code>openapi.yaml</code>)</strong> — defining endpoints, models, and responses for a DummyJSON-compatible API.</p><p>Newly introduced elements:</p><ul><li>🧱 Full schema definitions for <code>Users</code>, <code>Posts</code>, <code>Products</code>, <code>Todos</code>, and <code>Carts</code></li><li>🧩 Error schemas (404, validation, authentication)</li><li>⚙️ Integration with <strong>Swift OpenAPI Generator</strong></li><li>🔁 Automatic generation of clients, models, and server stubs</li><li>📦 Separation of generated code into <code>SharedApiModels</code></li></ul><p>This turned the architecture into a self-contained API ecosystem — one that can <strong>generate, serve, and consume</strong> its own endpoints.</p><hr><h3 id="2.-api-server-implementation">2. API Server Implementation</h3><p>A complete <strong>Vapor-based local server</strong> (<code>ApiServer</code>) was added to simulate real-world backend behavior:</p><ul><li>17 endpoints fully implemented from the OpenAPI spec</li><li>Realistic mock data mirroring DummyJSON</li><li>Pagination and validation logic</li><li>Centralized error responses</li><li>🖥️ Prefixed logging for easy tracing in the console</li></ul><p>The server runs locally at <code>http://localhost:8080</code>, serving as both a mock backend and a test harness for the generated client.</p><hr><h3 id="3.-enhanced-api-client-architecture">3. Enhanced API Client Architecture</h3><p>The client evolved from a simple abstraction into a <strong>fully concurrent, actor-based networking layer</strong>.</p><h4>Highlights</h4><ul><li><code>ApiClient</code> actor manages shared state safely across async contexts</li><li>Middleware chain introduced: <strong>Logging → Authentication → Correction</strong></li><li>Runtime environment switching between <code>.production</code>, <code>.local</code>, and <code>.mock</code></li><li>Shared singleton <code>ApiClientState</code> stores token, settings, and preferences</li></ul><p>Example flow:</p><pre><code class="language-swift">try await ApiClient.initializeShared(environment: .production)
+<header class="td-header">
+<a class="td-brand" href="https://aleahim.com/">Aleahim</a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/cv/">Curriculum Vitae</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">September 23, 2025</time></div><h1 class="td-article-title">From ExtremePackaging to OpenAPI Integration</h1><p class="td-article-dek">Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/extreme-packaging-open-a-p-i/">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fextreme-packaging-open-a-p-i%2F&amp;text=From%20ExtremePackaging%20to%20OpenAPI%20Integration" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fextreme-packaging-open-a-p-i%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fextreme-packaging-open-a-p-i%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=From%20ExtremePackaging%20to%20OpenAPI%20Integration&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fextreme-packaging-open-a-p-i%2F" target="_blank" rel="noopener">Email</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/xpackopenapi/expack_openapi.png" alt="From ExtremePackaging to OpenAPI Integration"></figure><div class="td-article-body"><p>When I first published <a href="https://github.com/mihaelamj/ExtremePackaging">ExtremePackaging</a>, the goal was simple — to prove that <strong>highly modular Swift architectures</strong> can scale across platforms while keeping build times fast, dependencies isolated, and the mental model crystal clear.</p>
+<p>But then came the next step: <em>Could this same architecture host a complete OpenAPI workflow — with generated clients, servers, and full middleware integration — without losing its elegance?</em></p>
+<p>That’s how the new reference implementation, <strong>swift-openapi-extremepackaging-example</strong>, was born.</p>
+<hr>
+<h2>🧩 The Foundation — ExtremePackaging</h2>
+<p>The original ExtremePackaging repository introduced a clean, layered structure:</p>
+<ul><li><p><strong>Shared packages</strong> for models and protocols</p></li><li><p><strong>Independent feature modules</strong> for UI, data, and networking</p></li><li><p><strong>No cross-package leaks</strong></p></li><li><p><strong>Unified Xcode workspace</strong> that felt like a monolith but built like microservices</p></li></ul>
+<p>The guiding philosophy: <em>Each feature should be an island, communicating only through well-defined contracts.</em></p>
+<p>That foundation made it ideal for integrating OpenAPI-generated code — which naturally fits into modular boundaries like <code>SharedApiModels</code>, <code>ApiClient</code>, and <code>ApiServer</code>.</p>
+<hr>
+<h2>🚀 Evolving Toward OpenAPI</h2>
+<p>The OpenAPI version added an entire new layer of automation and functionality — transforming a static architecture into a <strong>living, self-describing API ecosystem</strong>.</p>
+<h3>1. OpenAPI Schema &amp; Code Generation</h3>
+<p>At the heart of the project is the <strong>OpenAPI specification (<code>openapi.yaml</code>)</strong> — defining endpoints, models, and responses for a DummyJSON-compatible API.</p>
+<p>Newly introduced elements:</p>
+<ul><li><p>🧱 Full schema definitions for <code>Users</code>, <code>Posts</code>, <code>Products</code>, <code>Todos</code>, and <code>Carts</code></p></li><li><p>🧩 Error schemas (404, validation, authentication)</p></li><li><p>⚙️ Integration with <strong>Swift OpenAPI Generator</strong></p></li><li><p>🔁 Automatic generation of clients, models, and server stubs</p></li><li><p>📦 Separation of generated code into <code>SharedApiModels</code></p></li></ul>
+<p>This turned the architecture into a self-contained API ecosystem — one that can <strong>generate, serve, and consume</strong> its own endpoints.</p>
+<hr>
+<h3>2. API Server Implementation</h3>
+<p>A complete <strong>Vapor-based local server</strong> (<code>ApiServer</code>) was added to simulate real-world backend behavior:</p>
+<ul><li><p>17 endpoints fully implemented from the OpenAPI spec</p></li><li><p>Realistic mock data mirroring DummyJSON</p></li><li><p>Pagination and validation logic</p></li><li><p>Centralized error responses</p></li><li><p>🖥️ Prefixed logging for easy tracing in the console</p></li></ul>
+<p>The server runs locally at <code>http://localhost:8080</code>, serving as both a mock backend and a test harness for the generated client.</p>
+<hr>
+<h3>3. Enhanced API Client Architecture</h3>
+<p>The client evolved from a simple abstraction into a <strong>fully concurrent, actor-based networking layer</strong>.</p>
+<h4>Highlights</h4>
+<ul><li><p><code>ApiClient</code> actor manages shared state safely across async contexts</p></li><li><p>Middleware chain introduced: <strong>Logging → Authentication → Correction</strong></p></li><li><p>Runtime environment switching between <code>.production</code>, <code>.local</code>, and <code>.mock</code></p></li><li><p>Shared singleton <code>ApiClientState</code> stores token, settings, and preferences</p></li></ul>
+<p>Example flow:</p>
+<pre><code class="language-swift">try await ApiClient.initializeShared(environment: .production)
 let client = ApiClient.shared!
 let auth = try await client.login(username: "emilys", password: "emilyspass")
 await ApiClient.setToken(auth.accessToken)
-let users = try await client.getUsers(limit: 10)
-</code></pre><p>A clear separation between environment configuration and runtime state ensures deterministic, thread-safe behavior.</p><hr><h3 id="4.-middleware-integration">4. Middleware Integration</h3><p>The client leverages two reusable middlewares from sibling packages:</p><ul><li><strong><a href="https://github.com/mihaelamj/OpenAPILoggingMiddleware" target="_blank">OpenAPILoggingMiddleware</a></strong><br>Provides structured, console + JSON logging with full request/response capture.</li><li><strong><a href="https://github.com/mihaelamj/BearerTokenAuthMiddleware" target="_blank">BearerTokenAuthMiddleware</a></strong><br>Manages JWT token injection with a concurrency-safe actor and public operation rules.</li></ul><p>Together, they demonstrate the power of <strong>middleware chaining</strong> in OpenAPI Runtime — clean, modular extensions without inheritance or global state.</p><hr><h3 id="5.-yamlmerger-the-key-to-structured-api-specs">5. YAMLMerger — The Key to Structured API Specs</h3><p>The project uses <strong><a href="https://github.com/mihaelamj/YamlMerger" target="_blank">YamlMerger</a></strong> — a Swift package that merges multiple YAML files into a single combined OpenAPI specification.<br>If your project doesn’t already include an <code>openapi.yaml</code>, YamlMerger ensures you have one — and helps you maintain a <strong>structured, predictable folder layout</strong> under <code>Tests/</code> or <code>Sources/SharedApiModels/schemas/</code>.</p><h4>🧠 Why It Must Be Copied into the Project</h4><p>YamlMerger cannot simply be added as a SwiftPM dependency for build-time merging because of <strong>SPM’s read-only resolution model</strong>:</p><ol><li>Swift Package Manager stores dependencies in a <strong>cached, read-only</strong> location (<code>.build/checkouts/</code>).</li><li>The OpenAPI generator, however, needs <strong>write access</strong> to output the merged <code>openapi.yaml</code> file directly into your source tree.</li><li>SPM build scripts are not allowed to write to source folders outside their sandboxed build directory.</li></ol><p>✅ <strong>Solution:</strong> Copy the YamlMerger executable directly into your project (e.g. <code>Tools/YamlMerger/</code>) and call it from a pre-build script or CI pipeline.<br>This guarantees write permissions and makes the tool available to everyone checking out the repo.</p><h4>🧩 What It Does</h4><p>YamlMerger scans subdirectories (01 → 08) and merges YAML fragments in deterministic order:</p><ol><li>Folders are processed numerically.</li><li><code>__*.yaml</code> files merge first within each folder.</li><li>Remaining files merge alphabetically.</li><li>The final output is a complete OpenAPI spec, suitable for Swift OpenAPI Generator.</li></ol><h4>🧱 Example Schema Layout</h4><pre><code>Schema/
+let users = try await client.getUsers(limit: 10)</code></pre>
+<p>A clear separation between environment configuration and runtime state ensures deterministic, thread-safe behavior.</p>
+<hr>
+<h3>4. Middleware Integration</h3>
+<p>The client leverages two reusable middlewares from sibling packages:</p>
+<ul><li><p><strong><a href="https://github.com/mihaelamj/OpenAPILoggingMiddleware">OpenAPILoggingMiddleware</a></strong>
+Provides structured, console + JSON logging with full request/response capture.</p></li><li><p><strong><a href="https://github.com/mihaelamj/BearerTokenAuthMiddleware">BearerTokenAuthMiddleware</a></strong>
+Manages JWT token injection with a concurrency-safe actor and public operation rules.</p></li></ul>
+<p>Together, they demonstrate the power of <strong>middleware chaining</strong> in OpenAPI Runtime — clean, modular extensions without inheritance or global state.</p>
+<hr>
+<h3>5. YAMLMerger — The Key to Structured API Specs</h3>
+<p>The project uses <strong><a href="https://github.com/mihaelamj/YamlMerger">YamlMerger</a></strong> — a Swift package that merges multiple YAML files into a single combined OpenAPI specification.
+If your project doesn’t already include an <code>openapi.yaml</code>, YamlMerger ensures you have one — and helps you maintain a <strong>structured, predictable folder layout</strong> under <code>Tests/</code> or <code>Sources/SharedApiModels/schemas/</code>.</p>
+<h4>🧠 Why It Must Be Copied into the Project</h4>
+<p>YamlMerger cannot simply be added as a SwiftPM dependency for build-time merging because of <strong>SPM’s read-only resolution model</strong>:</p>
+<ol><li><p>Swift Package Manager stores dependencies in a <strong>cached, read-only</strong> location (<code>.build/checkouts/</code>).</p></li><li><p>The OpenAPI generator, however, needs <strong>write access</strong> to output the merged <code>openapi.yaml</code> file directly into your source tree.</p></li><li><p>SPM build scripts are not allowed to write to source folders outside their sandboxed build directory.</p></li></ol>
+<p>✅ <strong>Solution:</strong> Copy the YamlMerger executable directly into your project (e.g. <code>Tools/YamlMerger/</code>) and call it from a pre-build script or CI pipeline.
+This guarantees write permissions and makes the tool available to everyone checking out the repo.</p>
+<h4>🧩 What It Does</h4>
+<p>YamlMerger scans subdirectories (01 → 08) and merges YAML fragments in deterministic order:</p>
+<ol><li><p>Folders are processed numerically.</p></li><li><p><code>__*.yaml</code> files merge first within each folder.</p></li><li><p>Remaining files merge alphabetically.</p></li><li><p>The final output is a complete OpenAPI spec, suitable for Swift OpenAPI Generator.</p></li></ol>
+<h4>🧱 Example Schema Layout</h4>
+<pre><code>Schema/
 ├── 01_Info/
 ├── 02_Servers/
 ├── 03_Tags/
@@ -96,50 +125,48 @@ let users = try await client.getUsers(limit: 10)
 ├── 05_Webhooks/
 ├── 06_Components/
 ├── 07_Security/
-└── 08_ExternalDocs/
-</code></pre><p>Each folder corresponds to a section of the OpenAPI spec, allowing multiple developers to work on different endpoints, schemas, or components without conflicts.</p><h4>⚙️ Typical Workflow</h4><pre><code class="language-bash"># Merge schemas before build
-./Tools/YamlMerger merge   --input Sources/SharedApiModels/schemas/   --output Sources/SharedApiModels/openapi.yaml
-</code></pre><p>You can run this manually, in a pre-build phase, or as part of CI/CD automation.</p><h4>💡 Pro Tip</h4><p>If your project starts <strong>without</strong> an <code>openapi.yaml</code>, placing schema fragments in structured folders under <code>Tests/</code> ensures your API structure remains organized — even before full code generation.<br>YamlMerger gives your tests (and your teammates) a <strong>shared, visual map</strong> of your API’s evolving shape.</p><hr><h3 id="6.-test-coverage-expansion">6. Test Coverage Expansion</h3><p>Two new test suites validate both local and production APIs:</p><ul><li>🧪 <code>ApiClientLocalTests.swift</code> — 25 tests targeting the local Vapor server</li><li>🌐 <code>ApiClientProductionTests.swift</code> — 29 integration tests against DummyJSON API</li></ul><p>Tests cover:</p><ul><li>Authentication and token persistence</li><li>Pagination behavior</li><li>Error responses and invalid IDs</li><li>Concurrent request handling</li></ul><p>Together they form a <strong>54-test safety net</strong> proving both architecture and OpenAPI compliance.</p><hr><h2 id="architecture-snapshot">🧠 Architecture Snapshot</h2><pre><code>Packages/
+└── 08_ExternalDocs/</code></pre>
+<p>Each folder corresponds to a section of the OpenAPI spec, allowing multiple developers to work on different endpoints, schemas, or components without conflicts.</p>
+<h4>⚙️ Typical Workflow</h4>
+<pre><code class="language-bash"># Merge schemas before build
+./Tools/YamlMerger merge   --input Sources/SharedApiModels/schemas/   --output Sources/SharedApiModels/openapi.yaml</code></pre>
+<p>You can run this manually, in a pre-build phase, or as part of CI/CD automation.</p>
+<h4>💡 Pro Tip</h4>
+<p>If your project starts <strong>without</strong> an <code>openapi.yaml</code>, placing schema fragments in structured folders under <code>Tests/</code> ensures your API structure remains organized — even before full code generation.
+YamlMerger gives your tests (and your teammates) a <strong>shared, visual map</strong> of your API’s evolving shape.</p>
+<hr>
+<h3>6. Test Coverage Expansion</h3>
+<p>Two new test suites validate both local and production APIs:</p>
+<ul><li><p>🧪 <code>ApiClientLocalTests.swift</code> — 25 tests targeting the local Vapor server</p></li><li><p>🌐 <code>ApiClientProductionTests.swift</code> — 29 integration tests against DummyJSON API</p></li></ul>
+<p>Tests cover:</p>
+<ul><li><p>Authentication and token persistence</p></li><li><p>Pagination behavior</p></li><li><p>Error responses and invalid IDs</p></li><li><p>Concurrent request handling</p></li></ul>
+<p>Together they form a <strong>54-test safety net</strong> proving both architecture and OpenAPI compliance.</p>
+<hr>
+<h2>🧠 Architecture Snapshot</h2>
+<pre><code>Packages/
 ├── Sources/
 │   ├── ApiClient/
 │   ├── ApiServer/
 │   └── SharedApiModels/
 └── Tests/
-    └── ApiClientTests/
-</code></pre><p>Each target is self-contained — just like in the original ExtremePackaging — but now with full OpenAPI integration, client/server symmetry, and end-to-end testability.</p><hr><h2 id="key-improvements-over-extremepackaging">⚡ Key Improvements Over ExtremePackaging</h2><table><thead><td>Area</td><td>Before</td><td>After</td></thead><tbody><tr><td>API Definition</td><td>Manual protocol layer</td><td>Generated OpenAPI spec</td></tr><tr><td>Networking</td><td>Custom client</td><td>Actor-based client w/ middlewares</td></tr><tr><td>Server</td><td>None</td><td>Vapor mock server (17 endpoints)</td></tr><tr><td>Authentication</td><td>Static token</td><td>BearerTokenAuthMiddleware</td></tr><tr><td>Logging</td><td>Simple print logs</td><td>Structured OpenAPILoggingMiddleware</td></tr><tr><td>Testing</td><td>Minimal unit tests</td><td>Full integration tests (54 total)</td></tr><tr><td>Schema Management</td><td>Handwritten</td><td>Modular YAML + YamlMerger</td></tr><tr><td>Tooling</td><td>Swift only</td><td>Swift + OpenAPI toolchain</td></tr></tbody></table><hr><h2 id="lessons-learned">🧭 Lessons Learned</h2><ol><li><strong>OpenAPI fits perfectly into modular Swift architectures</strong> — generated code belongs in its own layer, and SwiftPM makes that separation effortless.</li><li><strong>Actors are the future of shared state</strong> — simple, safe, and transparent.</li><li><strong>Middleware > Managers</strong> — function composition scales better than class hierarchies.</li><li><strong>Automation beats documentation</strong> — with OpenAPI, the spec <em>is</em> the documentation.</li></ol><hr><h2 id="closing-thoughts">💬 Closing Thoughts</h2><p>This evolution of ExtremePackaging into a full OpenAPI reference app is more than a demo — it’s a <strong>blueprint for modular API-driven development in Swift</strong>.</p><p>From YAML schemas to live servers and typed clients, everything now exists in one unified, testable ecosystem — powered by Apple’s official OpenAPI tools and guided by the ExtremePackaging philosophy.</p><p>👉 Explore the project: <a href="https://github.com/mihaelamj/swift-openapi-extremepackaging-example" target="_blank">swift-openapi-extremepackaging-example</a></p><hr><p><em>“Architecture should scale not by adding layers, but by removing assumptions.”</em></p>
-        </div>
-    
-        <footer class="post-footer">
-            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
-        </footer>
-    </article>
+    └── ApiClientTests/</code></pre>
+<p>Each target is self-contained — just like in the original ExtremePackaging — but now with full OpenAPI integration, client/server symmetry, and end-to-end testability.</p>
+<hr>
+<h2>⚡ Key Improvements Over ExtremePackaging</h2>
+<table><thead><tr><th>Area</th><th>Before</th><th>After</th></tr></thead><tbody><tr><td>API Definition</td><td>Manual protocol layer</td><td>Generated OpenAPI spec</td></tr><tr><td>Networking</td><td>Custom client</td><td>Actor-based client w/ middlewares</td></tr><tr><td>Server</td><td>None</td><td>Vapor mock server (17 endpoints)</td></tr><tr><td>Authentication</td><td>Static token</td><td>BearerTokenAuthMiddleware</td></tr><tr><td>Logging</td><td>Simple print logs</td><td>Structured OpenAPILoggingMiddleware</td></tr><tr><td>Testing</td><td>Minimal unit tests</td><td>Full integration tests (54 total)</td></tr><tr><td>Schema Management</td><td>Handwritten</td><td>Modular YAML + YamlMerger</td></tr><tr><td>Tooling</td><td>Swift only</td><td>Swift + OpenAPI toolchain</td></tr></tbody></table>
+<hr>
+<h2>🧭 Lessons Learned</h2>
+<ol><li><p><strong>OpenAPI fits perfectly into modular Swift architectures</strong> — generated code belongs in its own layer, and SwiftPM makes that separation effortless.</p></li><li><p><strong>Actors are the future of shared state</strong> — simple, safe, and transparent.</p></li><li><p><strong>Middleware &gt; Managers</strong> — function composition scales better than class hierarchies.</p></li><li><p><strong>Automation beats documentation</strong> — with OpenAPI, the spec <em>is</em> the documentation.</p></li></ol>
+<hr>
+<h2>💬 Closing Thoughts</h2>
+<p>This evolution of ExtremePackaging into a full OpenAPI reference app is more than a demo — it’s a <strong>blueprint for modular API-driven development in Swift</strong>.</p>
+<p>From YAML schemas to live servers and typed clients, everything now exists in one unified, testable ecosystem — powered by Apple’s official OpenAPI tools and guided by the ExtremePackaging philosophy.</p>
+<p>👉 Explore the project: <a href="https://github.com/mihaelamj/swift-openapi-extremepackaging-example">swift-openapi-extremepackaging-example</a></p>
+<hr>
+<p><em>“Architecture should scale not by adding layers, but by removing assumptions.”</em></p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a><time>May 31, 2026</time></li><li><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a><time>May 28, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a><time>May 21, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/cv/">Curriculum Vitae</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
 
-    </main>
 
-    <footer>
-        <p class="footer-links">
-            <a href="https://aleahim.com/rss.xml">RSS feed</a>
-            &nbsp;·&nbsp;
-            <a href="https://github.com/mihaelamj" target="_blank" rel="noopener">GitHub</a>
-            &nbsp;·&nbsp;
-            <a href="https://www.linkedin.com/in/mihaelamj" target="_blank" rel="noopener">LinkedIn</a>
-            &nbsp;·&nbsp;
-            <a href="https://x.com/diyamantina" target="_blank" rel="noopener">X</a>
-            &nbsp;·&nbsp;
-            <a href="https://mastodon.social/@ameahim" target="_blank" rel="noopener">Mastodon</a>
-            &nbsp;·&nbsp;
-            <a href="https://bsky.app/profile/dijamantina.bsky.social" target="_blank" rel="noopener">Bluesky</a>
-        </p>
-    
-        <p class="small">
-            Built with <a href="https://www.swift.org/" target="_blank" rel="noopener">Swift</a> and <a href="https://github.com/toucansites/toucan" target="_blank" rel="noopener">Toucan</a>.
-            Aleahim &copy; 2026.
-        </p>
-    </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    
 </body>
 </html>

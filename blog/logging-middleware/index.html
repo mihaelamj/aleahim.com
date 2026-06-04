@@ -1,92 +1,101 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Introducing OpenAPILoggingMiddleware - Aleahim</title>
-    <meta name="description" content="Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers">
-
-    <link rel="canonical" href="https://aleahim.com/blog/logging-middleware/">
-
-    <meta property="og:url" content="https://aleahim.com/blog/logging-middleware/">
-    <meta property="og:title" content="Introducing OpenAPILoggingMiddleware - Aleahim">
-    <meta property="og:description" content="Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Aleahim">
-    <meta property="og:image" content="https://aleahim.com/images/logg/logging-middleware.jpg">
-    <meta property="og:image:alt" content="Introducing OpenAPILoggingMiddleware">
-    
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Introducing OpenAPILoggingMiddleware - Aleahim">
-    <meta name="twitter:description" content="Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers">
-    <meta name="twitter:image" content="https://aleahim.com/images/logg/logging-middleware.jpg">
-    <meta name="twitter:image:alt" content="Introducing OpenAPILoggingMiddleware">
-    
-
-    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
-
-    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    
-
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>Introducing OpenAPILoggingMiddleware</title>
+<meta name="description" content="Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers">
+<link rel="canonical" href="https://aleahim.com/blog/logging-middleware/">
+<meta property="og:title" content="Introducing OpenAPILoggingMiddleware">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers">
+<meta property="og:url" content="https://aleahim.com/blog/logging-middleware/">
+<meta property="og:site_name" content="Aleahim">
+<meta property="og:image" content="https://aleahim.com/images/logg/logging-middleware.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Introducing OpenAPILoggingMiddleware">
+<meta name="twitter:description" content="Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers">
+<meta name="twitter:image" content="https://aleahim.com/images/logg/logging-middleware.jpg">
+<meta property="article:published_time" content="2025-09-16T00:00:00Z">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <a id="logo" href="https://aleahim.com">
-                <img
-                    src="https://aleahim.com/images/logo.svg"
-                    alt="Aleahim"
-                    title="Aleahim"
-                >
-                <h1 class="site-title">Aleahim.com</h1>
-            </a>
-    
-            <nav>
-                <div class="navigation">
-                    <a href="https://aleahim.com/">Home</a>
-                <a href="https://aleahim.com/cv/">CV</a>
-                <a href="https://aleahim.com/speaking/">Speaking</a>
-                <a href="https://codeweaver.info/" rel="noopener">Hire me</a>
-                <a href="https://aleahim.com/about/">About</a>
-                <a href="https://mihaelamj.github.io/cupertino/" rel="noopener">Cupertino Quality</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<header class="td-header">
+<a class="td-brand" href="https://aleahim.com/">Aleahim</a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/cv/">Curriculum Vitae</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">September 16, 2025</time></div><h1 class="td-article-title">Introducing OpenAPILoggingMiddleware</h1><p class="td-article-dek">Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/logging-middleware/">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Flogging-middleware%2F&amp;text=Introducing%20OpenAPILoggingMiddleware" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Flogging-middleware%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Flogging-middleware%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=Introducing%20OpenAPILoggingMiddleware&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Flogging-middleware%2F" target="_blank" rel="noopener">Email</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/logg/logging-middleware.jpg" alt="Introducing OpenAPILoggingMiddleware"></figure><div class="td-article-body"><h2>Introduction</h2>
+<p>In the world of <strong>OpenAPI-driven Swift servers</strong>, visibility is everything.
+You can’t fix what you can’t see — and you can’t optimize what you don’t understand.</p>
+<p>When I started building modular, OpenAPI-first architectures in Swift, one thing stood out: <strong>logging was either overwhelming or absent</strong>.
+Either you got a raw dump of everything (headers, binary data, and stack traces), or you got nothing at all. Neither is particularly helpful when debugging or tracing an issue across microservices.</p>
+<p>Frameworks like <strong>OpenAPIRuntime</strong> and <strong>OpenAPIVapor</strong> provide a strong foundation, but they deliberately avoid opinions about logging. They leave that up to you.
+And that’s where most developers end up adding scattered <code>print()</code> statements or ad-hoc <code>logger.info()</code> calls inside handlers just to see what’s going on.</p>
+<p>That’s not clean architecture. It’s noise.</p>
+<p>So I built <strong>OpenAPILoggingMiddleware</strong>, a small, composable middleware that gives you <em>just enough visibility</em> — not too much, not too little — when working with OpenAPI-based servers.</p>
+<hr>
+<h2>The Problem: Logging in a Generated World</h2>
+<p>OpenAPI code generation has revolutionized how backend systems are written. You define your contracts, generate both server and client, and everything should “just work.”
+But once requests start flowing, visibility often becomes a blind spot.</p>
+<p>If you’ve ever tried debugging an OpenAPI-generated Swift server, you might recognize these problems:</p>
+<ul><li><p>Middleware logs every byte of the body, even binary data.</p></li><li><p>Multi-part and SSE requests produce unreadable noise.</p></li><li><p>Response logs are buried under system output.</p></li><li><p>There’s no consistent way to see request duration or endpoint performance.</p></li><li><p>You can’t easily toggle verbosity levels or redact sensitive data.</p></li></ul>
+<p>You end up either drowning in log output or adding <code>print</code> calls just to survive the debugging process.</p>
+<p>This middleware solves that.</p>
+<hr>
+<h2>The Solution: A Lightweight Logging Layer</h2>
+<p><code>OpenAPILoggingMiddleware</code> sits quietly in the pipeline — between your generated routes and the transport layer.
+It listens to every incoming request and outgoing response, measures duration, and prints a <strong>structured summary</strong> of what happened.</p>
+<p>At its core, the idea is simple:</p>
+<blockquote><p>Log exactly what you’d want to see if you were reading someone else’s code.</p></blockquote>
+<p>Here’s how it looks in your Vapor or OpenAPI setup:</p>
+<pre><code class="language-swift">import OpenAPILoggingMiddleware
 
-    <main>
-    <article class="blog-post">
-        <header class="post-header">
-            <div class="title-with-thumbnail">
-                <div class="post-thumbnail">
-                    <img src="https://aleahim.com/images/logg/logging-middleware.jpg" alt="Introducing OpenAPILoggingMiddleware">
-                </div>
-                <div class="title-wrapper">
-                    <h1>Introducing OpenAPILoggingMiddleware</h1>
-                    <div class="post-meta">
-                        <time datetime="2025-09-16T00:00:00.000Z">September 16, 2025</time>
-                    </div>
-                </div>
-            </div>
-        </header>
-    
-        <div class="post-content">
-            <div class="post-hero-image">
-                <img src="https://aleahim.com/images/logg/logging-middleware.jpg" alt="Introducing OpenAPILoggingMiddleware">
-            </div>
-    
-            <h2 id="introduction">Introduction</h2><p>In the world of <strong>OpenAPI-driven Swift servers</strong>, visibility is everything.<br>You can’t fix what you can’t see — and you can’t optimize what you don’t understand.</p><p>When I started building modular, OpenAPI-first architectures in Swift, one thing stood out: <strong>logging was either overwhelming or absent</strong>.<br>Either you got a raw dump of everything (headers, binary data, and stack traces), or you got nothing at all. Neither is particularly helpful when debugging or tracing an issue across microservices.</p><p>Frameworks like <strong>OpenAPIRuntime</strong> and <strong>OpenAPIVapor</strong> provide a strong foundation, but they deliberately avoid opinions about logging. They leave that up to you.<br>And that’s where most developers end up adding scattered <code>print()</code> statements or ad-hoc <code>logger.info()</code> calls inside handlers just to see what’s going on.</p><p>That’s not clean architecture. It’s noise.</p><p>So I built <strong>OpenAPILoggingMiddleware</strong>, a small, composable middleware that gives you <em>just enough visibility</em> — not too much, not too little — when working with OpenAPI-based servers.</p><hr><h2 id="the-problem-logging-in-a-generated-world">The Problem: Logging in a Generated World</h2><p>OpenAPI code generation has revolutionized how backend systems are written. You define your contracts, generate both server and client, and everything should “just work.”<br>But once requests start flowing, visibility often becomes a blind spot.</p><p>If you’ve ever tried debugging an OpenAPI-generated Swift server, you might recognize these problems:</p><ul><li>Middleware logs every byte of the body, even binary data.</li><li>Multi-part and SSE requests produce unreadable noise.</li><li>Response logs are buried under system output.</li><li>There’s no consistent way to see request duration or endpoint performance.</li><li>You can’t easily toggle verbosity levels or redact sensitive data.</li></ul><p>You end up either drowning in log output or adding <code>print</code> calls just to survive the debugging process.</p><p>This middleware solves that.</p><hr><h2 id="the-solution-a-lightweight-logging-layer">The Solution: A Lightweight Logging Layer</h2><p><code>OpenAPILoggingMiddleware</code> sits quietly in the pipeline — between your generated routes and the transport layer.<br>It listens to every incoming request and outgoing response, measures duration, and prints a <strong>structured summary</strong> of what happened.</p><p>At its core, the idea is simple:</p><blockquote><p>Log exactly what you’d want to see if you were reading someone else’s code.</p></blockquote><p>Here’s how it looks in your Vapor or OpenAPI setup:</p><pre><code class="language-swift">import OpenAPILoggingMiddleware
-
-app.middleware.use(OpenAPILoggingMiddleware(level: .info))
-</code></pre><p>That one line transforms your debugging experience.</p><hr><h2 id="under-the-hood">Under the Hood</h2><p>The middleware implements the <code>OpenAPIMiddleware</code> protocol, which lets it intercept the lifecycle of each OpenAPI operation — before the request is handled and after the response is sent.</p><p>Here’s a conceptual overview:</p><pre><code class="language-swift">public struct OpenAPILoggingMiddleware: OpenAPIMiddleware {
+app.middleware.use(OpenAPILoggingMiddleware(level: .info))</code></pre>
+<p>That one line transforms your debugging experience.</p>
+<hr>
+<h2>Under the Hood</h2>
+<p>The middleware implements the <code>OpenAPIMiddleware</code> protocol, which lets it intercept the lifecycle of each OpenAPI operation — before the request is handled and after the response is sent.</p>
+<p>Here’s a conceptual overview:</p>
+<pre><code class="language-swift">public struct OpenAPILoggingMiddleware: OpenAPIMiddleware {
     public func intercept(
         _ request: Request,
         operationID: String,
@@ -99,17 +108,39 @@ app.middleware.use(OpenAPILoggingMiddleware(level: .info))
         print("[\(request.method)] \(request.url.path) -&gt; \(response.status.code) [\(Int(duration)) ms]")
         return response
     }
-}
-</code></pre><p>Of course, the real implementation handles errors, structured formatting, and configurable verbosity, but the essence is the same:<br>it’s a <em>transparent layer of introspection</em> that doesn’t alter your data flow.</p><hr><h2 id="logging-philosophy">Logging Philosophy</h2><p>There’s a fine balance between too much and too little information.</p><p>Traditional logging tools either <strong>dump everything</strong> (which nobody reads) or <strong>show too little</strong> (which leaves you guessing).<br><code>OpenAPILoggingMiddleware</code> follows a <em>minimalist</em> principle inspired by Apple’s own frameworks — log what matters, hide what doesn’t.</p><p>It’s designed around three key ideas:</p><ol><li><strong>Contextual logging</strong> — every entry includes method, path, status, and duration.</li><li><strong>Progressive verbosity</strong> — higher log levels show headers and bodies.</li><li><strong>Human readability first</strong> — logs are meant to be scanned, not parsed by machines.</li></ol><p>Here’s an example of what a single request looks like in <code>.info</code> mode:</p><pre><code class="language-text">[POST] /mocks/messages/agent-responses (200 OK)
+}</code></pre>
+<p>Of course, the real implementation handles errors, structured formatting, and configurable verbosity, but the essence is the same:
+it’s a <em>transparent layer of introspection</em> that doesn’t alter your data flow.</p>
+<hr>
+<h2>Logging Philosophy</h2>
+<p>There’s a fine balance between too much and too little information.</p>
+<p>Traditional logging tools either <strong>dump everything</strong> (which nobody reads) or <strong>show too little</strong> (which leaves you guessing).
+<code>OpenAPILoggingMiddleware</code> follows a <em>minimalist</em> principle inspired by Apple’s own frameworks — log what matters, hide what doesn’t.</p>
+<p>It’s designed around three key ideas:</p>
+<ol><li><p><strong>Contextual logging</strong> — every entry includes method, path, status, and duration.</p></li><li><p><strong>Progressive verbosity</strong> — higher log levels show headers and bodies.</p></li><li><p><strong>Human readability first</strong> — logs are meant to be scanned, not parsed by machines.</p></li></ol>
+<p>Here’s an example of what a single request looks like in <code>.info</code> mode:</p>
+<pre><code class="language-text">[POST] /mocks/messages/agent-responses (200 OK)
 Duration: 123 ms
-Body: {"message":"You shall not pass!"}
-</code></pre><p>And at <code>.debug</code> level, you get more detail:</p><pre><code class="language-text">[POST] /mocks/messages/agent-responses
+Body: {"message":"You shall not pass!"}</code></pre>
+<p>And at <code>.debug</code> level, you get more detail:</p>
+<pre><code class="language-text">[POST] /mocks/messages/agent-responses
 Headers:
   Content-Type: application/json
   Authorization: Bearer Gandalf-Was-Here-1
 Duration: 123 ms
-Body: {"message":"You shall not pass!"}
-</code></pre><p>Readable. Structured. Useful.</p><hr><h2 id="why-not-just-use-vapor-s-logger">Why Not Just Use Vapor’s Logger?</h2><p>That’s a valid question.</p><p>Vapor already includes a powerful logging system based on SwiftLog, so why add another layer?<br>Because Vapor’s logger is <strong>request-agnostic</strong> — it’s not aware of OpenAPI operations, generated endpoints, or typed models.</p><p><code>OpenAPILoggingMiddleware</code> is <strong>contract-aware</strong>.<br>It sits in the OpenAPI pipeline, so it can access the operation ID, typed body, and structured response — all without touching your route handlers. That distinction is crucial for OpenAPI-based architectures, where most of your server logic is generated.</p><hr><h2 id="integration-examples">Integration Examples</h2><p>Adding it to a Vapor-based OpenAPI server is trivial:</p><pre><code class="language-swift">import Vapor
+Body: {"message":"You shall not pass!"}</code></pre>
+<p>Readable. Structured. Useful.</p>
+<hr>
+<h2>Why Not Just Use Vapor’s Logger?</h2>
+<p>That’s a valid question.</p>
+<p>Vapor already includes a powerful logging system based on SwiftLog, so why add another layer?
+Because Vapor’s logger is <strong>request-agnostic</strong> — it’s not aware of OpenAPI operations, generated endpoints, or typed models.</p>
+<p><code>OpenAPILoggingMiddleware</code> is <strong>contract-aware</strong>.
+It sits in the OpenAPI pipeline, so it can access the operation ID, typed body, and structured response — all without touching your route handlers. That distinction is crucial for OpenAPI-based architectures, where most of your server logic is generated.</p>
+<hr>
+<h2>Integration Examples</h2>
+<p>Adding it to a Vapor-based OpenAPI server is trivial:</p>
+<pre><code class="language-swift">import Vapor
 import OpenAPIRuntime
 import OpenAPIVapor
 import OpenAPILoggingMiddleware
@@ -119,22 +150,64 @@ let app = try Application(.detect())
 let server = try! MyOpenAPIServer(app: app)
 
 app.middleware.use(OpenAPILoggingMiddleware(level: .info))
-try app.run()
-</code></pre><p>If you’re using <code>OpenAPIRuntime</code> directly (without Vapor), it’s equally simple:</p><pre><code class="language-swift">var server = try OpenAPIServer()
+try app.run()</code></pre>
+<p>If you’re using <code>OpenAPIRuntime</code> directly (without Vapor), it’s equally simple:</p>
+<pre><code class="language-swift">var server = try OpenAPIServer()
 server.middleware.append(OpenAPILoggingMiddleware(level: .debug))
-try server.start()
-</code></pre><p>No configuration files. No dependencies. It just works.</p><hr><h2 id="extensibility-and-customization">Extensibility and Customization</h2><p>Logging needs vary between environments.<br>In development, you might want to see every detail. In production, you want concise summaries. The middleware supports multiple log levels, allowing you to tailor verbosity to your needs:</p><ul><li><code>.error</code> — log only failed requests.</li><li><code>.info</code> — log all requests with method, path, duration, and status.</li><li><code>.debug</code> — include headers and bodies.</li></ul><p>In future releases, I plan to add <strong>filters</strong> and <strong>formatters</strong> — so you could, for instance, redact specific headers (<code>Authorization</code>, <code>Cookie</code>) or export logs in JSON format for ingestion into a centralized system.</p><p>Example:</p><pre><code class="language-swift">let middleware = OpenAPILoggingMiddleware(
+try server.start()</code></pre>
+<p>No configuration files. No dependencies. It just works.</p>
+<hr>
+<h2>Extensibility and Customization</h2>
+<p>Logging needs vary between environments.
+In development, you might want to see every detail. In production, you want concise summaries. The middleware supports multiple log levels, allowing you to tailor verbosity to your needs:</p>
+<ul><li><p><code>.error</code> — log only failed requests.</p></li><li><p><code>.info</code> — log all requests with method, path, duration, and status.</p></li><li><p><code>.debug</code> — include headers and bodies.</p></li></ul>
+<p>In future releases, I plan to add <strong>filters</strong> and <strong>formatters</strong> — so you could, for instance, redact specific headers (<code>Authorization</code>, <code>Cookie</code>) or export logs in JSON format for ingestion into a centralized system.</p>
+<p>Example:</p>
+<pre><code class="language-swift">let middleware = OpenAPILoggingMiddleware(
     level: .debug,
     redactHeaders: ["Authorization", "Cookie"]
-)
-</code></pre><hr><h2 id="design-details-why-simplicity-wins">Design Details: Why Simplicity Wins</h2><p>Many logging libraries start small and end up as frameworks. They introduce dependency graphs, adapters, output sinks, configuration DSLs — and complexity sneaks in through the back door.</p><p>I deliberately avoided that path.</p><p><code>OpenAPILoggingMiddleware</code> does one thing: <strong>it shows what your OpenAPI server is doing</strong>.<br>Nothing else.</p><p>No JSON serialization frameworks. No dependency injection. No external configuration.<br>Just clean Swift and a single dependency on <code>OpenAPIRuntime</code>.</p><p>The codebase is small enough to read in one sitting — and that’s intentional. In my opinion, <strong>you should be able to understand every line of code that runs in your server’s core path</strong>.</p><hr><h2 id="performance-considerations">Performance Considerations</h2><p>Logging always comes at a cost, but the impact here is minimal.<br>The middleware measures request duration using <code>Date().timeIntervalSince(start)</code>, which is negligible compared to network latency or I/O.</p><p>You can safely keep it enabled even in staging or pre-production environments.<br>In production, switching to <code>.error</code> mode will keep your logs clean while still providing visibility into failures.</p><hr><h2 id="testing-and-debugging">Testing and Debugging</h2><p>The middleware is fully testable using Vapor’s <code>Application</code> test harness or plain <code>XCTest</code> with mock requests.<br>Here’s a simple test that validates duration and structure:</p><pre><code class="language-swift">func testMiddlewareLogsRequestAndResponse() async throws {
+)</code></pre>
+<hr>
+<h2>Design Details: Why Simplicity Wins</h2>
+<p>Many logging libraries start small and end up as frameworks. They introduce dependency graphs, adapters, output sinks, configuration DSLs — and complexity sneaks in through the back door.</p>
+<p>I deliberately avoided that path.</p>
+<p><code>OpenAPILoggingMiddleware</code> does one thing: <strong>it shows what your OpenAPI server is doing</strong>.
+Nothing else.</p>
+<p>No JSON serialization frameworks. No dependency injection. No external configuration.
+Just clean Swift and a single dependency on <code>OpenAPIRuntime</code>.</p>
+<p>The codebase is small enough to read in one sitting — and that’s intentional. In my opinion, <strong>you should be able to understand every line of code that runs in your server’s core path</strong>.</p>
+<hr>
+<h2>Performance Considerations</h2>
+<p>Logging always comes at a cost, but the impact here is minimal.
+The middleware measures request duration using <code>Date().timeIntervalSince(start)</code>, which is negligible compared to network latency or I/O.</p>
+<p>You can safely keep it enabled even in staging or pre-production environments.
+In production, switching to <code>.error</code> mode will keep your logs clean while still providing visibility into failures.</p>
+<hr>
+<h2>Testing and Debugging</h2>
+<p>The middleware is fully testable using Vapor’s <code>Application</code> test harness or plain <code>XCTest</code> with mock requests.
+Here’s a simple test that validates duration and structure:</p>
+<pre><code class="language-swift">func testMiddlewareLogsRequestAndResponse() async throws {
     let app = Application(.testing)
     app.middleware.use(OpenAPILoggingMiddleware(level: .info))
     try await app.test(.POST, "/ping", afterResponse: { res in
         XCTAssertEqual(res.status, .ok)
     })
-}
-</code></pre><p>You can also inject your own logger conforming to <code>LogHandler</code> if you prefer structured output rather than printing to stdout.</p><hr><h2 id="future-work">Future Work</h2><p>The roadmap includes:</p><ol><li><strong>JSON Formatter</strong> — for structured logs in production environments.</li><li><strong>Redaction Rules</strong> — for headers and sensitive body fields.</li><li><strong>Metrics Hooks</strong> — integration with Swift Metrics or Prometheus.</li><li><strong>Pluggable Output Destinations</strong> — allowing streaming to files or external monitoring systems.</li><li><strong>Async Logging</strong> — offloading logging I/O to background tasks for ultra-high performance scenarios.</li></ol><p>Each of these will follow the same guiding principles: clarity, composability, and minimalism.</p><hr><h2 id="philosophy-clean-visibility">Philosophy: Clean Visibility</h2><p>Logging is not just a developer tool — it’s part of the interface between humans and systems.<br>A well-designed logging layer doesn’t scream for attention; it quietly reveals how the system behaves.</p><p>When I was designing this package, I thought about the elegance of Apple’s own frameworks — the way their APIs feel inevitable, obvious in hindsight. That’s what I aim for here: <strong>a logging middleware that feels invisible until you need it, and indispensable once you use it.</strong></p><hr><h2 id="example-output-in-context">Example Output in Context</h2><p>Here’s a real-world example of multiple concurrent requests hitting the same endpoint:</p><pre><code class="language-text">[GET] /user/profile (200 OK)
+}</code></pre>
+<p>You can also inject your own logger conforming to <code>LogHandler</code> if you prefer structured output rather than printing to stdout.</p>
+<hr>
+<h2>Future Work</h2>
+<p>The roadmap includes:</p>
+<ol><li><p><strong>JSON Formatter</strong> — for structured logs in production environments.</p></li><li><p><strong>Redaction Rules</strong> — for headers and sensitive body fields.</p></li><li><p><strong>Metrics Hooks</strong> — integration with Swift Metrics or Prometheus.</p></li><li><p><strong>Pluggable Output Destinations</strong> — allowing streaming to files or external monitoring systems.</p></li><li><p><strong>Async Logging</strong> — offloading logging I/O to background tasks for ultra-high performance scenarios.</p></li></ol>
+<p>Each of these will follow the same guiding principles: clarity, composability, and minimalism.</p>
+<hr>
+<h2>Philosophy: Clean Visibility</h2>
+<p>Logging is not just a developer tool — it’s part of the interface between humans and systems.
+A well-designed logging layer doesn’t scream for attention; it quietly reveals how the system behaves.</p>
+<p>When I was designing this package, I thought about the elegance of Apple’s own frameworks — the way their APIs feel inevitable, obvious in hindsight. That’s what I aim for here: <strong>a logging middleware that feels invisible until you need it, and indispensable once you use it.</strong></p>
+<hr>
+<h2>Example Output in Context</h2>
+<p>Here’s a real-world example of multiple concurrent requests hitting the same endpoint:</p>
+<pre><code class="language-text">[GET] /user/profile (200 OK)
 Duration: 87 ms
 
 [POST] /mocks/messages/agent-responses (200 OK)
@@ -142,41 +215,24 @@ Duration: 121 ms
 Body: {"message":"You shall not pass!"}
 
 [PATCH] /user/preferences (204 No Content)
-Duration: 96 ms
-</code></pre><p>Notice how easy it is to see patterns — which endpoints are slow, which ones are frequent, which ones failed.<br>That’s the essence of <strong>observability</strong> — not more data, but <em>useful</em> data.</p><hr><h2 id="real-world-use">Real-World Use</h2><p>I use <code>OpenAPILoggingMiddleware</code> in all my OpenAPI projects — from small prototypes to complex SSE (Server-Sent Events) systems. It’s particularly valuable when debugging <strong>streamed responses</strong> or <strong>multipart form uploads</strong>, where conventional logs become unreadable.</p><p>Because it’s a simple <code>OpenAPIMiddleware</code>, it works with any generated server conforming to the OpenAPI ecosystem — including custom transports and pure SwiftNIO backends.</p><hr><h2 id="closing-thoughts">Closing Thoughts</h2><p>This middleware is a reminder that sometimes the simplest tools make the biggest difference.<br>It’s easy to underestimate the power of <strong>well-designed visibility</strong> — until you remove it and start guessing again.</p><p>Whether you’re debugging mock routes, profiling API latency, or simply curious about what your server is doing, <code>OpenAPILoggingMiddleware</code> gives you that quiet transparency every developer deserves.</p><p>👉 <strong>GitHub:</strong> <a href="https://github.com/mihaelamj/OpenAPILoggingMiddleware" target="_blank">mihaelamj/OpenAPILoggingMiddleware</a></p><hr><p><em>“Clean code should be composable, testable, and visible when it runs.”</em></p>
-        </div>
-    
-        <footer class="post-footer">
-            <a href="https://aleahim.com/blog/" class="back-link">← Back to Blog</a>
-        </footer>
-    </article>
+Duration: 96 ms</code></pre>
+<p>Notice how easy it is to see patterns — which endpoints are slow, which ones are frequent, which ones failed.
+That’s the essence of <strong>observability</strong> — not more data, but <em>useful</em> data.</p>
+<hr>
+<h2>Real-World Use</h2>
+<p>I use <code>OpenAPILoggingMiddleware</code> in all my OpenAPI projects — from small prototypes to complex SSE (Server-Sent Events) systems. It’s particularly valuable when debugging <strong>streamed responses</strong> or <strong>multipart form uploads</strong>, where conventional logs become unreadable.</p>
+<p>Because it’s a simple <code>OpenAPIMiddleware</code>, it works with any generated server conforming to the OpenAPI ecosystem — including custom transports and pure SwiftNIO backends.</p>
+<hr>
+<h2>Closing Thoughts</h2>
+<p>This middleware is a reminder that sometimes the simplest tools make the biggest difference.
+It’s easy to underestimate the power of <strong>well-designed visibility</strong> — until you remove it and start guessing again.</p>
+<p>Whether you’re debugging mock routes, profiling API latency, or simply curious about what your server is doing, <code>OpenAPILoggingMiddleware</code> gives you that quiet transparency every developer deserves.</p>
+<p>👉 <strong>GitHub:</strong> <a href="https://github.com/mihaelamj/OpenAPILoggingMiddleware">mihaelamj/OpenAPILoggingMiddleware</a></p>
+<hr>
+<p><em>“Clean code should be composable, testable, and visible when it runs.”</em></p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a><time>May 31, 2026</time></li><li><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a><time>May 28, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a><time>May 21, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/cv/">Curriculum Vitae</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
 
-    </main>
 
-    <footer>
-        <p class="footer-links">
-            <a href="https://aleahim.com/rss.xml">RSS feed</a>
-            &nbsp;·&nbsp;
-            <a href="https://github.com/mihaelamj" target="_blank" rel="noopener">GitHub</a>
-            &nbsp;·&nbsp;
-            <a href="https://www.linkedin.com/in/mihaelamj" target="_blank" rel="noopener">LinkedIn</a>
-            &nbsp;·&nbsp;
-            <a href="https://x.com/diyamantina" target="_blank" rel="noopener">X</a>
-            &nbsp;·&nbsp;
-            <a href="https://mastodon.social/@ameahim" target="_blank" rel="noopener">Mastodon</a>
-            &nbsp;·&nbsp;
-            <a href="https://bsky.app/profile/dijamantina.bsky.social" target="_blank" rel="noopener">Bluesky</a>
-        </p>
-    
-        <p class="small">
-            Built with <a href="https://www.swift.org/" target="_blank" rel="noopener">Swift</a> and <a href="https://github.com/toucansites/toucan" target="_blank" rel="noopener">Toucan</a>.
-            Aleahim &copy; 2026.
-        </p>
-    </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    
 </body>
 </html>

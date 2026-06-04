@@ -1,103 +1,81 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>About</title>
+<meta name="description" content="About Mihaela Mihaljević">
+<link rel="canonical" href="https://aleahim.com/about/">
+<meta property="og:title" content="About">
+<meta property="og:type" content="website">
+<meta property="og:description" content="About Mihaela Mihaljević">
+<meta property="og:url" content="https://aleahim.com/about/">
+<meta property="og:site_name" content="Aleahim">
 
-    <title>About - Aleahim</title>
-    <meta name="description" content="About Mihaela Mihaljević">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="About">
+<meta name="twitter:description" content="About Mihaela Mihaljević">
 
-    <link rel="canonical" href="https://aleahim.com/about/">
 
-    <meta property="og:url" content="https://aleahim.com/about/">
-    <meta property="og:title" content="About - Aleahim">
-    <meta property="og:description" content="About Mihaela Mihaljević">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Aleahim">
-    
-    <meta property="og:image" content="https://aleahim.com/images/og-image.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="2048">
-    <meta property="og:image:height" content="1364">
-    <meta property="og:image:alt" content="Aleahim. Mihaela Mihaljević, Senior iOS Architect.">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About - Aleahim">
-    <meta name="twitter:description" content="About Mihaela Mihaljević">
-    
-    <meta name="twitter:image" content="https://aleahim.com/images/og-image.png">
-    <meta name="twitter:image:alt" content="Aleahim. Mihaela Mihaljević, Senior iOS Architect.">
-
-    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
-
-    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    
-
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <a id="logo" href="https://aleahim.com">
-                <img
-                    src="https://aleahim.com/images/logo.svg"
-                    alt="Aleahim"
-                    title="Aleahim"
-                >
-                <h1 class="site-title">Aleahim.com</h1>
-            </a>
-    
-            <nav>
-                <div class="navigation">
-                    <a href="https://aleahim.com/">Home</a>
-                <a href="https://aleahim.com/cv/">CV</a>
-                <a href="https://aleahim.com/speaking/">Speaking</a>
-                <a href="https://codeweaver.info/" rel="noopener">Hire me</a>
-                <a href="https://aleahim.com/about/">About</a>
-                <a href="https://mihaelamj.github.io/cupertino/" rel="noopener">Cupertino Quality</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<header class="td-header">
+<a class="td-brand" href="https://aleahim.com/">Aleahim</a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/" aria-current="page">About</a><a class="td-nav-link" href="https://aleahim.com/cv/">Curriculum Vitae</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><h1>About Me</h1>
+<p>I’m a Senior iOS Architect &amp; Developer who builds AI-powered developer tools for the Apple ecosystem. I work across the full stack — from iOS and macOS apps to Swift server backends — with a focus on making AI agents more useful for real development workflows.</p>
+<p>I specialize in:</p>
+<ul><li><p><strong>AI developer tooling</strong> - MCP servers, agent orchestration, and tools that give AI models access to real documentation and local environments</p></li><li><p><strong>Apple ecosystem development</strong> - iOS, macOS, visionOS, and Swift on the server</p></li><li><p><strong>OpenAPI-driven development</strong> - Type-safe Swift clients and servers with generated code, middleware, and structured APIs</p></li><li><p><strong>Modular architectures</strong> - Extreme packaging methodologies for scalable Swift projects</p></li><li><p><strong>Swift concurrency</strong> - Thread-safe solutions with actors and structured concurrency</p></li></ul>
+<h2>Projects</h2>
+<ul><li><p><strong><a href="https://github.com/mihaelamj/cupertino">Cupertino</a></strong> - An MCP server that gives AI agents offline access to 90,000+ Apple documentation pages across 385 frameworks</p></li><li><p><strong><a href="https://github.com/mihaelamj/iRelay">iRelay</a></strong> - Text your Mac from your phone, run Claude Code via iMessage</p></li><li><p><strong><a href="https://github.com/mihaelamj/BearerTokenAuthMiddleware">BearerTokenAuthMiddleware</a></strong> - Concurrency-safe authentication middleware for Swift OpenAPI clients</p></li><li><p><strong><a href="https://github.com/mihaelamj/OpenAPILoggingMiddleware">OpenAPILoggingMiddleware</a></strong> - Structured request logging for OpenAPI-driven Swift servers</p></li></ul>
+<h2>Open Source</h2>
+<p>I actively contribute to and maintain Swift packages spanning AI tooling, API clients, middleware, and developer infrastructure.</p>
+<h2>Contact</h2>
+<ul><li><strong>Email</strong>: mihaelamj@me.com</li><li><strong>GitHub</strong>: <a href="https://github.com/mihaelamj">github.com/mihaelamj</a></li><li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/mihaelamj">linkedin.com/in/mihaelamj</a></li><li><strong>Location</strong>: Zagreb, Croatia</li></ul></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/cv/">Curriculum Vitae</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
 
-    <main>
-    
-    <div class="page">
-        <h1>About Me</h1><p>I’m a Senior iOS Architect & Developer who builds AI-powered developer tools for the Apple ecosystem. I work across the full stack — from iOS and macOS apps to Swift server backends — with a focus on making AI agents more useful for real development workflows.</p><p>I specialize in:</p><ul><li><strong>AI developer tooling</strong> - MCP servers, agent orchestration, and tools that give AI models access to real documentation and local environments</li><li><strong>Apple ecosystem development</strong> - iOS, macOS, visionOS, and Swift on the server</li><li><strong>OpenAPI-driven development</strong> - Type-safe Swift clients and servers with generated code, middleware, and structured APIs</li><li><strong>Modular architectures</strong> - Extreme packaging methodologies for scalable Swift projects</li><li><strong>Swift concurrency</strong> - Thread-safe solutions with actors and structured concurrency</li></ul><h2 id="projects">Projects</h2><ul><li><strong><a href="https://github.com/mihaelamj/cupertino" target="_blank">Cupertino</a></strong> - An MCP server that gives AI agents offline access to 90,000+ Apple documentation pages across 385 frameworks</li><li><strong><a href="https://github.com/mihaelamj/iRelay" target="_blank">iRelay</a></strong> - Text your Mac from your phone, run Claude Code via iMessage</li><li><strong><a href="https://github.com/mihaelamj/BearerTokenAuthMiddleware" target="_blank">BearerTokenAuthMiddleware</a></strong> - Concurrency-safe authentication middleware for Swift OpenAPI clients</li><li><strong><a href="https://github.com/mihaelamj/OpenAPILoggingMiddleware" target="_blank">OpenAPILoggingMiddleware</a></strong> - Structured request logging for OpenAPI-driven Swift servers</li></ul><h2 id="open-source">Open Source</h2><p>I actively contribute to and maintain Swift packages spanning AI tooling, API clients, middleware, and developer infrastructure.</p><h2 id="contact">Contact</h2><ul><li><strong>Email</strong>: mihaelamj@me.com</li><li><strong>GitHub</strong>: <a href="https://github.com/mihaelamj" target="_blank">github.com/mihaelamj</a></li><li><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/mihaelamj" target="_blank">linkedin.com/in/mihaelamj</a></li><li><strong>Location</strong>: Zagreb, Croatia</li></ul>
-    </div>
-    
 
-    </main>
 
-    <footer>
-        <p class="footer-links">
-            <a href="https://aleahim.com/rss.xml">RSS feed</a>
-            &nbsp;·&nbsp;
-            <a href="https://github.com/mihaelamj" target="_blank" rel="noopener">GitHub</a>
-            &nbsp;·&nbsp;
-            <a href="https://www.linkedin.com/in/mihaelamj" target="_blank" rel="noopener">LinkedIn</a>
-            &nbsp;·&nbsp;
-            <a href="https://x.com/diyamantina" target="_blank" rel="noopener">X</a>
-            &nbsp;·&nbsp;
-            <a href="https://mastodon.social/@ameahim" target="_blank" rel="noopener">Mastodon</a>
-            &nbsp;·&nbsp;
-            <a href="https://bsky.app/profile/dijamantina.bsky.social" target="_blank" rel="noopener">Bluesky</a>
-        </p>
-    
-        <p class="small">
-            Built with <a href="https://www.swift.org/" target="_blank" rel="noopener">Swift</a> and <a href="https://github.com/toucansites/toucan" target="_blank" rel="noopener">Toucan</a>.
-            Aleahim &copy; 2026.
-        </p>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    
 </body>
 </html>

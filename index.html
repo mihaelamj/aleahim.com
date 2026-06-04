@@ -1,540 +1,76 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>Mihaela Mihaljević</title>
+<meta name="description" content="Senior iOS architect, 15+ years on Apple platforms. Building Cupertino, an open-source MCP server that gives AI assistants offline access to Apple&#39;s developer documentation. Featured in iOS Dev Weekly.">
+<link rel="canonical" href="https://aleahim.com/">
+<meta property="og:title" content="Mihaela Mihaljević">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Senior iOS architect, 15+ years on Apple platforms. Building Cupertino, an open-source MCP server that gives AI assistants offline access to Apple&#39;s developer documentation. Featured in iOS Dev Weekly.">
+<meta property="og:url" content="https://aleahim.com/">
+<meta property="og:site_name" content="Aleahim">
+<meta property="og:image" content="https://aleahim.com/images/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mihaela Mihaljević">
+<meta name="twitter:description" content="Senior iOS architect, 15+ years on Apple platforms. Building Cupertino, an open-source MCP server that gives AI assistants offline access to Apple&#39;s developer documentation. Featured in iOS Dev Weekly.">
+<meta name="twitter:image" content="https://aleahim.com/images/og-image.png">
 
-    <title>Mihaela Mihaljević - Aleahim</title>
-    <meta name="description" content="Senior iOS architect, 15+ years on Apple platforms. Building Cupertino, an open-source MCP server that gives AI assistants offline access to Apple&#39;s developer documentation. Featured in iOS Dev Weekly.">
-
-    <link rel="canonical" href="https://aleahim.com/">
-
-    <meta property="og:url" content="https://aleahim.com/">
-    <meta property="og:title" content="Mihaela Mihaljević - Aleahim">
-    <meta property="og:description" content="Senior iOS architect, 15+ years on Apple platforms. Building Cupertino, an open-source MCP server that gives AI assistants offline access to Apple&#39;s developer documentation. Featured in iOS Dev Weekly.">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Aleahim">
-    
-    <meta property="og:image" content="https://aleahim.com/images/og-image.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="2048">
-    <meta property="og:image:height" content="1364">
-    <meta property="og:image:alt" content="Aleahim. Mihaela Mihaljević, Senior iOS Architect.">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mihaela Mihaljević - Aleahim">
-    <meta name="twitter:description" content="Senior iOS architect, 15+ years on Apple platforms. Building Cupertino, an open-source MCP server that gives AI assistants offline access to Apple&#39;s developer documentation. Featured in iOS Dev Weekly.">
-    
-    <meta name="twitter:image" content="https://aleahim.com/images/og-image.png">
-    <meta name="twitter:image:alt" content="Aleahim. Mihaela Mihaljević, Senior iOS Architect.">
-
-    <link rel="alternate" type="application/rss+xml" title="Aleahim Blog RSS Feed" href="https://aleahim.com/rss.xml">
-
-    <link rel="stylesheet" href="https://aleahim.com/css/theme.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/style.css">
-    <link rel="stylesheet" href="https://aleahim.com/css/blog.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    
-
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <a id="logo" href="https://aleahim.com">
-                <img
-                    src="https://aleahim.com/images/logo.svg"
-                    alt="Aleahim"
-                    title="Aleahim"
-                >
-                <h1 class="site-title">Aleahim.com</h1>
-            </a>
-    
-            <nav>
-                <div class="navigation">
-                    <a href="https://aleahim.com/">Home</a>
-                <a href="https://aleahim.com/cv/">CV</a>
-                <a href="https://aleahim.com/speaking/">Speaking</a>
-                <a href="https://codeweaver.info/" rel="noopener">Hire me</a>
-                <a href="https://aleahim.com/about/">About</a>
-                <a href="https://mihaelamj.github.io/cupertino/" rel="noopener">Cupertino Quality</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+<header class="td-header">
+<a class="td-brand" href="https://aleahim.com/">Aleahim</a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/cv/">Curriculum Vitae</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><img class="td-hero" src="https://aleahim.com/images/og-image.png" alt="Mihaela Mihaljević"><p>I’m Mihaela. Senior iOS architect with fifteen-plus years on Apple platforms. I build AI-powered developer tools for the Apple ecosystem.</p>
+<p>Currently shipping <a href="https://aleahim.com/blog/cupertino-first-light/">Cupertino</a>, an open-source MCP server that gives Claude and other AI assistants offline access to Apple’s developer documentation. 700+ GitHub stars, featured in iOS Dev Weekly.</p>
+<h2>Recent posts</h2>
+<ul class="td-posts"><li class="td-post-card"><a class="td-post-thumb" href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/"><img class="td-post-thumb-image" src="https://aleahim.com/images/blog/cupertino-v1-3-0-platform-filtering/hero.png" alt="cupertino v1.3.0: The Big Refactor"></a><div class="td-post-body"><h3 class="td-post-title"><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a></h3><time class="td-post-date">2026-05-31</time><p class="td-post-desc">v1.3.0 is the architecture release: eight per-source databases derived from one registry, shipped read-only, with the legacy unified search.db retired for good.</p></div></li><li class="td-post-card"><a class="td-post-thumb" href="https://aleahim.com/blog/morlocks-built-swiftui/"><img class="td-post-thumb-image" src="https://aleahim.com/images/blog/morlocks-built-swiftui/hero.png" alt="The Morlocks Built SwiftUI"></a><div class="td-post-body"><h3 class="td-post-title"><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a></h3><time class="td-post-date">2026-05-28</time><p class="td-post-desc">The cynical read is that Apple kept the real tools and handed us toys. But the same engineer built Core Animation in 2007 and co-built SwiftUI in 2019, and that one fact says the opposite. On why the foundation never left, and the debt that comes due the day the abstraction breaks.</p></div></li><li class="td-post-card"><a class="td-post-thumb" href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/"><img class="td-post-thumb-image" src="https://aleahim.com/images/blog/cupertino-v1-2-0-ironclad/hero.png" alt="cupertino v1.2.0: lands the right Apple doc 9 times in 10"></a><div class="td-post-body"><h3 class="td-post-title"><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a></h3><time class="td-post-date">2026-05-21</time><p class="td-post-desc">Search-quality release. AI coding assistants now land the right Apple documentation page on the first try 9 times out of 10, up from 5 out of 10 in v1.1.0. Cross-validated on three independent corpora, zero regressions. The architecture, and what it still gets wrong, in writing.</p></div></li></ul>
+<p>See <a href="https://aleahim.com/speaking/">Speaking</a> and <a href="https://codeweaver.info/">Hire me</a>.</p></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/cv/">Curriculum Vitae</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
 
-    <main>
-    <div class="blog-listing">
-        <div class="blog-hero">
-            <img src="https://aleahim.com/images/og-image.png" alt="Mihaela Mihaljević">
-        </div>
-    
-        <header class="blog-header">
-            <h1>Mihaela Mihaljević</h1>
-        </header>
-    
-        <div class="blog-intro">
-            <p>I’m Mihaela. Senior iOS architect with fifteen-plus years on Apple platforms. I build AI-powered developer tools for the Apple ecosystem.</p><p>Currently shipping <a href="https://aleahim.com/blog/cupertino-first-light/">Cupertino</a>, an open-source MCP server that gives Claude and other AI assistants offline access to Apple’s developer documentation. 700+ GitHub stars, featured in iOS Dev Weekly.</p><p>Latest: <a href="https://aleahim.com/blog/cupertino-v1-1-0-poison-cleanup/">Cupertino v1.1.0, my Apple docs index was 30% lies and I didn’t know</a>. Also see <a href="https://aleahim.com/speaking/">Speaking</a> and <a href="https://codeweaver.info/" target="_blank">Hire me</a>.</p>
-        </div>
-    
-        <div class="posts-list">
-            <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">
-                        <img src="https://aleahim.com/images/blog/cupertino-v1-3-0-platform-filtering/hero.png" alt="cupertino v1.3.0: The Big Refactor">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a></h2>
-    
-                    <time datetime="2026-05-31T00:00:00.000Z" class="post-date">5/31/26</time>
-    
-                    <p class="post-description">v1.3.0 is the architecture release: eight per-source databases derived from one registry, shipped read-only, with the legacy unified search.db retired for good.</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/morlocks-built-swiftui/">
-                        <img src="https://aleahim.com/images/blog/morlocks-built-swiftui/hero.png" alt="The Morlocks Built SwiftUI">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a></h2>
-    
-                    <time datetime="2026-05-28T00:00:00.000Z" class="post-date">5/28/26</time>
-    
-                    <p class="post-description">The cynical read is that Apple kept the real tools and handed us toys. But the same engineer built Core Animation in 2007 and co-built SwiftUI in 2019, and that one fact says the opposite. On why the foundation never left, and the debt that comes due the day the abstraction breaks.</p>
-    
-                    <a href="https://aleahim.com/blog/morlocks-built-swiftui/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">
-                        <img src="https://aleahim.com/images/blog/cupertino-v1-2-0-ironclad/hero.png" alt="cupertino v1.2.0: lands the right Apple doc 9 times in 10">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a></h2>
-    
-                    <time datetime="2026-05-21T00:00:00.000Z" class="post-date">5/21/26</time>
-    
-                    <p class="post-description">Search-quality release. AI coding assistants now land the right Apple documentation page on the first try 9 times out of 10, up from 5 out of 10 in v1.1.0. Cross-validated on three independent corpora, zero regressions. The architecture, and what it still gets wrong, in writing.</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-v1-1-0-poison-cleanup/">
-                        <img src="https://aleahim.com/images/blog/cupertino-v1-1-0-poison-cleanup/hero.png" alt="Cupertino v1.1.0: my Apple docs index was 30% lies and I didn&#39;t know">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-v1-1-0-poison-cleanup/">Cupertino v1.1.0: my Apple docs index was 30% lies and I didn&#39;t know</a></h2>
-    
-                    <time datetime="2026-05-14T00:00:00.000Z" class="post-date">5/14/26</time>
-    
-                    <p class="post-description">A 3 a.m. SQL query found one row of HTTP poison in the search index. Pulling on that thread unraveled 13 ways Apple&#39;s CDN lies to crawlers, plus a release bug where the binary cheerfully downgraded every user to the previous bundle.</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-v1-1-0-poison-cleanup/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/why-i-built-openapi-doctor/">
-                        <img src="https://aleahim.com/images/blog/why-i-built-openapi-doctor/hero.png" alt="Why I built OpenAPIDoctor">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/why-i-built-openapi-doctor/">Why I built OpenAPIDoctor</a></h2>
-    
-                    <time datetime="2026-05-14T00:00:00.000Z" class="post-date">5/14/26</time>
-    
-                    <p class="post-description">OpenAPIKit&#39;s strict parser meets real-world specs. A typed diagnosis CLI with auto-repair, proven across 594 YAML files.</p>
-    
-                    <a href="https://aleahim.com/blog/why-i-built-openapi-doctor/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-v1-0-2/">
-                        <img src="https://aleahim.com/images/blog/cupertino-v1-0-2/hero.png" alt="Cupertino v1.0.2: the duplicate that `LOWER(uri)` could not see">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-v1-0-2/">Cupertino v1.0.2: the duplicate that `LOWER(uri)` could not see</a></h2>
-    
-                    <time datetime="2026-05-11T00:00:00.000Z" class="post-date">5/11/26</time>
-    
-                    <p class="post-description">A third of the search index was the same Apple page indexed twice. The verification query that &quot;proved&quot; it wasn&#39;t could not have seen the bug. What v1.0.2 ships, and three takeaways from the audit.</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-v1-0-2/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-first-light/">
-                        <img src="https://aleahim.com/images/blog/cupertino-first-light/hero.jpg" alt="Cupertino v1.0.0 &quot;First Light&quot;">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-first-light/">Cupertino v1.0.0 &quot;First Light&quot;</a></h2>
-    
-                    <time datetime="2026-05-05T00:00:00.000Z" class="post-date">5/5/26</time>
-    
-                    <p class="post-description">First release stable across crawl, index, rank, serve, and distribute. Search that finally returns the right answer, one bundle, MCP spec 2025-11-25.</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-first-light/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-10-release/">
-                        <img src="https://aleahim.com/images/blog/cupertino-10-release/hero.jpg" alt="Cupertino v0.10: Full Coverage and Community Contributions">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-10-release/">Cupertino v0.10: Full Coverage and Community Contributions</a></h2>
-    
-                    <time datetime="2026-03-13T00:00:00.000Z" class="post-date">3/13/26</time>
-    
-                    <p class="post-description">307 frameworks, 302,424 docs, Agent Skills, Claude Code plugin, and the first community PRs.</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-10-release/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/irelay/">
-                        <img src="https://aleahim.com/images/blog/irelay/hero.jpg" alt="iRelay: Text Your Mac, Run an AI Agent">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/irelay/">iRelay: Text Your Mac, Run an AI Agent</a></h2>
-    
-                    <time datetime="2026-03-13T00:00:00.000Z" class="post-date">3/13/26</time>
-    
-                    <p class="post-description">A Swift daemon that turns iMessage into a remote terminal for Claude Code</p>
-    
-                    <a href="https://aleahim.com/blog/irelay/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-09-release/">
-                        <img src="https://aleahim.com/images/blog/cupertino-09-release/hero.jpg" alt="Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-09-release/">Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade</a></h2>
-    
-                    <time datetime="2026-01-25T00:00:00.000Z" class="post-date">1/25/26</time>
-    
-                    <p class="post-description">Cupertino now works with OpenAI Codex, Cursor, VS Code Copilot, Zed, Windsurf, and opencode. Plus MCP protocol upgrade to 2025-06-18.</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-09-release/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-08-release/">
-                        <img src="https://aleahim.com/images/blog/cupertino-08-release/cupertino-8.png" alt="Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-08-release/">Cupertino v0.8.0: AST Indexing and a Major Architecture Refactor</a></h2>
-    
-                    <time datetime="2025-12-20T00:00:00.000Z" class="post-date">12/20/25</time>
-    
-                    <p class="post-description">SwiftSyntax enables semantic code search. A deep refactoring of the codebase delivers cleaner results and better AI capabilities.</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-08-release/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-07-release/">
-                        <img src="https://aleahim.com/images/blog/cupertino-07-release/cupertino-07-release-hero.jpg" alt="Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-07-release/">Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper</a></h2>
-    
-                    <time datetime="2025-12-15T00:00:00.000Z" class="post-date">12/15/25</time>
-    
-                    <p class="post-description">The complete Apple documentation crawl is done. Now you can filter by iOS 17+ and Claude finally knows where to look for answers.</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-07-release/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-05-release/">
-                        <img src="https://aleahim.com/images/blog/cupertino-05-release/cupertino-05-release-hero.jpg" alt="Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-05-release/">Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead</a></h2>
-    
-                    <time datetime="2025-12-11T00:00:00.000Z" class="post-date">12/11/25</time>
-    
-                    <p class="post-description">The biggest documentation update yet - nearly double the docs, plus what&#39;s coming next for the Apple documentation MCP server.</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-05-release/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-04-release/">
-                        <img src="https://aleahim.com/images/blog/cupertino-04-release/cupertino-04-release-hero.jpg" alt="Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-04-release/">Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons</a></h2>
-    
-                    <time datetime="2025-12-09T00:00:00.000Z" class="post-date">12/9/25</time>
-    
-                    <p class="post-description">New features for Apple documentation search, plus a cautionary tale about release processes and why order matters when tagging.</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-04-release/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-one-line-install/">
-                        <img src="https://aleahim.com/images/blog/cupertino-one-line-install/hero.png" alt="Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-one-line-install/">Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs</a></h2>
-    
-                    <time datetime="2025-12-06T00:00:00.000Z" class="post-date">12/6/25</time>
-    
-                    <p class="post-description">Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-one-line-install/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-instant-setup/">
-                        <img src="https://aleahim.com/images/blog/cupertino-instant-setup/hero.jpg" alt="Cupertino v0.3.0: From 20 Hours to 30 Seconds">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-instant-setup/">Cupertino v0.3.0: From 20 Hours to 30 Seconds</a></h2>
-    
-                    <time datetime="2025-12-05T00:00:00.000Z" class="post-date">12/5/25</time>
-    
-                    <p class="post-description">The new setup command downloads pre-built databases instantly - no more crawling Apple&#39;s documentation for hours</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-instant-setup/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino-ecosystem/">
-                        <img src="https://aleahim.com/images/blog/cupertino-ecosystem/cupertino-ecosystem-hero.png" alt="Cupertino: 27 Issues Down, Just Getting Started">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino-ecosystem/">Cupertino: 27 Issues Down, Just Getting Started</a></h2>
-    
-                    <time datetime="2025-12-03T00:00:00.000Z" class="post-date">12/3/25</time>
-    
-                    <p class="post-description">From MCP server to a complete Apple documentation ecosystem with pre-crawled docs and 606 sample projects</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino-ecosystem/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/cupertino/">
-                        <img src="https://aleahim.com/images/blog/cupertino/hero.jpg" alt="Cupertino: Offline Apple Documentation for AI Agents">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/cupertino/">Cupertino: Offline Apple Documentation for AI Agents</a></h2>
-    
-                    <time datetime="2025-11-28T00:00:00.000Z" class="post-date">11/28/25</time>
-    
-                    <p class="post-description">An MCP server that gives Claude Desktop offline access to 22,000+ Apple documentation pages</p>
-    
-                    <a href="https://aleahim.com/blog/cupertino/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/token-middleware/">
-                        <img src="https://aleahim.com/images/token/bearer_token1.jpg" alt="Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/token-middleware/">Building a Concurrency-Safe Bearer Token Middleware for Swift OpenAPI Clients</a></h2>
-    
-                    <time datetime="2025-11-08T00:00:00.000Z" class="post-date">11/8/25</time>
-    
-                    <p class="post-description">Elegant, Thread-Safe Authentication for OpenAPI Runtime</p>
-    
-                    <a href="https://aleahim.com/blog/token-middleware/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/extreme-packaging-open-a-p-i/">
-                        <img src="https://aleahim.com/images/xpackopenapi/expack_openapi.png" alt="From ExtremePackaging to OpenAPI Integration">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/extreme-packaging-open-a-p-i/">From ExtremePackaging to OpenAPI Integration</a></h2>
-    
-                    <time datetime="2025-09-23T00:00:00.000Z" class="post-date">9/23/25</time>
-    
-                    <p class="post-description">Building a Full OpenAPI Workflow on Top of the Extreme Packaging Architecture</p>
-    
-                    <a href="https://aleahim.com/blog/extreme-packaging-open-a-p-i/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/logging-middleware/">
-                        <img src="https://aleahim.com/images/logg/logging-middleware.jpg" alt="Introducing OpenAPILoggingMiddleware">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/logging-middleware/">Introducing OpenAPILoggingMiddleware</a></h2>
-    
-                    <time datetime="2025-09-16T00:00:00.000Z" class="post-date">9/16/25</time>
-    
-                    <p class="post-description">Elegant, Structured Request Logging for OpenAPI-Driven Swift Servers</p>
-    
-                    <a href="https://aleahim.com/blog/logging-middleware/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/extreme-packaging/">
-                        <img src="https://aleahim.com/images/xpack/extreme_packaging_1.png" alt="ExtremePackaging">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/extreme-packaging/">ExtremePackaging</a></h2>
-    
-                    <time datetime="2025-09-13T00:00:00.000Z" class="post-date">9/13/25</time>
-    
-                    <p class="post-description">Example of Extreme Packaging in Swift</p>
-    
-                    <a href="https://aleahim.com/blog/extreme-packaging/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/c-v-builder/">
-                        <img src="https://aleahim.com/images/cvbuilder.png" alt="CVBuilder: A Swift Package for Professional CV Management">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/c-v-builder/">CVBuilder: A Swift Package for Professional CV Management</a></h2>
-    
-                    <time datetime="2025-04-13T00:00:00.000Z" class="post-date">4/13/25</time>
-    
-                    <p class="post-description">A Swift package for building and rendering CVs in multiple formats</p>
-    
-                    <a href="https://aleahim.com/blog/c-v-builder/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/swift-u-i-lab-advanced-animations/">
-                        <img src="https://aleahim.com/images/SwiftUILabAdvancedAnimations.png" alt="Bringing Advanced SwiftUI Animations to macOS">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/swift-u-i-lab-advanced-animations/">Bringing Advanced SwiftUI Animations to macOS</a></h2>
-    
-                    <time datetime="2022-02-13T00:00:00.000Z" class="post-date">2/13/22</time>
-    
-                    <p class="post-description">A port of SwiftUILab&#39;s Advanced Animations that also supports macOS</p>
-    
-                    <a href="https://aleahim.com/blog/swift-u-i-lab-advanced-animations/" class="read-more">Read more</a>
-                </div>
-            </article>
-        <article class="post-preview">
-                <div class="preview-image">
-                    <a href="https://aleahim.com/blog/core-animation-3d-cube/">
-                        <img src="https://aleahim.com/images/cacube/01_cube_iOS_3D.png" alt="Core Animation Layers forming a 3D cube">
-                    </a>
-                </div>
-    
-                <div class="preview-content">
-                    <h2><a href="https://aleahim.com/blog/core-animation-3d-cube/">Core Animation Layers forming a 3D cube</a></h2>
-    
-                    <time datetime="2021-03-06T00:00:00.000Z" class="post-date">3/6/21</time>
-    
-                    <p class="post-description">Core Animation in 2.5D</p>
-    
-                    <a href="https://aleahim.com/blog/core-animation-3d-cube/" class="read-more">Read more</a>
-                </div>
-            </article>
-    
-        </div>
-    </div>
 
-    </main>
 
-    <footer>
-        <p class="footer-links">
-            <a href="https://aleahim.com/rss.xml">RSS feed</a>
-            &nbsp;·&nbsp;
-            <a href="https://github.com/mihaelamj" target="_blank" rel="noopener">GitHub</a>
-            &nbsp;·&nbsp;
-            <a href="https://www.linkedin.com/in/mihaelamj" target="_blank" rel="noopener">LinkedIn</a>
-            &nbsp;·&nbsp;
-            <a href="https://x.com/diyamantina" target="_blank" rel="noopener">X</a>
-            &nbsp;·&nbsp;
-            <a href="https://mastodon.social/@ameahim" target="_blank" rel="noopener">Mastodon</a>
-            &nbsp;·&nbsp;
-            <a href="https://bsky.app/profile/dijamantina.bsky.social" target="_blank" rel="noopener">Bluesky</a>
-        </p>
-    
-        <p class="small">
-            Built with <a href="https://www.swift.org/" target="_blank" rel="noopener">Swift</a> and <a href="https://github.com/toucansites/toucan" target="_blank" rel="noopener">Toucan</a>.
-            Aleahim &copy; 2026.
-        </p>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-swift.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    
 </body>
 </html>

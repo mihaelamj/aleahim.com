@@ -216,15 +216,44 @@ func renderWebsiteCV(_ cv: CV) -> String {
     return out
 }
 
+// MARK: - Arguments
+
+func outputPath(from arguments: [String]) -> String {
+    var path = "contents/cv/index.md"
+    var index = 1
+    while index < arguments.count {
+        let argument = arguments[index]
+        switch argument {
+        case "--output":
+            let valueIndex = index + 1
+            guard valueIndex < arguments.count else {
+                print("Missing value for --output")
+                exit(2)
+            }
+            path = arguments[valueIndex]
+            index += 2
+        default:
+            print("Unknown argument: \(argument)")
+            print("Usage: GenerateCV [--output <path>]")
+            exit(2)
+        }
+    }
+    return path
+}
+
 // MARK: - Generate
 
 let cv = CV.createForMihaela()
 let markdown = renderWebsiteCV(cv)
 
-let outputPath = "contents/cv/index.md"
-let fileURL = URL(fileURLWithPath: outputPath)
+let resolvedOutputPath = outputPath(from: CommandLine.arguments)
+let fileURL = URL(fileURLWithPath: resolvedOutputPath)
 
 do {
+    try FileManager.default.createDirectory(
+        at: fileURL.deletingLastPathComponent(),
+        withIntermediateDirectories: true,
+    )
     try markdown.write(to: fileURL, atomically: true, encoding: .utf8)
     print("CV written to \(fileURL.path)")
 } catch {
