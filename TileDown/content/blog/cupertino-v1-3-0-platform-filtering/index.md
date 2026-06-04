@@ -5,6 +5,7 @@ description: v1.3.0 is the architecture release: eight per-source databases deri
 date: 2026-05-31
 draft: false
 image: /images/blog/cupertino-v1-3-0-platform-filtering/hero.png
+tags: Cupertino, Apple Docs, AI
 ---
 
 # cupertino v1.3.0: The Big Refactor

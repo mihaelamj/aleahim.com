@@ -4,6 +4,7 @@ title: Cupertino: Offline Apple Documentation for AI Agents
 description: An MCP server that gives Claude Desktop offline access to 22,000+ Apple documentation pages
 date: 2025-11-28
 image: /images/blog/cupertino/hero.jpg
+tags: Cupertino, Apple Docs, AI
 ---
 
 # Cupertino: Offline Apple Documentation for AI Agents

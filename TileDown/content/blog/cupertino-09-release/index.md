@@ -5,6 +5,7 @@ description: Cupertino now works with OpenAI Codex, Cursor, VS Code Copilot, Zed
 date: 2026-01-25
 draft: false
 image: /images/blog/cupertino-09-release/hero.jpg
+tags: Cupertino, Apple Docs, AI
 ---
 
 # Cupertino v0.9: Multi-Agent Support and MCP Protocol Upgrade

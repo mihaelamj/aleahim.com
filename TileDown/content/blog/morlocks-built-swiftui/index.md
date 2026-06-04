@@ -5,6 +5,7 @@ description: The cynical read is that Apple kept the real tools and handed us to
 date: 2026-05-28
 draft: false
 image: /images/blog/morlocks-built-swiftui/hero.png
+tags: SwiftUI, Apple Platforms, Core Animation, iOS
 ---
 
 # The Morlocks Built SwiftUI

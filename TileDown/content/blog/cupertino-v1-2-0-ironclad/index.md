@@ -5,6 +5,7 @@ description: Search-quality release. AI coding assistants now land the right App
 date: 2026-05-21
 draft: false
 image: /images/blog/cupertino-v1-2-0-ironclad/hero.png
+tags: Cupertino, Apple Docs, AI
 ---
 
 # cupertino v1.2.0: lands the right Apple doc 9 times in 10

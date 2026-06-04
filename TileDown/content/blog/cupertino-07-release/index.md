@@ -4,6 +4,7 @@ title: Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig
 description: The complete Apple documentation crawl is done. Now you can filter by iOS 17+ and Claude finally knows where to look for answers.
 date: 2025-12-15
 image: /images/blog/cupertino-07-release/cupertino-07-release-hero.jpg
+tags: Cupertino, Apple Docs, AI
 ---
 
 # Cupertino v0.7.0: 302K Docs, OS Version Filtering, and Teaching AI to Dig Deeper

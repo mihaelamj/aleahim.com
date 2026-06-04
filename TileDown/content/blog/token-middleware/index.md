@@ -5,6 +5,7 @@ description: Elegant, Thread-Safe Authentication for OpenAPI Runtime
 date: 2025-11-08
 draft: false
 image: /images/token/bearer_token1.jpg
+tags: OpenAPI, Swift, Middleware, Concurrency
 ---
 
 Authentication is one of those things that every API client needs, yet implementing it cleanly and safely can be surprisingly tricky—especially in Swift's modern concurrency world. Today, I'm sharing a lightweight middleware solution that handles Bearer token authentication for OpenAPI-generated Swift clients in a thread-safe, composable way.

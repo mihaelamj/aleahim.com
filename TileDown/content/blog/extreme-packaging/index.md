@@ -5,6 +5,7 @@ description: Example of Extreme Packaging in Swift
 date: 2025-09-13
 draft: false
 image: /images/xpack/extreme_packaging_1.png
+tags: Architecture, Swift
 ---
 
 A Modular Architecture Methodology for Swift Projects

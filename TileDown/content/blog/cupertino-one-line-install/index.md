@@ -4,6 +4,7 @@ title: Cupertino v0.3.4: One-Line Install & 150K+ Apple Docs
 description: Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.
 date: 2025-12-06
 image: /images/blog/cupertino-one-line-install/hero.png
+tags: Cupertino, Apple Docs, AI
 ---
 
 # Cupertino v0.3.4: One-Line Install & 150K+ Apple Docs

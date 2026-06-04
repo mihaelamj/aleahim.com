@@ -5,6 +5,7 @@ description: Building a Full OpenAPI Workflow on Top of the Extreme Packaging Ar
 date: 2025-09-23
 draft: false
 image: /images/xpackopenapi/expack_openapi.png
+tags: OpenAPI, Swift, Architecture
 ---
 
 When I first published [ExtremePackaging](https://github.com/mihaelamj/ExtremePackaging), the goal was simple — to prove that **highly modular Swift architectures** can scale across platforms while keeping build times fast, dependencies isolated, and the mental model crystal clear.

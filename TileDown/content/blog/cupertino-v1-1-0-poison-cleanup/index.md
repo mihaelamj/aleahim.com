@@ -5,6 +5,7 @@ description: A 3 a.m. SQL query found one row of HTTP poison in the search index
 date: 2026-05-14
 draft: false
 image: /images/blog/cupertino-v1-1-0-poison-cleanup/hero.png
+tags: Cupertino, Apple Docs, AI
 ---
 
 # Cupertino v1.1.0: my Apple docs index was 30% lies and I didn't know

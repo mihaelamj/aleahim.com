@@ -5,6 +5,7 @@ description: 307 frameworks, 302,424 docs, Agent Skills, Claude Code plugin, and
 date: 2026-03-13
 draft: false
 image: /images/blog/cupertino-10-release/hero.jpg
+tags: Cupertino, Apple Docs, AI
 ---
 
 # Cupertino v0.10: Full Coverage and Community Contributions

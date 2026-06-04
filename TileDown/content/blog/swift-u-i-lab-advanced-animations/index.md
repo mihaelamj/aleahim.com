@@ -5,6 +5,7 @@ description: A port of SwiftUILab's Advanced Animations that also supports macOS
 date: 2022-02-13
 draft: false
 image: /images/SwiftUILabAdvancedAnimations.png
+tags: SwiftUI, Apple Platforms
 ---
 
 When I first discovered [SwiftUILab's Advanced Animations](https://swiftui-lab.com/advanced-animations/), I was impressed by the beautiful animations and transitions it demonstrated. However, I noticed that these examples were primarily focused on iOS, leaving macOS developers without a clear path to implement similar effects. This inspired me to create [SwiftUILab_AdvancedAnimations](https://github.com/mihaelamj/SwiftUILab_AdvancedAnimations), a port of these animations that works seamlessly on both iOS and macOS.

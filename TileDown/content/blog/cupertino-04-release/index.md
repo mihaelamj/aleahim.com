@@ -4,6 +4,7 @@ title: Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering
 description: New features for Apple documentation search, plus a cautionary tale about release processes and why order matters when tagging.
 date: 2025-12-09
 image: /images/blog/cupertino-04-release/cupertino-04-release-hero.jpg
+tags: Cupertino, Apple Docs, AI
 ---
 
 # Cupertino v0.4.0: HIG Support, Framework Aliases, and Release Engineering Lessons

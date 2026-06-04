@@ -4,6 +4,7 @@ title: Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead
 description: The biggest documentation update yet - nearly double the docs, plus what's coming next for the Apple documentation MCP server.
 date: 2025-12-11
 image: /images/blog/cupertino-05-release/cupertino-05-release-hero.jpg
+tags: Cupertino, Apple Docs, AI
 ---
 
 # Cupertino v0.5.0: 234K Docs, 287 Frameworks, and the Roadmap Ahead

@@ -5,6 +5,7 @@ description: OpenAPIKit's strict parser meets real-world specs. A typed diagnosi
 date: 2026-05-14
 draft: false
 image: /images/blog/why-i-built-openapi-doctor/hero.png
+tags: OpenAPI, Swift, Tooling
 ---
 
 # Why I built OpenAPIDoctor

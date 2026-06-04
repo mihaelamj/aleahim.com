@@ -4,6 +4,7 @@ title: iRelay: Text Your Mac, Run an AI Agent
 description: A Swift daemon that turns iMessage into a remote terminal for Claude Code
 date: 2026-03-13
 image: /images/blog/irelay/hero.jpg
+tags: AI, macOS, Swift
 ---
 
 # iRelay: Text Your Mac, Run an AI Agent

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>iOS AND Swift</title>
+
+<link rel="canonical" href="https://aleahim.com/tags/ios/swift/">
+<meta property="og:title" content="iOS AND Swift">
+<meta property="og:type" content="website">
+
+<meta property="og:url" content="https://aleahim.com/tags/ios/swift/">
+<meta property="og:site_name" content="Aleahim">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS AND Swift">
+
+
+
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+<body>
+<header class="td-header">
+<a class="td-brand" href="https://aleahim.com/">Aleahim</a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/blog/">Blog</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><h1 class="td-tagbar-title">iOS AND Swift</h1><nav class="td-tagbar" aria-label="All tags"><a class="td-tag td-tag-lg td-tag-clear" href="https://aleahim.com/tags/" aria-label="Show all articles">&#215; Clear</a><a class="td-tag td-tag-lg td-tag-current" href="https://aleahim.com/tags/swift/">iOS</a><a class="td-tag td-tag-lg td-tag-current" href="https://aleahim.com/tags/ios/">Swift</a></nav><p class="td-empty">No posts match this tag selection.</p></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/blog/">Blog</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
+
+
+
+</body>
+</html>
