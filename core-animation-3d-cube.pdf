@@ -1,0 +1,6419 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /Outlines 46 0 R /PageMode /UseOutlines /Names << /Dests << /Names [(1-introduction) [14 0 R /XYZ 54 714.350 null] (2-1-1-main-swift-for-the-macos) [17 0 R /XYZ 54 658.548 null] (2-1-2-appdelegate-for-the-macos) [17 0 R /XYZ 54 551.233 null] (2-1-3-scenedelegate-for-the-ios-and-ipados) [17 0 R /XYZ 54 374.617 null] (2-1-setting-up-the-multi-platform-project) [17 0 R /XYZ 54 747.823 null] (2-2-building-the-basic-blocks) [17 0 R /XYZ 54 151.802 null] (2-3-turning-the-transform-on-and-off) [27 0 R /XYZ 54 415.960 null] (2-4-transforming-the-layers-to-form-a-cube) [27 0 R /XYZ 54 141.275 null] (2-5-positioning-cube-sides) [29 0 R /XYZ 54 294.470 null] (2-building-the-cube-in-3d) [17 0 R /XYZ 54 794.710 null] (3-responding-to-gestures) [31 0 R /XYZ 54 253.970 null] (4-building-a-layer-to-hold-a-cube) [33 0 R /XYZ 54 671.500 null] (5-perspective-rotation) [35 0 R /XYZ 54 794.710 null] (6-macos-troubles) [45 0 R /XYZ 54 794.710 null]] >> >> >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [14 0 R 17 0 R 27 0 R 29 0 R 31 0 R 33 0 R 35 0 R 37 0 R 39 0 R 45 0 R] /Count 10 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+7 0 obj
+<< /Length 17931 >>
+stream
+0 0 0 rg
+BT /F1 11 Tf 54 787.890 Td (I've ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 74.174 787.890 Td (been ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.696 787.890 Td (researching ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 162.218 787.890 Td (Core ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 193.568 787.890 Td (Animation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.998 787.890 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.056 787.890 Td (framework ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.451 787.890 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.346 787.890 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.694 787.890 Td (past ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.542 787.890 Td (few ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 385.716 787.890 Td (months.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 424.843 787.890 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 427.901 787.890 Td (I've ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 448.075 787.890 Td (started ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 484.760 787.890 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 774.250 Td (several ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 92.511 774.250 Td (books ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.917 774.250 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.207 774.250 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.555 774.250 Td (subject, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 199.519 774.250 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.867 774.250 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.983 774.250 Td (found ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.563 774.250 Td (watching ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.027 774.250 Td (related ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.712 774.250 Td (WWDC ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 377.422 774.250 Td (videos ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 412.270 774.250 Td (most ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.165 774.250 Td (rewarding. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 493.571 774.250 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 760.610 Td (presenters ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.022 760.610 Td (put ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.370 760.610 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.718 760.610 Td (content ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.856 760.610 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.472 760.610 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.646 760.610 Td (relevant ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.831 760.610 Td (context ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.353 760.610 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.527 760.610 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.585 760.610 Td (makes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.038 760.610 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.596 760.610 Td (easier ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 397.607 760.610 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.839 760.610 Td (apprehend ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 465.488 760.610 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.894 760.610 Td (learn ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 514.405 760.610 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 746.970 Td (it.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 707.530 Td (1. ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 72.960 707.530 Td (Introduction) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 677.693 Td (One ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.848 677.693 Td (WWDC ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.558 677.693 Td (session ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.906 677.693 Td (particularly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.138 677.693 Td (intrigued ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 259.381 677.693 Td (me: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.776 677.693 Td ("2011\226421 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.667 677.693 Td (Core ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.562 677.693 Td (Animation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 415.526 677.693 Td (Essentials". ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 475.674 677.693 Td (They ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 664.053 Td (presented ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.975 664.053 Td (their ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.428 664.053 Td (demo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.997 664.053 Td (named: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.740 664.053 Td ("Layers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 240.714 664.053 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.330 664.053 Td (Perspective", ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.815 664.053 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.221 664.053 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.779 664.053 Td (showed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.743 664.053 Td (six ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.243 664.053 Td (layers, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.696 664.053 Td (forming ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 482.428 664.053 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.602 664.053 Td (flattened ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 650.413 Td (cube:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.906 650.413 Td ( ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 83.964 650.413 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 123.707 650.413 Td (/images/cacube/02_cube_5sides.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 630.773 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 630.773 Td (sixth ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.685 630.773 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.580 630.773 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 139.580 630.773 Td (hiding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.986 630.773 Td (behind ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.066 630.773 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 226.414 630.773 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.309 630.773 Td (number ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 293.657 630.773 Td (5. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.889 630.773 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.063 630.773 Td (has ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.853 630.773 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.027 630.773 Td (lower ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 374.364 630.773 Td (zPosition) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.794 630.773 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.852 630.773 Td (then ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 458.316 630.773 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 476.664 630.773 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 503.559 630.773 Td (above ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 617.133 Td (it.) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 597.493 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 597.493 Td (/images/cacube/03_cube_6sides.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 570.643 Td (They ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 81.511 570.643 Td (have ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.417 570.643 Td (also ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.649 570.643 Td (demonstrated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.961 570.643 Td (opening ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.157 570.643 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 265.563 570.643 Td (closing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.853 570.643 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.201 570.643 Td (cube ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.107 570.643 Td (formation.) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 551.003 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 551.003 Td (/images/cacube/04_cube_filmstrip.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 524.153 Td (So, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 73.569 524.153 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 79.685 524.153 Td (have ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.591 524.153 Td (decided ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.171 524.153 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.403 524.153 Td (demonstrate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 224.599 524.153 Td (that.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 504.513 Td (Here's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 504.513 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.011 504.513 Td (link ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.569 504.513 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.801 504.513 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.975 504.513 Td (GitHub ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.265 504.513 Td (repo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.334 504.513 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.950 504.513 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.298 504.513 Td (source ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.367 504.513 Td (code:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.273 504.513 Td ( ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 308.331 504.513 Td (Core ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 308.331 503.013 m 335.226 503.013 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 335.226 504.513 Td (Animation ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 335.226 503.013 m 387.190 503.013 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 387.190 504.513 Td (3D ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 387.190 503.013 m 404.306 503.013 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 404.306 504.513 Td (Cube) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 404.306 503.013 m 430.596 503.013 l S
+0 0 0 rg
+BT /F1 11 Tf 54 484.873 Td (Here's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 484.873 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.185 484.873 Td (animation:) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 465.233 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 465.233 Td (/images/cacube/05_CoreAnimation_3D_Cube.gif]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 438.383 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 438.383 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 97.417 438.383 Td (also ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.649 438.383 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.439 438.383 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.997 438.383 Td (on ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 165.287 438.383 Td (You ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 165.287 436.883 m 187.914 436.883 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 187.914 438.383 Td (Tube) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 187.914 436.883 m 212.983 436.883 l S
+0 0 0 rg
+BT /F1 11 Tf 54 418.743 Td (Layers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.069 418.743 Td (in ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 101.685 418.743 Td (Core ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 133.035 418.743 Td (Animation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.465 418.743 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.523 418.743 Td (live ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.081 418.743 Td (in ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 223.697 418.743 Td (3D) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.237 418.743 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.295 418.743 Td (geometry. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.259 418.743 Td (But ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 310.828 418.743 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.002 418.743 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.897 418.743 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 357.897 418.743 Td (a ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 367.071 418.743 Td (2D) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 379.611 418.743 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.669 418.743 Td (construct, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.412 418.743 Td (so ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 448.086 418.743 Td (Core ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 479.436 418.743 Td (Animation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 535.866 418.743 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 405.103 Td (coordinate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.417 405.103 Td (space ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.823 405.103 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.823 405.103 Td (called ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.613 405.103 Td (a ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 192.787 405.103 Td (2.5D) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.867 405.103 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.925 405.103 Td (geometry.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 385.463 Td (To ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 69.895 385.463 Td (illustrate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.906 385.463 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.312 385.463 Td (just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.486 385.463 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.276 385.463 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.566 385.463 Td (happens ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.820 385.463 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.168 385.463 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.958 385.463 Td (mess ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.295 385.463 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.585 385.463 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.038 385.463 Td (transformations.) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 365.823 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 365.823 Td (/images/cacube/06_Intersecting_Layers.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 338.973 Td (Layers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.069 338.973 Td (are ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 109.022 338.973 Td (2D) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.562 338.973 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.620 338.973 Td (objects, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.584 338.973 Td (they ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.432 338.973 Td (don't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.338 338.973 Td (understand ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.429 338.973 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.777 338.973 Td (third ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.230 338.973 Td (dimension.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.415 338.973 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.473 338.973 Td (They ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.984 338.973 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 419.937 338.973 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.495 338.973 Td (playing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 477.401 338.973 Td (cards ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 507.354 338.973 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 325.333 Td (space., ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 92.522 325.333 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.928 325.333 Td (there ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.055 325.333 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.055 325.333 Td (no ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 168.345 325.333 Td (depth ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 205.965 325.333 Td (buffer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.585 325.333 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 246.643 325.333 Td (available.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 305.693 Td (And ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 305.693 Td (also, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.917 305.693 Td (intersecting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.218 305.693 Td (layers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.613 305.693 Td (should ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.077 305.693 Td (be ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 245.367 305.693 Td (avoided ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.947 305.693 Td (because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 331.585 305.693 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.201 305.693 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.549 305.693 Td (image ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 394.560 305.693 Td (above, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.640 305.693 Td (Core ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 457.535 305.693 Td (Animation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 292.053 Td (needs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.022 292.053 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.254 292.053 Td (do ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 114.544 292.053 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.718 292.053 Td (lot ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.392 292.053 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.624 292.053 Td (work.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.903 292.053 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.961 292.053 Td (So ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.472 292.053 Td (just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.646 292.053 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.878 292.053 Td (draw ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.773 292.053 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 274.121 292.053 Td (red) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.931 292.053 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.989 292.053 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.884 292.053 Td (intersecting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.185 292.053 Td (only ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 405.417 292.053 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 423.765 292.053 Td (blue) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 448.845 292.053 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.903 292.053 Td (layer, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 481.856 292.053 Td (Core ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 278.413 Td (Animation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.964 278.413 Td (needs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.986 278.413 Td (to) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 258.773 Td (cut ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.732 258.773 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 114.080 258.773 Td (red) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.890 258.773 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.948 258.773 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.843 258.773 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.633 258.773 Td (two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.807 258.773 Td (pieces) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 244.123 Td (render ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.848 244.123 Td (back ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 139.138 244.123 Td (part ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.149 244.123 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.381 244.123 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 191.729 244.123 Td (red) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.539 244.123 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.597 244.123 Td (layer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 229.473 Td (then ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.464 229.473 Td (render ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.312 229.473 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.660 229.473 Td (full ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 172.776 229.473 Td (blue) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.856 229.473 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.914 229.473 Td (layer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 214.823 Td (then ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.464 214.823 Td (render ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.312 214.823 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.660 214.823 Td (front ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.729 214.823 Td (part ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.740 214.823 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.972 214.823 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 233.320 214.823 Td (red) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.130 214.823 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.188 214.823 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.083 214.823 Td (again) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 197.173 Td (And ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 197.173 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.685 197.173 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.091 197.173 Td (work ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.370 197.173 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.370 197.173 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.265 197.173 Td (just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.439 197.173 Td (intersection, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.798 197.173 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.204 197.173 Td (here ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 294.273 197.173 Td (we ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 311.389 197.173 Td (have ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 338.295 197.173 Td (multiple.) Tj ET
+
+endstream
+endobj
+8 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [308.331 501.763 335.226 514.413]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/CubeIn3DWithCoreAnimation) >> >>
+endobj
+9 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [335.226 501.763 387.190 514.413]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/CubeIn3DWithCoreAnimation) >> >>
+endobj
+10 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [387.190 501.763 404.306 514.413]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/CubeIn3DWithCoreAnimation) >> >>
+endobj
+11 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [404.306 501.763 430.596 514.413]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/CubeIn3DWithCoreAnimation) >> >>
+endobj
+12 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [165.287 435.633 187.914 448.283]
+/Border [0 0 0]
+/A << /S /URI /URI (https://www.youtube.com/watch?v=exIGbi36_bk) >> >>
+endobj
+13 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [187.914 435.633 212.983 448.283]
+/Border [0 0 0]
+/A << /S /URI /URI (https://www.youtube.com/watch?v=exIGbi36_bk) >> >>
+endobj
+14 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 7 0 R
+/Annots [8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R] >>
+endobj
+15 0 obj
+<< /Length 15025 >>
+stream
+0 0 0 rg
+BT /F2 17.050 Tf 54 787.890 Td (2. ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 72.960 787.890 Td (Building ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 145.900 787.890 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 176.214 787.890 Td (Cube ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 223.579 787.890 Td (in ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 243.477 787.890 Td (3D) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 742.103 Td (2.1. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 81.828 742.103 Td (Setting ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 134.266 742.103 Td (up ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 155.716 742.103 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 181.141 742.103 Td (multi-platform ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 281.241 742.103 Td (project) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 717.078 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 57.058 717.078 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 717.078 Td (wanted ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.696 717.078 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.044 717.078 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.113 717.078 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.345 717.078 Td (fun ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.693 717.078 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.983 717.078 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 220.331 717.078 Td (macOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.681 717.078 Td ( , ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 260.855 717.078 Td (iOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 279.665 717.078 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.723 717.078 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 304.129 717.078 Td (iPadOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.749 717.078 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 347.865 717.078 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.539 717.078 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.655 717.078 Td (used ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 395.561 717.078 Td (AllApples) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 395.561 715.578 m 441.409 715.578 l S
+0 0 0 rg
+BT /F1 11 Tf 441.409 717.078 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.467 717.078 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.362 717.078 Td (package.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 697.438 Td (After ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.290 697.438 Td (removing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.580 697.438 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.928 697.438 Td (storyboards ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.450 697.438 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.856 697.438 Td (pimping ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.425 697.438 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.715 697.438 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 304.063 697.438 Td (AppDelegate) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.033 697.438 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.091 697.438 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 397.497 697.438 Td (main.swift) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 460.197 697.438 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 463.255 697.438 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 479.150 697.438 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 497.498 697.438 Td (macOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 528.848 697.438 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 683.798 Td (version, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.569 683.798 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 116.975 683.798 Td (SceneDelegate) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.485 683.798 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.543 683.798 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.438 683.798 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 235.786 683.798 Td (mobile ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.239 683.798 Td (versions, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 318.308 683.798 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.424 683.798 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 347.040 683.798 Td (ready ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 377.609 683.798 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 389.841 683.798 Td (start.) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 653.708 Td (2.1.1. ) Tj ET
+0 0 0 rg
+BT /F4 11.495 Tf 87.638 653.708 Td (main.swift) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 156.608 653.708 Td ( ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 159.972 653.708 Td (for ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 179.465 653.708 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 200.979 653.708 Td (macOS) Tj ET
+0.950 0.950 0.950 rg
+54 565.093 487.280 67.440 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 616.633 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 616.633 Td (Cocoa) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 602.773 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 602.773 Td (delegate ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 602.773 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 602.773 Td (AppDelegate\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 588.913 Td (NSApplication.shared.delegate ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 588.913 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 588.913 Td (delegate) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 575.053 Td (_ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 575.053 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 575.053 Td (NSApplicationMain\(CommandLine.argc, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 575.053 Td (CommandLine.unsafeArgv\)) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 546.392 Td (2.1.2. ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 87.638 546.392 Td (AppDelegate ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 164.957 546.392 Td (for ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 184.450 546.392 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 11.495 Tf 205.964 546.392 Td (macOS) Tj ET
+0.950 0.950 0.950 rg
+54 388.477 487.280 136.740 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 509.318 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 509.318 Td (Cocoa) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 495.458 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 495.458 Td (AllApples) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 467.737 Td (class ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 467.737 Td (AppDelegate: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 467.737 Td (NSObject, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 467.737 Td (NSApplicationDelegate ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 362.940 467.737 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 453.877 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 453.877 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 453.877 Td (private ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 453.877 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 453.877 Td (window: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 453.877 Td (NSWindow?) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 440.017 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 440.017 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 440.017 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 440.017 Td (applicationDidFinishLaunching\(_ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 440.017 Td (aNotification: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 440.017 Td (Notification\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 463.920 440.017 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 426.157 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 426.157 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 426.157 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 426.157 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 426.157 Td (window ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 426.157 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 426.157 Td (AppSceneDelegate.makeWindow_Mac\(theVC: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 368.880 426.157 Td (CommonViewController\(\)\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 412.297 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 412.297 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 398.437 Td (}) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 369.778 Td (2.1.3. ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 87.638 369.778 Td (SceneDelegate ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 177.081 369.778 Td (for ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 196.574 369.778 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 11.495 Tf 218.088 369.778 Td (iOS) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 238.779 369.778 Td ( ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 242.143 369.778 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 11.495 Tf 267.021 369.778 Td (iPadOS) Tj ET
+0.950 0.950 0.950 rg
+54 170.282 487.280 178.320 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 332.703 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 332.703 Td (UIKit) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 318.843 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 318.843 Td (AllApples) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 291.122 Td (class ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 291.122 Td (SceneDelegate: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 291.122 Td (UIResponder, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 291.122 Td (UIWindowSceneDelegate ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 392.640 291.122 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 277.262 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 277.262 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 277.262 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 277.262 Td (window: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 277.262 Td (UIWindow?) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 263.402 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 263.402 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 263.402 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 263.402 Td (scene\(_ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 263.402 Td (scene: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 263.402 Td (UIScene, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 263.402 Td (willConnectTo ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 263.402 Td (session: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 263.402 Td (UISceneSession, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 475.800 263.402 Td (options ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 249.542 Td (connectionOptions: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 249.542 Td (UIScene.ConnectionOptions\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 333.240 249.542 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 235.682 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 235.682 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 235.682 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 235.682 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 235.682 Td (guard ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 235.682 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 235.682 Td (aScene ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 235.682 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 235.682 Td (\(scene ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 235.682 Td (as? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 235.682 Td (UIWindowScene\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 235.682 Td (else ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 235.682 Td ({ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 392.640 235.682 Td (return }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 221.822 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 221.822 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 221.822 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 221.822 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 221.822 Td (window ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 221.822 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 221.822 Td (AppSceneDelegate.makeWindow_iOS\(theScene: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 386.700 221.822 Td (aScene, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 434.220 221.822 Td (theVC: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 207.962 Td (CommonViewController\(\)\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 194.102 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 194.102 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 180.242 Td (}) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 146.082 Td (2.2. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 81.828 146.082 Td (Building ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 143.003 146.082 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 168.429 146.082 Td (Basic ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 210.556 146.082 Td (Blocks) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 121.057 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 121.057 Td (first ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.790 121.057 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.906 121.057 Td (did ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.638 121.057 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.638 121.057 Td (make ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.591 121.057 Td (a ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 170.765 121.057 Td (PlainLayerView ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.815 121.057 Td (.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.873 121.057 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.931 121.057 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.105 121.057 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.105 121.057 Td (an ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 306.395 121.057 Td (AView) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.745 121.057 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.803 121.057 Td (descendant, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 403.789 121.057 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.963 121.057 Td (means ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.032 121.057 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 492.438 121.057 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 500.996 121.057 Td (is ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 107.417 Td (typedef-ed) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.700 107.417 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 119.758 107.417 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.990 107.417 Td (be ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.280 107.417 Td (either ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 177.849 107.417 Td (a ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 187.023 107.417 Td (UIView) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 224.643 107.417 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.701 107.417 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 240.538 107.417 Td (a ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 249.712 107.417 Td (NSView) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.332 107.417 Td (.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 87.777 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 87.777 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 74.174 87.777 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 89.464 87.777 Td (intermediary ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.033 87.777 Td (object ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.439 87.777 Td (just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.613 87.777 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.845 87.777 Td (set ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 235.577 87.777 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.867 87.777 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.041 87.777 Td (thing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.947 87.777 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.237 87.777 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 320.585 87.777 Td (macOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.935 87.777 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.993 87.777 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.667 87.777 Td (well ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 391.667 87.777 Td (\(doesn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.852 87.777 Td (work ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 460.131 87.777 Td (yet\).) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 68.137 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 68.137 Td (then ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.580 68.137 Td (created ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 124.323 68.137 Td (CustomLayerView) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.373 68.137 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 221.431 68.137 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.663 68.137 Td (have ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.569 68.137 Td (nice ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 283.801 68.137 Td (sides ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.533 68.137 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 328.428 68.137 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.776 68.137 Td (cube, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.740 68.137 Td (with ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 399.356 68.137 Td (CATextLayer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 468.326 68.137 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.384 68.137 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.058 68.137 Td (the ) Tj ET
+
+endstream
+endobj
+16 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [395.561 714.328 441.409 726.978]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/allapples) >> >>
+endobj
+17 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 15 0 R
+/Annots [16 0 R] >>
+endobj
+18 0 obj
+<< /Length 20251 >>
+stream
+0 0 0 rg
+BT /F1 11 Tf 54 787.890 Td (number ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.348 787.890 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.580 787.890 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.928 787.890 Td (cube ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.834 787.890 Td (side, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.124 787.890 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 199.530 787.890 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.704 787.890 Td (nice ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.936 787.890 Td (rounded ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.353 787.890 Td (border, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.259 787.890 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.933 787.890 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.339 787.890 Td (we ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.455 787.890 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.245 787.890 Td (peek ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.151 787.890 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.941 787.890 Td (our ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 453.894 787.890 Td (cube ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 480.800 787.890 Td (while ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 774.250 Td (rotating.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 754.610 Td (Here's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 754.610 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.185 754.610 Td (image ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.196 754.610 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.428 754.610 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.486 754.610 Td (six ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.986 754.610 Td (layers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.381 754.610 Td (drawn ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.392 754.610 Td (by ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.066 754.610 Td (using ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.414 754.610 Td (a ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 301.588 754.610 Td (CustomLayerView) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 734.970 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 734.970 Td (/images/cacube/07_original_abandoned_cube_layout.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 708.120 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 708.120 Td (layout ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.243 708.120 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.859 708.120 Td (abandoned ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.961 708.120 Td (because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 235.599 708.120 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.715 708.120 Td (couldn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.679 708.120 Td (make ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.632 708.120 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.980 708.120 Td (transformation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.339 708.120 Td (of ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 416.571 708.120 Td (purple) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 454.191 708.120 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 457.249 708.120 Td (view ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 482.307 708.120 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 494.539 708.120 Td (work ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 694.480 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.348 694.480 Td (transforming ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.533 694.480 Td (in ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 159.149 694.480 Td (3D) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.689 694.480 Td (.) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 674.840 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 674.840 Td (/images/cacube/08_side4_broken.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 647.990 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 647.990 Td (solution ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.975 647.990 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.975 647.990 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.207 647.990 Td (add ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.613 647.990 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.903 647.990 Td (additional ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 227.041 647.990 Td (CATransformLayer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.361 647.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.419 647.990 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.651 647.990 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 360.999 647.990 Td (green) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.349 647.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.407 647.990 Td (layer, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 425.360 647.990 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 446.766 647.990 Td (mount ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 480.393 647.990 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 498.741 647.990 Td (purple) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 536.361 647.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 634.350 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.895 634.350 Td (onto ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.359 634.350 Td (it. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.975 634.350 Td (As ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.870 634.350 Td (explained ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.008 634.350 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.624 634.350 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.798 634.350 Td (blog ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.646 634.350 Td (post ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.494 634.350 Td (by ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.168 634.350 Td (Oliver ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.947 634.350 Td (Drobnik ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 349.900 634.350 Td ( ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 349.900 632.850 m 352.958 632.850 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 352.958 634.350 Td (Cubed ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 352.958 632.850 m 388.422 632.850 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 388.422 634.350 Td (CoreAnimation ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 388.422 632.850 m 464.223 632.850 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 464.223 634.350 Td (Conundrum.) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 464.223 632.850 m 524.745 632.850 l S
+0 0 0 rg
+BT /F1 11 Tf 54 614.710 Td (But ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 73.569 614.710 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 79.685 614.710 Td (didn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.033 614.710 Td (want ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.323 614.710 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.555 614.710 Td (lose ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.787 614.710 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.135 614.710 Td (linearity ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.088 614.710 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.320 614.710 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.668 614.710 Td (solution, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.690 614.710 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.096 614.710 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.212 614.710 Td (used ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 359.118 614.710 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 377.466 614.710 Td (approach ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.383 614.710 Td (demonstrated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 496.695 614.710 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 508.311 614.710 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 601.070 Td (mentioned ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.417 601.070 Td (WWDC ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.127 601.070 Td (session: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 191.533 601.070 Td ("2011\226421 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.424 601.070 Td (Core ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.319 601.070 Td (Animation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.283 601.070 Td (Essentials") Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 581.430 Td (They ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 81.511 581.430 Td (used ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.417 581.430 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 126.765 581.430 Td (zOrder) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.385 581.430 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.443 581.430 Td (property ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.849 581.430 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.081 581.430 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.255 581.430 Td (layer, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.208 581.430 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 283.614 581.430 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.288 581.430 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.404 581.430 Td (put ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 322.752 581.430 Td (purple) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 360.372 581.430 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.430 581.430 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.325 581.430 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 405.615 581.430 Td (top ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.963 581.430 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 436.195 581.430 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 454.543 581.430 Td (red) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 473.353 581.430 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 476.411 581.430 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 503.306 581.430 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 567.790 Td (achieve ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.964 567.790 Td (that.) Tj ET
+0.950 0.950 0.950 rg
+54 494.570 487.280 53.580 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 532.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 532.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 532.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 532.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 532.250 Td (if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 532.250 Td (number ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 532.250 Td (== ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 532.250 Td (4 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 532.250 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 518.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 518.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 518.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 518.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 518.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 518.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 518.390 Td (view.layer.zPosition ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 518.390 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 518.390 Td (1) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 504.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 504.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 504.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 504.530 Td ( }) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 486.320 Td (As ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 69.895 486.320 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.685 486.320 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.475 486.320 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.265 486.320 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.881 486.320 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.229 486.320 Td (image ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.240 486.320 Td (below, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.088 486.320 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 248.436 486.320 Td (purple) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.056 486.320 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.114 486.320 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.009 486.320 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.009 486.320 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 338.625 486.320 Td (front ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.694 486.320 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.926 486.320 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 394.274 486.320 Td (red) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 413.084 486.320 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 416.142 486.320 Td (layer, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 446.095 486.320 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 477.269 486.320 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 488.269 486.320 Td (obvious ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 472.680 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.348 472.680 Td (we ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 100.464 472.680 Td (rotate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.649 472.680 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.997 472.680 Td (flattened ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.251 472.680 Td (cube.) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 453.040 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 453.040 Td (/images/cacube/09_layers_zPosition.png]) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 410.240 Td (2.3. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 81.828 410.240 Td (Turning ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 139.028 410.240 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 164.453 410.240 Td (Transform ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 239.142 410.240 Td (On ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 262.980 410.240 Td (and ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 292.381 410.240 Td (Off) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 385.215 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 385.215 Td (did ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.848 385.215 Td (take ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.696 385.215 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.044 385.215 Td (approach ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.961 385.215 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.367 385.215 Td (Over ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.262 385.215 Td (Drobnik ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.215 385.215 Td (did ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.947 385.215 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.563 385.215 Td (his ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.679 385.215 Td (article: ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 340.132 385.215 Td ( ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 340.132 383.715 m 343.190 383.715 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 343.190 385.215 Td (Cubed ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 343.190 383.715 m 378.654 383.715 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 378.654 385.215 Td (CoreAnimation ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 378.654 383.715 m 454.455 383.715 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 454.455 385.215 Td (Conundrum ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 454.455 383.715 m 514.977 383.715 l S
+0 0 0 rg
+BT /F1 11 Tf 514.977 385.215 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 371.575 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 75.406 371.575 Td (used ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.312 371.575 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.870 371.575 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.428 371.575 Td (this:) Tj ET
+0.950 0.950 0.950 rg
+54 159.755 487.280 192.180 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 336.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 336.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 336.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 336.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 336.035 Td (side4.layer?.zPosition ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 336.035 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 336.035 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 336.035 Td (CACube3DView.sideWidth : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 410.460 336.035 Td (1) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 322.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 322.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 322.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 322.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 322.175 Td (side1.layer?.transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 322.175 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 322.175 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 322.175 Td (CATransform3D.transformFor3DCubeSide\(1, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 308.315 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 308.315 Td (CACube3DView.sideWidth\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 308.315 Td ( : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 308.315 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 294.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 294.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 294.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 294.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 294.455 Td (side2.layer?.transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 294.455 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 294.455 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 294.455 Td (CATransform3D.transformFor3DCubeSide\(2, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 280.595 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 280.595 Td (CACube3DView.sideWidth\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 280.595 Td ( : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 280.595 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 266.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 266.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 266.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 266.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 266.735 Td (side3.layer?.transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 266.735 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 266.735 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 266.735 Td (CATransform3D.transformFor3DCubeSide\(3, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 252.875 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 252.875 Td (CACube3DView.sideWidth\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 252.875 Td ( : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 252.875 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 239.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 239.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 239.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 239.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 239.015 Td (side4.layer?.transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 239.015 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 239.015 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 239.015 Td (CATransform3D.transformFor3DCubeSide\(4, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 225.155 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 225.155 Td (CACube3DView.sideWidth\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 225.155 Td ( : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 225.155 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 211.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 211.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 211.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 211.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 211.295 Td (side5.layer?.transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 211.295 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 211.295 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 211.295 Td (CATransform3D.transformFor3DCubeSide\(5, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 197.435 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 197.435 Td (CACube3DView.sideWidth\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 197.435 Td ( : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 197.435 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 183.575 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 183.575 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 183.575 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 183.575 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 183.575 Td (side6.layer?.transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 183.575 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 183.575 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 183.575 Td (CATransform3D.transformFor3DCubeSide\(6, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 169.715 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 169.715 Td (CACube3DView.sideWidth\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 169.715 Td ( : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 169.715 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 135.555 Td (2.4. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 81.828 135.555 Td (Transforming ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 177.967 135.555 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 203.392 135.555 Td (Layers ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 253.471 135.555 Td (to ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 270.945 135.555 Td (Form ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 310.671 135.555 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 322.597 135.555 Td (Cube) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 110.530 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 110.530 Td (didn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 89.464 110.530 Td (use ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.254 110.530 Td (his ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.370 110.530 Td (transform ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.881 110.530 Td (code, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.845 110.530 Td (since ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 235.577 110.530 Td (he ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.867 110.530 Td (used ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.773 110.530 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.179 110.530 Td (additional ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 349.317 110.530 Td (CATransformLayer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 449.637 110.530 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 455.753 110.530 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.427 110.530 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 478.985 110.530 Td (wouldn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 96.890 Td (work. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.337 96.890 Td (So, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.906 96.890 Td (here's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.917 96.890 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.091 96.890 Td (small ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.812 96.890 Td (extension ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.950 96.890 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.240 96.890 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 257.588 96.890 Td (CATransform3D) Tj ET
+
+endstream
+endobj
+19 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [349.900 631.600 352.958 644.250]
+/Border [0 0 0]
+/A << /S /URI /URI (https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/) >> >>
+endobj
+20 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [352.958 631.600 388.422 644.250]
+/Border [0 0 0]
+/A << /S /URI /URI (https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/) >> >>
+endobj
+21 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [388.422 631.600 464.223 644.250]
+/Border [0 0 0]
+/A << /S /URI /URI (https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/) >> >>
+endobj
+22 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [464.223 631.600 524.745 644.250]
+/Border [0 0 0]
+/A << /S /URI /URI (https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/) >> >>
+endobj
+23 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [340.132 382.465 343.190 395.115]
+/Border [0 0 0]
+/A << /S /URI /URI (https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/) >> >>
+endobj
+24 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [343.190 382.465 378.654 395.115]
+/Border [0 0 0]
+/A << /S /URI /URI (https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/) >> >>
+endobj
+25 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [378.654 382.465 454.455 395.115]
+/Border [0 0 0]
+/A << /S /URI /URI (https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/) >> >>
+endobj
+26 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [454.455 382.465 514.977 395.115]
+/Border [0 0 0]
+/A << /S /URI /URI (https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/) >> >>
+endobj
+27 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 18 0 R
+/Annots [19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R] >>
+endobj
+28 0 obj
+<< /Length 21634 >>
+stream
+0.950 0.950 0.950 rg
+54 346.230 487.280 441.660 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 771.990 Td (extension ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 771.990 Td (CATransform3D ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 771.990 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 758.130 Td (static ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 758.130 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 758.130 Td (transformFor3DCubeSide\(_ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 758.130 Td (number: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 758.130 Td (Int, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 368.880 758.130 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 416.400 758.130 Td (CGFloat\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 469.860 758.130 Td (-> ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 744.270 Td (CATransform3D ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 744.270 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 716.550 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 716.550 Td (halfPi ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 716.550 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 716.550 Td (CGFloat\(Double.pi\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 716.550 Td (/ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 716.550 Td (2.0) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 702.690 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 702.690 Td (trans ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 702.690 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 702.690 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 688.830 Td (switch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 688.830 Td (number ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 688.830 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 674.970 Td (case ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 674.970 Td (1:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 661.110 Td (trans ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 661.110 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 661.110 Td (CATransform3DMakeRotation\(halfPi, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 661.110 Td (0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 374.820 661.110 Td (1, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 392.640 661.110 Td (0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 647.250 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 633.390 Td (case ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 633.390 Td (2:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 619.530 Td (trans ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 619.530 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 619.530 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 605.670 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 591.810 Td (case ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 591.810 Td (3:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 577.950 Td (trans ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 577.950 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 577.950 Td (CATransform3DMakeRotation\(-halfPi, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 362.940 577.950 Td (0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 577.950 Td (1, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 398.580 577.950 Td (0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 564.090 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 550.230 Td (case ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 550.230 Td (4:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 536.370 Td (trans ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 536.370 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 536.370 Td (CATransform3DMakeTranslation\(0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 345.120 536.370 Td (0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 362.940 536.370 Td (zWidth\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 522.510 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 508.650 Td (case ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 508.650 Td (5:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 494.790 Td (trans ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 494.790 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 494.790 Td (CATransform3DMakeRotation\(-halfPi, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 362.940 494.790 Td (1, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 494.790 Td (0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 398.580 494.790 Td (0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 480.930 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 467.070 Td (case ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 467.070 Td (6:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 453.210 Td (trans ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 453.210 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 453.210 Td (CATransform3DMakeRotation\(halfPi, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 453.210 Td (1, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 374.820 453.210 Td (0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 392.640 453.210 Td (0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 439.350 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 425.490 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 425.490 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 425.490 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 425.490 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 425.490 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 425.490 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 425.490 Td (default:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 411.630 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 411.630 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 411.630 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 411.630 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 411.630 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 411.630 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 411.630 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 411.630 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 411.630 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 397.770 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 397.770 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 397.770 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 397.770 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 383.910 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 383.910 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 383.910 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 383.910 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 383.910 Td (return ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 383.910 Td (trans) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 370.050 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 370.050 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 356.190 Td (}) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 337.980 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 337.980 Td (actually ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 100.464 337.980 Td (used ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.370 337.980 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.718 337.980 Td (approach ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.635 337.980 Td (form ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.693 337.980 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.099 337.980 Td (WWDC ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.809 337.980 Td (session, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.215 337.980 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.621 337.980 Td (also ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.853 337.980 Td (used ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 395.759 337.980 Td (anchorPoint) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 464.729 337.980 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 467.787 337.980 Td (properties ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 519.751 337.980 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 324.340 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 72.348 324.340 Td (CALayer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.238 324.340 Td (.) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 288.750 Td (2.5. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 81.828 288.750 Td (Positioning ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 163.667 288.750 Td (Cube ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 203.392 288.750 Td (Sides) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 263.725 Td (Here's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 263.725 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.011 263.725 Td (little ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.627 263.725 Td (extension ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.765 263.725 Td (on ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 186.055 263.725 Td (CGPoint) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 229.945 263.725 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.003 263.725 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.409 263.725 Td (returns ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.699 263.725 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 300.873 263.725 Td (tuple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.779 263.725 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.011 263.725 Td (our ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.964 263.725 Td (cube ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 385.870 263.725 Td (side ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.102 263.725 Td (positions ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 455.566 263.725 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 476.972 263.725 Td (anchor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 250.085 Td (points:) Tj ET
+0.950 0.950 0.950 rg
+54 65.985 487.280 164.460 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 214.545 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 214.545 Td (extension ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 214.545 Td (CGPoint ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 214.545 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 200.685 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 200.685 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 200.685 Td (static ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 200.685 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 200.685 Td (anchorPointAndPositionForCubeSideLayer\(number: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 422.340 200.685 Td (Int, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 452.040 200.685 Td (sideSize: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 186.825 Td (CGFloat\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 186.825 Td (-> ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 186.825 Td (\(anchorPoint: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 186.825 Td (CGPoint, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 186.825 Td (position: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 186.825 Td (CGPoint\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 186.825 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 172.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 172.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 172.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 172.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 172.965 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 172.965 Td (resultAnchorPoint ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 172.965 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 172.965 Td (CGPoint\(x:0.5, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 172.965 Td (y:0.5\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 159.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 159.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 159.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 159.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 159.105 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 159.105 Td (resultPosition ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 159.105 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 159.105 Td (CGPoint\(x:0.0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 159.105 Td (y:0.0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 145.245 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 145.245 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 145.245 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 145.245 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 145.245 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 145.245 Td (halfSideSize: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 145.245 Td (CGFloat ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 145.245 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 145.245 Td (sideSize ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 145.245 Td (/ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 145.245 Td (2.0) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 131.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 131.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 131.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 131.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 131.385 Td (switch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 131.385 Td (number ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 131.385 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 117.525 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 117.525 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 117.525 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 117.525 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 117.525 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 117.525 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 117.525 Td (case ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 117.525 Td (1:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 103.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 103.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 103.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 103.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 103.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 103.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 103.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 103.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 103.665 Td (resultAnchorPoint ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 103.665 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 103.665 Td (CGPoint\(x:1.0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 103.665 Td (y:0.5\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 89.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 89.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 89.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 89.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 89.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 89.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 89.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 89.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 89.805 Td (resultPosition ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 89.805 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 89.805 Td (CGPoint\(x:-halfSideSize, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 89.805 Td (y:0.0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 75.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 75.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 75.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 75.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 75.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 75.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 75.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 75.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 75.945 Td (break) Tj ET
+
+endstream
+endobj
+29 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 28 0 R >>
+endobj
+30 0 obj
+<< /Length 23040 >>
+stream
+0.950 0.950 0.950 rg
+54 415.530 487.280 372.360 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 771.990 Td (case ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 771.990 Td (2:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 758.130 Td (resultAnchorPoint ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 758.130 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 758.130 Td (CGPoint\(x:0.5, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 758.130 Td (y:0.5\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 744.270 Td (resultPosition ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 744.270 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 744.270 Td (CGPoint\(x:0.0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 744.270 Td (y:0.0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 730.410 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 716.550 Td (case ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 716.550 Td (3:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 702.690 Td (resultAnchorPoint ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 702.690 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 702.690 Td (CGPoint\(x:0.0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 702.690 Td (y:0.5\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 688.830 Td (resultPosition ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 688.830 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 688.830 Td (CGPoint\(x:halfSideSize, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 688.830 Td (y:0.0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 674.970 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 661.110 Td (case ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 661.110 Td (4:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 647.250 Td (resultAnchorPoint ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 647.250 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 647.250 Td (CGPoint\(x:0.5, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 647.250 Td (y:0.5\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 633.390 Td (resultPosition ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 633.390 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 633.390 Td (CGPoint\(x:0.0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 633.390 Td (y:0.0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 619.530 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 605.670 Td (case ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 605.670 Td (5:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 591.810 Td (resultAnchorPoint ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 591.810 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 591.810 Td (CGPoint\(x:0.5, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 591.810 Td (y:1.0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 577.950 Td (resultPosition ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 577.950 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 577.950 Td (CGPoint\(x:0.0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 577.950 Td (y:-halfSideSize\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 564.090 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 550.230 Td (case ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 550.230 Td (6:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 536.370 Td (resultAnchorPoint ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 536.370 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 536.370 Td (CGPoint\(x:0.5, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 536.370 Td (y:0.0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 522.510 Td (resultPosition ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 522.510 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 522.510 Td (CGPoint\(x:0.0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 522.510 Td (y:halfSideSize\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 508.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 508.650 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 494.790 Td (default:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 480.930 Td (break) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 467.070 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 453.210 Td (return ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 453.210 Td (\(anchorPoint: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 453.210 Td (resultAnchorPoint, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 453.210 Td (position: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 453.210 Td (resultPosition\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 439.350 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 425.490 Td (}) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 407.280 Td (In ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 66.232 407.280 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.580 407.280 Td (image ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.591 407.280 Td (below ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.381 407.280 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.497 407.280 Td (have ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.403 407.280 Td (marked ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.135 407.280 Td (where ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.146 407.280 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 273.494 407.280 Td (anchor ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 317.384 407.280 Td (points) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 355.004 407.280 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.062 407.280 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 377.015 407.280 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.910 407.280 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 419.816 407.280 Td (layer:) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 387.640 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 387.640 Td (/images/cacube/10_anchor_points.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 360.790 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 360.790 Td (only ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.243 360.790 Td (fallacy ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.475 360.790 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.091 360.790 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 163.439 360.790 Td (image ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.450 360.790 Td (above, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.530 360.790 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.530 360.790 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.936 360.790 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 283.284 360.790 Td (purple) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.904 360.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.962 360.790 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 350.857 360.790 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.857 360.790 Td (actually ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.205 360.790 Td (above ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 435.227 360.790 Td (our ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 454.180 360.790 Td (red ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 479.260 360.790 Td (layer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 510.610 360.790 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 516.726 360.790 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 535.074 360.790 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 347.150 Td (wanted ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 92.522 347.150 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.754 347.150 Td (show ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.486 347.150 Td (where ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.497 347.150 Td (those ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.461 347.150 Td (anchor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.146 347.150 Td (points ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 265.552 347.150 Td (are.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 284.505 347.150 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.563 347.150 Td (So, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.132 347.150 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 325.480 347.150 Td (actual ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 357.886 347.150 Td (image ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.897 347.150 Td (looks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 419.629 347.150 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.187 347.150 Td (this, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 462.419 347.150 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 480.767 347.150 Td (we ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.883 347.150 Td (now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 333.510 Td (don't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.906 333.510 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.696 333.510 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 120.044 333.510 Td (red) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.854 333.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.912 333.510 Td (layer.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.807 333.510 Td ( ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 171.865 333.510 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 211.608 333.510 Td (/images/cacube/11_anchor_points.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 313.870 Td (An ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 70.511 313.870 Td (Anchor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.417 313.870 Td (point ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.323 313.870 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.323 313.870 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.497 313.870 Td (center ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.124 313.870 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.356 313.870 Td (rotation. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.157 313.870 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.331 313.870 Td (determines ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 310.795 313.870 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.027 313.870 Td (will ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.353 313.870 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.701 313.870 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 397.596 313.870 Td (rotate.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.781 313.870 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 431.839 313.870 Td (Imagine ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 474.024 313.870 Td (holding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 512.546 313.870 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 300.230 Td (playing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.906 300.230 Td (card ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.359 300.230 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.975 300.230 Td (two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.149 300.230 Td (fingers. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.276 300.230 Td (Then ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 226.403 300.230 Td (try ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.682 300.230 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.914 300.230 Td (spin ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.146 300.230 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.494 300.230 Td (card. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.005 300.230 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.016 300.230 Td (anchor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.701 300.230 Td (point ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 408.607 300.230 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.839 300.230 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.245 300.230 Td (card ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.698 300.230 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 477.698 300.230 Td (where ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 510.709 300.230 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 286.590 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.953 286.590 Td (holding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.475 286.590 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.033 286.590 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.649 286.590 Td (fingers.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 247.150 Td (3. ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 72.960 247.150 Td (Responding ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 176.214 247.150 Td (to ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 197.050 247.150 Td (Gestures) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 217.313 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 217.313 Td (made ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.685 217.313 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.859 217.313 Td (small ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 128.580 217.313 Td (GestureRecognizerView) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.250 217.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.308 217.313 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.540 217.313 Td (be ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 290.830 217.313 Td (able ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.678 217.313 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.910 217.313 Td (respond ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.711 217.313 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.943 217.313 Td (gestures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 427.186 217.313 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 448.592 217.313 Td (move, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 481.603 217.313 Td (rotate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 512.788 217.313 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 203.673 Td (scale ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.732 203.673 Td (our ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.685 203.673 Td (layers.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 184.033 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 184.033 Td (hooks-up:) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 164.393 Td (NSPanGestureRecognizer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.940 164.393 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.998 164.393 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 240.404 164.393 Td (UIPanGestureRecognizer) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 149.743 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 109.350 149.743 Td (rotate\(with ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 184.590 149.743 Td (event: ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 228.480 149.743 Td (NSEvent\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.640 149.743 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.698 149.743 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 303.104 149.743 Td (UIRotationGestureRecognizer) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 135.093 Td (NSClickGestureRecognizer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.480 135.093 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.538 135.093 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 252.944 135.093 Td (UITapGestureRecognizer) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 120.443 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 109.350 120.443 Td (magnify\(with ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 190.860 120.443 Td (event: ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 234.750 120.443 Td (NSEvent\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 284.910 120.443 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.968 120.443 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 309.374 120.443 Td (UIPinchGestureRecognizer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 102.793 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 102.793 Td (then ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.638 102.793 Td (exposes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.660 102.793 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.718 102.793 Td (those ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.682 102.793 Td (events ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.146 102.793 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.378 102.793 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.726 102.793 Td (developer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 293.085 102.793 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.317 102.793 Td (use:) Tj ET
+0.950 0.950 0.950 rg
+54 57.293 487.280 25.860 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 67.253 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 67.253 Td (extension ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 67.253 Td (GestureRecognizerView ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 67.253 Td ({) Tj ET
+
+endstream
+endobj
+31 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 30 0 R >>
+endobj
+32 0 obj
+<< /Length 13697 >>
+stream
+0.950 0.950 0.950 rg
+54 692.730 487.280 95.160 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 771.990 Td (@objc ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 771.990 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 771.990 Td (rotationChanged\(degrees: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 771.990 Td (Float\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 771.990 Td ({}) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 758.130 Td (@objc ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 758.130 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 758.130 Td (rotationChanged\(radians: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 758.130 Td (Float\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 758.130 Td ({}) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 744.270 Td (@objc ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 744.270 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 744.270 Td (displacementChanged\(displacement: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 744.270 Td (CGPoint\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 392.640 744.270 Td ({}) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 730.410 Td (@objc ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 730.410 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 730.410 Td (scaleChanged\(scale: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 730.410 Td (CGFloat\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 730.410 Td ({}) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 716.550 Td (@objc ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 716.550 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 716.550 Td (tapHappened\(\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 716.550 Td ({}) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 702.690 Td (}) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 664.680 Td (4. ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 72.960 664.680 Td (Building ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 145.900 664.680 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 160.119 664.680 Td (Layer ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 210.348 664.680 Td (to ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 231.184 664.680 Td (hold ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 271.916 664.680 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 286.136 664.680 Td (Cube) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 634.843 Td (CACube3DView) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.240 634.843 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.298 634.843 Td (will ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.624 634.843 Td (hold ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 174.472 634.843 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.820 634.843 Td (six ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.320 634.843 Td (layers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.715 634.843 Td (than ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.179 634.843 Td (\(can\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 294.295 634.843 Td (make ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.248 634.843 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 333.422 634.843 Td (cube.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 360.328 634.843 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.386 634.843 Td (In ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.618 634.843 Td (order ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.350 634.843 Td (for ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 420.245 634.843 Td (Core ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 451.595 634.843 Td (Animation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 508.025 634.843 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 511.083 634.843 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 621.203 Td (render ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.848 621.203 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.196 621.203 Td (transformed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.939 621.203 Td (views ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 199.497 621.203 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.113 621.203 Td (perspective, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.472 621.203 Td (there ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.599 621.203 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.599 621.203 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.773 621.203 Td (property ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 365.179 621.203 Td (sublayerTransform) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.769 621.203 Td (.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 601.563 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 601.563 Td (either ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.196 601.563 Td (use ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.986 601.563 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.392 601.563 Td (property ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.798 601.563 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.030 601.563 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 229.483 601.563 Td (parent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.726 601.563 Td (layer, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 293.679 601.563 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.516 601.563 Td (add ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.922 601.563 Td (another ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.281 601.563 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.176 601.563 Td (class ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.292 601.563 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 435.524 601.563 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 459.977 601.563 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.872 601.563 Td (hierarchy: ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 587.923 Td (CATransformLayer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.320 587.923 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.436 587.923 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.552 587.923 Td (opted ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.132 587.923 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.364 587.923 Td (use ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.154 587.923 Td (that.) Tj ET
+0.950 0.950 0.950 rg
+54 445.403 487.280 122.880 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 552.383 Td (private\(set\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 552.383 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 552.383 Td (lazy ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 552.383 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 552.383 Td (transformedLayer: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 552.383 Td (CALayer ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 386.700 552.383 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 398.580 552.383 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 538.523 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 538.523 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 538.523 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 538.523 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 538.523 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 538.523 Td (l ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 538.523 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 538.523 Td (CATransformLayer\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 524.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 524.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 524.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 524.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 524.663 Td (l.name ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 524.663 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 524.663 Td ("Transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 524.663 Td (Layer") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 510.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 510.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 510.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 510.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 510.803 Td (#if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 510.803 Td (os\(OSX\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 496.943 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 496.943 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 496.943 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 496.943 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 496.943 Td (l.isGeometryFlipped ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 496.943 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 496.943 Td (true) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 483.083 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 483.083 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 483.083 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 483.083 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 483.083 Td (#endif) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 469.223 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 469.223 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 469.223 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 469.223 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 469.223 Td (return ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 469.223 Td (l) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 455.363 Td (}\(\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 437.153 Td (When ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.790 437.153 Td (adding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.870 437.153 Td (sublayers, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.055 437.153 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.171 437.153 Td (add ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.577 437.153 Td (them ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.088 437.153 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.320 437.153 Td (this ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 262.494 437.153 Td (transformedLayer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.814 437.153 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.872 437.153 Td (property, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 412.336 437.153 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.742 437.153 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 452.090 437.153 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.811 437.153 Td (view's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.811 437.153 Td (layer.) Tj ET
+0.950 0.950 0.950 rg
+54 197.613 487.280 219.900 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 401.613 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 401.613 Td (addSideSubview\(_ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 401.613 Td (subview: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 401.613 Td (AView\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 401.613 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 387.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 387.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 387.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 387.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 387.753 Td (addSubview\(subview\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 360.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 360.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 360.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 360.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 360.033 Td (#if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 360.033 Td (os\(iOS\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 360.033 Td (|| ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 360.033 Td (os\(tvOS\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 346.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 346.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 346.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 346.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 346.173 Td (transformedLayer.addSublayer\(subview.layer\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 332.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 332.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 332.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 332.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 332.313 Td (#endif) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 304.593 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 304.593 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 304.593 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 304.593 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 304.593 Td (#if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 304.593 Td (os\(OSX\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 290.733 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 290.733 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 290.733 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 290.733 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 290.733 Td (if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 290.733 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 290.733 Td (aLayer ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 290.733 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 290.733 Td (subview.layer ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 290.733 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 276.873 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 276.873 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 276.873 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 276.873 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 276.873 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 276.873 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 276.873 Td (transformedLayer.addSublayer\(aLayer\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 263.013 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 263.013 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 263.013 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 263.013 Td ( } ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 263.013 Td (else ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 263.013 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 249.153 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 249.153 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 249.153 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 249.153 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 249.153 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 249.153 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 249.153 Td (fatalError\("`subview.layer` ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 249.153 Td (== ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 249.153 Td (`nil`"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 235.293 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 235.293 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 235.293 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 235.293 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 221.433 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 221.433 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 221.433 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 221.433 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 221.433 Td (#endif) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 207.573 Td (}) Tj ET
+
+endstream
+endobj
+33 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 32 0 R >>
+endobj
+34 0 obj
+<< /Length 25247 >>
+stream
+0 0 0 rg
+BT /F2 17.050 Tf 54 787.890 Td (5. ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 72.960 787.890 Td (Perspective ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 173.418 787.890 Td (& ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 190.468 787.890 Td (Rotation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 758.053 Td (When ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.790 758.053 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.138 758.053 Td (app ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 125.544 758.053 Td (first ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.323 758.053 Td (runs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.776 758.053 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.334 758.053 Td (shows ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.566 758.053 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.182 758.053 Td (perspective.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 284.483 758.053 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.541 758.053 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 293.657 758.053 Td (made ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.226 758.053 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 333.400 758.053 Td (little ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.016 758.053 Td (extension:) Tj ET
+0.950 0.950 0.950 rg
+54 560.093 487.280 178.320 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 722.513 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 722.513 Td (extension ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 722.513 Td (CATransform3D ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 722.513 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 708.653 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 708.653 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 708.653 Td (static ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 708.653 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 708.653 Td (somePerspectiveTransform\(\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 708.653 Td (-> ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 708.653 Td (CATransform3D ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 404.520 708.653 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 694.793 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 694.793 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 694.793 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 694.793 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 694.793 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 694.793 Td (perspective ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 694.793 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 694.793 Td (CATransform3DIdentity;) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 680.933 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 680.933 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 680.933 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 680.933 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 680.933 Td (perspective.m34 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 680.933 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 680.933 Td (-1.0 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 680.933 Td (/ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 680.933 Td (500.0;) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 667.073 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 667.073 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 667.073 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 667.073 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 667.073 Td (perspective ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 667.073 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 667.073 Td (CATransform3DRotate\(perspective, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 362.940 667.073 Td (CGFloat\(Double.pi\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 475.800 667.073 Td (/ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 487.680 667.073 Td (8, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 505.500 667.073 Td (1, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 653.213 Td (0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 653.213 Td (0\);) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 639.353 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 639.353 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 639.353 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 639.353 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 639.353 Td (perspective ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 639.353 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 639.353 Td (CATransform3DRotate\(perspective, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 362.940 639.353 Td (CGFloat\(Double.pi\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 475.800 639.353 Td (/ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 487.680 639.353 Td (8, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 505.500 639.353 Td (0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 625.493 Td (1, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 625.493 Td (0\);) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 611.632 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 611.632 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 611.632 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 611.632 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 611.632 Td (perspective ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 611.632 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 611.632 Td (CATransform3DScale\(perspective, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 611.632 Td (0.7, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 386.700 611.632 Td (0.7, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 416.400 611.632 Td (0.7\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 597.772 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 597.772 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 597.772 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 597.772 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 597.772 Td (return ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 597.772 Td (perspective) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 583.912 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 583.912 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 570.052 Td (}) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 551.843 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 551.843 Td (part: ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 101.080 551.843 Td (perspective.m34 ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 201.400 551.843 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 213.940 551.843 Td (-1.0 ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 245.290 551.843 Td (/ ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 257.830 551.843 Td (500.0;) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.450 551.843 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.508 551.843 Td (sets ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.740 551.843 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.088 551.843 Td (perspective.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 399.389 551.843 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.447 551.843 Td (The ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 424.458 551.843 Td (.34) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.268 551.843 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 446.326 551.843 Td (field ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.558 551.843 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 481.790 551.843 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.964 551.843 Td (matrix ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 538.203 Td (shows ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.232 538.203 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.580 538.203 Td (amount ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.323 538.203 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.555 538.203 Td (perspective ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.856 538.203 Td (distortion ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 265.541 538.203 Td (applied.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.063 538.203 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.121 538.203 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 329.132 538.203 Td (amount ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 368.875 538.203 Td (500) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.685 538.203 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.743 538.203 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.743 538.203 Td (often ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.265 538.203 Td (used ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.171 538.203 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 467.787 538.203 Td (examples. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 520.972 538.203 Td (If ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 530.146 538.203 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 524.563 Td (were ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.895 524.563 Td (smaller, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.453 524.563 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.801 524.563 Td (layers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.196 524.563 Td (would ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.986 524.563 Td (seem ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.939 524.563 Td (very ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.776 524.563 Td (close ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.508 524.563 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.914 524.563 Td (distorted, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 357.215 524.563 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.773 524.563 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 385.947 524.563 Td (fish-eye ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 427.516 524.563 Td (effect.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 504.923 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 504.923 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 504.923 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.185 504.923 Td (initial ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.301 504.923 Td (transform, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 187.870 504.923 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.218 504.923 Td (we ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.334 504.923 Td (want ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.624 504.923 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.856 504.923 Td (be ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.146 504.923 Td (able ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 300.994 504.923 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.226 504.923 Td (move ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.179 504.923 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.585 504.923 Td (rotate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.770 504.923 Td (our ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.723 504.923 Td (cube ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 441.629 504.923 Td (\(flattened ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.546 504.923 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 503.383 504.923 Td (not\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 491.283 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.616 491.283 Td (our ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.569 491.283 Td (fingers.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 471.643 Td (Here's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 471.643 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.185 471.643 Td (code:) Tj ET
+0.950 0.950 0.950 rg
+54 65.783 487.280 386.220 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 436.103 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 436.103 Td (extension ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 436.103 Td (CATransform3D ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 436.103 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 408.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 408.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 408.383 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 408.383 Td (rotationFromDisplacement\(_ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 408.383 Td (displacement: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 345.120 408.383 Td (CGPoint, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 398.580 408.383 Td (sideWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 463.920 408.383 Td (CGFloat, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 394.523 Td (is3D: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 394.523 Td (Bool\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 394.523 Td (-> ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 394.523 Td (CATransform3D ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 394.523 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 366.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 366.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 366.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 366.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 366.803 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 366.803 Td (currentTransform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 366.803 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 366.803 Td (self) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 339.083 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 339.083 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 339.083 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 339.083 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 339.083 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 339.083 Td (totalRotation: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 339.083 Td (CGFloat ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 339.083 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 339.083 Td (sqrt\(displacement.x ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 374.820 339.083 Td (* ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 386.700 339.083 Td (displacement.x ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 475.800 339.083 Td (+ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 325.222 Td (displacement.y ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 325.222 Td (* ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 325.222 Td (displacement.y\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 311.362 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 311.362 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 311.362 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 311.362 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 311.362 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 311.362 Td (angle: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 311.362 Td (CGFloat ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 311.362 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 311.362 Td (totalRotation ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 311.362 Td (* .pi ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 311.362 Td (/ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 311.362 Td (180.0) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 283.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 283.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 283.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 283.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 283.642 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 283.642 Td (xRotationFactor ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 283.642 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 283.642 Td (displacement.x ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 283.642 Td (/ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 283.642 Td (angle) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 269.782 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 269.782 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 269.782 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 269.782 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 269.782 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 269.782 Td (yRotationFactor ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 269.782 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 269.782 Td (displacement.y ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 269.782 Td (/ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 269.782 Td (angle) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 242.062 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 242.062 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 242.062 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 242.062 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 242.062 Td (if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 242.062 Td (is3D ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 242.062 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 228.202 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 228.202 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 228.202 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 228.202 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 228.202 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 228.202 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 228.202 Td (currentTransform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 228.202 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 228.202 Td (CATransform3DTranslate\(currentTransform, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 452.040 228.202 Td (0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 469.860 228.202 Td (0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 214.342 Td (sideWidth ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 214.342 Td (/ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 214.342 Td (2.0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 200.482 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 200.482 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 200.482 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 200.482 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 172.762 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 172.762 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 172.762 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 172.762 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 172.762 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 172.762 Td (rotationalTransform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 172.762 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 172.762 Td (CATransform3DRotate\(currentTransform, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 463.920 172.762 Td (angle,) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 333.240 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 345.120 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 158.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 158.902 Td (\(xRotationFactor ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 457.980 158.902 Td (* ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 145.042 Td (currentTransform.m12 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 145.042 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 145.042 Td (yRotationFactor ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 145.042 Td (* ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 145.042 Td (currentTransform.m11\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 333.240 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 345.120 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 131.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 131.182 Td (\(xRotationFactor ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 457.980 131.182 Td (* ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 117.322 Td (currentTransform.m22 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 117.322 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 117.322 Td (yRotationFactor ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 117.322 Td (* ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 117.322 Td (currentTransform.m21\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 333.240 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 345.120 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 103.462 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 103.462 Td (\(xRotationFactor ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 457.980 103.462 Td (* ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 89.602 Td (currentTransform.m32 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 89.602 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 89.602 Td (yRotationFactor ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 89.602 Td (* ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 89.602 Td (currentTransform.m31\)\)) Tj ET
+
+endstream
+endobj
+35 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 34 0 R >>
+endobj
+36 0 obj
+<< /Length 12540 >>
+stream
+0.950 0.950 0.950 rg
+54 665.010 487.280 122.880 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 771.990 Td (if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 771.990 Td (\(is3D\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 771.990 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 758.130 Td (rotationalTransform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 758.130 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 758.130 Td (CATransform3DTranslate\(rotationalTransform, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 487.680 758.130 Td (0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 505.500 758.130 Td (0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 744.270 Td (-sideWidth ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 744.270 Td (/ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 744.270 Td (2.0\);) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 730.410 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 702.690 Td (return ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 702.690 Td (rotationalTransform) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 688.830 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 674.970 Td (}) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 656.760 Td (We ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 73.558 656.760 Td (call ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.116 656.760 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.674 656.760 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.732 656.760 Td (our ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.685 656.760 Td (pan-gesture ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.439 656.760 Td (methods) Tj ET
+0.950 0.950 0.950 rg
+54 514.240 487.280 122.880 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 621.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 621.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 621.220 Td (override ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 621.220 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 621.220 Td (displacementChanged\(displacement: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 621.220 Td (CGPoint\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 410.460 621.220 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 607.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 607.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 607.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 607.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 607.360 Td (guard !\(displacement.x ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 607.360 Td (== ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 607.360 Td (0 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 607.360 Td (&& ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 607.360 Td (displacement.y ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 607.360 Td (== ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 374.820 607.360 Td (0\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 392.640 607.360 Td (else ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 422.340 607.360 Td ({ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 434.220 607.360 Td (return }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 579.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 579.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 579.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 579.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 579.640 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 579.640 Td (rotationTransform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 579.640 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 565.780 Td (transformedLayer.sublayerTransform.rotationFromDisplacement\(displacement, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 551.920 Td (sideWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 551.920 Td (CACube3DView.sideWidth, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 551.920 Td (is3D: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 551.920 Td (isOn\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 538.060 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 538.060 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 538.060 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 538.060 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 538.060 Td (transformedLayer.sublayerTransform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 538.060 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 538.060 Td (rotationTransform) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 524.200 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 524.200 Td ( }) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 505.990 Td (We ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 73.558 505.990 Td (hooked ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.696 505.990 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.986 505.990 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.334 505.990 Td (pan-gestures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.588 505.990 Td (prior:) Tj ET
+0.950 0.950 0.950 rg
+54 58.550 487.280 427.800 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 470.450 Td (#if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 470.450 Td (os\(OSX\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 456.590 Td (private ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 456.590 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 456.590 Td (setupPanGestureRecognizer\(\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 456.590 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 442.730 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 442.730 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 442.730 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 442.730 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 442.730 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 442.730 Td (panGR ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 442.730 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 442.730 Td (NSPanGestureRecognizer\(target: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 442.730 Td (self, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 374.820 442.730 Td (action: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 428.870 Td (#selector\(handlePanGesture\(_:\)\)\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 415.010 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 415.010 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 415.010 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 415.010 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 415.010 Td (addGestureRecognizer\(panGR\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 401.150 Td (}) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 387.290 Td (@objc ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 387.290 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 387.290 Td (handlePanGesture\(_ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 387.290 Td (gestureRecognizer: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 387.290 Td (NSPanGestureRecognizer\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 493.620 387.290 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 373.430 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 373.430 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 373.430 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 373.430 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 373.430 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 373.430 Td (displacement: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 373.430 Td (CGPoint ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 373.430 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 373.430 Td (gestureRecognizer.translation\(in: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 452.040 373.430 Td (self\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 359.570 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 359.570 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 359.570 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 359.570 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 359.570 Td (handlePan\(displacement: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 359.570 Td (displacement, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 359.570 Td (changed: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 362.940 359.570 Td (gestureRecognizer.state ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 345.710 Td (== .changed\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 331.850 Td (}) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 317.990 Td (#endif) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 290.270 Td (#if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 290.270 Td (os\(iOS\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 290.270 Td (|| ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 290.270 Td (os\(tvOS\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 276.410 Td (private ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 276.410 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 276.410 Td (setupPanGestureRecognizer\(\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 276.410 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 262.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 262.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 262.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 262.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 262.550 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 262.550 Td (panGR ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 262.550 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 262.550 Td (UIPanGestureRecognizer\(target: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 262.550 Td (self, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 374.820 262.550 Td (action: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 248.690 Td (#selector\(handlePanGesture\(_:\)\)\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 234.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 234.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 234.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 234.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 234.830 Td (addGestureRecognizer\(panGR\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 220.970 Td (}) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 193.250 Td (@objc ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 193.250 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 193.250 Td (handlePanGesture\(_ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 193.250 Td (gestureRecognizer: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 193.250 Td (UIPanGestureRecognizer\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 493.620 193.250 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 179.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 179.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 179.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 179.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 179.390 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 179.390 Td (displacement: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 179.390 Td (CGPoint ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 179.390 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 179.390 Td (gestureRecognizer.translation\(in: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 452.040 179.390 Td (self\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 151.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 151.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 151.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 151.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 151.670 Td (handlePan\(displacement: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 151.670 Td (displacement, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 151.670 Td (changed: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 362.940 151.670 Td (gestureRecognizer.state ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 137.810 Td (== .changed\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 110.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 110.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 110.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 110.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 110.090 Td (if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 110.090 Td (gestureRecognizer.state ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 110.090 Td (== .changed ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 110.090 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 96.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 96.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 96.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 96.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 96.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 96.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 96.230 Td (gestureRecognizer.setTranslation\(.zero, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 333.240 96.230 Td (in: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 96.230 Td (self\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 82.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 82.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 82.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 82.370 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 68.510 Td (}) Tj ET
+
+endstream
+endobj
+37 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F4 6 0 R >> >>
+/Contents 36 0 R >>
+endobj
+38 0 obj
+<< /Length 13125 >>
+stream
+0.950 0.950 0.950 rg
+54 762.030 487.280 25.860 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td (#endif) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 753.780 Td (We ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 73.558 753.780 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.348 753.780 Td (also ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.580 753.780 Td (add ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.986 753.780 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.160 753.780 Td (simple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.997 753.780 Td (rotation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.740 753.780 Td (transform ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.251 753.780 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.146 753.780 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.494 753.780 Td (rotation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.237 753.780 Td (events/ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.759 753.780 Td (gestures.) Tj ET
+0.950 0.950 0.950 rg
+54 652.840 487.280 81.300 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 718.240 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 718.240 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 718.240 Td (override ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 718.240 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 718.240 Td (rotationChanged\(radians: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 718.240 Td (Float\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 345.120 718.240 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 704.380 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 704.380 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 704.380 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 704.380 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 704.380 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 704.380 Td (transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 704.380 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 704.380 Td (transformedLayer.sublayerTransform) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 690.520 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 690.520 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 690.520 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 690.520 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 690.520 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 690.520 Td (rot ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 690.520 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 690.520 Td (CATransform3DRotate\(transform, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 690.520 Td (CGFloat\(radians\), ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 434.220 690.520 Td (0, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 452.040 690.520 Td (1, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 469.860 690.520 Td (0\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 676.660 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 676.660 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 676.660 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 676.660 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 676.660 Td (transformedLayer.sublayerTransform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 676.660 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 676.660 Td (rot) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 662.800 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 662.800 Td ( }) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 644.590 Td (And ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 644.590 Td (scale, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.417 644.590 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.033 644.590 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.091 644.590 Td (three ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.218 644.590 Td (axes:) Tj ET
+0.950 0.950 0.950 rg
+54 543.650 487.280 81.300 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 609.050 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 609.050 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 609.050 Td (override ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 609.050 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 609.050 Td (scaleChanged\(scale: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 609.050 Td (CGFloat\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 609.050 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 595.190 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 595.190 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 595.190 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 595.190 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 595.190 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 595.190 Td (scaleTransform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 595.190 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 595.190 Td (CATransform3DScale\(transformedLayer.sublayerTransform, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 581.330 Td (scale, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 581.330 Td (scale, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 581.330 Td (scale\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 567.470 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 567.470 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 567.470 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 567.470 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 567.470 Td (transformedLayer.sublayerTransform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 567.470 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 567.470 Td (scaleTransform) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 553.610 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 553.610 Td ( }) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 535.400 Td (The ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 76.011 535.400 Td (tap) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.821 535.400 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 97.879 535.400 Td (turns ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 125.390 535.400 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.680 535.400 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.086 535.400 Td (off ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 177.376 535.400 Td (our ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.329 535.400 Td (3D ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.445 535.400 Td (transform) Tj ET
+0.950 0.950 0.950 rg
+54 462.180 487.280 53.580 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 499.860 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 499.860 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 499.860 Td (override ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 499.860 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 499.860 Td (tapHappened\(\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 499.860 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 486 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 486 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 486 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 486 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 486 Td (set3DCube\(on: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 486 Td (isOn\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 472.140 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 472.140 Td ( }) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 453.930 Td (Here's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 453.930 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.185 453.930 Td (3D ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.301 453.930 Td (cube ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.207 453.930 Td (code) Tj ET
+0.950 0.950 0.950 rg
+54 214.390 487.280 219.900 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 418.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 418.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 418.390 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 418.390 Td (set3DCube\(on: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 418.390 Td (Bool\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 418.390 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 404.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 404.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 404.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 404.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 404.530 Td (side4.layer.zPosition ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 404.530 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 404.530 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 404.530 Td (CACube3DView.sideWidth : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 404.520 404.530 Td (1) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 390.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 390.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 390.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 390.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 390.670 Td (side1.layer.transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 390.670 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 390.670 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 390.670 Td (CATransform3D.transformFor3DCubeSide\(1, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 376.810 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 376.810 Td (CACube3DView.sideWidth\) : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 376.810 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 362.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 362.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 362.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 362.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 362.950 Td (side2.layer.transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 362.950 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 362.950 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 362.950 Td (CATransform3D.transformFor3DCubeSide\(2, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 349.090 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 349.090 Td (CACube3DView.sideWidth\) : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 349.090 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 335.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 335.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 335.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 335.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 335.230 Td (side3.layer.transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 335.230 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 335.230 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 335.230 Td (CATransform3D.transformFor3DCubeSide\(3, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 321.370 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 321.370 Td (CACube3DView.sideWidth\) : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 321.370 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 307.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 307.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 307.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 307.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 307.510 Td (side4.layer.transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 307.510 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 307.510 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 307.510 Td (CATransform3D.transformFor3DCubeSide\(4, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 293.650 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 293.650 Td (CACube3DView.sideWidth\) : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 293.650 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 279.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 279.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 279.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 279.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 279.790 Td (side5.layer.transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 279.790 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 279.790 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 279.790 Td (CATransform3D.transformFor3DCubeSide\(5, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 265.930 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 265.930 Td (CACube3DView.sideWidth\) : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 265.930 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 252.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 252.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 252.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 252.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 252.070 Td (side6.layer.transform ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 252.070 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 252.070 Td (on ? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 252.070 Td (CATransform3D.transformFor3DCubeSide\(6, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 238.210 Td (zWidth: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 238.210 Td (CACube3DView.sideWidth\) : ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 238.210 Td (CATransform3DIdentity) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 224.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 224.350 Td ( }) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 206.140 Td (We ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 73.558 206.140 Td (either ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.127 206.140 Td (set ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.859 206.140 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 140.207 206.140 Td (identity ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 196.637 206.140 Td (transform) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.067 206.140 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 259.183 206.140 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 290.357 206.140 Td (means ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 326.426 206.140 Td (no ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 345.236 206.140 Td (transform) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.666 206.140 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.782 206.140 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.014 206.140 Td (our ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 438.967 206.140 Td (cube ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 465.873 206.140 Td (sides, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.663 206.140 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 510.500 206.140 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 192.500 Td (transform ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 103.511 192.500 Td (appropriate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.207 192.500 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.102 192.500 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 199.508 192.500 Td (particular ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.798 192.500 Td (side.) Tj ET
+
+endstream
+endobj
+39 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F4 6 0 R >> >>
+/Contents 38 0 R >>
+endobj
+40 0 obj
+<< /Length 6375 >>
+stream
+0 0 0 rg
+BT /F2 17.050 Tf 54 787.890 Td (6. ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 72.960 787.890 Td (macOS ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 136.454 787.890 Td (Troubles) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 758.053 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 758.053 Td (suppose ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.754 758.053 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.870 758.053 Td (need ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.392 758.053 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.624 758.053 Td (do ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.914 758.053 Td (further ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.762 758.053 Td (investigation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.958 758.053 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.574 758.053 Td (how ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 299.806 758.053 Td (macOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 331.156 758.053 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.214 758.053 Td (treats ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.783 758.053 Td (layers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 397.178 758.053 Td (of ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 409.410 758.053 Td (NSView) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 447.030 758.053 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 453.146 758.053 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.041 758.053 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 489.215 758.053 Td (little ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 744.413 Td (experiment ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.464 744.413 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.464 744.413 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.812 744.413 Td (working ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.765 744.413 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.055 744.413 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 215.403 744.413 Td (macOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 246.753 744.413 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.869 744.413 Td (yet.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.601 744.413 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.659 744.413 Td (Here's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.496 744.413 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 331.728 744.413 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 350.076 744.413 Td (flattened ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.330 744.413 Td (cube ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 422.236 744.413 Td (looks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 450.968 744.413 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.258 744.413 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 484.606 744.413 Td (macOS) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 724.773 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 724.773 Td (/images/cacube/12_cube_macOS_flat_messed_up.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 697.923 Td (So, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 73.569 697.923 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.917 697.923 Td (positioning ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.555 697.923 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.787 697.923 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.135 697.923 Td (layers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.530 697.923 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 221.530 697.923 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.878 697.923 Td (respected.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 678.283 Td (And ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 678.283 Td (here ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.696 678.283 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.696 678.283 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.044 678.283 Td (cube ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.950 678.283 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.566 678.283 Td (3D:) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 658.643 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 658.643 Td (/images/cacube/13_cube_macOS_3D_messed_up.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 631.793 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 631.793 Td (did ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.848 631.793 Td (try ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.127 631.793 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.359 631.793 Td (force ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.870 631.793 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 151.218 631.793 Td (isGeometryFlipped ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 264.078 631.793 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 276.618 631.793 Td (true) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.698 631.793 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.756 631.793 Td (everywhere. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.720 631.793 Td (Anyway ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.289 631.793 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.463 631.793 Td (needs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 462.485 631.793 Td (more ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.601 631.793 Td (work.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 612.153 Td (If ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 612.153 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.964 612.153 Td (want ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.254 612.153 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.486 612.153 Td (help ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.334 612.153 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.950 612.153 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 187.298 612.153 Td (macOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.648 612.153 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 221.706 612.153 Td (implementation, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.402 612.153 Td (please, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.924 612.153 Td (be ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.214 612.153 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.935 612.153 Td (guest.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 592.513 Td (Here's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 592.513 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.011 592.513 Td (link ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.569 592.513 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.801 592.513 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.975 592.513 Td (GitHub ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.265 592.513 Td (repo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.334 592.513 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.950 592.513 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.298 592.513 Td (source ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.367 592.513 Td (code:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.273 592.513 Td ( ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 308.331 592.513 Td (Core ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 308.331 591.013 m 335.226 591.013 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 335.226 592.513 Td (Animation ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 335.226 591.013 m 387.190 591.013 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 387.190 592.513 Td (3D ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 387.190 591.013 m 404.306 591.013 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 404.306 592.513 Td (Cube) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 404.306 591.013 m 430.596 591.013 l S
+
+endstream
+endobj
+41 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [308.331 589.763 335.226 602.413]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/CubeIn3DWithCoreAnimation) >> >>
+endobj
+42 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [335.226 589.763 387.190 602.413]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/CubeIn3DWithCoreAnimation) >> >>
+endobj
+43 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [387.190 589.763 404.306 602.413]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/CubeIn3DWithCoreAnimation) >> >>
+endobj
+44 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [404.306 589.763 430.596 602.413]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/CubeIn3DWithCoreAnimation) >> >>
+endobj
+45 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 40 0 R
+/Annots [41 0 R 42 0 R 43 0 R 44 0 R] >>
+endobj
+46 0 obj
+<< /Type /Outlines
+/Count 14
+/First 47 0 R
+/Last 60 0 R >>
+endobj
+47 0 obj
+<< /Title (1. Introduction)
+/Parent 46 0 R
+/Dest [14 0 R /XYZ 54 714.350 null]
+/Next 48 0 R >>
+endobj
+48 0 obj
+<< /Title (2. Building the Cube in 3D)
+/Parent 46 0 R
+/Dest [17 0 R /XYZ 54 794.710 null]
+/Prev 47 0 R
+/Next 57 0 R
+/First 49 0 R
+/Last 56 0 R
+/Count 8 >>
+endobj
+49 0 obj
+<< /Title (2.1. Setting up the multi-platform project)
+/Parent 48 0 R
+/Dest [17 0 R /XYZ 54 747.823 null]
+/Next 53 0 R
+/First 50 0 R
+/Last 52 0 R
+/Count 3 >>
+endobj
+50 0 obj
+<< /Title (2.1.1. main.swift for the macOS)
+/Parent 49 0 R
+/Dest [17 0 R /XYZ 54 658.548 null]
+/Next 51 0 R >>
+endobj
+51 0 obj
+<< /Title (2.1.2. AppDelegate for the macOS)
+/Parent 49 0 R
+/Dest [17 0 R /XYZ 54 551.233 null]
+/Prev 50 0 R
+/Next 52 0 R >>
+endobj
+52 0 obj
+<< /Title (2.1.3. SceneDelegate for the iOS and iPadOS)
+/Parent 49 0 R
+/Dest [17 0 R /XYZ 54 374.617 null]
+/Prev 51 0 R >>
+endobj
+53 0 obj
+<< /Title (2.2. Building the Basic Blocks)
+/Parent 48 0 R
+/Dest [17 0 R /XYZ 54 151.802 null]
+/Prev 49 0 R
+/Next 54 0 R >>
+endobj
+54 0 obj
+<< /Title (2.3. Turning the Transform On and Off)
+/Parent 48 0 R
+/Dest [27 0 R /XYZ 54 415.960 null]
+/Prev 53 0 R
+/Next 55 0 R >>
+endobj
+55 0 obj
+<< /Title (2.4. Transforming the Layers to Form a Cube)
+/Parent 48 0 R
+/Dest [27 0 R /XYZ 54 141.275 null]
+/Prev 54 0 R
+/Next 56 0 R >>
+endobj
+56 0 obj
+<< /Title (2.5. Positioning Cube Sides)
+/Parent 48 0 R
+/Dest [29 0 R /XYZ 54 294.470 null]
+/Prev 55 0 R >>
+endobj
+57 0 obj
+<< /Title (3. Responding to Gestures)
+/Parent 46 0 R
+/Dest [31 0 R /XYZ 54 253.970 null]
+/Prev 48 0 R
+/Next 58 0 R >>
+endobj
+58 0 obj
+<< /Title (4. Building a Layer to hold a Cube)
+/Parent 46 0 R
+/Dest [33 0 R /XYZ 54 671.500 null]
+/Prev 57 0 R
+/Next 59 0 R >>
+endobj
+59 0 obj
+<< /Title (5. Perspective & Rotation)
+/Parent 46 0 R
+/Dest [35 0 R /XYZ 54 794.710 null]
+/Prev 58 0 R
+/Next 60 0 R >>
+endobj
+60 0 obj
+<< /Title (6. macOS Troubles)
+/Parent 46 0 R
+/Dest [45 0 R /XYZ 54 794.710 null]
+/Prev 59 0 R >>
+endobj
+xref
+0 61
+0000000000 65535 f 
+0000000019 00000 n 
+0000001016 00000 n 
+0000001138 00000 n 
+0000001235 00000 n 
+0000001337 00000 n 
+0000001442 00000 n 
+0000001537 00000 n 
+0000019521 00000 n 
+0000019705 00000 n 
+0000019889 00000 n 
+0000020074 00000 n 
+0000020259 00000 n 
+0000020433 00000 n 
+0000020607 00000 n 
+0000020822 00000 n 
+0000035901 00000 n 
+0000036070 00000 n 
+0000036243 00000 n 
+0000056548 00000 n 
+0000056745 00000 n 
+0000056942 00000 n 
+0000057139 00000 n 
+0000057336 00000 n 
+0000057533 00000 n 
+0000057730 00000 n 
+0000057927 00000 n 
+0000058124 00000 n 
+0000058356 00000 n 
+0000080044 00000 n 
+0000080200 00000 n 
+0000103294 00000 n 
+0000103460 00000 n 
+0000117211 00000 n 
+0000117367 00000 n 
+0000142668 00000 n 
+0000142824 00000 n 
+0000155418 00000 n 
+0000155564 00000 n 
+0000168743 00000 n 
+0000168889 00000 n 
+0000175317 00000 n 
+0000175502 00000 n 
+0000175687 00000 n 
+0000175872 00000 n 
+0000176057 00000 n 
+0000176261 00000 n 
+0000176336 00000 n 
+0000176447 00000 n 
+0000176618 00000 n 
+0000176792 00000 n 
+0000176919 00000 n 
+0000177060 00000 n 
+0000177199 00000 n 
+0000177338 00000 n 
+0000177484 00000 n 
+0000177636 00000 n 
+0000177759 00000 n 
+0000177893 00000 n 
+0000178036 00000 n 
+0000178170 00000 n 
+trailer
+<< /Size 61 /Root 1 0 R >>
+startxref
+178283
+%%EOF

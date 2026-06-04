@@ -1,0 +1,3702 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /Outlines 27 0 R /PageMode /UseOutlines /Names << /Dests << /Names [(1-strongly-typed-data-model) [8 0 R /XYZ 54 509.305 null] (2-multiple-renderers) [8 0 R /XYZ 54 256.560 null] (3-modular-architecture) [8 0 R /XYZ 54 148.995 null] (advanced-features) [12 0 R /XYZ 54 535.195 null] (conclusion) [19 0 R /XYZ 54 270.778 null] (core-features) [8 0 R /XYZ 54 556.193 null] (creating-a-cv) [10 0 R /XYZ 54 532.408 null] (future-plans) [19 0 R /XYZ 54 401.655 null] (generating-output) [12 0 R /XYZ 54 729.690 null] (getting-started) [10 0 R /XYZ 54 741.630 null] (how-i-use-it-on-this-webpage) [15 0 R /XYZ 54 794.710 null] (installation) [10 0 R /XYZ 54 694.743 null] (markdown-generation) [19 0 R /XYZ 54 793.610 null] (package-dependencies) [15 0 R /XYZ 54 714.543 null] (personal-information) [15 0 R /XYZ 54 356.478 null] (project-builder-pattern) [12 0 R /XYZ 54 488.308 null] (project-history) [17 0 R /XYZ 54 750.810 null] (resources) [26 0 R /XYZ 54 794.710 null] (tech-stack-management) [12 0 R /XYZ 54 296.563 null] (why-cvbuilder) [8 0 R /XYZ 54 714.350 null]] >> >> >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [8 0 R 10 0 R 12 0 R 15 0 R 17 0 R 19 0 R 26 0 R] /Count 7 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+7 0 obj
+<< /Length 14312 >>
+stream
+0 0 0 rg
+BT /F1 11 Tf 54 787.890 Td (CVBuilder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.569 787.890 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.569 787.890 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.743 787.890 Td (powerful ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.370 787.890 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.265 787.890 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.903 787.890 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.309 787.890 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.425 787.890 Td (developed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.237 787.890 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.469 787.890 Td (solve ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.201 787.890 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.375 787.890 Td (common ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 419.607 787.890 Td (problem: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 465.455 787.890 Td (managing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 516.814 787.890 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 774.250 Td (rendering ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 103.522 774.250 Td (professional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.881 774.250 Td (CVs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.718 774.250 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.334 774.250 Td (multiple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.287 774.250 Td (formats. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.077 774.250 Td (Whether ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 329.704 774.250 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 350.494 774.250 Td (need ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 378.016 774.250 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.248 774.250 Td (generate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 436.723 774.250 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 445.897 774.250 Td (Markdown ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 499.687 774.250 Td (CV ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 518.024 774.250 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 760.610 Td (GitHub, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.348 760.610 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.638 760.610 Td (HTML ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.638 760.610 Td (version ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.149 760.610 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.044 760.610 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 221.497 760.610 Td (website, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.903 760.610 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.740 760.610 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.914 760.610 Td (plain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.204 760.610 Td (text ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 333.994 760.610 Td (version ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 372.505 760.610 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 388.400 760.610 Td (job ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 406.132 760.610 Td (applications, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.328 760.610 Td (CVBuilder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 746.970 Td (has ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 74.790 746.970 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.580 746.970 Td (covered.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 707.530 Td (Why ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 94.732 707.530 Td (CVBuilder?) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 677.693 Td (In ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 66.232 677.693 Td (today's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.138 677.693 Td (digital ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.928 677.693 Td (world, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.323 677.693 Td (professionals ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.182 677.693 Td (often ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.704 677.693 Td (need ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.226 677.693 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.458 677.693 Td (maintain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.085 677.693 Td (their ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 372.538 677.693 Td (CVs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 396.375 677.693 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.991 677.693 Td (multiple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 448.944 677.693 Td (formats ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 488.676 677.693 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 510.082 677.693 Td (keep ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 664.053 Td (them ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 81.511 664.053 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.127 664.053 Td (sync. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.859 664.053 Td (Traditional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.265 664.053 Td (word ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.160 664.053 Td (processors ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.008 664.053 Td (make ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.961 664.053 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 310.135 664.053 Td (process ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.704 664.053 Td (tedious ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.226 664.053 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.632 664.053 Td (error-prone. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 472.759 664.053 Td (CVBuilder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 650.413 Td (solves ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.232 650.413 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.406 650.413 Td (by:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 630.773 Td (Providing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.906 630.773 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.080 630.773 Td (strongly-typed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.218 630.773 Td (data ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.682 630.773 Td (model ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 265.693 630.773 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.588 630.773 Td (CVs) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 616.123 Td (Supporting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.254 616.123 Td (multiple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.207 616.123 Td (output ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.845 616.123 Td (formats ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.577 616.123 Td (\(Markdown, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 309.088 616.123 Td (HTML, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.146 616.123 Td (plain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.436 616.123 Td (text\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 601.473 Td (Making ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.511 601.473 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 125.069 601.473 Td (easy ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.359 601.473 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 163.591 601.473 Td (maintain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.218 601.473 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.392 601.473 Td (single ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.182 601.473 Td (source ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.251 601.473 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.483 601.473 Td (truth) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 586.823 Td (Enabling ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.859 586.823 Td (programmatic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.149 586.823 Td (CV ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.486 586.823 Td (generation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.519 586.823 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.925 586.823 Td (updates) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 549.373 Td (Core ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 97.580 549.373 Td (Features) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 503.585 Td (1. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 69.902 503.585 Td (Strongly ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 131.878 503.585 Td (Typed ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 177.967 503.585 Td (Data ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 212.930 503.585 Td (Model) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 478.560 Td (CVBuilder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.569 478.560 Td (provides ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.196 478.560 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.370 478.560 Td (comprehensive ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.008 478.560 Td (data ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.472 478.560 Td (model ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.483 478.560 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.889 478.560 Td (covers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.342 478.560 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.400 478.560 Td (aspects ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.364 478.560 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 419.596 478.560 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.770 478.560 Td (professional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.129 478.560 Td (CV:) Tj ET
+0.950 0.950 0.950 rg
+54 308.320 487.280 150.600 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 443.020 Td (CV) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 429.160 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 429.160 Td (ContactInfo) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 415.300 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 415.300 Td (Education) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 401.440 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 401.440 Td (WorkExperience) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 387.580 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 387.580 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 387.580 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 387.580 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 387.580 Td (Company) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 373.720 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 373.720 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 373.720 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 373.720 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 373.720 Td (Role) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 359.860 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 359.860 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 359.860 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 359.860 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 359.860 Td (ProjectExperience) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 346 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 346 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 346 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 346 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 346 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 346 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 346 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 346 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 346 Td (Project) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 332.140 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 332.140 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 332.140 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 332.140 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 332.140 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 332.140 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 332.140 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 332.140 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 332.140 Td (Tech) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 318.280 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 318.280 Td (Period) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 300.070 Td (Each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.127 300.070 Td (component ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 139.602 300.070 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.602 300.070 Td (strongly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.171 300.070 Td (typed, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.193 300.070 Td (ensuring ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.436 300.070 Td (data ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 294.900 300.070 Td (integrity ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.469 300.070 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 357.875 300.070 Td (making ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 396.386 300.070 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.944 300.070 Td (impossible ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 459.955 300.070 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 472.187 300.070 Td (create ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 505.814 300.070 Td (invalid ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 286.430 Td (CVs.) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 250.840 Td (2. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 69.902 250.840 Td (Multiple ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 127.902 250.840 Td (Renderers) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 225.815 Td (CVBuilder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.569 225.815 Td (supports ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.812 225.815 Td (three ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.939 225.815 Td (different ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.740 225.815 Td (renderers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.867 225.815 Td (out ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.215 225.815 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.447 225.815 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.795 225.815 Td (box:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 206.175 Td (1.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 206.175 Td (MarkdownCVRenderer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.964 206.175 Td (: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.080 206.175 Td (Generates ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.497 206.175 Td (clean, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.903 206.175 Td (well-formatted ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.030 206.175 Td (Markdown) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 191.525 Td (2.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 191.525 Td (StringCVRenderer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.348 191.525 Td (: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.464 191.525 Td (Produces ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.986 191.525 Td (plain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.276 191.525 Td (text ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.066 191.525 Td (output) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 176.875 Td (3.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 176.875 Td (IgniteRenderer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.627 176.875 Td (: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.743 176.875 Td (Creates ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.312 176.875 Td (beautiful ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.950 176.875 Td (HTML ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.950 176.875 Td (using ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 310.298 176.875 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 328.646 176.875 Td (Ignite ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.610 176.875 Td (static ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.342 176.875 Td (site ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.516 176.875 Td (generator) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 143.275 Td (3. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 69.902 143.275 Td (Modular ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 129.490 143.275 Td (Architecture) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 118.250 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 118.250 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.649 118.250 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.649 118.250 Td (split ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.265 118.250 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.055 118.250 Td (two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.229 118.250 Td (main ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.124 118.250 Td (components:) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 98.610 Td (CVBuilder) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.430 98.610 Td (: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.546 98.610 Td (Core ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.441 98.610 Td (types ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.789 98.610 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.195 98.610 Td (basic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 246.927 98.610 Td (rendering) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 83.960 Td (CVBuilderIgnite) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.050 83.960 Td (: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.166 83.960 Td (Optional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.188 83.960 Td (HTML ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.188 83.960 Td (rendering ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.710 83.960 Td (support) Tj ET
+
+endstream
+endobj
+8 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Length 12912 >>
+stream
+0 0 0 rg
+BT /F1 11 Tf 54 787.890 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 787.890 Td (separation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.254 787.890 Td (ensures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 174.439 787.890 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.845 787.890 Td (projects ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 237.414 787.890 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.820 787.890 Td (don't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.726 787.890 Td (need ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.248 787.890 Td (HTML ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.248 787.890 Td (rendering ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.770 787.890 Td (don't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 422.676 787.890 Td (have ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 449.582 787.890 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 461.814 787.890 Td (pull ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 481.988 787.890 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 774.250 Td (unnecessary ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 119.417 774.250 Td (dependencies.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 734.810 Td (Getting ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 118.415 734.810 Td (Started) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 689.023 Td (Installation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 663.998 Td (Add ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 663.998 Td (CVBuilder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.196 663.998 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.428 663.998 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.881 663.998 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.950 663.998 Td (using ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.298 663.998 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.193 663.998 Td (Package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.052 663.998 Td (Manager:) Tj ET
+0.950 0.950 0.950 rg
+54 618.498 487.280 25.860 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 628.458 Td (.package\(url: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 628.458 Td ("https://github.com/mihaelamj/cvbuilder.git", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 416.400 628.458 Td (branch: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 463.920 628.458 Td ("main"\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 610.248 Td (Then ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.127 610.248 Td (add ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 103.533 610.248 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.881 610.248 Td (desired ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.008 610.248 Td (product:) Tj ET
+0.950 0.950 0.950 rg
+54 550.888 487.280 39.720 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 574.708 Td (.product\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 574.708 Td ("CVBuilder", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 574.708 Td (package: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 574.708 Td ("cvbuilder"\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 560.848 Td (.product\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 560.848 Td ("CVBuilderIgnite", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 560.848 Td (package: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 560.848 Td ("cvbuilder"\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 392.640 560.848 Td (// ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 410.460 560.848 Td (if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 428.280 560.848 Td (using ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 463.920 560.848 Td (Ignite) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 526.688 Td (Creating ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 115.976 526.688 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 127.902 526.688 Td (CV) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 501.663 Td (Here's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 501.663 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.011 501.663 Td (simple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.848 501.663 Td (example ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 177.475 501.663 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.707 501.663 Td (creating ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.892 501.663 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.066 501.663 Td (CV:) Tj ET
+0.950 0.950 0.950 rg
+54 54.223 487.280 427.800 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 466.123 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 466.123 Td (CVBuilder) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 438.403 Td (// ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 438.403 Td (Create ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 438.403 Td (contact ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 438.403 Td (info) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 424.543 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 424.543 Td (contactInfo ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 424.543 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 424.543 Td (ContactInfo\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 410.683 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 410.683 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 410.683 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 410.683 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 410.683 Td (email: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 410.683 Td ("jane.doe@example.com",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 396.823 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 396.823 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 396.823 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 396.823 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 396.823 Td (phone: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 396.823 Td ("+1 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 396.823 Td (\(555\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 396.823 Td (123-4567",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 382.963 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 382.963 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 382.963 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 382.963 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 382.963 Td (linkedIn: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 382.963 Td (URL\(string: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 382.963 Td ("https://linkedin.com/in/janedoe"\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 369.102 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 369.102 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 369.102 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 369.102 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 369.102 Td (github: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 369.102 Td (URL\(string: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 369.102 Td ("https://github.com/janedoe"\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 355.242 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 355.242 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 355.242 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 355.242 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 355.242 Td (website: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 355.242 Td (URL\(string: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 355.242 Td ("https://janedoe.dev"\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 341.382 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 341.382 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 341.382 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 341.382 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 341.382 Td (location: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 341.382 Td ("San ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 341.382 Td (Francisco, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 341.382 Td (CA") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 327.522 Td (\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 299.802 Td (// ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 299.802 Td (Create ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 299.802 Td (education) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 285.942 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 285.942 Td (education ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 285.942 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 285.942 Td (Education\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 272.082 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 272.082 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 272.082 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 272.082 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 272.082 Td (institution: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 272.082 Td ("Stanford ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 272.082 Td (University",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 258.222 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 258.222 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 258.222 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 258.222 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 258.222 Td (degree: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 258.222 Td ("B.S.",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 244.362 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 244.362 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 244.362 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 244.362 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 244.362 Td (field: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 244.362 Td ("Computer ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 244.362 Td (Science",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 230.502 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 230.502 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 230.502 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 230.502 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 230.502 Td (period: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 230.502 Td (Period\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 216.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 216.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 216.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 216.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 216.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 216.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 216.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 216.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 216.642 Td (start: .init\(month: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 216.642 Td (9, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 216.642 Td (year: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 216.642 Td (2010\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 202.782 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 202.782 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 202.782 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 202.782 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 202.782 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 202.782 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 202.782 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 202.782 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 202.782 Td (end: .init\(month: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 202.782 Td (6, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 202.782 Td (year: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 202.782 Td (2014\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 188.922 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 188.922 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 188.922 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 188.922 Td ( \)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 175.062 Td (\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 147.342 Td (// ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 147.342 Td (Create ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 147.342 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 147.342 Td (CV) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 133.482 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 133.482 Td (cv ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 133.482 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 133.482 Td (CV.create\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 119.622 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 119.622 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 119.622 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 119.622 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 119.622 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 119.622 Td ("Jane ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 119.622 Td (Doe",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 105.762 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 105.762 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 105.762 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 105.762 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 105.762 Td (title: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 105.762 Td ("Senior ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 105.762 Td (Mobile ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 105.762 Td (Developer",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 91.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 91.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 91.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 91.902 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 91.902 Td (summary: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 91.902 Td ("Passionate ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 91.902 Td (mobile ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 91.902 Td (developer ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 91.902 Td (with ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 91.902 Td (5+ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 91.902 Td (years ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 392.640 91.902 Td (experience...",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 78.042 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 78.042 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 78.042 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 78.042 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 78.042 Td (contactInfo: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 78.042 Td (contactInfo,) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 64.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 64.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 64.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 64.182 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 64.182 Td (education: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 64.182 Td ([education],) Tj ET
+
+endstream
+endobj
+10 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 9 0 R >>
+endobj
+11 0 obj
+<< /Length 8752 >>
+stream
+0.950 0.950 0.950 rg
+54 748.170 487.280 39.720 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 771.990 Td (projects: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 771.990 Td ([project1, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 771.990 Td (project2]) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td (\)) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 723.970 Td (Generating ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 133.465 723.970 Td (Output) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 698.945 Td (Once ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.348 698.945 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.138 698.945 Td (have ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.044 698.945 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.497 698.945 Td (CV ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.834 698.945 Td (data ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.298 698.945 Td (model, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.367 698.945 Td (generating ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.400 698.945 Td (different ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.201 698.945 Td (formats ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.933 698.945 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.933 698.945 Td (straightforward:) Tj ET
+0.950 0.950 0.950 rg
+54 556.425 487.280 122.880 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 663.405 Td (// ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 663.405 Td (Generate ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 663.405 Td (Markdown) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 649.545 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 649.545 Td (markdown ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 649.545 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 649.545 Td (MarkdownCVRenderer\(cv: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 649.545 Td (cv\).render\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 621.825 Td (// ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 621.825 Td (Generate ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 621.825 Td (plain ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 621.825 Td (text) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 607.965 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 607.965 Td (plainText ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 607.965 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 607.965 Td (StringCVRenderer\(cv: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 607.965 Td (cv\).render\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 580.245 Td (// ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 580.245 Td (Generate ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 580.245 Td (HTML ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 580.245 Td (\(requires ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 580.245 Td (CVBuilderIgnite\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 566.385 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 566.385 Td (html ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 566.385 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 566.385 Td (IgniteRenderer\(cv: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 566.385 Td (cv\).render\(\)) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 528.375 Td (Advanced ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 140.222 528.375 Td (Features) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 482.588 Td (Project ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 106.452 482.588 Td (Builder ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 159.691 482.588 Td (Pattern) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 457.563 Td (CVBuilder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.569 457.563 Td (includes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.975 457.563 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.149 457.563 Td (builder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.218 457.563 Td (pattern ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.519 457.563 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.414 457.563 Td (creating ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 290.599 457.563 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.668 457.563 Td (experiences:) Tj ET
+0.950 0.950 0.950 rg
+54 315.043 487.280 122.880 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 422.023 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 422.023 Td (project ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 422.023 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 422.023 Td (try! ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 422.023 Td (Project.Builder\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 408.163 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 408.163 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 408.163 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 408.163 Td ( .withName\("iOS ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 408.163 Td (App ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 408.163 Td (Redesign"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 394.303 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 394.303 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 394.303 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 394.303 Td ( .withCompany\(appleCompany\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 380.443 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 380.443 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 380.443 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 380.443 Td ( .withRole\(seniorIOS\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 366.583 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 366.583 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 366.583 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 366.583 Td ( .withPeriod\(start: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 366.583 Td (\(month: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 366.583 Td (3, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 366.583 Td (year: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 366.583 Td (2020\), ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 366.583 Td (end: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 368.880 366.583 Td (\(month: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 416.400 366.583 Td (9, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 434.220 366.583 Td (year: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 469.860 366.583 Td (2021\)\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 352.723 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 352.723 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 352.723 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 352.723 Td ( .addDescription\("Led ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 352.723 Td (a ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 352.723 Td (team ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 352.723 Td (of ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 352.723 Td (5 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 352.723 Td (developers..."\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 338.863 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 338.863 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 338.863 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 338.863 Td ( .withTechs\([swift, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 338.863 Td (swiftUI]\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 325.003 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 325.003 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 325.003 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 325.003 Td ( .build\(\)) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 290.843 Td (Tech ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 91.352 290.843 Td (Stack ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 133.479 290.843 Td (Management) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 265.818 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 265.818 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.649 265.818 Td (includes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.055 265.818 Td (a ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 173.229 265.818 Td (Tech) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.309 265.818 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.367 265.818 Td (type ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.215 265.818 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.110 265.818 Td (managing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.469 265.818 Td (technical ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 338.933 265.818 Td (skills:) Tj ET
+0.950 0.950 0.950 rg
+54 192.598 487.280 53.580 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 230.278 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 230.278 Td (swift ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 230.278 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 230.278 Td (Tech\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 230.278 Td ("Swift", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 230.278 Td (category: .language\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 216.418 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 216.418 Td (swiftUI ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 216.418 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 216.418 Td (Tech\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 216.418 Td ("SwiftUI", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 216.418 Td (category: .framework\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 202.558 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 202.558 Td (restAPI ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 202.558 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 202.558 Td (Tech\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 202.558 Td ("REST ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 202.558 Td (API", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 202.558 Td (category: .concept\)) Tj ET
+
+endstream
+endobj
+12 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 11 0 R >>
+endobj
+13 0 obj
+<< /Length 21614 >>
+stream
+0 0 0 rg
+BT /F2 17.050 Tf 54 787.890 Td (How ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 94.732 787.890 Td (I ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 104.212 787.890 Td (Use ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 140.222 787.890 Td (It ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 155.379 787.890 Td (on ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 180.954 787.890 Td (This ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 220.749 787.890 Td (Webpage) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 758.053 Td (My ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 71.721 758.053 Td (blog ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.569 758.053 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.569 758.053 Td (built ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.801 758.053 Td (using ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 159.149 758.053 Td (Ignite) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 159.149 756.553 m 186.055 756.553 l S
+0 0 0 rg
+BT /F1 11 Tf 186.055 758.053 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.171 758.053 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.345 758.053 Td (static ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.077 758.053 Td (site ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.251 758.053 Td (generator ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 300.389 758.053 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.284 758.053 Td (Swift. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.237 758.053 Td (I've ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.411 758.053 Td (integrated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.386 758.053 Td (CVBuilder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.955 758.053 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.745 758.053 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 744.413 Td (website ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.348 744.413 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.580 744.413 Td (maintain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.207 744.413 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.613 744.413 Td (display ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.903 744.413 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.624 744.413 Td (CV ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 245.961 744.413 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 257.577 744.413 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.751 744.413 Td (clean, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.157 744.413 Td (professional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.516 744.413 Td (format.) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 708.823 Td (Package ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 116.005 708.823 Td (Dependencies) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 683.798 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 683.798 Td (include ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.022 683.798 Td (CVBuilder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.591 683.798 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.207 683.798 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.928 683.798 Td (website's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.218 683.798 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.856 683.798 Td (file:) Tj ET
+0.950 0.950 0.950 rg
+54 374.958 487.280 289.200 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 648.258 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 648.258 Td (package ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 648.258 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 648.258 Td (Package\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 634.398 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 634.398 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 634.398 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 634.398 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 634.398 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 634.398 Td ("IgniteStarter",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 620.538 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 620.538 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 620.538 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 620.538 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 620.538 Td (platforms: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 620.538 Td ([.macOS\(.v13\)],) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 606.678 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 606.678 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 606.678 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 606.678 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 606.678 Td (dependencies: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 606.678 Td ([) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 592.818 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 592.818 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 592.818 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 592.818 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 592.818 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 592.818 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 592.818 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 592.818 Td ( .package\(url: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 592.818 Td ("https://github.com/twostraws/Ignite.git", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 446.100 592.818 Td (branch: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 578.958 Td ("main"\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 565.098 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 565.098 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 565.098 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 565.098 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 565.098 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 565.098 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 565.098 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 565.098 Td ( .package\(url: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 565.098 Td ("https://github.com/mihaelamj/cvbuilder.git", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 463.920 565.098 Td (branch: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 551.238 Td ("main"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 537.377 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 537.377 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 537.377 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 537.377 Td ( ],) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 523.517 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 523.517 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 523.517 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 523.517 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 523.517 Td (targets: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 523.517 Td ([) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 509.657 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 509.657 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 509.657 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 509.657 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 509.657 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 509.657 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 509.657 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 509.657 Td ( .executableTarget\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 495.797 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 495.797 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 495.797 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 495.797 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 495.797 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 495.797 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 495.797 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 495.797 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 495.797 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 495.797 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 495.797 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 495.797 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 495.797 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 495.797 Td ("IgniteStarter",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 481.937 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 481.937 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 481.937 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 481.937 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 481.937 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 481.937 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 481.937 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 481.937 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 481.937 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 481.937 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 481.937 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 481.937 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 481.937 Td (dependencies: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 481.937 Td ([) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 468.077 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 468.077 Td ( .product\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 468.077 Td ("Ignite", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 468.077 Td (package: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 468.077 Td ("Ignite"\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 454.217 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 454.217 Td ( .product\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 454.217 Td ("CVBuilder", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 454.217 Td (package: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 374.820 454.217 Td ("cvbuilder"\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 440.357 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 440.357 Td ( .product\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 440.357 Td ("CVBuilderIgnite", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 440.357 Td (package: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 410.460 440.357 Td ("cvbuilder"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 426.497 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 426.497 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 426.497 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 426.497 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 426.497 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 426.497 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 426.497 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 426.497 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 426.497 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 426.497 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 426.497 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 426.497 Td ( ]) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 412.637 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 412.637 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 412.637 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 412.637 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 412.637 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 412.637 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 412.637 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 412.637 Td ( \),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 398.777 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 398.777 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 398.777 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 398.777 Td ( ]) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 384.917 Td (\)) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 350.758 Td (Personal ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 118.379 350.758 Td (Information) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 325.733 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 325.733 Td (maintain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.743 325.733 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.464 325.733 Td (personal ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.707 325.733 Td (information ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.171 325.733 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.787 325.733 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 245.961 325.733 Td (dedicated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.715 325.733 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.610 325.733 Td (file ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.726 325.733 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 344.389 325.733 Td (CV+Mihaela.swift) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.709 325.733 Td (\):) Tj ET
+0.950 0.950 0.950 rg
+54 72.333 487.280 233.760 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 290.193 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 290.193 Td (extension ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 290.193 Td (CV ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 290.193 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 276.333 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 276.333 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 276.333 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 276.333 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 276.333 Td (static ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 276.333 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 276.333 Td (createForMihaela\(\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 276.333 Td (-> ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 276.333 Td (CV ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 276.333 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 262.473 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 262.473 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 262.473 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 262.473 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 262.473 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 262.473 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 262.473 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 262.473 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 262.473 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 262.473 Td (contactInfo ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 262.473 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 262.473 Td (ContactInfo\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 248.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 248.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 248.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 248.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 248.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 248.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 248.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 248.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 248.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 248.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 248.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 248.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 248.613 Td (email: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 248.613 Td ("me@me.com",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 234.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 234.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 234.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 234.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 234.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 234.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 234.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 234.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 234.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 234.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 234.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 234.753 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 234.753 Td (phone: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 234.753 Td ("+12233445566",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 220.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 220.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 220.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 220.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 220.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 220.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 220.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 220.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 220.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 220.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 220.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 220.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 220.893 Td (linkedIn: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 220.893 Td (URL\(string: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 220.893 Td ("https://www.linkedin.com/in/mylinkedin"\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 207.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 207.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 207.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 207.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 207.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 207.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 207.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 207.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 207.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 207.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 207.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 207.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 207.033 Td (github: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 207.033 Td (URL\(string: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 207.033 Td ("https://github.com/mygithub"\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 193.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 193.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 193.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 193.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 193.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 193.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 193.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 193.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 193.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 193.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 193.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 193.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 193.173 Td (website: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 193.173 Td (URL\(string: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 193.173 Td ("https://mywebsite.com"\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 179.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 179.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 179.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 179.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 179.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 179.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 179.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 179.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 179.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 179.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 179.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 179.313 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 179.313 Td (location: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 179.313 Td ("City, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 179.313 Td (Country") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 165.453 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 165.453 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 165.453 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 165.453 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 165.453 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 165.453 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 165.453 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 165.453 Td ( \)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 137.732 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 137.732 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 137.732 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 137.732 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 137.732 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 137.732 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 137.732 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 137.732 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 137.732 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 137.732 Td (education ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 137.732 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 137.732 Td (Education\(...\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 110.012 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 110.012 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 110.012 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 110.012 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 110.012 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 110.012 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 110.012 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 110.012 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 110.012 Td (// ... ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 110.012 Td (rest ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 110.012 Td (of ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 110.012 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 110.012 Td (implementation) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 96.152 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 96.152 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 96.152 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 96.152 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 82.292 Td (}) Tj ET
+
+endstream
+endobj
+14 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [159.149 755.303 186.055 767.953]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/twostraws/Ignite) >> >>
+endobj
+15 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 13 0 R
+/Annots [14 0 R] >>
+endobj
+16 0 obj
+<< /Length 20186 >>
+stream
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 787.890 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 787.890 Td (/images/cvbuilder/cv01.png]) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 745.090 Td (Project ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 106.452 745.090 Td (History) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 720.065 Td (My ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 71.721 720.065 Td (professional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.080 720.065 Td (experience ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.939 720.065 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.939 720.065 Td (organized ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.298 720.065 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.914 720.065 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.088 720.065 Td (separate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.947 720.065 Td (file ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.063 720.065 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 340.726 720.065 Td (CV+Projects.swift) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 447.316 720.065 Td (\), ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 457.095 720.065 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 488.269 720.065 Td (contains ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 706.425 Td (detailed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.580 706.425 Td (information ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.044 706.425 Td (about ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.624 706.425 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.682 706.425 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.403 706.425 Td (projects:) Tj ET
+0.950 0.950 0.950 rg
+54 258.985 487.280 427.800 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 670.885 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 670.885 Td (extension ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 670.885 Td (CV ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 670.885 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 657.025 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 657.025 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 657.025 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 657.025 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 657.025 Td (static ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 657.025 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 657.025 Td (createMihaelasProjects\(\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 657.025 Td (-> ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 657.025 Td ([Project] ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 657.025 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 643.165 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 643.165 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 643.165 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 643.165 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 643.165 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 643.165 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 643.165 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 643.165 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 643.165 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 643.165 Td (result ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 643.165 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 643.165 Td ([Project]\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 615.445 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 615.445 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 615.445 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 615.445 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 615.445 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 615.445 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 615.445 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 615.445 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 615.445 Td (// ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 615.445 Td (Create ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 615.445 Td (companies) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 601.585 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 601.585 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 601.585 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 601.585 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 601.585 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 601.585 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 601.585 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 601.585 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 601.585 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 601.585 Td (undabot ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 601.585 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 601.585 Td (Company\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 601.585 Td ("Undabot"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 587.725 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 587.725 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 587.725 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 587.725 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 587.725 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 587.725 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 587.725 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 587.725 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 587.725 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 587.725 Td (token ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 587.725 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 587.725 Td (Company\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 587.725 Td ("Token"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 573.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 573.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 573.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 573.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 573.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 573.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 573.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 573.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 573.865 Td (// ... ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 573.865 Td (more ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 573.865 Td (companies) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 546.145 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 546.145 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 546.145 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 546.145 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 546.145 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 546.145 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 546.145 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 546.145 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 546.145 Td (// ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 546.145 Td (Create ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 546.145 Td (tech ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 546.145 Td (skills) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 532.285 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 532.285 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 532.285 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 532.285 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 532.285 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 532.285 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 532.285 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 532.285 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 532.285 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 532.285 Td (swift ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 532.285 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 532.285 Td (Tech\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 532.285 Td ("Swift", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 532.285 Td (category: .language\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 518.425 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 518.425 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 518.425 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 518.425 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 518.425 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 518.425 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 518.425 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 518.425 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 518.425 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 518.425 Td (uiKit ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 518.425 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 518.425 Td (Tech\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 518.425 Td ("UIKit", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 518.425 Td (category: .framework\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 504.565 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 504.565 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 504.565 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 504.565 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 504.565 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 504.565 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 504.565 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 504.565 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 504.565 Td (// ... ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 504.565 Td (more ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 504.565 Td (tech ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 504.565 Td (skills) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 476.845 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 476.845 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 476.845 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 476.845 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 476.845 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 476.845 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 476.845 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 476.845 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 476.845 Td (// ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 476.845 Td (Create ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 476.845 Td (projects ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 476.845 Td (using ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 476.845 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 476.845 Td (builder ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 476.845 Td (pattern) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 462.985 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 462.985 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 462.985 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 462.985 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 462.985 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 462.985 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 462.985 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 462.985 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 462.985 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 462.985 Td (project1 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 462.985 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 462.985 Td (try! ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 462.985 Td (Project.Builder\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 449.125 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 449.125 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 449.125 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 449.125 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 449.125 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 449.125 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 449.125 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 449.125 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 449.125 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 449.125 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 449.125 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 449.125 Td ( .withName\("SomeProject"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 435.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 435.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 435.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 435.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 435.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 435.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 435.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 435.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 435.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 435.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 435.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 435.265 Td ( .withCompany\(Company ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 435.265 Td (name\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 421.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 421.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 421.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 421.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 421.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 421.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 421.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 421.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 421.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 421.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 421.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 421.405 Td ( .withRole\(juniorIOS\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 407.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 407.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 407.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 407.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 407.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 407.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 407.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 407.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 407.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 407.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 407.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 407.545 Td ( .withPeriod\(start: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 407.545 Td (\(month: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 407.545 Td (9, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 407.545 Td (year: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 345.120 407.545 Td (20XX\), ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 386.700 407.545 Td (end: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 416.400 407.545 Td (\(month: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 463.920 407.545 Td (12, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 487.680 407.545 Td (year: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 393.685 Td (20XX\)\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 379.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 379.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 379.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 379.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 379.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 379.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 379.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 379.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 379.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 379.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 379.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 379.825 Td ( .addDescription\("iOS ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 379.825 Td (\(iPad\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 379.825 Td (book ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 379.825 Td (application ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 398.580 379.825 Td (about...\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 365.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 365.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 365.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 365.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 365.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 365.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 365.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 365.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 365.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 365.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 365.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 365.965 Td ( .withTechs\([swift, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 365.965 Td (uiKit]\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 352.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 352.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 352.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 352.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 352.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 352.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 352.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 352.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 352.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 352.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 352.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 352.105 Td ( .build\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 324.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 324.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 324.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 324.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 324.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 324.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 324.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 324.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 324.385 Td (// ... ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 324.385 Td (more ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 324.385 Td (projects) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 296.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 296.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 296.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 296.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 296.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 296.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 296.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 296.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 296.665 Td (return ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 296.665 Td (result) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 282.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 282.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 282.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 282.805 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 268.945 Td (}) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 250.735 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 250.735 Td (modular ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.627 250.735 Td (approach ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.544 250.735 Td (allows ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.160 250.735 Td (me ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 221.497 250.735 Td (to:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 231.095 Td (1.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 231.095 Td (Keep ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.743 231.095 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.464 231.095 Td (CV ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.801 231.095 Td (data ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.265 231.095 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.881 231.095 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.055 231.095 Td (strongly-typed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.193 231.095 Td (format) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 216.445 Td (2.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 216.445 Td (Easily ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.395 216.445 Td (update ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.091 216.445 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.812 216.445 Td (experience ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 221.671 216.445 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.077 216.445 Td (skills) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 201.795 Td (3.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 201.795 Td (Generate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.917 201.795 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.381 201.795 Td (HTML ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.381 201.795 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.787 201.795 Td (Markdown ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 259.577 201.795 Td (versions ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.588 201.795 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.820 201.795 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 333.541 201.795 Td (CV) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 187.145 Td (4.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 187.145 Td (Maintain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.627 187.145 Td (consistency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.149 187.145 Td (across ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.602 187.145 Td (different ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.403 187.145 Td (platforms) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 169.495 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 169.495 Td (CV ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.348 169.495 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.348 169.495 Td (automatically ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.591 169.495 Td (generated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.182 169.495 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.530 169.495 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.878 169.495 Td (website ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.226 169.495 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.226 169.495 Td (built, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 350.516 169.495 Td (ensuring ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.759 169.495 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 417.165 169.495 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.886 169.495 Td (professional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 155.855 Td (information ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.464 155.855 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.464 155.855 Td (always ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.138 155.855 Td (up-to-date ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.334 155.855 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.740 155.855 Td (consistently ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 294.262 155.855 Td (formatted.) Tj ET
+
+endstream
+endobj
+17 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 16 0 R >>
+endobj
+18 0 obj
+<< /Length 15448 >>
+stream
+0 0 0 rg
+BT /F2 14.300 Tf 54 787.890 Td (Markdown ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 128.689 787.890 Td (Generation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 762.865 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 762.865 Td (also ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.348 762.865 Td (generate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.823 762.865 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.997 762.865 Td (Markdown ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.787 762.865 Td (version ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.298 762.865 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.530 762.865 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.251 762.865 Td (CV ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 279.588 762.865 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 300.994 762.865 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.110 762.865 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.900 762.865 Td (use ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.690 762.865 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 360.922 762.865 Td (create ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 394.549 762.865 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 403.723 762.865 Td (fresh ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 431.234 762.865 Td (PDF ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.292 762.865 Td (whenever ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 749.225 Td (needed. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.812 749.225 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.649 749.225 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.649 749.225 Td (done ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.171 749.225 Td (using ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.519 749.225 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.693 749.225 Td (simple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.530 749.225 Td (function:) Tj ET
+0.950 0.950 0.950 rg
+54 537.405 487.280 192.180 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 713.685 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 713.685 Td (generateMihaelasCVMarkdownInContentFolder\(\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 713.685 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 699.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 699.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 699.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 699.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 699.825 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 699.825 Td (cv ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 699.825 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 699.825 Td (CV.createForMihaela\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 685.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 685.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 685.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 685.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 685.965 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 685.965 Td (markdown ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 685.965 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 685.965 Td (MarkdownCVRenderer\(\).render\(cv: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 362.940 685.965 Td (cv\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 658.245 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 658.245 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 658.245 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 658.245 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 658.245 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 658.245 Td (fileURL ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 658.245 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 658.245 Td (URL\(fileURLWithPath: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 658.245 Td ("Assets/mihaela-cv.md"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 630.525 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 630.525 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 630.525 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 630.525 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 630.525 Td (do ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 630.525 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 616.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 616.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 616.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 616.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 616.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 616.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 616.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 616.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 616.665 Td (try ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 616.665 Td (markdown.write\(to: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 616.665 Td (fileURL, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 616.665 Td (atomically: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 368.880 616.665 Td (true, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 404.520 616.665 Td (encoding: .utf8\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 602.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 602.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 602.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 602.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 602.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 602.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 602.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 602.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 602.805 Td (print\("? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 602.805 Td (Written ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 602.805 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 602.805 Td (\\\(fileURL.path\)"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 588.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 588.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 588.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 588.945 Td ( } ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 588.945 Td (catch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 588.945 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 575.085 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 575.085 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 575.085 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 575.085 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 575.085 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 575.085 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 575.085 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 575.085 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 575.085 Td (print\("? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 575.085 Td (Failed ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 575.085 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 575.085 Td (write ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 575.085 Td (Mihaela's ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 575.085 Td (CV: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 575.085 Td (\\\(error.localizedDescription\)"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 561.225 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 561.225 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 561.225 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 561.225 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 547.365 Td (}) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 529.155 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 529.155 Td (function:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 509.515 Td (1.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 509.515 Td (Creates ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 119.569 509.515 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.290 509.515 Td (CV ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.627 509.515 Td (using ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.975 509.515 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 203.323 509.515 Td (createForMihaela\(\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.183 509.515 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.241 509.515 Td (function) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 494.865 Td (2.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 494.865 Td (Renders ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.627 494.865 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.185 494.865 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.417 494.865 Td (Markdown ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.207 494.865 Td (using ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 226.555 494.865 Td (MarkdownCVRenderer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 480.215 Td (3.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 480.215 Td (Saves ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.627 480.215 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.975 480.215 Td (output ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 163.613 480.215 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 175.845 480.215 Td (Assets/mihaela-cv.md) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 465.565 Td (4.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 465.565 Td (Provides ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.848 465.565 Td (feedback ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.544 465.565 Td (about ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.124 465.565 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.472 465.565 Td (success ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.262 465.565 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.099 465.565 Td (failure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 309.110 465.565 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.342 465.565 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 339.690 465.565 Td (operation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 447.915 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 447.915 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.906 447.915 Td (then ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.370 447.915 Td (use ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.160 447.915 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.334 447.915 Td (Markdown ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.124 447.915 Td (file ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.240 447.915 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 229.472 447.915 Td (generate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.947 447.915 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.121 447.915 Td (fresh ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.632 447.915 Td (PDF ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.690 447.915 Td (whenever ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 388.433 447.915 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 394.549 447.915 Td (need ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 422.071 447.915 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.303 447.915 Td (update ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.999 447.915 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 488.720 447.915 Td (CV ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 507.057 447.915 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 522.952 447.915 Td (job ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 434.275 Td (applications ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.138 434.275 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.975 434.275 Td (other ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.102 434.275 Td (purposes.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 394.835 Td (Future ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 111.782 394.835 Td (Plans) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 364.998 Td (CVBuilder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.569 364.998 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.569 364.998 Td (actively ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.301 364.998 Td (maintained ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.160 364.998 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 235.566 364.998 Td (has ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.356 364.998 Td (several ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 294.867 364.998 Td (planned ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.063 364.998 Td (improvements:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 345.358 Td (1.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 345.358 Td (Command-line ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.569 345.358 Td (interface ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.812 345.358 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.707 345.358 Td (CV ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.044 345.358 Td (generation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 330.708 Td (2.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 330.708 Td (Additional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.359 330.708 Td (renderers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.486 330.708 Td (\(PDF, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.265 330.708 Td (LaTeX\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 316.058 Td (3.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 316.058 Td (Import/export ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.859 316.058 Td (functionality ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.997 316.058 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.892 316.058 Td (common ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 268.124 316.058 Td (formats) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 301.408 Td (4.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 301.408 Td (Template ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.906 301.408 Td (system ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.801 301.408 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.696 301.408 Td (customizing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.823 301.408 Td (output) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 263.958 Td (Conclusion) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 234.120 Td (CVBuilder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.569 234.120 Td (provides ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.196 234.120 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.370 234.120 Td (robust ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.997 234.120 Td (solution ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.961 234.120 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.856 234.120 Td (managing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.215 234.120 Td (professional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.574 234.120 Td (CVs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 388.411 234.120 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.027 234.120 Td (Swift. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.980 234.120 Td (Its ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.654 234.120 Td (type-safe ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 492.955 234.120 Td (design, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 220.480 Td (multiple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.953 220.480 Td (renderers, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.138 220.480 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.544 220.480 Td (modular ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.334 220.480 Td (architecture ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.856 220.480 Td (make ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.809 220.480 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 311.367 220.480 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.657 220.480 Td (excellent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.121 220.480 Td (choice ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.969 220.480 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.864 220.480 Td (developers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 480.723 220.480 Td (who ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 503.955 220.480 Td (want ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 206.840 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 66.232 206.840 Td (maintain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.859 206.840 Td (their ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.312 206.840 Td (CVs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.149 206.840 Td (programmatically.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 187.200 Td (Whether ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.627 187.200 Td (you're ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.638 187.200 Td (building ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.602 187.200 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.776 187.200 Td (personal ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.019 187.200 Td (website, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.425 187.200 Td (managing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.784 187.200 Td (multiple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.737 187.200 Td (CV ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.074 187.200 Td (versions, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.143 187.200 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.980 187.200 Td (creating ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.165 187.200 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 492.339 187.200 Td (CV ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 173.560 Td (management ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.254 173.560 Td (system, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.207 173.560 Td (CVBuilder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.776 173.560 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 235.566 173.560 Td (help ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 259.414 173.560 Td (streamline ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.204 173.560 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.657 173.560 Td (workflow ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 383.494 173.560 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.900 173.560 Td (ensure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 441.585 173.560 Td (consistency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.107 173.560 Td (across ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 159.920 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 68.058 159.920 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 92.511 159.920 Td (professional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.870 159.920 Td (documents.) Tj ET
+
+endstream
+endobj
+19 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 18 0 R >>
+endobj
+20 0 obj
+<< /Length 712 >>
+stream
+0 0 0 rg
+BT /F2 17.050 Tf 54 787.890 Td (Resources) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 78 758.053 Td (GitHub ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 78 756.553 m 115.290 756.553 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 115.290 758.053 Td (Repository) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 115.290 756.553 m 167.859 756.553 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 78 743.403 Td (Sample ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 78 741.903 m 118.348 741.903 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 118.348 743.403 Td (CV) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 118.348 741.903 m 133.627 741.903 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 78 728.753 Td (Documentation) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 78 727.253 m 151.975 727.253 l S
+
+endstream
+endobj
+21 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [78 755.303 115.290 767.953]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/cvbuilder) >> >>
+endobj
+22 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [115.290 755.303 167.859 767.953]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/cvbuilder) >> >>
+endobj
+23 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [78 740.653 118.348 753.303]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/cvbuilder/blob/main/SampleCV.md) >> >>
+endobj
+24 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [118.348 740.653 133.627 753.303]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/cvbuilder/blob/main/SampleCV.md) >> >>
+endobj
+25 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [78 726.003 151.975 738.653]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/cvbuilder#readme) >> >>
+endobj
+26 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R >> >>
+/Contents 20 0 R
+/Annots [21 0 R 22 0 R 23 0 R 24 0 R 25 0 R] >>
+endobj
+27 0 obj
+<< /Type /Outlines
+/Count 20
+/First 28 0 R
+/Last 47 0 R >>
+endobj
+28 0 obj
+<< /Title (Why CVBuilder?)
+/Parent 27 0 R
+/Dest [8 0 R /XYZ 54 714.350 null]
+/Next 29 0 R >>
+endobj
+29 0 obj
+<< /Title (Core Features)
+/Parent 27 0 R
+/Dest [8 0 R /XYZ 54 556.193 null]
+/Prev 28 0 R
+/Next 33 0 R
+/First 30 0 R
+/Last 32 0 R
+/Count 3 >>
+endobj
+30 0 obj
+<< /Title (1. Strongly Typed Data Model)
+/Parent 29 0 R
+/Dest [8 0 R /XYZ 54 509.305 null]
+/Next 31 0 R >>
+endobj
+31 0 obj
+<< /Title (2. Multiple Renderers)
+/Parent 29 0 R
+/Dest [8 0 R /XYZ 54 256.560 null]
+/Prev 30 0 R
+/Next 32 0 R >>
+endobj
+32 0 obj
+<< /Title (3. Modular Architecture)
+/Parent 29 0 R
+/Dest [8 0 R /XYZ 54 148.995 null]
+/Prev 31 0 R >>
+endobj
+33 0 obj
+<< /Title (Getting Started)
+/Parent 27 0 R
+/Dest [10 0 R /XYZ 54 741.630 null]
+/Prev 29 0 R
+/Next 37 0 R
+/First 34 0 R
+/Last 36 0 R
+/Count 3 >>
+endobj
+34 0 obj
+<< /Title (Installation)
+/Parent 33 0 R
+/Dest [10 0 R /XYZ 54 694.743 null]
+/Next 35 0 R >>
+endobj
+35 0 obj
+<< /Title (Creating a CV)
+/Parent 33 0 R
+/Dest [10 0 R /XYZ 54 532.408 null]
+/Prev 34 0 R
+/Next 36 0 R >>
+endobj
+36 0 obj
+<< /Title (Generating Output)
+/Parent 33 0 R
+/Dest [12 0 R /XYZ 54 729.690 null]
+/Prev 35 0 R >>
+endobj
+37 0 obj
+<< /Title (Advanced Features)
+/Parent 27 0 R
+/Dest [12 0 R /XYZ 54 535.195 null]
+/Prev 33 0 R
+/Next 40 0 R
+/First 38 0 R
+/Last 39 0 R
+/Count 2 >>
+endobj
+38 0 obj
+<< /Title (Project Builder Pattern)
+/Parent 37 0 R
+/Dest [12 0 R /XYZ 54 488.308 null]
+/Next 39 0 R >>
+endobj
+39 0 obj
+<< /Title (Tech Stack Management)
+/Parent 37 0 R
+/Dest [12 0 R /XYZ 54 296.563 null]
+/Prev 38 0 R >>
+endobj
+40 0 obj
+<< /Title (How I Use It on This Webpage)
+/Parent 27 0 R
+/Dest [15 0 R /XYZ 54 794.710 null]
+/Prev 37 0 R
+/Next 45 0 R
+/First 41 0 R
+/Last 44 0 R
+/Count 4 >>
+endobj
+41 0 obj
+<< /Title (Package Dependencies)
+/Parent 40 0 R
+/Dest [15 0 R /XYZ 54 714.543 null]
+/Next 42 0 R >>
+endobj
+42 0 obj
+<< /Title (Personal Information)
+/Parent 40 0 R
+/Dest [15 0 R /XYZ 54 356.478 null]
+/Prev 41 0 R
+/Next 43 0 R >>
+endobj
+43 0 obj
+<< /Title (Project History)
+/Parent 40 0 R
+/Dest [17 0 R /XYZ 54 750.810 null]
+/Prev 42 0 R
+/Next 44 0 R >>
+endobj
+44 0 obj
+<< /Title (Markdown Generation)
+/Parent 40 0 R
+/Dest [19 0 R /XYZ 54 793.610 null]
+/Prev 43 0 R >>
+endobj
+45 0 obj
+<< /Title (Future Plans)
+/Parent 27 0 R
+/Dest [19 0 R /XYZ 54 401.655 null]
+/Prev 40 0 R
+/Next 46 0 R >>
+endobj
+46 0 obj
+<< /Title (Conclusion)
+/Parent 27 0 R
+/Dest [19 0 R /XYZ 54 270.778 null]
+/Prev 45 0 R
+/Next 47 0 R >>
+endobj
+47 0 obj
+<< /Title (Resources)
+/Parent 27 0 R
+/Dest [26 0 R /XYZ 54 794.710 null]
+/Prev 46 0 R >>
+endobj
+xref
+0 48
+0000000000 65535 f 
+0000000019 00000 n 
+0000001144 00000 n 
+0000001243 00000 n 
+0000001340 00000 n 
+0000001442 00000 n 
+0000001547 00000 n 
+0000001642 00000 n 
+0000016007 00000 n 
+0000016161 00000 n 
+0000029126 00000 n 
+0000029281 00000 n 
+0000038086 00000 n 
+0000038242 00000 n 
+0000059910 00000 n 
+0000060076 00000 n 
+0000060249 00000 n 
+0000080489 00000 n 
+0000080655 00000 n 
+0000096157 00000 n 
+0000096313 00000 n 
+0000097077 00000 n 
+0000097241 00000 n 
+0000097410 00000 n 
+0000097596 00000 n 
+0000097787 00000 n 
+0000097958 00000 n 
+0000098149 00000 n 
+0000098224 00000 n 
+0000098333 00000 n 
+0000098490 00000 n 
+0000098613 00000 n 
+0000098742 00000 n 
+0000098860 00000 n 
+0000099020 00000 n 
+0000099128 00000 n 
+0000099250 00000 n 
+0000099363 00000 n 
+0000099525 00000 n 
+0000099644 00000 n 
+0000099761 00000 n 
+0000099934 00000 n 
+0000100050 00000 n 
+0000100179 00000 n 
+0000100303 00000 n 
+0000100418 00000 n 
+0000100539 00000 n 
+0000100658 00000 n 
+trailer
+<< /Size 48 /Root 1 0 R >>
+startxref
+100763
+%%EOF

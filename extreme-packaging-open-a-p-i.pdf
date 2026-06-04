@@ -1,0 +1,2815 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /Outlines 22 0 R /PageMode /UseOutlines /Names << /Dests << /Names [(1-openapi-schema-code-generation) [9 0 R /XYZ 54 347.825 null] (2-api-server-implementation) [13 0 R /XYZ 54 793.610 null] (3-enhanced-api-client-architecture) [13 0 R /XYZ 54 591.825 null] (4-middleware-integration) [13 0 R /XYZ 54 263.875 null] (5-yamlmerger-the-key-to-structured-api-specs) [16 0 R /XYZ 54 793.610 null] (6-test-coverage-expansion) [18 0 R /XYZ 54 677.925 null] (architecture-snapshot) [18 0 R /XYZ 54 463.380 null] (closing-thoughts) [21 0 R /XYZ 54 538.928 null] (evolving-toward-openapi) [9 0 R /XYZ 54 427.993 null] (example-schema-layout) [16 0 R /XYZ 54 387.105 null] (highlights) [13 0 R /XYZ 54 522.190 null] (key-improvements-over-extremepackaging) [18 0 R /XYZ 54 245.193 null] (lessons-learned) [21 0 R /XYZ 54 680.815 null] (pro-tip) [18 0 R /XYZ 54 792.730 null] (the-foundation-extremepackaging) [9 0 R /XYZ 54 643.430 null] (typical-workflow) [16 0 R /XYZ 54 177.210 null] (what-it-does) [16 0 R /XYZ 54 499.970 null] (why-it-must-be-copied-into-the-project) [16 0 R /XYZ 54 696.695 null]] >> >> >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [9 0 R 13 0 R 16 0 R 18 0 R 21 0 R] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+7 0 obj
+<< /Length 16292 >>
+stream
+0 0 0 rg
+BT /F1 11 Tf 54 787.890 Td (When ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.790 787.890 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.906 787.890 Td (first ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.685 787.890 Td (published ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 162.823 787.890 Td (ExtremePackaging) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 162.823 786.390 m 255.135 786.390 l S
+0 0 0 rg
+BT /F1 11 Tf 255.135 787.890 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.251 787.890 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 279.599 787.890 Td (goal ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.447 787.890 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.063 787.890 Td (simple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 360.900 787.890 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.958 787.890 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.190 787.890 Td (prove ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 417.759 787.890 Td (that ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 439.165 787.890 Td (highly ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 474.618 787.890 Td (modular ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 774.250 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 83.337 774.250 Td (architectures) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.417 774.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.475 774.250 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.265 774.250 Td (scale ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.997 774.250 Td (across ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 240.450 774.250 Td (platforms ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.740 774.250 Td (while ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.856 774.250 Td (keeping ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.436 774.250 Td (build ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.726 774.250 Td (times ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.063 774.250 Td (fast, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 437.911 774.250 Td (dependencies ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 760.610 Td (isolated, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.022 760.610 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 119.428 760.610 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.776 760.610 Td (mental ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.845 760.610 Td (model ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.856 760.610 Td (crystal ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.693 760.610 Td (clear.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 740.970 Td (But ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 73.569 740.970 Td (then ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.033 740.970 Td (came ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.986 740.970 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.334 740.970 Td (next ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.182 740.970 Td (step: ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 197.088 740.970 Td (Could ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 228.878 740.970 Td (this ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 249.052 740.970 Td (same ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 279.005 740.970 Td (architecture ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 339.527 740.970 Td (host ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 363.375 740.970 Td (a ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 372.549 740.970 Td (complete ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 420.234 740.970 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 467.930 740.970 Td (workflow ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 513.767 740.970 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 54 727.330 Td (with ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 76.616 727.330 Td (generated ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 129.207 727.330 Td (clients, ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 166.497 727.330 Td (servers, ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 208.671 727.330 Td (and ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 230.077 727.330 Td (full ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 247.193 727.330 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 306.483 727.330 Td (integration ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 360.900 727.330 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 374.958 727.330 Td (without ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 412.864 727.330 Td (losing ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 444.654 727.330 Td (its ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 458.712 727.330 Td (elegance?) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 707.690 Td (That\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.011 707.690 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.243 707.690 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.591 707.690 Td (new ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.823 707.690 Td (reference ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.345 707.690 Td (implementation, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 282.041 707.690 Td (swift-openapi-extremepackaging-example) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 500.875 707.690 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 506.991 707.690 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 694.050 Td (born.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 674.410 m 541.280 674.410 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 636.610 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 69.157 636.610 Td (The ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 104.212 636.610 Td (Foundation ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 201.772 636.610 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 223.562 636.610 Td (ExtremePackaging) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 606.773 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 606.773 Td (original ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 114.522 606.773 Td (ExtremePackaging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.892 606.773 Td (repository ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.240 606.773 Td (introduced ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.657 606.773 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.831 606.773 Td (clean, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 357.237 606.773 Td (layered ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 396.364 606.773 Td (structure:) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 587.133 Td (Shared ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 118.348 587.133 Td (packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.486 587.133 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.544 587.133 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 187.439 587.133 Td (models ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.950 587.133 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.356 587.133 Td (protocols) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 572.483 Td (Independent ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 146.453 572.483 Td (feature ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 186.185 572.483 Td (modules) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.417 572.483 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.475 572.483 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.370 572.483 Td (UI, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.486 572.483 Td (data, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.008 572.483 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.414 572.483 Td (networking) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 557.833 Td (No ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 95.721 557.833 Td (cross-package ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 175.812 557.833 Td (leaks) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 543.183 Td (Unified ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 118.337 543.183 Td (Xcode ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 154.406 543.183 Td (workspace) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.265 543.183 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.323 543.183 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 235.729 543.183 Td (felt ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.461 543.183 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.019 543.183 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.193 543.183 Td (monolith ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.820 543.183 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.168 543.183 Td (built ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.400 543.183 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.958 543.183 Td (microservices) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 525.533 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 525.533 Td (guiding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 114.533 525.533 Td (philosophy: ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 173.229 525.533 Td (Each ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 201.356 525.533 Td (feature ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 238.657 525.533 Td (should ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 274.121 525.533 Td (be ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 289.411 525.533 Td (an ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 304.701 525.533 Td (island, ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 339.549 525.533 Td (communicating ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 416.571 525.533 Td (only ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 439.803 525.533 Td (through ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 54 511.893 Td (well-defined ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 115.743 511.893 Td (contracts.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 492.253 Td (That ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 79.069 492.253 Td (foundation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.497 492.253 Td (made ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.066 492.253 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.624 492.253 Td (ideal ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.914 492.253 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.809 492.253 Td (integrating ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.226 492.253 Td (OpenAPI-generated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.118 492.253 Td (code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 397.024 492.253 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.082 492.253 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.256 492.253 Td (naturally ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.883 492.253 Td (fits ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 503.999 492.253 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 478.613 Td (modular ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.790 478.613 Td (boundaries ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.265 478.613 Td (like ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 173.823 478.613 Td (SharedApiModels) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.873 478.613 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 273.989 478.613 Td (ApiClient) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.419 478.613 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.535 478.613 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 357.941 478.613 Td (ApiServer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.371 478.613 Td (.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 458.973 m 541.280 458.973 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 421.173 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 69.157 421.173 Td (Evolving ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 144.962 421.173 Td (Toward ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 210.331 421.173 Td (OpenAPI) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 391.335 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 391.335 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.707 391.335 Td (version ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.218 391.335 Td (added ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.856 391.335 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.146 391.335 Td (entire ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.715 391.335 Td (new ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.947 391.335 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.842 391.335 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.074 391.335 Td (automation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.549 391.335 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.955 391.335 Td (functionality ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.093 391.335 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 458.151 391.335 Td (transforming ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 522.336 391.335 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 377.695 Td (static ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.732 377.695 Td (architecture ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.254 377.695 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.044 377.695 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 173.218 377.695 Td (living, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 208.066 377.695 Td (self-describing ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 289.367 377.695 Td (API ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 310.762 377.695 Td (ecosystem) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.621 377.695 Td (.) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 342.105 Td (1. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 69.902 342.105 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 134.266 342.105 Td (Schema ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 193.082 342.105 Td (& ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 207.382 342.105 Td (Code ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 247.107 342.105 Td (Generation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 317.080 Td (At ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 67.453 317.080 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.801 317.080 Td (heart ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.928 317.080 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.160 317.080 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 144.508 317.080 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.577 317.080 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 191.577 317.080 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 209.925 317.080 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 259.436 317.080 Td (specification ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 329.737 317.080 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 333.400 317.080 Td (openapi.yaml) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 408.640 317.080 Td (\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 412.303 317.080 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 415.361 317.080 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.419 317.080 Td (defining ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.999 317.080 Td (endpoints, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 303.440 Td (models, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.569 303.440 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.975 303.440 Td (responses ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.776 303.440 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.671 303.440 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.845 303.440 Td (DummyJSON-compatible ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.972 303.440 Td (API.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 283.800 Td (Newly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87 283.800 Td (introduced ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.417 283.800 Td (elements:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 264.160 Td (? ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.174 264.160 Td (Full ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.953 264.160 Td (schema ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.522 264.160 Td (definitions ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.102 264.160 Td (for ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 217.997 264.160 Td (Users) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.347 264.160 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 255.463 264.160 Td (Posts) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.813 264.160 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 292.929 264.160 Td (Products) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.089 264.160 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 349.205 264.160 Td (Todos) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 380.555 264.160 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 386.671 264.160 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 408.077 264.160 Td (Carts) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 249.510 Td (? ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.174 249.510 Td (Error ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 114.674 249.510 Td (schemas ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.743 249.510 Td (\(404, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.870 249.510 Td (validation, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.450 249.510 Td (authentication\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 234.860 Td (?? ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.290 234.860 Td (Integration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.323 234.860 Td (with ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 170.939 234.860 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 200.276 234.860 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 249.787 234.860 Td (Generator) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 220.210 Td (? ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.174 220.210 Td (Automatic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 139.138 220.210 Td (generation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.171 220.210 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.403 220.210 Td (clients, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.693 220.210 Td (models, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.262 220.210 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.668 220.210 Td (server ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.284 220.210 Td (stubs) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 205.560 Td (? ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.174 205.560 Td (Separation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.428 205.560 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.660 205.560 Td (generated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.251 205.560 Td (code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 235.157 205.560 Td (into ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 255.947 205.560 Td (SharedApiModels) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 187.910 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 187.910 Td (turned ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.080 187.910 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.428 187.910 Td (architecture ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.950 187.910 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.740 187.910 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.914 187.910 Td (self-contained ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.447 187.910 Td (API ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.237 187.910 Td (ecosystem ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.864 187.910 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.922 187.910 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.328 187.910 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 425.734 187.910 Td (can ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 446.524 187.910 Td (generate, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 498.488 187.910 Td (serve, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 174.270 Td (and ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 76.616 174.270 Td (consume) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.906 174.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.964 174.270 Td (its ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.022 174.270 Td (own ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.254 174.270 Td (endpoints.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 154.630 m 541.280 154.630 l S
+
+endstream
+endobj
+8 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [162.823 785.140 255.135 797.790]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/ExtremePackaging) >> >>
+endobj
+9 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 7 0 R
+/Annots [8 0 R] >>
+endobj
+10 0 obj
+<< /Length 13514 >>
+stream
+0 0 0 rg
+BT /F2 14.300 Tf 54 787.890 Td (2. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 69.902 787.890 Td (API ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 97.715 787.890 Td (Server ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 146.206 787.890 Td (Implementation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 762.865 Td (A ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 64.395 762.865 Td (complete ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 112.080 762.865 Td (Vapor-based ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 181.765 762.865 Td (local ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 209.892 762.865 Td (server) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.914 762.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 245.972 762.865 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 249.635 762.865 Td (ApiServer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.065 762.865 Td (\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.786 762.865 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.402 762.865 Td (added ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.040 762.865 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.272 762.865 Td (simulate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 425.283 762.865 Td (real-world ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 476.620 762.865 Td (backend ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 749.225 Td (behavior:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 729.585 Td (17 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.290 729.585 Td (endpoints ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 144.044 729.585 Td (fully ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.660 729.585 Td (implemented ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.682 729.585 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 257.740 729.585 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.088 729.585 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.784 729.585 Td (spec) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 714.935 Td (Realistic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.616 714.935 Td (mock ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.953 714.935 Td (data ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.417 714.935 Td (mirroring ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.859 714.935 Td (DummyJSON) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 700.285 Td (Pagination ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.033 700.285 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.439 700.285 Td (validation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.961 700.285 Td (logic) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 685.635 Td (Centralized ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.685 685.635 Td (error ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.964 685.635 Td (responses) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 670.985 Td (?? ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.290 670.985 Td (Prefixed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.696 670.985 Td (logging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.218 670.985 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 191.113 670.985 Td (easy ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.403 670.985 Td (tracing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.472 670.985 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 265.088 670.985 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 283.436 670.985 Td (console) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 653.335 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 653.335 Td (server ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.627 653.335 Td (runs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.080 653.335 Td (locally ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.696 653.335 Td (at ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 179.928 653.335 Td (http://localhost:8080) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 311.598 653.335 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.714 653.335 Td (serving ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.225 653.335 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.899 653.335 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.363 653.335 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.537 653.335 Td (mock ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.874 653.335 Td (backend ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 478.512 653.335 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 499.918 653.335 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 509.092 653.335 Td (test ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 639.695 Td (harness ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.185 639.695 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.080 639.695 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.428 639.695 Td (generated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.019 639.695 Td (client.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 620.055 m 541.280 620.055 l S
+0 0 0 rg
+BT /F2 14.300 Tf 54 586.105 Td (3. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 69.902 586.105 Td (Enhanced ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 142.217 586.105 Td (API ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 170.030 586.105 Td (Client ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 213.731 586.105 Td (Architecture) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 561.080 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 561.080 Td (client ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.743 561.080 Td (evolved ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.707 561.080 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.765 561.080 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.939 561.080 Td (simple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.776 561.080 Td (abstraction ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.635 561.080 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.425 561.080 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 301.599 561.080 Td (fully ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 327.273 561.080 Td (concurrent, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 390.842 561.080 Td (actor-based ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 456.248 561.080 Td (networking ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 547.440 Td (layer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 79.685 547.440 Td (.) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 517.350 Td (Highlights) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 496.175 Td (ApiClient) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.430 496.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.488 496.175 Td (actor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.999 496.175 Td (manages ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.300 496.175 Td (shared ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.985 496.175 Td (state ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.891 496.175 Td (safely ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.681 496.175 Td (across ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 344.134 496.175 Td (async ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.924 496.175 Td (contexts) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 481.525 Td (Middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.290 481.525 Td (chain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.638 481.525 Td (introduced: ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 224.113 481.525 Td (Logging ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 270.555 481.525 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 280.334 481.525 Td (Authentication ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 360.392 481.525 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 370.171 481.525 Td (Correction) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 466.875 Td (Runtime ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.011 466.875 Td (environment ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.591 466.875 Td (switching ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.881 466.875 Td (between ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 278.519 466.875 Td (.production) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 347.489 466.875 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 353.605 466.875 Td (.local) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 391.225 466.875 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 397.341 466.875 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 418.747 466.875 Td (.mock) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 452.225 Td (Shared ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.522 452.225 Td (singleton ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 163.602 452.225 Td (ApiClientState) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.382 452.225 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.440 452.225 Td (stores ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.451 452.225 Td (token, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.473 452.225 Td (settings, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.495 452.225 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 385.901 452.225 Td (preferences) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 434.575 Td (Example ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.848 434.575 Td (flow:) Tj ET
+0.950 0.950 0.950 rg
+54 333.635 487.280 81.300 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 399.035 Td (try ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 399.035 Td (await ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 399.035 Td (ApiClient.initializeShared\(environment: .production\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 385.175 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 385.175 Td (client ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 385.175 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 385.175 Td (ApiClient.shared!) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 371.315 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 371.315 Td (auth ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 371.315 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 371.315 Td (try ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 371.315 Td (await ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 371.315 Td (client.login\(username: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 371.315 Td ("emilys", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 371.315 Td (password: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 440.160 371.315 Td ("emilyspass"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 357.455 Td (await ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 357.455 Td (ApiClient.setToken\(auth.accessToken\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 343.595 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 343.595 Td (users ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 343.595 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 343.595 Td (try ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 343.595 Td (await ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 343.595 Td (client.getUsers\(limit: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 343.595 Td (10\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 325.385 Td (A ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 64.395 325.385 Td (clear ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.290 325.385 Td (separation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.707 325.385 Td (between ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.345 325.385 Td (environment ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.925 325.385 Td (configuration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.958 325.385 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.364 325.385 Td (runtime ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.096 325.385 Td (state ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 408.002 325.385 Td (ensures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 450.187 325.385 Td (deterministic, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 311.745 Td (thread-safe ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.696 311.745 Td (behavior.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 292.105 m 541.280 292.105 l S
+0 0 0 rg
+BT /F2 14.300 Tf 54 258.155 Td (4. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 69.902 258.155 Td (Middleware ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 151.755 258.155 Td (Integration) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 233.130 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 233.130 Td (client ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.743 233.130 Td (leverages ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.486 233.130 Td (two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.660 233.130 Td (reusable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.903 233.130 Td (middlewares ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.693 233.130 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 310.751 233.130 Td (sibling ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 344.983 233.130 Td (packages:) Tj ET
+0.050 0.240 0.620 rg
+BT /F2 11 Tf 78 213.490 Td (OpenAPILoggingMiddleware) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 78 211.990 m 227.743 211.990 l S
+0 0 0 rg
+BT /F1 11 Tf 54 195.840 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 57.058 195.840 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 195.840 Td (Provides ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.964 195.840 Td (structured, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.986 195.840 Td (console ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.950 195.840 Td (+ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.432 195.840 Td (JSON ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.827 195.840 Td (logging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.349 195.840 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.965 195.840 Td (full ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.081 195.840 Td (request/response ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.125 195.840 Td (capture.) Tj ET
+0.050 0.240 0.620 rg
+BT /F2 11 Tf 78 176.200 Td (BearerTokenAuthMiddleware) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 78 174.700 m 230.196 174.700 l S
+0 0 0 rg
+BT /F1 11 Tf 54 158.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 57.058 158.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 158.550 Td (Manages ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.417 158.550 Td (JWT ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.080 158.550 Td (token ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.044 158.550 Td (injection ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.450 158.550 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.066 158.550 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.240 158.550 Td (concurrency-safe ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.657 158.550 Td (actor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.168 158.550 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.574 158.550 Td (public ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.364 158.550 Td (operation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.281 158.550 Td (rules.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 138.910 Td (Together, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.138 138.910 Td (they ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.986 138.910 Td (demonstrate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.182 138.910 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.530 138.910 Td (power ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.541 138.910 Td (of ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 255.773 138.910 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 319.353 138.910 Td (chaining) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.585 138.910 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.643 138.910 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 379.259 138.910 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.955 138.910 Td (Runtime ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.966 138.910 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 485.024 138.910 Td (clean, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 125.270 Td (modular ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.790 125.270 Td (extensions ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.428 125.270 Td (without ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.334 125.270 Td (inheritance ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.193 125.270 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.030 125.270 Td (global ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.436 125.270 Td (state.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 105.630 m 541.280 105.630 l S
+
+endstream
+endobj
+11 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [78 210.740 227.743 223.390]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/OpenAPILoggingMiddleware) >> >>
+endobj
+12 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [78 173.450 230.196 186.100]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/BearerTokenAuthMiddleware) >> >>
+endobj
+13 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 10 0 R
+/Annots [11 0 R 12 0 R] >>
+endobj
+14 0 obj
+<< /Length 17586 >>
+stream
+0 0 0 rg
+BT /F2 14.300 Tf 54 787.890 Td (5. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 69.902 787.890 Td (YAMLMerger ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 162.065 787.890 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 180.341 787.890 Td (The ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 209.741 787.890 Td (Key ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 239.943 787.890 Td (to ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 257.418 787.890 Td (Structured ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 333.694 787.890 Td (API ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 361.507 787.890 Td (Specs) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 762.865 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 762.865 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.080 762.865 Td (uses ) Tj ET
+0.050 0.240 0.620 rg
+BT /F2 11 Tf 138.370 762.865 Td (YamlMerger) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 138.370 761.365 m 201.334 761.365 l S
+0 0 0 rg
+BT /F1 11 Tf 201.334 762.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.392 762.865 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.450 762.865 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.624 762.865 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.519 762.865 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.157 762.865 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.563 762.865 Td (merges ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 360.295 762.865 Td (multiple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.248 762.865 Td (YAML ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.259 762.865 Td (files ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.875 762.865 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 477.665 762.865 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.839 762.865 Td (single ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 749.225 Td (combined ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.743 749.225 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.439 749.225 Td (specification.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.019 749.225 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.077 749.225 Td (If ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.251 749.225 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.704 749.225 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.773 749.225 Td (doesn\222t ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.295 749.225 Td (already ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.422 749.225 Td (include ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.328 749.225 Td (an ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 419.618 749.225 Td (openapi.yaml) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 494.858 749.225 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 735.585 Td (YamlMerger ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.953 735.585 Td (ensures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.138 735.585 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.928 735.585 Td (have ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.834 735.585 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.240 735.585 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.298 735.585 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.704 735.585 Td (helps ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 293.052 735.585 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.842 735.585 Td (maintain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.469 735.585 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 367.643 735.585 Td (structured, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 428.154 735.585 Td (predictable ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 489.897 735.585 Td (folder ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 721.945 Td (layout) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 86.395 721.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 89.453 721.945 Td (under ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 120.638 721.945 Td (Tests/) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.258 721.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.316 721.945 Td (or ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 174.153 721.945 Td (Sources/SharedApiModels/schemas/) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.793 721.945 Td (.) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 691.855 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 64.757 691.855 Td (Why ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 93.664 691.855 Td (It ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 104.421 691.855 Td (Must ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 136.014 691.855 Td (Be ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 154.841 691.855 Td (Copied ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 199.212 691.855 Td (into ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 224.755 691.855 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 246.269 691.855 Td (Project) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 670.680 Td (YamlMerger ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.953 670.680 Td (cannot ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.033 670.680 Td (simply ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 187.254 670.680 Td (be ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.544 670.680 Td (added ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.182 670.680 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.856 670.680 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.030 670.680 Td (SwiftPM ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.425 670.680 Td (dependency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.411 670.680 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.306 670.680 Td (build-time ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.038 670.680 Td (merging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 475.828 670.680 Td (because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 520.466 670.680 Td (of ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 657.040 Td (SPM\222s ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 89.453 657.040 Td (read-only ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 142.022 657.040 Td (resolution ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 198.254 657.040 Td (model) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.649 657.040 Td (:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 637.400 Td (1.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 637.400 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.895 637.400 Td (Package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.754 637.400 Td (Manager ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.218 637.400 Td (stores ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.229 637.400 Td (dependencies ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.773 637.400 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.389 637.400 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 322.563 637.400 Td (cached, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 366.585 637.400 Td (read-only) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 416.096 637.400 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 419.154 637.400 Td (location ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 460.118 637.400 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 624.750 Td (.build/checkouts/) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.590 624.750 Td (\).) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 610.100 Td (2.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 610.100 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 100.011 610.100 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.707 610.100 Td (generator, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.903 610.100 Td (however, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.588 610.100 Td (needs ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 281.610 610.100 Td (write ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 310.342 610.100 Td (access) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 347.038 610.100 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 350.096 610.100 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.328 610.100 Td (output ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.966 610.100 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.314 610.100 Td (merged ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 454.662 610.100 Td (openapi.yaml) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 529.902 610.100 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 597.450 Td (file ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.116 597.450 Td (directly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.011 597.450 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.801 597.450 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.254 597.450 Td (source ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.323 597.450 Td (tree.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 582.800 Td (3.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 582.800 Td (SPM ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.895 582.800 Td (build ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.185 582.800 Td (scripts ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.022 582.800 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.975 582.800 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.323 582.800 Td (allowed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.671 582.800 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.903 582.800 Td (write ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.182 582.800 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 294.414 582.800 Td (source ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.483 582.800 Td (folders ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.552 582.800 Td (outside ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 405.074 582.800 Td (their ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.527 582.800 Td (sandboxed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.397 582.800 Td (build ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 570.150 Td (directory.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 552.500 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 63.174 552.500 Td (Solution:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.837 552.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.895 552.500 Td (Copy ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.627 552.500 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.975 552.500 Td (YamlMerger ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.928 552.500 Td (executable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.182 552.500 Td (directly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 318.077 552.500 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 338.867 552.500 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.320 552.500 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 399.389 552.500 Td (\(e.g. ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 424.458 552.500 Td (Tools/YamlMerger/) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 531.048 552.500 Td (\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 538.860 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 75.406 538.860 Td (call ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.964 538.860 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 103.522 538.860 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.580 538.860 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.754 538.860 Td (pre-build ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.602 538.860 Td (script ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.939 538.860 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.776 538.860 Td (CI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.834 538.860 Td (pipeline.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.798 538.860 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 283.856 538.860 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.693 538.860 Td (guarantees ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.784 538.860 Td (write ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.063 538.860 Td (permissions ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 453.795 538.860 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 475.201 538.860 Td (makes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 510.654 538.860 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 525.220 Td (tool ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 74.790 525.220 Td (available ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.254 525.220 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.486 525.220 Td (everyone ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.787 525.220 Td (checking ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.251 525.220 Td (out ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 246.599 525.220 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.947 525.220 Td (repo.) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 495.130 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 64.757 495.130 Td (What ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 97.693 495.130 Td (It ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 108.450 495.130 Td (Does) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 473.955 Td (YamlMerger ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.953 473.955 Td (scans ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.743 473.955 Td (subdirectories ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.265 473.955 Td (\(01 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.218 473.955 Td (? ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.392 473.955 Td (08\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.345 473.955 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.751 473.955 Td (merges ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 328.483 473.955 Td (YAML ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.494 473.955 Td (fragments ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 413.458 473.955 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 425.074 473.955 Td (deterministic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 489.864 473.955 Td (order:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 454.315 Td (1.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 454.315 Td (Folders ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.732 454.315 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.685 454.315 Td (processed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.486 454.315 Td (numerically.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 439.665 Td (2.) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 439.665 Td (__*.yaml) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.160 439.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.218 439.665 Td (files ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.834 439.665 Td (merge ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.066 439.665 Td (first ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.845 439.665 Td (within ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 240.019 439.665 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.925 439.665 Td (folder.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 425.015 Td (3.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 425.015 Td (Remaining ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.627 425.015 Td (files ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.243 425.015 Td (merge ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.475 425.015 Td (alphabetically.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 410.365 Td (4.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 410.365 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 100.011 410.365 Td (final ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.243 410.365 Td (output ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.881 410.365 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.881 410.365 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 177.055 410.365 Td (complete ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 224.740 410.365 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.436 410.365 Td (spec, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.784 410.365 Td (suitable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.748 410.365 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.643 410.365 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 385.538 410.365 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.234 410.365 Td (Generator.) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 382.265 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 64.757 382.265 Td (Example ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 117.888 382.265 Td (Schema ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 167.655 382.265 Td (Layout) Tj ET
+0.950 0.950 0.950 rg
+54 224.350 487.280 136.740 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 345.190 Td (Schema/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 331.330 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 331.330 Td (01_Info/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 317.470 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 317.470 Td (02_Servers/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 303.610 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 303.610 Td (03_Tags/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 289.750 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 289.750 Td (04_Paths/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 275.890 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 275.890 Td (05_Webhooks/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 262.030 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 262.030 Td (06_Components/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 248.170 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 248.170 Td (07_Security/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 234.310 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 234.310 Td (08_ExternalDocs/) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 216.100 Td (Each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.127 216.100 Td (folder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.696 216.100 Td (corresponds ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.276 216.100 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.508 216.100 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.682 216.100 Td (section ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 235.588 216.100 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.820 216.100 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.168 216.100 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.864 216.100 Td (spec, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.212 216.100 Td (allowing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 386.002 216.100 Td (multiple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.955 216.100 Td (developers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.814 216.100 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 496.046 216.100 Td (work ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 522.325 216.100 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 202.460 Td (different ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.801 202.460 Td (endpoints, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.613 202.460 Td (schemas, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.740 202.460 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.577 202.460 Td (components ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.552 202.460 Td (without ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.458 202.460 Td (conflicts.) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 172.370 Td (?? ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 72.150 172.370 Td (Typical ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 117.210 172.370 Td (Workflow) Tj ET
+0.950 0.950 0.950 rg
+54 97.615 487.280 53.580 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 135.295 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 135.295 Td (Merge ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 135.295 Td (schemas ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 135.295 Td (before ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 135.295 Td (build) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 121.435 Td (./Tools/YamlMerger ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 121.435 Td (merge ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 121.435 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 121.435 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 121.435 Td (--input ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 121.435 Td (Sources/SharedApiModels/schemas/ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 463.920 121.435 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 469.860 121.435 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 475.800 121.435 Td (--output ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 107.575 Td (Sources/SharedApiModels/openapi.yaml) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 89.365 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 89.365 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 97.417 89.365 Td (run ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.370 89.365 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.544 89.365 Td (manually, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.671 89.365 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.287 89.365 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.461 89.365 Td (pre-build ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.309 89.365 Td (phase, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.389 89.365 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.226 89.365 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.900 89.365 Td (part ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 338.911 89.365 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.143 89.365 Td (CI/CD ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.143 89.365 Td (automation.) Tj ET
+
+endstream
+endobj
+15 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [138.370 760.115 201.334 772.765]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/YamlMerger) >> >>
+endobj
+16 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 14 0 R
+/Annots [15 0 R] >>
+endobj
+17 0 obj
+<< /Length 14051 >>
+stream
+0 0 0 rg
+BT /F2 12.100 Tf 54 787.890 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 64.757 787.890 Td (Pro ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 88.291 787.890 Td (Tip) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 766.715 Td (If ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 766.715 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.627 766.715 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.696 766.715 Td (starts ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 153.649 766.715 Td (without) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.754 766.715 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.812 766.715 Td (an ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 211.102 766.715 Td (openapi.yaml) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.342 766.715 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.458 766.715 Td (placing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.364 766.715 Td (schema ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.933 766.715 Td (fragments ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.897 766.715 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 435.513 766.715 Td (structured ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 487.477 766.715 Td (folders ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 753.075 Td (under ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 85.185 753.075 Td (Tests/) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.805 753.075 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 125.863 753.075 Td (ensures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.048 753.075 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.501 753.075 Td (API ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.291 753.075 Td (structure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 259.139 753.075 Td (remains ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.313 753.075 Td (organized ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.672 753.075 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.730 753.075 Td (even ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 393.636 753.075 Td (before ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 427.879 753.075 Td (full ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.995 753.075 Td (code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.901 753.075 Td (generation.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 526.934 753.075 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 739.435 Td (YamlMerger ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.953 739.435 Td (gives ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.685 739.435 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.138 739.435 Td (tests ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.428 739.435 Td (\(and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 221.497 739.435 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 245.950 739.435 Td (teammates\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.077 739.435 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 316.251 739.435 Td (shared, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 358.436 739.435 Td (visual ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 392.679 739.435 Td (map) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 415.295 739.435 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.353 739.435 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.585 739.435 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 455.038 739.435 Td (API\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.770 739.435 Td (evolving ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 725.795 Td (shape.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 706.155 m 541.280 706.155 l S
+0 0 0 rg
+BT /F2 14.300 Tf 54 672.205 Td (6. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 69.902 672.205 Td (Test ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 103.278 672.205 Td (Coverage ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 172.418 672.205 Td (Expansion) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 647.180 Td (Two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 647.180 Td (new ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.069 647.180 Td (test ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.859 647.180 Td (suites ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.649 647.180 Td (validate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.613 647.180 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.077 647.180 Td (local ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.751 647.180 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.157 647.180 Td (production ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.574 647.180 Td (APIs:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 627.540 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 87.174 627.540 Td (ApiClientLocalTests.swift) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.924 627.540 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 246.982 627.540 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.040 627.540 Td (25 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.330 627.540 Td (tests ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.620 627.540 Td (targeting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.479 627.540 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.827 627.540 Td (local ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.501 627.540 Td (Vapor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 424.907 627.540 Td (server) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 612.890 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 87.174 612.890 Td (ApiClientProductionTests.swift) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.274 612.890 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.332 612.890 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.390 612.890 Td (29 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.680 612.890 Td (integration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.097 612.890 Td (tests ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 388.387 612.890 Td (against ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.909 612.890 Td (DummyJSON ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.188 612.890 Td (API) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 595.240 Td (Tests ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.953 595.240 Td (cover:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 575.600 Td (Authentication ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.765 575.600 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.171 575.600 Td (token ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.135 575.600 Td (persistence) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 560.950 Td (Pagination ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.033 560.950 Td (behavior) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 546.300 Td (Error ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.500 546.300 Td (responses ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.301 546.300 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.707 546.300 Td (invalid ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.939 546.300 Td (IDs) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 531.650 Td (Concurrent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.464 531.650 Td (request ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.207 531.650 Td (handling) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 514 Td (Together ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.080 514 Td (they ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.928 514 Td (form ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.986 514 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 159.160 514 Td (54-test ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 197.671 514 Td (safety ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 232.519 514 Td (net) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.019 514 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.077 514 Td (proving ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.204 514 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.668 514 Td (architecture ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.190 514 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 397.596 514 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 445.292 514 Td (compliance.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 494.360 m 541.280 494.360 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 456.560 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 69.157 456.560 Td (Architecture ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 174.322 456.560 Td (Snapshot) Tj ET
+0.950 0.950 0.950 rg
+54 317.703 487.280 109.020 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 410.823 Td (Packages/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 396.963 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 396.963 Td (Sources/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 383.103 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 383.103 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 383.103 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 383.103 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 383.103 Td (ApiClient/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 369.243 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 369.243 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 369.243 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 369.243 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 369.243 Td (ApiServer/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 355.383 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 355.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 355.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 355.383 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 355.383 Td (SharedApiModels/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 341.523 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 341.523 Td (Tests/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 327.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 327.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 327.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 327.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 327.663 Td (??? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 327.663 Td (ApiClientTests/) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 309.453 Td (Each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.127 309.453 Td (target ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.312 309.453 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.312 309.453 Td (self-contained ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.845 309.453 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.903 309.453 Td (just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.077 309.453 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.635 309.453 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.251 309.453 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 279.599 309.453 Td (original ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 318.110 309.453 Td (ExtremePackaging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 413.480 309.453 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 427.538 309.453 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 445.886 309.453 Td (now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.118 309.453 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.734 309.453 Td (full ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 295.813 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.696 295.813 Td (integration, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.171 295.813 Td (client/server ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 221.519 295.813 Td (symmetry, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.298 295.813 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.704 295.813 Td (end-to-end ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.958 295.813 Td (testability.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 276.173 m 541.280 276.173 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 238.373 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 69.157 238.373 Td (Key ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 105.167 238.373 Td (Improvements ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 226.444 238.373 Td (Over ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 270.041 238.373 Td (ExtremePackaging) Tj ET
+0.930 0.930 0.930 rg
+54 187.170 137.300 21.365 re f
+0.350 0.350 0.350 RG
+0.500 w 54 187.170 137.300 21.365 re S
+0 0 0 rg
+BT /F2 9.900 Tf 58 194.635 Td (Area) Tj ET
+0.930 0.930 0.930 rg
+191.300 187.170 135.093 21.365 re f
+0.350 0.350 0.350 RG
+0.500 w 191.300 187.170 135.093 21.365 re S
+0 0 0 rg
+BT /F2 9.900 Tf 195.300 194.635 Td (Before) Tj ET
+0.930 0.930 0.930 rg
+326.393 187.170 214.887 21.365 re f
+0.350 0.350 0.350 RG
+0.500 w 326.393 187.170 214.887 21.365 re S
+0 0 0 rg
+BT /F2 9.900 Tf 330.393 194.635 Td (After) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 54 165.805 137.300 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 58 173.270 Td (API ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 76.711 173.270 Td (Definition) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 191.300 165.805 135.093 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 195.300 173.270 Td (Manual ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 230.515 173.270 Td (protocol ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 268.481 173.270 Td (layer) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 326.393 165.805 214.887 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 330.393 173.270 Td (Generated ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 379.923 173.270 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 422.849 173.270 Td (spec) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 54 144.440 137.300 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 58 151.905 Td (Networking) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 191.300 144.440 135.093 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 195.300 151.905 Td (Custom ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 232.158 151.905 Td (client) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 326.393 144.440 214.887 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 330.393 151.905 Td (Actor-based ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 386.516 151.905 Td (client ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 412.375 151.905 Td (w/ ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 425.027 151.905 Td (middlewares) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 54 123.075 137.300 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 58 130.540 Td (Server) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 191.300 123.075 135.093 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 195.300 130.540 Td (None) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 326.393 123.075 214.887 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 330.393 130.540 Td (Vapor ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 359.559 130.540 Td (mock ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 385.962 130.540 Td (server ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 416.216 130.540 Td (\(17 ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 433.274 130.540 Td (endpoints\)) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 54 101.710 137.300 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 58 109.175 Td (Authentication) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 191.300 101.710 135.093 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 195.300 109.175 Td (Static ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 222.813 109.175 Td (token) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 326.393 101.710 214.887 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 330.393 109.175 Td (BearerTokenAuthMiddleware) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 54 80.345 137.300 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 58 87.810 Td (Logging) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 191.300 80.345 135.093 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 195.300 87.810 Td (Simple ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 228.307 87.810 Td (print ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 250.315 87.810 Td (logs) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 326.393 80.345 214.887 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 330.393 87.810 Td (Structured ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 378.814 87.810 Td (OpenAPILoggingMiddleware) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 54 58.980 137.300 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 58 66.445 Td (Testing) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 191.300 58.980 135.093 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 195.300 66.445 Td (Minimal ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 232.148 66.445 Td (unit ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 250.859 66.445 Td (tests) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 326.393 58.980 214.887 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 330.393 66.445 Td (Full ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 349.094 66.445 Td (integration ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 398.070 66.445 Td (tests ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 421.731 66.445 Td (\(54 ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 438.788 66.445 Td (total\)) Tj ET
+
+endstream
+endobj
+18 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 17 0 R >>
+endobj
+19 0 obj
+<< /Length 9961 >>
+stream
+0.930 0.930 0.930 rg
+54 766.525 137.300 21.365 re f
+0.350 0.350 0.350 RG
+0.500 w 54 766.525 137.300 21.365 re S
+0 0 0 rg
+BT /F2 9.900 Tf 58 773.990 Td (Area) Tj ET
+0.930 0.930 0.930 rg
+191.300 766.525 135.093 21.365 re f
+0.350 0.350 0.350 RG
+0.500 w 191.300 766.525 135.093 21.365 re S
+0 0 0 rg
+BT /F2 9.900 Tf 195.300 773.990 Td (Before) Tj ET
+0.930 0.930 0.930 rg
+326.393 766.525 214.887 21.365 re f
+0.350 0.350 0.350 RG
+0.500 w 326.393 766.525 214.887 21.365 re S
+0 0 0 rg
+BT /F2 9.900 Tf 330.393 773.990 Td (After) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 54 745.160 137.300 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 58 752.625 Td (Schema ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 97.065 752.625 Td (Management) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 191.300 745.160 135.093 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 195.300 752.625 Td (Handwritten) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 326.393 745.160 214.887 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 330.393 752.625 Td (Modular ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 368.904 752.625 Td (YAML ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 398.614 752.625 Td (+ ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 407.148 752.625 Td (YamlMerger) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 54 723.795 137.300 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 58 731.260 Td (Tooling) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 191.300 723.795 135.093 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 195.300 731.260 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 219.506 731.260 Td (only) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 326.393 723.795 214.887 21.365 re S
+0 0 0 rg
+BT /F1 9.900 Tf 330.393 731.260 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 354.599 731.260 Td (+ ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 363.133 731.260 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 406.059 731.260 Td (toolchain) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 711.795 m 541.280 711.795 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 673.995 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 69.157 673.995 Td (Lessons ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 143.069 673.995 Td (Learned) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 644.158 Td (1.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 644.158 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 127.511 644.158 Td (fits ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 147.069 644.158 Td (perfectly ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 195.975 644.158 Td (into ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 219.196 644.158 Td (modular ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 265.649 644.158 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 294.986 644.158 Td (architectures) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.066 644.158 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.124 644.158 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.182 644.158 Td (generated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.773 644.158 Td (code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 460.679 644.158 Td (belongs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.259 644.158 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 513.875 644.158 Td (its ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 631.508 Td (own ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.232 631.508 Td (layer, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.185 631.508 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.591 631.508 Td (SwiftPM ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.986 631.508 Td (makes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.439 631.508 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.845 631.508 Td (separation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.262 631.508 Td (effortless.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 616.858 Td (2.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 616.858 Td (Actors ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 115.895 616.858 Td (are ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 135.464 616.858 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 155.022 616.858 Td (future ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 189.243 616.858 Td (of ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 202.685 616.858 Td (shared ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 241.812 616.858 Td (state) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.486 616.858 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.544 616.858 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 284.602 616.858 Td (simple, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.497 616.858 Td (safe, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.403 616.858 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.809 616.858 Td (transparent.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 602.208 Td (3.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 602.208 Td (Middleware ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 140.964 602.208 Td (> ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 150.446 602.208 Td (Managers) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.794 602.208 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.852 602.208 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.910 602.208 Td (function ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.490 602.208 Td (composition ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.233 602.208 Td (scales ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.465 602.208 Td (better ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.650 602.208 Td (than ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 412.114 602.208 Td (class ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.230 602.208 Td (hierarchies.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 587.558 Td (4.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 587.558 Td (Automation ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 142.163 587.558 Td (beats ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 173.953 587.558 Td (documentation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.790 587.558 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.848 587.558 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.906 587.558 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.522 587.558 Td (OpenAPI, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.276 587.558 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.624 587.558 Td (spec ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 387.914 587.558 Td (is) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.856 587.558 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.914 587.558 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 417.262 587.558 Td (documentation.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 569.908 m 541.280 569.908 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 532.108 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 69.157 532.108 Td (Closing ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 136.420 532.108 Td (Thoughts) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 502.270 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 502.270 Td (evolution ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.917 502.270 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.149 502.270 Td (ExtremePackaging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.519 502.270 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.309 502.270 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.483 502.270 Td (full ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 279.599 502.270 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.295 502.270 Td (reference ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.817 502.270 Td (app ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.223 502.270 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.223 502.270 Td (more ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 437.339 502.270 Td (than ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 461.803 502.270 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.977 502.270 Td (demo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 501.546 502.270 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 515.604 502.270 Td (it\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 532.104 502.270 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 488.630 Td (blueprint ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 104.116 488.630 Td (for ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 121.837 488.630 Td (modular ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 168.290 488.630 Td (API-driven ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 226.359 488.630 Td (development ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 297.265 488.630 Td (in ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 310.102 488.630 Td (Swift) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.381 488.630 Td (.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 468.990 Td (From ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.721 468.990 Td (YAML ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.732 468.990 Td (schemas ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.801 468.990 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.033 468.990 Td (live ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.591 468.990 Td (servers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.707 468.990 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.113 468.990 Td (typed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.077 468.990 Td (clients, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.367 468.990 Td (everything ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.168 468.990 Td (now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 399.400 468.990 Td (exists ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.574 468.990 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.190 468.990 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 463.596 468.990 Td (unified, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 455.350 Td (testable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.580 455.350 Td (ecosystem ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.207 455.350 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.265 455.350 Td (powered ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.508 455.350 Td (by ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.182 455.350 Td (Apple\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.309 455.350 Td (official ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.541 455.350 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.237 455.350 Td (tools ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 372.527 455.350 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 393.933 455.350 Td (guided ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.013 455.350 Td (by ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.687 455.350 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 441.710 Td (ExtremePackaging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.370 441.710 Td (philosophy.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 422.070 Td (? ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 422.070 Td (Explore ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 103.522 422.070 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.870 422.070 Td (project: ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 160.997 422.070 Td (swift-openapi-extremepackaging-example) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 160.997 420.570 m 364.563 420.570 l S
+0.350 0.350 0.350 RG
+0.750 w 54 402.430 m 541.280 402.430 l S
+0 0 0 rg
+BT /F3 11 Tf 54 384.430 Td (\223Architecture ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 119.406 384.430 Td (should ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 154.870 384.430 Td (scale ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 183.602 384.430 Td (not ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 201.950 384.430 Td (by ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 216.624 384.430 Td (adding ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 252.704 384.430 Td (layers, ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 288.157 384.430 Td (but ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 306.505 384.430 Td (by ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 321.179 384.430 Td (removing ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 369.469 384.430 Td (assumptions.\224) Tj ET
+
+endstream
+endobj
+20 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [160.997 419.320 364.563 431.970]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/swift-openapi-extremepackaging-example) >> >>
+endobj
+21 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >>
+/Contents 19 0 R
+/Annots [20 0 R] >>
+endobj
+22 0 obj
+<< /Type /Outlines
+/Count 18
+/First 23 0 R
+/Last 40 0 R >>
+endobj
+23 0 obj
+<< /Title (? The Foundation \227 ExtremePackaging)
+/Parent 22 0 R
+/Dest [9 0 R /XYZ 54 643.430 null]
+/Next 24 0 R >>
+endobj
+24 0 obj
+<< /Title (? Evolving Toward OpenAPI)
+/Parent 22 0 R
+/Dest [9 0 R /XYZ 54 427.993 null]
+/Prev 23 0 R
+/Next 37 0 R
+/First 25 0 R
+/Last 36 0 R
+/Count 12 >>
+endobj
+25 0 obj
+<< /Title (1. OpenAPI Schema & Code Generation)
+/Parent 24 0 R
+/Dest [9 0 R /XYZ 54 347.825 null]
+/Next 26 0 R >>
+endobj
+26 0 obj
+<< /Title (2. API Server Implementation)
+/Parent 24 0 R
+/Dest [13 0 R /XYZ 54 793.610 null]
+/Prev 25 0 R
+/Next 27 0 R >>
+endobj
+27 0 obj
+<< /Title (3. Enhanced API Client Architecture)
+/Parent 24 0 R
+/Dest [13 0 R /XYZ 54 591.825 null]
+/Prev 26 0 R
+/Next 29 0 R
+/First 28 0 R
+/Last 28 0 R
+/Count 1 >>
+endobj
+28 0 obj
+<< /Title (Highlights)
+/Parent 27 0 R
+/Dest [13 0 R /XYZ 54 522.190 null] >>
+endobj
+29 0 obj
+<< /Title (4. Middleware Integration)
+/Parent 24 0 R
+/Dest [13 0 R /XYZ 54 263.875 null]
+/Prev 27 0 R
+/Next 30 0 R >>
+endobj
+30 0 obj
+<< /Title (5. YAMLMerger \227 The Key to Structured API Specs)
+/Parent 24 0 R
+/Dest [16 0 R /XYZ 54 793.610 null]
+/Prev 29 0 R
+/Next 36 0 R
+/First 31 0 R
+/Last 35 0 R
+/Count 5 >>
+endobj
+31 0 obj
+<< /Title (? Why It Must Be Copied into the Project)
+/Parent 30 0 R
+/Dest [16 0 R /XYZ 54 696.695 null]
+/Next 32 0 R >>
+endobj
+32 0 obj
+<< /Title (? What It Does)
+/Parent 30 0 R
+/Dest [16 0 R /XYZ 54 499.970 null]
+/Prev 31 0 R
+/Next 33 0 R >>
+endobj
+33 0 obj
+<< /Title (? Example Schema Layout)
+/Parent 30 0 R
+/Dest [16 0 R /XYZ 54 387.105 null]
+/Prev 32 0 R
+/Next 34 0 R >>
+endobj
+34 0 obj
+<< /Title (?? Typical Workflow)
+/Parent 30 0 R
+/Dest [16 0 R /XYZ 54 177.210 null]
+/Prev 33 0 R
+/Next 35 0 R >>
+endobj
+35 0 obj
+<< /Title (? Pro Tip)
+/Parent 30 0 R
+/Dest [18 0 R /XYZ 54 792.730 null]
+/Prev 34 0 R >>
+endobj
+36 0 obj
+<< /Title (6. Test Coverage Expansion)
+/Parent 24 0 R
+/Dest [18 0 R /XYZ 54 677.925 null]
+/Prev 30 0 R >>
+endobj
+37 0 obj
+<< /Title (? Architecture Snapshot)
+/Parent 22 0 R
+/Dest [18 0 R /XYZ 54 463.380 null]
+/Prev 24 0 R
+/Next 38 0 R >>
+endobj
+38 0 obj
+<< /Title (? Key Improvements Over ExtremePackaging)
+/Parent 22 0 R
+/Dest [18 0 R /XYZ 54 245.193 null]
+/Prev 37 0 R
+/Next 39 0 R >>
+endobj
+39 0 obj
+<< /Title (? Lessons Learned)
+/Parent 22 0 R
+/Dest [21 0 R /XYZ 54 680.815 null]
+/Prev 38 0 R
+/Next 40 0 R >>
+endobj
+40 0 obj
+<< /Title (? Closing Thoughts)
+/Parent 22 0 R
+/Dest [21 0 R /XYZ 54 538.928 null]
+/Prev 39 0 R >>
+endobj
+xref
+0 41
+0000000000 65535 f 
+0000000019 00000 n 
+0000001168 00000 n 
+0000001253 00000 n 
+0000001350 00000 n 
+0000001452 00000 n 
+0000001557 00000 n 
+0000001652 00000 n 
+0000017997 00000 n 
+0000018172 00000 n 
+0000018352 00000 n 
+0000031920 00000 n 
+0000032099 00000 n 
+0000032279 00000 n 
+0000032459 00000 n 
+0000050099 00000 n 
+0000050269 00000 n 
+0000050442 00000 n 
+0000064547 00000 n 
+0000064703 00000 n 
+0000074717 00000 n 
+0000074915 00000 n 
+0000075088 00000 n 
+0000075163 00000 n 
+0000075296 00000 n 
+0000075466 00000 n 
+0000075596 00000 n 
+0000075733 00000 n 
+0000075913 00000 n 
+0000076006 00000 n 
+0000076140 00000 n 
+0000076335 00000 n 
+0000076471 00000 n 
+0000076594 00000 n 
+0000076726 00000 n 
+0000076854 00000 n 
+0000076959 00000 n 
+0000077081 00000 n 
+0000077213 00000 n 
+0000077362 00000 n 
+0000077488 00000 n 
+trailer
+<< /Size 41 /Root 1 0 R >>
+startxref
+77602
+%%EOF

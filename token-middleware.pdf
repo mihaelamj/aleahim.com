@@ -1,0 +1,807 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /Outlines 11 0 R /PageMode /UseOutlines /Names << /Dests << /Names [(1-actor-isolated-token-storage) [7 0 R /XYZ 54 456.385 null] (2-clean-composable-api) [7 0 R /XYZ 54 176.140 null] (the-problem) [7 0 R /XYZ 54 714.350 null] (the-solution-bearertokenauthenticationmiddleware) [7 0 R /XYZ 54 536.553 null] (wrapping-up) [10 0 R /XYZ 54 624.140 null]] >> >> >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 10 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 14667 >>
+stream
+0 0 0 rg
+BT /F1 11 Tf 54 787.890 Td (Authentication ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.765 787.890 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.765 787.890 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.171 787.890 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.403 787.890 Td (those ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.367 787.890 Td (things ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.773 787.890 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.179 787.890 Td (every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.132 787.890 Td (API ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.922 787.890 Td (client ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.654 787.890 Td (needs, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.734 787.890 Td (yet ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 388.466 787.890 Td (implementing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.930 787.890 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 465.488 787.890 Td (cleanly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.778 787.890 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 774.250 Td (safely ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.790 774.250 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.580 774.250 Td (be ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.870 774.250 Td (surprisingly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.544 774.250 Td (tricky\227especially ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 268.555 774.250 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.171 774.250 Td (Swift's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.008 774.250 Td (modern ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 355.356 774.250 Td (concurrency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.320 774.250 Td (world. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 450.715 774.250 Td (Today, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 487.400 774.250 Td (I'm ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 760.610 Td (sharing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.127 760.610 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.301 760.610 Td (lightweight ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.323 760.610 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.613 760.610 Td (solution ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 257.577 760.610 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.983 760.610 Td (handles ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.563 760.610 Td (Bearer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.632 760.610 Td (token ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 386.596 760.610 Td (authentication ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 458.140 760.610 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 746.970 Td (OpenAPI-generated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.892 746.970 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.787 746.970 Td (clients ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.019 746.970 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.635 746.970 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.809 746.970 Td (thread-safe, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.563 746.970 Td (composable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 360.922 746.970 Td (way.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 707.530 Td (The ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 89.055 707.530 Td (Problem) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 677.693 Td (When ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.790 677.693 Td (working ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.743 677.693 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.359 677.693 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.055 677.693 Td (Runtime ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.066 677.693 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.682 677.693 Td (Swift, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.635 677.693 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.425 677.693 Td (often ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.947 677.693 Td (need ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.469 677.693 Td (to:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 658.053 Td (Inject ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.348 658.053 Td (an ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 122.638 658.053 Td (Authorization: ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 216.688 658.053 Td (Bearer ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 260.578 658.053 Td (<token>) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.468 658.053 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.526 658.053 Td (header ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 344.827 658.053 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.617 658.053 Td (API ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 386.407 658.053 Td (requests) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 643.403 Td (Update ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.522 643.403 Td (tokens ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.986 643.403 Td (dynamically ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.497 643.403 Td (\(after ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.229 643.403 Td (login, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.577 643.403 Td (token ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 300.541 643.403 Td (refresh, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.889 643.403 Td (etc.\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 628.753 Td (Skip ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.453 628.753 Td (authentication ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.997 628.753 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.892 628.753 Td (certain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.961 628.753 Td (endpoints ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.715 628.753 Td (\(like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.936 628.753 Td (login ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.226 628.753 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 339.063 628.753 Td (public ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.853 628.753 Td (routes\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 614.103 Td (Ensure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.906 614.103 Td (thread-safety ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.160 614.103 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.776 614.103 Td (concurrent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.798 614.103 Td (environments) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 596.453 Td (While ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.558 596.453 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.732 596.453 Td (sounds ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.254 596.453 Td (straightforward, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.113 596.453 Td (getting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.193 596.453 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.751 596.453 Td (right ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.204 596.453 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.820 596.453 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.715 596.453 Td (6's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 357.831 596.453 Td (strict ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.110 596.453 Td (concurrency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 447.074 596.453 Td (checking ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 493.538 596.453 Td (requires ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 582.813 Td (careful ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.069 582.813 Td (design. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.591 582.813 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.218 582.813 Td (need ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.740 582.813 Td (proper ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.588 582.813 Td (actor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.099 582.813 Td (isolation, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.563 582.813 Td (Sendable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.096 582.813 Td (conformance, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 406.792 582.813 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.198 582.813 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 437.372 582.813 Td (clean ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.720 582.813 Td (API ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 487.510 582.813 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 569.173 Td (doesn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 92.522 569.173 Td (fight ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.370 569.173 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.718 569.173 Td (type ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.566 569.173 Td (system.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 529.733 Td (The ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 89.055 529.733 Td (Solution: ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 167.672 529.733 Td (BearerTokenAuthenticationMiddleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 499.895 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 499.895 Td (built ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 83.348 499.895 Td (BearerTokenAuthenticationMiddleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.798 499.895 Td (\227a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.972 499.895 Td (minimal, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.972 499.895 Td (zero-dependency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 455.016 499.895 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 499.654 499.895 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 486.255 Td (solves ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.232 486.255 Td (these ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.196 486.255 Td (problems ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.486 486.255 Td (elegantly. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.624 486.255 Td (Here's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.461 486.255 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.751 486.255 Td (makes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.204 486.255 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.762 486.255 Td (special:) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 450.665 Td (1. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 69.902 450.665 Td (Actor-Isolated ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 170.016 450.665 Td (Token ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 216.105 450.665 Td (Storage) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 425.640 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 425.640 Td (heart ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.138 425.640 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.370 425.640 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.718 425.640 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.008 425.640 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.008 425.640 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.182 425.640 Td (private ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 250.251 425.640 Td (TokenStorage) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 325.491 425.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 328.549 425.640 Td (actor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.060 425.640 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 377.466 425.640 Td (manages ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 425.767 425.640 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.115 425.640 Td (authentication ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 412 Td (token:) Tj ET
+0.950 0.950 0.950 rg
+54 227.900 487.280 164.460 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 376.460 Td (private ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 376.460 Td (actor ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 376.460 Td (TokenStorage ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 376.460 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 362.600 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 362.600 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 362.600 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 362.600 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 362.600 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 362.600 Td (token: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 362.600 Td (String?) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 334.880 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 334.880 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 334.880 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 334.880 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 334.880 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 334.880 Td (getToken\(\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 334.880 Td (-> ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 334.880 Td (String? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 334.880 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 321.020 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 321.020 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 321.020 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 321.020 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 321.020 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 321.020 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 321.020 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 321.020 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 321.020 Td (token) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 307.160 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 307.160 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 307.160 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 307.160 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 279.440 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 279.440 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 279.440 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 279.440 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 279.440 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 279.440 Td (setToken\(_ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 279.440 Td (newToken: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 279.440 Td (String?\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 279.440 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 265.580 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 265.580 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 265.580 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 265.580 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 265.580 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 265.580 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 265.580 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 265.580 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 265.580 Td (token ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 265.580 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 265.580 Td (newToken) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 251.720 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 251.720 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 251.720 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 251.720 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 237.860 Td (}) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 219.650 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 219.650 Td (ensures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.022 219.650 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.428 219.650 Td (token ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.392 219.650 Td (reads ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.961 219.650 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.367 219.650 Td (writes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.146 219.650 Td (are ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 274.099 219.650 Td (never ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 306.505 219.650 Td (concurrent) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.958 219.650 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.074 219.650 Td (eliminating ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 425.701 219.650 Td (race ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 450.154 219.650 Td (conditions ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 206.010 Td (completely.) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 170.420 Td (2. ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 69.902 170.420 Td (Clean, ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 116.791 170.420 Td (Composable ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 206.581 170.420 Td (API) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 145.395 Td (Setting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.301 145.395 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.591 145.395 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.939 145.395 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.229 145.395 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.229 145.395 Td (straightforward:) Tj ET
+0.950 0.950 0.950 rg
+54 58.315 487.280 67.440 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 109.855 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 109.855 Td (OpenAPIRuntime) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 95.995 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 95.995 Td (BearerTokenAuthMiddleware) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 68.275 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 68.275 Td (authMiddleware ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 68.275 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 68.275 Td (BearerTokenAuthenticationMiddleware\() Tj ET
+
+endstream
+endobj
+7 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 5 0 R >> >>
+/Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 5104 >>
+stream
+0.950 0.950 0.950 rg
+54 665.010 487.280 122.880 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 771.990 Td (initialToken: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 771.990 Td ("my-secret-token") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td (\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 730.410 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 730.410 Td (client ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 730.410 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 730.410 Td (Client\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 716.550 Td (serverURL: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 716.550 Td (URL\(string: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 716.550 Td ("https://api.example.com"\)!,) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 702.690 Td (transport: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 702.690 Td (AsyncHTTPClientTransport\(\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 688.830 Td (middlewares: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 688.830 Td ([authMiddleware]) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 674.970 Td (\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 656.760 Td (Every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.174 656.760 Td (request ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.917 656.760 Td (now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.149 656.760 Td (automatically ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.392 656.760 Td (includes ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 258.798 656.760 Td (Authorization: ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 352.848 656.760 Td (Bearer ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 396.738 656.760 Td (my-secret-token) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.788 656.760 Td (.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 617.320 Td (Wrapping ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 137.357 617.320 Td (Up) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 587.483 Td (Building ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.185 587.483 Td (authentication ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.729 587.483 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.019 587.483 Td (might ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.972 587.483 Td (seem ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.925 587.483 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.483 587.483 Td (boilerplate, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.342 587.483 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.690 587.483 Td (doing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.654 587.483 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.212 587.483 Td (right\227especially ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 503.955 587.483 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 573.843 Td (modern ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.348 573.843 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.243 573.843 Td (concurrency\227requires ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.939 573.843 Td (thoughtful ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.309 573.843 Td (design. ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 560.203 Td (BearerTokenAuthenticationMiddleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.450 560.203 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.508 560.203 Td (provides:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 540.563 Td (Thread-safe ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.359 540.563 Td (token ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.323 540.563 Td (management ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 237.577 540.563 Td (via ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.693 540.563 Td (actors) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 525.913 Td (Selective ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 125.685 525.913 Td (authentication ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.229 525.913 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.845 525.913 Td (operation-level ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.041 525.913 Td (control) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 511.263 Td (Dynamic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.837 511.263 Td (token ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.801 511.263 Td (updates) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 496.613 Td (Zero ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 103.674 496.613 Td (dependencies) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 481.963 Td (Clean ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.790 481.963 Td (composition ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.533 481.963 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.149 481.963 Td (other ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.276 481.963 Td (middlewares) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 464.313 Td (Repository) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.453 464.313 Td (: ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 117.569 464.313 Td (github.com/mihaelamj/BearerTokenAuthMiddleware) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 117.569 462.813 m 370.041 462.813 l S
+
+endstream
+endobj
+9 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [117.569 461.563 370.041 474.213]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/BearerTokenAuthMiddleware) >> >>
+endobj
+10 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 5 0 R >> >>
+/Contents 8 0 R
+/Annots [9 0 R] >>
+endobj
+11 0 obj
+<< /Type /Outlines
+/Count 5
+/First 12 0 R
+/Last 16 0 R >>
+endobj
+12 0 obj
+<< /Title (The Problem)
+/Parent 11 0 R
+/Dest [7 0 R /XYZ 54 714.350 null]
+/Next 13 0 R >>
+endobj
+13 0 obj
+<< /Title (The Solution: BearerTokenAuthenticationMiddleware)
+/Parent 11 0 R
+/Dest [7 0 R /XYZ 54 536.553 null]
+/Prev 12 0 R
+/Next 16 0 R
+/First 14 0 R
+/Last 15 0 R
+/Count 2 >>
+endobj
+14 0 obj
+<< /Title (1. Actor-Isolated Token Storage)
+/Parent 13 0 R
+/Dest [7 0 R /XYZ 54 456.385 null]
+/Next 15 0 R >>
+endobj
+15 0 obj
+<< /Title (2. Clean, Composable API)
+/Parent 13 0 R
+/Dest [7 0 R /XYZ 54 176.140 null]
+/Prev 14 0 R >>
+endobj
+16 0 obj
+<< /Title (Wrapping Up)
+/Parent 11 0 R
+/Dest [10 0 R /XYZ 54 624.140 null]
+/Prev 13 0 R >>
+endobj
+xref
+0 17
+0000000000 65535 f 
+0000000019 00000 n 
+0000000426 00000 n 
+0000000490 00000 n 
+0000000587 00000 n 
+0000000689 00000 n 
+0000000784 00000 n 
+0000015504 00000 n 
+0000015658 00000 n 
+0000020814 00000 n 
+0000020998 00000 n 
+0000021169 00000 n 
+0000021243 00000 n 
+0000021349 00000 n 
+0000021542 00000 n 
+0000021668 00000 n 
+0000021787 00000 n 
+trailer
+<< /Size 17 /Root 1 0 R >>
+startxref
+21894
+%%EOF

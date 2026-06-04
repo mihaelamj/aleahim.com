@@ -28,6 +28,7 @@ rssPath: rss.xml
 rssTitle: Aleahim
 rssDescription: Technical articles on Swift, OpenAPI, and iOS development by Mihaela Mihaljevic.
 shareLinks: true
+articlePDF: true
 social.github: https://github.com/mihaelamj
 social.linkedin: https://www.linkedin.com/in/mihaelamj
 analytics.head: <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>

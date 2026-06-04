@@ -1,0 +1,6091 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /Outlines 19 0 R /PageMode /UseOutlines /Names << /Dests << /Names [(a-sql-gotcha-that-cost-us-3-seconds-per-query) [12 0 R /XYZ 54 426.245 null] (architecture-the-four-package-cli-lift) [16 0 R /XYZ 54 287.665 null] (concurrent-search-lock-contention) [14 0 R /XYZ 54 793.610 null] (crawler-hardening) [16 0 R /XYZ 54 670.873 null] (cupertino-v1-0-0-first-light) [8 0 R /XYZ 54 796.690 null] (distribution-one-bundle-not-two) [14 0 R /XYZ 54 615.125 null] (inside-apple-docs-bm25f-ast-symbols-and-a-ladder-of-post-rank-heuristics) [10 0 R /XYZ 54 508.140 null] (mcp-protocol-upgrade-2025-11-25) [16 0 R /XYZ 54 794.710 null] (reciprocal-rank-fusion-that-actually-understands-the-query) [8 0 R /XYZ 54 147.993 null] (the-headline-search-now-returns-the-right-answer) [8 0 R /XYZ 54 550.370 null] (the-packages-corpus-gets-the-same-treatment) [12 0 R /XYZ 54 717.100 null] (the-schema-bump-breaking) [14 0 R /XYZ 54 342.888 null] (try-it) [18 0 R /XYZ 54 584.513 null] (what-first-light-means) [18 0 R /XYZ 54 741.630 null] (what-s-next-v1-0-1) [18 0 R /XYZ 54 392.845 null]] >> >> >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R] /Count 6 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+7 0 obj
+<< /Length 22896 >>
+stream
+0 0 0 rg
+BT /F2 22 Tf 54 787.890 Td (Cupertino ) Tj ET
+0 0 0 rg
+BT /F2 22 Tf 164 787.890 Td (v1.0.0 ) Tj ET
+0 0 0 rg
+BT /F2 22 Tf 231.276 787.890 Td ("First ) Tj ET
+0 0 0 rg
+BT /F2 22 Tf 295.494 787.890 Td (Light") Tj ET
+0 0 0 rg
+BT /F3 11 Tf 54 749.390 Td (The ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 76.011 749.390 Td (first ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 96.790 749.390 Td (release ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 135.917 749.390 Td (I'd ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 150.591 749.390 Td (actually ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 190.939 749.390 Td (call ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 210.497 749.390 Td (stable. ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 245.961 749.390 Td (Apple's ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 285.088 749.390 Td (documentation, ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 363.353 749.390 Td (search ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 399.422 749.390 Td (that ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 420.828 749.390 Td (doesn't ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 459.350 749.390 Td (suck, ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 488.082 749.390 Td (and ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 509.488 749.390 Td (an ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 54 735.750 Td (MCP ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 81.500 735.750 Td (server ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 115.116 735.750 Td (that ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 136.522 735.750 Td (an ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 151.812 735.750 Td (AI ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 165.265 735.750 Td (agent ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 195.845 735.750 Td (can ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 216.635 735.750 Td (read ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 241.704 735.750 Td (from ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 266.762 735.750 Td (before ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 301.005 735.750 Td (it ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 309.563 735.750 Td (answers.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 716.110 m 541.280 716.110 l S
+0 0 0 rg
+BT /F1 11 Tf 54 698.110 Td (If ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 698.110 Td (you've ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.022 698.110 Td (ever ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.475 698.110 Td (asked ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.881 698.110 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.171 698.110 Td (LLM ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.624 698.110 Td ("what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 224.819 698.110 Td (does ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.725 698.110 Td (Swift's ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 286.562 698.110 Td (Task) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 311.642 698.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.700 698.110 Td (do?" ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.011 698.110 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.417 698.110 Td (got ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 379.765 698.110 Td (back ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 406.055 698.110 Td (something ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 459.856 698.110 Td (about ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.436 698.110 Td (Mach ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 684.470 Td (kernel ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.011 684.470 Td (context ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 125.533 684.470 Td (switches, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.823 684.470 Td (you've ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.671 684.470 Td (met ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.066 684.470 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.414 684.470 Td (problem ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.204 684.470 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 339.505 684.470 Td (solves. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.795 684.470 Td (Models ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 415.306 684.470 Td (hallucinate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.944 684.470 Td (Apple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.129 684.470 Td (APIs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 670.830 Td (because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.638 670.830 Td (their ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.091 670.830 Td (training ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.218 670.830 Td (data ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.682 670.830 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.682 670.830 Td (stale, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.030 670.830 Td (partial, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.099 670.830 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 284.505 670.830 Td (weighted ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 331.585 670.830 Td (toward ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.654 670.830 Td (whatever ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 415.339 670.830 Td (prose ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 445.908 670.830 Td (happened ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.894 670.830 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 657.190 Td (mention ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.185 657.190 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.359 657.190 Td (symbol ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.254 657.190 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.312 657.190 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.660 657.190 Td (toward ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.729 657.190 Td (Apple's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.856 657.190 Td (actual ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 283.262 657.190 Td (documentation. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.527 657.190 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 383.538 657.190 Td (fix ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 397.596 657.190 Td (isn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.212 657.190 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.386 657.190 Td (bigger ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 463.013 657.190 Td (model. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 499.082 657.190 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 521.093 657.190 Td (fix ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 643.550 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 65 643.550 Td (making ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 103.511 643.550 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.859 643.550 Td (documentation ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 197.066 643.550 Td (available ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 246.599 643.550 Td (to ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 260.041 643.550 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 279.599 643.550 Td (model) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 311.994 643.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.052 643.550 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.284 643.550 Td (inference ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.585 643.550 Td (time, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.480 643.550 Td (ranked ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.165 643.550 Td (correctly, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.839 643.550 Td (served ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 629.910 Td (over ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78.453 629.910 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.627 629.910 Td (protocol ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.812 629.910 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.160 629.910 Td (model ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.171 629.910 Td (already ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.298 629.910 Td (speaks.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 610.270 Td (That's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.011 610.270 Td (cupertino. ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 138.370 610.270 Td (v1.0.0 ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 172.008 610.270 Td ("First ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 204.117 610.270 Td (Light") Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.215 610.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.273 610.270 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.273 610.270 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 268.621 610.270 Td (first ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.400 610.270 Td (release ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 328.527 610.270 Td (I'm ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.248 610.270 Td (willing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 379.248 610.270 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 391.480 610.270 Td (call ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.038 610.270 Td (stable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.444 610.270 Td (across ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 478.897 610.270 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.245 610.270 Td (whole ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 596.630 Td (pipeline: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.022 596.630 Td (crawl, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.801 596.630 Td (index, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.207 596.630 Td (rank, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.718 596.630 Td (serve, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.729 596.630 Td (distribute. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.472 596.630 Td (Before ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.936 596.630 Td (today ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 338.900 596.630 Td (every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.853 596.630 Td (previous ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 413.480 596.630 Td (release ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 452.607 596.630 Td (had ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 474.013 596.630 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.245 596.630 Td (least ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 512.535 596.630 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 582.990 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 66.232 582.990 Td (those ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.196 582.990 Td (broken. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.939 582.990 Td (Today ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.566 582.990 Td (none ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.088 582.990 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.320 582.990 Td (them ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.831 582.990 Td (are.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 543.550 Td (The ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 89.055 543.550 Td (headline: ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 168.644 543.550 Td (search ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 228.353 543.550 Td (now ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 267.193 543.550 Td (returns ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 330.670 543.550 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 360.985 543.550 Td (right ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 403.610 543.550 Td (answer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 513.713 Td (Run ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.232 513.713 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 97.406 513.713 Td (against ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.928 513.713 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.218 513.713 Td (installed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.624 513.713 Td (v1.0:) Tj ET
+0.950 0.950 0.950 rg
+54 260.313 487.280 233.760 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 478.173 Td ($ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 478.173 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 478.173 Td (search ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 478.173 Td (Task ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 478.173 Td (--limit ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 478.173 Td (3) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 464.313 Td (Searched: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 464.313 Td (packages, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 464.313 Td (apple-docs, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 464.313 Td (swift-evolution) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 436.593 Td ([1] ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 436.593 Td (Task ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 436.593 Td (| ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 436.593 Td (Apple ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 436.593 Td (Developer ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 436.593 Td (Documentation ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 436.593 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 436.593 Td (\225 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 318.885 436.593 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 324.825 436.593 Td (source: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 372.345 436.593 Td (apple-docs ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 437.685 436.593 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 443.625 436.593 Td (\225 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 453.030 436.593 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 458.970 436.593 Td (score: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 422.733 Td (0.0492) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 408.873 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 408.873 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 408.873 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 408.873 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 408.873 Td (apple-docs://swift/documentation_swift_task) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 395.013 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 395.013 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 395.013 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 395.013 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 395.013 Td (A ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 395.013 Td (unit ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 395.013 Td (of ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 395.013 Td (asynchronous ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 395.013 Td (work.) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 367.293 Td ([2] ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 367.293 Td (task ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 367.293 Td (| ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 367.293 Td (Apple ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 367.293 Td (Developer ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 367.293 Td (Documentation ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 367.293 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 367.293 Td (\225 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 318.885 367.293 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 324.825 367.293 Td (source: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 372.345 367.293 Td (apple-docs ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 437.685 367.293 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 443.625 367.293 Td (\225 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 453.030 367.293 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 458.970 367.293 Td (score: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 353.433 Td (0.0484) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 339.573 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 339.573 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 339.573 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 339.573 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 325.713 Td (apple-docs://kernel/documentation_kernel_kernel_resource_sizes_data_t_1586795-ta) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 311.853 Td (sk) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 284.133 Td ([3] ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 284.133 Td (task ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 284.133 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 284.133 Td (\225 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 128.805 284.133 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 134.745 284.133 Td (source: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 182.265 284.133 Td (apple-docs ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 247.605 284.133 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 253.545 284.133 Td (\225 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 262.950 284.133 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 268.890 284.133 Td (score: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 310.470 284.133 Td (0.0476) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 270.273 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 270.273 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 270.273 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 270.273 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 270.273 Td (apple-docs://foundation/documentation_foundation_urlprotocol_task) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 252.063 Td (That's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.011 252.063 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.359 252.063 Td (canonical ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.881 252.063 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 181.776 252.063 Td (Task) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.856 252.063 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.914 252.063 Td (struct ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.867 252.063 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.099 252.063 Td (#1, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.447 252.063 Td (where ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.458 252.063 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.016 252.063 Td (belongs. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.654 252.063 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 378.665 252.063 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 408.618 252.063 Td (binary ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 441.629 252.063 Td (against ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 480.151 252.063 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 498.499 252.063 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 238.423 Td (database ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.312 238.423 Td (before ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.555 238.423 Td (today's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 174.461 238.423 Td (changes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.099 238.423 Td (returned ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.121 238.423 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.295 238.423 Td (Mach ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.248 238.423 Td (kernel ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.259 238.423 Td (C ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.259 238.423 Td (function ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.839 238.423 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.513 238.423 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.861 238.423 Td (top ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.209 238.423 Td (result. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 472.220 238.423 Td (Cupertino's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 224.783 Td (pre-1.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.906 224.783 Td (ranker ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.138 224.783 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.196 224.783 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.602 224.783 Td (frankly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.055 224.783 Td (every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.008 224.783 Td (documentation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.215 224.783 Td (search ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 338.284 224.783 Td (I've ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.458 224.783 Td (seen, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 388.422 224.783 Td (including ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.886 224.783 Td (Apple's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 474.013 224.783 Td (own ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.245 224.783 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 511.303 224.783 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 211.143 Td (wrong ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.011 211.143 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.301 211.143 Td (common ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.533 211.143 Td (type ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.381 211.143 Td (names. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.508 211.143 Td (Type ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.019 211.143 Td ("Task", ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.782 211.143 Td (get ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 294.130 211.143 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.304 211.143 Td (kernel ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.315 211.143 Td (essay. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.163 211.143 Td (Type ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.674 211.143 Td ("View", ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 436.437 211.143 Td (get ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 454.785 211.143 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 197.503 Td (DeviceManagement ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.870 197.503 Td (payload ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.450 197.503 Td (schema. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.077 197.503 Td (Type ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 268.588 197.503 Td ("Result", ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.688 197.503 Td (get ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.036 197.503 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.210 197.503 Td (Vision ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.221 197.503 Td (associated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.859 197.503 Td (type.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 177.863 Td (Multiple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.953 177.863 Td (compounding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.044 177.863 Td (bugs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.950 177.863 Td (caused ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 229.472 177.863 Td (this. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.704 177.863 Td (Fixing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.099 177.863 Td (them ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.610 177.863 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.226 177.863 Td (most ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.121 177.863 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.353 177.863 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.643 177.863 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.817 177.863 Td (release ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 459.944 177.863 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.944 177.863 Td (about.) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 142.273 Td (Reciprocal ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 131.091 142.273 Td (rank ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 165.268 142.273 Td (fusion ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 212.144 142.273 Td (that ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 242.331 142.273 Td (actually ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 299.560 142.273 Td (understands ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 389.349 142.273 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 414.775 142.273 Td (query) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 117.248 Td (Cupertino's ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 112.685 117.248 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 175.385 117.248 Td (search) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.005 117.248 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.063 117.248 Td (\(no ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 235.016 117.248 Td (--source) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.176 117.248 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.234 117.248 Td (flag\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.687 117.248 Td (fans ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.535 117.248 Td (out ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.883 117.248 Td (across ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.336 117.248 Td (every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.289 117.248 Td (available ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.753 117.248 Td (corpus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.822 117.248 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 103.608 Td (parallel ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 92.511 103.608 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.569 103.608 Td (apple-docs, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.486 103.608 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.834 103.608 Td (Apple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.019 103.608 Td (Archive, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.809 103.608 Td (HIG, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 284.483 103.608 Td (swift-evolution, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 360.284 103.608 Td (swift.org, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.353 103.608 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 425.701 103.608 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 452.596 103.608 Td (Book, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.781 103.608 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 89.968 Td (curated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.743 89.968 Td (packages ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.881 89.968 Td (corpus, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.008 89.968 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.356 89.968 Td (Apple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.541 89.968 Td (sample-code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.563 89.968 Td (corpus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.632 89.968 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.690 89.968 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.096 89.968 Td (fuses ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 399.444 89.968 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 417.792 89.968 Td (per-source ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 473.419 89.968 Td (rankings ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 518.046 89.968 Td (via ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 76.328 Td (reciprocal ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 109.638 76.328 Td (rank ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 135.928 76.328 Td (fusion) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.928 76.328 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.986 76.328 Td (\(Cormack/Clarke/B\374ttcher, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.624 76.328 Td (2009\). ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 338.867 76.328 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 360.878 76.328 Td (math ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 388.389 76.328 Td (is ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 399.389 76.328 Td (1 ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 411.929 76.328 Td (/ ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 424.469 76.328 Td (\(k ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 443.279 76.328 Td (+ ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 455.819 76.328 Td (rank\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 487.169 76.328 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.227 76.328 Td (per ) Tj ET
+
+endstream
+endobj
+8 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Length 35022 >>
+stream
+0 0 0 rg
+BT /F1 11 Tf 54 787.890 Td (source, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.127 787.890 Td (summed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.359 787.890 Td (across ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.812 787.890 Td (sources. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.439 787.890 Td (RRF ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.102 787.890 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.102 787.890 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.450 787.890 Td (right ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.903 787.890 Td (shape ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.925 787.890 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.820 787.890 Td (prose-vague ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.016 787.890 Td (queries ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 450.143 787.890 Td (where ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.154 787.890 Td (any ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 503.944 787.890 Td (source ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 774.250 Td (might ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.953 774.250 Td (hold ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.801 774.250 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.149 774.250 Td (answer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.660 774.250 Td (\("how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.460 774.250 Td (do ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.750 774.250 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.866 774.250 Td (cancel ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.714 774.250 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.004 774.250 Td (async ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.794 774.250 Td (operation"\). ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.337 774.250 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.511 774.250 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 378.511 774.250 Td (the ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 396.859 774.250 Td (wrong) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.812 774.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.870 774.250 Td (shape ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 462.892 774.250 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 478.787 774.250 Td (symbol ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 760.610 Td (queries ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.127 760.610 Td (where ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.138 760.610 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 144.486 760.610 Td (answer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.997 760.610 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.997 760.610 Td (unambiguously ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.030 760.610 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.646 760.610 Td (apple-docs.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 740.970 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 740.970 Td (pre-1.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.917 740.970 Td (default ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.997 740.970 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.613 740.970 Td (uniform ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.345 740.970 Td (RRF. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.066 740.970 Td (Every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.240 740.970 Td (source's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.251 740.970 Td (rank-1 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 350.483 740.970 Td (contributed ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 407.958 740.970 Td (1/61 ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 439.308 740.970 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 451.848 740.970 Td (0.0164) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 489.468 740.970 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 495.584 740.970 Td (Three ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 727.330 Td (sources ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.569 727.330 Td (tied ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.359 727.330 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.591 727.330 Td (0.0164 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.287 727.330 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.577 727.330 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.751 727.330 Td (query ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.320 727.330 Td (like ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 239.878 727.330 Td (Task) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.958 727.330 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.074 727.330 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.422 727.330 Td (alphabetic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.618 727.330 Td (tiebreak ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.803 727.330 Td (buried ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.430 727.330 Td (apple-docs, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 478.347 727.330 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 499.753 727.330 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 520.543 727.330 Td (got ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 713.690 Td ("Common ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.579 713.690 Td (Tasks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.974 713.690 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.590 713.690 Td (OS ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.543 713.690 Td (X" ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.843 713.690 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.901 713.690 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 226.249 713.690 Td (Apple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 257.434 713.690 Td (Archive ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.166 713.690 Td (instead ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.688 713.690 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 347.920 713.690 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.268 713.690 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 393.163 713.690 Td (Task) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.243 713.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 421.301 713.690 Td (struct.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 694.050 Td (v1.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.848 694.050 Td (splits ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.964 694.050 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.312 694.050 Td (routing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.997 694.050 Td (decision ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.403 694.050 Td (by ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.077 694.050 Td (query ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.646 694.050 Td (shape. ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 285.726 694.050 Td (Symbol-shaped ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 370.690 694.050 Td (queries) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.817 694.050 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 412.875 694.050 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.933 694.050 Td (single ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 458.723 694.050 Td (token, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.745 694.050 Td (ASCII ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 680.410 Td (identifier, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.685 680.410 Td (leading ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.207 680.410 Td (uppercase, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.682 680.410 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.030 680.410 Td (kind ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.262 680.410 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.494 680.410 Td (thing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.400 680.410 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.574 680.410 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.469 680.410 Td (developer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.828 680.410 Td (types ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.176 680.410 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.466 680.410 Td (muscle ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 448.361 680.410 Td (memory ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.140 680.410 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 505.198 680.410 Td (only ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 666.770 Td (fan ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 666.770 Td (out ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.696 666.770 Td (across ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 126.149 666.770 Td (apple-docs ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 195.119 666.770 Td (+ ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 207.659 666.770 Td (swift-evolution ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 307.979 666.770 Td (+ ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 320.519 666.770 Td (packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.679 666.770 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.795 666.770 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.806 666.770 Td (four ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.817 666.770 Td (prose-shaped ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.129 666.770 Td (sources ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 653.130 Td (don't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.906 653.130 Td (even ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.812 653.130 Td (participate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.613 653.130 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.229 653.130 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 191.577 653.130 Td (fusion. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.041 653.130 Td (Plus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.494 653.130 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.784 653.130 Td (authority ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.027 653.130 Td (weight ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.875 653.130 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.165 653.130 Td (RRF: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.886 653.130 Td (apple-docs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 447.745 653.130 Td (gets ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 471.593 653.130 Td (3.0) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.403 653.130 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 639.490 Td (swift-evolution ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.743 639.490 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.149 639.490 Td (packages ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 198.287 639.490 Td (1.5) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.097 639.490 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.213 639.490 Td (swift.org ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.224 639.490 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.630 639.490 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.978 639.490 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 333.873 639.490 Td (Book ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 362 639.490 Td (1.0) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 380.810 639.490 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 386.926 639.490 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 405.274 639.490 Td (Apple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 436.459 639.490 Td (Archive ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 476.191 639.490 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.597 639.490 Td (HIG ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 520.213 639.490 Td (0.5) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 625.850 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 625.850 Td (apple-docs's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.917 625.850 Td (rank-1 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.149 625.850 Td (fuses ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.497 625.850 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 200.729 625.850 Td (3.0/61 ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 244.619 625.850 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 257.159 625.850 Td (0.0492) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 294.779 625.850 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.837 625.850 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.243 625.850 Td (beats ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.207 625.850 Td (peer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.276 625.850 Td (rank-1's ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 416.450 625.850 Td (1.0/61 ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 460.340 625.850 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 472.880 625.850 Td (0.0164) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 510.500 625.850 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 612.210 Td (without ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.906 612.210 Td (alphabetic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.102 612.210 Td (tiebreaks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.787 612.210 Td (deciding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.809 612.210 Td (anything.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 592.570 Td (The ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 76.011 592.570 Td (Searched:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.441 592.570 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.499 592.570 Td (line ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.673 592.570 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.289 592.570 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.637 592.570 Td (output ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.275 592.570 Td (above ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.297 592.570 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.297 592.570 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.645 592.570 Td (routing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 318.330 592.570 Td (decision ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.736 592.570 Td (made ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.305 592.570 Td (visible. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.979 592.570 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 438.153 592.570 Td (listed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.885 592.570 Td (only ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 578.930 Td (packages, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 116.700 578.930 Td (apple-docs, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 191.940 578.930 Td (swift-evolution) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.990 578.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.048 578.930 Td (because ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 333.686 578.930 Td (Task) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.766 578.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.824 578.930 Td (looks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.556 578.930 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.114 578.930 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 419.288 578.930 Td (symbol. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 460.241 578.930 Td (Type ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 565.290 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 116.700 565.290 Td (search ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 160.590 565.290 Td ("swiftui ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 217.020 565.290 Td (state ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 254.640 565.290 Td (management") Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.610 565.290 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.668 565.290 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.074 565.290 Td (you'll ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.190 565.290 Td (see ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 396.980 565.290 Td (Searched: ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 459.680 565.290 Td (hig, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 551.650 Td (samples, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 110.430 551.650 Td (apple-docs, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 185.670 551.650 Td (swift-evolution, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 292.260 551.650 Td (packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.420 551.650 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.478 551.650 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 359.536 551.650 Td (five ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 379.710 551.650 Td (sources, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 424.337 551.650 Td (broader ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 465.301 551.650 Td (fan-out, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 538.010 Td (because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.638 538.010 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.986 538.010 Td (query ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.555 538.010 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.555 538.010 Td (prose.) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 502.420 Td (Inside ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 99.302 502.420 Td (apple-docs: ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 183.529 502.420 Td (BM25F, ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 238.356 502.420 Td (AST ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 270.931 502.420 Td (symbols, ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 336.897 502.420 Td (and ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 366.298 502.420 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 378.224 502.420 Td (ladder ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 425.114 502.420 Td (of ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 442.588 502.420 Td (post-rank ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 484.545 Td (heuristics) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 459.520 Td (Per-source ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.848 459.520 Td (ranking ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.975 459.520 Td (inside ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.765 459.520 Td (apple-docs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.624 459.520 Td (is ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 249.624 459.520 Td (field-weighted ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 326.635 459.520 Td (BM25 ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 359.030 459.520 Td (\(BM25F) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.751 459.520 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 445.880 Td (Robertson/Zaragoza/Taylor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.939 445.880 Td (2004\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.124 445.880 Td (over ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 246.577 445.880 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.867 445.880 Td (8-column ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 310.157 445.880 Td (FTS5 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.110 445.880 Td (index ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.458 445.880 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 383.516 445.880 Td (uri) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.326 445.880 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 408.442 445.880 Td (source) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 446.062 445.880 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 452.178 445.880 Td (framework) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 508.608 445.880 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 432.240 Td (language) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.160 432.240 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 110.276 432.240 Td (title) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.626 432.240 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 147.742 432.240 Td (content) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 191.632 432.240 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 197.748 432.240 Td (summary) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.638 432.240 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 247.754 432.240 Td (symbols) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.644 432.240 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.760 432.240 Td (Title ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.597 432.240 Td (gets ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.445 432.240 Td (weight ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 380.293 432.240 Td (10\327, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 405.065 432.240 Td (AST-derived ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.250 432.240 Td (symbols ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 512.645 432.240 Td (5\327, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 418.600 Td (summary ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.279 418.600 Td (3\327, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.935 418.600 Td (framework ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.330 418.600 Td (2\327, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.986 418.600 Td (body ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.892 418.600 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.298 418.600 Td (metadata ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.215 418.600 Td (1\327. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 309.871 418.600 Td (The ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 331.882 418.600 Td (symbols) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.772 418.600 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 378.830 418.600 Td (column ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 417.341 418.600 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.341 418.600 Td (new ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.573 418.600 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 463.189 418.600 Td (v1.0: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.095 418.600 Td (it's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 404.960 Td (populated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.370 404.960 Td (by ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.044 404.960 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.218 404.960 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.113 404.960 Td (AST ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.566 404.960 Td (extractor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 226.414 404.960 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.820 404.960 Td (runs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.273 404.960 Td (over ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.726 404.960 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.190 404.960 Td (code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.096 404.960 Td (blocks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.328 404.960 Td (AND ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 408.607 404.960 Td (declaration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 465.466 404.960 Td (lines ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.140 404.960 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 506.430 404.960 Td (every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 391.320 Td (page. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.580 391.320 Td (So ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.091 391.320 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.265 391.320 Td (query ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.834 391.320 Td (like ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 160.392 391.320 Td (Observable) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.092 391.320 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 226.150 391.320 Td (ranks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.103 391.320 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.451 391.320 Td (SwiftUI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.346 391.320 Td (macro ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.962 391.320 Td (page ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.484 391.320 Td (above ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 406.506 391.320 Td (prose ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 437.075 391.320 Td (mentions ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 484.760 391.320 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 496.992 391.320 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 377.680 Td (word ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.895 377.680 Td ("observable" ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.564 377.680 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.180 377.680 Td (unrelated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.097 377.680 Td (articles.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 358.040 Td (On ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 71.732 358.040 Td (top ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.080 358.040 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.312 358.040 Td (raw ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.091 358.040 Td (BM25F, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.660 358.040 Td (there's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.729 358.040 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.903 358.040 Td (ladder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.530 358.040 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.762 358.040 Td (post-rank ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.668 358.040 Td (heuristics ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.179 358.040 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.585 358.040 Td (handle ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.665 358.040 Td (pathological ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 473.419 358.040 Td (cases ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 505.209 358.040 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 344.400 Td (indexer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.127 344.400 Td (alone ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.091 344.400 Td (can't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.381 344.400 Td (fix:) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 324.760 Td (Title-suffix ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 136.674 324.760 Td (awareness.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.986 324.760 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 199.044 324.760 Td (Apple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.229 324.760 Td (writes ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 262.008 324.760 Td (<canonical ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 330.978 324.760 Td (type ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 362.328 324.760 Td (name> ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 399.948 324.760 Td (| ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 412.488 324.760 Td (Apple ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 450.108 324.760 Td (Developer ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 312.110 Td (Documentation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.510 312.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.568 312.110 Td (only ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.800 312.110 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.090 312.110 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.438 312.110 Td (parent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.681 312.110 Td (landing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.203 312.110 Td (page ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.725 312.110 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 331.957 312.110 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.131 312.110 Td (type. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.037 312.110 Td (Sub-symbols ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.664 312.110 Td (\(properties, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 299.460 Td (methods, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.301 299.460 Td (nested ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.381 299.460 Td (types\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.392 299.460 Td (get ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.740 299.460 Td (clean ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.088 299.460 Td (titles. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.820 299.460 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 293.831 299.460 Td (suffixed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.795 299.460 Td (page's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.259 299.460 Td (raw ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 391.038 299.460 Td (BM25 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 422.828 299.460 Td (is ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 433.828 299.460 Td (worse) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 463.165 299.460 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.223 299.460 Td (because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 510.861 299.460 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 286.810 Td (suffix ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.732 286.810 Td (dilutes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.580 286.810 Td (title ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.754 286.810 Td (term-frequency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.776 286.810 Td (over ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.229 286.810 Td (field ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.461 286.810 Td (length, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.541 286.810 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.215 286.810 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.389 286.810 Td (50\327 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.103 286.810 Td (boost ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.067 286.810 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.067 286.810 Td (applied ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 447.589 286.810 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 459.821 286.810 Td (suffixed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 274.160 Td (exact-title ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.127 274.160 Td (matches, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.812 274.160 Td (while ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.928 274.160 Td (clean-titled ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.171 274.160 Td (siblings ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.903 274.160 Td (keep ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.809 274.160 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.157 274.160 Td (existing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 385.505 274.160 Td (20\327. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.277 274.160 Td (Flips ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 261.510 Td (canonical-vs-sub-symbol ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.080 261.510 Td (order ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.812 261.510 Td (without ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 268.718 261.510 Td (touching ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.356 261.510 Td (BM25F.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 246.860 Td (Exact-title ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 133.627 246.860 Td (peer ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 159.917 246.860 Td (tiebreak.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.160 246.860 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 208.218 246.860 Td (Result) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 245.838 246.860 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.896 246.860 Td (matches ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 293.523 246.860 Td (three ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.650 246.860 Td (apple-docs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 378.509 246.860 Td (pages ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.531 246.860 Td (exactly: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.879 246.860 Td (Swift's ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 486.716 246.860 Td (Result) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 524.336 246.860 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 234.210 Td (enum, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.627 234.210 Td (Vision's ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 152.580 234.210 Td (VisionRequest.Result) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.980 234.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.038 234.210 Td (associated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.676 234.210 Td (type, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.582 234.210 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.988 234.210 Td (Installer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.557 234.210 Td (JS's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 450.394 234.210 Td (runtime ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 490.126 234.210 Td (Result) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 527.746 234.210 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 221.560 Td (All ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.279 221.560 Td (three ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.406 221.560 Td (get ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 139.754 221.560 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.102 221.560 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.055 221.560 Td (50\327, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.827 221.560 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.501 221.560 Td (BM25F ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.012 221.560 Td (decides ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.976 221.560 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.034 221.560 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.440 221.560 Td (BM25F ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 380.951 221.560 Td (has ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.741 221.560 Td (no ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 417.031 221.560 Td (opinion. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 458.611 221.560 Td (v1.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 482.459 221.560 Td (adds ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 509.365 221.560 Td (two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 208.910 Td (orthogonal ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.033 208.910 Td (signals: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.381 208.910 Td (URI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.381 208.910 Td (simplicity ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.044 208.910 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 246.707 208.910 Td (documentation_FRAMEWORK_QUERY) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.537 208.910 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 431.595 208.910 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.595 208.910 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 460.943 208.910 Td (framework's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 196.260 Td (top-level ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.627 196.260 Td (type ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.475 196.260 Td (page; ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 177.055 196.260 Td (anything ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 221.693 196.260 Td (deeper ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.994 196.260 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.994 196.260 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 279.168 196.260 Td (sub-symbol\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.121 196.260 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.527 196.260 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 372.701 196.260 Td (small ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.422 196.260 Td (framework-authority ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 501.665 196.260 Td (map ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 526.118 196.260 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 183.610 Td (swift) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.350 183.610 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.408 183.610 Td (0.5, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 133.814 183.610 Td (swiftui) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 177.704 183.610 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.762 183.610 Td (0.7, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 202.168 183.610 Td (foundation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.868 183.610 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.926 183.610 Td (0.7; ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 289.332 183.610 Td (installer_js) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.572 183.610 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.630 183.610 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 389.036 183.610 Td (webkitjs) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.196 183.610 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.254 183.610 Td (mildly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 473.417 183.610 Td (demoted\). ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 170.960 Td (Fires ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.500 170.960 Td (only ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.732 170.960 Td (inside ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.522 170.960 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.870 170.960 Td (exact-title ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.997 170.960 Td (branch ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 265.682 170.960 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 279.740 170.960 Td (does ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.646 170.960 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.994 170.960 Td (crowd ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 357.389 170.960 Td (out ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.737 170.960 Td (framework-specific ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.469 170.960 Td (symbol ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 158.310 Td (queries ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.127 158.310 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 120.790 158.310 Td (VisionRequest) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.300 158.310 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.358 158.310 Td (still ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 224.300 158.310 Td (resolves ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 268.311 158.310 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 280.543 158.310 Td (vision/VisionRequest) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 405.943 158.310 Td (\).) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 143.660 Td (Force-include ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 153.185 143.660 Td (canonical ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 206.986 143.660 Td (type ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 232.660 143.660 Td (pages ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 267.508 143.660 Td (past ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 293.182 143.660 Td (fetchLimit.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.798 143.660 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.856 143.660 Td (Some ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 383.646 143.660 Td (canonical ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.168 143.660 Td (pages ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.190 143.660 Td (get ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 484.538 143.660 Td (buried ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 518.165 143.660 Td (by ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 131.010 Td (raw ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.779 131.010 Td (BM25 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.569 131.010 Td (length-normalization ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.660 131.010 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 246.718 131.010 Td (Foundation ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 304.809 131.010 Td (URL) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.619 131.010 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.677 131.010 Td (lands ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.025 131.010 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.257 131.010 Td (raw ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 389.036 131.010 Td (BM25 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.826 131.010 Td (position ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 461.790 131.010 Td (1017, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 492.370 131.010 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 118.360 Td (Identifiable) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.240 118.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.298 118.360 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.530 118.360 Td (2577, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 199.110 118.360 Td (Foundation ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 257.201 118.360 Td (Data) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.281 118.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.339 118.360 Td (past ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 309.187 118.360 Td (3000 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.709 118.360 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 350.767 118.360 Td (well ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 372.767 118.360 Td (past ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 396.615 118.360 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.963 118.360 Td (1000-row ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 463.869 118.360 Td (over-fetch ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 515.833 118.360 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 105.710 Td (post-rank ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.906 105.710 Td (multipliers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.464 105.710 Td (operate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.823 105.710 Td (on. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.171 105.710 Td (v1.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.019 105.710 Td (hand-fetches ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 93.060 Td (apple-docs://FRAMEWORK/documentation_FRAMEWORK_QUERY) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.040 93.060 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.098 93.060 Td (directly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.993 93.060 Td (by ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 459.667 93.060 Td (URI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 481.667 93.060 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.562 93.060 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 80.410 Td (top-tier ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.290 80.410 Td (frameworks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.185 80.410 Td (\(swift, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.964 80.410 Td (swiftui, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.638 80.410 Td (foundation\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.729 80.410 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.135 80.410 Td (force-prepends ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.168 80.410 Td (them. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.737 80.410 Td (O\(1\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 455.795 80.410 Td (per ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 474.748 80.410 Td (probe ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 505.933 80.410 Td (via ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 67.760 Td (docs_metadata) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.510 67.760 Td ('s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.510 67.760 Td (primary ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.231 67.760 Td (key.) Tj ET
+
+endstream
+endobj
+10 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 9 0 R >>
+endobj
+11 0 obj
+<< /Length 27171 >>
+stream
+0 0 0 rg
+BT /F1 11 Tf 54 787.890 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 787.890 Td (combined ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.754 787.890 Td (effect: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.776 787.890 Td (against ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.298 787.890 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.646 787.890 Td (v1.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 240.494 787.890 Td (corpus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.563 787.890 Td (\(405,782 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.038 787.890 Td (documents ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 379.897 787.890 Td (across ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 415.350 787.890 Td (422 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 436.756 787.890 Td (frameworks\), ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 503.372 787.890 Td (34 ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 518.662 787.890 Td (of ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 774.250 Td (35 ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 69.290 774.250 Td (canonical ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 123.091 774.250 Td (type ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 148.765 774.250 Td (queries ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 190.950 774.250 Td (land ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 216.624 774.250 Td (their ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 243.519 774.250 Td (canonical ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 297.320 774.250 Td (apple-docs ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 358.447 774.250 Td (page ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 387.179 774.250 Td (at ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 400.016 774.250 Td (fused ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 432.411 774.250 Td (#1) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.643 774.250 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 450.759 774.250 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 472.770 774.250 Td (holdout, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 760.610 Td (Stack) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.350 760.610 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.466 760.610 Td (doesn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.988 760.610 Td (have ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.894 760.610 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.068 760.610 Td (canonical ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.590 760.610 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.485 760.610 Td (/ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.601 760.610 Td (SwiftUI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.496 760.610 Td (/ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.612 760.610 Td (Foundation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 350.703 760.610 Td (type ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.551 760.610 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 388.609 760.610 Td (TVML's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.946 760.610 Td (Stack ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 459.515 760.610 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.515 760.610 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 488.863 760.610 Td (right ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 746.970 Td (answer, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.569 746.970 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.975 746.970 Td (that's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.323 746.970 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.613 746.970 Td (comes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.066 746.970 Td (back.) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 711.380 Td (The ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 83.401 711.380 Td (packages ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 152.556 711.380 Td (corpus ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 204.207 711.380 Td (gets ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 237.583 711.380 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 263.009 711.380 Td (same ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 303.549 711.380 Td (treatment) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 686.355 Td (Same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.790 686.355 Td (BM25F-buries-the-canonical-repo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.671 686.355 Td (problem ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.461 686.355 Td (on ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 310.751 686.355 Td (package_files_fts) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 417.341 686.355 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.457 686.355 Td (Type ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 450.968 686.355 Td (vapor ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 672.715 Td (middleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.700 672.715 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 119.758 672.715 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.164 672.715 Td (pre-1.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.070 672.715 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 199.860 672.715 Td (got ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 218.208 672.715 Td (apple/swift-openapi-generator) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.038 672.715 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 403.096 672.715 Td (because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 447.734 672.715 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.140 672.715 Td (repo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 494.209 672.715 Td (has ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 514.999 672.715 Td (long ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 659.075 Td (prose ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.569 659.075 Td (mentioning ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.428 659.075 Td (Vapor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.834 659.075 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.240 659.075 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.530 659.075 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.146 659.075 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 284.494 659.075 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.447 659.075 Td (article; ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.900 659.075 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.248 659.075 Td (actual ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 400.654 659.075 Td (vapor/vapor) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.624 659.075 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 472.682 659.075 Td (repo's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 645.435 Td (README ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.116 645.435 Td (ranked ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.801 645.435 Td (second. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.381 645.435 Td (Type ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 209.892 645.435 Td (swift ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 247.512 645.435 Td (testing) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.402 645.435 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 294.460 645.435 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.866 645.435 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.656 645.435 Td (got ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 631.795 Td (pointfreeco/swift-dependencies) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.100 631.795 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 245.158 631.795 Td (because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.796 631.795 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 311.202 631.795 Td (package's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.782 631.795 Td (testing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 399.246 631.795 Td (article ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 431.641 631.795 Td (has ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 452.431 631.795 Td (more ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 480.547 631.795 Td (keyword ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 618.155 Td (density ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.906 618.155 Td (than ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.370 618.155 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.718 618.155 Td (actual ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 167.124 618.155 Td (swiftlang/swift-testing) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 311.334 618.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.392 618.155 Td (repo.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 598.515 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 598.515 Td (fix ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.069 598.515 Td (mirrors ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.337 598.515 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.685 598.515 Td (apple-docs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.544 598.515 Td (canonical ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.066 598.515 Td (force-include. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.146 598.515 Td (When ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.936 598.515 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.284 598.515 Td (query ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.853 598.515 Td (tokens ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 437.317 598.515 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.375 598.515 Td (joined ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.781 598.515 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 584.875 Td (dashes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 92.522 584.875 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.417 584.875 Td (multi-word ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.196 584.875 Td (queries, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.381 584.875 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.218 584.875 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.892 584.875 Td (single ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.682 584.875 Td (tokens ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.146 584.875 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.041 584.875 Td (single-word ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.331 584.875 Td (queries ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 413.458 584.875 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 427.516 584.875 Td (match ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 460.527 584.875 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 475.817 584.875 Td (indexed ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 571.235 Td (repo) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 79.080 571.235 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.138 571.235 Td (name ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.707 571.235 Td (exactly, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.055 571.235 Td (force-fetch ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.077 571.235 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 229.483 571.235 Td (repo's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.494 571.235 Td (top ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.842 571.235 Td (BM25 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.632 571.235 Td (file ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 329.748 571.235 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.154 571.235 Td (prepend ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 394.571 571.235 Td (it. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 406.187 571.235 Td (Two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.024 571.235 Td (priority ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.082 571.235 Td (tiers: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 492.977 571.235 Td (dashed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 557.595 Td (forms ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.558 557.595 Td (\("swift-testing"\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.821 557.595 Td (beat ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.285 557.595 Td (single ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.075 557.595 Td (tokens ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.539 557.595 Td (\("swift"\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.733 557.595 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.407 557.595 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.581 557.595 Td (multi-word ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.360 557.595 Td (query ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.929 557.595 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 422.335 557.595 Td (has ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.125 557.595 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 452.299 557.595 Td (dashed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.437 557.595 Td (canonical ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 543.955 Td (doesn't ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 92.522 543.955 Td (also) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.696 543.955 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.754 543.955 Td (pull ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.928 543.955 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.544 543.955 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.892 543.955 Td (broader-corpus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.530 543.955 Td (repo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 268.599 543.955 Td (via ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.715 543.955 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.063 543.955 Td (bare ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 329.132 543.955 Td (token. ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 362.154 543.955 Td (swift ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 399.774 543.955 Td (testing) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.664 543.955 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 446.722 543.955 Td (resolves ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.733 543.955 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 530.315 Td (swiftlang/swift-testing) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.210 530.315 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.326 530.315 Td (not ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 222.674 530.315 Td (swiftlang/swift) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.724 530.315 Td (. ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 322.840 530.315 Td (vapor ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 360.460 530.315 Td (middleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.160 530.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.218 530.315 Td (resolves ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.229 530.315 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 516.675 Td (vapor/vapor) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.970 516.675 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.028 516.675 Td (because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.666 516.675 Td (no ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 185.956 516.675 Td (vapor-middleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.276 516.675 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.334 516.675 Td (repo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.403 516.675 Td (exists; ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.635 516.675 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.983 516.675 Td (single-token ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.342 516.675 Td (fallback ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.690 516.675 Td (finds ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 495.980 516.675 Td (vapor) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 527.330 516.675 Td (.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 497.035 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 497.035 Td (probe ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.196 497.035 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.196 497.035 Td (bounded ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.066 497.035 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.124 497.035 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.682 497.035 Td (only ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.914 497.035 Td (fires ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.751 497.035 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.099 497.035 Td (there's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.168 497.035 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.458 497.035 Td (indexed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.038 497.035 Td (canonical ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 405.560 497.035 Td (match, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 441.629 497.035 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.303 497.035 Td (queries ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 495.430 497.035 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 483.395 Td (genuinely ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.138 483.395 Td (don't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.044 483.395 Td (have ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.950 483.395 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.124 483.395 Td (canonical ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.646 483.395 Td (repo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.715 483.395 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 245.378 483.395 Td (alamofire ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 308.078 483.395 Td (request) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.968 483.395 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 355.026 483.395 Td (against ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 393.548 483.395 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.722 483.395 Td (corpus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 438.791 483.395 Td (where ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.802 483.395 Td (Alamofire ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 469.755 Td (isn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.616 469.755 Td (indexed; ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 121.254 469.755 Td (actor ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 158.874 469.755 Td (isolation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.304 469.755 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.362 469.755 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.536 469.755 Td (isn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.152 469.755 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.326 469.755 Td (repo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.395 469.755 Td (name ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.964 469.755 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.196 469.755 Td (all\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.917 469.755 Td (fall ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.033 469.755 Td (through ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 424.392 469.755 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 436.624 469.755 Td (plain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 462.914 469.755 Td (BM25 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 494.704 469.755 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 517.320 469.755 Td (no ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 456.115 Td (overhead.) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 420.525 Td (A ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 68.300 420.525 Td (SQL ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 101.676 420.525 Td (gotcha ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 152.527 420.525 Td (that ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 182.714 420.525 Td (cost ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 216.091 420.525 Td (us ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 236.754 420.525 Td (~3 ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 257.031 420.525 Td (seconds ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 319.022 420.525 Td (per ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 345.248 420.525 Td (query) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 395.500 Td (While ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.558 395.500 Td (testing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.022 395.500 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.370 395.500 Td (canonical ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 187.892 395.500 Td (force-include, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.972 395.500 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.088 395.500 Td (shipped ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.668 395.500 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.226 395.500 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.842 395.500 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.190 395.500 Td (wrong ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.201 395.500 Td (SQL ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 412.270 395.500 Td (shape:) Tj ET
+0.950 0.950 0.950 rg
+54 308.420 487.280 67.440 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 359.960 Td (SELECT ... ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 359.960 Td (FROM ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 359.960 Td (docs_fts ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 359.960 Td (f) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 346.100 Td (JOIN ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 346.100 Td (docs_metadata ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 346.100 Td (m ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 346.100 Td (ON ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 346.100 Td (f.uri ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 346.100 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 346.100 Td (m.uri) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 332.240 Td (WHERE ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 332.240 Td (f.uri ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 332.240 Td (= ?) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 318.380 Td (LIMIT ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 318.380 Td (1;) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 300.170 Td (docs_fts) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.160 300.170 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.218 300.170 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.218 300.170 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.508 300.170 Td (FTS5 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 163.461 300.170 Td (virtual ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.856 300.170 Td (table. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.820 300.170 Td (Its ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 240.494 300.170 Td (uri) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 259.304 300.170 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.362 300.170 Td (column ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 300.873 300.170 Td (is ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 311.873 300.170 Td (not) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.163 300.170 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.221 300.170 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 339.395 300.170 Td (queryable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.754 300.170 Td (index ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.102 300.170 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.160 300.170 Td (FTS5 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 464.113 300.170 Td (stores ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.124 300.170 Td (columns ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 286.530 Td (inside ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.790 286.530 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.138 286.530 Td (inverted ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.323 286.530 Td (index, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.729 286.530 Td (accessible ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.135 286.530 Td (only ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.367 286.530 Td (through ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 296.726 286.530 Td (MATCH) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 328.076 286.530 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.192 286.530 Td (SQLite's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 378.819 286.530 Td (planner ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.562 286.530 Td (picked ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 453.410 286.530 Td (SCAN ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 484.760 286.530 Td (VIRTUAL ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 272.890 Td (TABLE ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 91.620 272.890 Td (INDEX ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 129.240 272.890 Td (0) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.510 272.890 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.568 272.890 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.974 272.890 Td (walked ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.264 272.890 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.612 272.890 Td (entire ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 246.181 272.890 Td (FTS5 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.134 272.890 Td (index ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.482 272.890 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.377 272.890 Td (every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.330 272.890 Td (probe. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 385.573 272.890 Td (About ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 417.374 272.890 Td (3.2 ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 435.722 272.890 Td (seconds ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 483.407 272.890 Td (per ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 503.581 272.890 Td (probe) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 534.139 272.890 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 259.250 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 69.290 259.250 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.638 259.250 Td (3.4 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.986 259.250 Td (GB ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.939 259.250 Td (v1.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.787 259.250 Td (search.db. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.204 259.250 Td (Three ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.994 259.250 Td (probes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.679 259.250 Td (per ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 290.632 259.250 Td (search ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.701 259.250 Td (call ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.259 259.250 Td (= ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 355.741 259.250 Td (10 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.031 259.250 Td (seconds ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 415.053 259.250 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 427.285 259.250 Td (pure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 452.354 259.250 Td (overhead ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 501.271 259.250 Td (before ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 245.610 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 245.610 Td (actual ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.754 245.610 Td (query ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.323 245.610 Td (ran.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 225.970 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 225.970 Td (fix ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.069 225.970 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.069 225.970 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.243 225.970 Td (one-line ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.428 225.970 Td (SQL ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 177.497 225.970 Td (rewrite ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.555 225.970 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.613 225.970 Td (query ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 258.182 225.970 Td (docs_metadata) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 339.692 225.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.750 225.970 Td (\(whose ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 381.261 225.970 Td (uri) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.071 225.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 403.129 225.970 Td (is ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 414.129 225.970 Td (TEXT ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 445.479 225.970 Td (PRIMARY ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 495.639 225.970 Td (KEY) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 514.449 225.970 Td (\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 212.330 Td (directly, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.953 212.330 Td (pull ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.127 212.330 Td (title ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.301 212.330 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.707 212.330 Td (summary ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.986 212.330 Td (out ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.334 212.330 Td (of ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 235.566 212.330 Td (json_data) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.996 212.330 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.054 212.330 Td (via ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 312.170 212.330 Td (json_extract\($.title, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 450.110 212.330 Td ($.abstract\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 519.080 212.330 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 198.690 Td (never ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.569 198.690 Td (touch ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 114.533 198.690 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.881 198.690 Td (FTS5 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.834 198.690 Td (virtual ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.229 198.690 Td (table ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.135 198.690 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.030 198.690 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.204 198.690 Td (lookup. ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 296.726 198.690 Td (5 ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 305.900 198.690 Td (milliseconds ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 375.596 198.690 Td (per ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 395.770 198.690 Td (probe.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.386 198.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 432.444 198.690 Td (Single-process ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 185.050 Td (search ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.069 185.050 Td (wall ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.069 185.050 Td (time ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.906 185.050 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.196 185.050 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.544 185.050 Td (3.4 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 187.892 185.050 Td (GB ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.845 185.050 Td (corpus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.914 185.050 Td (dropped ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.331 185.050 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 311.389 185.050 Td (~18 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 333.103 185.050 Td (seconds ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 377.125 185.050 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 389.357 185.050 Td (~4 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.955 185.050 Td (seconds.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 165.410 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 165.410 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.964 165.410 Td (bug ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.370 165.410 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.986 165.410 Td (lurking ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.439 165.410 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.055 165.410 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.403 165.410 Td (older ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 242.914 165.410 Td (fetchFrameworkRoot) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 355.774 165.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.832 165.410 Td (helper ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.459 165.410 Td (that's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 421.807 165.410 Td (been ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 449.329 165.410 Td (there ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 477.456 165.410 Td (since ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 506.188 165.410 Td (#81, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 151.770 Td (untimed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.185 151.770 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.591 151.770 Td (presumably ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 177.497 151.770 Td (contributing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 237.414 151.770 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.646 151.770 Td (user-visible ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.320 151.770 Td (latency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.226 151.770 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.121 151.770 Td (months. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.306 151.770 Td (Both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.991 151.770 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 448.944 151.770 Td (fixed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 475.234 151.770 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.850 151.770 Td (v1.0.) Tj ET
+
+endstream
+endobj
+12 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 11 0 R >>
+endobj
+13 0 obj
+<< /Length 27486 >>
+stream
+0 0 0 rg
+BT /F2 14.300 Tf 54 787.890 Td (Concurrent-search ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 185.903 787.890 Td (lock ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 218.493 787.890 Td (contention) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 762.865 Td (Every ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 85.174 762.865 Td (Search.Index) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.414 762.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 163.472 762.865 Td (initialization ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.378 762.865 Td (used ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.284 762.865 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.516 762.865 Td (issue ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.248 762.865 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.538 762.865 Td (unconditional ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 374.408 762.865 Td (PRAGMA ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 418.298 762.865 Td (user_version ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 499.808 762.865 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 512.348 762.865 Td (N) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 518.618 762.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 749.225 Td (write ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.279 749.225 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.337 749.225 Td (even ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.243 749.225 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.591 749.225 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.939 749.225 Td (version ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.450 749.225 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.066 749.225 Td (already ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.193 749.225 Td (correct. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.925 749.225 Td (SQLite ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.610 749.225 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.610 749.225 Td (single-writer. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 422.005 749.225 Td (Two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 445.842 749.225 Td (parallel ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 735.585 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 116.700 735.585 Td (search) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.320 735.585 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.378 735.585 Td (invocations ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.458 735.585 Td (contended ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.886 735.585 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.176 735.585 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.524 735.585 Td (open-time ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 355.488 735.585 Td (write ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.767 735.585 Td (lock, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.441 735.585 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.847 735.585 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 450.253 735.585 Td (would ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 482.043 735.585 Td (fail ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 499.159 735.585 Td (with ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 721.945 Td (database ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 110.430 721.945 Td (is ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 129.240 721.945 Td (locked) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.860 721.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.918 721.945 Td (because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.556 721.945 Td (SQLite's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 259.183 721.945 Td (default ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 295.263 721.945 Td (busy_timeout) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.503 721.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.561 721.945 Td (is ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 384.561 721.945 Td (0) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.831 721.945 Td (.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 702.305 Td (Fixed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.953 702.305 Td (two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.127 702.305 Td (ways: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.301 702.305 Td (read-then-write ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.323 702.305 Td (\(skip ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.602 702.305 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.950 702.305 Td (PRAGMA ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.682 702.305 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.030 702.305 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 355.378 702.305 Td (version ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 393.889 702.305 Td (already ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.016 702.305 Td (matches, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 480.701 702.305 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 495.375 702.305 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 688.665 Td (steady-state ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.975 688.665 Td (path ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.439 688.665 Td (does ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.345 688.665 Td (zero ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.798 688.665 Td (writes\), ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.298 688.665 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 252.704 688.665 Td (sqlite3_busy_timeout\(db, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 409.454 688.665 Td (5000\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.804 688.665 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.862 688.665 Td (right ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 468.315 688.665 Td (after ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 493.384 688.665 Td (open ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 520.906 688.665 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 675.025 Td (any ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 74.790 675.025 Td (future ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.975 675.025 Td (write ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.254 675.025 Td (contention ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.066 675.025 Td (degrades ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.983 675.025 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.215 675.025 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.389 675.025 Td (wait-then-succeed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.701 675.025 Td (instead ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.223 675.025 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 399.455 675.025 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.745 675.025 Td (immediate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 468.535 675.025 Td (failure. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 661.385 Td (Cupertino's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.685 661.385 Td (MCP ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.185 661.385 Td (server ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.801 661.385 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.591 661.385 Td (now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.823 661.385 Td (handle ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.903 661.385 Td (concurrent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.925 661.385 Td (requests ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.168 661.385 Td (against ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.690 661.385 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.038 661.385 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.991 661.385 Td (database ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 489.303 661.385 Td (without ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 647.745 Td (flaking.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 608.305 Td (Distribution: ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 160.085 608.305 Td (one ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 195.140 608.305 Td (bundle, ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 260.510 608.305 Td (not ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 291.762 608.305 Td (two) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 578.468 Td (Pre-1.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.127 578.468 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.475 578.468 Td (deployment ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.392 578.468 Td (shape ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.414 578.468 Td (was: ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 230.088 578.468 Td (search.db) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.518 578.468 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.576 578.468 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 310.982 578.468 Td (samples.db) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.682 578.468 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.740 578.468 Td (shipped ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.320 578.468 Td (on ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 564.828 Td (mihaelamj/cupertino-docs) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.480 564.828 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.596 564.828 Td (while ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.712 564.828 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 257.060 564.828 Td (curated ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 296.803 564.828 Td (packages.db) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.773 564.828 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.831 564.828 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 391.447 564.828 Td (scoped ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.969 564.828 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 445.864 564.828 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 455.038 564.828 Td (separate ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 551.188 Td (mihaelamj/cupertino-packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 229.560 551.188 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.618 551.188 Td (companion ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.477 551.188 Td (repo. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.604 551.188 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 339.615 551.188 Td (split ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.231 551.188 Td (made ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.800 551.188 Td (sense ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 425.206 551.188 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 454.554 551.188 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 472.902 551.188 Td (packages ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 537.548 Td (corpus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.069 537.548 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.685 537.548 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.859 537.548 Td (separate-cadence ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.961 537.548 Td (thing. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.925 537.548 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.099 537.548 Td (turned ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.342 537.548 Td (out ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.690 537.548 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.248 537.548 Td (isn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.864 537.548 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.922 537.548 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.270 537.548 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.223 537.548 Td (crawl ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.944 537.548 Td (produces ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 475.245 537.548 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 489.303 537.548 Td (three, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 520.488 537.548 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 523.908 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 523.908 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.301 523.908 Td (schedule, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.439 523.908 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.055 523.908 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.403 523.908 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.356 523.908 Td (release ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.483 523.908 Td (cycle. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 293.657 523.908 Td (Two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.494 523.908 Td (repos ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.063 523.908 Td (meant ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.690 523.908 Td (two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.864 523.908 Td (release ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.991 523.908 Td (tags ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 464.839 523.908 Td (per ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.792 523.908 Td (cut, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 504.582 523.908 Td (two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 510.268 Td (sequential ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.196 510.268 Td (downloads ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.834 510.268 Td (on ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 178.124 510.268 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 240.824 510.268 Td (setup) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.174 510.268 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.290 510.268 Td (soft-fail ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.801 510.268 Td (logic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.475 510.268 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.823 510.268 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 393.229 510.268 Td (release ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 432.356 510.268 Td (lagged ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 468.436 510.268 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.784 510.268 Td (other, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 517.969 510.268 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 496.628 Td (two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 74.174 496.628 Td (URL ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.232 496.628 Td (constants ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.370 496.628 Td (in ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 160.986 496.628 Td (Shared.Constants) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.306 496.628 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.364 496.628 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.596 496.628 Td (keep ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.502 496.628 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.118 496.628 Td (sync.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 476.988 Td (v1.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.848 476.988 Td (collapses ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.754 476.988 Td (everything ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.555 476.988 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.787 476.988 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.193 476.988 Td (bundle: ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 253.331 476.988 Td (cupertino-databases-v1.0.0.zip) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 441.431 476.988 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.489 476.988 Td (on ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 463.348 Td (mihaelamj/cupertino-docs) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.480 463.348 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.596 463.348 Td (~833 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.426 463.348 Td (MB ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 257.984 463.348 Td (compressed, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.006 463.348 Td (contains ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.028 463.348 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.086 463.348 Td (three ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.213 463.348 Td (databases. ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 467.083 463.348 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 449.708 Td (setup) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.350 449.708 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.408 449.708 Td (does ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 115.314 449.708 Td (one) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.872 449.708 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.930 449.708 Td (download ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.068 449.708 Td (+ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.550 449.708 Td (extract ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.619 449.708 Td (+ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.101 449.708 Td (version ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.612 449.708 Td (stamp. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.681 449.708 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 339.692 449.708 Td (companion ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 396.551 449.708 Td (repo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 421.620 449.708 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 432.620 449.708 Td (deleted; ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 474.816 449.708 Td (deleting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 516.396 449.708 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 436.068 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.616 436.068 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.964 436.068 Td (last ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.138 436.068 Td (action ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.544 436.068 Td (before ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.787 436.068 Td (tagging.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 416.428 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 416.428 Td (release ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.138 416.428 Td (tooling ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.602 416.428 Td (caught ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.682 416.428 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.972 416.428 Td (too. ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 223.378 416.428 Td (cupertino-rel ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 311.158 416.428 Td (databases) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.588 416.428 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.646 416.428 Td (now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 393.878 416.428 Td (bundles ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 435.458 416.428 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 449.516 416.428 Td (three ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 477.643 416.428 Td (databases ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 402.788 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 74.790 402.788 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.138 402.788 Td (single ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.928 402.788 Td (zip ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.044 402.788 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 163.450 402.788 Td (uploads ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.030 402.788 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.262 402.788 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 235.610 402.788 Td (docs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.900 402.788 Td (repo. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 290.027 402.788 Td (Hard-fails ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.143 402.788 Td (if ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 348.701 402.788 Td (packages.db) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 417.671 402.788 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.729 402.788 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 431.729 402.788 Td (missing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 472.066 402.788 Td (under ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 389.148 Td (--base-dir) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.700 389.148 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 119.758 389.148 Td (unless ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 154.606 389.148 Td (--allow-missing-packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.086 389.148 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.144 389.148 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.144 389.148 Td (passed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 357.666 389.148 Td (\(lets ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.503 389.148 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.677 389.148 Td (release ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.804 389.148 Td (runner ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 464.652 389.148 Td (publish ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.558 389.148 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 375.508 Td (partial ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.011 375.508 Td (bundle ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.091 375.508 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.707 375.508 Td (genuinely ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.845 375.508 Td (time-sensitive ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.135 375.508 Td (cases ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.925 375.508 Td (without ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.831 375.508 Td (making ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.342 375.508 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.900 375.508 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.248 375.508 Td (default\).) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 336.068 Td (The ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 89.055 336.068 Td (schema ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 157.289 336.068 Td (bump ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 208.439 336.068 Td (\(BREAKING\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 306.230 Td (Schema ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 97.406 306.230 Td (went ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.696 306.230 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.754 306.230 Td (10 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.044 306.230 Td (? ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.218 306.230 Td (12 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.508 306.230 Td (across ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.961 306.230 Td (two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.135 306.230 Td (intermediate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.715 306.230 Td (steps. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.121 306.230 Td (v11 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 360.911 306.230 Td (added ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 394.549 306.230 Td (kind) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 419.629 306.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 422.687 306.230 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 444.093 306.230 Td (symbols) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 487.983 306.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.041 306.230 Td (columns ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 292.590 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 66.232 292.590 Td (docs_metadata) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.742 292.590 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.858 292.590 Td (v12 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 174.648 292.590 Td (added ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.286 292.590 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 226.634 292.590 Td (symbols) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.524 292.590 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.582 292.590 Td (column ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.093 292.590 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 324.325 292.590 Td (docs_fts) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.485 292.590 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 380.601 292.590 Td (FTS5 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.554 292.590 Td (doesn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 449.076 292.590 Td (support ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 488.819 292.590 Td (ALTER ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 278.950 Td (TABLE ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 91.620 278.950 Td (ADD ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 116.700 278.950 Td (COLUMN) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.320 278.950 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.436 278.950 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.110 278.950 Td (v12 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.900 278.950 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.900 278.950 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.074 278.950 Td (hard ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.143 278.950 Td (break ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.712 278.950 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.770 278.950 Td (existing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.118 278.950 Td (v10/v11 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.698 278.950 Td (databases ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 421.510 278.950 Td (throw ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.463 278.950 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.753 278.950 Td (open ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 494.275 278.950 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 516.891 278.950 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 265.310 Td (clear ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.895 265.310 Td (error ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.174 265.310 Td (message:) Tj ET
+0.950 0.950 0.950 rg
+54 178.230 487.280 67.440 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 229.770 Td (Database ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 229.770 Td (schema ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 229.770 Td (version ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 229.770 Td (10 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 229.770 Td (requires ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 229.770 Td (migration ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 333.240 229.770 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 229.770 Td (version ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 398.580 229.770 Td (12.) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 215.910 Td (This ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 215.910 Td (is ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 215.910 Td (a ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 215.910 Td (breaking ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 215.910 Td (change ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 215.910 Td (that ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 215.910 Td (adds ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 215.910 Td (AST-derived ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 345.120 215.910 Td (symbols ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 392.640 215.910 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 410.460 215.910 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 434.220 215.910 Td (FTS ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 457.980 215.910 Td (index.) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 202.050 Td (Please ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 202.050 Td (delete ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 202.050 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 202.050 Td (database ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 202.050 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 202.050 Td (run ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 202.050 Td ('cupertino ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 333.240 202.050 Td (save' ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 368.880 202.050 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 386.700 202.050 Td (rebuild:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 188.190 Td (rm ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 188.190 Td (~/.cupertino/search.db ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 188.190 Td (&& ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 188.190 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 188.190 Td (save) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 169.980 Td (Most ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.895 169.980 Td (users ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.848 169.980 Td (won't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 139.580 169.980 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.370 169.980 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.544 169.980 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.602 169.980 Td (they'll ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.776 169.980 Td (just ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 245.950 169.980 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 308.650 169.980 Td (setup) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340 169.980 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.058 169.980 Td (once ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.964 169.980 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 391.370 169.980 Td (get ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.718 169.980 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.066 169.980 Td (v1.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.914 169.980 Td (bundle ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 487.994 169.980 Td (directly, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 156.340 Td (with ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 76.616 156.340 Td (setup) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.966 156.340 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.024 156.340 Td (automatically ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.267 156.340 Td (backing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.231 156.340 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.521 156.340 Td (any ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.311 156.340 Td (pre-existing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.217 156.340 Td (databases ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.029 156.340 Td (as ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 142.700 Td (.backup-<version>-<iso8601>) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.290 142.700 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 226.348 142.700 Td (siblings ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.080 142.700 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 269.743 142.700 Td (#249) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 294.823 142.700 Td (\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.544 142.700 Td (before ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.787 142.700 Td (extraction ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 386.530 142.700 Td (overwrites ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.704 142.700 Td (them. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.273 142.700 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 492.284 142.700 Td (rollback ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 129.060 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 65 129.060 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 86.406 129.060 Td (rename.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 109.420 Td (Users ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.779 109.420 Td (who ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.011 109.420 Td (built ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.243 109.420 Td (their ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.696 109.420 Td (own ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.928 109.420 Td (search.db ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.287 109.420 Td (with ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 253.903 109.420 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 316.603 109.420 Td (save) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.683 109.420 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 344.741 109.420 Td (against ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 383.263 109.420 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.553 109.420 Td (older ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.064 109.420 Td (binary ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 459.075 109.420 Td (need ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.597 109.420 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 498.829 109.420 Td (rebuild, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 95.780 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 95.780 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.696 95.780 Td (docs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.986 95.780 Td (corpus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.055 95.780 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.345 95.780 Td (disk ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.961 95.780 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.961 95.780 Td (unchanged ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 259.447 95.780 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.505 95.780 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.853 95.780 Td (same ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 321.806 95.780 Td (~/.cupertino/docs/) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.666 95.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 437.724 95.780 Td (produces ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.025 95.780 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 495.199 95.780 Td (v12 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 82.140 Td (search.db ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.359 82.140 Td (without ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.265 82.140 Td (re-crawling.) Tj ET
+
+endstream
+endobj
+14 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 13 0 R >>
+endobj
+15 0 obj
+<< /Length 28750 >>
+stream
+0 0 0 rg
+BT /F2 17.050 Tf 54 787.890 Td (MCP ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 96.625 787.890 Td (protocol ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 169.565 787.890 Td (upgrade ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 241.567 787.890 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 263.357 787.890 Td (2025-11-25) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 758.053 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 758.053 Td (Model ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.022 758.053 Td (Context ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.986 758.053 Td (Protocol ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.392 758.053 Td (moved ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 229.461 758.053 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.693 758.053 Td (spec ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 267.983 758.053 Td (2025-11-25) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.683 758.053 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.799 758.053 Td (Cupertino ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.542 758.053 Td (now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.774 758.053 Td (negotiates ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 464.586 758.053 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 485.992 758.053 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 500.666 758.053 Td (its ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 744.413 Td (preferred ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.685 744.413 Td (version ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.196 744.413 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.602 744.413 Td (retains ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.671 744.413 Td (backward-compat ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.530 744.413 Td (for ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 303.425 744.413 Td (2025-06-18) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.125 744.413 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.183 744.413 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 390.589 744.413 Td (2024-11-05) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 453.289 744.413 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.347 744.413 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.021 744.413 Td (older ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 498.532 744.413 Td (clients ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 730.773 Td (keep ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.906 730.773 Td (working ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.859 730.773 Td (through ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.218 730.773 Td (three ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.345 730.773 Td (negotiation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.215 730.773 Td (hops. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.179 730.773 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.190 730.773 Td (new ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.422 730.773 Td (spec ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.712 730.773 Td (adds ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 375.618 730.773 Td (Icon) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.698 730.773 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 403.756 730.773 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 415.988 730.773 Td (Implementation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 503.768 730.773 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 509.884 730.773 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 717.133 Td (cupertino's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.243 717.133 Td (MCP ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 137.743 717.133 Td (serve) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.093 717.133 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.151 717.133 Td (advertises ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.336 717.133 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.510 717.133 Td (64\32764 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 268.456 717.133 Td (PNG ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.351 717.133 Td (via ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.467 717.133 Td (a ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 321.641 717.133 Td (data:image/png;base64,...) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 478.391 717.133 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 481.449 717.133 Td (URI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 703.493 Td (\(embedded ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.696 703.493 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.370 703.493 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.544 703.493 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 163.439 703.493 Td (literal ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.776 703.493 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.392 703.493 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.740 703.493 Td (binary, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.809 703.493 Td (no ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.099 703.493 Td (external ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.284 703.493 Td (bundle\).) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 664.053 Td (Crawler ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 121.279 664.053 Td (hardening) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 634.215 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 634.215 Td (crawler ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 114.511 634.215 Td (took ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.359 634.215 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.533 634.215 Td (lot ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.207 634.215 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 174.439 634.215 Td (fire ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.776 634.215 Td (across ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.229 634.215 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.403 634.215 Td (release.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 614.575 Td (Per-URL ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 125.058 614.575 Td (JSON-then-WebView ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 236.906 614.575 Td (fallback.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.928 614.575 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 283.986 614.575 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 346.686 614.575 Td (fetch ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 384.306 614.575 Td (--type ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 428.196 614.575 Td (docs) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 453.276 614.575 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.334 614.575 Td (does ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.240 614.575 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 504.646 614.575 Td (pass ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 601.925 Td (through ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.359 601.925 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.707 601.925 Td (queue, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.403 601.925 Td (trying ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.356 601.925 Td (Apple's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.483 601.925 Td (JSON ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.878 601.925 Td (API ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.668 601.925 Td (first ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.447 601.925 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.853 601.925 Td (falling ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.643 601.925 Td (back ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.933 601.925 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 408.165 601.925 Td (WKWebView ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 475.397 601.925 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 504.745 601.925 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 589.275 Td (page ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.522 589.275 Td (has ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.312 589.275 Td (no ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.602 589.275 Td (JSON ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.997 589.275 Td (endpoint. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.309 589.275 Td (Single-pass, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.889 589.275 Td (full ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.005 589.275 Td (coverage. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.364 589.275 Td (\(The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 380.038 589.275 Td (fallback ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.386 589.275 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.002 589.275 Td (already ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 482.129 589.275 Td (there; ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 513.314 589.275 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 576.625 Td (previous ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.627 576.625 Td ("two-pass" ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 177.506 576.625 Td (orchestration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.144 576.625 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.760 576.625 Td (running ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.503 576.625 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.851 576.625 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.804 576.625 Td (crawler ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 393.304 576.625 Td (twice ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 421.420 576.625 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.826 576.625 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 453.826 576.625 Td (now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 477.058 576.625 Td (removed.\)) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 561.975 Td (Auto-resume ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 148.895 561.975 Td (by ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 164.790 561.975 Td (default.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.906 561.975 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.964 561.975 Td (If ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 216.138 561.975 Td (metadata.json) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.648 561.975 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 300.706 561.975 Td (has ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.496 561.975 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.786 561.975 Td (active ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.576 561.975 Td (session ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 408.924 561.975 Td (matching ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.609 561.975 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 474.957 561.975 Td (start ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 499.410 561.975 Td (URL, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 549.325 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 140.700 549.325 Td (fetch) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.050 549.325 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.108 549.325 Td (picks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.224 549.325 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.782 549.325 Td (up. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.130 549.325 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.141 549.325 Td (previous ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 296.768 549.325 Td (--resume) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.928 549.325 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.986 549.325 Td (flag ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.776 549.325 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 393.392 549.325 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.566 549.325 Td (log-message ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 468.588 549.325 Td (switch ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.204 549.325 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 523.610 549.325 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 536.675 Td (gone.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 522.025 Td (Crash-safe ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 137.906 522.025 Td (metadata ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 189.254 522.025 Td (writes.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 224.102 522.025 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 227.160 522.025 Td (JSONCoding.encode\(_:to:\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 377.640 522.025 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 380.698 522.025 Td (writes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 412.477 522.025 Td (with ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 435.093 522.025 Td (.atomic) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 478.983 522.025 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 482.041 522.025 Td (\(temp ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 513.215 522.025 Td (+ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 509.375 Td (rename\), ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 125.069 509.375 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 139.743 509.375 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.917 509.375 Td (kill ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.801 509.375 Td (mid-save ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.475 509.375 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.265 509.375 Td (never ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.834 509.375 Td (leave ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 293.182 509.375 Td (metadata.json) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.692 509.375 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 377.750 509.375 Td (corrupt. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.098 509.375 Td (Mid-save ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 465.772 509.375 Td (corruption ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 517.736 509.375 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 496.725 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.348 496.725 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.754 496.725 Td (failure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.765 496.725 Td (mode ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.334 496.725 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.740 496.725 Td (could ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.088 496.725 Td (make ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.041 496.725 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.215 496.725 Td (multi-day ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 318.889 496.725 Td (crawl ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 347.610 496.725 Td (unresumable.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 482.075 Td (Default ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 118.337 482.075 Td (page ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 147.069 482.075 Td (cap ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 169.080 482.075 Td (raised ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 204.544 482.075 Td (15,000 ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 241.240 482.075 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 251.019 482.075 Td (1,000,000.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.005 482.075 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.063 482.075 Td (Effectively ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 359.248 482.075 Td (uncapped ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.618 482.075 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.513 482.075 Td (full ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.629 482.075 Td (Apple-corpus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 469.425 Td (crawls ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.221 469.425 Td (\(~50\22680k ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.446 469.425 Td (pages\). ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.189 469.425 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.200 469.425 Td (old ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 240.932 469.425 Td (15k ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.722 469.425 Td (default ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.802 469.425 Td (would ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 329.592 469.425 Td (silently ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.266 469.425 Td (truncate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.067 469.425 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 421.299 469.425 Td (~15\22630% ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.140 469.425 Td (coverage.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 454.775 Td (URL ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 103.663 454.775 Td (canonicalization ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 192.301 454.775 Td (\(case ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 223.486 454.775 Td (axis\).) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.613 454.775 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 254.671 454.775 Td (URLUtilities.normalize) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.611 454.775 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.669 454.775 Td (now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.901 454.775 Td (lowercases ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 476.970 454.775 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 495.318 454.775 Td (URL ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 442.125 Td (path. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.522 442.125 Td (Apple's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 144.649 442.125 Td (docs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.939 442.125 Td (server ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.555 442.125 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.555 442.125 Td (case-insensitive, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.914 442.125 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 318.262 442.125 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.610 442.125 Td (crawler ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.110 442.125 Td (used ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.016 442.125 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.248 442.125 Td (treat ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 429.475 Td (/documentation/Cinematic/CNAssetInfo) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.720 429.475 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.778 429.475 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 416.825 Td (/documentation/cinematic/cnassetinfo) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.720 416.825 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.778 416.825 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.452 416.825 Td (different ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.253 416.825 Td (URLs. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 397.869 416.825 Td (Queue ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.949 416.825 Td (inflated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 472.471 416.825 Td (~3\327 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 494.493 416.825 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 404.175 Td (case ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.290 404.175 Td (duplicates ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.870 404.175 Td (\(62% ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.602 404.175 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.834 404.175 Td (queue ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.472 404.175 Td (entries ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.541 404.175 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.831 404.175 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.179 404.175 Td (April ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.237 404.175 Td (2026 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 353.759 404.175 Td (crawl\). ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 389.201 404.175 Td (Fragment ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.328 404.175 Td (+ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 448.810 404.175 Td (query ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 479.379 404.175 Td (stripping ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 391.525 Td (unchanged.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 376.875 Td (Filename-length ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 165.406 376.875 Td (cap, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 190.475 376.875 Td (queue ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 225.928 376.875 Td (dedup ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 261.986 376.875 Td (at ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 274.823 376.875 Td (enqueue ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 323.113 376.875 Td (time, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 351.845 376.875 Td (autorelease ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 416.041 376.875 Td (pool ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 442.320 376.875 Td (around ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 482.657 376.875 Td (per-page ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 364.225 Td (work, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 109.790 364.225 Td (full ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 129.348 364.225 Td (DocC ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 161.127 364.225 Td (references) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 223.827 364.225 Td ( ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 226.885 364.225 Td (walk) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.733 364.225 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.791 364.225 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.849 364.225 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.197 364.225 Td (unglamorous ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.835 364.225 Td (fixes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 378.509 364.225 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 399.915 364.225 Td (let ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.589 364.225 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.763 364.225 Td (multi-day ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.437 364.225 Td (crawl ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 500.158 364.225 Td (finish ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 351.575 Td (without ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.906 351.575 Td (RSS ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.580 351.575 Td (leaks, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.370 351.575 Td (dropped ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.787 351.575 Td (pages, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.867 351.575 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 265.704 351.575 Td (queue ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.342 351.575 Td (explosion.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 333.925 Td (A ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 64.395 333.925 Td (reproducible ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.975 333.925 Td (recrawl ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.475 333.925 Td (pipeline ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.439 333.925 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 211.102 333.925 Td (scripts/recrawl.sh) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.962 333.925 Td (\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.683 333.925 Td (wraps ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.078 333.925 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.426 333.925 Td (whole ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 413.216 333.925 Td (thing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.122 333.925 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.738 333.925 Td (10 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 467.028 333.925 Td (phases ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 505.550 333.925 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 320.285 Td (named ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.685 320.285 Td (markers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.464 320.285 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.138 320.285 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.928 320.285 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.718 320.285 Td (tail-follow ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.613 320.285 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.961 320.285 Td (log ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.693 320.285 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.099 320.285 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.889 320.285 Td ("phase ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 353.816 320.285 Td (5/10 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 378.280 320.285 Td (starting" ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 421.312 320.285 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 432.928 320.285 Td (real ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 454.323 320.285 Td (time.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 280.845 Td (Architecture: ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 164.842 280.845 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 195.157 280.845 Td (four-package ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 306.954 280.845 Td (CLI ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 339.161 280.845 Td (lift) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 251.008 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 251.008 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 251.008 Td (more ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.953 251.008 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.848 251.008 Td (contributors ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.370 251.008 Td (than ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.834 251.008 Td (users, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.845 251.008 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.193 251.008 Td (worth ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.146 251.008 Td (flagging. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.784 251.008 Td (Logic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.132 251.008 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 394.538 251.008 Td (powered ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.781 251.008 Td (four ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 461.792 251.008 Td (CLI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 481.966 251.008 Td (commands ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 237.368 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 68.058 237.368 Td (setup) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.408 237.368 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 105.524 237.368 Td (doctor) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.144 237.368 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 149.260 237.368 Td (save) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 174.340 237.368 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 180.456 237.368 Td (fetch) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.806 237.368 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.864 237.368 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.922 237.368 Td (moved ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.991 237.368 Td (out ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 283.339 237.368 Td (of ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 295.571 237.368 Td (Sources/CLI/Commands/*) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.511 237.368 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 436.569 237.368 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 457.359 237.368 Td (four ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 479.370 237.368 Td (new ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.602 237.368 Td (SPM ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 223.728 Td (packages:) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 204.088 Td (Distribution) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.240 204.088 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.298 204.088 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.356 204.088 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.704 204.088 Td (download ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.842 204.088 Td (+ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.324 204.088 Td (extract ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 284.393 204.088 Td (+ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 293.875 204.088 Td (version-stamp ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.002 204.088 Td (pipeline ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 406.966 204.088 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 410.629 204.088 Td (SetupService) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 485.869 204.088 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 191.438 Td (ArtifactDownloader) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.860 191.438 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 196.976 191.438 Td (ArtifactExtractor) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.566 191.438 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 309.682 191.438 Td (InstalledVersion) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.002 191.438 Td (\).) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 176.788 Td (Diagnostics) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.970 176.788 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.028 176.788 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.086 176.788 Td (pure-data ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.224 176.788 Td (probes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.909 176.788 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.804 176.788 Td (SQLite ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.489 176.788 Td (+ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.971 176.788 Td (filesystem ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.924 176.788 Td (corpus, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.051 176.788 Td (used ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.957 176.788 Td (by ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 445.631 176.788 Td (doctor) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.251 176.788 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 489.367 176.788 Td (Zero ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 164.138 Td (external ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.185 164.138 Td (deps.) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 149.488 Td (Indexer) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.890 149.488 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.948 149.488 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 139.006 149.488 Td (write-side ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.122 149.488 Td (counterpart ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.818 149.488 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 260.050 149.488 Td (Search) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.670 149.488 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.786 149.488 Td (Three ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.576 149.488 Td (indexer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.703 149.488 Td (services ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.098 149.488 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 421.761 149.488 Td (DocsService) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.731 149.488 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 136.838 Td (PackagesService) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.050 136.838 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 178.166 136.838 Td (SamplesService) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 265.946 136.838 Td (\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.667 136.838 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.573 136.838 Td (emit ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.410 136.838 Td (per-stage ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 372.932 136.838 Td (events. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.454 136.838 Td (Hosts ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.628 136.838 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 460.976 136.838 Td (preflight ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 124.188 Td (pipeline ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.964 124.188 Td (for ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 134.859 124.188 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 197.559 124.188 Td (save) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.639 124.188 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.697 124.188 Td (+ ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 235.179 124.188 Td (doctor ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 279.069 124.188 Td (--save) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.689 124.188 Td (.) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 109.538 Td (Ingest) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.620 109.538 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.678 109.538 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.736 109.538 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 177.374 109.538 Td (skeleton ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 221.396 109.538 Td (+ ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 230.878 109.538 Td (Session) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.768 109.538 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.826 109.538 Td (helpers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.953 109.538 Td (lifted ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.243 109.538 Td (from ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 368.301 109.538 Td (FetchCommand) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.541 109.538 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 449.657 109.538 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.668 109.538 Td (seven ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 96.888 Td (<Type>Pipeline) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.780 96.888 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.838 96.888 Td (services ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.233 96.888 Td (still ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.175 96.888 Td (live ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.733 96.888 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.349 96.888 Td (CLI; ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.581 96.888 Td (lifting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.313 96.888 Td (them ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.824 96.888 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.824 96.888 Td (queued ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.578 96.888 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 408.473 96.888 Td (v1.0.1.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 79.238 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 79.238 Td (point ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.917 79.238 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.149 79.238 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.497 79.238 Td (lift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.555 79.238 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.555 79.238 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.961 79.238 Td (MCP ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.461 79.238 Td (tooling, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 245.983 79.238 Td (future ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.168 79.238 Td (agent-shell ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.027 79.238 Td (adapters, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.944 79.238 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.350 79.238 Td (tests ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.640 79.238 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.430 79.238 Td (now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 474.662 79.238 Td (drive ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 501.557 79.238 Td (the ) Tj ET
+
+endstream
+endobj
+16 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 15 0 R >>
+endobj
+17 0 obj
+<< /Length 23051 >>
+stream
+0 0 0 rg
+BT /F1 11 Tf 54 787.890 Td (pipelines ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 100.464 787.890 Td (without ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.370 787.890 Td (depending ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.798 787.890 Td (on ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 208.088 787.890 Td (ArgumentParser) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.868 787.890 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.984 787.890 Td (CLI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.158 787.890 Td (files ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 344.774 787.890 Td (become ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 386.959 787.890 Td (thin ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.749 787.890 Td (front-doors ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 463.992 787.890 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 485.398 787.890 Td (parse ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 774.250 Td (flags ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.290 774.250 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.696 774.250 Td (render ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.544 774.250 Td (progress.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 734.810 Td (What ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 100.410 734.810 Td ("First ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 150.179 734.810 Td (Light" ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 204.671 734.810 Td (means) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 704.973 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 704.973 Td (release ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.138 704.973 Td (name ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.707 704.973 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.707 704.973 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.765 704.973 Td (astronomy. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.229 704.973 Td (First ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.671 704.973 Td (light ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.903 704.973 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.903 704.973 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.251 704.973 Td (first ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.030 704.973 Td (time ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 360.867 704.973 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.041 704.973 Td (new ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 393.273 704.973 Td (telescope ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.411 704.973 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 454.411 704.973 Td (pointed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 493.549 704.973 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 505.781 704.973 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 691.333 Td (sky ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 73.558 691.333 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.964 691.333 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.254 691.333 Td (actual ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.660 691.333 Td (image ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.671 691.333 Td (comes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.124 691.333 Td (back ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 237.414 691.333 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.472 691.333 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.820 691.333 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.994 691.333 Td (calibration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.179 691.333 Td (target, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.422 691.333 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.770 691.333 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 393.944 691.333 Td (test ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.734 691.333 Td (pattern, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 455.093 691.333 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 473.441 691.333 Td (real ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 494.836 691.333 Td (data. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 677.693 Td (Everything ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.022 677.693 Td (before ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.265 677.693 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.265 677.693 Td (engineering. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.856 677.693 Td (First ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.298 677.693 Td (light ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 265.530 677.693 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.530 677.693 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.878 677.693 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.226 677.693 Td (instrument ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 378.632 677.693 Td (starts ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 408.585 677.693 Td (being ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 438.549 677.693 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 447.723 677.693 Td (telescope.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 658.053 Td (That's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.011 658.053 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.243 658.053 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.417 658.053 Td (release ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.544 658.053 Td (feels. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.892 658.053 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.903 658.053 Td (previous ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 265.530 658.053 Td (twelve ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.762 658.053 Td (months ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 338.889 658.053 Td (were ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.784 658.053 Td (engineering ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.317 658.053 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.375 658.053 Td (getting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 476.455 658.053 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 494.803 658.053 Td (crawler ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 644.413 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 644.413 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.580 644.413 Td (leak ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.812 644.413 Td (memory, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.649 644.413 Td (getting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.729 644.413 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.077 644.413 Td (indexer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.204 644.413 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 259.436 644.413 Td (handle ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.516 644.413 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.864 644.413 Td (field ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.096 644.413 Td (weights, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 380.502 644.413 Td (getting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 416.582 644.413 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.930 644.413 Td (MCP ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 462.430 644.413 Td (server ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 496.046 644.413 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 630.773 Td (negotiate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.312 630.773 Td (protocols, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.055 630.773 Td (getting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.135 630.773 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.483 630.773 Td (install ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.657 630.773 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.889 630.773 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.237 630.773 Td (strand ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.864 630.773 Td (users ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.817 630.773 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.107 630.773 Td (stale ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.397 630.773 Td (databases. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 431.267 630.773 Td (v1.0.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 464.289 630.773 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 475.289 630.773 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 504.637 630.773 Td (those ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 617.133 Td (parts ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 81.511 617.133 Td (compose ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.196 617.133 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.986 617.133 Td (something ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.787 617.133 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.193 617.133 Td (does ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.099 617.133 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.389 617.133 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.947 617.133 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 309.563 617.133 Td (built ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.795 617.133 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.027 617.133 Td (do.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 577.693 Td (Try ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 85.270 577.693 Td (it) Tj ET
+0.950 0.950 0.950 rg
+54 494.275 487.280 53.580 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 531.955 Td (brew ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 531.955 Td (install ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 531.955 Td (mihaelamj/tap/cupertino) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 518.095 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 518.095 Td (setup) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 504.235 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 504.235 Td (search ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 504.235 Td (Task) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 486.025 Td (brew ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 85.350 486.025 Td (install) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.240 486.025 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.298 486.025 Td (pulls ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.972 486.025 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.146 486.025 Td (notarized ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.447 486.025 Td (universal ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.516 486.025 Td (binary ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.527 486.025 Td (\(~13 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.904 486.025 Td (MB\). ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 347.183 486.025 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 409.883 486.025 Td (setup) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 441.233 486.025 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.291 486.025 Td (downloads ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 499.929 486.025 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 472.385 Td (v1.0.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.022 472.385 Td (database ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.334 472.385 Td (bundle ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.414 472.385 Td (\(~833 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.907 472.385 Td (MB ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.465 472.385 Td (compressed, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.487 472.385 Td (~5 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.085 472.385 Td (GB ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.038 472.385 Td (extracted\). ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 378.060 472.385 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 440.760 472.385 Td (search ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 484.650 472.385 Td (Task) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 509.730 472.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 458.745 Td (should ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 89.464 458.745 Td (land ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.312 458.745 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.660 458.745 Td (canonical ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.182 458.745 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 208.077 458.745 Td (Task) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.157 458.745 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.215 458.745 Td (struct ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.168 458.745 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.842 458.745 Td (result ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 310.795 458.745 Td (#1.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 439.105 Td (If ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 439.105 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.964 439.105 Td (want ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.254 439.105 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.812 439.105 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.486 439.105 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.776 439.105 Td (MCP ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.276 439.105 Td (server ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.892 439.105 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.787 439.105 Td (Claude ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.693 439.105 Td (/ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.809 439.105 Td (Cursor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.867 439.105 Td (/ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 311.983 439.105 Td (VS ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 329.715 439.105 Td (Code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 359.063 439.105 Td (Copilot ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 396.353 439.105 Td (/ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.469 439.105 Td (Zed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 424.480 439.105 Td (/ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.596 439.105 Td (Windsurf ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 477.049 439.105 Td (/ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.165 439.105 Td (opencode ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 534.535 439.105 Td (/ ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 425.465 Td (Codex, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.906 425.465 Td (point ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.812 425.465 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.265 425.465 Td (client ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.997 425.465 Td (config ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.403 425.465 Td (at ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 216.635 425.465 Td (cupertino ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 279.335 425.465 Td (serve) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 310.685 425.465 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.801 425.465 Td (Setup ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.602 425.465 Td (guides ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.066 425.465 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 399.961 425.465 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.867 425.465 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 445.820 425.465 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 457.436 425.465 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 475.784 425.465 Td (README.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 386.025 Td (What's ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 114.630 386.025 Td (next: ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 160.102 386.025 Td (v1.0.1) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 356.188 Td (A ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 64.395 356.188 Td (few ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.569 356.188 Td (items ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.906 356.188 Td (deferred ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.928 356.188 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.986 356.188 Td (v1.0.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.008 356.188 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 237.414 356.188 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.530 356.188 Td (want ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.820 356.188 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.052 356.188 Td (land ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.900 356.188 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.516 356.188 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.690 356.188 Td (follow-up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.759 356.188 Td (patch:) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 336.548 Td (WKWebView ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 147.674 336.548 Td (re-crawl ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 192.917 336.548 Td (on ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 209.417 336.548 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 228.975 336.548 Td (May ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 253.428 336.548 Td (2026 ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 280.950 336.548 Td (corpus.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.682 336.548 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.740 336.548 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.751 336.548 Td (April ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.809 336.548 Td (2026 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.331 336.548 Td (corpus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.400 336.548 Td (shipped ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 475.980 336.548 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 498.596 336.548 Td (v1.0.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 323.898 Td (because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.638 323.898 Td (rebuilding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.381 323.898 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 191.729 323.898 Td (schema-12 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.193 323.898 Td (search.db ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 300.552 323.898 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 325.610 323.898 Td (on-disk ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.121 323.898 Td (docs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.411 323.898 Td (doesn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.933 323.898 Td (need ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.455 323.898 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 465.629 323.898 Td (re-crawl. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 510.850 323.898 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 311.248 Td (next ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.848 311.248 Td (release ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.975 311.248 Td (will ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.301 311.248 Td (refresh ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.591 311.248 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.939 311.248 Td (corpus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.008 311.248 Td (content ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 290.146 311.248 Td (itself ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.820 311.248 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.226 311.248 Td (pick ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 359.842 311.248 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.132 311.248 Td (Apple-side ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.154 311.248 Td (documentation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 505.361 311.248 Td (edits ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 298.598 Td (since ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.732 298.598 Td (April ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.790 298.598 Td (plus ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.022 298.598 Td (pages ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.044 298.598 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.392 298.598 Td (JSON ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.787 298.598 Td (API ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 259.577 298.598 Td (doesn't ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.099 298.598 Td (expose.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 283.948 Td (Kind-tier ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 126.279 283.948 Td (ranking.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.069 283.948 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.127 283.948 Td (Roughly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.533 283.948 Td (49% ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 240.602 283.948 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.834 283.948 Td (apple-docs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 309.693 283.948 Td (rows ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.972 283.948 Td (have ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 362.878 283.948 Td (kind=unknown) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 438.118 283.948 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.234 283.948 Td (When ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 476.024 283.948 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 271.298 Td (crawler-side ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.337 271.298 Td (metadata ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.254 271.298 Td (extraction ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.997 271.298 Td (improves, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 290.729 271.298 Td (a ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 299.903 271.298 Td (kind ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 331.253 271.298 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 343.793 271.298 Td ({enum, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 387.683 271.298 Td (struct, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 437.843 271.298 Td (class, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 481.733 271.298 Td (protocol}) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 538.163 271.298 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 258.648 Td (tier ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.337 258.648 Td (slots ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.011 258.648 Td (ahead ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.649 258.648 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.881 258.648 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.229 258.648 Td (framework-authority ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.472 258.648 Td (tiebreak ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 328.657 258.648 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.273 258.648 Td (HEURISTIC ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.610 258.648 Td (1. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.842 258.648 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 436.853 258.648 Td (exact-title ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.980 258.648 Td (peer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 245.998 Td (cluster ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.453 245.998 Td (gets ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.301 245.998 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.475 245.998 Td (third ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.928 245.998 Td (orthogonal ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.961 245.998 Td (signal ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 257.751 245.998 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 279.157 245.998 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.505 245.998 Td (few ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.679 245.998 Td (remaining ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.027 245.998 Td (edge ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 396.549 245.998 Td (cases ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.339 245.998 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 432.002 245.998 Td (Result) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.622 245.998 Td ('s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 233.348 Td (lowercase-property ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 174.580 233.348 Td (competition, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 236.939 233.348 Td (Identifiable) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.179 233.348 Td ('s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.179 233.348 Td (conformance-page ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 417.944 233.348 Td (domination\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 478.466 233.348 Td (collapse ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 220.698 Td (cleanly.) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 206.048 Td (Ingest) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 115.620 206.048 Td ( ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 118.678 206.048 Td (sub-PRs ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 166.352 206.048 Td (4b\2264f.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.142 206.048 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.200 206.048 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.211 206.048 Td (seven ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 255.617 206.048 Td (<Type>Pipeline) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.397 206.048 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.455 206.048 Td (services ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 389.850 206.048 Td (still ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 408.792 206.048 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.408 206.048 Td (CLI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.582 206.048 Td (lift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 454.640 206.048 Td (cleanly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.930 206.048 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 512.720 206.048 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 193.398 Td (new ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.232 193.398 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.870 193.398 Td (once ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.776 193.398 Td (they ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.624 193.398 Td (grow ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.519 193.398 Td (callback-based ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.936 193.398 Td (shapes. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.516 193.398 Td (Tracked ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.306 193.398 Td (under ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 415.491 193.398 Td (#247.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 175.748 Td (That's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.011 175.748 Td (it. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.627 175.748 Td (Cupertino ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.370 175.748 Td (v1.0.0 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.392 175.748 Td ("First ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.739 175.748 Td (Light" ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.550 175.748 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.550 175.748 Td (out. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.956 175.748 Td (Tag, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.025 175.748 Td (binary, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.094 175.748 Td (bundle, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.232 175.748 Td (formula ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 413.964 175.748 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.022 175.748 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.080 175.748 Td (live ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 461.638 175.748 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 476.312 175.748 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 488.544 175.748 Td (today.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 156.108 Td (Apple's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.127 156.108 Td (documentation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.334 156.108 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.334 156.108 Td (now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.566 156.108 Td (something ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.367 156.108 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.657 156.108 Td (AI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.110 156.108 Td (agent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.690 156.108 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.480 156.108 Td (actually ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.828 156.108 Td (read ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.897 156.108 Td (before ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 436.140 156.108 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.698 156.108 Td (answers.) Tj ET
+
+endstream
+endobj
+18 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 17 0 R >>
+endobj
+19 0 obj
+<< /Type /Outlines
+/Count 15
+/First 20 0 R
+/Last 20 0 R >>
+endobj
+20 0 obj
+<< /Title (Cupertino v1.0.0 "First Light")
+/Parent 19 0 R
+/Dest [8 0 R /XYZ 54 796.690 null]
+/First 21 0 R
+/Last 34 0 R
+/Count 14 >>
+endobj
+21 0 obj
+<< /Title (The headline: search now returns the right answer)
+/Parent 20 0 R
+/Dest [8 0 R /XYZ 54 550.370 null]
+/Next 27 0 R
+/First 22 0 R
+/Last 26 0 R
+/Count 5 >>
+endobj
+22 0 obj
+<< /Title (Reciprocal rank fusion that actually understands the query)
+/Parent 21 0 R
+/Dest [8 0 R /XYZ 54 147.993 null]
+/Next 23 0 R >>
+endobj
+23 0 obj
+<< /Title (Inside apple-docs: BM25F, AST symbols, and a ladder of post-rank heuristics)
+/Parent 21 0 R
+/Dest [10 0 R /XYZ 54 508.140 null]
+/Prev 22 0 R
+/Next 24 0 R >>
+endobj
+24 0 obj
+<< /Title (The packages corpus gets the same treatment)
+/Parent 21 0 R
+/Dest [12 0 R /XYZ 54 717.100 null]
+/Prev 23 0 R
+/Next 25 0 R >>
+endobj
+25 0 obj
+<< /Title (A SQL gotcha that cost us ~3 seconds per query)
+/Parent 21 0 R
+/Dest [12 0 R /XYZ 54 426.245 null]
+/Prev 24 0 R
+/Next 26 0 R >>
+endobj
+26 0 obj
+<< /Title (Concurrent-search lock contention)
+/Parent 21 0 R
+/Dest [14 0 R /XYZ 54 793.610 null]
+/Prev 25 0 R >>
+endobj
+27 0 obj
+<< /Title (Distribution: one bundle, not two)
+/Parent 20 0 R
+/Dest [14 0 R /XYZ 54 615.125 null]
+/Prev 21 0 R
+/Next 28 0 R >>
+endobj
+28 0 obj
+<< /Title (The schema bump \(BREAKING\))
+/Parent 20 0 R
+/Dest [14 0 R /XYZ 54 342.888 null]
+/Prev 27 0 R
+/Next 29 0 R >>
+endobj
+29 0 obj
+<< /Title (MCP protocol upgrade \227 2025-11-25)
+/Parent 20 0 R
+/Dest [16 0 R /XYZ 54 794.710 null]
+/Prev 28 0 R
+/Next 30 0 R >>
+endobj
+30 0 obj
+<< /Title (Crawler hardening)
+/Parent 20 0 R
+/Dest [16 0 R /XYZ 54 670.873 null]
+/Prev 29 0 R
+/Next 31 0 R >>
+endobj
+31 0 obj
+<< /Title (Architecture: the four-package CLI lift)
+/Parent 20 0 R
+/Dest [16 0 R /XYZ 54 287.665 null]
+/Prev 30 0 R
+/Next 32 0 R >>
+endobj
+32 0 obj
+<< /Title (What "First Light" means)
+/Parent 20 0 R
+/Dest [18 0 R /XYZ 54 741.630 null]
+/Prev 31 0 R
+/Next 33 0 R >>
+endobj
+33 0 obj
+<< /Title (Try it)
+/Parent 20 0 R
+/Dest [18 0 R /XYZ 54 584.513 null]
+/Prev 32 0 R
+/Next 34 0 R >>
+endobj
+34 0 obj
+<< /Title (What's next: v1.0.1)
+/Parent 20 0 R
+/Dest [18 0 R /XYZ 54 392.845 null]
+/Prev 33 0 R >>
+endobj
+xref
+0 35
+0000000000 65535 f 
+0000000019 00000 n 
+0000001149 00000 n 
+0000001241 00000 n 
+0000001338 00000 n 
+0000001440 00000 n 
+0000001545 00000 n 
+0000001640 00000 n 
+0000024589 00000 n 
+0000024753 00000 n 
+0000059828 00000 n 
+0000059993 00000 n 
+0000087218 00000 n 
+0000087384 00000 n 
+0000114924 00000 n 
+0000115080 00000 n 
+0000143884 00000 n 
+0000144040 00000 n 
+0000167145 00000 n 
+0000167301 00000 n 
+0000167376 00000 n 
+0000167525 00000 n 
+0000167705 00000 n 
+0000167858 00000 n 
+0000168042 00000 n 
+0000168194 00000 n 
+0000168349 00000 n 
+0000168478 00000 n 
+0000168620 00000 n 
+0000168757 00000 n 
+0000168902 00000 n 
+0000169028 00000 n 
+0000169176 00000 n 
+0000169309 00000 n 
+0000169424 00000 n 
+trailer
+<< /Size 35 /Root 1 0 R >>
+startxref
+169539
+%%EOF

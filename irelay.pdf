@@ -1,0 +1,1060 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /Outlines 14 0 R /PageMode /UseOutlines /Names << /Dests << /Names [(architecture) [13 0 R /XYZ 54 794.710 null] (demo) [10 0 R /XYZ 54 636.570 null] (how-it-works) [10 0 R /XYZ 54 553.653 null] (irelay-text-your-mac-run-an-ai-agent) [10 0 R /XYZ 54 796.690 null] (what-i-actually-did-with-it) [10 0 R /XYZ 54 281.148 null] (what-s-next) [13 0 R /XYZ 54 621.903 null] (why-the-double-y) [10 0 R /XYZ 54 397.345 null]] >> >> >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [10 0 R 13 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+7 0 obj
+<< /Length 17040 >>
+stream
+0 0 0 rg
+BT /F2 22 Tf 54 787.890 Td (iRelay: ) Tj ET
+0 0 0 rg
+BT /F2 22 Tf 132.254 787.890 Td (Text ) Tj ET
+0 0 0 rg
+BT /F2 22 Tf 183.602 787.890 Td (Your ) Tj ET
+0 0 0 rg
+BT /F2 22 Tf 239.834 787.890 Td (Mac, ) Tj ET
+0 0 0 rg
+BT /F2 22 Tf 294.856 787.890 Td (Run ) Tj ET
+0 0 0 rg
+BT /F2 22 Tf 343.740 787.890 Td (an ) Tj ET
+0 0 0 rg
+BT /F2 22 Tf 375.530 787.890 Td (AI ) Tj ET
+0 0 0 rg
+BT /F2 22 Tf 403.646 787.890 Td (Agent) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 749.390 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 749.390 Td (created ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.859 749.390 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.033 749.390 Td (GitHub ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.323 749.390 Td (repo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.392 749.390 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.450 749.390 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.171 749.390 Td (phone ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.809 749.390 Td (while ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.925 749.390 Td (walking ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.657 749.390 Td (around ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.958 749.390 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.306 749.390 Td (house. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.386 749.390 Td (No ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 424.502 749.390 Td (terminal, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.734 749.390 Td (no ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 485.024 749.390 Td (SSH, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 513.756 749.390 Td (no ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 735.750 Td (laptop ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.022 735.750 Td (open. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.602 735.750 Td (Just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.834 735.750 Td (iMessage.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 716.110 Td (iRelay) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 86.406 716.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 89.464 716.110 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 100.464 716.110 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.638 716.110 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.533 716.110 Td (daemon ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.334 716.110 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.740 716.110 Td (listens ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.972 716.110 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.867 716.110 Td (iMessages ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.494 716.110 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.784 716.110 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.237 716.110 Td (Mac, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.132 716.110 Td (spawns ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 413.480 716.110 Td (Claude ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.386 716.110 Td (Code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 480.734 716.110 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 492.350 716.110 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 702.470 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.069 702.470 Td (directory, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.359 702.470 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.765 702.470 Td (sends ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.171 702.470 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.519 702.470 Td (result ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 240.472 702.470 Td (back ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.762 702.470 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.436 702.470 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 290.610 702.470 Td (text. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.458 702.470 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.085 702.470 Td (message ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.770 702.470 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.223 702.470 Td (Mac ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.060 702.470 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 452.618 702.470 Td (you'd ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 481.966 702.470 Td (message ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 529.651 702.470 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 688.830 Td (person, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.743 688.830 Td (except ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.207 688.830 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.765 688.830 Td (writes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.544 688.830 Td (code.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 669.190 Td (GitHub:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.326 669.190 Td ( ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 97.384 669.190 Td (github.com/mihaelamj/iRelay) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 97.384 667.690 m 237.975 667.690 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 629.750 Td (Demo) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 599.913 Td (:::tile ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.290 599.913 Td (embed) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.917 599.913 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.975 599.913 Td (url: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.312 599.913 Td (https://www.youtube.com/embed/ehOY7BnPOf0) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.701 599.913 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.759 599.913 Td (title: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 396.991 599.913 Td (Demo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.386 599.913 Td (video) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 455.676 599.913 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 458.734 599.913 Td (aspectRatio: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 586.273 Td (315/560) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.754 586.273 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.812 586.273 Td (:::) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 546.833 Td (How ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 94.732 546.833 Td (It ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 109.890 546.833 Td (Works) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 516.995 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 516.995 Td (flow ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.627 516.995 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.627 516.995 Td (simple:) Tj ET
+0.950 0.950 0.950 rg
+54 471.495 487.280 25.860 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 481.455 Td (iPhone ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 481.455 Td (\(iMessage\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 481.455 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 481.455 Td (Mac ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 481.455 Td (\(iRelay ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 481.455 Td (daemon\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 481.455 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 481.455 Td (Claude ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 481.455 Td (Code ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 481.455 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 392.640 481.455 Td (response ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 446.100 481.455 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 457.980 481.455 Td (iMessage) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 463.245 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 463.245 Td (send ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 103.533 463.245 Td (something ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.334 463.245 Td (like ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 176.892 463.245 Td (irelayy ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 227.052 463.245 Td (fix ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 252.132 463.245 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 277.212 463.245 Td (failing ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 327.372 463.245 Td (test) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.452 463.245 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 355.510 463.245 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 380.568 463.245 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 405.021 463.245 Td (phone. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 441.717 463.245 Td (Your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 468.007 463.245 Td (Mac ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.844 463.245 Td (picks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 519.960 463.245 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 449.605 Td (up, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 449.605 Td (runs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.801 449.605 Td (Claude ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.707 449.605 Td (Code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.055 449.605 Td (against ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.577 449.605 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.030 449.605 Td (project, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.157 449.605 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.563 449.605 Td (texts ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.853 449.605 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.643 449.605 Td (back ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 360.933 449.605 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 383.549 449.605 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.839 449.605 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.397 449.605 Td (did.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 429.965 Td (That's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.011 429.965 Td (it. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.627 429.965 Td (No ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.743 429.965 Td (web ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.975 429.965 Td (UI, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.091 429.965 Td (no ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.381 429.965 Td (port ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.392 429.965 Td (forwarding, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.856 429.965 Td (no ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.146 429.965 Td (VPN. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 294.878 429.965 Td (Just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 318.110 429.965 Td (iMessage ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.237 429.965 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.911 429.965 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.085 429.965 Td (transport ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 438.549 429.965 Td (layer.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 390.525 Td (Why ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 94.732 390.525 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 125.047 390.525 Td (Double ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 187.570 390.525 Td (Y) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 360.688 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 360.688 Td (already ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.243 360.688 Td (run ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 118.196 360.688 Td (OpenClaw) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 118.196 359.188 m 169.544 359.188 l S
+0 0 0 rg
+BT /F1 11 Tf 169.544 360.688 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.602 360.688 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 187.892 360.688 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.240 360.688 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.193 360.688 Td (Mac ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.030 360.688 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.925 360.688 Td (iMessage ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.052 360.688 Td (automation. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 386.585 360.688 Td (Two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.422 360.688 Td (daemons ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 458.723 360.688 Td (listening ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.129 360.688 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 514.361 360.688 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 347.048 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.953 347.048 Td (iMessage ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.080 347.048 Td (account ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.660 347.048 Td (would ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.450 347.048 Td (fight ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.298 347.048 Td (over ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.751 347.048 Td (every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.704 347.048 Td (incoming ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.773 347.048 Td (message.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 327.408 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 327.408 Td (fix: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.127 327.408 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.301 327.408 Td (prefix. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.312 327.408 Td (iRelay ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.928 327.408 Td (claims ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.149 327.408 Td (any ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.939 327.408 Td (message ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.624 327.408 Td (starting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 310.751 327.408 Td (with ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 333.367 327.408 Td (irelayy) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 377.257 327.408 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 380.315 327.408 Td (\(double ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.058 327.408 Td (y\). ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 435.337 327.408 Td (OpenClaw ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 489.743 327.408 Td (ignores ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 313.768 Td (those. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.022 313.768 Td (Everything ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.044 313.768 Td (else ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.276 313.768 Td (goes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.182 313.768 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.414 313.768 Td (OpenClaw. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.878 313.768 Td (Simple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.552 313.768 Td (namespace ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.469 313.768 Td (partitioning ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 415.328 313.768 Td (over ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.781 313.768 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 448.955 313.768 Td (shared ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 485.640 313.768 Td (channel.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 274.328 Td (What ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 100.410 274.328 Td (I ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 109.890 274.328 Td (Actually ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 180.954 274.328 Td (Did ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 213.162 274.328 Td (With ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 254.832 274.328 Td (It) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 244.490 Td (First ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78.442 244.490 Td (real ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.837 244.490 Td (test: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.685 244.490 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.801 244.490 Td (asked ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.207 244.490 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.765 244.490 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.997 244.490 Td (investigate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.635 244.490 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.356 244.490 Td (repos ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.925 244.490 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.331 244.490 Td (suggest ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.911 244.490 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 359.085 244.490 Td (business ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 405.549 244.490 Td (idea. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 432.455 244.490 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 441.629 244.490 Td (came ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.582 244.490 Td (back ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.872 244.490 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 230.850 Td (MCPMe. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.837 230.850 Td (Then ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.964 230.850 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.080 230.850 Td (told ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.870 230.850 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 163.428 230.850 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.660 230.850 Td (create ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.287 230.850 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.635 230.850 Td (repo, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.762 230.850 Td (write ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.041 230.850 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 300.389 230.850 Td (README, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 353.563 230.850 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.969 230.850 Td (push ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.875 230.850 Td (it. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 413.491 230.850 Td (All ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.770 230.850 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 453.828 230.850 Td (iMessage. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 507.013 230.850 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 217.210 Td (Mac ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 217.210 Td (did ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.569 217.210 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.917 217.210 Td (work ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.196 217.210 Td (while ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.312 217.210 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 174.428 217.210 Td (made ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.997 217.210 Td (coffee.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 197.570 Td (That's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.011 197.570 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.359 197.570 Td (use ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.149 197.570 Td (case ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.439 197.570 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.497 197.570 Td (you're ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 199.508 197.570 Td (away ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.240 197.570 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.298 197.570 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.751 197.570 Td (desk ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.041 197.570 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.389 197.570 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.179 197.570 Td (want ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.469 197.570 Td (something ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.270 197.570 Td (done ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 450.792 197.570 Td (now) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.966 197.570 Td (. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 477.082 197.570 Td (A ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 487.477 197.570 Td (quick ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 516.209 197.570 Td (fix, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 183.930 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 183.930 Td (repo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.243 183.930 Td (setup, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.265 183.930 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.439 183.930 Td (refactor. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.845 183.930 Td (Text ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.298 183.930 Td (it, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.914 183.930 Td (walk ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.972 183.930 Td (away, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.762 183.930 Td (get ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.110 183.930 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.458 183.930 Td (result ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 333.411 183.930 Td (back ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 359.701 183.930 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.991 183.930 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 399.444 183.930 Td (phone.) Tj ET
+
+endstream
+endobj
+8 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [97.384 666.440 237.975 679.090]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/iRelay) >> >>
+endobj
+9 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [118.196 357.938 169.544 370.588]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/nicklama/openclaw) >> >>
+endobj
+10 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 7 0 R
+/Annots [8 0 R 9 0 R] >>
+endobj
+11 0 obj
+<< /Length 8243 >>
+stream
+0 0 0 rg
+BT /F2 17.050 Tf 54 787.890 Td (Architecture) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 758.053 Td (iRelay ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.616 758.053 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.616 758.053 Td (designed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.312 758.053 Td (around ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.613 758.053 Td (channels ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.693 758.053 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.099 758.053 Td (providers:) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 738.413 Td (Channels) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.511 738.413 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.569 738.413 Td (handle ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.649 738.413 Td (message ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.334 738.413 Td (transport ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.798 738.413 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.856 738.413 Td (iMessage ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.983 738.413 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.983 738.413 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.331 738.413 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.737 738.413 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 397.143 738.413 Td (works ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.922 738.413 Td (today. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 461.944 738.413 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 725.763 Td (architecture ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.522 725.763 Td (supports ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.765 725.763 Td (Telegram, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.334 725.763 Td (Slack, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.345 725.763 Td (Discord, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.740 725.763 Td (Signal, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.425 725.763 Td (Matrix, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 385.483 725.763 Td (IRC, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.541 725.763 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 431.947 725.763 Td (WebChat, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.911 725.763 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.259 725.763 Td (those ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 713.113 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.953 713.113 Td (scaffolded, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.207 713.113 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.555 713.113 Td (wired ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.892 713.113 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.182 713.113 Td (yet.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 698.463 Td (Providers) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.743 698.463 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.801 698.463 Td (handle ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.881 698.463 Td (LLM ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.334 698.463 Td (execution ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.472 698.463 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.530 698.463 Td (Claude ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 294.436 698.463 Td (Code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.784 698.463 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.784 698.463 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 353.132 698.463 Td (primary ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.853 698.463 Td (one. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 417.317 698.463 Td (OpenAI, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 460.734 698.463 Td (Ollama, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 501.687 698.463 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 685.813 Td (Gemini ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.895 685.813 Td (slots ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 141.569 685.813 Td (exist ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.243 685.813 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.138 685.813 Td (future ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.323 685.813 Td (use.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 668.163 Td (Conversation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.859 668.163 Td (history ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.312 668.163 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.312 668.163 Td (preserved ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.276 668.163 Td (across ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.729 668.163 Td (messages, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 311.972 668.163 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.646 668.163 Td (context ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.168 668.163 Td (carries ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.226 668.163 Td (over. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.737 668.163 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.364 668.163 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 472.154 668.163 Td (also ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 495.386 668.163 Td (save ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 654.523 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 75.406 654.523 Td (restore ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.696 654.523 Td (sessions.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 615.083 Td (What's ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 114.630 615.083 Td (Next) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 585.245 Td (iRelay ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.616 585.245 Td (pairs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 114.511 585.245 Td (well ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.511 585.245 Td (with ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 159.127 585.245 Td (Cupertino) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 159.127 583.745 m 206.812 583.745 l S
+0 0 0 rg
+BT /F1 11 Tf 206.812 585.245 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.870 585.245 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.928 585.245 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.276 585.245 Td (Claude ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.182 585.245 Td (Code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.530 585.245 Td (has ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.320 585.245 Td (offline ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.726 585.245 Td (access ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.016 585.245 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.248 585.245 Td (Apple's ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 462.375 585.245 Td (documentation, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 571.605 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 571.605 Td (responses ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.149 571.605 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.939 571.605 Td (get ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.287 571.605 Td (back ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 191.577 571.605 Td (over ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.030 571.605 Td (iMessage ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.157 571.605 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.110 571.605 Td (significantly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.016 571.605 Td (better. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 379.259 571.605 Td (No ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 396.375 571.605 Td (hallucinated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 458.129 571.605 Td (APIs, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 487.477 571.605 Td (no ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 557.965 Td (deprecated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.091 557.965 Td (patterns. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.950 557.965 Td (I've ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.124 557.965 Td (been ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.646 557.965 Td (quietly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 240.494 557.965 Td (working ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.447 557.965 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.737 557.965 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.911 557.965 Td (major ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.469 557.965 Td (Cupertino ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.212 557.965 Td (update ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.908 557.965 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 445.314 557.965 Td (nearly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 478.325 557.965 Td (doubles ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 544.325 Td (framework ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.395 544.325 Td (coverage, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.754 544.325 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.928 544.325 Td (will ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.254 544.325 Td (make ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.207 544.325 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 259.381 544.325 Td (combination ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.740 544.325 Td (even ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.646 544.325 Td (stronger. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.110 544.325 Td (More ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.226 544.325 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 438.516 544.325 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 459.922 544.325 Td (soon.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 524.685 m 541.280 524.685 l S
+0 0 0 rg
+BT /F3 11 Tf 54 506.685 Td (Built ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 78.453 506.685 Td (in ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 90.069 506.685 Td (a ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 99.243 506.685 Td (day. ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 123.091 506.685 Td (Used ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 151.823 506.685 Td (from ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 176.881 506.685 Td (the ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 195.229 506.685 Td (couch.) Tj ET
+
+endstream
+endobj
+12 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [159.127 582.495 206.812 595.145]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/cupertino) >> >>
+endobj
+13 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >>
+/Contents 11 0 R
+/Annots [12 0 R] >>
+endobj
+14 0 obj
+<< /Type /Outlines
+/Count 7
+/First 15 0 R
+/Last 15 0 R >>
+endobj
+15 0 obj
+<< /Title (iRelay: Text Your Mac, Run an AI Agent)
+/Parent 14 0 R
+/Dest [10 0 R /XYZ 54 796.690 null]
+/First 16 0 R
+/Last 21 0 R
+/Count 6 >>
+endobj
+16 0 obj
+<< /Title (Demo)
+/Parent 15 0 R
+/Dest [10 0 R /XYZ 54 636.570 null]
+/Next 17 0 R >>
+endobj
+17 0 obj
+<< /Title (How It Works)
+/Parent 15 0 R
+/Dest [10 0 R /XYZ 54 553.653 null]
+/Prev 16 0 R
+/Next 18 0 R >>
+endobj
+18 0 obj
+<< /Title (Why the Double Y)
+/Parent 15 0 R
+/Dest [10 0 R /XYZ 54 397.345 null]
+/Prev 17 0 R
+/Next 19 0 R >>
+endobj
+19 0 obj
+<< /Title (What I Actually Did With It)
+/Parent 15 0 R
+/Dest [10 0 R /XYZ 54 281.148 null]
+/Prev 18 0 R
+/Next 20 0 R >>
+endobj
+20 0 obj
+<< /Title (Architecture)
+/Parent 15 0 R
+/Dest [13 0 R /XYZ 54 794.710 null]
+/Prev 19 0 R
+/Next 21 0 R >>
+endobj
+21 0 obj
+<< /Title (What's Next)
+/Parent 15 0 R
+/Dest [13 0 R /XYZ 54 621.903 null]
+/Prev 20 0 R >>
+endobj
+xref
+0 22
+0000000000 65535 f 
+0000000019 00000 n 
+0000000492 00000 n 
+0000000557 00000 n 
+0000000654 00000 n 
+0000000756 00000 n 
+0000000861 00000 n 
+0000000956 00000 n 
+0000018049 00000 n 
+0000018213 00000 n 
+0000018379 00000 n 
+0000018566 00000 n 
+0000026862 00000 n 
+0000027031 00000 n 
+0000027204 00000 n 
+0000027278 00000 n 
+0000027435 00000 n 
+0000027535 00000 n 
+0000027656 00000 n 
+0000027781 00000 n 
+0000027917 00000 n 
+0000028038 00000 n 
+trailer
+<< /Size 22 /Root 1 0 R >>
+startxref
+28145
+%%EOF

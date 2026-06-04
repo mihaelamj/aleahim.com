@@ -1,0 +1,6449 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /Outlines 43 0 R /PageMode /UseOutlines /Names << /Dests << /Names [(1-1-stage-01-initialize-packages) [20 0 R /XYZ 54 552.448 null] (1-2-stage-02-add-workspace) [26 0 R /XYZ 54 327.445 null] (1-3-stage-03-add-ios-and-macos-app-targets) [28 0 R /XYZ 54 441.085 null] (adding-them-to-workspace) [28 0 R /XYZ 54 233.635 null] (appview) [24 0 R /XYZ 54 458.155 null] (basic-package-code) [22 0 R /XYZ 54 502.070 null] (configuration-steps) [30 0 R /XYZ 54 425.325 null] (dummy-files) [24 0 R /XYZ 54 484.830 null] (dummymodel) [24 0 R /XYZ 54 203.330 null] (explanation-why-separate-targets) [30 0 R /XYZ 54 569.470 null] (final-structure) [32 0 R /XYZ 54 792.730 null] (folder-structure-snapshot) [20 0 R /XYZ 54 273.723 null] (gitignore) [34 0 R /XYZ 54 432.633 null] (goals) [17 0 R /XYZ 54 562.603 null] (introduction) [17 0 R /XYZ 54 755.270 null] (overview) [20 0 R /XYZ 54 687.263 null] (part-1-project-setup) [20 0 R /XYZ 54 794.710 null] (part-2-tooling) [34 0 R /XYZ 54 551.770 null] (parts) [20 0 R /XYZ 54 451.188 null] (philosophy) [17 0 R /XYZ 54 179.783 null] (platform-targets-creation) [28 0 R /XYZ 54 404.730 null] (process) [17 0 R /XYZ 54 460.028 null] (purpose) [20 0 R /XYZ 54 516.093 null] (purpose-2) [26 0 R /XYZ 54 291.090 null] (stage-01-init-packages) [26 0 R /XYZ 54 692.730 null] (stage-02-add-to-workspace) [28 0 R /XYZ 54 792.730 null] (stage-03-apps-added) [32 0 R /XYZ 54 535.855 null] (summary) [34 0 R /XYZ 54 793.610 null] (swiftformat-config) [36 0 R /XYZ 54 424.770 null] (swiftlint-config) [38 0 R /XYZ 54 424.770 null] (workspace-creation-steps) [26 0 R /XYZ 54 212.545 null]] >> >> >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [17 0 R 20 0 R 22 0 R 24 0 R 26 0 R 28 0 R 30 0 R 32 0 R 34 0 R 36 0 R 38 0 R 40 0 R 42 0 R] /Count 13 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+7 0 obj
+<< /Length 16089 >>
+stream
+0 0 0 rg
+BT /F1 11 Tf 54 787.890 Td (A ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 64.395 787.890 Td (Modular ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.185 787.890 Td (Architecture ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.928 787.890 Td (Methodology ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.961 787.890 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.856 787.890 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.751 787.890 Td (Projects) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.483 787.890 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.541 787.890 Td (By ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.436 787.890 Td (Mihaela ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 378.005 787.890 Td (Mihaljevic) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 748.450 Td (Introduction) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 718.613 Td (Extreme ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 100.464 718.613 Td (Packaging) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.486 718.613 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.544 718.613 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.544 718.613 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.718 718.613 Td (methodology ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.751 718.613 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.646 718.613 Td (structuring ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.052 718.613 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.947 718.613 Td (projects ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 383.516 718.613 Td (with ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 406.132 718.613 Td (maximal ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 450.132 718.613 Td (modularity ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 503.922 718.613 Td (and ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 54 704.973 Td (minimal ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 94.942 704.973 Td (responsibility ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 161.569 704.973 Td (per ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 180.522 704.973 Td (module.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.649 704.973 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.707 704.973 Td (Each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.834 704.973 Td (module ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.961 704.973 Td (represents ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 344.983 704.973 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.157 704.973 Td (single, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 389.005 704.973 Td (isolated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.969 704.973 Td (unit ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 450.759 704.973 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 462.991 704.973 Td (logic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 488.665 704.973 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.723 704.973 Td (small ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 691.333 Td (enough ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.754 691.333 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.986 691.333 Td (reason ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.671 691.333 Td (about, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.309 691.333 Td (easy ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.599 691.333 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.831 691.333 Td (test, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.679 691.333 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.085 691.333 Td (replaceable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.002 691.333 Td (without ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 357.908 691.333 Td (side ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.140 691.333 Td (effects.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 671.693 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 671.693 Td (core ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 100.464 671.693 Td (idea ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.312 671.693 Td (is ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 135.312 671.693 Td (separation) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.939 671.693 Td (:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.997 671.693 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.055 671.693 Td (modules ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.682 671.693 Td (depend ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.436 671.693 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.726 671.693 Td (stable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 329.132 671.693 Td (interfaces, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.933 671.693 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.281 671.693 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 416.571 671.693 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.477 671.693 Td (other\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 658.053 Td (implementations. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.196 658.053 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.033 658.053 Td (enables ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.613 658.053 Td (scalable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.019 658.053 Td (architectures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.041 658.053 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.447 658.053 Td (remain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.121 658.053 Td (flexible ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.411 658.053 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 425.085 658.053 Td (projects ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.654 658.053 Td (evolve, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 504.560 658.053 Td (while ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 644.413 Td (keeping ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.580 644.413 Td (build ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.870 644.413 Td (times ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.207 644.413 Td (short ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.718 644.413 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.124 644.413 Td (dependencies ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.668 644.413 Td (explicit.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 624.773 Td (Table ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 85.790 624.773 Td (Of ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 101.069 624.773 Td (Contents:) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 78 605.133 Td (Part ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 78 603.633 m 101.232 603.633 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 101.232 605.133 Td (1 ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 101.232 603.633 m 110.406 603.633 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 110.406 605.133 Td (\227 ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 110.406 603.633 m 124.464 603.633 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 124.464 605.133 Td (Project ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 124.464 603.633 m 161.754 603.633 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 161.754 605.133 Td (Setup) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 161.754 603.633 m 190.497 603.633 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 78 590.483 Td (Part ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 78 588.983 m 101.232 588.983 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 101.232 590.483 Td (2 ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 101.232 588.983 m 110.406 588.983 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 110.406 590.483 Td (\227 ) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 110.406 588.983 m 124.464 588.983 l S
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 124.464 590.483 Td (Tooling) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 124.464 588.983 m 160.533 588.983 l S
+0 0 0 rg
+BT /F2 14.300 Tf 54 556.883 Td (Goals) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 531.858 Td (Promote ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.627 531.858 Td (clean ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.975 531.858 Td (boundaries ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.450 531.858 Td (between ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.088 531.858 Td (domains ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.715 531.858 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.121 531.858 Td (features) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 517.208 Td (Enable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.301 517.208 Td (independent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.903 517.208 Td (development ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.936 517.208 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.342 517.208 Td (testing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.806 517.208 Td (per ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.759 517.208 Td (package) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 502.558 Td (Simplify ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 119.558 502.558 Td (refactoring ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 174.580 502.558 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.986 502.558 Td (dependency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.972 502.558 Td (management) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 487.908 Td (Keep ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.743 487.908 Td (compilation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.428 487.908 Td (fast ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.218 487.908 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.624 487.908 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.972 487.908 Td (architecture ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.494 487.908 Td (transparent) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 454.308 Td (Process) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 429.283 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 429.283 Td (repository ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.359 429.283 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.359 429.283 Td (organized ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.718 429.283 Td (into ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 210.508 429.283 Td (stages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 245.356 429.283 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.472 429.283 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.378 429.283 Td (representing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.574 429.283 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.748 429.283 Td (self-contained ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.281 429.283 Td (checkpoint ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 478.919 429.283 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.535 429.283 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 415.643 Td (project\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.011 415.643 Td (evolution.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.091 415.643 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.149 415.643 Td (When ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.939 415.643 Td (moving ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.450 415.643 Td (between ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.088 415.643 Td (stages ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.552 415.643 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.610 415.643 Td (especially ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.958 415.643 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 393.306 415.643 Td (reverting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.154 415.643 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.386 415.643 Td (earlier ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 485.002 415.643 Td (ones ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 511.908 415.643 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 402.003 Td (always ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.674 402.003 Td (reset ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.185 402.003 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 139.591 402.003 Td (clean ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.939 402.003 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.392 402.003 Td (workspace ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.019 402.003 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.251 402.003 Td (ensure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.936 402.003 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.494 402.003 Td (matches ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.121 402.003 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.469 402.003 Td (intended ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.723 402.003 Td (state.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 382.363 Td (Here\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 382.363 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.185 382.363 Td (example ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.812 382.363 Td (for ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 167.707 382.363 Td (stage ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 199.497 382.363 Td (01) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.729 382.363 Td (:) Tj ET
+0.950 0.950 0.950 rg
+54 198.263 487.280 164.460 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 346.823 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 346.823 Td (Ensure ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 346.823 Td (you're ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 346.823 Td (on ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 346.823 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 346.823 Td (branch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 346.823 Td (you ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 346.823 Td (want) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 332.963 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 332.963 Td (checkout ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 332.963 Td (stage/01-init-packages) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 305.243 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 305.243 Td (Fetch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 305.243 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 305.243 Td (latest ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 305.243 Td (version) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 291.383 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 291.383 Td (fetch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 291.383 Td (origin) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 263.663 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 263.663 Td (Reset ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 263.663 Td (your ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 263.663 Td (branch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 263.663 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 263.663 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 263.663 Td (remote ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 263.663 Td (version) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 249.803 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 249.803 Td (reset ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 249.803 Td (--hard ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 249.803 Td (stage/01-init-packages) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 222.083 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 222.083 Td (Delete ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 222.083 Td (untracked ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 222.083 Td (files ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 222.083 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 222.083 Td (directories) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 208.223 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 208.223 Td (clean ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 208.223 Td (-fdx) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 174.063 Td (Philosophy) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 149.038 Td (In ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 66.232 149.038 Td (most ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.127 149.038 Td (projects, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.754 149.038 Td (modularization ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.334 149.038 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.334 149.038 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.624 149.038 Td (afterthought ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 300.389 149.038 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.447 149.038 Td (introduced ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.864 149.038 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.212 149.038 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 416.560 149.038 Td (codebase ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 467.314 149.038 Td (becomes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 514.999 149.038 Td (too ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 135.398 Td (large ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 81.511 135.398 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.743 135.398 Td (manage.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.544 135.398 Td ( ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 139.602 135.398 Td (Extreme ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 186.066 135.398 Td (Packaging) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.088 135.398 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.146 135.398 Td (inverts ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 279.599 135.398 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.005 135.398 Td (approach: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.980 135.398 Td (modularization ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 427.560 135.398 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 438.560 135.398 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.908 135.398 Td (starting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 496.035 135.398 Td (point.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 522.941 135.398 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 121.758 Td (By ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 69.895 121.758 Td (treating ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.638 121.758 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.544 121.758 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.182 121.758 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.856 121.758 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.146 121.758 Td (autonomous ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.737 121.758 Td (component ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.212 121.758 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 357.270 121.758 Td (day ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 378.060 121.758 Td (one, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.524 121.758 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.314 121.758 Td (gain ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 447.162 121.758 Td (clarity, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 481.999 121.758 Td (resilience, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 108.118 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 75.406 108.118 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.580 108.118 Td (foundation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 139.008 108.118 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.414 108.118 Td (naturally ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.041 108.118 Td (scales ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.273 108.118 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.889 108.118 Td (complexity.) Tj ET
+
+endstream
+endobj
+8 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [78 602.383 101.232 615.033]
+/Border [0 0 0]
+/Dest (part-1-project-setup) >>
+endobj
+9 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [101.232 602.383 110.406 615.033]
+/Border [0 0 0]
+/Dest (part-1-project-setup) >>
+endobj
+10 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [110.406 602.383 124.464 615.033]
+/Border [0 0 0]
+/Dest (part-1-project-setup) >>
+endobj
+11 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [124.464 602.383 161.754 615.033]
+/Border [0 0 0]
+/Dest (part-1-project-setup) >>
+endobj
+12 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [161.754 602.383 190.497 615.033]
+/Border [0 0 0]
+/Dest (part-1-project-setup) >>
+endobj
+13 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [78 587.733 101.232 600.383]
+/Border [0 0 0]
+/Dest (part-2-tooling) >>
+endobj
+14 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [101.232 587.733 110.406 600.383]
+/Border [0 0 0]
+/Dest (part-2-tooling) >>
+endobj
+15 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [110.406 587.733 124.464 600.383]
+/Border [0 0 0]
+/Dest (part-2-tooling) >>
+endobj
+16 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [124.464 587.733 160.533 600.383]
+/Border [0 0 0]
+/Dest (part-2-tooling) >>
+endobj
+17 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 7 0 R
+/Annots [8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 16 0 R] >>
+endobj
+18 0 obj
+<< /Length 13981 >>
+stream
+0 0 0 rg
+BT /F2 17.050 Tf 54 787.890 Td (Part ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 91.902 787.890 Td (1 ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 106.122 787.890 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 127.912 787.890 Td (Project ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 190.451 787.890 Td (Setup) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 758.053 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 758.053 Td (first ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.790 758.053 Td (step ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.638 758.053 Td (in ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 132.254 758.053 Td (Extreme ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 178.718 758.053 Td (Packaging) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.740 758.053 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.798 758.053 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.798 758.053 Td (establishing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.936 758.053 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 318.110 758.053 Td (clear ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.005 758.053 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.411 758.053 Td (reproducible ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.991 758.053 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.060 758.053 Td (structure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 511.908 758.053 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 744.413 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 74.790 744.413 Td (evolve ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.638 744.413 Td (gradually ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.323 744.413 Td (through ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.682 744.413 Td (defined ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.820 744.413 Td (stages.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.284 744.413 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.342 744.413 Td (Each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.469 744.413 Td (stage ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 333.433 744.413 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.049 744.413 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.397 744.413 Td (repository ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.745 744.413 Td (builds ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 446.535 744.413 Td (upon ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 474.057 744.413 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 492.405 744.413 Td (previous ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 730.773 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 75.406 730.773 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 89.464 730.773 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 114.522 730.773 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.870 730.773 Td (initial ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.986 730.773 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.624 730.773 Td (setup, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.646 730.773 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.878 730.773 Td (workspace ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.505 730.773 Td (creation, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.748 730.773 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.154 730.773 Td (finally ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.328 730.773 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 416.560 730.773 Td (adding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 452.640 730.773 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.988 730.773 Td (app ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 492.394 730.773 Td (target ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 717.133 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 75.406 717.133 Td (ties ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.580 717.133 Td (everything ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.381 717.133 Td (together.) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 681.543 Td (Overview) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 656.518 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 656.518 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.080 656.518 Td (begins ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.544 656.518 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.218 656.518 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 171.392 656.518 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 200.729 656.518 Td (Package ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 248.425 656.518 Td (Manager\226based ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 334.621 656.518 Td (structure) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.295 656.518 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 388.411 656.518 Td (designed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 436.107 656.518 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 452.002 656.518 Td (modularity ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 505.792 656.518 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 642.878 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 642.878 Td (start.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.801 642.878 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.859 642.878 Td (At ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.312 642.878 Td (its ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.370 642.878 Td (core ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.823 642.878 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.823 642.878 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.997 642.878 Td (single ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 203.787 642.878 Td (Packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.947 642.878 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 257.005 642.878 Td (directory ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.237 642.878 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.643 642.878 Td (houses ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.165 642.878 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.223 642.878 Td (functional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.361 642.878 Td (modules ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.988 642.878 Td (\(such ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 500.941 642.878 Td (as ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 629.238 Td (AppFeature) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.700 629.238 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 122.816 629.238 Td (SharedModels) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.056 629.238 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.172 629.238 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.578 629.238 Td (later ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.031 629.238 Td (others\).) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.321 629.238 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 290.379 629.238 Td (Every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.553 629.238 Td (addition ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.133 629.238 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.365 629.238 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 393.713 629.238 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.782 629.238 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.840 629.238 Td (whether ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.025 629.238 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 495.199 629.238 Td (new ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 615.598 Td (feature, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.359 615.598 Td (UI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.417 615.598 Td (layer, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.370 615.598 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.207 615.598 Td (platform ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.997 615.598 Td (target ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.182 615.598 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.240 615.598 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.240 615.598 Td (layered ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.367 615.598 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.657 615.598 Td (top ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.005 615.598 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.237 615.598 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 355.411 615.598 Td (foundation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.839 615.598 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 421.455 615.598 Td (small, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 453.234 615.598 Td (trackable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 601.958 Td (increments.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 582.318 Td (Here ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.895 582.318 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.895 582.318 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.243 582.318 Td (link ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.801 582.318 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.033 582.318 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.381 582.318 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.450 582.318 Td (used:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.356 582.318 Td ( ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 226.414 582.318 Td (https://github.com/mihaelamj/ExtremePackaging) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 226.414 580.818 m 461.781 580.818 l S
+0 0 0 rg
+BT /F2 14.300 Tf 54 546.728 Td (1.1 ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 77.852 546.728 Td (Stage ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 120.767 546.728 Td (01 ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 140.644 546.728 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 158.919 546.728 Td (Initialize ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 219.322 546.728 Td (Packages) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 511.253 Td (Purpose) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 490.078 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 490.078 Td (stage ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.801 490.078 Td (ensures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.986 490.078 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.160 490.078 Td (working, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.171 490.078 Td (self-contained ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.704 490.078 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.599 490.078 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.237 490.078 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.643 490.078 Td (compiles ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.096 490.078 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 435.502 490.078 Td (passes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 473.408 490.078 Td (initial ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 501.524 490.078 Td (linting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 476.438 Td (checks.) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 446.348 Td (Parts) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 425.173 Td (At ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 67.453 425.173 Td (stage/01-init-packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.439 425.173 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 191.555 425.173 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.903 425.173 Td (repository ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.251 425.173 Td (contains:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 405.533 Td (A ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.395 405.533 Td (minimal ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 129.337 405.533 Td (package ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 176.417 405.533 Td (structure) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 224.091 405.533 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.149 405.533 Td (with ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 249.765 405.533 Td (Sources) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 293.655 405.533 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.713 405.533 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 318.119 405.533 Td (Tests) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 387.883 Td (Core ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 106.116 387.883 Td (configuration ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 179.453 387.883 Td (file) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.348 387.883 Td (s:) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 373.233 Td (.swiftlint.yml) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.780 373.233 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.838 373.233 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.733 373.233 Td (linting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.523 373.233 Td (rules) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 358.583 Td (.swiftformat) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.240 358.583 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.298 358.583 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.193 358.583 Td (consistent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 224.773 358.583 Td (formatting) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 343.933 Td (.gitignore) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.700 343.933 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 146.816 343.933 Td (LICENSE) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.706 343.933 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.822 343.933 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 218.228 343.933 Td (README.md) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 326.283 Td (Two ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 103.058 326.283 Td (base ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 131.185 326.283 Td (modules) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.417 326.283 Td (:) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 311.633 Td (AppFeature) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.700 311.633 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.758 311.633 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.816 311.633 Td (serves ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.269 311.633 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.943 311.633 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 226.291 311.633 Td (entry ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.802 311.633 Td (feature ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.103 311.633 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.998 311.633 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 325.346 311.633 Td (app) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 296.983 Td (SharedModels) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.240 296.983 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.298 296.983 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.356 296.983 Td (holds ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 199.704 296.983 Td (simple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.541 296.983 Td (model ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.552 296.983 Td (definitions) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 268.883 Td (Folder ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 94.341 268.883 Td (Structure ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 151.490 268.883 Td (snapshot) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 247.708 Td (Example ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.848 247.708 Td (folder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.417 247.708 Td (structure:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.265 247.708 Td ( ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 179.323 247.708 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 234.068 Td (/images/xpack/Screenshot%202025-03-31%20at%2017.07.23.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 214.428 Td (Inside ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 86.406 214.428 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.754 214.428 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.812 214.428 Td (folder:) Tj ET
+0.950 0.950 0.950 rg
+54 58.048 487.280 136.740 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 165.028 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 165.028 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 165.028 Td (ExtremePackaging ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 165.028 Td (git:\(main\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 165.028 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 165.028 Td (ls ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 165.028 Td (-all) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 151.168 Td ( .) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 137.308 Td ( ..) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 123.448 Td ( .git) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 109.588 Td ( .gitignore) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 95.728 Td ( .swiftformat) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 81.868 Td ( .swiftlint.yml) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 68.008 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 68.008 Td (Apps) Tj ET
+
+endstream
+endobj
+19 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [226.414 579.568 461.781 592.218]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/ExtremePackaging/tree/stage/01-init-packages) >> >>
+endobj
+20 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 18 0 R
+/Annots [19 0 R] >>
+endobj
+21 0 obj
+<< /Length 15098 >>
+stream
+0.950 0.950 0.950 rg
+54 734.310 487.280 53.580 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 771.990 Td (LICENSE) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 758.130 Td (Packages) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 744.270 Td (README.md) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 726.060 Td (Inside ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 86.406 726.060 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 104.754 726.060 Td (Packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.914 726.060 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.972 726.060 Td (folder:) Tj ET
+0.950 0.950 0.950 rg
+54 597.400 487.280 109.020 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 690.520 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 690.520 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 690.520 Td (ExtremePackaging ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 690.520 Td (git:\(main\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 690.520 Td (cd ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 690.520 Td (Packages) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 676.660 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 676.660 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 676.660 Td (Packages ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 676.660 Td (git:\(main\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 676.660 Td (ls ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 676.660 Td (-all) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 662.800 Td ( .) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 648.940 Td ( ..) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 635.080 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 635.080 Td (Package.swift) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 621.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 621.220 Td (Sources) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 607.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 607.360 Td (Tests) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 589.150 Td (Inside ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 86.406 589.150 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 104.754 589.150 Td (Apps) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.834 589.150 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.892 589.150 Td (folder:) Tj ET
+0.950 0.950 0.950 rg
+54 515.930 487.280 53.580 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 553.610 Td (.) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 539.750 Td (..) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 525.890 Td (.gitkeep) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 497.230 Td (Basic ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 89.647 497.230 Td (Package ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 142.112 497.230 Td (Code:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 476.055 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 476.055 Td (start ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.569 476.055 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.185 476.055 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.823 476.055 Td (structure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.671 476.055 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.229 476.055 Td (this:) Tj ET
+0.950 0.950 0.950 rg
+54 56.335 487.280 400.080 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 440.515 Td (// ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 440.515 Td (swift-tools-version: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 440.515 Td (6.0) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 412.795 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 412.795 Td (PackageDescription) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 385.075 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 385.075 Td (package ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 385.075 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 385.075 Td (Package\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 371.215 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 371.215 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 371.215 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 371.215 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 371.215 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 371.215 Td ("Main",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 357.355 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 357.355 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 357.355 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 357.355 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 357.355 Td (platforms: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 357.355 Td ([) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 343.495 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 343.495 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 343.495 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 343.495 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 343.495 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 343.495 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 343.495 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 343.495 Td ( .iOS\(.v17\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 329.635 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 329.635 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 329.635 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 329.635 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 329.635 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 329.635 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 329.635 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 329.635 Td ( .macOS\(.v14\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 315.775 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 315.775 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 315.775 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 315.775 Td ( ],) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 301.915 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 301.915 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 301.915 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 301.915 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 301.915 Td (products: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 301.915 Td ([) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 288.055 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 288.055 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 288.055 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 288.055 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 288.055 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 288.055 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 288.055 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 288.055 Td ( .singleTargetLibrary\("AppFeature"\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 274.195 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 274.195 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 274.195 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 274.195 Td ( ],) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 260.335 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 260.335 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 260.335 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 260.335 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 260.335 Td (dependencies: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 260.335 Td ([) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 246.475 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 246.475 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 246.475 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 246.475 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 246.475 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 246.475 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 246.475 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 246.475 Td ( .package\(url: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 246.475 Td ("https://github.com/realm/SwiftLint", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 416.400 246.475 Td (exact: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 457.980 246.475 Td ("0.52.3"\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 232.615 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 232.615 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 232.615 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 232.615 Td ( ],) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 218.755 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 218.755 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 218.755 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 218.755 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 218.755 Td (targets: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 218.755 Td ([) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 204.895 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 204.895 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 204.895 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 204.895 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 204.895 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 204.895 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 204.895 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 204.895 Td ( .target\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 191.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 191.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 191.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 191.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 191.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 191.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 191.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 191.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 191.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 191.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 191.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 191.035 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 191.035 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 191.035 Td ("AppFeature",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 177.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 177.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 177.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 177.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 177.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 177.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 177.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 177.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 177.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 177.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 177.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 177.175 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 177.175 Td (dependencies: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 177.175 Td ([) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 163.315 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 163.315 Td ("SharedModels",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 149.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 149.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 149.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 149.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 149.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 149.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 149.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 149.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 149.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 149.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 149.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 149.455 Td ( ]) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 135.595 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 135.595 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 135.595 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 135.595 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 135.595 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 135.595 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 135.595 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 135.595 Td ( \),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 121.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 121.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 121.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 121.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 121.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 121.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 121.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 121.735 Td ( .testTarget\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 107.875 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 107.875 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 107.875 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 107.875 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 107.875 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 107.875 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 107.875 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 107.875 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 107.875 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 107.875 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 107.875 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 107.875 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 107.875 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 107.875 Td ("AppFeatureTests",) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 94.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 94.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 94.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 94.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 94.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 94.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 94.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 94.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 94.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 94.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 94.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 94.015 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 94.015 Td (dependencies: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 94.015 Td ([) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 80.155 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 80.155 Td ("AppFeature") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 66.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 66.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 66.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 66.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 66.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 66.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 66.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 66.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 66.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 66.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 66.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 66.295 Td ( ]) Tj ET
+
+endstream
+endobj
+22 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 21 0 R >>
+endobj
+23 0 obj
+<< /Length 16438 >>
+stream
+0.950 0.950 0.950 rg
+54 498.690 487.280 289.200 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 771.990 Td ( \),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 758.130 Td ( .target\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 744.270 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 744.270 Td ("SharedModels") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 730.410 Td ( \)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 716.550 Td ( ]) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 702.690 Td (\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 674.970 Td (// ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 674.970 Td (Inject ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 674.970 Td (base ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 674.970 Td (plugins ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 674.970 Td (into ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 674.970 Td (each ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 674.970 Td (target) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 661.110 Td (package.targets ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 661.110 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 661.110 Td (package.targets.map ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 661.110 Td ({ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 661.110 Td (target ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 661.110 Td (in) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 647.250 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 647.250 Td (plugins ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 647.250 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 647.250 Td (target.plugins ?? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 647.250 Td ([]) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 633.390 Td (plugins.append\(.plugin\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 633.390 Td ("SwiftLintPlugin", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 368.880 633.390 Td (package: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 422.340 633.390 Td ("SwiftLint"\)\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 619.530 Td (target.plugins ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 619.530 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 619.530 Td (plugins) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 605.670 Td (return ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 605.670 Td (target) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 591.810 Td (}) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 564.090 Td (extension ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 564.090 Td (Product ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 564.090 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 550.230 Td (static ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 550.230 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 550.230 Td (singleTargetLibrary\(_ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 550.230 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 550.230 Td (String\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 368.880 550.230 Td (-> ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 386.700 550.230 Td (Product ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 434.220 550.230 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 536.370 Td ( .library\(name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 536.370 Td (name, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 536.370 Td (targets: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 536.370 Td ([name]\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 522.510 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 522.510 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 508.650 Td (}) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 479.990 Td (Dummy ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 101.735 479.990 Td (Files) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 453.315 Td (AppView) Tj ET
+0.950 0.950 0.950 rg
+54 212.240 487.280 219.900 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 416.240 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 416.240 Td (SharedModels) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 402.380 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 402.380 Td (SharedViews) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 388.520 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 388.520 Td (SwiftUI) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 360.800 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 360.800 Td (struct ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 360.800 Td (AppView: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 360.800 Td (View ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 360.800 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 346.940 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 346.940 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 346.940 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 346.940 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 346.940 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 346.940 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 346.940 Td (body: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 346.940 Td (some ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 346.940 Td (View ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 346.940 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 333.080 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 333.080 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 333.080 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 333.080 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 333.080 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 333.080 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 333.080 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 333.080 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 333.080 Td (VStack ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 333.080 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 319.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 319.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 319.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 319.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 319.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 319.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 319.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 319.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 319.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 319.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 319.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 319.220 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 319.220 Td (Text\("Extreme ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 319.220 Td (Packaging!"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 305.360 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 305.360 Td ( .font\(.title\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 291.500 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 291.500 Td ( .fontWeight\(.bold\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 277.640 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 277.640 Td ( .multilineTextAlignment\(.center\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 263.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 263.780 Td ( .padding\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 249.920 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 249.920 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 249.920 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 249.920 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 249.920 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 249.920 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 249.920 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 249.920 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 236.060 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 236.060 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 236.060 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 236.060 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 222.200 Td (}) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 198.490 Td (DummyModel) Tj ET
+0.950 0.950 0.950 rg
+54 54.435 487.280 122.880 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 161.415 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 161.415 Td (Foundation) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 133.695 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 133.695 Td (struct ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 133.695 Td (DummyModel: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 133.695 Td (Identifiable ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 133.695 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 119.835 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 119.835 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 119.835 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 119.835 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 119.835 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 119.835 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 119.835 Td (id: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 119.835 Td (UUID ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 119.835 Td (= .init\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 105.975 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 105.975 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 105.975 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 105.975 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 105.975 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 105.975 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 105.975 Td (title: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 105.975 Td (String) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 92.115 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 92.115 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 92.115 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 92.115 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 92.115 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 92.115 Td (init\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 78.255 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 78.255 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 78.255 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 78.255 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 78.255 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 78.255 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 78.255 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 78.255 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 78.255 Td (id: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 78.255 Td (UUID ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 78.255 Td (= .init\(\),) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 64.395 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 64.395 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 64.395 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 64.395 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 64.395 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 64.395 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 64.395 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 64.395 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 64.395 Td (title: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 64.395 Td (String) Tj ET
+
+endstream
+endobj
+24 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F2 4 0 R /F4 6 0 R >> >>
+/Contents 23 0 R >>
+endobj
+25 0 obj
+<< /Length 12325 >>
+stream
+0.950 0.950 0.950 rg
+54 706.590 487.280 81.300 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 771.990 Td ( \) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 771.990 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 758.130 Td (self.id ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 758.130 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 758.130 Td (id) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 744.270 Td (self.title ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 744.270 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 744.270 Td (title) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 730.410 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 716.550 Td (}) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 687.890 Td (Stage ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 90.312 687.890 Td (01-init-packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 666.715 Td (Here\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 666.715 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.185 666.715 Td (code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.091 666.715 Td (for ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 149.986 666.715 Td (stage ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 181.776 666.715 Td (01) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.008 666.715 Td (:) Tj ET
+0.950 0.950 0.950 rg
+54 427.175 487.280 219.900 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 617.315 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 617.315 Td (Clone ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 617.315 Td (repo ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 617.315 Td (if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 617.315 Td (needed) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 603.455 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 603.455 Td (clone ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 603.455 Td (git@github.com:mihaelamj/ExtremePackaging.git) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 575.735 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 575.735 Td (Ensure ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 575.735 Td (you're ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 575.735 Td (on ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 575.735 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 575.735 Td (branch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 575.735 Td (you ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 575.735 Td (want) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 561.875 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 561.875 Td (checkout ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 561.875 Td (stage/01-init-packages) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 534.155 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 534.155 Td (Fetch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 534.155 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 534.155 Td (latest ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 534.155 Td (version) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 520.295 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 520.295 Td (fetch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 520.295 Td (origin) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 492.575 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 492.575 Td (Reset ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 492.575 Td (your ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 492.575 Td (branch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 492.575 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 492.575 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 492.575 Td (remote ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 492.575 Td (version) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 478.715 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 478.715 Td (reset ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 478.715 Td (--hard ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 478.715 Td (stage/01-init-packages) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 450.995 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 450.995 Td (Delete ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 450.995 Td (untracked ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 450.995 Td (files ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 450.995 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 450.995 Td (directories) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 437.135 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 437.135 Td (clean ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 437.135 Td (-fdx) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 418.925 Td (To ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 69.895 418.925 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.685 418.925 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.917 418.925 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.475 418.925 Td (looks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.207 418.925 Td (in ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 162.823 418.925 Td (Xcode) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.834 418.925 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.892 418.925 Td (we ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.008 418.925 Td (need ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.530 418.925 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.762 418.925 Td (switch ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.378 418.925 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.610 418.925 Td (subfolder ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 349.911 418.925 Td (packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.071 418.925 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 406.187 418.925 Td (since ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.919 418.925 Td (we ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 452.035 418.925 Td (haven\222t ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.557 418.925 Td (created ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 405.285 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 405.285 Td (workspace ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.975 405.285 Td (yet.) Tj ET
+0.950 0.950 0.950 rg
+54 345.925 487.280 39.720 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 369.745 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 369.745 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 369.745 Td (ExtremePackaging ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 369.745 Td (git:\(stage/01-init-packages\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 369.745 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 362.940 369.745 Td (cd ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 369.745 Td (Packages) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 355.885 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 355.885 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 355.885 Td (Packages ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 355.885 Td (git:\(stage/01-init-packages\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 355.885 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 355.885 Td (xed .) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 321.725 Td (1.2 ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 77.852 321.725 Td (Stage ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 120.767 321.725 Td (02 ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 140.644 321.725 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 158.919 321.725 Td (Add ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 190.694 321.725 Td (Workspace) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 286.250 Td (Purpose) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 265.075 Td (In ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 66.232 265.075 Td (stage/02-workspace-added) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.834 265.075 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.950 265.075 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.240 265.075 Td (Xcode ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 262.483 265.075 Td (workspace) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.342 265.075 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.400 265.075 Td (named ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 359.085 265.075 Td (Main.xcworkspace) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 459.405 265.075 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 462.463 265.075 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 473.463 265.075 Td (introduced ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 527.880 265.075 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 251.435 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 251.435 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.417 251.435 Td (root.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.428 251.435 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.486 251.435 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.660 251.435 Td (includes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.066 251.435 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 204.414 251.435 Td (Packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.574 251.435 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 257.632 251.435 Td (folder, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.259 251.435 Td (allowing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.049 251.435 Td (smooth ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.176 251.435 Td (integration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 427.593 251.435 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.825 251.435 Td (multiple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 480.778 251.435 Td (modules ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 237.795 Td (while ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.116 237.795 Td (keeping ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.696 237.795 Td (them ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.207 237.795 Td (decoupled.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.019 237.795 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.077 237.795 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.914 237.795 Td (step ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.762 237.795 Td (establishes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.842 237.795 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.190 237.795 Td (foundation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 386.618 237.795 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.513 237.795 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.687 237.795 Td (multi-target ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.756 237.795 Td (environment.) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 207.705 Td (Workspace ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 121.917 207.705 Td (creation ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 172.350 207.705 Td (steps) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 186.530 Td (Create ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.069 186.530 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.243 186.530 Td (new ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.475 186.530 Td (workspace ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.102 186.530 Td (\(I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 187.881 186.530 Td (name ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.450 186.530 Td (it ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 227.008 186.530 Td (Main) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.088 186.530 Td (\), ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.867 186.530 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.483 186.530 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.831 186.530 Td (root ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.842 186.530 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.074 186.530 Td (our ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.027 186.530 Td (folder.) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 166.890 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 166.890 Td (/images/xpack/workspace.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 140.040 Td (Add ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 140.040 Td (folder ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 107.196 140.040 Td (Packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.356 140.040 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.414 140.040 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.646 140.040 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.994 140.040 Td (workspace.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 246.621 140.040 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.679 140.040 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.853 140.040 Td (will ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.179 140.040 Td (add ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.585 140.040 Td (our ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.538 140.040 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.176 140.040 Td (structure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 408.024 140.040 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.256 140.040 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 438.604 140.040 Td (project:) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 120.400 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 120.400 Td (/images/xpack/Screenshot%202025-03-31%20at%2018.33.55.png]) Tj ET
+
+endstream
+endobj
+26 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 25 0 R >>
+endobj
+27 0 obj
+<< /Length 12793 >>
+stream
+0 0 0 rg
+BT /F2 12.100 Tf 54 787.890 Td (Stage ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 90.312 787.890 Td (02-add\227to-workspace) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 766.715 Td (Here\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 766.715 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.185 766.715 Td (code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.091 766.715 Td (for ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 149.986 766.715 Td (stage ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 181.776 766.715 Td (02) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.008 766.715 Td (:) Tj ET
+0.950 0.950 0.950 rg
+54 527.175 487.280 219.900 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 717.315 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 717.315 Td (Clone ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 717.315 Td (repo ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 717.315 Td (if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 717.315 Td (needed) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 703.455 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 703.455 Td (clone ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 703.455 Td (git@github.com:mihaelamj/ExtremePackaging.git) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 675.735 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 675.735 Td (Ensure ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 675.735 Td (you're ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 675.735 Td (on ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 675.735 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 675.735 Td (branch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 675.735 Td (you ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 675.735 Td (want) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 661.875 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 661.875 Td (checkout ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 661.875 Td (stage/02-add\227to-workspace) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 634.155 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 634.155 Td (Fetch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 634.155 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 634.155 Td (latest ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 634.155 Td (version) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 620.295 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 620.295 Td (fetch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 620.295 Td (origin) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 592.575 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 592.575 Td (Reset ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 592.575 Td (your ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 592.575 Td (branch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 592.575 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 592.575 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 592.575 Td (remote ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 592.575 Td (version) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 578.715 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 578.715 Td (reset ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 578.715 Td (--hard ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 578.715 Td (stage/02-add\227to-workspace) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 550.995 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 550.995 Td (Delete ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 550.995 Td (untracked ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 550.995 Td (files ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 550.995 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 550.995 Td (directories) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 537.135 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 537.135 Td (clean ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 537.135 Td (-fdx) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 518.925 Td (Now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 79.058 518.925 Td (we ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.174 518.925 Td (have ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.080 518.925 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 141.428 518.925 Td (workspace) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.287 518.925 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.403 518.925 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.077 518.925 Td (we ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.193 518.925 Td (just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.367 518.925 Td (need ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 283.889 518.925 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.121 518.925 Td (open ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 323.643 518.925 Td (Xcode) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.654 518.925 Td (:) Tj ET
+0.950 0.950 0.950 rg
+54 459.565 487.280 39.720 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 483.385 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 483.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 483.385 Td (Packages ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 483.385 Td (git:\(stage/02-add\227to-workspace\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 325.320 483.385 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 337.200 483.385 Td (xed .) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 469.525 Td (? ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 469.525 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 469.525 Td (Packages ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 469.525 Td (git:\(stage/02-add\227to-workspace\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 325.320 469.525 Td (?) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 435.365 Td (1.3 ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 77.852 435.365 Td (Stage ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 120.767 435.365 Td (03 ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 140.644 435.365 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 158.919 435.365 Td (Add ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 190.694 435.365 Td (iOS ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 219.308 435.365 Td (and ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 248.709 435.365 Td (macOS ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 301.962 435.365 Td (App ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 333.737 435.365 Td (Targets) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 399.890 Td (Platform ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 106.441 399.890 Td (targets ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 150.147 399.890 Td (creation) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 378.715 Td (Add ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78.442 378.715 Td (new ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 102.895 378.715 Td (iOS ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 124.906 378.715 Td (and ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 147.522 378.715 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 156.696 378.715 Td (new ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 181.149 378.715 Td (macOS ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 222.113 378.715 Td (project) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.787 378.715 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.845 378.715 Td (Repeat ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 300.367 378.715 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.541 378.715 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.436 378.715 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.342 378.715 Td (target:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 359.075 Td (Create ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.069 359.075 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.243 359.075 Td (new ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.475 359.075 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.544 359.075 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.160 359.075 Td (Xcode:) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 339.435 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 339.435 Td (/images/xpack/macos1.jpg]) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 312.585 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 312.585 Td (/images/xpack/macos2.jpg]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 285.735 Td (Add ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 285.735 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 103.533 285.735 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 115.765 285.735 Td (Apps) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.845 285.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.903 285.735 Td (folder:) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 266.095 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 266.095 Td (/images/xpack/macosFolder.jpg]) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 228.795 Td (Adding ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 99.036 228.795 Td (them ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 131.307 228.795 Td (to ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 146.093 228.795 Td (workspace) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 207.620 Td (We ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 73.558 207.620 Td (will ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.884 207.620 Td (be ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.174 207.620 Td (adding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.254 207.620 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.160 207.620 Td (app ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 191.566 207.620 Td (target ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.751 207.620 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.983 207.620 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 253.331 207.620 Td (workspace, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.016 207.620 Td (below ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 343.806 207.620 Td (Packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.107 207.620 Td (.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.165 207.620 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.223 207.620 Td (Open ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.187 207.620 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 446.535 207.620 Td (current ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.825 207.620 Td (repository ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 193.980 Td (folder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.569 193.980 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.975 193.980 Td (drag ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.044 193.980 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.508 193.980 Td (new ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.740 193.980 Td (projects ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.309 193.980 Td (\(iOS ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 245.367 193.980 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.773 193.980 Td (macOS\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 310.168 193.980 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.958 193.980 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.306 193.980 Td (workspace ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 404.933 193.980 Td (sidebar.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 174.340 Td (Each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.127 174.340 Td (target ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.312 174.340 Td (remains ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.486 174.340 Td (isolated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.450 174.340 Td (within ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.624 174.340 Td (its ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.682 174.340 Td (own ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.914 174.340 Td (folder, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.541 174.340 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.889 174.340 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.353 174.340 Td (share ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.922 174.340 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.270 174.340 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.223 174.340 Td (logic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 445.897 174.340 Td (through ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.256 174.340 Td (the ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 54 160.700 Td (AppFeature) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.475 160.700 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 114.533 160.700 Td (module.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.660 160.700 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.718 160.700 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.555 160.700 Td (ensures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.740 160.700 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.146 160.700 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.204 160.700 Td (common ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 303.436 160.700 Td (code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.342 160.700 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 344.400 160.700 Td (views, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 378.016 160.700 Td (models, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 419.585 160.700 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.991 160.700 Td (reducers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 486.839 160.700 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 500.897 160.700 Td (stays ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 147.060 Td (within ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.174 147.060 Td (shared ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.859 147.060 Td (packages, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.055 147.060 Td (while ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.171 147.060 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.077 147.060 Td (platform ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.867 147.060 Td (target ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.052 147.060 Td (keeps ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.458 147.060 Td (its ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 350.516 147.060 Td (own ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.748 147.060 Td (configuration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.781 147.060 Td (files.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 127.420 Td (Open ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.964 127.420 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.312 127.420 Td (current ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 139.602 127.420 Td (repo ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.671 127.420 Td (folder:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.240 127.420 Td ( ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 198.298 127.420 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 238.041 127.420 Td (/images/xpack/show_in_finder.jpg]) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 107.780 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 107.780 Td (/images/xpack/folders_on_disk.jpg]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 80.930 Td (Add ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 76.627 80.930 Td (macOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 114.533 80.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.591 80.930 Td (target:) Tj ET
+
+endstream
+endobj
+28 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 27 0 R >>
+endobj
+29 0 obj
+<< /Length 10490 >>
+stream
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 787.890 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 787.890 Td (/images/xpack/add_macos.jpg]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 761.040 Td (Choose ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.964 761.040 Td (\223Reference ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.428 761.040 Td (files ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.044 761.040 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.660 761.040 Td (place\224) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 741.400 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 741.400 Td (/images/xpack/reference_files.jpg]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 714.550 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 714.550 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 714.550 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.069 714.550 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.627 714.550 Td (looks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.359 714.550 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.707 714.550 Td (added:) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 694.910 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 694.910 Td (/images/xpack/add_macOS_done.jpg]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 668.060 Td (Add ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 76.627 668.060 Td (iOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 95.580 668.060 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.638 668.060 Td (target:) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 648.420 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 648.420 Td (/images/xpack/add_iOS.jpg]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 621.570 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 621.570 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 621.570 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.069 621.570 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.627 621.570 Td (looks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.359 621.570 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.707 621.570 Td (added:) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 601.930 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 601.930 Td (/images/xpack/add_iOS_done.jpg]) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 564.630 Td (Explanation: ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 129.976 564.630 Td (Why ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 158.883 564.630 Td (separate ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 212.014 564.630 Td (targets) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 543.455 Td (Keeping ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 97.417 543.455 Td (iOS ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.812 543.455 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.218 543.455 Td (macOS ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.950 543.455 Td (projects ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 221.519 543.455 Td (distinct ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.809 543.455 Td (allows:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 523.815 Td (Independent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.218 523.815 Td (platform ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.008 523.815 Td (configuration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.041 523.815 Td (\(e.g. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.110 523.815 Td (Info.plist, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.190 523.815 Td (app ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 344.596 523.815 Td (icons, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.386 523.815 Td (signing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.292 523.815 Td (settings\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 509.165 Td (Platform-specific ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.348 509.165 Td (features ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.149 509.165 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.497 509.165 Td (needed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.251 509.165 Td (\(e.g. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.320 509.165 Td (menu ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 329.889 509.165 Td (commands ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 386.737 509.165 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.027 509.165 Td (macOS, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.817 509.165 Td (touch ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 474.781 509.165 Td (gestures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 520.024 509.165 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 496.515 Td (iOS\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 481.865 Td (Consistent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.022 481.865 Td (architecture ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.544 481.865 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.950 481.865 Td (shared ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 251.635 481.865 Td (logic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.309 481.865 Td (through ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.668 481.865 Td (modular ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 360.458 481.865 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.353 481.865 Td (packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 464.215 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 464.215 Td (structure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.685 464.215 Td (aligns ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.475 464.215 Td (perfectly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.102 464.215 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.718 464.215 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 241.066 464.215 Td (Extreme ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 287.530 464.215 Td (Packaging) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.552 464.215 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 345.610 464.215 Td (philosophy ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.248 464.215 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 415.306 464.215 Td (shared ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.991 464.215 Td (foundation, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 450.575 Td (platform-specific ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.127 450.575 Td (shells.) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 420.485 Td (Configuration ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 136.679 420.485 Td (steps) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 399.310 Td (Delete ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.848 399.310 Td (automatically ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.091 399.310 Td (added ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 213.729 399.310 Td (ContentView.swift) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 384.660 Td (Add ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 100.627 384.660 Td (AppFeature) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 163.327 384.660 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.385 384.660 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 211.023 384.660 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.255 384.660 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.603 384.660 Td (our ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.556 384.660 Td (target:) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 367.010 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 367.010 Td (/images/xpack/AppTarget05.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 340.160 Td (Now ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 79.058 340.160 Td (our ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.011 340.160 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.080 340.160 Td (looks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.812 340.160 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.370 340.160 Td (this:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 202.544 340.160 Td ( ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 205.602 340.160 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 245.345 340.160 Td (/images/xpack/AppTarget06.png]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 320.520 Td (And ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 320.520 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.975 320.520 Td (main ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.870 320.520 Td (app ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.276 320.520 Td (starts ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.229 320.520 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.845 320.520 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.193 320.520 Td (fully ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.809 320.520 Td (testable ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 278.389 320.520 Td (AppFeature) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 300.880 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 300.880 Td (/images/xpack/AppTarget07.png]) Tj ET
+0.950 0.950 0.950 rg
+54 109.570 487.280 164.460 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 258.130 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 258.130 Td (SwiftUI) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 244.270 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 244.270 Td (AppFeature) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 216.550 Td (@main) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 202.690 Td (struct ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 202.690 Td (SwiftUIAppApp: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 202.690 Td (App ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 202.690 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 188.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 188.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 188.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 188.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 188.830 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 188.830 Td (body: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 188.830 Td (some ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 188.830 Td (Scene ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 188.830 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 174.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 174.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 174.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 174.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 174.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 174.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 174.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 174.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 174.970 Td (WindowGroup ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 174.970 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 161.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 161.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 161.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 161.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 161.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 161.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 161.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 161.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 161.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 161.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 161.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 161.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 161.110 Td (AppView\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 147.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 147.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 147.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 147.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 147.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 147.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 147.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 147.250 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 133.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 133.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 133.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 133.390 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 119.530 Td (}) Tj ET
+
+endstream
+endobj
+30 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 29 0 R >>
+endobj
+31 0 obj
+<< /Length 17063 >>
+stream
+0 0 0 rg
+BT /F2 12.100 Tf 54 787.890 Td (Final ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 85.605 787.890 Td (structure) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 766.715 Td (At ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 67.453 766.715 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.627 766.715 Td (point, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.591 766.715 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.939 766.715 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.008 766.715 Td (has ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.798 766.715 Td (evolved ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.762 766.715 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.552 766.715 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.726 766.715 Td (fully ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.342 766.715 Td (cross-platform ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 359.074 766.715 Td (modular ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.864 766.715 Td (setup.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 747.075 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 747.075 Td (screenshot ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.870 747.075 Td (below ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.660 747.075 Td (illustrates ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.171 747.075 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.519 747.075 Td (final ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.751 747.075 Td (structure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.599 747.075 Td (after ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.668 747.075 Td (completing ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 382.911 747.075 Td (Stage ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 415.922 747.075 Td (03 ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 431.212 747.075 Td (\(iOS ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 456.886 747.075 Td (& ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 467.886 747.075 Td (macOS ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 733.435 Td (targets ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 93.732 733.435 Td (added\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.790 733.435 Td (:) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 54 713.795 Td ([Image: ) Tj ET
+0.350 0.350 0.350 rg
+BT /F3 11 Tf 93.743 713.795 Td (/images/xpack/final_struc.jpg]) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 686.945 Td (The ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 100.011 686.945 Td (Packages) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.765 686.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.823 686.945 Td (directory ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 199.055 686.945 Td (defines ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 237.577 686.945 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.925 686.945 Td (shared ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.610 686.945 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.505 686.945 Td (Package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.364 686.945 Td (with ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 387.980 686.945 Td (AppFeature) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 450.680 686.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 453.738 686.945 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 674.295 Td (SharedModels) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.240 674.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.298 674.295 Td (modules.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 659.645 Td (Both ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 103.685 659.645 Td (iOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.638 659.645 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 125.696 659.645 Td (and ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 147.102 659.645 Td (macOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.008 659.645 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.066 659.645 Td (apps ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.972 659.645 Td (live ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.530 659.645 Td (inside ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.320 659.645 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 284.668 659.645 Td (Apps) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 309.748 659.645 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.806 659.645 Td (folder, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.433 659.645 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.339 659.645 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.955 659.645 Td (its ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.013 659.645 Td (own ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.245 659.645 Td (assets, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.151 659.645 Td (entry ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 498.662 659.645 Td (point, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 646.995 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.406 646.995 Td (platform-specific ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.533 646.995 Td (configuration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.566 646.995 Td (files.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 632.345 Td (The ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 100.011 632.345 Td (Package.swift) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.521 632.345 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.579 632.345 Td (file ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.695 632.345 Td (defines ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 240.217 632.345 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.391 632.345 Td (single ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.181 632.345 Td (modular ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.971 632.345 Td (product, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.772 632.345 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 389.388 632.345 Td (SwiftLint ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.015 632.345 Td (integrated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 485.990 632.345 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 500.664 632.345 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 619.695 Td (plugin ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.406 619.695 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.812 619.695 Td (dependencies ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.356 619.695 Td (kept ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.204 619.695 Td (cleanly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.494 619.695 Td (separated.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 605.045 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.837 605.045 Td (structure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.685 605.045 Td (enables ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.265 605.045 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.729 605.045 Td (platforms ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.019 605.045 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.251 605.045 Td (share ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.820 605.045 Td (logic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.494 605.045 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.900 605.045 Td (UI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.958 605.045 Td (built ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 389.190 605.045 Td (with ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 411.806 605.045 Td (SwiftUI) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 449.085 605.045 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 455.201 605.045 Td (while ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.317 605.045 Td (still ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 592.395 Td (allowing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.790 592.395 Td (native ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.196 592.395 Td (customization ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.497 592.395 Td (per ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.450 592.395 Td (platform.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 574.745 Td (Result:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.279 574.745 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.337 574.745 Td (A ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.732 574.745 Td (clean, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.138 574.745 Td (modular ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.928 574.745 Td (workspace ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 235.555 574.745 Td (where ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 268.566 574.745 Td (shared ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.251 574.745 Td (code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.157 574.745 Td (resides ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.668 574.745 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.284 574.745 Td (packages, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 435.480 574.745 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.886 574.745 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.792 574.745 Td (platform ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 561.105 Td (acts ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.232 561.105 Td (only ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 100.464 561.105 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.138 561.105 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.312 561.105 Td (thin ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.102 561.105 Td (presentation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.693 561.105 Td (shell ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.367 561.105 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.425 561.105 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.773 561.105 Td (essence ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 310.795 561.105 Td (of ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 323.027 561.105 Td (Extreme ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 367.038 561.105 Td (Packaging) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.397 561.105 Td (.) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 54 531.015 Td (Stage ) Tj ET
+0 0 0 rg
+BT /F2 12.100 Tf 90.312 531.015 Td (03-apps-added) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 509.840 Td (In ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 66.232 509.840 Td (stage/03-apps-added) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.649 509.840 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.765 509.840 Td (we ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.881 509.840 Td (create ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.508 509.840 Td (two ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.682 509.840 Td (separate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.541 509.840 Td (app ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.947 509.840 Td (targets ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.632 509.840 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.690 509.840 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.096 509.840 Td (for ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 407.991 509.840 Td (iOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.944 509.840 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.002 509.840 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.408 509.840 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 472.814 509.840 Td (for ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 488.709 509.840 Td (macOS) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 526.615 509.840 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 496.200 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 68.058 496.200 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 92.522 496.200 Td (sharing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.649 496.200 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.997 496.200 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.950 496.200 Td (SwiftUI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.845 496.200 Td (core ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 242.298 496.200 Td (logic.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 476.560 Td (Each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.127 476.560 Td (app ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 103.533 476.560 Td (lives ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.591 476.560 Td (inside ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.381 476.560 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 178.729 476.560 Td (Apps) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.809 476.560 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.867 476.560 Td (folder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 237.436 476.560 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.842 476.560 Td (imports ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.958 476.560 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 316.306 476.560 Td (AppFeature) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 379.006 476.560 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.064 476.560 Td (module, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 424.249 476.560 Td (demonstrating ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.003 476.560 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 520.235 476.560 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 462.920 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.953 462.920 Td (feature ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.254 462.920 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.892 462.920 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.682 462.920 Td (power ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.693 462.920 Td (multiple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.646 462.920 Td (platforms ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.936 462.920 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 331.552 462.920 Td (no ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.842 462.920 Td (duplicated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.038 462.920 Td (code.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 443.280 Td (After ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.290 443.280 Td (adding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.370 443.280 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.718 443.280 Td (targets:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 423.640 Td (Delete ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.848 423.640 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.196 423.640 Td (automatically ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.439 423.640 Td (generated ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 251.030 423.640 Td (ContentView.swift) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 408.990 Td (Add ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 100.627 408.990 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 118.975 408.990 Td (AppFeature) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.675 408.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.733 408.990 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 229.371 408.990 Td (dependency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.357 408.990 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 304.589 408.990 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 329.053 408.990 Td (targets) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 394.340 Td (Verify ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.174 394.340 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.580 394.340 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.044 394.340 Td (apps ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.950 394.340 Td (build ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.240 394.340 Td (successfully) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 376.690 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 376.690 Td (stage ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.801 376.690 Td (concludes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.381 376.690 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.997 376.690 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.171 376.690 Td (fully ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.787 376.690 Td (functional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.925 376.690 Td (cross-platform ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.657 376.690 Td (setup ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.621 376.690 Td (where ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.632 376.690 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 425.096 376.690 Td (iOS ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 446.491 376.690 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 467.897 376.690 Td (macOS ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 507.629 376.690 Td (share ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 363.050 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 363.050 Td (unified ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.638 363.050 Td (architecture ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.160 363.050 Td (driven ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.171 363.050 Td (by ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.845 363.050 Td (modular ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.635 363.050 Td (packages.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 343.410 Td (Here\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 343.410 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.185 343.410 Td (code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.091 343.410 Td (for ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 149.986 343.410 Td (stage ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 181.776 343.410 Td (03) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.008 343.410 Td (:) Tj ET
+0.950 0.950 0.950 rg
+54 103.870 487.280 219.900 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 294.010 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 294.010 Td (Clone ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 294.010 Td (repo ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 294.010 Td (if ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 294.010 Td (needed) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 280.150 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 280.150 Td (clone ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 280.150 Td (git@github.com:mihaelamj/ExtremePackaging.git) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 252.430 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 252.430 Td (Ensure ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 252.430 Td (you're ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 252.430 Td (on ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 252.430 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 252.430 Td (branch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 252.430 Td (you ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 252.430 Td (want) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 238.570 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 238.570 Td (checkout ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 238.570 Td (stage/03-apps-added) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 210.850 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 210.850 Td (Fetch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 210.850 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 210.850 Td (latest ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 210.850 Td (version) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 196.990 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 196.990 Td (fetch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 196.990 Td (origin) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 169.270 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 169.270 Td (Reset ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 169.270 Td (your ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 169.270 Td (branch ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 169.270 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 169.270 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 169.270 Td (remote ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 169.270 Td (version) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 155.410 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 155.410 Td (reset ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 155.410 Td (--hard ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 155.410 Td (stage/03-apps-added) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 127.690 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 127.690 Td (Delete ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 127.690 Td (untracked ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 127.690 Td (files ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 127.690 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 127.690 Td (directories) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 113.830 Td (git ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 113.830 Td (clean ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 113.830 Td (-fdx) Tj ET
+
+endstream
+endobj
+32 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 31 0 R >>
+endobj
+33 0 obj
+<< /Length 12030 >>
+stream
+0 0 0 rg
+BT /F2 14.300 Tf 54 787.890 Td (Summary) Tj ET
+0.930 0.930 0.930 rg
+54 741.500 36 21.365 re f
+0.350 0.350 0.350 RG
+0.500 w 54 741.500 36 21.365 re S
+0 0 0 rg
+BT /F2 9.900 Tf 58 748.965 Td (Stage) Tj ET
+0.930 0.930 0.930 rg
+90 741.500 147.042 21.365 re f
+0.350 0.350 0.350 RG
+0.500 w 90 741.500 147.042 21.365 re S
+0 0 0 rg
+BT /F2 9.900 Tf 94 748.965 Td (Description) Tj ET
+0.930 0.930 0.930 rg
+237.042 741.500 304.238 21.365 re f
+0.350 0.350 0.350 RG
+0.500 w 237.042 741.500 304.238 21.365 re S
+0 0 0 rg
+BT /F2 9.900 Tf 241.042 748.965 Td (Key ) Tj ET
+0 0 0 rg
+BT /F2 9.900 Tf 261.951 748.965 Td (Additions) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 54 706.770 36 34.730 re S
+0 0 0 rg
+BT /F2 9.900 Tf 58 727.600 Td (01) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 90 706.770 147.042 34.730 re S
+0 0 0 rg
+BT /F1 9.900 Tf 94 727.600 Td (Initial ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 119.859 727.600 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 160.033 727.600 Td (setup) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 237.042 706.770 304.238 34.730 re S
+0 0 0 rg
+BT /F4 9.405 Tf 241.042 727.600 Td (Package.swift) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 314.401 727.600 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 319.906 727.600 Td (SwiftLint ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 360.070 727.600 Td (& ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 369.426 727.600 Td (SwiftFormat ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 424.984 727.600 Td (configs, ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 461.852 727.600 Td (dummy ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 497.056 727.600 Td (modules ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 241.042 714.235 Td (\() Tj ET
+0 0 0 rg
+BT /F4 9.405 Tf 244.339 714.235 Td (AppFeature) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 300.769 714.235 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 9.405 Tf 306.273 714.235 Td (SharedModels) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 373.989 714.235 Td (\)) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 54 672.040 36 34.730 re S
+0 0 0 rg
+BT /F2 9.900 Tf 58 692.870 Td (02) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 90 672.040 147.042 34.730 re S
+0 0 0 rg
+BT /F1 9.900 Tf 94 692.870 Td (Workspace ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 146.262 692.870 Td (creation) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 237.042 672.040 304.238 34.730 re S
+0 0 0 rg
+BT /F4 9.405 Tf 241.042 692.870 Td (Main.xcworkspace) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 331.330 692.870 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 336.835 692.870 Td (integrated ) Tj ET
+0 0 0 rg
+BT /F4 9.405 Tf 383.612 692.870 Td (Packages) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 428.756 692.870 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 431.508 692.870 Td (folder ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 459.021 692.870 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 473.326 692.870 Td (modular ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 241.042 679.505 Td (management) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 54 637.310 36 34.730 re S
+0 0 0 rg
+BT /F2 9.900 Tf 58 658.140 Td (03) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 90 637.310 147.042 34.730 re S
+0 0 0 rg
+BT /F1 9.900 Tf 94 658.140 Td (iOS ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 113.256 658.140 Td (& ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 122.611 658.140 Td (macOS ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 158.370 658.140 Td (app ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 177.635 658.140 Td (targets ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 94 644.775 Td (added) Tj ET
+0.350 0.350 0.350 RG
+0.500 w 237.042 637.310 304.238 34.730 re S
+0 0 0 rg
+BT /F1 9.900 Tf 241.042 658.140 Td (Separate ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 283.969 658.140 Td (iOS ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 303.224 658.140 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 322.490 658.140 Td (macOS ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 358.248 658.140 Td (apps ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 382.464 658.140 Td (in ) Tj ET
+0 0 0 rg
+BT /F4 9.405 Tf 392.918 658.140 Td (Apps/) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 421.133 658.140 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 426.638 658.140 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 448.655 658.140 Td (using ) Tj ET
+0 0 0 rg
+BT /F4 9.405 Tf 475.068 658.140 Td (AppFeature) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 531.498 658.140 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 241.042 644.775 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 255.348 644.775 Td (shared ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 288.364 644.775 Td (SwiftUI ) Tj ET
+0 0 0 rg
+BT /F1 9.900 Tf 322.470 644.775 Td (logic) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 625.310 Td (Each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.127 625.310 Td (stage ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.091 625.310 Td (corresponds ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.671 625.310 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 187.903 625.310 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.077 625.310 Td (dedicated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.831 625.310 Td (branch ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 284.516 625.310 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.132 625.310 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.480 625.310 Td (repository, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.886 625.310 Td (allowing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.676 625.310 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 432.466 625.310 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.698 625.310 Td (switch ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 478.314 625.310 Td (between ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 611.670 Td (checkpoints ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.138 611.670 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.544 611.670 Td (observe ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.729 611.670 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.077 611.670 Td (project\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.088 611.670 Td (evolution ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.168 611.670 Td (step ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.016 611.670 Td (by ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.690 611.670 Td (step.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 350.538 611.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 353.596 611.670 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 377.433 611.670 Td (structure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.281 611.670 Td (provides ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 467.908 611.670 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 477.082 611.670 Td (transparent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 598.030 Td (history ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 89.453 598.030 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.685 598.030 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.917 598.030 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.091 598.030 Td (modular ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.881 598.030 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.776 598.030 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.845 598.030 Td (grows ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 272.240 598.030 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.298 598.030 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 306.472 598.030 Td (single ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 338.262 598.030 Td (package ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 382.900 598.030 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 403.690 598.030 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 412.864 598.030 Td (fully ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 435.480 598.030 Td (multi-platform ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 584.390 Td (architecture.) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 54 544.950 Td (Part ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 91.902 544.950 Td (2 ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 106.122 544.950 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 127.912 544.950 Td (Tooling) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 515.113 Td (Every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.174 515.113 Td (project ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.243 515.113 Td (includes ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 188.649 515.113 Td (SwiftLint) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 235.091 515.113 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.149 515.113 Td (and ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 259.555 515.113 Td (SwiftFormat) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.113 515.113 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.171 515.113 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.066 515.113 Td (enforcing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.367 515.113 Td (consistent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.947 515.113 Td (code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.853 515.113 Td (style ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 495.527 515.113 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 502.463 Td (quality) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 487.813 Td (Each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 106.127 487.813 Td (stage ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.091 487.813 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.323 487.813 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.671 487.813 Td (repository ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.019 487.813 Td (introduces ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.820 487.813 Td (incremental ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 331.726 487.813 Td (improvements, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 406.911 487.813 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 431.969 487.813 Td (initializing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 482.701 487.813 Td (packages ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 475.163 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.232 475.163 Td (adding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.312 475.163 Td (app ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.718 475.163 Td (targets ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.403 475.163 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.809 475.163 Td (integrations) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 460.513 Td (These ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.627 460.513 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.580 460.513 Td (applied ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.102 460.513 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.160 460.513 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 212.508 460.513 Td (very ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.345 460.513 Td (first ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 257.124 460.513 Td (stage ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 287.088 460.513 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.436 460.513 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.226 460.513 Td (be ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.516 460.513 Td (customized ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.201 460.513 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 412.433 460.513 Td (any ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.223 460.513 Td (point.) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 426.913 Td (GitIgnore) Tj ET
+0.950 0.950 0.950 rg
+54 57.248 487.280 344.640 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 385.988 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 385.988 Td (Xcode) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 372.128 Td (#) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 358.268 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 358.268 Td (gitignore ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 358.268 Td (contributors: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 358.268 Td (remember ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 358.268 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 358.268 Td (update ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 358.268 Td (Global/Xcode.gitignore, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 344.408 Td (Objective-C.gitignore ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 344.408 Td (& ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 344.408 Td (Swift.gitignore) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 316.688 Td (## ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 316.688 Td (User ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 316.688 Td (settings) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 302.828 Td (xcuserdata/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 275.108 Td (## ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 275.108 Td (Obj-C/Swift ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 275.108 Td (specific) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 261.248 Td (*.hmap) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 233.528 Td (## ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 233.528 Td (App ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 233.528 Td (packaging) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 219.668 Td (*.ipa) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 205.808 Td (*.dSYM.zip) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 191.948 Td (*.dSYM) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 164.228 Td (## ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 164.228 Td (Playgrounds) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 150.368 Td (timeline.xctimeline) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 136.508 Td (playground.xcworkspace) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 108.788 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 108.788 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 108.788 Td (Package ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 108.788 Td (Manager) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 94.928 Td (.build/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 81.068 Td (.swiftpm/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 67.208 Td (Package.resolved) Tj ET
+
+endstream
+endobj
+34 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 33 0 R >>
+endobj
+35 0 obj
+<< /Length 4823 >>
+stream
+0.950 0.950 0.950 rg
+54 443.250 487.280 344.640 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 758.130 Td (Xcode ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 758.130 Td (workspace ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 758.130 Td (& ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 758.130 Td (projects) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 744.270 Td (*.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 730.410 Td (*.xcworkspace/xcuserdata/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 716.550 Td (DerivedData/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 702.690 Td (*.xcuserstate) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 688.830 Td (*.xcscmblueprint) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 674.970 Td (*.xccheckout) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 647.250 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 647.250 Td (macOS ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 647.250 Td (system ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 647.250 Td (files) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 633.390 Td (.DS_Store) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 605.670 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 605.670 Td (Carthage) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 591.810 Td (Carthage/Build/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 564.090 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 564.090 Td (fastlane) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 550.230 Td (fastlane/report.xml) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 536.370 Td (fastlane/Preview.html) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 522.510 Td (fastlane/screenshots/**/*.png) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 508.650 Td (fastlane/test_output) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 480.930 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 480.930 Td (Custom ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 480.930 Td (folders ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 480.930 Td (used ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 480.930 Td (in ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 480.930 Td (ExtremePackaging) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 467.070 Td (Stage/) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 453.210 Td (Tasks/.build/) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 419.050 Td (SwiftFormat ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 140.601 419.050 Td (Config) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 394.025 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 394.025 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 394.025 Td (my ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 106.558 394.025 Td (.swiftformat) Tj ET
+0.950 0.950 0.950 rg
+54 57.465 487.280 316.920 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 358.485 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 358.485 Td (General ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 358.485 Td (Options) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 344.625 Td (--swiftversion ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 344.625 Td (5.7) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 316.905 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 316.905 Td (File ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 316.905 Td (Options) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 303.045 Td (--exclude ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 289.185 Td (Stage,Tasks/.build,ThirdParty,**/SwiftGen/*,**/Sourcery/*,Frameworks/swift-compo) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 275.325 Td (sable-architecture,**.generated.swift) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 247.605 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 247.605 Td (Format ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 247.605 Td (Options) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 219.885 Td (--allman ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 219.885 Td (false) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 206.025 Td (--binarygrouping ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 206.025 Td (none) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 192.165 Td (--closingparen ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 192.165 Td (balanced) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 178.305 Td (--commas ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 178.305 Td (always) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 164.445 Td (--conflictmarkers ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 164.445 Td (reject) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 150.585 Td (--decimalgrouping ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 150.585 Td (none) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 136.725 Td (--elseposition ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 136.725 Td (same-line) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 122.865 Td (--exponentcase ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 122.865 Td (lowercase) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 109.005 Td (--exponentgrouping ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 109.005 Td (disabled) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 95.145 Td (--fractiongrouping ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 95.145 Td (disabled) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 81.285 Td (--fragment ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 81.285 Td (false) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 67.425 Td (--header ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 67.425 Td (ignore) Tj ET
+
+endstream
+endobj
+36 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 35 0 R >>
+endobj
+37 0 obj
+<< /Length 8840 >>
+stream
+0.950 0.950 0.950 rg
+54 443.250 487.280 344.640 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td (--hexgrouping ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 771.990 Td (none) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td (--hexliteralcase ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 758.130 Td (lowercase) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 744.270 Td (--ifdef ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 744.270 Td (no-indent) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 730.410 Td (--importgrouping ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 730.410 Td (alphabetized) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 716.550 Td (--indent ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 716.550 Td (4) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 702.690 Td (--indentcase ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 702.690 Td (false) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 688.830 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 688.830 Td (make ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 688.830 Td (sure ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 688.830 Td (this ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 688.830 Td (matches .swiftlint) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 674.970 Td (--maxwidth ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 674.970 Td (180) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 661.110 Td (--nospaceoperators ..<,...) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 647.250 Td (--octalgrouping ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 647.250 Td (none) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 633.390 Td (--operatorfunc ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 633.390 Td (no-space) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 619.530 Td (--selfrequired) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 605.670 Td (--stripunusedargs ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 605.670 Td (closure-only) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 591.810 Td (--trailingclosures) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 577.950 Td (--wraparguments ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 577.950 Td (before-first) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 564.090 Td (--wrapcollections ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 564.090 Td (before-first) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 550.230 Td (--wrapparameters ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 550.230 Td (before-first) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 522.510 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 522.510 Td (Rules) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 508.650 Td (--disable ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 508.650 Td (hoistAwait) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 494.790 Td (--disable ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 494.790 Td (hoistPatternLet) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 480.930 Td (--disable ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 480.930 Td (hoistTry) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 467.070 Td (--disable ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 467.070 Td (wrapMultilineStatementBraces) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 453.210 Td (--disable ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 453.210 Td (extensionAccessControl) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 54 419.050 Td (SwiftLint ) Tj ET
+0 0 0 rg
+BT /F2 14.300 Tf 118.350 419.050 Td (Config) Tj ET
+0.950 0.950 0.950 rg
+54 63.245 487.280 330.780 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 378.125 Td (disabled_rules: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 378.125 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 378.125 Td (rule ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 378.125 Td (identifiers ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 378.125 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 378.125 Td (exclude ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 333.240 378.125 Td (from ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 362.940 378.125 Td (running) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 364.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 364.265 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 364.265 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 364.265 Td (opening_brace) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 350.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 350.405 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 350.405 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 350.405 Td (operator_whitespace) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 336.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 336.545 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 336.545 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 336.545 Td (orphaned_doc_comment) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 308.825 Td (opt_in_rules:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 294.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 294.965 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 294.965 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 294.965 Td (empty_count) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 281.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 281.105 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 281.105 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 281.105 Td (force_unwrapping) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 267.245 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 267.245 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 267.245 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 267.245 Td (shorthand_optional_binding) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 253.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 253.385 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 253.385 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 253.385 Td (weak_delegate) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 225.665 Td (excluded:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 211.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 211.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 211.805 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 211.805 Td ("*.generated") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 184.085 Td (custom_rules:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 170.225 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 170.225 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 170.225 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 170.225 Td (check's ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 170.225 Td (for ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 170.225 Td (Combine's .assign\(to: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 170.225 Td (xxx, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 170.225 Td (on: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 170.225 Td (self\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 374.820 170.225 Td (ref-cycle) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 156.365 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 156.365 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 156.365 Td (combine_assign_to_self:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 142.505 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 142.505 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 142.505 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 142.505 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 142.505 Td (included: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 142.505 Td (".*\\\\.swift") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 128.645 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 128.645 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 128.645 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 128.645 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 128.645 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 128.645 Td ("`assign` ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 128.645 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 128.645 Td (self") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 114.785 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 114.785 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 114.785 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 114.785 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 114.785 Td (regex: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 114.785 Td ('\\.assign\\\(to: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 114.785 Td ([^,]*, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 114.785 Td (on: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 114.785 Td (self\\\)') Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 100.925 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 100.925 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 100.925 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 100.925 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 100.925 Td (message: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 100.925 Td ("For ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 100.925 Td (assigning ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 100.925 Td (on ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 100.925 Td (self, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 100.925 Td (use ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 100.925 Td (assignNoRetain\(to: ..., ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 446.100 100.925 Td (on: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 469.860 100.925 Td (self\).") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 87.065 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 87.065 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 87.065 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 87.065 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 87.065 Td (severity: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 87.065 Td (error) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 73.205 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 73.205 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 73.205 Td (duplicate_remove_duplicates:) Tj ET
+
+endstream
+endobj
+38 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F2 4 0 R /F4 6 0 R >> >>
+/Contents 37 0 R >>
+endobj
+39 0 obj
+<< /Length 17444 >>
+stream
+0.950 0.950 0.950 rg
+54 55.170 487.280 732.720 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 771.990 Td (included: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 771.990 Td (".*\\\\.swift") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 758.130 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 758.130 Td ("Duplicate ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 758.130 Td (`removeDuplicates\(\)`") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 744.270 Td (message: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 744.270 Td ("ViewStore's ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 744.270 Td (publisher ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 744.270 Td (already ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 744.270 Td (does ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 744.270 Td (`removeDuplicates\(\)`") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 730.410 Td (regex: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 730.410 Td ('publisher\\.[^\(|{|,]*removeDuplicates\\\(\\\)') Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 716.550 Td (severity: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 716.550 Td (error) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 702.690 Td (dont_scale_to_zero:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 688.830 Td (included: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 688.830 Td (".*\\\\.swift") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 674.970 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 674.970 Td ("Don't ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 674.970 Td (scale ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 674.970 Td (down ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 674.970 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 674.970 Td (0.") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 661.110 Td (regex: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 661.110 Td ("\\\\.scaleEffect\\\\\([^\\\\\)]*\(\\\\ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 661.110 Td (0\\\\ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 661.110 Td ([^\\\\\)]*\\\\\)|0.0\(\\\\ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 428.280 661.110 Td (|\\\\\)\)|\\\\ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 647.250 Td (0\(\\\\\)|,\)\)") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 633.390 Td (message: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 633.390 Td ("Please ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 633.390 Td (make ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 633.390 Td (sure ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 633.390 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 633.390 Td (pass ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 633.390 Td (a ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 303.540 633.390 Td (number ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 345.120 633.390 Td (not ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 368.880 633.390 Td (equal ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 404.520 633.390 Td (zero, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 440.160 633.390 Td (so ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 619.530 Td (transformations ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 619.530 Td (don't ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 619.530 Td (throw ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 619.530 Td (warnings ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 619.530 Td (like ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 619.530 Td (`ignoring ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 368.880 619.530 Td (singular ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 422.340 619.530 Td (matrix`.") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 605.670 Td (severity: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 605.670 Td (error) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 591.810 Td (use_data_constructor_over_string_member:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 577.950 Td (included: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 577.950 Td (".*\\\\.swift") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 564.090 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 564.090 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 564.090 Td ("Do ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 564.090 Td (not ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 564.090 Td (use ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 564.090 Td (String.data\(using: .utf8\)") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 550.230 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 550.230 Td (regex: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 550.230 Td ("\\\\.?data\\\\\(using: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 550.230 Td (\\\\.utf8\\\\\)") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 536.370 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 536.370 Td (message: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 536.370 Td ("Please ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 536.370 Td (use ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 536.370 Td (Data\(string.utf8\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 315.420 536.370 Td (instead ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 362.940 536.370 Td (of ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 536.370 Td (String.data\(using: .utf8\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 522.510 Td (because ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 522.510 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 522.510 Td (Data ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 522.510 Td (constructor ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 522.510 Td (is ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 522.510 Td (non-optional ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 327.300 522.510 Td (and ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 522.510 Td (Strings ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 398.580 522.510 Td (are ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 422.340 522.510 Td (guaranteed ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 487.680 522.510 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 505.500 522.510 Td (be ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 508.650 Td (encodable ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 508.650 Td (as .utf8") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 494.790 Td (severity: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 494.790 Td (error) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 480.930 Td (tca_explicit_generics_reducer:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 467.070 Td (included: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 467.070 Td (".*\\\\.swift") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 453.210 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 453.210 Td ("Explicit ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 453.210 Td (Generics ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 453.210 Td (for ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 453.210 Td (Reducer") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 439.350 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 439.350 Td (regex: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 439.350 Td ('Reduce\\s+\\{') Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 425.490 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 425.490 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 425.490 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 425.490 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 425.490 Td (message: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 425.490 Td ("Use ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 425.490 Td (explicit ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 425.490 Td (generics ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 425.490 Td (in ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 425.490 Td (ReducerBuilder ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 425.490 Td (\(Reduce<State, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 469.860 425.490 Td (Action>\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 411.630 Td (for ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 411.630 Td (successful ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 411.630 Td (autocompletion.") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 397.770 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 397.770 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 397.770 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 397.770 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 397.770 Td (severity: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 397.770 Td (error) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 383.910 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 383.910 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 383.910 Td (tca_scope_unused_closure_parameter:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 370.050 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 370.050 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 370.050 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 370.050 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 370.050 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 370.050 Td ("TCA ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 370.050 Td (Scope ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 370.050 Td (Unused ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 370.050 Td (Closure ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 273.840 370.050 Td (Parameter") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 356.190 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 356.190 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 356.190 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 356.190 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 356.190 Td (regex: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 356.190 Td ('\\.scope\\\(\\s*state\\s*:\\s*\\{\\s*\\_') Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 342.330 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 342.330 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 342.330 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 342.330 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 342.330 Td (message: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 342.330 Td ("Explicitly ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 342.330 Td (use ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 232.260 342.330 Td (closure ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 342.330 Td (parameter ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 339.180 342.330 Td (when ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 368.880 342.330 Td (scoping ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 416.400 342.330 Td (store ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 452.040 342.330 Td (\(ensures ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 505.500 342.330 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 328.470 Td (right ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 328.470 Td (state ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 328.470 Td (is ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 328.470 Td (being ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 328.470 Td (mutated\)") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 314.610 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 314.610 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 314.610 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 314.610 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 314.610 Td (severity: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 314.610 Td (error) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 300.750 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 300.750 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 300.750 Td (tca_use_observe_viewstore_api:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 286.890 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 286.890 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 286.890 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 286.890 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 286.890 Td (name: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 286.890 Td ("TCA ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 286.890 Td (ViewStore ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 286.890 Td (observe ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 286.890 Td (API") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 273.030 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 273.030 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 273.030 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 273.030 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 273.030 Td (regex: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 273.030 Td ('ViewStore\\\(store\\.scope') Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 259.170 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 259.170 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 259.170 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 259.170 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 259.170 Td (message: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 259.170 Td ("Use ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 259.170 Td (modern ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 259.170 Td (observe: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 259.170 Td (api ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 285.720 259.170 Td (instead ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 333.240 259.170 Td (of ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 351.060 259.170 Td (store.scope") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 245.310 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 245.310 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 245.310 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 245.310 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 245.310 Td (severity: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 245.310 Td (error) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 217.590 Td (trailing_comma:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 203.730 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 203.730 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 203.730 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 203.730 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 203.730 Td (mandatory_comma: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 203.730 Td (true) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 176.010 Td (cyclomatic_complexity:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 162.150 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 162.150 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 162.150 Td (ignores_case_statements: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 162.150 Td (true) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 148.290 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 148.290 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 148.290 Td (warning: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 148.290 Td (20) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 120.570 Td (file_length:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 106.710 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 106.710 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 106.710 Td (warning: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 106.710 Td (1000) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 92.850 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 92.850 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 92.850 Td (error: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 92.850 Td (1000) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 65.130 Td (identifier_name:) Tj ET
+
+endstream
+endobj
+40 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F4 6 0 R >> >>
+/Contents 39 0 R >>
+endobj
+41 0 obj
+<< /Length 9115 >>
+stream
+0.950 0.950 0.950 rg
+54 138.330 487.280 649.560 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 771.990 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 771.990 Td (severity: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 771.990 Td (warning) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 758.130 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 758.130 Td (allowed_symbols: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 758.130 Td ("_") Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 744.270 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 744.270 Td (min_length: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 744.270 Td (2) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 730.410 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 730.410 Td (max_length:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 716.550 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 716.550 Td (warning: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 716.550 Td (90) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 702.690 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 702.690 Td (error: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 702.690 Td (90) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 688.830 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 688.830 Td (excluded:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 674.970 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 674.970 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 674.970 Td (iO) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 661.110 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 661.110 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 661.110 Td (id) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 647.250 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 647.250 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 647.250 Td (vc) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 633.390 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 633.390 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 633.390 Td (x) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 619.530 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 619.530 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 619.530 Td (y) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 605.670 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 605.670 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 605.670 Td (i) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 591.810 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 591.810 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 591.810 Td (pi) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 577.950 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 577.950 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 577.950 Td (d) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 550.230 Td (legacy_constant: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 550.230 Td (error) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 536.370 Td (legacy_constructor: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 536.370 Td (error) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 508.650 Td (line_length:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 494.790 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 494.790 Td (warning: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 494.790 Td (180) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 480.930 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 480.930 Td (error: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 480.930 Td (180) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 467.070 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 467.070 Td (ignores_comments: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 467.070 Td (true) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 453.210 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 453.210 Td (ignores_urls: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 453.210 Td (true) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 425.490 Td (nesting:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 411.630 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 411.630 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 411.630 Td (type_level:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 397.770 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 397.770 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 397.770 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 397.770 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 397.770 Td (warning: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 397.770 Td (3) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 383.910 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 383.910 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 383.910 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 383.910 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 383.910 Td (error: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 383.910 Td (3) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 370.050 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 370.050 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 370.050 Td (function_level:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 356.190 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 356.190 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 356.190 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 356.190 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 356.190 Td (warning: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 356.190 Td (5) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 342.330 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 342.330 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 342.330 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 342.330 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 342.330 Td (error: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 342.330 Td (5) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 314.610 Td (function_parameter_count:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 300.750 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 300.750 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 300.750 Td (warning: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 300.750 Td (5) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 273.030 Td (force_cast: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 273.030 Td (warning) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 259.170 Td (force_unwrapping: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 259.170 Td (warning) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 231.450 Td (type_body_length:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 217.590 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 217.590 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 217.590 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 217.590 Td (300 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 217.590 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 217.590 Td (warning) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 203.730 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 203.730 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 203.730 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 203.730 Td (300 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 203.730 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 203.730 Td (error) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 176.010 Td (large_tuple:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 162.150 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 162.150 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 162.150 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 162.150 Td (3 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 162.150 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 162.150 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 162.150 Td (warning) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 148.290 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 148.290 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 148.290 Td (- ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 148.290 Td (10 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 148.290 Td (# ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 113.460 148.290 Td (error%) Tj ET
+
+endstream
+endobj
+42 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F4 6 0 R >> >>
+/Contents 41 0 R >>
+endobj
+43 0 obj
+<< /Type /Outlines
+/Count 31
+/First 44 0 R
+/Last 71 0 R >>
+endobj
+44 0 obj
+<< /Title (Introduction)
+/Parent 43 0 R
+/Dest [17 0 R /XYZ 54 755.270 null]
+/Next 48 0 R
+/First 45 0 R
+/Last 47 0 R
+/Count 3 >>
+endobj
+45 0 obj
+<< /Title (Goals)
+/Parent 44 0 R
+/Dest [17 0 R /XYZ 54 562.603 null]
+/Next 46 0 R >>
+endobj
+46 0 obj
+<< /Title (Process)
+/Parent 44 0 R
+/Dest [17 0 R /XYZ 54 460.028 null]
+/Prev 45 0 R
+/Next 47 0 R >>
+endobj
+47 0 obj
+<< /Title (Philosophy)
+/Parent 44 0 R
+/Dest [17 0 R /XYZ 54 179.783 null]
+/Prev 46 0 R >>
+endobj
+48 0 obj
+<< /Title (Part 1 \227 Project Setup)
+/Parent 43 0 R
+/Dest [20 0 R /XYZ 54 794.710 null]
+/Prev 44 0 R
+/Next 71 0 R
+/First 49 0 R
+/Last 70 0 R
+/Count 22 >>
+endobj
+49 0 obj
+<< /Title (Overview)
+/Parent 48 0 R
+/Dest [20 0 R /XYZ 54 687.263 null]
+/Next 50 0 R >>
+endobj
+50 0 obj
+<< /Title (1.1 Stage 01 \227 Initialize Packages)
+/Parent 48 0 R
+/Dest [20 0 R /XYZ 54 552.448 null]
+/Prev 49 0 R
+/Next 59 0 R
+/First 51 0 R
+/Last 58 0 R
+/Count 8 >>
+endobj
+51 0 obj
+<< /Title (Purpose)
+/Parent 50 0 R
+/Dest [20 0 R /XYZ 54 516.093 null]
+/Next 52 0 R >>
+endobj
+52 0 obj
+<< /Title (Parts)
+/Parent 50 0 R
+/Dest [20 0 R /XYZ 54 451.188 null]
+/Prev 51 0 R
+/Next 53 0 R >>
+endobj
+53 0 obj
+<< /Title (Folder Structure snapshot)
+/Parent 50 0 R
+/Dest [20 0 R /XYZ 54 273.723 null]
+/Prev 52 0 R
+/Next 54 0 R >>
+endobj
+54 0 obj
+<< /Title (Basic Package Code:)
+/Parent 50 0 R
+/Dest [22 0 R /XYZ 54 502.070 null]
+/Prev 53 0 R
+/Next 55 0 R >>
+endobj
+55 0 obj
+<< /Title (Dummy Files)
+/Parent 50 0 R
+/Dest [24 0 R /XYZ 54 484.830 null]
+/Prev 54 0 R
+/Next 58 0 R
+/First 56 0 R
+/Last 57 0 R
+/Count 2 >>
+endobj
+56 0 obj
+<< /Title (AppView)
+/Parent 55 0 R
+/Dest [24 0 R /XYZ 54 458.155 null]
+/Next 57 0 R >>
+endobj
+57 0 obj
+<< /Title (DummyModel)
+/Parent 55 0 R
+/Dest [24 0 R /XYZ 54 203.330 null]
+/Prev 56 0 R >>
+endobj
+58 0 obj
+<< /Title (Stage 01-init-packages)
+/Parent 50 0 R
+/Dest [26 0 R /XYZ 54 692.730 null]
+/Prev 55 0 R >>
+endobj
+59 0 obj
+<< /Title (1.2 Stage 02 \227 Add Workspace)
+/Parent 48 0 R
+/Dest [26 0 R /XYZ 54 327.445 null]
+/Prev 50 0 R
+/Next 63 0 R
+/First 60 0 R
+/Last 62 0 R
+/Count 3 >>
+endobj
+60 0 obj
+<< /Title (Purpose)
+/Parent 59 0 R
+/Dest [26 0 R /XYZ 54 291.090 null]
+/Next 61 0 R >>
+endobj
+61 0 obj
+<< /Title (Workspace creation steps)
+/Parent 59 0 R
+/Dest [26 0 R /XYZ 54 212.545 null]
+/Prev 60 0 R
+/Next 62 0 R >>
+endobj
+62 0 obj
+<< /Title (Stage 02-add\227to-workspace)
+/Parent 59 0 R
+/Dest [28 0 R /XYZ 54 792.730 null]
+/Prev 61 0 R >>
+endobj
+63 0 obj
+<< /Title (1.3 Stage 03 \227 Add iOS and macOS App Targets)
+/Parent 48 0 R
+/Dest [28 0 R /XYZ 54 441.085 null]
+/Prev 59 0 R
+/Next 70 0 R
+/First 64 0 R
+/Last 69 0 R
+/Count 6 >>
+endobj
+64 0 obj
+<< /Title (Platform targets creation)
+/Parent 63 0 R
+/Dest [28 0 R /XYZ 54 404.730 null]
+/Next 65 0 R >>
+endobj
+65 0 obj
+<< /Title (Adding them to workspace)
+/Parent 63 0 R
+/Dest [28 0 R /XYZ 54 233.635 null]
+/Prev 64 0 R
+/Next 66 0 R >>
+endobj
+66 0 obj
+<< /Title (Explanation: Why separate targets)
+/Parent 63 0 R
+/Dest [30 0 R /XYZ 54 569.470 null]
+/Prev 65 0 R
+/Next 67 0 R >>
+endobj
+67 0 obj
+<< /Title (Configuration steps)
+/Parent 63 0 R
+/Dest [30 0 R /XYZ 54 425.325 null]
+/Prev 66 0 R
+/Next 68 0 R >>
+endobj
+68 0 obj
+<< /Title (Final structure)
+/Parent 63 0 R
+/Dest [32 0 R /XYZ 54 792.730 null]
+/Prev 67 0 R
+/Next 69 0 R >>
+endobj
+69 0 obj
+<< /Title (Stage 03-apps-added)
+/Parent 63 0 R
+/Dest [32 0 R /XYZ 54 535.855 null]
+/Prev 68 0 R >>
+endobj
+70 0 obj
+<< /Title (Summary)
+/Parent 48 0 R
+/Dest [34 0 R /XYZ 54 793.610 null]
+/Prev 63 0 R >>
+endobj
+71 0 obj
+<< /Title (Part 2 \227 Tooling)
+/Parent 43 0 R
+/Dest [34 0 R /XYZ 54 551.770 null]
+/Prev 48 0 R
+/First 72 0 R
+/Last 74 0 R
+/Count 3 >>
+endobj
+72 0 obj
+<< /Title (GitIgnore)
+/Parent 71 0 R
+/Dest [34 0 R /XYZ 54 432.633 null]
+/Next 73 0 R >>
+endobj
+73 0 obj
+<< /Title (SwiftFormat Config)
+/Parent 71 0 R
+/Dest [36 0 R /XYZ 54 424.770 null]
+/Prev 72 0 R
+/Next 74 0 R >>
+endobj
+74 0 obj
+<< /Title (SwiftLint Config)
+/Parent 71 0 R
+/Dest [38 0 R /XYZ 54 424.770 null]
+/Prev 73 0 R >>
+endobj
+xref
+0 75
+0000000000 65535 f 
+0000000019 00000 n 
+0000001689 00000 n 
+0000001832 00000 n 
+0000001929 00000 n 
+0000002031 00000 n 
+0000002136 00000 n 
+0000002231 00000 n 
+0000018373 00000 n 
+0000018502 00000 n 
+0000018636 00000 n 
+0000018771 00000 n 
+0000018906 00000 n 
+0000019041 00000 n 
+0000019165 00000 n 
+0000019294 00000 n 
+0000019423 00000 n 
+0000019552 00000 n 
+0000019788 00000 n 
+0000033823 00000 n 
+0000034027 00000 n 
+0000034210 00000 n 
+0000049362 00000 n 
+0000049518 00000 n 
+0000066010 00000 n 
+0000066156 00000 n 
+0000078535 00000 n 
+0000078701 00000 n 
+0000091548 00000 n 
+0000091714 00000 n 
+0000102258 00000 n 
+0000102424 00000 n 
+0000119541 00000 n 
+0000119707 00000 n 
+0000131791 00000 n 
+0000131947 00000 n 
+0000136823 00000 n 
+0000136979 00000 n 
+0000145872 00000 n 
+0000146018 00000 n 
+0000163516 00000 n 
+0000163652 00000 n 
+0000172820 00000 n 
+0000172956 00000 n 
+0000173031 00000 n 
+0000173175 00000 n 
+0000173276 00000 n 
+0000173392 00000 n 
+0000173498 00000 n 
+0000173669 00000 n 
+0000173773 00000 n 
+0000173955 00000 n 
+0000174058 00000 n 
+0000174172 00000 n 
+0000174306 00000 n 
+0000174434 00000 n 
+0000174590 00000 n 
+0000174693 00000 n 
+0000174799 00000 n 
+0000174917 00000 n 
+0000175093 00000 n 
+0000175196 00000 n 
+0000175329 00000 n 
+0000175453 00000 n 
+0000175645 00000 n 
+0000175766 00000 n 
+0000175899 00000 n 
+0000176041 00000 n 
+0000176169 00000 n 
+0000176293 00000 n 
+0000176408 00000 n 
+0000176511 00000 n 
+0000176662 00000 n 
+0000176767 00000 n 
+0000176894 00000 n 
+trailer
+<< /Size 75 /Root 1 0 R >>
+startxref
+177006
+%%EOF

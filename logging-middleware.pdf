@@ -1,0 +1,3622 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /Outlines 20 0 R /PageMode /UseOutlines /Names << /Dests << /Names [(closing-thoughts) [19 0 R /XYZ 54 500.103 null] (design-details-why-simplicity-wins) [14 0 R /XYZ 54 453.153 null] (example-output-in-context) [16 0 R /XYZ 54 199.588 null] (extensibility-and-customization) [14 0 R /XYZ 54 756.910 null] (future-work) [16 0 R /XYZ 54 543.243 null] (integration-examples) [12 0 R /XYZ 54 385.353 null] (introduction) [8 0 R /XYZ 54 794.710 null] (logging-philosophy) [10 0 R /XYZ 54 293.673 null] (performance-considerations) [14 0 R /XYZ 54 232.755 null] (philosophy-clean-visibility) [16 0 R /XYZ 54 347.425 null] (real-world-use) [19 0 R /XYZ 54 647.940 null] (testing-and-debugging) [16 0 R /XYZ 54 794.710 null] (the-problem-logging-in-a-generated-world) [8 0 R /XYZ 54 519.753 null] (the-solution-a-lightweight-logging-layer) [8 0 R /XYZ 54 242.745 null] (under-the-hood) [10 0 R /XYZ 54 689.300 null] (why-not-just-use-vapor-s-logger) [12 0 R /XYZ 54 580.110 null]] >> >> >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 19 0 R] /Count 6 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+7 0 obj
+<< /Length 20812 >>
+stream
+0 0 0 rg
+BT /F2 17.050 Tf 54 787.890 Td (Introduction) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 758.053 Td (In ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 66.232 758.053 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 84.580 758.053 Td (world ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.917 758.053 Td (of ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 126.149 758.053 Td (OpenAPI-driven ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 212.334 758.053 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 241.671 758.053 Td (servers) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.809 758.053 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.925 758.053 Td (visibility ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.867 758.053 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 338.867 758.053 Td (everything.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.668 758.053 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.726 758.053 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.353 758.053 Td (can\222t ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.643 758.053 Td (fix ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 458.701 758.053 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 484.991 758.053 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 505.781 758.053 Td (can\222t ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 744.413 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 74.790 744.413 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.848 744.413 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.254 744.413 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.044 744.413 Td (can\222t ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.334 744.413 Td (optimize ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.345 744.413 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.635 744.413 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 248.425 744.413 Td (don\222t ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.331 744.413 Td (understand.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 724.773 Td (When ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.790 724.773 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.906 724.773 Td (started ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.591 724.773 Td (building ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.555 724.773 Td (modular, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.403 724.773 Td (OpenAPI-first ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 284.483 724.773 Td (architectures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 350.505 724.773 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.121 724.773 Td (Swift, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.074 724.773 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 413.480 724.773 Td (thing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.386 724.773 Td (stood ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.350 724.773 Td (out: ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 491.756 724.773 Td (logging ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 711.133 Td (was ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 77.848 711.133 Td (either ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 110.859 711.133 Td (overwhelming ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 187.881 711.133 Td (or ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 201.939 711.133 Td (absent) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 237.392 711.133 Td (.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 240.450 711.133 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.508 711.133 Td (Either ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.298 711.133 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.088 711.133 Td (got ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.436 711.133 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.610 711.133 Td (raw ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 344.389 711.133 Td (dump ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.958 711.133 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.190 711.133 Td (everything ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.991 711.133 Td (\(headers, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.513 711.133 Td (binary ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 697.493 Td (data, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 81.522 697.493 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.928 697.493 Td (stack ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.660 697.493 Td (traces\), ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.392 697.493 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.229 697.493 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 205.019 697.493 Td (got ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.367 697.493 Td (nothing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.505 697.493 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.737 697.493 Td (all. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.853 697.493 Td (Neither ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.364 697.493 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.364 697.493 Td (particularly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 397.596 697.493 Td (helpful ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.060 697.493 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 462.408 697.493 Td (debugging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 516.836 697.493 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 683.853 Td (tracing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 90.069 683.853 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.359 683.853 Td (issue ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.091 683.853 Td (across ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.544 683.853 Td (microservices.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 664.213 Td (Frameworks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.558 664.213 Td (like ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 137.116 664.213 Td (OpenAPIRuntime) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.569 664.213 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.627 664.213 Td (and ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 252.033 664.213 Td (OpenAPIVapor) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 329.660 664.213 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.718 664.213 Td (provide ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.845 664.213 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.019 664.213 Td (strong ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.646 664.213 Td (foundation, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 472.132 664.213 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.480 664.213 Td (they ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 650.573 Td (deliberately ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.301 650.573 Td (avoid ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.649 650.573 Td (opinions ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.671 650.573 Td (about ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.251 650.573 Td (logging. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.831 650.573 Td (They ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 286.342 650.573 Td (leave ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.690 650.573 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.096 650.573 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.386 650.573 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.618 650.573 Td (you.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 385.408 650.573 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 388.466 650.573 Td (And ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.093 650.573 Td (that\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.441 650.573 Td (where ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 473.452 650.573 Td (most ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 636.933 Td (developers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.859 636.933 Td (end ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.265 636.933 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.555 636.933 Td (adding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.635 636.933 Td (scattered ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 231.936 636.933 Td (print\(\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.826 636.933 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.884 636.933 Td (statements ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 335.743 636.933 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.580 636.933 Td (ad-hoc ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 385.265 636.933 Td (logger.info\(\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.775 636.933 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 469.833 636.933 Td (calls ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 494.891 636.933 Td (inside ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 623.293 Td (handlers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.243 623.293 Td (just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 119.417 623.293 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.649 623.293 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.439 623.293 Td (what\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.671 623.293 Td (going ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.635 623.293 Td (on.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 603.653 Td (That\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.011 603.653 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.359 603.653 Td (clean ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.707 603.653 Td (architecture. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.287 603.653 Td (It\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.403 603.653 Td (noise.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 584.013 Td (So ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 70.511 584.013 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 584.013 Td (built ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 99.859 584.013 Td (OpenAPILoggingMiddleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 249.602 584.013 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.718 584.013 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 264.892 584.013 Td (small, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.671 584.013 Td (composable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 359.030 584.013 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.320 584.013 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.726 584.013 Td (gives ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 468.458 584.013 Td (you ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 489.248 584.013 Td (just ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 54 570.373 Td (enough ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 93.754 570.373 Td (visibility) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.638 570.373 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 134.696 570.373 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.754 570.373 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.102 570.373 Td (too ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.450 570.373 Td (much, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.461 570.373 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.809 570.373 Td (too ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.157 570.373 Td (little ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.773 570.373 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.831 570.373 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.179 570.373 Td (working ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.132 570.373 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.748 570.373 Td (OpenAPI-based ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.071 570.373 Td (servers.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 550.733 m 541.280 550.733 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 512.933 Td (The ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 89.055 512.933 Td (Problem: ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 167.689 512.933 Td (Logging ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 239.675 512.933 Td (in ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 259.572 512.933 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 273.792 512.933 Td (Generated ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 362.861 512.933 Td (World) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 483.095 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.696 483.095 Td (code ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.602 483.095 Td (generation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.635 483.095 Td (has ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.425 483.095 Td (revolutionized ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.342 483.095 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.574 483.095 Td (backend ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.212 483.095 Td (systems ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 386.607 483.095 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 405.560 483.095 Td (written. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.071 483.095 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 466.698 483.095 Td (define ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 499.720 483.095 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 469.455 Td (contracts, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.743 469.455 Td (generate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.218 469.455 Td (both ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.682 469.455 Td (server ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.298 469.455 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.704 469.455 Td (client, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.494 469.455 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 283.900 469.455 Td (everything ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.701 469.455 Td (should ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.165 469.455 Td (\223just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 397.002 469.455 Td (work.\224) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.944 469.455 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.002 469.455 Td (But ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 449.571 469.455 Td (once ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 476.477 469.455 Td (requests ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 455.815 Td (start ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78.453 455.815 Td (flowing, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.801 455.815 Td (visibility ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 159.743 455.815 Td (often ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 187.265 455.815 Td (becomes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.950 455.815 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.124 455.815 Td (blind ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.414 455.815 Td (spot.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 436.175 Td (If ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 436.175 Td (you\222ve ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.022 436.175 Td (ever ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.475 436.175 Td (tried ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.928 436.175 Td (debugging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 201.356 436.175 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.646 436.175 Td (OpenAPI-generated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.538 436.175 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 344.433 436.175 Td (server, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.107 436.175 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.897 436.175 Td (might ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 431.850 436.175 Td (recognize ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 482.593 436.175 Td (these ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 422.535 Td (problems:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 402.895 Td (Middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.290 402.895 Td (logs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.522 402.895 Td (every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.475 402.895 Td (byte ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.323 402.895 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 226.555 402.895 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.903 402.895 Td (body, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.867 402.895 Td (even ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.773 402.895 Td (binary ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.784 402.895 Td (data.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 388.245 Td (Multi-part ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.895 388.245 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.301 388.245 Td (SSE ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.370 388.245 Td (requests ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.613 388.245 Td (produce ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.414 388.245 Td (unreadable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.505 388.245 Td (noise.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 373.595 Td (Response ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 130.580 373.595 Td (logs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.812 373.595 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 172.765 373.595 Td (buried ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.392 373.595 Td (under ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 237.577 373.595 Td (system ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.472 373.595 Td (output.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 358.945 Td (There\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 117.732 358.945 Td (no ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 133.022 358.945 Td (consistent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.602 358.945 Td (way ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.218 358.945 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.450 358.945 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.240 358.945 Td (request ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.983 358.945 Td (duration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 323.784 358.945 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.621 358.945 Td (endpoint ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.875 358.945 Td (performance.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 344.295 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 100.627 344.295 Td (can\222t ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.917 344.295 Td (easily ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.091 344.295 Td (toggle ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 191.113 344.295 Td (verbosity ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.182 344.295 Td (levels ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.356 344.295 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.193 344.295 Td (redact ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 315.820 344.295 Td (sensitive ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.668 344.295 Td (data.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 326.645 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 326.645 Td (end ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.033 326.645 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.323 326.645 Td (either ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.892 326.645 Td (drowning ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 191.577 326.645 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.193 326.645 Td (log ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.925 326.645 Td (output ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.563 326.645 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.400 326.645 Td (adding ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 303.480 326.645 Td (print) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.830 326.645 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.888 326.645 Td (calls ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.946 326.645 Td (just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 383.120 326.645 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.352 326.645 Td (survive ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.247 326.645 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 451.595 326.645 Td (debugging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 313.005 Td (process.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 293.365 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 293.365 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.127 293.365 Td (solves ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.359 293.365 Td (that.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 273.725 m 541.280 273.725 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 235.925 Td (The ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 89.055 235.925 Td (Solution: ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 167.672 235.925 Td (A ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 184.722 235.925 Td (Lightweight ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 285.130 235.925 Td (Logging ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 357.115 235.925 Td (Layer) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 206.088 Td (OpenAPILoggingMiddleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.480 206.088 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.538 206.088 Td (sits ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.096 206.088 Td (quietly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.944 206.088 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.560 206.088 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.908 206.088 Td (pipeline ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.872 206.088 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.930 206.088 Td (between ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 391.568 206.088 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 416.021 206.088 Td (generated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 468.612 206.088 Td (routes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 502.239 206.088 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 192.448 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 192.448 Td (transport ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.812 192.448 Td (layer.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.707 192.448 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.765 192.448 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.939 192.448 Td (listens ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.171 192.448 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.403 192.448 Td (every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.356 192.448 Td (incoming ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.425 192.448 Td (request ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.168 192.448 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.574 192.448 Td (outgoing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.828 192.448 Td (response, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.187 192.448 Td (measures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.535 192.448 Td (duration, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 178.808 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 75.406 178.808 Td (prints ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 105.359 178.808 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 114.533 178.808 Td (structured ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 171.986 178.808 Td (summary) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.892 178.808 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 223.950 178.808 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 236.182 178.808 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 262.472 178.808 Td (happened.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 159.168 Td (At ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 67.453 159.168 Td (its ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 81.511 159.168 Td (core, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.022 159.168 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 127.370 159.168 Td (idea ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.218 159.168 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.218 159.168 Td (simple:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 68 134.578 Td (Log ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 89.406 134.578 Td (exactly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.696 134.578 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.986 134.578 Td (you\222d ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.334 134.578 Td (want ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.624 134.578 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 220.856 134.578 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.646 134.578 Td (if ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.204 134.578 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.994 134.578 Td (were ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.889 134.578 Td (reading ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 337.632 134.578 Td (someone ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 385.933 134.578 Td (else\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 417.107 134.578 Td (code.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 108.888 Td (Here\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 108.888 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.069 108.888 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.627 108.888 Td (looks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.359 108.888 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.975 108.888 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.428 108.888 Td (Vapor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.834 108.888 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.671 108.888 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.367 108.888 Td (setup:) Tj ET
+0.950 0.950 0.950 rg
+54 63.388 487.280 25.860 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 73.348 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 73.348 Td (OpenAPILoggingMiddleware) Tj ET
+
+endstream
+endobj
+8 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Length 18328 >>
+stream
+0.950 0.950 0.950 rg
+54 748.170 487.280 39.720 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 758.130 Td (app.middleware.use\(OpenAPILoggingMiddleware\(level: .info\)\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 739.920 Td (That ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 79.069 739.920 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 100.475 739.920 Td (line ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.649 739.920 Td (transforms ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.660 739.920 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.113 739.920 Td (debugging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.541 739.920 Td (experience.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 720.280 m 541.280 720.280 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 682.480 Td (Under ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 107.997 682.480 Td (the ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 138.312 682.480 Td (Hood) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 652.643 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 652.643 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.301 652.643 Td (implements ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.591 652.643 Td (the ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 212.939 652.643 Td (OpenAPIMiddleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.529 652.643 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.587 652.643 Td (protocol, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.830 652.643 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 399.004 652.643 Td (lets ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 419.178 652.643 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 427.736 652.643 Td (intercept ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 472.979 652.643 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.327 652.643 Td (lifecycle ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 639.003 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 66.232 639.003 Td (each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.138 639.003 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.834 639.003 Td (operation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.751 639.003 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.809 639.003 Td (before ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.052 639.003 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.400 639.003 Td (request ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.143 639.003 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.143 639.003 Td (handled ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.339 639.003 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.745 639.003 Td (after ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.814 639.003 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.162 639.003 Td (response ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 462.463 639.003 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 473.463 639.003 Td (sent.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 619.363 Td (Here\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 619.363 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.011 619.363 Td (conceptual ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.265 619.363 Td (overview:) Tj ET
+0.950 0.950 0.950 rg
+54 379.823 487.280 219.900 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 583.823 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 583.823 Td (struct ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 583.823 Td (OpenAPILoggingMiddleware: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 583.823 Td (OpenAPIMiddleware ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 404.520 583.823 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 569.963 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 569.963 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 569.963 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 569.963 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 569.963 Td (public ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 569.963 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 569.963 Td (intercept\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 556.103 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 556.103 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 556.103 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 556.103 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 556.103 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 556.103 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 556.103 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 556.103 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 556.103 Td (_ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 556.103 Td (request: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 556.103 Td (Request,) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 542.243 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 542.243 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 542.243 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 542.243 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 542.243 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 542.243 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 542.243 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 542.243 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 542.243 Td (operationID: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 542.243 Td (String,) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 528.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 528.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 528.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 528.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 528.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 528.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 528.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 528.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 528.383 Td (next: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 528.383 Td (\(Request\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 528.383 Td (async ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 528.383 Td (throws ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 528.383 Td (-> ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 297.600 528.383 Td (Response) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 514.523 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 514.523 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 514.523 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 514.523 Td ( \) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 514.523 Td (async ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 514.523 Td (throws ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 514.523 Td (-> ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 514.523 Td (Response ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 514.523 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 500.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 500.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 500.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 500.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 500.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 500.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 500.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 500.663 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 500.663 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 500.663 Td (start ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 500.663 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 500.663 Td (Date\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 486.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 486.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 486.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 486.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 486.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 486.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 486.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 486.803 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 486.803 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 486.803 Td (response ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 486.803 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 486.803 Td (try ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 220.380 486.803 Td (await ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 256.020 486.803 Td (next\(request\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 472.943 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 472.943 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 472.943 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 472.943 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 472.943 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 472.943 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 472.943 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 472.943 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 472.943 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 472.943 Td (duration ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 184.740 472.943 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 196.620 472.943 Td (Date\(\).timeIntervalSince\(start\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 386.700 472.943 Td (* ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 398.580 472.943 Td (1000) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 445.222 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 445.222 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 445.222 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 445.222 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 445.222 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 445.222 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 445.222 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 445.222 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 445.222 Td (print\("[\\\(request.method\)] ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 267.900 445.222 Td (\\\(request.url.path\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 386.700 445.222 Td (-> ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 431.362 Td (\\\(response.status.code\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 431.362 Td ([\\\(Int\(duration\)\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 309.480 431.362 Td (ms]"\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 417.502 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 417.502 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 417.502 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 417.502 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 417.502 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 417.502 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 417.502 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 417.502 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 417.502 Td (return ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 417.502 Td (response) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 403.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 403.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 403.642 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 403.642 Td ( }) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 389.782 Td (}) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 371.573 Td (Of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 68.674 371.573 Td (course, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.801 371.573 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.149 371.573 Td (real ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 147.544 371.573 Td (implementation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.182 371.573 Td (handles ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.762 371.573 Td (errors, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 301.599 371.573 Td (structured ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 353.563 371.573 Td (formatting, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 408.585 371.573 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.991 371.573 Td (configurable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 357.933 Td (verbosity, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.127 357.933 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.475 357.933 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.823 357.933 Td (essence ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.845 357.933 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.845 357.933 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.193 357.933 Td (same:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.146 357.933 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.204 357.933 Td (it\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.704 357.933 Td (a ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 272.878 357.933 Td (transparent ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 331.574 357.933 Td (layer ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 358.469 357.933 Td (of ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 370.701 357.933 Td (introspection) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.060 357.933 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 436.118 357.933 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 457.524 357.933 Td (doesn\222t ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 496.046 357.933 Td (alter ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 344.293 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78.453 344.293 Td (data ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.917 344.293 Td (flow.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 324.653 m 541.280 324.653 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 286.853 Td (Logging ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 125.985 286.853 Td (Philosophy) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 257.015 Td (There\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.732 257.015 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.906 257.015 Td (fine ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.696 257.015 Td (balance ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.276 257.015 Td (between ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 209.914 257.015 Td (too ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.262 257.015 Td (much ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.215 257.015 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 279.621 257.015 Td (too ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 297.969 257.015 Td (little ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.585 257.015 Td (information.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 237.375 Td (Traditional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 108.406 237.375 Td (logging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.928 237.375 Td (tools ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.218 237.375 Td (either ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 203.787 237.375 Td (dump ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 236.787 237.375 Td (everything) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.414 237.375 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.472 237.375 Td (\(which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 330.309 237.375 Td (nobody ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.447 237.375 Td (reads\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 403.679 237.375 Td (or ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 416.516 237.375 Td (show ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 447.690 237.375 Td (too ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 467.853 237.375 Td (little) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.469 237.375 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 493.527 237.375 Td (\(which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 223.735 Td (leaves ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.848 223.735 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.638 223.735 Td (guessing\).) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.381 223.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 163.439 223.735 Td (OpenAPILoggingMiddleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.919 223.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.977 223.735 Td (follows ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 353.651 223.735 Td (a ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 362.825 223.735 Td (minimalist) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 411.709 223.735 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.767 223.735 Td (principle ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 458.778 223.735 Td (inspired ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 500.347 223.735 Td (by ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 210.095 Td (Apple\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 93.127 210.095 Td (own ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.359 210.095 Td (frameworks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.254 210.095 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.312 210.095 Td (log ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.044 210.095 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.334 210.095 Td (matters, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.124 210.095 Td (hide ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 300.972 210.095 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.262 210.095 Td (doesn\222t.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 190.455 Td (It\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 71.116 190.455 Td (designed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.812 190.455 Td (around ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.113 190.455 Td (three ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.240 190.455 Td (key ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.414 190.455 Td (ideas:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 170.815 Td (1.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 170.815 Td (Contextual ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 137.895 170.815 Td (logging) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 177.616 170.815 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.674 170.815 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 194.732 170.815 Td (every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 224.685 170.815 Td (entry ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.196 170.815 Td (includes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.602 170.815 Td (method, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 338.403 170.815 Td (path, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.925 170.815 Td (status, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.389 170.815 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 422.795 170.815 Td (duration.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 156.165 Td (2.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 156.165 Td (Progressive ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 144.033 156.165 Td (verbosity) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.939 156.165 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.997 156.165 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.055 156.165 Td (higher ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.682 156.165 Td (log ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.414 156.165 Td (levels ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.588 156.165 Td (show ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.320 156.165 Td (headers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 364.121 156.165 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 385.527 156.165 Td (bodies.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 141.515 Td (3.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 141.515 Td (Human ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 118.337 141.515 Td (readability ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 176.417 141.515 Td (first) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.196 141.515 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 200.254 141.515 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 214.312 141.515 Td (logs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 237.544 141.515 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.497 141.515 Td (meant ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 290.124 141.515 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.356 141.515 Td (be ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.646 141.515 Td (scanned, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.342 141.515 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 383.690 141.515 Td (parsed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.375 141.515 Td (by ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 435.049 141.515 Td (machines.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 123.865 Td (Here\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 123.865 Td (an ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.127 123.865 Td (example ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.754 123.865 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.986 123.865 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 187.276 123.865 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 196.450 123.865 Td (single ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.240 123.865 Td (request ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.983 123.865 Td (looks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.715 123.865 Td (like ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 316.273 123.865 Td (in ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 327.889 123.865 Td (.info) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 359.239 123.865 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.297 123.865 Td (mode:) Tj ET
+0.950 0.950 0.950 rg
+54 64.505 487.280 39.720 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 88.325 Td ([POST] ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 88.325 Td (/mocks/messages/agent-responses ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 88.325 Td (\(200 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 88.325 Td (OK\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 74.465 Td (Duration: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 74.465 Td (123 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 74.465 Td (ms) Tj ET
+
+endstream
+endobj
+10 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 9 0 R >>
+endobj
+11 0 obj
+<< /Length 11142 >>
+stream
+0.950 0.950 0.950 rg
+54 762.030 487.280 25.860 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td (Body: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 771.990 Td ({"message":"You ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 771.990 Td (shall ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 771.990 Td (not ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 771.990 Td (pass!"}) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 753.780 Td (And ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 753.780 Td (at ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 88.859 753.780 Td (.debug) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.479 753.780 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.537 753.780 Td (level, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.269 753.780 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.059 753.780 Td (get ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.407 753.780 Td (more ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.523 753.780 Td (detail:) Tj ET
+0.950 0.950 0.950 rg
+54 638.980 487.280 95.160 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 718.240 Td ([POST] ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 718.240 Td (/mocks/messages/agent-responses) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 704.380 Td (Headers:) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 690.520 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 690.520 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 690.520 Td (Content-Type: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 155.040 690.520 Td (application/json) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 676.660 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 676.660 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 676.660 Td (Authorization: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 676.660 Td (Bearer ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 202.560 676.660 Td (Gandalf-Was-Here-1) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 662.800 Td (Duration: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 662.800 Td (123 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 662.800 Td (ms) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 648.940 Td (Body: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 648.940 Td ({"message":"You ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 648.940 Td (shall ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 648.940 Td (not ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 648.940 Td (pass!"}) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 630.730 Td (Readable. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.196 630.730 Td (Structured. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.055 630.730 Td (Useful.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 611.090 m 541.280 611.090 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 573.290 Td (Why ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 94.732 573.290 Td (Not ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 127.878 573.290 Td (Just ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 167.672 573.290 Td (Use ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 203.682 573.290 Td (Vapor\222s ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 270.006 573.290 Td (Logger?) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 543.453 Td (That\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.011 543.453 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.185 543.453 Td (valid ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.859 543.453 Td (question.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 523.813 Td (Vapor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 86.406 523.813 Td (already ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 125.533 523.813 Td (includes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.939 523.813 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 178.113 523.813 Td (powerful ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.740 523.813 Td (logging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.262 523.813 Td (system ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.157 523.813 Td (based ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 332.179 523.813 Td (on ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 347.469 523.813 Td (SwiftLog, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.770 523.813 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 410.444 523.813 Td (why ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 433.060 523.813 Td (add ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 454.466 523.813 Td (another ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 494.825 523.813 Td (layer?) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 524.778 523.813 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 510.173 Td (Because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.859 510.173 Td (Vapor\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 140.207 510.173 Td (logger ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.834 510.173 Td (is ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 184.834 510.173 Td (request-agnostic) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.461 510.173 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.519 510.173 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 290.577 510.173 Td (it\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.077 510.173 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 325.425 510.173 Td (aware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 358.436 510.173 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.668 510.173 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.364 510.173 Td (operations, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 475.839 510.173 Td (generated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 496.533 Td (endpoints, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.812 496.533 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.649 496.533 Td (typed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.613 496.533 Td (models.) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 476.893 Td (OpenAPILoggingMiddleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.480 476.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.538 476.893 Td (is ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 218.538 476.893 Td (contract-aware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.781 476.893 Td (.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.839 476.893 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.897 476.893 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.071 476.893 Td (sits ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 331.629 476.893 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.245 476.893 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 361.593 476.893 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.289 476.893 Td (pipeline, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 453.311 476.893 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 467.985 476.893 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 476.543 476.893 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.333 476.893 Td (access ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 463.253 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 463.253 Td (operation ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.265 463.253 Td (ID, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 138.381 463.253 Td (typed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.345 463.253 Td (body, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.309 463.253 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.715 463.253 Td (structured ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.679 463.253 Td (response ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 319.980 463.253 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.038 463.253 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.096 463.253 Td (without ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 386.002 463.253 Td (touching ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.640 463.253 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 455.093 463.253 Td (route ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 483.220 463.253 Td (handlers. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 449.613 Td (That ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 79.069 449.613 Td (distinction ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.033 449.613 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.033 449.613 Td (crucial ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 176.870 449.613 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.765 449.613 Td (OpenAPI-based ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.088 449.613 Td (architectures, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.168 449.613 Td (where ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.179 449.613 Td (most ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 403.074 449.613 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 415.306 449.613 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.759 449.613 Td (server ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 473.375 449.613 Td (logic ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 499.049 449.613 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 435.973 Td (generated.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 416.333 m 541.280 416.333 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 378.533 Td (Integration ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 146.837 378.533 Td (Examples) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 348.695 Td (Adding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.301 348.695 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.859 348.695 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.091 348.695 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 121.265 348.695 Td (Vapor-based ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 187.298 348.695 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.994 348.695 Td (server ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 268.610 348.695 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 279.610 348.695 Td (trivial:) Tj ET
+0.950 0.950 0.950 rg
+54 164.595 487.280 164.460 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 313.155 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 313.155 Td (Vapor) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 299.295 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 299.295 Td (OpenAPIRuntime) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 285.435 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 285.435 Td (OpenAPIVapor) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 271.575 Td (import ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 271.575 Td (OpenAPILoggingMiddleware) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 243.855 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 243.855 Td (app ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 243.855 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 243.855 Td (try ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 243.855 Td (Application\(.detect\(\)\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 216.135 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 216.135 Td (server ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 216.135 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 216.135 Td (try! ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 166.920 216.135 Td (MyOpenAPIServer\(app: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 216.135 Td (app\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 188.415 Td (app.middleware.use\(OpenAPILoggingMiddleware\(level: .info\)\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 174.555 Td (try ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 174.555 Td (app.run\(\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 156.345 Td (If ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 63.174 156.345 Td (you\222re ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.185 156.345 Td (using ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 125.533 156.345 Td (OpenAPIRuntime) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.313 156.345 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.371 156.345 Td (directly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.266 156.345 Td (\(without ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 295.835 156.345 Td (Vapor\), ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.962 156.345 Td (it\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.462 156.345 Td (equally ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 389.368 156.345 Td (simple:) Tj ET
+0.950 0.950 0.950 rg
+54 83.125 487.280 53.580 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 120.805 Td (var ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 120.805 Td (server ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 125.340 120.805 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 120.805 Td (try ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 120.805 Td (OpenAPIServer\(\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 106.945 Td (server.middleware.append\(OpenAPILoggingMiddleware\(level: .debug\)\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 93.085 Td (try ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 93.085 Td (server.start\(\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 74.875 Td (No ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 71.116 74.875 Td (configuration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.149 74.875 Td (files. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.823 74.875 Td (No ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.939 74.875 Td (dependencies. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 254.541 74.875 Td (It ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.715 74.875 Td (just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 283.889 74.875 Td (works.) Tj ET
+
+endstream
+endobj
+12 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 11 0 R >>
+endobj
+13 0 obj
+<< /Length 16788 >>
+stream
+0.350 0.350 0.350 RG
+0.750 w 54 787.890 m 541.280 787.890 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 750.090 Td (Extensibility ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 159.181 750.090 Td (and ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 194.236 750.090 Td (Customization) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 720.253 Td (Logging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.196 720.253 Td (needs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.218 720.253 Td (vary ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.055 720.253 Td (between ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.693 720.253 Td (environments.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.773 720.253 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 269.831 720.253 Td (In ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.063 720.253 Td (development, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.154 720.253 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.944 720.253 Td (might ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.897 720.253 Td (want ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.187 720.253 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.419 720.253 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 461.209 720.253 Td (every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.162 720.253 Td (detail. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 523.568 720.253 Td (In ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 706.613 Td (production, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.475 706.613 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.265 706.613 Td (want ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.555 706.613 Td (concise ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 198.903 706.613 Td (summaries. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 258.798 706.613 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 280.809 706.613 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.099 706.613 Td (supports ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 385.342 706.613 Td (multiple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.295 706.613 Td (log ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.027 706.613 Td (levels, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 478.259 706.613 Td (allowing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 692.973 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 74.790 692.973 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.022 692.973 Td (tailor ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.917 692.973 Td (verbosity ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.986 692.973 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.218 692.973 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.671 692.973 Td (needs:) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 673.333 Td (.error) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.620 673.333 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.678 673.333 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.736 673.333 Td (log ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 150.468 673.333 Td (only ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.700 673.333 Td (failed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.048 673.333 Td (requests.) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 658.683 Td (.info) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.350 658.683 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.408 658.683 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.466 658.683 Td (log ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 144.198 658.683 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 158.256 658.683 Td (requests ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.499 658.683 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 226.115 658.683 Td (method, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 268.916 658.683 Td (path, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.438 658.683 Td (duration, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 342.297 658.683 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.703 658.683 Td (status.) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 78 644.033 Td (.debug) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 115.620 644.033 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 118.678 644.033 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.736 644.033 Td (include ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.642 644.033 Td (headers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 213.443 644.033 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.849 644.033 Td (bodies.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 626.383 Td (In ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 66.232 626.383 Td (future ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 97.417 626.383 Td (releases, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.102 626.383 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 151.218 626.383 Td (plan ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.066 626.383 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 187.298 626.383 Td (add ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 208.704 626.383 Td (filters) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.657 626.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.715 626.383 Td (and ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 263.121 626.383 Td (formatters) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 317.516 626.383 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.574 626.383 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.632 626.383 Td (so ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.306 626.383 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.096 626.383 Td (could, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.502 626.383 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.397 626.383 Td (instance, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 465.477 626.383 Td (redact ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 499.104 626.383 Td (specific ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 612.743 Td (headers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.801 612.743 Td (\() Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 100.464 612.743 Td (Authorization) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.974 612.743 Td (, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 188.090 612.743 Td (Cookie) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.710 612.743 Td (\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.431 612.743 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 245.268 612.743 Td (export ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.895 612.743 Td (logs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.127 612.743 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.743 612.743 Td (JSON ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 346.138 612.743 Td (format ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 380.370 612.743 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 396.265 612.743 Td (ingestion ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.345 612.743 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 464.135 612.743 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 473.309 612.743 Td (centralized ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 599.103 Td (system.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 579.463 Td (Example:) Tj ET
+0.950 0.950 0.950 rg
+54 492.383 487.280 67.440 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 543.923 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 543.923 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 149.100 543.923 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 160.980 543.923 Td (OpenAPILoggingMiddleware\() Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 530.063 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 530.063 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 530.063 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 530.063 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 530.063 Td (level: .debug,) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 516.203 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 516.203 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 516.203 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 516.203 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 516.203 Td (redactHeaders: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 172.860 516.203 Td (["Authorization", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 279.780 516.203 Td ("Cookie"]) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 502.343 Td (\)) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 484.133 m 541.280 484.133 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 446.333 Td (Design ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 115.585 446.333 Td (Details: ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 181.909 446.333 Td (Why ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 222.642 446.333 Td (Simplicity ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 307.926 446.333 Td (Wins) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 416.495 Td (Many ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.953 416.495 Td (logging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.475 416.495 Td (libraries ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.033 416.495 Td (start ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.486 416.495 Td (small ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.207 416.495 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.613 416.495 Td (end ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.019 416.495 Td (up ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.309 416.495 Td (as ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 289.983 416.495 Td (frameworks. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.936 416.495 Td (They ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 380.447 416.495 Td (introduce ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.748 416.495 Td (dependency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.734 416.495 Td (graphs, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 402.855 Td (adapters, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.917 402.855 Td (output ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 136.555 402.855 Td (sinks, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.729 402.855 Td (configuration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.762 402.855 Td (DSLs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.715 402.855 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.773 402.855 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.179 402.855 Td (complexity ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.190 402.855 Td (sneaks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.096 402.855 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 403.712 402.855 Td (through ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 444.071 402.855 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 462.419 402.855 Td (back ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 488.709 402.855 Td (door.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 383.215 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 383.215 Td (deliberately ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 119.417 383.215 Td (avoided ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.997 383.215 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 182.403 383.215 Td (path.) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 54 363.575 Td (OpenAPILoggingMiddleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.480 363.575 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 207.538 363.575 Td (does ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.444 363.575 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.850 363.575 Td (thing: ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 285.814 363.575 Td (it ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 295.593 363.575 Td (shows ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 332.883 363.575 Td (what ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 360.999 363.575 Td (your ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 387.894 363.575 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 437.405 363.575 Td (server ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 473.485 363.575 Td (is ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 485.717 363.575 Td (doing) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 515.659 363.575 Td (.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 518.717 363.575 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 349.935 Td (Nothing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.964 349.935 Td (else.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 330.295 Td (No ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 71.116 330.295 Td (JSON ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 103.511 330.295 Td (serialization ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.638 330.295 Td (frameworks. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.591 330.295 Td (No ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.707 330.295 Td (dependency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.693 330.295 Td (injection. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.157 330.295 Td (No ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.273 330.295 Td (external ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 413.458 330.295 Td (configuration.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 479.491 330.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 482.549 330.295 Td (Just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 505.781 330.295 Td (clean ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 316.655 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.895 316.655 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.301 316.655 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.475 316.655 Td (single ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 143.265 316.655 Td (dependency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.251 316.655 Td (on ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 221.541 316.655 Td (OpenAPIRuntime) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 309.321 316.655 Td (.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 297.015 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 297.015 Td (codebase ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 126.765 297.015 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.765 297.015 Td (small ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.486 297.015 Td (enough ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.240 297.015 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 218.472 297.015 Td (read ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 243.541 297.015 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.157 297.015 Td (one ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 276.563 297.015 Td (sitting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.353 297.015 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 322.411 297.015 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.817 297.015 Td (that\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.165 297.015 Td (intentional. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 429.419 297.015 Td (In ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 441.651 297.015 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 459.372 297.015 Td (opinion, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 500.952 297.015 Td (you ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 283.375 Td (should ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 93.116 283.375 Td (be ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 109.011 283.375 Td (able ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 134.080 283.375 Td (to ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 147.522 283.375 Td (understand ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 210.475 283.375 Td (every ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 242.276 283.375 Td (line ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 264.287 283.375 Td (of ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 277.729 283.375 Td (code ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 306.461 283.375 Td (that ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 329.682 283.375 Td (runs ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 356.577 283.375 Td (in ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 369.414 283.375 Td (your ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 396.309 283.375 Td (server\222s ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 440.947 283.375 Td (core ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 467.237 283.375 Td (path) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 490.458 283.375 Td (.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 263.735 m 541.280 263.735 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 225.935 Td (Performance ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 162.967 225.935 Td (Considerations) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 196.098 Td (Logging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.196 196.098 Td (always ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 132.870 196.098 Td (comes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.323 196.098 Td (at ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 180.555 196.098 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.729 196.098 Td (cost, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.019 196.098 Td (but ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.367 196.098 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.715 196.098 Td (impact ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.168 196.098 Td (here ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.237 196.098 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.237 196.098 Td (minimal.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.179 196.098 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.237 196.098 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 390.248 196.098 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 449.538 196.098 Td (measures ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 500.886 196.098 Td (request ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 182.458 Td (duration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.801 182.458 Td (using ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 126.149 182.458 Td (Date\(\).timeIntervalSince\(start\)) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 320.519 182.458 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 326.635 182.458 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 357.809 182.458 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.809 182.458 Td (negligible ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 418.331 182.458 Td (compared ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 470.295 182.458 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 482.527 182.458 Td (network ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 168.818 Td (latency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.906 168.818 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 104.743 168.818 Td (I/O.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 149.178 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 149.178 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 97.417 149.178 Td (safely ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 129.207 149.178 Td (keep ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.113 149.178 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.671 149.178 Td (enabled ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.867 149.178 Td (even ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.773 149.178 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 245.389 149.178 Td (staging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 283.911 149.178 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 296.748 149.178 Td (pre-production ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 370.723 149.178 Td (environments.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.803 149.178 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.861 149.178 Td (In ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 455.093 149.178 Td (production, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 135.538 Td (switching ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 102.290 135.538 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 114.522 135.538 Td (.error) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 152.142 135.538 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 155.200 135.538 Td (mode ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 185.769 135.538 Td (will ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 204.095 135.538 Td (keep ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.001 135.538 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.454 135.538 Td (logs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.686 135.538 Td (clean ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.034 135.538 Td (while ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.150 135.538 Td (still ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 355.092 135.538 Td (providing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.777 135.538 Td (visibility ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.719 135.538 Td (into ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 464.509 135.538 Td (failures.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 115.898 m 541.280 115.898 l S
+
+endstream
+endobj
+14 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 13 0 R >>
+endobj
+15 0 obj
+<< /Length 16586 >>
+stream
+0 0 0 rg
+BT /F2 17.050 Tf 54 787.890 Td (Testing ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 119.370 787.890 Td (and ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 154.425 787.890 Td (Debugging) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 758.053 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 758.053 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 135.301 758.053 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.301 758.053 Td (fully ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 168.917 758.053 Td (testable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.497 758.053 Td (using ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.845 758.053 Td (Vapor\222s ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 280.193 758.053 Td (Application) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.163 758.053 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.221 758.053 Td (test ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 373.011 758.053 Td (harness ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 415.196 758.053 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.033 758.053 Td (plain ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 454.323 758.053 Td (XCTest) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 491.943 758.053 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 495.001 758.053 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 744.413 Td (mock ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 83.337 744.413 Td (requests.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 128.580 744.413 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.638 744.413 Td (Here\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.475 744.413 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 175.649 744.413 Td (simple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 210.486 744.413 Td (test ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.276 744.413 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.682 744.413 Td (validates ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.146 744.413 Td (duration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 341.947 744.413 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.353 744.413 Td (structure:) Tj ET
+0.950 0.950 0.950 rg
+54 615.753 487.280 109.020 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 708.873 Td (func ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 708.873 Td (testMiddlewareLogsRequestAndResponse\(\) ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 708.873 Td (async ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 357 708.873 Td (throws ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 398.580 708.873 Td ({) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 695.013 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 695.013 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 695.013 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 695.013 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 695.013 Td (let ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 695.013 Td (app ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 131.280 695.013 Td (= ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 695.013 Td (Application\(.testing\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 681.153 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 681.153 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 681.153 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 681.153 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 681.153 Td (app.middleware.use\(OpenAPILoggingMiddleware\(level: .info\)\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 667.293 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 667.293 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 667.293 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 667.293 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 667.293 Td (try ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 667.293 Td (await ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 667.293 Td (app.test\(.POST, ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 238.200 667.293 Td ("/ping", ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 667.293 Td (afterResponse: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 380.760 667.293 Td ({ ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 392.640 667.293 Td (res ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 416.400 667.293 Td (in) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 653.433 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 653.433 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 653.433 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 653.433 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 83.760 653.433 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 89.700 653.433 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 653.433 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 653.433 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 653.433 Td (XCTAssertEqual\(res.status, .ok\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 639.573 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 65.940 639.573 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 71.880 639.573 Td ( ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 77.820 639.573 Td ( }\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 625.713 Td (}) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 607.503 Td (You ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.627 607.503 Td (can ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 97.417 607.503 Td (also ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 120.649 607.503 Td (inject ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.381 607.503 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.834 607.503 Td (own ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.066 607.503 Td (logger ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 230.693 607.503 Td (conforming ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.157 607.503 Td (to ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 300.389 607.503 Td (LogHandler) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 363.089 607.503 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 366.147 607.503 Td (if ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.705 607.503 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 395.495 607.503 Td (prefer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 427.285 607.503 Td (structured ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 479.249 607.503 Td (output ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 593.863 Td (rather ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.790 593.863 Td (than ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.254 593.863 Td (printing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.381 593.863 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 161.613 593.863 Td (stdout.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 574.223 m 541.280 574.223 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 536.423 Td (Future ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 111.782 536.423 Td (Work) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 506.585 Td (The ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 76.011 506.585 Td (roadmap ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 122.475 506.585 Td (includes:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 486.945 Td (1.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 486.945 Td (JSON ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 111.011 486.945 Td (Formatter) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.348 486.945 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.406 486.945 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 179.464 486.945 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 195.359 486.945 Td (structured ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.323 486.945 Td (logs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 270.555 486.945 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.171 486.945 Td (production ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.588 486.945 Td (environments.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 472.295 Td (2.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 472.295 Td (Redaction ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 134.232 472.295 Td (Rules) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.185 472.295 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 167.243 472.295 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 181.301 472.295 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 197.196 472.295 Td (headers ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 239.997 472.295 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 261.403 472.295 Td (sensitive ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 307.251 472.295 Td (body ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.157 472.295 Td (fields.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 457.645 Td (3.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 457.645 Td (Metrics ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 119.569 457.645 Td (Hooks) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 153.185 457.645 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 156.243 457.645 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 170.301 457.645 Td (integration ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 224.718 457.645 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.334 457.645 Td (Swift ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 274.229 457.645 Td (Metrics ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 312.729 457.645 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 325.566 457.645 Td (Prometheus.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 442.995 Td (4.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 442.995 Td (Pluggable ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 133.627 442.995 Td (Output ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 172.732 442.995 Td (Destinations) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.743 442.995 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.801 442.995 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 255.859 442.995 Td (allowing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 298.649 442.995 Td (streaming ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 349.997 442.995 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 362.229 442.995 Td (files ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 384.845 442.995 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 397.682 442.995 Td (external ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 439.867 442.995 Td (monitoring ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 494.273 442.995 Td (systems.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 428.345 Td (5.) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 78 428.345 Td (Async ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 114.069 428.345 Td (Logging) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.453 428.345 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 160.511 428.345 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 174.569 428.345 Td (offloading ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.323 428.345 Td (logging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 263.845 428.345 Td (I/O ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.577 428.345 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 293.809 428.345 Td (background ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.342 428.345 Td (tasks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 383.074 428.345 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.969 428.345 Td (ultra-high ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 447.875 428.345 Td (performance ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 78 415.695 Td (scenarios.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 398.045 Td (Each ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 82.127 398.045 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.359 398.045 Td (these ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.323 398.045 Td (will ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 142.649 398.045 Td (follow ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 173.823 398.045 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 192.171 398.045 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 222.124 398.045 Td (guiding ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.646 398.045 Td (principles: ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.215 398.045 Td (clarity, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.052 398.045 Td (composability, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 420.795 398.045 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.201 398.045 Td (minimalism.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 378.405 m 541.280 378.405 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 340.605 Td (Philosophy: ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 156.317 340.605 Td (Clean ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 207.484 340.605 Td (Visibility) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 310.768 Td (Logging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 96.196 310.768 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 107.196 310.768 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 125.544 310.768 Td (just ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.718 310.768 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 154.892 310.768 Td (developer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.251 310.768 Td (tool ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 227.041 310.768 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 241.099 310.768 Td (it\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 257.599 310.768 Td (part ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 279.610 310.768 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.842 310.768 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 310.190 310.768 Td (interface ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 355.433 310.768 Td (between ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 400.071 310.768 Td (humans ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 442.256 310.768 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 463.662 310.768 Td (systems.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 507.057 310.768 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 510.115 310.768 Td (A ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 297.128 Td (well-designed ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 124.301 297.128 Td (logging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 162.823 297.128 Td (layer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 189.718 297.128 Td (doesn\222t ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.240 297.128 Td (scream ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 267.356 297.128 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 283.251 297.128 Td (attention; ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 331.563 297.128 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 340.121 297.128 Td (quietly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 374.969 297.128 Td (reveals ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 413.480 297.128 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 436.712 297.128 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 455.060 297.128 Td (system ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 492.955 297.128 Td (behaves.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 277.488 Td (When ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 85.790 277.488 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 91.906 277.488 Td (was ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 114.522 277.488 Td (designing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.660 277.488 Td (this ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 184.834 277.488 Td (package, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 232.530 277.488 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 238.646 277.488 Td (thought ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.400 277.488 Td (about ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.980 277.488 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 327.328 277.488 Td (elegance ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 375.024 277.488 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.256 277.488 Td (Apple\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 426.383 277.488 Td (own ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 449.615 277.488 Td (frameworks ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 509.510 277.488 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 263.848 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 72.348 263.848 Td (way ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 94.964 263.848 Td (their ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 119.417 263.848 Td (APIs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 145.707 263.848 Td (feel ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 166.497 263.848 Td (inevitable, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 219.077 263.848 Td (obvious ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.041 263.848 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 271.657 263.848 Td (hindsight. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 321.795 263.848 Td (That\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.806 263.848 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.096 263.848 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 387.212 263.848 Td (aim ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.991 263.848 Td (for ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 423.886 263.848 Td (here: ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 452.013 263.848 Td (a ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 461.187 263.848 Td (logging ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 250.208 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 117.580 250.208 Td (that ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 140.801 250.208 Td (feels ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 168.928 250.208 Td (invisible ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 216.008 250.208 Td (until ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 242.287 250.208 Td (you ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 264.903 250.208 Td (need ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 293.635 250.208 Td (it, ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 306.472 250.208 Td (and ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 329.088 250.208 Td (indispensable ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 405.505 250.208 Td (once ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 434.237 250.208 Td (you ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 456.853 250.208 Td (use ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 478.864 250.208 Td (it.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 230.568 m 541.280 230.568 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 192.768 Td (Example ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 128.867 192.768 Td (Output ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 189.479 192.768 Td (in ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 209.377 192.768 Td (Context) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 162.930 Td (Here\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.837 162.930 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.011 162.930 Td (real-world ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 149.348 162.930 Td (example ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 193.975 162.930 Td (of ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 206.207 162.930 Td (multiple ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.160 162.930 Td (concurrent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 302.182 162.930 Td (requests ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 347.425 162.930 Td (hitting ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 379.831 162.930 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 398.179 162.930 Td (same ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 428.132 162.930 Td (endpoint:) Tj ET
+0.950 0.950 0.950 rg
+54 61.990 487.280 81.300 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 127.390 Td ([GET] ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 127.390 Td (/user/profile ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 178.800 127.390 Td (\(200 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 208.500 127.390 Td (OK\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 113.530 Td (Duration: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 113.530 Td (87 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 113.530 Td (ms) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 85.810 Td ([POST] ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 101.580 85.810 Td (/mocks/messages/agent-responses ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 291.660 85.810 Td (\(200 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 321.360 85.810 Td (OK\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 71.950 Td (Duration: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 71.950 Td (121 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 143.160 71.950 Td (ms) Tj ET
+
+endstream
+endobj
+16 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F4 6 0 R >> >>
+/Contents 15 0 R >>
+endobj
+17 0 obj
+<< /Length 11055 >>
+stream
+0.950 0.950 0.950 rg
+54 720.450 487.280 67.440 re f
+0 0 0 rg
+BT /F4 9.900 Tf 60 771.990 Td (Body: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 95.640 771.990 Td ({"message":"You ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 190.680 771.990 Td (shall ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 226.320 771.990 Td (not ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 250.080 771.990 Td (pass!"}) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 744.270 Td ([PATCH] ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 107.520 744.270 Td (/user/preferences ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 214.440 744.270 Td (\(204 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 244.140 744.270 Td (No ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 261.960 744.270 Td (Content\)) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 60 730.410 Td (Duration: ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 119.400 730.410 Td (96 ) Tj ET
+0 0 0 rg
+BT /F4 9.900 Tf 137.220 730.410 Td (ms) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 712.200 Td (Notice ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 88.232 712.200 Td (how ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 111.464 712.200 Td (easy ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.754 712.200 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.312 712.200 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.312 712.200 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 169.544 712.200 Td (see ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 190.334 712.200 Td (patterns ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 233.135 712.200 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 247.193 712.200 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 278.367 712.200 Td (endpoints ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 329.121 712.200 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.074 712.200 Td (slow, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 376.190 712.200 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 407.364 712.200 Td (ones ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.270 712.200 Td (are ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 453.223 712.200 Td (frequent, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 499.698 712.200 Td (which ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 698.560 Td (ones ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.906 698.560 Td (failed.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 110.254 698.560 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 113.312 698.560 Td (That\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 146.323 698.560 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 164.671 698.560 Td (essence ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 208.693 698.560 Td (of ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 220.925 698.560 Td (observability) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 288.784 698.560 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 291.842 698.560 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 305.900 698.560 Td (not ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 324.248 698.560 Td (more ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 352.364 698.560 Td (data, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 379.886 698.560 Td (but ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 398.234 698.560 Td (useful) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 427.582 698.560 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 430.640 698.560 Td (data.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 678.920 m 541.280 678.920 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 641.120 Td (Real-World ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 148.730 641.120 Td (Use) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 611.283 Td (I ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 60.116 611.283 Td (use ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 80.906 611.283 Td (OpenAPILoggingMiddleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 231.386 611.283 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 234.444 611.283 Td (in ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 246.060 611.283 Td (all ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 260.118 611.283 Td (my ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 277.839 611.283 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 325.535 611.283 Td (projects ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 367.104 611.283 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 381.162 611.283 Td (from ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 406.220 611.283 Td (small ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 434.941 611.283 Td (prototypes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 489.358 611.283 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 597.643 Td (complex ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.011 597.643 Td (SSE ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 123.080 597.643 Td (\(Server-Sent ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 188.486 597.643 Td (Events\) ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 228.834 597.643 Td (systems. ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 275.287 597.643 Td (It\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 292.403 597.643 Td (particularly ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.635 597.643 Td (valuable ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 392.657 597.643 Td (when ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 422.005 597.643 Td (debugging ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 476.433 597.643 Td (streamed ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 54 584.003 Td (responses) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 109.022 584.003 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 112.080 584.003 Td (or ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 124.917 584.003 Td (multipart ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 175.033 584.003 Td (form ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 202.533 584.003 Td (uploads) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 244.707 584.003 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 250.823 584.003 Td (where ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 283.834 584.003 Td (conventional ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.646 584.003 Td (logs ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 371.878 584.003 Td (become ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 414.063 584.003 Td (unreadable.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 564.363 Td (Because ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 99.859 564.363 Td (it\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 116.359 564.363 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 125.533 564.363 Td (simple ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 160.370 564.363 Td (OpenAPIMiddleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 266.960 564.363 Td (, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 273.076 564.363 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.634 564.363 Td (works ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.413 564.363 Td (with ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 336.029 564.363 Td (any ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.819 564.363 Td (generated ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.410 564.363 Td (server ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 443.026 564.363 Td (conforming ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 500.490 564.363 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 512.722 564.363 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 550.723 Td (OpenAPI ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.696 550.723 Td (ecosystem ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.323 550.723 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 171.381 550.723 Td (including ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 217.845 550.723 Td (custom ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 256.356 550.723 Td (transports ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 308.320 550.723 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 329.726 550.723 Td (pure ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 354.795 550.723 Td (SwiftNIO ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 401.248 550.723 Td (backends.) Tj ET
+0.350 0.350 0.350 RG
+0.750 w 54 531.083 m 541.280 531.083 l S
+0 0 0 rg
+BT /F2 17.050 Tf 54 493.283 Td (Closing ) Tj ET
+0 0 0 rg
+BT /F2 17.050 Tf 121.262 493.283 Td (Thoughts) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 463.445 Td (This ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 77.837 463.445 Td (middleware ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 137.127 463.445 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 148.127 463.445 Td (a ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 157.301 463.445 Td (reminder ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 203.754 463.445 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 225.160 463.445 Td (sometimes ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 281.392 463.445 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 299.740 463.445 Td (simplest ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 343.135 463.445 Td (tools ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 369.425 463.445 Td (make ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 399.378 463.445 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 417.726 463.445 Td (biggest ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 456.248 463.445 Td (difference.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 507.607 463.445 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 510.665 463.445 Td (It\222s ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 449.805 Td (easy ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 80.290 449.805 Td (to ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 92.522 449.805 Td (underestimate ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 165.276 449.805 Td (the ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 183.624 449.805 Td (power ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 216.635 449.805 Td (of ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 228.867 449.805 Td (well-designed ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 304.668 449.805 Td (visibility) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 348.690 449.805 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 351.748 449.805 Td (\227 ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 365.806 449.805 Td (until ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 389.038 449.805 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 409.828 449.805 Td (remove ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 449.560 449.805 Td (it ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 458.118 449.805 Td (and ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 479.524 449.805 Td (start ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 436.165 Td (guessing ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 101.080 436.165 Td (again.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 416.525 Td (Whether ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.627 416.525 Td (you\222re ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 131.638 416.525 Td (debugging ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 186.066 416.525 Td (mock ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 215.403 416.525 Td (routes, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 252.088 416.525 Td (profiling ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 293.657 416.525 Td (API ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 314.447 416.525 Td (latency, ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 355.411 416.525 Td (or ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 368.248 416.525 Td (simply ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 402.469 416.525 Td (curious ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 440.980 416.525 Td (about ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 471.560 416.525 Td (what ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 497.850 416.525 Td (your ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 402.885 Td (server ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 87.616 402.885 Td (is ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 98.616 402.885 Td (doing, ) Tj ET
+0 0 0 rg
+BT /F4 10.450 Tf 131.638 402.885 Td (OpenAPILoggingMiddleware) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 282.118 402.885 Td ( ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 285.176 402.885 Td (gives ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 313.908 402.885 Td (you ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 334.698 402.885 Td (that ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 356.104 402.885 Td (quiet ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 383.010 402.885 Td (transparency ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 449.648 402.885 Td (every ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 479.601 402.885 Td (developer ) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 389.245 Td (deserves.) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 54 369.605 Td (? ) Tj ET
+0 0 0 rg
+BT /F2 11 Tf 63.174 369.605 Td (GitHub:) Tj ET
+0 0 0 rg
+BT /F1 11 Tf 103.500 369.605 Td ( ) Tj ET
+0.050 0.240 0.620 rg
+BT /F1 11 Tf 106.558 369.605 Td (mihaelamj/OpenAPILoggingMiddleware) Tj ET
+0.050 0.240 0.620 RG
+0.500 w 106.558 368.105 m 299.740 368.105 l S
+0.350 0.350 0.350 RG
+0.750 w 54 349.965 m 541.280 349.965 l S
+0 0 0 rg
+BT /F3 11 Tf 54 331.965 Td (\223Clean ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 89.453 331.965 Td (code ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 116.359 331.965 Td (should ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 151.823 331.965 Td (be ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 167.113 331.965 Td (composable, ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 232.530 331.965 Td (testable, ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 277.168 331.965 Td (and ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 298.574 331.965 Td (visible ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 332.190 331.965 Td (when ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 361.538 331.965 Td (it ) Tj ET
+0 0 0 rg
+BT /F3 11 Tf 370.096 331.965 Td (runs.\224) Tj ET
+
+endstream
+endobj
+18 0 obj
+<< /Type /Annot
+/Subtype /Link
+/Rect [106.558 366.855 299.740 379.505]
+/Border [0 0 0]
+/A << /S /URI /URI (https://github.com/mihaelamj/OpenAPILoggingMiddleware) >> >>
+endobj
+19 0 obj
+<< /Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 595.280 841.890]
+/Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >>
+/Contents 17 0 R
+/Annots [18 0 R] >>
+endobj
+20 0 obj
+<< /Type /Outlines
+/Count 16
+/First 21 0 R
+/Last 36 0 R >>
+endobj
+21 0 obj
+<< /Title (Introduction)
+/Parent 20 0 R
+/Dest [8 0 R /XYZ 54 794.710 null]
+/Next 22 0 R >>
+endobj
+22 0 obj
+<< /Title (The Problem: Logging in a Generated World)
+/Parent 20 0 R
+/Dest [8 0 R /XYZ 54 519.753 null]
+/Prev 21 0 R
+/Next 23 0 R >>
+endobj
+23 0 obj
+<< /Title (The Solution: A Lightweight Logging Layer)
+/Parent 20 0 R
+/Dest [8 0 R /XYZ 54 242.745 null]
+/Prev 22 0 R
+/Next 24 0 R >>
+endobj
+24 0 obj
+<< /Title (Under the Hood)
+/Parent 20 0 R
+/Dest [10 0 R /XYZ 54 689.300 null]
+/Prev 23 0 R
+/Next 25 0 R >>
+endobj
+25 0 obj
+<< /Title (Logging Philosophy)
+/Parent 20 0 R
+/Dest [10 0 R /XYZ 54 293.673 null]
+/Prev 24 0 R
+/Next 26 0 R >>
+endobj
+26 0 obj
+<< /Title (Why Not Just Use Vapor\222s Logger?)
+/Parent 20 0 R
+/Dest [12 0 R /XYZ 54 580.110 null]
+/Prev 25 0 R
+/Next 27 0 R >>
+endobj
+27 0 obj
+<< /Title (Integration Examples)
+/Parent 20 0 R
+/Dest [12 0 R /XYZ 54 385.353 null]
+/Prev 26 0 R
+/Next 28 0 R >>
+endobj
+28 0 obj
+<< /Title (Extensibility and Customization)
+/Parent 20 0 R
+/Dest [14 0 R /XYZ 54 756.910 null]
+/Prev 27 0 R
+/Next 29 0 R >>
+endobj
+29 0 obj
+<< /Title (Design Details: Why Simplicity Wins)
+/Parent 20 0 R
+/Dest [14 0 R /XYZ 54 453.153 null]
+/Prev 28 0 R
+/Next 30 0 R >>
+endobj
+30 0 obj
+<< /Title (Performance Considerations)
+/Parent 20 0 R
+/Dest [14 0 R /XYZ 54 232.755 null]
+/Prev 29 0 R
+/Next 31 0 R >>
+endobj
+31 0 obj
+<< /Title (Testing and Debugging)
+/Parent 20 0 R
+/Dest [16 0 R /XYZ 54 794.710 null]
+/Prev 30 0 R
+/Next 32 0 R >>
+endobj
+32 0 obj
+<< /Title (Future Work)
+/Parent 20 0 R
+/Dest [16 0 R /XYZ 54 543.243 null]
+/Prev 31 0 R
+/Next 33 0 R >>
+endobj
+33 0 obj
+<< /Title (Philosophy: Clean Visibility)
+/Parent 20 0 R
+/Dest [16 0 R /XYZ 54 347.425 null]
+/Prev 32 0 R
+/Next 34 0 R >>
+endobj
+34 0 obj
+<< /Title (Example Output in Context)
+/Parent 20 0 R
+/Dest [16 0 R /XYZ 54 199.588 null]
+/Prev 33 0 R
+/Next 35 0 R >>
+endobj
+35 0 obj
+<< /Title (Real-World Use)
+/Parent 20 0 R
+/Dest [19 0 R /XYZ 54 647.940 null]
+/Prev 34 0 R
+/Next 36 0 R >>
+endobj
+36 0 obj
+<< /Title (Closing Thoughts)
+/Parent 20 0 R
+/Dest [19 0 R /XYZ 54 500.103 null]
+/Prev 35 0 R >>
+endobj
+xref
+0 37
+0000000000 65535 f 
+0000000019 00000 n 
+0000001048 00000 n 
+0000001140 00000 n 
+0000001237 00000 n 
+0000001339 00000 n 
+0000001444 00000 n 
+0000001539 00000 n 
+0000022404 00000 n 
+0000022568 00000 n 
+0000040949 00000 n 
+0000041114 00000 n 
+0000052310 00000 n 
+0000052466 00000 n 
+0000069308 00000 n 
+0000069464 00000 n 
+0000086104 00000 n 
+0000086260 00000 n 
+0000097369 00000 n 
+0000097553 00000 n 
+0000097736 00000 n 
+0000097811 00000 n 
+0000097918 00000 n 
+0000098067 00000 n 
+0000098216 00000 n 
+0000098339 00000 n 
+0000098466 00000 n 
+0000098610 00000 n 
+0000098739 00000 n 
+0000098879 00000 n 
+0000099023 00000 n 
+0000099158 00000 n 
+0000099288 00000 n 
+0000099408 00000 n 
+0000099545 00000 n 
+0000099679 00000 n 
+0000099802 00000 n 
+trailer
+<< /Size 37 /Root 1 0 R >>
+startxref
+99914
+%%EOF

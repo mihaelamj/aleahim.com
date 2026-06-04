@@ -73,6 +73,15 @@ def html_routes(root):
     }
 
 
+def published_post_slugs():
+    result = []
+    for source in (ROOT / "TileDown" / "content" / "blog").glob("*/index.md"):
+        text = source.read_text(errors="replace")
+        if "\ndraft: true\n" not in text:
+            result.append(source.parent.name)
+    return sorted(result)
+
+
 def check_route_parity():
     old = html_routes(TOUCAN_DIST)
     new = html_routes(TILEDOWN_DIST)
@@ -128,11 +137,7 @@ def check_generated_assets():
 
 def check_rss():
     rss = (TILEDOWN_DIST / "rss.xml").read_text(errors="replace")
-    post_count = 0
-    for source in (ROOT / "TileDown" / "content" / "blog").glob("*/index.md"):
-        text = source.read_text(errors="replace")
-        if "\ndraft: true\n" not in text:
-            post_count += 1
+    post_count = len(published_post_slugs())
     item_count = rss.count("<item>")
     encoded_count = rss.count("<content:encoded>")
     check(
@@ -146,6 +151,32 @@ def check_rss():
         "" if encoded_count == item_count else f"{encoded_count} != {item_count}",
     )
     check("RSS uses public links", f"<link>{SITE_URL}/blog/cupertino-first-light/</link>" in rss)
+
+
+def check_article_pdfs():
+    config = (ROOT / "TileDown" / "content" / "tiledown.yml").read_text(errors="replace")
+    check("article PDFs are enabled", "\narticlePDF: true\n" in f"\n{config}\n")
+
+    missing = []
+    stale_nested = []
+    missing_links = []
+    for slug in published_post_slugs():
+        pdf_path = TILEDOWN_DIST / f"{slug}.pdf"
+        if not pdf_path.is_file() or pdf_path.stat().st_size == 0:
+            missing.append(f"{slug}.pdf")
+
+        nested_pdf = TILEDOWN_DIST / "blog" / slug / "index.pdf"
+        if nested_pdf.exists():
+            stale_nested.append(str(nested_pdf.relative_to(TILEDOWN_DIST)))
+
+        html = (TILEDOWN_DIST / "blog" / slug / "index.html").read_text(errors="replace")
+        expected = f'<a href="{SITE_URL}/{slug}.pdf" download>Download PDF</a>'
+        if expected not in html:
+            missing_links.append(f"blog/{slug}/index.html")
+
+    check("each published article has a root slug PDF", not missing, ", ".join(missing[:10]))
+    check("article PDFs are not nested under blog", not stale_nested, ", ".join(stale_nested[:10]))
+    check("each article links its root slug PDF", not missing_links, ", ".join(missing_links[:10]))
 
 
 def check_site_features():
@@ -194,6 +225,7 @@ def main():
     check_static_files()
     check_generated_assets()
     check_rss()
+    check_article_pdfs()
     check_site_features()
     return print_results()
 
