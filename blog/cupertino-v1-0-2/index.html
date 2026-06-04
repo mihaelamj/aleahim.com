@@ -87,19 +87,19 @@ documentation/swift/withtaskgroup(of:returning:isolation:body:)
 <h2>The verification trap</h2>
 <p>This is the part that bothers me.</p>
 <p>The v1.0.1 closure of #200 was not careless. It included a verification query, run against the actual shipped DB, with the explicit goal of confirming the bug was gone:</p>
-<pre><code class="language-sql">SELECT LOWER(uri), COUNT(*)
-  FROM docs_metadata
-  GROUP BY LOWER(uri)
-  HAVING COUNT(*) &gt; 1;
--- (returned empty across 405,782 rows)</code></pre>
+<pre><code class="language-sql"><span class="tok-keyword">SELECT</span> <span class="tok-function">LOWER</span>(uri), <span class="tok-function">COUNT</span>(<span class="tok-operator">*</span>)
+  <span class="tok-keyword">FROM</span> docs_metadata
+  <span class="tok-keyword">GROUP</span> <span class="tok-keyword">BY</span> <span class="tok-function">LOWER</span>(uri)
+  <span class="tok-keyword">HAVING</span> <span class="tok-function">COUNT</span>(<span class="tok-operator">*</span>) <span class="tok-operator">&gt;</span> <span class="tok-number">1</span>;
+<span class="tok-comment">-- (returned empty across 405,782 rows)</span></code></pre>
 <p>Empty result, ship it. Felt rigorous. Was wrong.</p>
 <p>The query is structurally incapable of finding the bug. The URIs in <code>docs_metadata</code> carry an 8-hex suffix that varies per source URL, so the case-variant pair <code>documentation_swift_withtaskgroup_..._b9f71892</code> and <code>documentation_swift_withtaskgroup_..._969a5400</code> lowercase to two <em>different</em> strings. <code>GROUP BY LOWER(uri)</code> cannot collapse them. It returns empty. It will always return empty no matter how broken the dedup is, because the column itself is wrong for the question.</p>
 <p>The correct query is on <code>docs_structured.url</code>, which preserves the original Apple URL with its original casing:</p>
-<pre><code class="language-sql">SELECT 'clusters', COUNT(*) FROM (
-  SELECT LOWER(url) FROM docs_structured
-    GROUP BY LOWER(url) HAVING COUNT(*) &gt; 1
+<pre><code class="language-sql"><span class="tok-keyword">SELECT</span> <span class="tok-string">'clusters'</span>, <span class="tok-function">COUNT</span>(<span class="tok-operator">*</span>) <span class="tok-keyword">FROM</span> (
+  <span class="tok-keyword">SELECT</span> <span class="tok-function">LOWER</span>(url) <span class="tok-keyword">FROM</span> docs_structured
+    <span class="tok-keyword">GROUP</span> <span class="tok-keyword">BY</span> <span class="tok-function">LOWER</span>(url) <span class="tok-keyword">HAVING</span> <span class="tok-function">COUNT</span>(<span class="tok-operator">*</span>) <span class="tok-operator">&gt;</span> <span class="tok-number">1</span>
 );
--- clusters | 61257</code></pre>
+<span class="tok-comment">-- clusters | 61257</span></code></pre>
 <p>Two columns, two completely different stories. One verification you would write because the index key obviously <em>is</em> the URI. One verification you would write because that is the column a human would look at to spot the duplicate.</p>
 <p>This generalizes. The verification query for a data correctness fix has to come from the column where the bug would <em>show up to a reader</em>, not the column the data is <em>keyed by</em>. They look interchangeable until you realize that the key has been transformed by code that may itself be where the bug lives. If you verify in the transformed space, you verify against the same transformation that may be broken.</p>
 <p>A simpler version of the same lesson: ask yourself which column a customer would email you about, not which column the code uses as its primary key.</p>
@@ -124,11 +124,11 @@ documentation/swift/withtaskgroup(of:returning:isolation:body:)
 <p>The token cost of doing this is small (about 5 % overhead for cite-as-you-go, a few hundred tokens per verification re-search) and the failure mode it prevents is the most common LLM Apple-API hallucination class.</p>
 <h2>Upgrade</h2>
 <p>If you already have cupertino installed:</p>
-<pre><code class="language-bash">brew update &amp;&amp; brew upgrade cupertino
+<pre><code class="language-bash">brew update <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> brew upgrade cupertino
 cupertino setup</code></pre>
 <p>The first command pulls the new universal binary (signed and notarized via the GitHub Actions release workflow). The second downloads the new database bundle (669 MB compressed, 3.3 GB on disk). Your old v12 search.db will be rejected at open with a “rebuild required” message and replaced.</p>
 <p>If you are installing for the first time:</p>
-<pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)</code></pre>
+<pre><code class="language-bash">bash <span class="tok-operator">&lt;</span>(curl <span class="tok-operator">-</span>sSL https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>raw<span class="tok-operator">.</span>githubusercontent<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">/</span>ma<span class="tok-keyword">in</span><span class="tok-operator">/</span>install<span class="tok-operator">.</span>sh)</code></pre>
 <h2>Thanks</h2>
 <p>To <a href="https://github.com/Vignesh-Thangamariappan">@Vignesh-Thangamariappan</a> for <a href="https://github.com/mihaelamj/cupertino/pull/278">PR #278</a> (post-redirect canonicalization, #277). To <a href="https://github.com/imwyvern">@imwyvern</a> for the upstream #200 work that v1.0.2 builds on. To everyone who filed issues against the v1.0.0 corpus and made #283 surface in the first place.</p>
 <p>Cupertino is free, open-source, local-first, and built by one person on her own time.</p>

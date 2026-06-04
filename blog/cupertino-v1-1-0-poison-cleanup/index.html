@@ -74,10 +74,10 @@ cupertino doctor    # "Bundled version: 1.1.0", apple-docs: 284,518</code></pre>
 <h2>The 3 a.m. query</h2>
 <p>I was confident about v1.0.2. Audit clean. Bundle rebuilt. Counts verified. Shipped.</p>
 <p>Then I ran one more query against the v1.0.2 <code>search.db</code>, the kind you only run when you can’t sleep:</p>
-<pre><code class="language-sql">SELECT uri, title, abstract, source
-FROM docs_metadata m JOIN docs_structured s ON s.uri = m.uri
-WHERE s.title IN ('Forbidden', '403 Forbidden', '404 Not Found',
-                  'Bad Gateway', '502 Bad Gateway');</code></pre>
+<pre><code class="language-sql"><span class="tok-keyword">SELECT</span> uri, title, abstract, source
+<span class="tok-keyword">FROM</span> docs_metadata m <span class="tok-keyword">JOIN</span> docs_structured s <span class="tok-keyword">ON</span> s<span class="tok-operator">.</span>uri <span class="tok-operator">=</span> m<span class="tok-operator">.</span>uri
+<span class="tok-keyword">WHERE</span> s<span class="tok-operator">.</span>title <span class="tok-keyword">IN</span> (<span class="tok-string">'Forbidden'</span>, <span class="tok-string">'403 Forbidden'</span>, <span class="tok-string">'404 Not Found'</span>,
+                  <span class="tok-string">'Bad Gateway'</span>, <span class="tok-string">'502 Bad Gateway'</span>);</code></pre>
 <p>One row came back.</p>
 <pre><code>uri:      swift-org://docc_documentation
 title:    Forbidden
@@ -103,24 +103,24 @@ source:   swift-org</code></pre>
 <p><strong>Mode 1: the CDN returns an HTML error page at status 200.</strong> Title is <code>403 Forbidden</code>. A five-line title check catches it. Done in PR #289 last release.</p>
 <p><strong>Mode 2: the SPA shell.</strong> Apple’s docs site is a client-rendered React app. Fetch without JS and you get a <code>&lt;noscript&gt;</code> blurb that politely asks you to enable JavaScript. v1.0.2 had 1,327 of these. PR #291 filtered them at indexing time, but it was scoped to the apple-docs path, which is exactly why the <code>swift-org</code> <code>Forbidden</code> row strolled past.</p>
 <p><strong>Mode 3: the one that ate my Tuesday.</strong> JavaScript runs. The React app boots. The React app’s data API returns 404 for the URL. The React app cheerfully renders its own 404 sub-view as the page body:</p>
-<pre><code class="language-html">&lt;h1&gt;Apple Developer Documentation&lt;/h1&gt;
-&lt;a href="#app-main"&gt;Skip Navigation&lt;/a&gt;
-&lt;h1&gt;The page you're looking for can't be found.&lt;/h1&gt;
-&lt;input placeholder="Search developer.apple.com"&gt;</code></pre>
+<pre><code class="language-html"><span class="tok-operator">&lt;</span><span class="tok-keyword">h1</span><span class="tok-operator">&gt;</span>Apple Developer Documentation<span class="tok-operator">&lt;</span><span class="tok-operator">/</span><span class="tok-keyword">h1</span><span class="tok-operator">&gt;</span>
+<span class="tok-operator">&lt;</span><span class="tok-keyword">a</span> <span class="tok-property">href</span><span class="tok-operator">=</span><span class="tok-string">"#app-main"</span><span class="tok-operator">&gt;</span>Skip Navigation<span class="tok-operator">&lt;</span><span class="tok-operator">/</span><span class="tok-keyword">a</span><span class="tok-operator">&gt;</span>
+<span class="tok-operator">&lt;</span><span class="tok-keyword">h1</span><span class="tok-operator">&gt;</span>The page you're looking for can't be found.<span class="tok-operator">&lt;</span><span class="tok-operator">/</span><span class="tok-keyword">h1</span><span class="tok-operator">&gt;</span>
+<span class="tok-operator">&lt;</span><span class="tok-keyword">input</span> <span class="tok-property">placeholder</span><span class="tok-operator">=</span><span class="tok-string">"Search developer.apple.com"</span><span class="tok-operator">&gt;</span></code></pre>
 <p>Title is generic. Body is the app announcing its own failure. No error markers. Status 200. HTML perfectly clean. Every defense I had waved this through, because from the network’s point of view Apple successfully served me a page. The page just happens to be Apple’s React app politely informing the user that the page doesn’t exist.</p>
 <h2>The fix that was missing</h2>
 <p>PR #432 is small. A substring check on the rendered HTML, before the crawler writes anything:</p>
-<pre><code class="language-swift">public static func looksLikeJavaScriptFallback(html: String) -&gt; Bool {
-    if html.contains("The page you're looking for can't be found") { return true }
-    if html.contains("An unknown error occurred") { return true }
-    return false
+<pre><code class="language-swift"><span class="tok-keyword">public</span> <span class="tok-keyword">static</span> <span class="tok-keyword">func</span> <span class="tok-function">looksLikeJavaScriptFallback</span>(html<span class="tok-operator">:</span> <span class="tok-type">String</span>) <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">Bool</span> {
+    <span class="tok-keyword">if</span> html<span class="tok-operator">.</span><span class="tok-function">contains</span>(<span class="tok-string">"The page you're looking for can't be found"</span>) { <span class="tok-keyword">return</span> <span class="tok-literal">true</span> }
+    <span class="tok-keyword">if</span> html<span class="tok-operator">.</span><span class="tok-function">contains</span>(<span class="tok-string">"An unknown error occurred"</span>) { <span class="tok-keyword">return</span> <span class="tok-literal">true</span> }
+    <span class="tok-keyword">return</span> <span class="tok-literal">false</span>
 }</code></pre>
 <p>Both phrases live exclusively inside Apple’s no-content sub-views. Real docs do not quote either sentence. The check runs after WebKit renders, so it sees the same bytes that would have hit disk. If it returns true, the crawler logs a skip and walks away.</p>
 <p>Every skip writes one JSONL row to <code>&lt;output&gt;/.cupertino-rejected-urls.jsonl</code>:</p>
-<pre><code class="language-json">{"url":"https://developer.apple.com/documentation/.../fetch-apple",
- "framework":"accountorganizationaldatasharing",
- "reason":"js_fallback",
- "timestamp":"2026-05-13T11:53:42Z"}</code></pre>
+<pre><code class="language-json"><span class="tok-operator">{</span><span class="tok-property">"url"</span><span class="tok-operator">:</span><span class="tok-string">"https://developer.apple.com/documentation/.../fetch-apple"</span><span class="tok-operator">,</span>
+ <span class="tok-property">"framework"</span><span class="tok-operator">:</span><span class="tok-string">"accountorganizationaldatasharing"</span><span class="tok-operator">,</span>
+ <span class="tok-property">"reason"</span><span class="tok-operator">:</span><span class="tok-string">"js_fallback"</span><span class="tok-operator">,</span>
+ <span class="tok-property">"timestamp"</span><span class="tok-operator">:</span><span class="tok-string">"2026-05-13T11:53:42Z"</span><span class="tok-operator">}</span></code></pre>
 <p>This is the part I think generalizes. Once a poison file lands on disk, every downstream consumer has to re-discover that it’s poison. Catch it at write time and it is nobody’s problem ever again. The JSONL puts the visibility back: <code>jq</code> over it and you have a retry list, a recrawl set, or a bug-report folder.</p>
 <p>Targeted recrawl of 51 known-poison URLs from v1.0.2: 48 rejection rows, all correctly tagged <code>js_fallback</code>, zero new files on disk. Pre-fix, the same set wrote 9 poison files in 90 seconds before I killed the run.</p>
 <p>One false-positive risk worth naming. Two real Apple symbol pages quote “An unknown error occurred” in their Discussion section (<code>cfnetworkserviceerrorunknown</code>, <code>generalinternalretryableerror</code>). Both are already in the v1.1.0 bundle, but a future recrawl of those exact URLs would currently get rejected. Filed for v1.2: tighten the match so the phrase has to sit in a standalone position (h1, adjacent to Skip Navigation) rather than anywhere in the HTML.</p>
@@ -139,7 +139,7 @@ runtime:             9h 39m</code></pre>
 <p>This is the part I’d flag to anyone shipping a similar tool.</p>
 <p>v1.1.0 first shipped tagged correctly, binary rebuilt correctly, bundle uploaded to a parallel GitHub release. I ran <code>cupertino setup</code> to test the upgrade. It cheerfully downloaded the <strong>old</strong> v1.0.2 bundle.</p>
 <p>The bug was one line in <code>Shared.Constants.swift</code>:</p>
-<pre><code class="language-swift">public static let databaseVersion = "1.0.2"</code></pre>
+<pre><code class="language-swift"><span class="tok-keyword">public</span> <span class="tok-keyword">static</span> <span class="tok-keyword">let</span> database<span class="tok-type">Version</span> <span class="tok-operator">=</span> <span class="tok-string">"1.0.2"</span></code></pre>
 <p><code>cupertino setup</code> builds the download URL from this constant:</p>
 <pre><code>{baseURL}/v{databaseVersion}/cupertino-databases-v{databaseVersion}.zip</code></pre>
 <p>The release-tooling commit had explicitly not bumped it, with a confident note: “databaseVersion stays at 1.0.2 (no schema/content change).” Schema-wise that was true. Content-wise it was a confident lie. The corpus was the cleanest it had ever been, the bundle was genuinely new, and the binary was politely asking the CDN for last week’s poisoned one.</p>

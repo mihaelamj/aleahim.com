@@ -68,37 +68,37 @@
 <h2>The Big Feature: AST Indexing</h2>
 <p>This is issue #81, and it’s been brewing for a while. Sample code search was purely keyword-based - you search “async”, you get files containing “async”. Comments, strings, documentation, actual code - all treated equally.</p>
 <p>Now Cupertino extracts structured symbol data from Swift source:</p>
-<pre><code class="language-swift">// SwiftSourceExtractor analyzes this:
-@MainActor
-class NetworkManager: ObservableObject {
-    @Published var isLoading = false
+<pre><code class="language-swift"><span class="tok-comment">// SwiftSourceExtractor analyzes this:</span>
+<span class="tok-attribute">@MainActor</span>
+<span class="tok-keyword">class</span> <span class="tok-type">NetworkManager</span><span class="tok-operator">:</span> <span class="tok-type">ObservableObject</span> {
+    <span class="tok-attribute">@Published</span> <span class="tok-keyword">var</span> is<span class="tok-type">Loading</span> <span class="tok-operator">=</span> <span class="tok-literal">false</span>
 
-    func fetch() async throws -&gt; Data { ... }
+    <span class="tok-keyword">func</span> <span class="tok-function">fetch</span>() <span class="tok-keyword">async</span> <span class="tok-keyword">throws</span> <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">Data</span> { <span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">.</span> }
 }</code></pre>
 <p>And extracts:</p>
 <table><thead><tr><th>Symbol</th><th>Kind</th><th>Attributes</th></tr></thead><tbody><tr><td><code>NetworkManager</code></td><td>class</td><td><code>@MainActor</code></td></tr><tr><td><code>isLoading</code></td><td>property</td><td><code>@Published</code></td></tr><tr><td><code>fetch()</code></td><td>function</td><td>async, throws</td></tr></tbody></table>
 <h3>What This Enables</h3>
 <p><strong>Better ranking, not magic.</strong> When you search “@Observable”, plain text search finds every file mentioning “Observable” - comments, strings, documentation, actual declarations. All ranked equally.</p>
 <p>With AST indexing, Cupertino knows which results contain actual <code>@Observable</code> class declarations. These get boosted in ranking. The real symbol usages surface first.</p>
-<pre><code class="language-bash">$ cupertino search "@Observable" --source samples --format markdown</code></pre>
-<pre><code class="language-markdown">## Projects (5 found)
+<pre><code class="language-bash"><span class="tok-property">$</span> cupertino search <span class="tok-string">"@Observable"</span> <span class="tok-operator">-</span><span class="tok-operator">-</span>source samples <span class="tok-operator">-</span><span class="tok-operator">-</span>format markdown</code></pre>
+<pre><code class="language-markdown">## <span class="tok-type">Projects</span> (<span class="tok-number">5</span> found)
 
-### 1. Migrating from the Observable Object protocol to the Observable macro
-- **Frameworks:** swiftui
-- **Files:** 14
+### <span class="tok-number">1.</span> <span class="tok-type">Migrating</span> from the <span class="tok-type">Observable</span> <span class="tok-type">Object</span> protocol to the <span class="tok-type">Observable</span> macro
+<span class="tok-operator">-</span> <span class="tok-operator">*</span><span class="tok-operator">*</span><span class="tok-type">Frameworks</span><span class="tok-operator">:</span><span class="tok-operator">*</span><span class="tok-operator">*</span> swiftui
+<span class="tok-operator">-</span> <span class="tok-operator">*</span><span class="tok-operator">*</span><span class="tok-type">Files</span><span class="tok-operator">:</span><span class="tok-operator">*</span><span class="tok-operator">*</span> <span class="tok-number">14</span>
 
-## Matching Files
+## <span class="tok-type">Matching</span> <span class="tok-type">Files</span>
 
-### Library.swift
-&gt; @Observable final class Library {
-&gt;     var books: [Book] = [Book(), Book(), Book()]
-&gt; }
+### <span class="tok-type">Library</span><span class="tok-operator">.</span>swift
+<span class="tok-operator">&gt;</span> <span class="tok-attribute">@Observable</span> final <span class="tok-keyword">class</span> <span class="tok-type">Library</span> {
+<span class="tok-operator">&gt;</span>     <span class="tok-keyword">var</span> books<span class="tok-operator">:</span> [<span class="tok-type">Book</span>] <span class="tok-operator">=</span> [<span class="tok-type">Book</span>(), <span class="tok-type">Book</span>(), <span class="tok-type">Book</span>()]
+<span class="tok-operator">&gt;</span> }
 
-### Book.swift
-&gt; @Observable final class Book: Identifiable {
-&gt;     var title = "Sample Book Title"
-&gt;     let id = UUID()
-&gt; }</code></pre>
+### <span class="tok-type">Book</span><span class="tok-operator">.</span>swift
+<span class="tok-operator">&gt;</span> <span class="tok-attribute">@Observable</span> final <span class="tok-keyword">class</span> <span class="tok-type">Book</span><span class="tok-operator">:</span> <span class="tok-type">Identifiable</span> {
+<span class="tok-operator">&gt;</span>     <span class="tok-keyword">var</span> title <span class="tok-operator">=</span> <span class="tok-string">"Sample Book Title"</span>
+<span class="tok-operator">&gt;</span>     <span class="tok-keyword">let</span> id <span class="tok-operator">=</span> <span class="tok-type">UUID</span>()
+<span class="tok-operator">&gt;</span> }</code></pre>
 <p>The search still matches text, but files with actual <code>@Observable</code> declarations rank higher than files that just mention the word in comments.</p>
 <p><strong>Dedicated semantic tools.</strong> The symbol tables power these MCP tools:</p>
 <ul><li><p><code>search_symbols</code> - query by symbol type and attributes</p></li><li><p><code>search_property_wrappers</code> - find <code>@Published</code>, <code>@State</code>, <code>@Binding</code> usage</p></li><li><p><code>search_conformances</code> - find protocol implementations</p></li><li><p><code>search_concurrency</code> - find async/await patterns</p></li></ul>
@@ -118,9 +118,9 @@ class NetworkManager: ObservableObject {
 <ul><li><p>Consolidated duplicate functionality across modules</p></li><li><p>Clearer boundaries between <code>Services</code>, <code>Core</code>, and domain packages</p></li><li><p>Better separation of CLI concerns from library logic</p></li><li><p>Removed dead code paths and unused types</p></li></ul>
 <h3>Result Formatter Protocol</h3>
 <p>A new <code>ResultFormatter</code> protocol standardizes how search results become output:</p>
-<pre><code class="language-swift">protocol ResultFormatter {
-    associatedtype Input
-    func format(_ result: Input) -&gt; String
+<pre><code class="language-swift"><span class="tok-keyword">protocol</span> <span class="tok-type">ResultFormatter</span> {
+    <span class="tok-keyword">associatedtype</span> <span class="tok-type">Input</span>
+    <span class="tok-keyword">func</span> <span class="tok-function">format</span>(_ result<span class="tok-operator">:</span> <span class="tok-type">Input</span>) <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">String</span>
 }</code></pre>
 <p>This enabled reusable formatters for different output contexts (CLI text, MCP markdown, JSON) while keeping the core search logic unchanged.</p>
 <p>The refactoring wasn’t glamorous work, but it paid off immediately in cleaner search results and faster feature development.</p>
@@ -152,22 +152,22 @@ class NetworkManager: ObservableObject {
 <ul><li><p><code>Tabbars|AppleDeveloperDocumentation###</code> - trailing garbage</p></li><li><p><code>Tab  bars</code> - double spaces</p></li><li><p><code>Goingfull screen</code> - missing space in HIG titles</p></li><li><p><code>Framework# SwiftUI</code> - inline markdown headers</p></li></ul>
 <p>Each individually minor. Together, they made results look unprofessional and confused AI parsing.</p>
 <p>The fix was a string extension that cleans display text:</p>
-<pre><code class="language-swift">var cleanedForDisplay: String {
-    var result = self
+<pre><code class="language-swift"><span class="tok-keyword">var</span> cleaned<span class="tok-type">ForDisplay</span><span class="tok-operator">:</span> <span class="tok-type">String</span> {
+    <span class="tok-keyword">var</span> result <span class="tok-operator">=</span> <span class="tok-keyword">self</span>
 
-    // Remove trailing ###
-    while result.hasSuffix("###") { ... }
+    <span class="tok-comment">// Remove trailing ###</span>
+    <span class="tok-keyword">while</span> result<span class="tok-operator">.</span><span class="tok-function">hasSuffix</span>(<span class="tok-string">"###"</span>) { <span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">.</span> }
 
-    // Remove |AppleDeveloperDocumentation
-    result = result.replacingOccurrences(of: "|AppleDeveloperDocumentation", with: "")
+    <span class="tok-comment">// Remove |AppleDeveloperDocumentation</span>
+    result <span class="tok-operator">=</span> result<span class="tok-operator">.</span><span class="tok-function">replacingOccurrences</span>(of<span class="tok-operator">:</span> <span class="tok-string">"|AppleDeveloperDocumentation"</span>, with<span class="tok-operator">:</span> <span class="tok-string">""</span>)
 
-    // Fix "Goingfull" -&gt; "Going full"
-    result = result.addingSpacesToCamelCase
+    <span class="tok-comment">// Fix "Goingfull" -&gt; "Going full"</span>
+    result <span class="tok-operator">=</span> result<span class="tok-operator">.</span>adding<span class="tok-type">SpacesToCamelCase</span>
 
-    // Collapse double spaces
-    while result.contains("  ") { ... }
+    <span class="tok-comment">// Collapse double spaces</span>
+    <span class="tok-keyword">while</span> result<span class="tok-operator">.</span><span class="tok-function">contains</span>(<span class="tok-string">"  "</span>) { <span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">.</span> }
 
-    return result
+    <span class="tok-keyword">return</span> result
 }</code></pre>
 <p>Now there are 34 unit tests just for string formatting. Because every edge case that slipped through was a papercut in every search result.</p>
 <h2>The Test Suite Story</h2>
@@ -179,50 +179,50 @@ class NetworkManager: ObservableObject {
 <p>The fix was embarrassingly simple: don’t use <code>defer</code> with async cleanup. Just await at the end of the test.</p>
 <h2>Doctor Command Gets Smarter</h2>
 <p>The <code>cupertino doctor</code> command now diagnoses package-related issues:</p>
-<pre><code class="language-bash">$ cupertino doctor
+<pre><code class="language-bash"><span class="tok-property">$</span> cupertino doctor
 
-Cupertino v0.8.0 - Health Check
+Cupertino v<span class="tok-number">0.8.0</span> <span class="tok-operator">-</span> Health Check
 
-Databases:
-  ✅ search.db (2.3GB, 302,424 docs)
-  ✅ sample.db (156MB, 606 projects)
+Databases<span class="tok-operator">:</span>
+  ✅ search<span class="tok-operator">.</span><span class="tok-function">db</span> (<span class="tok-number">2.3</span>GB, <span class="tok-number">302</span>,<span class="tok-number">424</span> docs)
+  ✅ sample<span class="tok-operator">.</span><span class="tok-function">db</span> (<span class="tok-number">156</span>MB, <span class="tok-number">606</span> projects)
 
-Package Status:
-  ✅ User selections: ~/.cupertino/selected-packages.json (12 packages)
-  ✅ Downloaded READMEs: 12/12
-  ⚠️  Orphaned READMEs: 3 (packages no longer selected)
+Package Status<span class="tok-operator">:</span>
+  ✅ User selections<span class="tok-operator">:</span> <span class="tok-operator">~</span><span class="tok-operator">/</span><span class="tok-operator">.</span>cupertino<span class="tok-operator">/</span>selected<span class="tok-operator">-</span>packages<span class="tok-operator">.</span><span class="tok-function">json</span> (<span class="tok-number">12</span> packages)
+  ✅ Downloaded READMEs<span class="tok-operator">:</span> <span class="tok-number">12</span><span class="tok-operator">/</span><span class="tok-number">12</span>
+  ⚠️  Orphaned READMEs<span class="tok-operator">:</span> <span class="tok-number">3</span> (packages no longer selected)
 
-Priority Breakdown:
-  📦 Apple Official: 31 packages
-  📦 Ecosystem: 5 packages
+Priority Breakdown<span class="tok-operator">:</span>
+  📦 Apple Official<span class="tok-operator">:</span> <span class="tok-number">31</span> packages
+  📦 Ecosystem<span class="tok-operator">:</span> <span class="tok-number">5</span> packages
 
-MCP Tools: 8 registered
-Resources: 3 providers active</code></pre>
+MCP Tools<span class="tok-operator">:</span> <span class="tok-number">8</span> registered
+Resources<span class="tok-operator">:</span> <span class="tok-number">3</span> providers active</code></pre>
 <p>The “orphaned READMEs” warning catches when you’ve unselected packages but their downloaded docs remain. Helpful for debugging unexpected search results.</p>
 <h2>What’s Next</h2>
 <p>The semantic tools (<code>search_symbols</code>, <code>search_conformances</code>, etc.) are built. Next steps:</p>
 <ol><li><p><strong>Index all sample code</strong> - Run AST extraction across all 606 projects to populate symbol tables</p></li><li><p><strong>Cross-referencing</strong> - Link extracted symbols to their documentation pages</p></li><li><p><strong>Symbol coverage</strong> - Expand extraction to catch more edge cases</p></li></ol>
 <p>The infrastructure is in place. Now to fill the database and refine the queries.</p>
 <h2>Install or Update</h2>
-<pre><code class="language-bash"># New install
-brew install mihaelamj/tap/cupertino
+<pre><code class="language-bash"><span class="tok-comment"># New install</span>
+brew install mihaelamj<span class="tok-operator">/</span>tap<span class="tok-operator">/</span>cupertino
 
-# Update existing
+<span class="tok-comment"># Update existing</span>
 brew upgrade cupertino
 
-# Or one-line install
-bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)</code></pre>
+<span class="tok-comment"># Or one-line install</span>
+bash <span class="tok-operator">&lt;</span>(curl <span class="tok-operator">-</span>sSL https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>raw<span class="tok-operator">.</span>githubusercontent<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">/</span>ma<span class="tok-keyword">in</span><span class="tok-operator">/</span>install<span class="tok-operator">.</span>sh)</code></pre>
 <p>Then:</p>
-<pre><code class="language-bash">cupertino setup  # Download databases (~30 seconds)
-cupertino serve  # Start MCP server</code></pre>
+<pre><code class="language-bash">cupertino setup  <span class="tok-comment"># Download databases (~30 seconds)</span>
+cupertino serve  <span class="tok-comment"># Start MCP server</span></code></pre>
 <p>Try the improved search:</p>
-<pre><code class="language-bash"># See hierarchical numbering
-cupertino search "SwiftUI navigation" --source all
+<pre><code class="language-bash"><span class="tok-comment"># See hierarchical numbering</span>
+cupertino search <span class="tok-string">"SwiftUI navigation"</span> <span class="tok-operator">-</span><span class="tok-operator">-</span>source all
 
-# Clean HIG results
-cupertino search "tab bar" --source hig
+<span class="tok-comment"># Clean HIG results</span>
+cupertino search <span class="tok-string">"tab bar"</span> <span class="tok-operator">-</span><span class="tok-operator">-</span>source hig
 
-# Check your installation health
+<span class="tok-comment"># Check your installation health</span>
 cupertino doctor</code></pre>
 <hr>
 <p><em>Cupertino is an Apple Documentation MCP Server. 302,424 pages of Apple documentation, searchable by AI. Source at <a href="https://github.com/mihaelamj/cupertino">github.com/mihaelamj/cupertino</a>.</em></p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a><time>May 31, 2026</time></li><li><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a><time>May 28, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a><time>May 21, 2026</time></li></ul></aside></article></main>

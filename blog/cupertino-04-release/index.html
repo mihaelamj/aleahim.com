@@ -68,10 +68,10 @@
 <h2>What’s New</h2>
 <h3>Human Interface Guidelines Support</h3>
 <p>Cupertino can now crawl and index Apple’s Human Interface Guidelines:</p>
-<pre><code class="language-bash">cupertino fetch --type hig</code></pre>
+<pre><code class="language-bash">cupertino fetch <span class="tok-operator">-</span><span class="tok-operator">-</span>type hig</code></pre>
 <p>There’s also a new <code>search_hig</code> MCP tool that lets AI agents search design guidelines with platform and category filters. When you ask Claude “what are Apple’s recommendations for buttons?”, it can actually look it up instead of guessing from training data.</p>
 <p>Everything available via MCP tools is also available via command line:</p>
-<pre><code class="language-bash">cupertino search "buttons" --source hig</code></pre>
+<pre><code class="language-bash">cupertino search <span class="tok-string">"buttons"</span> <span class="tok-operator">-</span><span class="tok-operator">-</span>source hig</code></pre>
 <p>This is something people might not realize: you can query Cupertino the same way AI does. Every MCP tool has a CLI equivalent. Want to see exactly what Claude sees when it searches? Run the same query yourself. Useful for testing, debugging, or when you just want quick answers without a conversation.</p>
 <h3>Framework Aliases</h3>
 <p>Before, searching for “Core Animation” might not find results indexed under “QuartzCore” (the actual import name). Now there are 249 framework aliases in the database:</p>
@@ -102,19 +102,19 @@ Archive docs = Conceptual guides (the <em>why</em>)</p>
 <p>The problem? AI agents don’t know to search the archive. It’s an opt-in parameter buried in the tool description.</p>
 <h3>The Solution: Auto-Surface Archive Teasers</h3>
 <p>I’m planning to modify search results to automatically hint at archive content:</p>
-<pre><code class="language-markdown"># Search Results for "CALayer animation"
+<pre><code class="language-markdown"># <span class="tok-type">Search</span> <span class="tok-type">Results</span> <span class="tok-keyword">for</span> <span class="tok-string">"CALayer animation"</span>
 
-## Modern Documentation
-[1] CALayer - API reference...
-[2] CABasicAnimation - API reference...
+## <span class="tok-type">Modern</span> <span class="tok-type">Documentation</span>
+[<span class="tok-number">1</span>] <span class="tok-type">CALayer</span> <span class="tok-operator">-</span> <span class="tok-type">API</span> reference<span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">.</span>
+[<span class="tok-number">2</span>] <span class="tok-type">CABasicAnimation</span> <span class="tok-operator">-</span> <span class="tok-type">API</span> reference<span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">.</span>
 
----
+<span class="tok-operator">-</span><span class="tok-operator">-</span><span class="tok-operator">-</span>
 
-## 📚 Related Archive Guides
+## 📚 <span class="tok-type">Related</span> <span class="tok-type">Archive</span> <span class="tok-type">Guides</span>
 
-**Core Animation Programming Guide** - Layer geometry, animation timing...
+<span class="tok-operator">*</span><span class="tok-operator">*</span><span class="tok-type">Core</span> <span class="tok-type">Animation</span> <span class="tok-type">Programming</span> <span class="tok-type">Guide</span><span class="tok-operator">*</span><span class="tok-operator">*</span> <span class="tok-operator">-</span> <span class="tok-type">Layer</span> geometry, animation timing<span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">.</span>
 
-&gt; For full archive content, search with `source: "apple-archive"`</code></pre>
+<span class="tok-operator">&gt;</span> <span class="tok-keyword">For</span> full archive content, search with `source<span class="tok-operator">:</span> <span class="tok-string">"apple-archive"</span>`</code></pre>
 <p>This way:</p>
 <ul><li><p>Modern docs still come first</p></li><li><p>AI agents always see archive exists</p></li><li><p>They learn how to get more, in context</p></li></ul>
 <p>Only show the archive section if there are relevant results. Same principle could apply to sample code, Swift packages, or any other source.</p>
@@ -126,8 +126,8 @@ Archive docs = Conceptual guides (the <em>why</em>)</p>
 <h3>The Tag Timing Problem</h3>
 <p>I merged my feature branch, created the tag, pushed it… and then realized I hadn’t committed the version bump to <code>main</code> yet. The tag pointed to a commit where <code>Constants.swift</code> still said <code>0.3.5</code>.</p>
 <p>GitHub Actions dutifully built a beautiful, signed, notarized universal binary… that reported version <code>0.3.5</code>.</p>
-<pre><code class="language-bash">$ cupertino --version
-0.3.5</code></pre>
+<pre><code class="language-bash"><span class="tok-property">$</span> cupertino <span class="tok-operator">-</span><span class="tok-operator">-</span>version
+<span class="tok-number">0.3.5</span></code></pre>
 <p>When users ran <code>cupertino setup</code>, it tried to download databases from <code>v0.3.5</code> instead of <code>v0.4.0</code>. Everything was broken.</p>
 <h3>The Fix</h3>
 <p>I had to:</p>

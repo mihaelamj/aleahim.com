@@ -69,18 +69,18 @@
 <p>That’s cupertino. <strong>v1.0.0 “First Light”</strong> is the first release I’m willing to call stable across the whole pipeline: crawl, index, rank, serve, distribute. Before today every previous release had at least one of those broken. Today none of them are.</p>
 <h2>The headline: search now returns the right answer</h2>
 <p>Run this against an installed v1.0:</p>
-<pre><code class="language-bash">$ cupertino search Task --limit 3
-Searched: packages, apple-docs, swift-evolution
+<pre><code class="language-bash"><span class="tok-property">$</span> cupertino search Task <span class="tok-operator">-</span><span class="tok-operator">-</span>limit <span class="tok-number">3</span>
+Searched<span class="tok-operator">:</span> packages, apple<span class="tok-operator">-</span>docs, swift<span class="tok-operator">-</span>evolution
 
-[1] Task | Apple Developer Documentation  •  source: apple-docs  •  score: 0.0492
-    apple-docs://swift/documentation_swift_task
-    A unit of asynchronous work.
+[<span class="tok-number">1</span>] Task <span class="tok-operator">|</span> Apple Developer Documentation  •  source<span class="tok-operator">:</span> apple<span class="tok-operator">-</span>docs  •  score<span class="tok-operator">:</span> <span class="tok-number">0.0492</span>
+    apple<span class="tok-operator">-</span>docs<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>swift<span class="tok-operator">/</span>documentation_swift_task
+    A unit of asynchronous work<span class="tok-operator">.</span>
 
-[2] task | Apple Developer Documentation  •  source: apple-docs  •  score: 0.0484
-    apple-docs://kernel/documentation_kernel_kernel_resource_sizes_data_t_1586795-task
+[<span class="tok-number">2</span>] task <span class="tok-operator">|</span> Apple Developer Documentation  •  source<span class="tok-operator">:</span> apple<span class="tok-operator">-</span>docs  •  score<span class="tok-operator">:</span> <span class="tok-number">0.0484</span>
+    apple<span class="tok-operator">-</span>docs<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>kernel<span class="tok-operator">/</span>documentation_kernel_kernel_resource_sizes_data_t_<span class="tok-number">1586795</span><span class="tok-operator">-</span>task
 
-[3] task  •  source: apple-docs  •  score: 0.0476
-    apple-docs://foundation/documentation_foundation_urlprotocol_task</code></pre>
+[<span class="tok-number">3</span>] task  •  source<span class="tok-operator">:</span> apple<span class="tok-operator">-</span>docs  •  score<span class="tok-operator">:</span> <span class="tok-number">0.0476</span>
+    apple<span class="tok-operator">-</span>docs<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>foundation<span class="tok-operator">/</span>documentation_foundation_urlprotocol_task</code></pre>
 <p>That’s the canonical Swift <code>Task</code> struct at #1, where it belongs. The same binary against the same database before today’s changes returned a Mach kernel C function as the top result. Cupertino’s pre-1.0 ranker — and frankly every documentation search I’ve seen, including Apple’s own — was wrong on common type names. Type “Task”, get a kernel essay. Type “View”, get a DeviceManagement payload schema. Type “Result”, get a Vision associated type.</p>
 <p>Multiple compounding bugs caused this. Fixing them was most of what this release is about.</p>
 <h3>Reciprocal rank fusion that actually understands the query</h3>
@@ -99,10 +99,10 @@ Searched: packages, apple-docs, swift-evolution
 <p>The probe is bounded — it only fires when there’s an indexed canonical match, so queries that genuinely don’t have a canonical repo (<code>alamofire request</code> against a corpus where Alamofire isn’t indexed; <code>actor isolation</code> which isn’t a repo name at all) fall through to plain BM25 with no overhead.</p>
 <h3>A SQL gotcha that cost us ~3 seconds per query</h3>
 <p>While testing the canonical force-include, I shipped it with the wrong SQL shape:</p>
-<pre><code class="language-sql">SELECT ... FROM docs_fts f
-JOIN docs_metadata m ON f.uri = m.uri
-WHERE f.uri = ?
-LIMIT 1;</code></pre>
+<pre><code class="language-sql"><span class="tok-keyword">SELECT</span> <span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">.</span> <span class="tok-keyword">FROM</span> docs_fts f
+<span class="tok-keyword">JOIN</span> docs_metadata m <span class="tok-keyword">ON</span> f<span class="tok-operator">.</span>uri <span class="tok-operator">=</span> m<span class="tok-operator">.</span>uri
+<span class="tok-keyword">WHERE</span> f<span class="tok-operator">.</span>uri <span class="tok-operator">=</span> <span class="tok-operator">?</span>
+<span class="tok-keyword">LIMIT</span> <span class="tok-number">1</span>;</code></pre>
 <p><code>docs_fts</code> is an FTS5 virtual table. Its <code>uri</code> column is <em>not</em> a queryable index — FTS5 stores columns inside the inverted index, accessible only through <code>MATCH</code>. SQLite’s planner picked <code>SCAN VIRTUAL TABLE INDEX 0</code> and walked the entire FTS5 index for every probe. About <strong>3.2 seconds per probe</strong> on the 3.4 GB v1.0 search.db. Three probes per search call = 10 seconds of pure overhead before the actual query ran.</p>
 <p>The fix is a one-line SQL rewrite — query <code>docs_metadata</code> (whose <code>uri</code> is <code>TEXT PRIMARY KEY</code>) directly, pull title and summary out of <code>json_data</code> via <code>json_extract($.title, $.abstract)</code>, never touch the FTS5 virtual table for this lookup. <strong>5 milliseconds per probe.</strong> Single-process search wall time on the 3.4 GB corpus dropped from ~18 seconds to ~4 seconds.</p>
 <p>The same bug was lurking in the older <code>fetchFrameworkRoot</code> helper that’s been there since #81, untimed and presumably contributing to user-visible latency for months. Both are fixed in v1.0.</p>
@@ -135,7 +135,7 @@ rm ~/.cupertino/search.db &amp;&amp; cupertino save</code></pre>
 <p>The release name is from astronomy. First light is the first time a new telescope is pointed at the sky and an actual image comes back — not a calibration target, not a test pattern, but real data. Everything before is engineering. First light is when the instrument starts being a telescope.</p>
 <p>That’s how this release feels. The previous twelve months were engineering — getting the crawler not to leak memory, getting the indexer to handle the field weights, getting the MCP server to negotiate protocols, getting the install to not strand users on stale databases. v1.0.0 is when those parts compose into something that does what it was built to do.</p>
 <h2>Try it</h2>
-<pre><code class="language-bash">brew install mihaelamj/tap/cupertino
+<pre><code class="language-bash">brew install mihaelamj<span class="tok-operator">/</span>tap<span class="tok-operator">/</span>cupertino
 cupertino setup
 cupertino search Task</code></pre>
 <p><code>brew install</code> pulls a notarized universal binary (~13 MB). <code>cupertino setup</code> downloads the v1.0.0 database bundle (~833 MB compressed, ~5 GB extracted). <code>cupertino search Task</code> should land the canonical Swift <code>Task</code> struct as result #1.</p>

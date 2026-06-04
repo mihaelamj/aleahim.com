@@ -87,26 +87,26 @@ It listens to every incoming request and outgoing response, measures duration, a
 <p>At its core, the idea is simple:</p>
 <blockquote><p>Log exactly what you’d want to see if you were reading someone else’s code.</p></blockquote>
 <p>Here’s how it looks in your Vapor or OpenAPI setup:</p>
-<pre><code class="language-swift">import OpenAPILoggingMiddleware
+<pre><code class="language-swift"><span class="tok-keyword">import</span> <span class="tok-type">OpenAPILoggingMiddleware</span>
 
-app.middleware.use(OpenAPILoggingMiddleware(level: .info))</code></pre>
+app<span class="tok-operator">.</span>middleware<span class="tok-operator">.</span><span class="tok-function">use</span>(<span class="tok-type">OpenAPILoggingMiddleware</span>(level<span class="tok-operator">:</span> <span class="tok-operator">.</span>info))</code></pre>
 <p>That one line transforms your debugging experience.</p>
 <hr>
 <h2>Under the Hood</h2>
 <p>The middleware implements the <code>OpenAPIMiddleware</code> protocol, which lets it intercept the lifecycle of each OpenAPI operation — before the request is handled and after the response is sent.</p>
 <p>Here’s a conceptual overview:</p>
-<pre><code class="language-swift">public struct OpenAPILoggingMiddleware: OpenAPIMiddleware {
-    public func intercept(
-        _ request: Request,
-        operationID: String,
-        next: (Request) async throws -&gt; Response
-    ) async throws -&gt; Response {
-        let start = Date()
-        let response = try await next(request)
-        let duration = Date().timeIntervalSince(start) * 1000
+<pre><code class="language-swift"><span class="tok-keyword">public</span> <span class="tok-keyword">struct</span> <span class="tok-type">OpenAPILoggingMiddleware</span><span class="tok-operator">:</span> <span class="tok-type">OpenAPIMiddleware</span> {
+    <span class="tok-keyword">public</span> <span class="tok-keyword">func</span> <span class="tok-function">intercept</span>(
+        _ request<span class="tok-operator">:</span> <span class="tok-type">Request</span>,
+        operation<span class="tok-type">ID</span><span class="tok-operator">:</span> <span class="tok-type">String</span>,
+        next<span class="tok-operator">:</span> (<span class="tok-type">Request</span>) <span class="tok-keyword">async</span> <span class="tok-keyword">throws</span> <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">Response</span>
+    ) <span class="tok-keyword">async</span> <span class="tok-keyword">throws</span> <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">Response</span> {
+        <span class="tok-keyword">let</span> start <span class="tok-operator">=</span> <span class="tok-type">Date</span>()
+        <span class="tok-keyword">let</span> response <span class="tok-operator">=</span> <span class="tok-keyword">try</span> <span class="tok-keyword">await</span> <span class="tok-function">next</span>(request)
+        <span class="tok-keyword">let</span> duration <span class="tok-operator">=</span> <span class="tok-type">Date</span>()<span class="tok-operator">.</span><span class="tok-function">timeIntervalSince</span>(start) <span class="tok-operator">*</span> <span class="tok-number">1000</span>
 
-        print("[\(request.method)] \(request.url.path) -&gt; \(response.status.code) [\(Int(duration)) ms]")
-        return response
+        <span class="tok-function">print</span>(<span class="tok-string">"[\(request.method)] \(request.url.path) -&gt; \(response.status.code) [\(Int(duration)) ms]"</span>)
+        <span class="tok-keyword">return</span> response
     }
 }</code></pre>
 <p>Of course, the real implementation handles errors, structured formatting, and configurable verbosity, but the essence is the same:
@@ -119,16 +119,16 @@ it’s a <em>transparent layer of introspection</em> that doesn’t alter your d
 <p>It’s designed around three key ideas:</p>
 <ol><li><p><strong>Contextual logging</strong> — every entry includes method, path, status, and duration.</p></li><li><p><strong>Progressive verbosity</strong> — higher log levels show headers and bodies.</p></li><li><p><strong>Human readability first</strong> — logs are meant to be scanned, not parsed by machines.</p></li></ol>
 <p>Here’s an example of what a single request looks like in <code>.info</code> mode:</p>
-<pre><code class="language-text">[POST] /mocks/messages/agent-responses (200 OK)
-Duration: 123 ms
-Body: {"message":"You shall not pass!"}</code></pre>
+<pre><code class="language-text">[<span class="tok-type">POST</span>] <span class="tok-operator">/</span>mocks<span class="tok-operator">/</span>messages<span class="tok-operator">/</span>agent<span class="tok-operator">-</span><span class="tok-function">responses</span> (<span class="tok-number">200</span> <span class="tok-type">OK</span>)
+<span class="tok-type">Duration</span><span class="tok-operator">:</span> <span class="tok-number">123</span> ms
+<span class="tok-type">Body</span><span class="tok-operator">:</span> {<span class="tok-string">"message"</span><span class="tok-operator">:</span><span class="tok-string">"You shall not pass!"</span>}</code></pre>
 <p>And at <code>.debug</code> level, you get more detail:</p>
-<pre><code class="language-text">[POST] /mocks/messages/agent-responses
-Headers:
-  Content-Type: application/json
-  Authorization: Bearer Gandalf-Was-Here-1
-Duration: 123 ms
-Body: {"message":"You shall not pass!"}</code></pre>
+<pre><code class="language-text">[<span class="tok-type">POST</span>] <span class="tok-operator">/</span>mocks<span class="tok-operator">/</span>messages<span class="tok-operator">/</span>agent<span class="tok-operator">-</span>responses
+<span class="tok-type">Headers</span><span class="tok-operator">:</span>
+  <span class="tok-type">Content</span><span class="tok-operator">-</span><span class="tok-type">Type</span><span class="tok-operator">:</span> application<span class="tok-operator">/</span>json
+  <span class="tok-type">Authorization</span><span class="tok-operator">:</span> <span class="tok-type">Bearer</span> <span class="tok-type">Gandalf</span><span class="tok-operator">-</span><span class="tok-type">Was</span><span class="tok-operator">-</span><span class="tok-type">Here</span><span class="tok-number">-1</span>
+<span class="tok-type">Duration</span><span class="tok-operator">:</span> <span class="tok-number">123</span> ms
+<span class="tok-type">Body</span><span class="tok-operator">:</span> {<span class="tok-string">"message"</span><span class="tok-operator">:</span><span class="tok-string">"You shall not pass!"</span>}</code></pre>
 <p>Readable. Structured. Useful.</p>
 <hr>
 <h2>Why Not Just Use Vapor’s Logger?</h2>
@@ -140,21 +140,21 @@ It sits in the OpenAPI pipeline, so it can access the operation ID, typed body, 
 <hr>
 <h2>Integration Examples</h2>
 <p>Adding it to a Vapor-based OpenAPI server is trivial:</p>
-<pre><code class="language-swift">import Vapor
-import OpenAPIRuntime
-import OpenAPIVapor
-import OpenAPILoggingMiddleware
+<pre><code class="language-swift"><span class="tok-keyword">import</span> <span class="tok-type">Vapor</span>
+<span class="tok-keyword">import</span> <span class="tok-type">OpenAPIRuntime</span>
+<span class="tok-keyword">import</span> <span class="tok-type">OpenAPIVapor</span>
+<span class="tok-keyword">import</span> <span class="tok-type">OpenAPILoggingMiddleware</span>
 
-let app = try Application(.detect())
+<span class="tok-keyword">let</span> app <span class="tok-operator">=</span> <span class="tok-keyword">try</span> <span class="tok-type">Application</span>(<span class="tok-operator">.</span><span class="tok-function">detect</span>())
 
-let server = try! MyOpenAPIServer(app: app)
+<span class="tok-keyword">let</span> server <span class="tok-operator">=</span> <span class="tok-keyword">try</span><span class="tok-operator">!</span> <span class="tok-type">MyOpenAPIServer</span>(app<span class="tok-operator">:</span> app)
 
-app.middleware.use(OpenAPILoggingMiddleware(level: .info))
-try app.run()</code></pre>
+app<span class="tok-operator">.</span>middleware<span class="tok-operator">.</span><span class="tok-function">use</span>(<span class="tok-type">OpenAPILoggingMiddleware</span>(level<span class="tok-operator">:</span> <span class="tok-operator">.</span>info))
+<span class="tok-keyword">try</span> app<span class="tok-operator">.</span><span class="tok-function">run</span>()</code></pre>
 <p>If you’re using <code>OpenAPIRuntime</code> directly (without Vapor), it’s equally simple:</p>
-<pre><code class="language-swift">var server = try OpenAPIServer()
-server.middleware.append(OpenAPILoggingMiddleware(level: .debug))
-try server.start()</code></pre>
+<pre><code class="language-swift"><span class="tok-keyword">var</span> server <span class="tok-operator">=</span> <span class="tok-keyword">try</span> <span class="tok-type">OpenAPIServer</span>()
+server<span class="tok-operator">.</span>middleware<span class="tok-operator">.</span><span class="tok-function">append</span>(<span class="tok-type">OpenAPILoggingMiddleware</span>(level<span class="tok-operator">:</span> <span class="tok-operator">.</span>debug))
+<span class="tok-keyword">try</span> server<span class="tok-operator">.</span><span class="tok-function">start</span>()</code></pre>
 <p>No configuration files. No dependencies. It just works.</p>
 <hr>
 <h2>Extensibility and Customization</h2>
@@ -163,9 +163,9 @@ In development, you might want to see every detail. In production, you want conc
 <ul><li><p><code>.error</code> — log only failed requests.</p></li><li><p><code>.info</code> — log all requests with method, path, duration, and status.</p></li><li><p><code>.debug</code> — include headers and bodies.</p></li></ul>
 <p>In future releases, I plan to add <strong>filters</strong> and <strong>formatters</strong> — so you could, for instance, redact specific headers (<code>Authorization</code>, <code>Cookie</code>) or export logs in JSON format for ingestion into a centralized system.</p>
 <p>Example:</p>
-<pre><code class="language-swift">let middleware = OpenAPILoggingMiddleware(
-    level: .debug,
-    redactHeaders: ["Authorization", "Cookie"]
+<pre><code class="language-swift"><span class="tok-keyword">let</span> middleware <span class="tok-operator">=</span> <span class="tok-type">OpenAPILoggingMiddleware</span>(
+    level<span class="tok-operator">:</span> <span class="tok-operator">.</span>debug,
+    redact<span class="tok-type">Headers</span><span class="tok-operator">:</span> [<span class="tok-string">"Authorization"</span>, <span class="tok-string">"Cookie"</span>]
 )</code></pre>
 <hr>
 <h2>Design Details: Why Simplicity Wins</h2>
@@ -186,11 +186,11 @@ In production, switching to <code>.error</code> mode will keep your logs clean w
 <h2>Testing and Debugging</h2>
 <p>The middleware is fully testable using Vapor’s <code>Application</code> test harness or plain <code>XCTest</code> with mock requests.
 Here’s a simple test that validates duration and structure:</p>
-<pre><code class="language-swift">func testMiddlewareLogsRequestAndResponse() async throws {
-    let app = Application(.testing)
-    app.middleware.use(OpenAPILoggingMiddleware(level: .info))
-    try await app.test(.POST, "/ping", afterResponse: { res in
-        XCTAssertEqual(res.status, .ok)
+<pre><code class="language-swift"><span class="tok-keyword">func</span> <span class="tok-function">testMiddlewareLogsRequestAndResponse</span>() <span class="tok-keyword">async</span> <span class="tok-keyword">throws</span> {
+    <span class="tok-keyword">let</span> app <span class="tok-operator">=</span> <span class="tok-type">Application</span>(<span class="tok-operator">.</span>testing)
+    app<span class="tok-operator">.</span>middleware<span class="tok-operator">.</span><span class="tok-function">use</span>(<span class="tok-type">OpenAPILoggingMiddleware</span>(level<span class="tok-operator">:</span> <span class="tok-operator">.</span>info))
+    <span class="tok-keyword">try</span> <span class="tok-keyword">await</span> app<span class="tok-operator">.</span><span class="tok-function">test</span>(<span class="tok-operator">.</span><span class="tok-type">POST</span>, <span class="tok-string">"/ping"</span>, after<span class="tok-type">Response</span><span class="tok-operator">:</span> { res <span class="tok-keyword">in</span>
+        <span class="tok-type">XCTAssertEqual</span>(res<span class="tok-operator">.</span>status, <span class="tok-operator">.</span>ok)
     })
 }</code></pre>
 <p>You can also inject your own logger conforming to <code>LogHandler</code> if you prefer structured output rather than printing to stdout.</p>
@@ -207,15 +207,15 @@ A well-designed logging layer doesn’t scream for attention; it quietly reveals
 <hr>
 <h2>Example Output in Context</h2>
 <p>Here’s a real-world example of multiple concurrent requests hitting the same endpoint:</p>
-<pre><code class="language-text">[GET] /user/profile (200 OK)
-Duration: 87 ms
+<pre><code class="language-text">[<span class="tok-type">GET</span>] <span class="tok-operator">/</span>user<span class="tok-operator">/</span><span class="tok-function">profile</span> (<span class="tok-number">200</span> <span class="tok-type">OK</span>)
+<span class="tok-type">Duration</span><span class="tok-operator">:</span> <span class="tok-number">87</span> ms
 
-[POST] /mocks/messages/agent-responses (200 OK)
-Duration: 121 ms
-Body: {"message":"You shall not pass!"}
+[<span class="tok-type">POST</span>] <span class="tok-operator">/</span>mocks<span class="tok-operator">/</span>messages<span class="tok-operator">/</span>agent<span class="tok-operator">-</span><span class="tok-function">responses</span> (<span class="tok-number">200</span> <span class="tok-type">OK</span>)
+<span class="tok-type">Duration</span><span class="tok-operator">:</span> <span class="tok-number">121</span> ms
+<span class="tok-type">Body</span><span class="tok-operator">:</span> {<span class="tok-string">"message"</span><span class="tok-operator">:</span><span class="tok-string">"You shall not pass!"</span>}
 
-[PATCH] /user/preferences (204 No Content)
-Duration: 96 ms</code></pre>
+[<span class="tok-type">PATCH</span>] <span class="tok-operator">/</span>user<span class="tok-operator">/</span><span class="tok-function">preferences</span> (<span class="tok-number">204</span> <span class="tok-type">No</span> <span class="tok-type">Content</span>)
+<span class="tok-type">Duration</span><span class="tok-operator">:</span> <span class="tok-number">96</span> ms</code></pre>
 <p>Notice how easy it is to see patterns — which endpoints are slow, which ones are frequent, which ones failed.
 That’s the essence of <strong>observability</strong> — not more data, but <em>useful</em> data.</p>
 <hr>

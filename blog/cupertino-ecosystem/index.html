@@ -79,7 +79,7 @@
 <p>Version 0.2.0 fixed a critical bug where cleanup was accidentally deleting source code instead of just metadata. Now 99.8% of sample ZIPs retain intact source.</p>
 <h3>Language Filtering (v0.1.9)</h3>
 <p>Not everyone wants Objective-C results. The CLI and MCP tools now accept a <code>language</code> parameter:</p>
-<pre><code class="language-bash">cupertino search "NSObject" --language swift</code></pre>
+<pre><code class="language-bash">cupertino search <span class="tok-string">"NSObject"</span> <span class="tok-operator">-</span><span class="tok-operator">-</span>language swift</code></pre>
 <p>Claude can filter too—just ask for “Swift-only results.”</p>
 <h3>Apple Archive Support (v0.2.3)</h3>
 <p>Apple’s modern documentation is great, but some topics only exist in the legacy archive: Core Animation Programming Guide, Quartz 2D Programming Guide, Core Text Programming Guide. These are still the authoritative sources for low-level graphics work.</p>
@@ -88,11 +88,11 @@
 <p>Cupertino grew from one repo to three:</p>
 <h3><a href="https://github.com/mihaelamj/cupertino">cupertino</a> — The MCP Server</h3>
 <p>The main Swift package. Crawls, indexes, and serves documentation via MCP protocol. Install it, point Claude at it, done.</p>
-<pre><code class="language-bash"># Quick setup with Claude Code
-claude mcp add cupertino --scope user -- /usr/local/bin/cupertino</code></pre>
+<pre><code class="language-bash"><span class="tok-comment"># Quick setup with Claude Code</span>
+claude mcp add cupertino <span class="tok-operator">-</span><span class="tok-operator">-</span>scope user <span class="tok-operator">-</span><span class="tok-operator">-</span> <span class="tok-operator">/</span>usr<span class="tok-operator">/</span><span class="tok-keyword">local</span><span class="tok-operator">/</span>b<span class="tok-keyword">in</span><span class="tok-operator">/</span>cupertino</code></pre>
 <h3><a href="https://github.com/mihaelamj/cupertino-docs">cupertino-docs</a> — Pre-Crawled Documentation</h3>
 <p>Don’t want to crawl everything yourself? Clone this repo:</p>
-<pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino-docs ~/.cupertino</code></pre>
+<pre><code class="language-bash">git clone https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>github<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">-</span>docs <span class="tok-operator">~</span><span class="tok-operator">/</span><span class="tok-operator">.</span>cupertino</code></pre>
 <p>Currently includes:</p>
 <table><thead><tr><th>Source</th><th>Content</th><th>Status</th></tr></thead><tbody><tr><td><code>swift-evolution/</code></td><td>All Swift proposals (~400)</td><td>Ready</td></tr><tr><td><code>swift-org/</code></td><td>Swift.org language docs</td><td>Ready</td></tr><tr><td><code>packages/</code></td><td>Swift Package Index metadata</td><td>Ready</td></tr><tr><td><code>docs/</code></td><td>Apple Developer Documentation (13K+ pages)</td><td>WIP - requires manual crawl</td></tr><tr><td><code>archive/</code></td><td>Legacy Apple guides</td><td>WIP - requires manual crawl</td></tr></tbody></table>
 <p>Swift Evolution, Swift.org, and package docs are pre-indexed and ready. Apple Developer Documentation and Archive still require running <code>cupertino fetch</code> yourself due to size—but having the infrastructure in place is a start. The tooling exists; full pre-crawled distribution is coming.</p>
@@ -108,20 +108,20 @@ claude mcp add cupertino --scope user -- /usr/local/bin/cupertino</code></pre>
 <p>Each release addressed real issues discovered while using Cupertino with Claude Code. Fast iteration, real-world testing.</p>
 <h2>Using the Full Ecosystem</h2>
 <p>Here’s the quickest path to AI-assisted Apple development with accurate documentation:</p>
-<pre><code class="language-bash"># 1. Get pre-crawled docs (skip the 20-hour crawl)
-git clone https://github.com/mihaelamj/cupertino-docs ~/.cupertino
+<pre><code class="language-bash"><span class="tok-comment"># 1. Get pre-crawled docs (skip the 20-hour crawl)</span>
+git clone https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>github<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">-</span>docs <span class="tok-operator">~</span><span class="tok-operator">/</span><span class="tok-operator">.</span>cupertino
 
-# 2. Build the MCP server
-git clone https://github.com/mihaelamj/cupertino
+<span class="tok-comment"># 2. Build the MCP server</span>
+git clone https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>github<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino
 cd cupertino
-swift build -c release
-sudo cp .build/release/cupertino /usr/local/bin/
+swift build <span class="tok-operator">-</span>c release
+su<span class="tok-keyword">do</span> cp <span class="tok-operator">.</span>build<span class="tok-operator">/</span>release<span class="tok-operator">/</span>cupertino <span class="tok-operator">/</span>usr<span class="tok-operator">/</span><span class="tok-keyword">local</span><span class="tok-operator">/</span>b<span class="tok-keyword">in</span><span class="tok-operator">/</span>
 
-# 3. Configure Claude Code
-claude mcp add cupertino --scope user -- /usr/local/bin/cupertino
+<span class="tok-comment"># 3. Configure Claude Code</span>
+claude mcp add cupertino <span class="tok-operator">-</span><span class="tok-operator">-</span>scope user <span class="tok-operator">-</span><span class="tok-operator">-</span> <span class="tok-operator">/</span>usr<span class="tok-operator">/</span><span class="tok-keyword">local</span><span class="tok-operator">/</span>b<span class="tok-keyword">in</span><span class="tok-operator">/</span>cupertino
 
-# 4. (Optional) Get sample code for reference
-git clone https://github.com/mihaelamj/cupertino-sample-code ~/Apple-Samples</code></pre>
+<span class="tok-comment"># 4. (Optional) Get sample code for reference</span>
+git clone https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>github<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">-</span>sample<span class="tok-operator">-</span>code <span class="tok-operator">~</span><span class="tok-operator">/</span>Apple<span class="tok-operator">-</span>Samples</code></pre>
 <p>Now when you ask Claude about Apple APIs, it searches 22,000+ pages of real documentation. No hallucinations. No deprecated patterns. Just accurate, current information.</p>
 <h2>What’s Next</h2>
 <p>The ranking heuristics work well but aren’t perfect. Planned improvements:</p>

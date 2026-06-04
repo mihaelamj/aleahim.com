@@ -71,7 +71,7 @@
 <ul><li><p>Ask about <code>URLSession</code> async/await, get the modern API. Not the completion-handler page from 2017.</p></li><li><p>Ask “what replaced <code>NSURLConnection</code>”, go straight to <code>URLSession</code>.</p></li><li><p>Ask about <code>@Observable</code>, don’t get it fused with the older <code>ObservableObject</code>.</p></li><li><p>Compare Combine and AsyncSequence, get both pages, not a hallucinated synthesis.</p></li></ul>
 <p>352,712 indexed Apple documentation pages, zero garbage rows on the merged corpus. Runs locally, no cloud, no subscription, free and open source.</p>
 <p>Upgrade is one command:</p>
-<pre><code class="language-bash">brew upgrade cupertino &amp;&amp; cupertino setup</code></pre>
+<pre><code class="language-bash">brew upgrade cupertino <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> cupertino setup</code></pre>
 <p>The rest of this post is for the technically curious.</p>
 <h2>The measurement</h2>
 <p>Rank-1 accuracy on a 50-query canonical-lookup corpus (Swift stdlib types, Foundation, SwiftUI, UIKit, AppKit, Combine, framework roots) went from <strong>52% in v1.1.0</strong> to <strong>92% in v1.2.0</strong>. Cross-validated on two more corpora, zero regressions across 110 paired queries, statistically significant at McNemar p ≤ 1e-5 on the largest corpus.</p>

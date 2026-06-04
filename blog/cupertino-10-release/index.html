@@ -81,12 +81,12 @@
 <h3>Agent Skill Support (PR #167)</h3>
 <p><a href="https://github.com/tijs">Tijs Teulings</a> added support for using Cupertino as a stateless <a href="https://agentskills.io">Agent Skill</a>. AI coding agents get direct access to Apple documentation via CLI commands with JSON output – no MCP server process needed.</p>
 <p>Install with <a href="https://github.com/numman-ali/openskills">OpenSkills</a>:</p>
-<pre><code class="language-bash">npx openskills install mihaelamj/cupertino</code></pre>
+<pre><code class="language-bash">npx openskills install mihaelamj<span class="tok-operator">/</span>cupertino</code></pre>
 <p>Or manually copy the skill definition to <code>.claude/skills/cupertino/</code>.</p>
 <p>No daemon. No stdio pipe. Just <code>cupertino search "SwiftUI" --format json</code> and you’re done.</p>
 <h3>Claude Code Plugin (PR #169)</h3>
 <p><a href="https://github.com/gpambrozio">Gustavo Ambrozio</a> took Tijs’s skill and leveled it up into a proper Claude Code plugin with marketplace support.</p>
-<pre><code class="language-bash">claude /plugin marketplace add https://github.com/mihaelamj/cupertino.git</code></pre>
+<pre><code class="language-bash">claude <span class="tok-operator">/</span>plug<span class="tok-keyword">in</span> marketplace add https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>github<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">.</span>git</code></pre>
 <p>The plugin adds a manifest, marketplace metadata, and improved skill descriptions with better trigger phrases. One command to install, zero configuration after that.</p>
 <p>Thank you Tijs and Gustavo. It’s a great feeling to see the project grow beyond a single-maintainer effort.</p>
 <h2>The Homebrew Symlink Saga</h2>
@@ -102,17 +102,17 @@ from /opt/homebrew/bin/Cupertino_Resources.bundle</code></pre>
 <table><thead><tr><th>You search for</th><th>Finds</th></tr></thead><tbody><tr><td>“Core Graphics”</td><td>coregraphics</td></tr><tr><td>“UIKit”</td><td>uikit</td></tr><tr><td>“SwiftUI”</td><td>swiftui</td></tr><tr><td>“Core Data”</td><td>coredata</td></tr></tbody></table>
 <p>Case-insensitive, space-tolerant. Type it however you remember it.</p>
 <h2>Install or Update</h2>
-<pre><code class="language-bash"># New install
-brew install mihaelamj/tap/cupertino
+<pre><code class="language-bash"><span class="tok-comment"># New install</span>
+brew install mihaelamj<span class="tok-operator">/</span>tap<span class="tok-operator">/</span>cupertino
 
-# Update existing
-brew update &amp;&amp; brew upgrade cupertino
+<span class="tok-comment"># Update existing</span>
+brew update <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> brew upgrade cupertino
 
-# Or one-line install
-bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)</code></pre>
+<span class="tok-comment"># Or one-line install</span>
+bash <span class="tok-operator">&lt;</span>(curl <span class="tok-operator">-</span>sSL https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>raw<span class="tok-operator">.</span>githubusercontent<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">/</span>ma<span class="tok-keyword">in</span><span class="tok-operator">/</span>install<span class="tok-operator">.</span>sh)</code></pre>
 <p>Then:</p>
-<pre><code class="language-bash">cupertino setup  # Download databases (~30 seconds)
-cupertino serve  # Start MCP server</code></pre>
+<pre><code class="language-bash">cupertino setup  <span class="tok-comment"># Download databases (~30 seconds)</span>
+cupertino serve  <span class="tok-comment"># Start MCP server</span></code></pre>
 <h2>Issues and PRs Closed</h2>
 <ul><li><p>#159 - Missing framework documentation</p></li><li><p>#160 - Crawler improvements for full coverage</p></li><li><p>#167 - Agent Skill support (<a href="https://github.com/tijs">@tijs</a>)</p></li><li><p>#169 - Claude Code plugin (<a href="https://github.com/gpambrozio">@gpambrozio</a>)</p></li><li><p>#162 - CONTRIBUTING.md (<a href="https://github.com/William-Laverty">@William-Laverty</a>)</p></li><li><p>#133 - README link fix (<a href="https://github.com/lwdupont">@lwdupont</a>)</p></li><li><p>#172 - Crawler session resume and delay fixes</p></li></ul>
 <h2>Links</h2>

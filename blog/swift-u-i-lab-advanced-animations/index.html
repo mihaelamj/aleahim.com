@@ -87,46 +87,46 @@
 <h2>Key Features</h2>
 <h3>1. Cross-Platform Compatibility</h3>
 <p>The project uses SwiftUI’s platform-agnostic features while handling platform-specific requirements:</p>
-<pre><code class="language-swift">#if os(iOS)
-    // iOS-specific code
-#elseif os(macOS)
-    // macOS-specific code
-#endif</code></pre>
+<pre><code class="language-swift">#<span class="tok-keyword">if</span> <span class="tok-function">os</span>(i<span class="tok-type">OS</span>)
+    <span class="tok-comment">// iOS-specific code</span>
+#else<span class="tok-keyword">if</span> <span class="tok-function">os</span>(mac<span class="tok-type">OS</span>)
+    <span class="tok-comment">// macOS-specific code</span>
+#end<span class="tok-keyword">if</span></code></pre>
 <h3>2. Reusable Components</h3>
 <p>I created a set of reusable components that work on both platforms:</p>
-<pre><code class="language-swift">struct AnimatedButton: View {
-    @State private var isPressed = false
+<pre><code class="language-swift"><span class="tok-keyword">struct</span> <span class="tok-type">AnimatedButton</span><span class="tok-operator">:</span> <span class="tok-type">View</span> {
+    <span class="tok-attribute">@State</span> <span class="tok-keyword">private</span> <span class="tok-keyword">var</span> is<span class="tok-type">Pressed</span> <span class="tok-operator">=</span> <span class="tok-literal">false</span>
 
-    var body: some View {
-        Button(action: {}) {
-            Text("Animate")
-                .scaleEffect(isPressed ? 0.95 : 1.0)
-                .animation(.spring(), value: isPressed)
+    <span class="tok-keyword">var</span> body<span class="tok-operator">:</span> some <span class="tok-type">View</span> {
+        <span class="tok-type">Button</span>(action<span class="tok-operator">:</span> {}) {
+            <span class="tok-type">Text</span>(<span class="tok-string">"Animate"</span>)
+                <span class="tok-operator">.</span><span class="tok-function">scaleEffect</span>(is<span class="tok-type">Pressed</span> <span class="tok-operator">?</span> <span class="tok-number">0.95</span> <span class="tok-operator">:</span> <span class="tok-number">1.0</span>)
+                <span class="tok-operator">.</span><span class="tok-function">animation</span>(<span class="tok-operator">.</span><span class="tok-function">spring</span>(), value<span class="tok-operator">:</span> is<span class="tok-type">Pressed</span>)
         }
-        .buttonStyle(PlainButtonStyle())
-        .onHover { hovering in
-            isPressed = hovering
+        <span class="tok-operator">.</span><span class="tok-function">buttonStyle</span>(<span class="tok-type">PlainButtonStyle</span>())
+        <span class="tok-operator">.</span>on<span class="tok-type">Hover</span> { hovering <span class="tok-keyword">in</span>
+            is<span class="tok-type">Pressed</span> <span class="tok-operator">=</span> hovering
         }
     }
 }</code></pre>
 <h3>3. Gesture Handling</h3>
 <p>The project includes platform-appropriate gesture handling:</p>
-<pre><code class="language-swift">struct DragGestureView: View {
-    @State private var offset = CGSize.zero
+<pre><code class="language-swift"><span class="tok-keyword">struct</span> <span class="tok-type">DragGestureView</span><span class="tok-operator">:</span> <span class="tok-type">View</span> {
+    <span class="tok-attribute">@State</span> <span class="tok-keyword">private</span> <span class="tok-keyword">var</span> offset <span class="tok-operator">=</span> <span class="tok-type">CGSize</span><span class="tok-operator">.</span>zero
 
-    var body: some View {
-        Rectangle()
-            .fill(Color.blue)
-            .frame(width: 100, height: 100)
-            .offset(offset)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        offset = value.translation
+    <span class="tok-keyword">var</span> body<span class="tok-operator">:</span> some <span class="tok-type">View</span> {
+        <span class="tok-type">Rectangle</span>()
+            <span class="tok-operator">.</span><span class="tok-function">fill</span>(<span class="tok-type">Color</span><span class="tok-operator">.</span>blue)
+            <span class="tok-operator">.</span><span class="tok-function">frame</span>(width<span class="tok-operator">:</span> <span class="tok-number">100</span>, height<span class="tok-operator">:</span> <span class="tok-number">100</span>)
+            <span class="tok-operator">.</span><span class="tok-function">offset</span>(offset)
+            <span class="tok-operator">.</span><span class="tok-function">gesture</span>(
+                <span class="tok-type">DragGesture</span>()
+                    <span class="tok-operator">.</span>on<span class="tok-type">Changed</span> { value <span class="tok-keyword">in</span>
+                        offset <span class="tok-operator">=</span> value<span class="tok-operator">.</span>translation
                     }
-                    .onEnded { _ in
-                        withAnimation(.spring()) {
-                            offset = .zero
+                    <span class="tok-operator">.</span>on<span class="tok-type">Ended</span> { _ <span class="tok-keyword">in</span>
+                        <span class="tok-function">withAnimation</span>(<span class="tok-operator">.</span><span class="tok-function">spring</span>()) {
+                            offset <span class="tok-operator">=</span> <span class="tok-operator">.</span>zero
                         }
                     }
             )
@@ -135,52 +135,52 @@
 <h2>Example Animations</h2>
 <h3>1. Morphing Shapes</h3>
 <p>One of the most impressive animations is the shape morphing effect:</p>
-<pre><code class="language-swift">struct MorphingShape: View {
-    @State private var isMorphed = false
+<pre><code class="language-swift"><span class="tok-keyword">struct</span> <span class="tok-type">MorphingShape</span><span class="tok-operator">:</span> <span class="tok-type">View</span> {
+    <span class="tok-attribute">@State</span> <span class="tok-keyword">private</span> <span class="tok-keyword">var</span> is<span class="tok-type">Morphed</span> <span class="tok-operator">=</span> <span class="tok-literal">false</span>
 
-    var body: some View {
-        Circle()
-            .fill(Color.blue)
-            .frame(width: 100, height: 100)
-            .scaleEffect(isMorphed ? 1.5 : 1.0)
-            .animation(.spring(response: 0.6, dampingFraction: 0.6), value: isMorphed)
-            .onTapGesture {
-                isMorphed.toggle()
+    <span class="tok-keyword">var</span> body<span class="tok-operator">:</span> some <span class="tok-type">View</span> {
+        <span class="tok-type">Circle</span>()
+            <span class="tok-operator">.</span><span class="tok-function">fill</span>(<span class="tok-type">Color</span><span class="tok-operator">.</span>blue)
+            <span class="tok-operator">.</span><span class="tok-function">frame</span>(width<span class="tok-operator">:</span> <span class="tok-number">100</span>, height<span class="tok-operator">:</span> <span class="tok-number">100</span>)
+            <span class="tok-operator">.</span><span class="tok-function">scaleEffect</span>(is<span class="tok-type">Morphed</span> <span class="tok-operator">?</span> <span class="tok-number">1.5</span> <span class="tok-operator">:</span> <span class="tok-number">1.0</span>)
+            <span class="tok-operator">.</span><span class="tok-function">animation</span>(<span class="tok-operator">.</span><span class="tok-function">spring</span>(response<span class="tok-operator">:</span> <span class="tok-number">0.6</span>, damping<span class="tok-type">Fraction</span><span class="tok-operator">:</span> <span class="tok-number">0.6</span>), value<span class="tok-operator">:</span> is<span class="tok-type">Morphed</span>)
+            <span class="tok-operator">.</span>on<span class="tok-type">TapGesture</span> {
+                is<span class="tok-type">Morphed</span><span class="tok-operator">.</span><span class="tok-function">toggle</span>()
             }
     }
 }</code></pre>
 <h3>2. Custom Transitions</h3>
 <p>The project includes several custom transitions that work on both platforms:</p>
-<pre><code class="language-swift">extension AnyTransition {
-    static var customScale: AnyTransition {
-        .scale(scale: 0.1)
-        .combined(with: .opacity)
+<pre><code class="language-swift"><span class="tok-keyword">extension</span> <span class="tok-type">AnyTransition</span> {
+    <span class="tok-keyword">static</span> <span class="tok-keyword">var</span> custom<span class="tok-type">Scale</span><span class="tok-operator">:</span> <span class="tok-type">AnyTransition</span> {
+        <span class="tok-operator">.</span><span class="tok-function">scale</span>(scale<span class="tok-operator">:</span> <span class="tok-number">0.1</span>)
+        <span class="tok-operator">.</span><span class="tok-function">combined</span>(with<span class="tok-operator">:</span> <span class="tok-operator">.</span>opacity)
     }
 }</code></pre>
 <h2>Implementation Details</h2>
 <h3>1. View Extensions</h3>
 <p>I created several extensions to make animations more reusable:</p>
-<pre><code class="language-swift">extension View {
-    func animateOnHover() -&gt; some View {
-        self.modifier(HoverAnimationModifier())
+<pre><code class="language-swift"><span class="tok-keyword">extension</span> <span class="tok-type">View</span> {
+    <span class="tok-keyword">func</span> <span class="tok-function">animateOnHover</span>() <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> some <span class="tok-type">View</span> {
+        <span class="tok-keyword">self</span><span class="tok-operator">.</span><span class="tok-function">modifier</span>(<span class="tok-type">HoverAnimationModifier</span>())
     }
 }</code></pre>
 <h3>2. Animation Timing</h3>
 <p>Careful attention was paid to animation timing to ensure smooth performance:</p>
-<pre><code class="language-swift">struct TimingAnimation: View {
-    @State private var isAnimating = false
+<pre><code class="language-swift"><span class="tok-keyword">struct</span> <span class="tok-type">TimingAnimation</span><span class="tok-operator">:</span> <span class="tok-type">View</span> {
+    <span class="tok-attribute">@State</span> <span class="tok-keyword">private</span> <span class="tok-keyword">var</span> is<span class="tok-type">Animating</span> <span class="tok-operator">=</span> <span class="tok-literal">false</span>
 
-    var body: some View {
-        Circle()
-            .fill(Color.red)
-            .frame(width: 50, height: 50)
-            .offset(y: isAnimating ? -100 : 0)
-            .animation(
-                .timingCurve(0.68, -0.6, 0.32, 1.6, duration: 1),
-                value: isAnimating
+    <span class="tok-keyword">var</span> body<span class="tok-operator">:</span> some <span class="tok-type">View</span> {
+        <span class="tok-type">Circle</span>()
+            <span class="tok-operator">.</span><span class="tok-function">fill</span>(<span class="tok-type">Color</span><span class="tok-operator">.</span>red)
+            <span class="tok-operator">.</span><span class="tok-function">frame</span>(width<span class="tok-operator">:</span> <span class="tok-number">50</span>, height<span class="tok-operator">:</span> <span class="tok-number">50</span>)
+            <span class="tok-operator">.</span><span class="tok-function">offset</span>(y<span class="tok-operator">:</span> is<span class="tok-type">Animating</span> <span class="tok-operator">?</span> <span class="tok-number">-100</span> <span class="tok-operator">:</span> <span class="tok-number">0</span>)
+            <span class="tok-operator">.</span><span class="tok-function">animation</span>(
+                <span class="tok-operator">.</span><span class="tok-function">timingCurve</span>(<span class="tok-number">0.68</span>, <span class="tok-number">-0.6</span>, <span class="tok-number">0.32</span>, <span class="tok-number">1.6</span>, duration<span class="tok-operator">:</span> <span class="tok-number">1</span>),
+                value<span class="tok-operator">:</span> is<span class="tok-type">Animating</span>
             )
-            .onAppear {
-                isAnimating = true
+            <span class="tok-operator">.</span>on<span class="tok-type">Appear</span> {
+                is<span class="tok-type">Animating</span> <span class="tok-operator">=</span> <span class="tok-literal">true</span>
             }
     }
 }</code></pre>

@@ -93,7 +93,7 @@
 <h3>Phase 3: API Version Tracking (#99)</h3>
 <p>This is the big one. Apple’s documentation includes version information - which iOS/macOS version introduced each API. We can extract this.</p>
 <p>Imagine searching with:</p>
-<pre><code class="language-bash">cupertino search "async" --min-os ios16</code></pre>
+<pre><code class="language-bash">cupertino search <span class="tok-string">"async"</span> <span class="tok-operator">-</span><span class="tok-operator">-</span>m<span class="tok-keyword">in</span><span class="tok-operator">-</span>os ios<span class="tok-number">16</span></code></pre>
 <p>Or having Claude automatically filter out deprecated APIs when you’re targeting iOS 17+.</p>
 <p>I’ve been investigating Apple’s <code>/tutorials/data/documentation/</code> endpoint. It returns JSON with version metadata for most frameworks. Some older frameworks (Kernel, IOKit) don’t have it, but the coverage is good.</p>
 <p><strong>Status:</strong> Research complete. Implementation pending.</p>
@@ -102,19 +102,19 @@
 <p><strong>Blocked by:</strong> #99 (need the data first)</p>
 <h3>Phase 5: Semantic Code Search (#81)</h3>
 <p>The end goal: search sample code by what it <em>does</em>, not just by keyword.</p>
-<pre><code class="language-bash">cupertino search "async image loading with caching"</code></pre>
+<pre><code class="language-bash">cupertino search <span class="tok-string">"async image loading with caching"</span></code></pre>
 <p>This requires:</p>
 <ol><li><p>Complete documentation (#88)</p></li><li><p>Clean database (#87)</p></li><li><p>SwiftSyntax AST indexing of sample code</p></li></ol>
 <p>It’s ambitious, but the foundation is being laid with each release.</p>
 <h2>Install or Update</h2>
-<pre><code class="language-bash"># New install
-brew install mihaelamj/tap/cupertino
+<pre><code class="language-bash"><span class="tok-comment"># New install</span>
+brew install mihaelamj<span class="tok-operator">/</span>tap<span class="tok-operator">/</span>cupertino
 
-# Update
+<span class="tok-comment"># Update</span>
 brew upgrade cupertino
 
-# Or instant setup
-bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)</code></pre>
+<span class="tok-comment"># Or instant setup</span>
+bash <span class="tok-operator">&lt;</span>(curl <span class="tok-operator">-</span>sSL https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>raw<span class="tok-operator">.</span>githubusercontent<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">/</span>ma<span class="tok-keyword">in</span><span class="tok-operator">/</span>install<span class="tok-operator">.</span>sh)</code></pre>
 <p>After installing, databases download automatically:</p>
 <pre><code class="language-bash">cupertino setup</code></pre>
 <p>Takes about 30 seconds to download the pre-built 1.9GB database.</p>

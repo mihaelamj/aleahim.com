@@ -75,31 +75,31 @@
 <table><thead><tr><th>Tool</th><th>Config Location</th></tr></thead><tbody><tr><td>Claude Desktop</td><td><code>~/Library/Application Support/Claude/claude_desktop_config.json</code></td></tr><tr><td>Claude Code</td><td><code>claude mcp add cupertino</code></td></tr><tr><td>OpenAI Codex</td><td><code>codex mcp add cupertino</code> or <code>~/.codex/config.toml</code></td></tr><tr><td>Cursor</td><td><code>.cursor/mcp.json</code></td></tr><tr><td>VS Code (Copilot)</td><td><code>.vscode/mcp.json</code></td></tr><tr><td>Zed</td><td><code>settings.json</code></td></tr><tr><td>Windsurf</td><td><code>~/.codeium/windsurf/mcp_config.json</code></td></tr><tr><td>opencode</td><td><code>opencode.jsonc</code></td></tr></tbody></table>
 <h3>Quick Setup</h3>
 <p>For most tools, configuration is a JSON object:</p>
-<pre><code class="language-json">{
-  "mcpServers": {
-    "cupertino": {
-      "command": "/opt/homebrew/bin/cupertino",
-      "args": ["serve"]
-    }
-  }
-}</code></pre>
+<pre><code class="language-json"><span class="tok-operator">{</span>
+  <span class="tok-property">"mcpServers"</span><span class="tok-operator">:</span> <span class="tok-operator">{</span>
+    <span class="tok-property">"cupertino"</span><span class="tok-operator">:</span> <span class="tok-operator">{</span>
+      <span class="tok-property">"command"</span><span class="tok-operator">:</span> <span class="tok-string">"/opt/homebrew/bin/cupertino"</span><span class="tok-operator">,</span>
+      <span class="tok-property">"args"</span><span class="tok-operator">:</span> <span class="tok-operator">[</span><span class="tok-string">"serve"</span><span class="tok-operator">]</span>
+    <span class="tok-operator">}</span>
+  <span class="tok-operator">}</span>
+<span class="tok-operator">}</span></code></pre>
 <p>The exact structure varies by tool. Full examples are in the <a href="https://github.com/mihaelamj/cupertino/blob/main/docs/commands/serve/README.md">serve command documentation</a>.</p>
 <h3>Dynamic Path Detection</h3>
 <p>If you’re not sure where cupertino is installed:</p>
-<pre><code class="language-bash">claude mcp add cupertino -- $(which cupertino)
-codex mcp add cupertino -- $(which cupertino) serve</code></pre>
+<pre><code class="language-bash">claude mcp add cupertino <span class="tok-operator">-</span><span class="tok-operator">-</span> <span class="tok-property">$</span>(which cupertino)
+codex mcp add cupertino <span class="tok-operator">-</span><span class="tok-operator">-</span> <span class="tok-property">$</span>(which cupertino) serve</code></pre>
 <p>The <code>$(which cupertino)</code> expands to the actual binary path. Works for Homebrew installs on both Apple Silicon (<code>/opt/homebrew/bin</code>) and Intel (<code>/usr/local/bin</code>).</p>
 <h2>MCP Protocol Upgrade (v0.9.0)</h2>
 <p>v0.9.0 upgrades the MCP protocol from <code>2024-11-05</code> to <code>2025-06-18</code>.</p>
 <p>This matters because newer AI tools expect the newer protocol. Without this upgrade, Cupertino would fail to initialize with clients that only support <code>2025-06-18</code>.</p>
 <p>The upgrade includes backward compatibility:</p>
-<pre><code class="language-swift">// Server negotiates with client
-public let MCPProtocolVersion = "2025-06-18"
-public let MCPProtocolVersionsSupported = ["2025-06-18", "2024-11-05"]
+<pre><code class="language-swift"><span class="tok-comment">// Server negotiates with client</span>
+<span class="tok-keyword">public</span> <span class="tok-keyword">let</span> <span class="tok-type">MCPProtocolVersion</span> <span class="tok-operator">=</span> <span class="tok-string">"2025-06-18"</span>
+<span class="tok-keyword">public</span> <span class="tok-keyword">let</span> <span class="tok-type">MCPProtocolVersionsSupported</span> <span class="tok-operator">=</span> [<span class="tok-string">"2025-06-18"</span>, <span class="tok-string">"2024-11-05"</span>]
 
-// During initialization, find common version
-let negotiatedVersion = clientVersions
-    .first { MCPProtocolVersionsSupported.contains($0) }</code></pre>
+<span class="tok-comment">// During initialization, find common version</span>
+<span class="tok-keyword">let</span> negotiated<span class="tok-type">Version</span> <span class="tok-operator">=</span> client<span class="tok-type">Versions</span>
+    <span class="tok-operator">.</span>first { <span class="tok-type">MCPProtocolVersionsSupported</span><span class="tok-operator">.</span><span class="tok-function">contains</span>($<span class="tok-number">0</span>) }</code></pre>
 <p>If a client requests <code>2024-11-05</code>, Cupertino still works. If it requests <code>2025-06-18</code>, that works too. The <code>MCPClient</code> and <code>MockAIAgent</code> also support version fallback when connecting to servers.</p>
 <p>Thanks to <a href="https://github.com/erikmackinnon">@erikmackinnon</a> for the contribution (#130).</p>
 <h2>Binary Documentation (v0.9.1)</h2>
@@ -109,27 +109,27 @@ let negotiatedVersion = clientVersions
 <p>The main CLI with 12 commands. Already documented, but now with updated MCP client configuration examples.</p>
 <h3>cupertino-tui</h3>
 <p>The terminal UI for browsing and selecting packages:</p>
-<pre><code class="language-bash">cupertino-tui
-cupertino-tui --version</code></pre>
+<pre><code class="language-bash">cupertino<span class="tok-operator">-</span>tui
+cupertino<span class="tok-operator">-</span>tui <span class="tok-operator">-</span><span class="tok-operator">-</span>version</code></pre>
 <p>5 views documented:</p>
 <ul><li><p><strong>Dashboard</strong> - Overview and quick actions</p></li><li><p><strong>Packages</strong> - Browse and select Swift packages</p></li><li><p><strong>Archive</strong> - Apple Archive documentation selection</p></li><li><p><strong>Videos</strong> - WWDC video selection</p></li><li><p><strong>Settings</strong> - Configuration options</p></li></ul>
 <h3>mock-ai-agent</h3>
 <p>A testing tool that simulates MCP client behavior:</p>
-<pre><code class="language-bash">mock-ai-agent search "SwiftUI navigation"
-mock-ai-agent list-tools
-mock-ai-agent --server /path/to/cupertino
-mock-ai-agent --version  # New in v0.9.1</code></pre>
+<pre><code class="language-bash">mock<span class="tok-operator">-</span>ai<span class="tok-operator">-</span>agent search <span class="tok-string">"SwiftUI navigation"</span>
+mock<span class="tok-operator">-</span>ai<span class="tok-operator">-</span>agent list<span class="tok-operator">-</span>tools
+mock<span class="tok-operator">-</span>ai<span class="tok-operator">-</span>agent <span class="tok-operator">-</span><span class="tok-operator">-</span>server <span class="tok-operator">/</span>path<span class="tok-operator">/</span>to<span class="tok-operator">/</span>cupertino
+mock<span class="tok-operator">-</span>ai<span class="tok-operator">-</span>agent <span class="tok-operator">-</span><span class="tok-operator">-</span>version  <span class="tok-comment"># New in v0.9.1</span></code></pre>
 <p>Arguments documented:</p>
 <ul><li><p><code>&lt;query&gt;</code> - Search query to execute</p></li><li><p><code>--server</code> - Path to MCP server binary</p></li></ul>
 <p>Useful for testing MCP servers without a full AI client.</p>
 <h3>cupertino-rel</h3>
 <p>The release automation tool (maintainer-only):</p>
-<pre><code class="language-bash">cupertino-rel bump patch          # Bump version
-cupertino-rel tag --version 0.9.1 --push  # Create and push tag
-cupertino-rel homebrew --version 0.9.1    # Update Homebrew formula
-cupertino-rel databases --version 0.9.1   # Upload database release
-cupertino-rel docs-update patch   # Documentation-only release
-cupertino-rel full 0.10.0         # Complete release workflow</code></pre>
+<pre><code class="language-bash">cupertino<span class="tok-operator">-</span>rel bump patch          <span class="tok-comment"># Bump version</span>
+cupertino<span class="tok-operator">-</span>rel tag <span class="tok-operator">-</span><span class="tok-operator">-</span>version <span class="tok-number">0.9.1</span> <span class="tok-operator">-</span><span class="tok-operator">-</span>push  <span class="tok-comment"># Create and push tag</span>
+cupertino<span class="tok-operator">-</span>rel homebrew <span class="tok-operator">-</span><span class="tok-operator">-</span>version <span class="tok-number">0.9.1</span>    <span class="tok-comment"># Update Homebrew formula</span>
+cupertino<span class="tok-operator">-</span>rel databases <span class="tok-operator">-</span><span class="tok-operator">-</span>version <span class="tok-number">0.9.1</span>   <span class="tok-comment"># Upload database release</span>
+cupertino<span class="tok-operator">-</span>rel docs<span class="tok-operator">-</span>update patch   <span class="tok-comment"># Documentation-only release</span>
+cupertino<span class="tok-operator">-</span>rel full <span class="tok-number">0.10.0</span>         <span class="tok-comment"># Complete release workflow</span></code></pre>
 <p>6 subcommands with all options documented:</p>
 <ul><li><p><code>bump</code> - Update version in all files</p></li><li><p><code>tag</code> - Create and push git tags</p></li><li><p><code>homebrew</code> - Update Homebrew formula</p></li><li><p><code>databases</code> - Upload databases to cupertino-docs</p></li><li><p><code>docs-update</code> - Documentation-only releases</p></li><li><p><code>full</code> - Complete release workflow</p></li></ul>
 <h3>Documentation Structure</h3>
@@ -167,28 +167,28 @@ cupertino-rel full 0.10.0         # Complete release workflow</code></pre>
 <h2>No More Node.js (v0.8.3)</h2>
 <p>v0.8.3 removed the last Node.js dependency from the codebase.</p>
 <p>The MCP integration tests previously used npm packages to simulate client behavior. Now they use <code>cupertino serve</code> directly:</p>
-<pre><code class="language-swift">@Test("Initialize handshake with cupertino server")
-func cupertinoServerInitialize() async throws {
-    let process = Process()
-    process.executableURL = URL(fileURLWithPath: ".build/debug/cupertino")
-    process.arguments = ["serve"]
+<pre><code class="language-swift"><span class="tok-attribute">@Test</span>(<span class="tok-string">"Initialize handshake with cupertino server"</span>)
+<span class="tok-keyword">func</span> <span class="tok-function">cupertinoServerInitialize</span>() <span class="tok-keyword">async</span> <span class="tok-keyword">throws</span> {
+    <span class="tok-keyword">let</span> process <span class="tok-operator">=</span> <span class="tok-type">Process</span>()
+    process<span class="tok-operator">.</span>executable<span class="tok-type">URL</span> <span class="tok-operator">=</span> <span class="tok-type">URL</span>(file<span class="tok-type">URLWithPath</span><span class="tok-operator">:</span> <span class="tok-string">".build/debug/cupertino"</span>)
+    process<span class="tok-operator">.</span>arguments <span class="tok-operator">=</span> [<span class="tok-string">"serve"</span>]
 
-    let stdinPipe = Pipe()
-    let stdoutPipe = Pipe()
-    process.standardInput = stdinPipe
-    process.standardOutput = stdoutPipe
+    <span class="tok-keyword">let</span> stdin<span class="tok-type">Pipe</span> <span class="tok-operator">=</span> <span class="tok-type">Pipe</span>()
+    <span class="tok-keyword">let</span> stdout<span class="tok-type">Pipe</span> <span class="tok-operator">=</span> <span class="tok-type">Pipe</span>()
+    process<span class="tok-operator">.</span>standard<span class="tok-type">Input</span> <span class="tok-operator">=</span> stdin<span class="tok-type">Pipe</span>
+    process<span class="tok-operator">.</span>standard<span class="tok-type">Output</span> <span class="tok-operator">=</span> stdout<span class="tok-type">Pipe</span>
 
-    try process.run()
+    <span class="tok-keyword">try</span> process<span class="tok-operator">.</span><span class="tok-function">run</span>()
 
-    // Send initialize request (compact JSON + newline)
-    let initRequest = """
+    <span class="tok-comment">// Send initialize request (compact JSON + newline)</span>
+    <span class="tok-keyword">let</span> init<span class="tok-type">Request</span> <span class="tok-operator">=</span> <span class="tok-string">"""
     {"jsonrpc":"2.0","id":1,"method":"initialize","params":{...}}\n
-    """
-    stdinPipe.fileHandleForWriting.write(Data(initRequest.utf8))
+    """</span>
+    stdin<span class="tok-type">Pipe</span><span class="tok-operator">.</span>file<span class="tok-type">HandleForWriting</span><span class="tok-operator">.</span><span class="tok-function">write</span>(<span class="tok-type">Data</span>(init<span class="tok-type">Request</span><span class="tok-operator">.</span>utf<span class="tok-number">8</span>))
 
-    // Parse and verify response
-    let response = try JSONDecoder().decode(JSONRPCResponse.self, from: responseData)
-    #expect(response.serverInfo.name == "cupertino")
+    <span class="tok-comment">// Parse and verify response</span>
+    <span class="tok-keyword">let</span> response <span class="tok-operator">=</span> <span class="tok-keyword">try</span> <span class="tok-type">JSONDecoder</span>()<span class="tok-operator">.</span><span class="tok-function">decode</span>(<span class="tok-type">JSONRPCResponse</span><span class="tok-operator">.</span><span class="tok-keyword">self</span>, from<span class="tok-operator">:</span> response<span class="tok-type">Data</span>)
+    #<span class="tok-function">expect</span>(response<span class="tok-operator">.</span>server<span class="tok-type">Info</span><span class="tok-operator">.</span>name <span class="tok-operator">=</span><span class="tok-operator">=</span> <span class="tok-string">"cupertino"</span>)
 }</code></pre>
 <p>The tests verify:</p>
 <ul><li><p>MCP initialize handshake</p></li><li><p><code>tools/list</code> responses</p></li><li><p>Protocol version negotiation</p></li><li><p>Server info and tool registration</p></li></ul>
@@ -218,17 +218,17 @@ func cupertinoServerInitialize() async throws {
 <p>This means:</p>
 <ul><li><p>CLI updates don’t require database re-downloads</p></li><li><p>Database updates don’t require CLI updates</p></li><li><p>Schema changes are tracked separately</p></li></ul>
 <h2>Install or Update</h2>
-<pre><code class="language-bash"># New install
-brew install mihaelamj/tap/cupertino
+<pre><code class="language-bash"><span class="tok-comment"># New install</span>
+brew install mihaelamj<span class="tok-operator">/</span>tap<span class="tok-operator">/</span>cupertino
 
-# Update existing
-brew update &amp;&amp; brew upgrade cupertino
+<span class="tok-comment"># Update existing</span>
+brew update <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> brew upgrade cupertino
 
-# Or one-line install
-bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)</code></pre>
+<span class="tok-comment"># Or one-line install</span>
+bash <span class="tok-operator">&lt;</span>(curl <span class="tok-operator">-</span>sSL https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>raw<span class="tok-operator">.</span>githubusercontent<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">/</span>ma<span class="tok-keyword">in</span><span class="tok-operator">/</span>install<span class="tok-operator">.</span>sh)</code></pre>
 <p>Then:</p>
-<pre><code class="language-bash">cupertino setup  # Download databases (~30 seconds)
-cupertino serve  # Start MCP server</code></pre>
+<pre><code class="language-bash">cupertino setup  <span class="tok-comment"># Download databases (~30 seconds)</span>
+cupertino serve  <span class="tok-comment"># Start MCP server</span></code></pre>
 <p>Configure your AI tool using the guides above, and you’re ready.</p>
 <h2>Issues Closed</h2>
 <ul><li><p>#124 - Installer ANSI escape sequences</p></li><li><p>#96 - Setup progress animation</p></li><li><p>#131 - Remove Node.js dependency from MCP integration tests</p></li><li><p>#130 - MCP protocol mismatch (2025-06-18 support)</p></li><li><p>#134 - Better documentation for use with different agents</p></li><li><p>#137 - Documentation improvements: MCP client configs and binary documentation</p></li></ul>

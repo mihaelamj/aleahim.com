@@ -95,18 +95,18 @@ A type that represents part of your app's user interface...</code></pre>
 <em>Claude Desktop using Cupertino’s MCP tools to search documentation and list available frameworks</em></p>
 <h2>Installation</h2>
 <h3>1. Build from source</h3>
-<pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino.git
+<pre><code class="language-bash">git clone https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>github<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">.</span>git
 cd cupertino
 make build
-sudo make install</code></pre>
+su<span class="tok-keyword">do</span> make install</code></pre>
 <h3>2. Fetch documentation</h3>
-<pre><code class="language-bash"># Quick start: Swift Evolution only (~5 minutes)
-cupertino fetch --type evolution
+<pre><code class="language-bash"><span class="tok-comment"># Quick start: Swift Evolution only (~5 minutes)</span>
+cupertino fetch <span class="tok-operator">-</span><span class="tok-operator">-</span>type evolution
 cupertino save
 
-# Full documentation (~20-24 hours, one-time)
-cupertino fetch --type docs --max-pages 15000
-cupertino fetch --type evolution
+<span class="tok-comment"># Full documentation (~20-24 hours, one-time)</span>
+cupertino fetch <span class="tok-operator">-</span><span class="tok-operator">-</span>type docs <span class="tok-operator">-</span><span class="tok-operator">-</span>max<span class="tok-operator">-</span>pages <span class="tok-number">15000</span>
+cupertino fetch <span class="tok-operator">-</span><span class="tok-operator">-</span>type evolution
 cupertino save</code></pre>
 <p><strong>Expected output after indexing:</strong></p>
 <pre><code>✅ Search index built successfully!
@@ -119,13 +119,13 @@ cupertino save</code></pre>
 <p>Why 20+ hours? The crawler respects Apple’s servers with a 0.5s delay between requests. 21,000 pages × 0.5s = many hours. But it’s a one-time operation.</p>
 <h3>3. Configure Claude Desktop</h3>
 <p>Edit <code>~/Library/Application Support/Claude/claude_desktop_config.json</code>:</p>
-<pre><code class="language-json">{
-  "mcpServers": {
-    "cupertino": {
-      "command": "/usr/local/bin/cupertino"
-    }
-  }
-}</code></pre>
+<pre><code class="language-json"><span class="tok-operator">{</span>
+  <span class="tok-property">"mcpServers"</span><span class="tok-operator">:</span> <span class="tok-operator">{</span>
+    <span class="tok-property">"cupertino"</span><span class="tok-operator">:</span> <span class="tok-operator">{</span>
+      <span class="tok-property">"command"</span><span class="tok-operator">:</span> <span class="tok-string">"/usr/local/bin/cupertino"</span>
+    <span class="tok-operator">}</span>
+  <span class="tok-operator">}</span>
+<span class="tok-operator">}</span></code></pre>
 <p>Restart Claude Desktop. Done.</p>
 <h3>4. Verify it works</h3>
 <pre><code class="language-bash">cupertino doctor</code></pre>

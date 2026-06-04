@@ -64,11 +64,11 @@
 <button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
 </header>
 <main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">December 6, 2025</time></div><h1 class="td-article-title">Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs</h1><p class="td-article-dek">Install Cupertino with a single command - signed, notarized, and ready in seconds. Now with 150,000+ Apple documentation pages.</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/cupertino-one-line-install/">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-one-line-install%2F&amp;text=Cupertino%20v0.3.4%3A%20One-Line%20Install%20%26%20150K%2B%20Apple%20Docs" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-one-line-install%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-one-line-install%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=Cupertino%20v0.3.4%3A%20One-Line%20Install%20%26%20150K%2B%20Apple%20Docs&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-one-line-install%2F" target="_blank" rel="noopener">Email</a></nav><nav class="td-tags td-article-tags" aria-label="Tags"><a class="td-tag" href="https://aleahim.com/tags/cupertino/">Cupertino</a><a class="td-tag" href="https://aleahim.com/tags/apple-docs/">Apple Docs</a><a class="td-tag" href="https://aleahim.com/tags/ai/">AI</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/blog/cupertino-one-line-install/hero.png" alt="Cupertino v0.3.4: One-Line Install &amp; 150K+ Apple Docs"></figure><div class="td-article-body"><p><strong>TL;DR:</strong> One command installs everything. Homebrew is also available.</p>
-<pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)</code></pre>
+<pre><code class="language-bash">bash <span class="tok-operator">&lt;</span>(curl <span class="tok-operator">-</span>sSL https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>raw<span class="tok-operator">.</span>githubusercontent<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">/</span>ma<span class="tok-keyword">in</span><span class="tok-operator">/</span>install<span class="tok-operator">.</span>sh)</code></pre>
 <h2>What Changed</h2>
 <p>In v0.3.0, I introduced <code>cupertino setup</code> to download pre-built databases. But you still had to clone the repo and build from source first. That’s two steps too many.</p>
 <p>Now it’s one line:</p>
-<pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)</code></pre>
+<pre><code class="language-bash">bash <span class="tok-operator">&lt;</span>(curl <span class="tok-operator">-</span>sSL https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>raw<span class="tok-operator">.</span>githubusercontent<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">/</span>ma<span class="tok-keyword">in</span><span class="tok-operator">/</span>install<span class="tok-operator">.</span>sh)</code></pre>
 <p>This:</p>
 <ol><li><p>Downloads a pre-built universal binary (arm64 + x86_64)</p></li><li><p>Installs to <code>/usr/local/bin</code></p></li><li><p>Downloads documentation databases (~230 MB)</p></li></ol>
 <p>Total time: under a minute.</p>
@@ -80,7 +80,7 @@
 <p>This took several iterations to get right—the signing must happen in CI, notarization requires waiting for Apple’s servers, and even copying the file wrong can strip the signature. But now it’s automated and works every time.</p>
 <h2>Homebrew Support</h2>
 <p>Prefer Homebrew? Now available:</p>
-<pre><code class="language-bash">brew tap mihaelamj/tap
+<pre><code class="language-bash">brew tap mihaelamj<span class="tok-operator">/</span>tap
 brew install cupertino
 cupertino setup</code></pre>
 <p>Three lines instead of one, but integrates with your existing Homebrew workflow.</p>
@@ -93,16 +93,16 @@ cupertino setup</code></pre>
 <p><a href="https://youtu.be/B-mRdainTMA"><img src="https://img.youtube.com/vi/B-mRdainTMA/0.jpg" alt="Demo Video"></a></p>
 <h2>Three Install Methods</h2>
 <h3>1. One-Line Install (Recommended)</h3>
-<pre><code class="language-bash">bash &lt;(curl -sSL https://raw.githubusercontent.com/mihaelamj/cupertino/main/install.sh)</code></pre>
+<pre><code class="language-bash">bash <span class="tok-operator">&lt;</span>(curl <span class="tok-operator">-</span>sSL https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>raw<span class="tok-operator">.</span>githubusercontent<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">/</span>ma<span class="tok-keyword">in</span><span class="tok-operator">/</span>install<span class="tok-operator">.</span>sh)</code></pre>
 <p>Downloads binary and databases. Ready in under a minute.</p>
 <h3>2. Homebrew</h3>
-<pre><code class="language-bash">brew tap mihaelamj/tap
+<pre><code class="language-bash">brew tap mihaelamj<span class="tok-operator">/</span>tap
 brew install cupertino
 cupertino setup</code></pre>
 <p>Integrates with Homebrew for updates via <code>brew upgrade cupertino</code>.</p>
 <h3>3. Build from Source</h3>
-<pre><code class="language-bash">git clone https://github.com/mihaelamj/cupertino.git
-cd cupertino &amp;&amp; make build &amp;&amp; sudo make install
+<pre><code class="language-bash">git clone https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>github<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">.</span>git
+cd cupertino <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> make build <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> su<span class="tok-keyword">do</span> make install
 cupertino setup</code></pre>
 <p>For those who want to inspect or modify the code.</p>
 <h2>What’s Inside</h2>
@@ -110,13 +110,13 @@ cupertino setup</code></pre>
 <ul><li><p><code>/usr/local/bin/cupertino</code> - The MCP server binary</p></li><li><p><code>~/.cupertino/search.db</code> - 150K+ documentation pages</p></li><li><p><code>~/.cupertino/samples.db</code> - 606 sample projects, 18K+ source files</p></li></ul>
 <p>Start the server and configure Claude Desktop:</p>
 <pre><code class="language-bash">cupertino serve</code></pre>
-<pre><code class="language-json">{
-  "mcpServers": {
-    "cupertino": {
-      "command": "/usr/local/bin/cupertino"
-    }
-  }
-}</code></pre>
+<pre><code class="language-json"><span class="tok-operator">{</span>
+  <span class="tok-property">"mcpServers"</span><span class="tok-operator">:</span> <span class="tok-operator">{</span>
+    <span class="tok-property">"cupertino"</span><span class="tok-operator">:</span> <span class="tok-operator">{</span>
+      <span class="tok-property">"command"</span><span class="tok-operator">:</span> <span class="tok-string">"/usr/local/bin/cupertino"</span>
+    <span class="tok-operator">}</span>
+  <span class="tok-operator">}</span>
+<span class="tok-operator">}</span></code></pre>
 <h2>Registry Submissions</h2>
 <p>I’ve submitted Cupertino to the major MCP server registries:</p>
 <ul><li><p><a href="https://mcpservers.org">mcpservers.org</a></p></li><li><p><a href="https://pulsemcp.com">PulseMCP</a></p></li><li><p><a href="https://github.com/punkpeye/awesome-mcp-servers">awesome-mcp-servers</a></p></li></ul>

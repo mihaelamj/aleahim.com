@@ -78,17 +78,17 @@ modules depend on stable interfaces, not on each other’s implementations. This
 <p>The repository is organized into <strong>stages</strong>, each representing a self-contained checkpoint in the project’s evolution.
 When moving between stages — especially when reverting to earlier ones — always reset and clean your workspace to ensure it matches the intended state.</p>
 <p>Here’s the example for <strong>stage 01</strong>:</p>
-<pre><code class="language-bash"># Ensure you're on the branch you want
-git checkout stage/01-init-packages
+<pre><code class="language-bash"><span class="tok-comment"># Ensure you're on the branch you want</span>
+git checkout stage<span class="tok-operator">/</span><span class="tok-number">01</span><span class="tok-operator">-</span>init<span class="tok-operator">-</span>packages
 
-# Fetch the latest version
-git fetch origin
+<span class="tok-comment"># Fetch the latest version</span>
+git fetch orig<span class="tok-keyword">in</span>
 
-# Reset your branch to the remote version
-git reset --hard stage/01-init-packages
+<span class="tok-comment"># Reset your branch to the remote version</span>
+git reset <span class="tok-operator">-</span><span class="tok-operator">-</span>hard stage<span class="tok-operator">/</span><span class="tok-number">01</span><span class="tok-operator">-</span>init<span class="tok-operator">-</span>packages
 
-# Delete untracked files and directories
-git clean -fdx</code></pre>
+<span class="tok-comment"># Delete untracked files and directories</span>
+git clean <span class="tok-operator">-</span>fdx</code></pre>
 <h3>Philosophy</h3>
 <p>In most projects, modularization is an afterthought — introduced when the codebase becomes too large to manage.
 <strong>Extreme Packaging</strong> inverts that approach: modularization is the starting point.
@@ -115,130 +115,130 @@ Every addition to the project — whether a new feature, UI layer, or platform t
 <img src="https://aleahim.com/images/xpack/Screenshot%202025-03-31%20at%2017.07.23.png" alt=""></p>
 <p>Inside the  folder:</p>
 <pre><code class="language-bash">
-➜  ExtremePackaging git:(main) ✗ ls -all
- .
- ..
- .git
- .gitignore
- .swiftformat
- .swiftlint.yml
+➜  ExtremePackaging git<span class="tok-operator">:</span>(ma<span class="tok-keyword">in</span>) ✗ ls <span class="tok-operator">-</span>all
+ <span class="tok-operator">.</span>
+ <span class="tok-operator">.</span><span class="tok-operator">.</span>
+ <span class="tok-operator">.</span>git
+ <span class="tok-operator">.</span>gitignore
+ <span class="tok-operator">.</span>swiftformat
+ <span class="tok-operator">.</span>swiftlint<span class="tok-operator">.</span>yml
  Apps
  LICENSE
  Packages
- README.md</code></pre>
+ README<span class="tok-operator">.</span>md</code></pre>
 <p>Inside the <code>Packages</code> folder:</p>
-<pre><code class="language-bash">➜  ExtremePackaging git:(main) cd Packages
-➜  Packages git:(main) ls -all
- .
- ..
- Package.swift
+<pre><code class="language-bash">➜  ExtremePackaging git<span class="tok-operator">:</span>(ma<span class="tok-keyword">in</span>) cd Packages
+➜  Packages git<span class="tok-operator">:</span>(ma<span class="tok-keyword">in</span>) ls <span class="tok-operator">-</span>all
+ <span class="tok-operator">.</span>
+ <span class="tok-operator">.</span><span class="tok-operator">.</span>
+ Package<span class="tok-operator">.</span>swift
  Sources
  Tests</code></pre>
 <p>Inside the <code>Apps</code> folder:</p>
-<pre><code class="language-bash">.
-..
-.gitkeep</code></pre>
+<pre><code class="language-bash"><span class="tok-operator">.</span>
+<span class="tok-operator">.</span><span class="tok-operator">.</span>
+<span class="tok-operator">.</span>gitkeep</code></pre>
 <h4>Basic Package Code:</h4>
 <p>I start with package structure like this:</p>
-<pre><code class="language-swift">// swift-tools-version: 6.0
+<pre><code class="language-swift"><span class="tok-comment">// swift-tools-version: 6.0</span>
 
-import PackageDescription
+<span class="tok-keyword">import</span> <span class="tok-type">PackageDescription</span>
 
-let package = Package(
-    name: "Main",
-    platforms: [
-        .iOS(.v17),
-        .macOS(.v14),
+<span class="tok-keyword">let</span> package <span class="tok-operator">=</span> <span class="tok-type">Package</span>(
+    name<span class="tok-operator">:</span> <span class="tok-string">"Main"</span>,
+    platforms<span class="tok-operator">:</span> [
+        <span class="tok-operator">.</span><span class="tok-function">iOS</span>(<span class="tok-operator">.</span>v<span class="tok-number">17</span>),
+        <span class="tok-operator">.</span><span class="tok-function">macOS</span>(<span class="tok-operator">.</span>v<span class="tok-number">14</span>),
     ],
-    products: [
-        .singleTargetLibrary("AppFeature"),
+    products<span class="tok-operator">:</span> [
+        <span class="tok-operator">.</span><span class="tok-function">singleTargetLibrary</span>(<span class="tok-string">"AppFeature"</span>),
     ],
-    dependencies: [
-        .package(url: "https://github.com/realm/SwiftLint", exact: "0.52.3"),
+    dependencies<span class="tok-operator">:</span> [
+        <span class="tok-operator">.</span><span class="tok-function">package</span>(url<span class="tok-operator">:</span> <span class="tok-string">"https://github.com/realm/SwiftLint"</span>, exact<span class="tok-operator">:</span> <span class="tok-string">"0.52.3"</span>),
     ],
-    targets: [
-        .target(
-            name: "AppFeature",
-            dependencies: [
-                "SharedModels",
+    targets<span class="tok-operator">:</span> [
+        <span class="tok-operator">.</span><span class="tok-function">target</span>(
+            name<span class="tok-operator">:</span> <span class="tok-string">"AppFeature"</span>,
+            dependencies<span class="tok-operator">:</span> [
+                <span class="tok-string">"SharedModels"</span>,
             ]
         ),
-        .testTarget(
-            name: "AppFeatureTests",
-            dependencies: [
-                "AppFeature"
+        <span class="tok-operator">.</span><span class="tok-function">testTarget</span>(
+            name<span class="tok-operator">:</span> <span class="tok-string">"AppFeatureTests"</span>,
+            dependencies<span class="tok-operator">:</span> [
+                <span class="tok-string">"AppFeature"</span>
             ]
         ),
-        .target(
-            name: "SharedModels"
+        <span class="tok-operator">.</span><span class="tok-function">target</span>(
+            name<span class="tok-operator">:</span> <span class="tok-string">"SharedModels"</span>
         )
     ]
 )
 
-// Inject base plugins into each target
-package.targets = package.targets.map { target in
-    var plugins = target.plugins ?? []
-    plugins.append(.plugin(name: "SwiftLintPlugin", package: "SwiftLint"))
-    target.plugins = plugins
-    return target
+<span class="tok-comment">// Inject base plugins into each target</span>
+package<span class="tok-operator">.</span>targets <span class="tok-operator">=</span> package<span class="tok-operator">.</span>targets<span class="tok-operator">.</span>map { target <span class="tok-keyword">in</span>
+    <span class="tok-keyword">var</span> plugins <span class="tok-operator">=</span> target<span class="tok-operator">.</span>plugins <span class="tok-operator">?</span><span class="tok-operator">?</span> []
+    plugins<span class="tok-operator">.</span><span class="tok-function">append</span>(<span class="tok-operator">.</span><span class="tok-function">plugin</span>(name<span class="tok-operator">:</span> <span class="tok-string">"SwiftLintPlugin"</span>, package<span class="tok-operator">:</span> <span class="tok-string">"SwiftLint"</span>))
+    target<span class="tok-operator">.</span>plugins <span class="tok-operator">=</span> plugins
+    <span class="tok-keyword">return</span> target
 }
 
-extension Product {
-    static func singleTargetLibrary(_ name: String) -&gt; Product {
-        .library(name: name, targets: [name])
+<span class="tok-keyword">extension</span> <span class="tok-type">Product</span> {
+    <span class="tok-keyword">static</span> <span class="tok-keyword">func</span> <span class="tok-function">singleTargetLibrary</span>(_ name<span class="tok-operator">:</span> <span class="tok-type">String</span>) <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">Product</span> {
+        <span class="tok-operator">.</span><span class="tok-function">library</span>(name<span class="tok-operator">:</span> name, targets<span class="tok-operator">:</span> [name])
     }
 }</code></pre>
 <h4>Dummy Files</h4>
 <h5>AppView</h5>
-<pre><code class="language-swift">import SharedModels
-import SharedViews
-import SwiftUI
+<pre><code class="language-swift"><span class="tok-keyword">import</span> <span class="tok-type">SharedModels</span>
+<span class="tok-keyword">import</span> <span class="tok-type">SharedViews</span>
+<span class="tok-keyword">import</span> <span class="tok-type">SwiftUI</span>
 
-public struct AppView: View {
-    public var body: some View {
-        VStack {
-            Text("Extreme Packaging!")
-                .font(.title)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .padding()
+<span class="tok-keyword">public</span> <span class="tok-keyword">struct</span> <span class="tok-type">AppView</span><span class="tok-operator">:</span> <span class="tok-type">View</span> {
+    <span class="tok-keyword">public</span> <span class="tok-keyword">var</span> body<span class="tok-operator">:</span> some <span class="tok-type">View</span> {
+        <span class="tok-type">VStack</span> {
+            <span class="tok-type">Text</span>(<span class="tok-string">"Extreme Packaging!"</span>)
+                <span class="tok-operator">.</span><span class="tok-function">font</span>(<span class="tok-operator">.</span>title)
+                <span class="tok-operator">.</span><span class="tok-function">fontWeight</span>(<span class="tok-operator">.</span>bold)
+                <span class="tok-operator">.</span><span class="tok-function">multilineTextAlignment</span>(<span class="tok-operator">.</span>center)
+                <span class="tok-operator">.</span><span class="tok-function">padding</span>()
         }
     }
 }</code></pre>
 <h5>DummyModel</h5>
-<pre><code class="language-swift">import Foundation
+<pre><code class="language-swift"><span class="tok-keyword">import</span> <span class="tok-type">Foundation</span>
 
-public struct DummyModel: Identifiable {
-    public var id: UUID = .init()
-    public var title: String
-    public init(
-        id: UUID = .init(),
-        title: String
+<span class="tok-keyword">public</span> <span class="tok-keyword">struct</span> <span class="tok-type">DummyModel</span><span class="tok-operator">:</span> <span class="tok-type">Identifiable</span> {
+    <span class="tok-keyword">public</span> <span class="tok-keyword">var</span> id<span class="tok-operator">:</span> <span class="tok-type">UUID</span> <span class="tok-operator">=</span> <span class="tok-operator">.</span><span class="tok-keyword">init</span>()
+    <span class="tok-keyword">public</span> <span class="tok-keyword">var</span> title<span class="tok-operator">:</span> <span class="tok-type">String</span>
+    <span class="tok-keyword">public</span> <span class="tok-keyword">init</span>(
+        id<span class="tok-operator">:</span> <span class="tok-type">UUID</span> <span class="tok-operator">=</span> <span class="tok-operator">.</span><span class="tok-keyword">init</span>(),
+        title<span class="tok-operator">:</span> <span class="tok-type">String</span>
     ) {
-        self.id = id
-        self.title = title
+        <span class="tok-keyword">self</span><span class="tok-operator">.</span>id <span class="tok-operator">=</span> id
+        <span class="tok-keyword">self</span><span class="tok-operator">.</span>title <span class="tok-operator">=</span> title
     }
 }</code></pre>
 <h4>Stage 01-init-packages</h4>
 <p>Here’s the code for <strong>stage 01</strong>:</p>
 <pre><code class="language-bash">
-# Clone repo if needed
-git clone git@github.com:mihaelamj/ExtremePackaging.git
+<span class="tok-comment"># Clone repo if needed</span>
+git clone git<span class="tok-attribute">@github</span><span class="tok-operator">.</span>com<span class="tok-operator">:</span>mihaelamj<span class="tok-operator">/</span>ExtremePackaging<span class="tok-operator">.</span>git
 
-# Ensure you're on the branch you want
-git checkout stage/01-init-packages
+<span class="tok-comment"># Ensure you're on the branch you want</span>
+git checkout stage<span class="tok-operator">/</span><span class="tok-number">01</span><span class="tok-operator">-</span>init<span class="tok-operator">-</span>packages
 
-# Fetch the latest version
-git fetch origin
+<span class="tok-comment"># Fetch the latest version</span>
+git fetch orig<span class="tok-keyword">in</span>
 
-# Reset your branch to the remote version
-git reset --hard stage/01-init-packages
+<span class="tok-comment"># Reset your branch to the remote version</span>
+git reset <span class="tok-operator">-</span><span class="tok-operator">-</span>hard stage<span class="tok-operator">/</span><span class="tok-number">01</span><span class="tok-operator">-</span>init<span class="tok-operator">-</span>packages
 
-# Delete untracked files and directories
-git clean -fdx</code></pre>
+<span class="tok-comment"># Delete untracked files and directories</span>
+git clean <span class="tok-operator">-</span>fdx</code></pre>
 <p>To see how it looks in <strong>Xcode</strong> we need to switch to subfolder <code>packages</code>, since we haven’t created the workspace yet.</p>
-<pre><code class="language-bash">➜  ExtremePackaging git:(stage/01-init-packages) ✗ cd Packages
-➜  Packages git:(stage/01-init-packages) ✗ xed .</code></pre>
+<pre><code class="language-bash">➜  ExtremePackaging git<span class="tok-operator">:</span>(stage<span class="tok-operator">/</span><span class="tok-number">01</span><span class="tok-operator">-</span>init<span class="tok-operator">-</span>packages) ✗ cd Packages
+➜  Packages git<span class="tok-operator">:</span>(stage<span class="tok-operator">/</span><span class="tok-number">01</span><span class="tok-operator">-</span>init<span class="tok-operator">-</span>packages) ✗ xed <span class="tok-operator">.</span></code></pre>
 <h3>1.2 Stage 02 — Add Workspace</h3>
 <h4>Purpose</h4>
 <p>In <strong>stage/02-workspace-added</strong>, an Xcode <strong>workspace</strong> named <code>Main.xcworkspace</code> is introduced at the project root.
@@ -253,23 +253,23 @@ It will add our package structure to the project:</p>
 <h4>Stage 02-add—to-workspace</h4>
 <p>Here’s the code for <strong>stage 02</strong>:</p>
 <pre><code class="language-bash">
-# Clone repo if needed
-git clone git@github.com:mihaelamj/ExtremePackaging.git
+<span class="tok-comment"># Clone repo if needed</span>
+git clone git<span class="tok-attribute">@github</span><span class="tok-operator">.</span>com<span class="tok-operator">:</span>mihaelamj<span class="tok-operator">/</span>ExtremePackaging<span class="tok-operator">.</span>git
 
-# Ensure you're on the branch you want
-git checkout stage/02-add—to-workspace
+<span class="tok-comment"># Ensure you're on the branch you want</span>
+git checkout stage<span class="tok-operator">/</span><span class="tok-number">02</span><span class="tok-operator">-</span>add—to<span class="tok-operator">-</span>workspace
 
-# Fetch the latest version
-git fetch origin
+<span class="tok-comment"># Fetch the latest version</span>
+git fetch orig<span class="tok-keyword">in</span>
 
-# Reset your branch to the remote version
-git reset --hard stage/02-add—to-workspace
+<span class="tok-comment"># Reset your branch to the remote version</span>
+git reset <span class="tok-operator">-</span><span class="tok-operator">-</span>hard stage<span class="tok-operator">/</span><span class="tok-number">02</span><span class="tok-operator">-</span>add—to<span class="tok-operator">-</span>workspace
 
-# Delete untracked files and directories
-git clean -fdx</code></pre>
+<span class="tok-comment"># Delete untracked files and directories</span>
+git clean <span class="tok-operator">-</span>fdx</code></pre>
 <p>Now we have the <strong>workspace</strong>, so we just need to open <strong>Xcode</strong>:</p>
-<pre><code class="language-bash">➜  Packages git:(stage/02-add—to-workspace) ✗ xed .
-➜  Packages git:(stage/02-add—to-workspace) ✗</code></pre>
+<pre><code class="language-bash">➜  Packages git<span class="tok-operator">:</span>(stage<span class="tok-operator">/</span><span class="tok-number">02</span><span class="tok-operator">-</span>add—to<span class="tok-operator">-</span>workspace) ✗ xed <span class="tok-operator">.</span>
+➜  Packages git<span class="tok-operator">:</span>(stage<span class="tok-operator">/</span><span class="tok-number">02</span><span class="tok-operator">-</span>add—to<span class="tok-operator">-</span>workspace) ✗</code></pre>
 <h3>1.3 Stage 03 — Add iOS and macOS App Targets</h3>
 <h4>Platform targets creation</h4>
 <p><strong>Add new iOS and a new macOS project</strong>
@@ -308,14 +308,14 @@ This ensures that all common code — views, models, and reducers — stays with
 <img src="https://aleahim.com/images/xpack/AppTarget06.png" alt=""></p>
 <p>And the main app starts with the fully testable <code>AppFeature</code></p>
 <p><img src="https://aleahim.com/images/xpack/AppTarget07.png" alt=""></p>
-<pre><code class="language-swift">import SwiftUI
-import AppFeature
+<pre><code class="language-swift"><span class="tok-keyword">import</span> <span class="tok-type">SwiftUI</span>
+<span class="tok-keyword">import</span> <span class="tok-type">AppFeature</span>
 
-@main
-struct SwiftUIAppApp: App {
-    var body: some Scene {
-        WindowGroup {
-            AppView()
+<span class="tok-attribute">@main</span>
+<span class="tok-keyword">struct</span> <span class="tok-type">SwiftUIAppApp</span><span class="tok-operator">:</span> <span class="tok-type">App</span> {
+    <span class="tok-keyword">var</span> body<span class="tok-operator">:</span> some <span class="tok-type">Scene</span> {
+        <span class="tok-type">WindowGroup</span> {
+            <span class="tok-type">AppView</span>()
         }
     }
 }</code></pre>
@@ -334,20 +334,20 @@ A clean, modular workspace where shared code resides in packages, and each platf
 <p>This stage concludes with a fully functional cross-platform setup where both iOS and macOS share a unified architecture driven by modular packages.</p>
 <p>Here’s the code for <strong>stage 03</strong>:</p>
 <pre><code class="language-bash">
-# Clone repo if needed
-git clone git@github.com:mihaelamj/ExtremePackaging.git
+<span class="tok-comment"># Clone repo if needed</span>
+git clone git<span class="tok-attribute">@github</span><span class="tok-operator">.</span>com<span class="tok-operator">:</span>mihaelamj<span class="tok-operator">/</span>ExtremePackaging<span class="tok-operator">.</span>git
 
-# Ensure you're on the branch you want
-git checkout stage/03-apps-added
+<span class="tok-comment"># Ensure you're on the branch you want</span>
+git checkout stage<span class="tok-operator">/</span><span class="tok-number">03</span><span class="tok-operator">-</span>apps<span class="tok-operator">-</span>added
 
-# Fetch the latest version
-git fetch origin
+<span class="tok-comment"># Fetch the latest version</span>
+git fetch orig<span class="tok-keyword">in</span>
 
-# Reset your branch to the remote version
-git reset --hard stage/03-apps-added
+<span class="tok-comment"># Reset your branch to the remote version</span>
+git reset <span class="tok-operator">-</span><span class="tok-operator">-</span>hard stage<span class="tok-operator">/</span><span class="tok-number">03</span><span class="tok-operator">-</span>apps<span class="tok-operator">-</span>added
 
-# Delete untracked files and directories
-git clean -fdx</code></pre>
+<span class="tok-comment"># Delete untracked files and directories</span>
+git clean <span class="tok-operator">-</span>fdx</code></pre>
 <h3>Summary</h3>
 <table><thead><tr><th style="text-align:left">Stage</th><th style="text-align:left">Description</th><th style="text-align:left">Key Additions</th></tr></thead><tbody><tr><td style="text-align:left"><strong>01</strong></td><td style="text-align:left">Initial package setup</td><td style="text-align:left"><code>Package.swift</code>, SwiftLint &amp; SwiftFormat configs, dummy modules (<code>AppFeature</code>, <code>SharedModels</code>)</td></tr><tr><td style="text-align:left"><strong>02</strong></td><td style="text-align:left">Workspace creation</td><td style="text-align:left"><code>Main.xcworkspace</code>, integrated <code>Packages</code> folder for modular management</td></tr><tr><td style="text-align:left"><strong>03</strong></td><td style="text-align:left">iOS &amp; macOS app targets added</td><td style="text-align:left">Separate iOS and macOS apps in <code>Apps/</code>, both using <code>AppFeature</code> for shared SwiftUI logic</td></tr></tbody></table>
 <p>Each stage corresponds to a dedicated branch in the repository, allowing you to switch between checkpoints and observe the project’s evolution step by step.
@@ -355,64 +355,64 @@ This structure provides a transparent history of how a modular Swift project gro
 <h2>Part 2 — Tooling</h2>
 <ul><li><p>Every project includes <strong>SwiftLint</strong> and <strong>SwiftFormat</strong> for enforcing consistent code style and quality</p></li><li><p>Each stage of the repository introduces incremental improvements, from initializing packages to adding app targets and integrations</p></li><li><p>These are applied from the very first stage but can be customized at any point.</p></li></ul>
 <h3>GitIgnore</h3>
-<pre><code class="language-bash"># Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore &amp; Swift.gitignore
+<pre><code class="language-bash"><span class="tok-comment"># Xcode</span>
+<span class="tok-comment">#</span>
+<span class="tok-comment"># gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore &amp; Swift.gitignore</span>
 
-## User settings
-xcuserdata/
+<span class="tok-comment">## User settings</span>
+xcuserdata<span class="tok-operator">/</span>
 
-## Obj-C/Swift specific
-*.hmap
+<span class="tok-comment">## Obj-C/Swift specific</span>
+<span class="tok-operator">*</span><span class="tok-operator">.</span>hmap
 
-## App packaging
-*.ipa
-*.dSYM.zip
-*.dSYM
+<span class="tok-comment">## App packaging</span>
+<span class="tok-operator">*</span><span class="tok-operator">.</span>ipa
+<span class="tok-operator">*</span><span class="tok-operator">.</span>dSYM<span class="tok-operator">.</span>zip
+<span class="tok-operator">*</span><span class="tok-operator">.</span>dSYM
 
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
+<span class="tok-comment">## Playgrounds</span>
+timeline<span class="tok-operator">.</span>xctimeline
+playground<span class="tok-operator">.</span>xcworkspace
 
-# Swift Package Manager
-.build/
-.swiftpm/
-Package.resolved
+<span class="tok-comment"># Swift Package Manager</span>
+<span class="tok-operator">.</span>build<span class="tok-operator">/</span>
+<span class="tok-operator">.</span>swiftpm<span class="tok-operator">/</span>
+Package<span class="tok-operator">.</span>resolved
 
-# Xcode workspace &amp; projects
-*.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
-*.xcworkspace/xcuserdata/
-DerivedData/
-*.xcuserstate
-*.xcscmblueprint
-*.xccheckout
+<span class="tok-comment"># Xcode workspace &amp; projects</span>
+<span class="tok-operator">*</span><span class="tok-operator">.</span>xcworkspace<span class="tok-operator">/</span>xcshareddata<span class="tok-operator">/</span>WorkspaceSettings<span class="tok-operator">.</span>xcsettings
+<span class="tok-operator">*</span><span class="tok-operator">.</span>xcworkspace<span class="tok-operator">/</span>xcuserdata<span class="tok-operator">/</span>
+DerivedData<span class="tok-operator">/</span>
+<span class="tok-operator">*</span><span class="tok-operator">.</span>xcuserstate
+<span class="tok-operator">*</span><span class="tok-operator">.</span>xcscmblueprint
+<span class="tok-operator">*</span><span class="tok-operator">.</span>xccheckout
 
-# macOS system files
-.DS_Store
+<span class="tok-comment"># macOS system files</span>
+<span class="tok-operator">.</span>DS_Store
 
-# Carthage
-Carthage/Build/
+<span class="tok-comment"># Carthage</span>
+Carthage<span class="tok-operator">/</span>Build<span class="tok-operator">/</span>
 
-# fastlane
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/**/*.png
-fastlane/test_output
+<span class="tok-comment"># fastlane</span>
+fastlane<span class="tok-operator">/</span>report<span class="tok-operator">.</span>xml
+fastlane<span class="tok-operator">/</span>Preview<span class="tok-operator">.</span>html
+fastlane<span class="tok-operator">/</span>screenshots<span class="tok-operator">/</span><span class="tok-operator">*</span><span class="tok-operator">*</span><span class="tok-operator">/</span><span class="tok-operator">*</span><span class="tok-operator">.</span>png
+fastlane<span class="tok-operator">/</span>test_output
 
-# Custom folders used in ExtremePackaging
-Stage/
-Tasks/.build/</code></pre>
+<span class="tok-comment"># Custom folders used in ExtremePackaging</span>
+Stage<span class="tok-operator">/</span>
+Tasks<span class="tok-operator">/</span><span class="tok-operator">.</span>build<span class="tok-operator">/</span></code></pre>
 <h3>SwiftFormat Config</h3>
 <p>This is my <code>.swiftformat</code></p>
-<pre><code class="language-yaml"># General Options
---swiftversion 5.7
+<pre><code class="language-yaml"><span class="tok-comment"># General Options</span>
+--swiftversion <span class="tok-number">5.7</span>
 
-# File Options
---exclude Stage,Tasks/.build,ThirdParty,**/SwiftGen/*,**/Sourcery/*,Frameworks/swift-composable-architecture,**.generated.swift
+<span class="tok-comment"># File Options</span>
+--exclude Stage<span class="tok-operator">,</span>Tasks/.build<span class="tok-operator">,</span>ThirdParty<span class="tok-operator">,</span>**/SwiftGen/*<span class="tok-operator">,</span>**/Sourcery/*<span class="tok-operator">,</span>Frameworks/swift-composable-architecture<span class="tok-operator">,</span>**.generated.swift
 
-# Format Options
+<span class="tok-comment"># Format Options</span>
 
---allman false
+--allman <span class="tok-literal">false</span>
 --binarygrouping none
 --closingparen balanced
 --commas always
@@ -422,19 +422,19 @@ Tasks/.build/</code></pre>
 --exponentcase lowercase
 --exponentgrouping disabled
 --fractiongrouping disabled
---fragment false
+--fragment <span class="tok-literal">false</span>
 --header ignore
 --hexgrouping none
 --hexliteralcase lowercase
---ifdef no-indent
+--ifdef <span class="tok-literal">no</span>-indent
 --importgrouping alphabetized
---indent 4
---indentcase false
-# make sure this matches .swiftlint
---maxwidth 180
---nospaceoperators ..&lt;,...
+--indent <span class="tok-number">4</span>
+--indentcase <span class="tok-literal">false</span>
+<span class="tok-comment"># make sure this matches .swiftlint</span>
+--maxwidth <span class="tok-number">180</span>
+--nospaceoperators ..&lt;<span class="tok-operator">,</span>...
 --octalgrouping none
---operatorfunc no-space
+--operatorfunc <span class="tok-literal">no</span>-space
 --selfrequired
 --stripunusedargs closure-only
 --trailingclosures
@@ -442,89 +442,89 @@ Tasks/.build/</code></pre>
 --wrapcollections before-first
 --wrapparameters before-first
 
-# Rules
+<span class="tok-comment"># Rules</span>
 --disable hoistAwait
 --disable hoistPatternLet
 --disable hoistTry
 --disable wrapMultilineStatementBraces
 --disable extensionAccessControl</code></pre>
 <h3>SwiftLint Config</h3>
-<pre><code class="language-yaml">disabled_rules: # rule identifiers to exclude from running
+<pre><code class="language-yaml"><span class="tok-property">disabled_rules</span><span class="tok-operator">:</span> <span class="tok-comment"># rule identifiers to exclude from running</span>
   - opening_brace
   - operator_whitespace
   - orphaned_doc_comment
 
-opt_in_rules:
+<span class="tok-property">opt_in_rules</span><span class="tok-operator">:</span>
   - empty_count
   - force_unwrapping
   - shorthand_optional_binding
   - weak_delegate
 
-excluded:
-  - "*.generated"
+<span class="tok-property">excluded</span><span class="tok-operator">:</span>
+  - <span class="tok-string">"*.generated"</span>
 
-custom_rules:
-  # check's for Combine's .assign(to: xxx, on: self) ref-cycle
-  combine_assign_to_self:
-    included: ".*\\.swift"
-    name: "`assign` to self"
-    regex: '\.assign\(to: [^,]*, on: self\)'
-    message: "For assigning on self, use assignNoRetain(to: ..., on: self)."
-    severity: error
-  duplicate_remove_duplicates:
-    included: ".*\\.swift"
-    name: "Duplicate `removeDuplicates()`"
-    message: "ViewStore's publisher already does `removeDuplicates()`"
-    regex: 'publisher\.[^(|{|,]*removeDuplicates\(\)'
-    severity: error
-  dont_scale_to_zero:
-    included: ".*\\.swift"
-    name: "Don't scale down to 0."
-    regex: "\\.scaleEffect\\([^\\)]*(\\ 0\\ [^\\)]*\\)|0.0(\\ |\\))|\\ 0(\\)|,))"
-    message: "Please make sure to pass a number not equal zero, so transformations don't throw warnings like `ignoring singular matrix`."
-    severity: error
-  use_data_constructor_over_string_member:
-    included: ".*\\.swift"
-    name: "Do not use String.data(using: .utf8)"
-    regex: "\\.?data\\(using: \\.utf8\\)"
-    message: "Please use Data(string.utf8) instead of String.data(using: .utf8) because the Data constructor is non-optional and Strings are guaranteed to be encodable as .utf8"
-    severity: error
-  tca_explicit_generics_reducer:
-    included: ".*\\.swift"
-    name: "Explicit Generics for Reducer"
-    regex: 'Reduce\s+\{'
-    message: "Use explicit generics in ReducerBuilder (Reduce&lt;State, Action&gt;) for successful autocompletion."
-    severity: error
-  tca_scope_unused_closure_parameter:
-    name: "TCA Scope Unused Closure Parameter"
-    regex: '\.scope\(\s*state\s*:\s*\{\s*\_'
-    message: "Explicitly use closure parameter when scoping store (ensures the right state is being mutated)"
-    severity: error
-  tca_use_observe_viewstore_api:
-    name: "TCA ViewStore observe API"
-    regex: 'ViewStore\(store\.scope'
-    message: "Use modern observe: api instead of store.scope"
-    severity: error
+<span class="tok-property">custom_rules</span><span class="tok-operator">:</span>
+  <span class="tok-comment"># check's for Combine's .assign(to: xxx, on: self) ref-cycle</span>
+  <span class="tok-property">combine_assign_to_self</span><span class="tok-operator">:</span>
+    <span class="tok-property">included</span><span class="tok-operator">:</span> <span class="tok-string">".*\\.swift"</span>
+    <span class="tok-property">name</span><span class="tok-operator">:</span> <span class="tok-string">"`assign` to self"</span>
+    <span class="tok-property">regex</span><span class="tok-operator">:</span> <span class="tok-string">'\.assign\(to: [^,]*, on: self\)'</span>
+    <span class="tok-property">message</span><span class="tok-operator">:</span> <span class="tok-string">"For assigning on self, use assignNoRetain(to: ..., on: self)."</span>
+    <span class="tok-property">severity</span><span class="tok-operator">:</span> error
+  <span class="tok-property">duplicate_remove_duplicates</span><span class="tok-operator">:</span>
+    <span class="tok-property">included</span><span class="tok-operator">:</span> <span class="tok-string">".*\\.swift"</span>
+    <span class="tok-property">name</span><span class="tok-operator">:</span> <span class="tok-string">"Duplicate `removeDuplicates()`"</span>
+    <span class="tok-property">message</span><span class="tok-operator">:</span> <span class="tok-string">"ViewStore's publisher already does `removeDuplicates()`"</span>
+    <span class="tok-property">regex</span><span class="tok-operator">:</span> <span class="tok-string">'publisher\.[^(|{|,]*removeDuplicates\(\)'</span>
+    <span class="tok-property">severity</span><span class="tok-operator">:</span> error
+  <span class="tok-property">dont_scale_to_zero</span><span class="tok-operator">:</span>
+    <span class="tok-property">included</span><span class="tok-operator">:</span> <span class="tok-string">".*\\.swift"</span>
+    <span class="tok-property">name</span><span class="tok-operator">:</span> <span class="tok-string">"Don't scale down to 0."</span>
+    <span class="tok-property">regex</span><span class="tok-operator">:</span> <span class="tok-string">"\\.scaleEffect\\([^\\)]*(\\ 0\\ [^\\)]*\\)|0.0(\\ |\\))|\\ 0(\\)|,))"</span>
+    <span class="tok-property">message</span><span class="tok-operator">:</span> <span class="tok-string">"Please make sure to pass a number not equal zero, so transformations don't throw warnings like `ignoring singular matrix`."</span>
+    <span class="tok-property">severity</span><span class="tok-operator">:</span> error
+  <span class="tok-property">use_data_constructor_over_string_member</span><span class="tok-operator">:</span>
+    <span class="tok-property">included</span><span class="tok-operator">:</span> <span class="tok-string">".*\\.swift"</span>
+    <span class="tok-property">name</span><span class="tok-operator">:</span> <span class="tok-string">"Do not use String.data(using: .utf8)"</span>
+    <span class="tok-property">regex</span><span class="tok-operator">:</span> <span class="tok-string">"\\.?data\\(using: \\.utf8\\)"</span>
+    <span class="tok-property">message</span><span class="tok-operator">:</span> <span class="tok-string">"Please use Data(string.utf8) instead of String.data(using: .utf8) because the Data constructor is non-optional and Strings are guaranteed to be encodable as .utf8"</span>
+    <span class="tok-property">severity</span><span class="tok-operator">:</span> error
+  <span class="tok-property">tca_explicit_generics_reducer</span><span class="tok-operator">:</span>
+    <span class="tok-property">included</span><span class="tok-operator">:</span> <span class="tok-string">".*\\.swift"</span>
+    <span class="tok-property">name</span><span class="tok-operator">:</span> <span class="tok-string">"Explicit Generics for Reducer"</span>
+    <span class="tok-property">regex</span><span class="tok-operator">:</span> <span class="tok-string">'Reduce\s+\{'</span>
+    <span class="tok-property">message</span><span class="tok-operator">:</span> <span class="tok-string">"Use explicit generics in ReducerBuilder (Reduce&lt;State, Action&gt;) for successful autocompletion."</span>
+    <span class="tok-property">severity</span><span class="tok-operator">:</span> error
+  <span class="tok-property">tca_scope_unused_closure_parameter</span><span class="tok-operator">:</span>
+    <span class="tok-property">name</span><span class="tok-operator">:</span> <span class="tok-string">"TCA Scope Unused Closure Parameter"</span>
+    <span class="tok-property">regex</span><span class="tok-operator">:</span> <span class="tok-string">'\.scope\(\s*state\s*:\s*\{\s*\_'</span>
+    <span class="tok-property">message</span><span class="tok-operator">:</span> <span class="tok-string">"Explicitly use closure parameter when scoping store (ensures the right state is being mutated)"</span>
+    <span class="tok-property">severity</span><span class="tok-operator">:</span> error
+  <span class="tok-property">tca_use_observe_viewstore_api</span><span class="tok-operator">:</span>
+    <span class="tok-property">name</span><span class="tok-operator">:</span> <span class="tok-string">"TCA ViewStore observe API"</span>
+    <span class="tok-property">regex</span><span class="tok-operator">:</span> <span class="tok-string">'ViewStore\(store\.scope'</span>
+    <span class="tok-property">message</span><span class="tok-operator">:</span> <span class="tok-string">"Use modern observe: api instead of store.scope"</span>
+    <span class="tok-property">severity</span><span class="tok-operator">:</span> error
 
-trailing_comma:
-    mandatory_comma: true
+<span class="tok-property">trailing_comma</span><span class="tok-operator">:</span>
+    <span class="tok-property">mandatory_comma</span><span class="tok-operator">:</span> <span class="tok-literal">true</span>
 
-cyclomatic_complexity:
-  ignores_case_statements: true
-  warning: 20
+<span class="tok-property">cyclomatic_complexity</span><span class="tok-operator">:</span>
+  <span class="tok-property">ignores_case_statements</span><span class="tok-operator">:</span> <span class="tok-literal">true</span>
+  <span class="tok-property">warning</span><span class="tok-operator">:</span> <span class="tok-number">20</span>
 
-file_length:
-  warning: 1000
-  error: 1000
+<span class="tok-property">file_length</span><span class="tok-operator">:</span>
+  <span class="tok-property">warning</span><span class="tok-operator">:</span> <span class="tok-number">1000</span>
+  <span class="tok-property">error</span><span class="tok-operator">:</span> <span class="tok-number">1000</span>
 
-identifier_name:
-  severity: warning
-  allowed_symbols: "_"
-  min_length: 2
-  max_length:
-    warning: 90
-    error: 90
-  excluded:
+<span class="tok-property">identifier_name</span><span class="tok-operator">:</span>
+  <span class="tok-property">severity</span><span class="tok-operator">:</span> warning
+  <span class="tok-property">allowed_symbols</span><span class="tok-operator">:</span> <span class="tok-string">"_"</span>
+  <span class="tok-property">min_length</span><span class="tok-operator">:</span> <span class="tok-number">2</span>
+  <span class="tok-property">max_length</span><span class="tok-operator">:</span>
+    <span class="tok-property">warning</span><span class="tok-operator">:</span> <span class="tok-number">90</span>
+    <span class="tok-property">error</span><span class="tok-operator">:</span> <span class="tok-number">90</span>
+  <span class="tok-property">excluded</span><span class="tok-operator">:</span>
     - iO
     - id
     - vc
@@ -534,36 +534,36 @@ identifier_name:
     - pi
     - d
 
-legacy_constant: error
-legacy_constructor: error
+<span class="tok-property">legacy_constant</span><span class="tok-operator">:</span> error
+<span class="tok-property">legacy_constructor</span><span class="tok-operator">:</span> error
 
-line_length:
-  warning: 180
-  error: 180
-  ignores_comments: true
-  ignores_urls: true
+<span class="tok-property">line_length</span><span class="tok-operator">:</span>
+  <span class="tok-property">warning</span><span class="tok-operator">:</span> <span class="tok-number">180</span>
+  <span class="tok-property">error</span><span class="tok-operator">:</span> <span class="tok-number">180</span>
+  <span class="tok-property">ignores_comments</span><span class="tok-operator">:</span> <span class="tok-literal">true</span>
+  <span class="tok-property">ignores_urls</span><span class="tok-operator">:</span> <span class="tok-literal">true</span>
 
-nesting:
-  type_level:
-    warning: 3
-    error: 3
-  function_level:
-    warning: 5
-    error: 5
+<span class="tok-property">nesting</span><span class="tok-operator">:</span>
+  <span class="tok-property">type_level</span><span class="tok-operator">:</span>
+    <span class="tok-property">warning</span><span class="tok-operator">:</span> <span class="tok-number">3</span>
+    <span class="tok-property">error</span><span class="tok-operator">:</span> <span class="tok-number">3</span>
+  <span class="tok-property">function_level</span><span class="tok-operator">:</span>
+    <span class="tok-property">warning</span><span class="tok-operator">:</span> <span class="tok-number">5</span>
+    <span class="tok-property">error</span><span class="tok-operator">:</span> <span class="tok-number">5</span>
 
-function_parameter_count:
-  warning: 5
+<span class="tok-property">function_parameter_count</span><span class="tok-operator">:</span>
+  <span class="tok-property">warning</span><span class="tok-operator">:</span> <span class="tok-number">5</span>
 
-force_cast: warning
-force_unwrapping: warning
+<span class="tok-property">force_cast</span><span class="tok-operator">:</span> warning
+<span class="tok-property">force_unwrapping</span><span class="tok-operator">:</span> warning
 
-type_body_length:
-  - 300 # warning
-  - 300 # error
+<span class="tok-property">type_body_length</span><span class="tok-operator">:</span>
+  - <span class="tok-number">300</span> <span class="tok-comment"># warning</span>
+  - <span class="tok-number">300</span> <span class="tok-comment"># error</span>
 
-large_tuple:
-  - 3  # warning
-  - 10 # error%</code></pre></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a><time>May 31, 2026</time></li><li><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a><time>May 28, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a><time>May 21, 2026</time></li></ul></aside></article></main>
+<span class="tok-property">large_tuple</span><span class="tok-operator">:</span>
+  - <span class="tok-number">3</span>  <span class="tok-comment"># warning</span>
+  - <span class="tok-number">10</span> <span class="tok-comment"># error%</span></code></pre></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a><time>May 31, 2026</time></li><li><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a><time>May 28, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a><time>May 21, 2026</time></li></ul></aside></article></main>
 <footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/blog/">Blog</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
 
 

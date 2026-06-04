@@ -93,29 +93,29 @@ And all that work is for just intersection, and here we have multiple.</p></li><
 <p>I wanted the project to fun on the <code>macOS</code> , <code>iOS</code> and <code>iPadOS</code>, so I used <a href="https://github.com/mihaelamj/allapples">AllApples</a> Swift package.</p>
 <p>After removing the storyboards and pimping up the <code>AppDelegate</code> and <code>main.swift</code> for the <code>macOS</code> version, and <code>SceneDelegate</code> for the mobile versions, I was ready to start.</p>
 <h4>2.1.1. <code>main.swift</code> for the macOS</h4>
-<pre><code class="language-swift">import Cocoa
-let delegate = AppDelegate()
-NSApplication.shared.delegate = delegate
-_ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)</code></pre>
+<pre><code class="language-swift"><span class="tok-keyword">import</span> <span class="tok-type">Cocoa</span>
+<span class="tok-keyword">let</span> delegate <span class="tok-operator">=</span> <span class="tok-type">AppDelegate</span>()
+<span class="tok-type">NSApplication</span><span class="tok-operator">.</span>shared<span class="tok-operator">.</span>delegate <span class="tok-operator">=</span> delegate
+_ <span class="tok-operator">=</span> <span class="tok-type">NSApplicationMain</span>(<span class="tok-type">CommandLine</span><span class="tok-operator">.</span>argc, <span class="tok-type">CommandLine</span><span class="tok-operator">.</span>unsafe<span class="tok-type">Argv</span>)</code></pre>
 <h4>2.1.2. AppDelegate for the <code>macOS</code></h4>
-<pre><code class="language-swift">import Cocoa
-import AllApples
+<pre><code class="language-swift"><span class="tok-keyword">import</span> <span class="tok-type">Cocoa</span>
+<span class="tok-keyword">import</span> <span class="tok-type">AllApples</span>
 
-class AppDelegate: NSObject, NSApplicationDelegate {
-  private var window: NSWindow?
-  func applicationDidFinishLaunching(_ aNotification: Notification) {
-    window = AppSceneDelegate.makeWindow_Mac(theVC: CommonViewController())
+<span class="tok-keyword">class</span> <span class="tok-type">AppDelegate</span><span class="tok-operator">:</span> <span class="tok-type">NSObject</span>, <span class="tok-type">NSApplicationDelegate</span> {
+  <span class="tok-keyword">private</span> <span class="tok-keyword">var</span> window<span class="tok-operator">:</span> <span class="tok-type">NSWindow</span><span class="tok-operator">?</span>
+  <span class="tok-keyword">func</span> <span class="tok-function">applicationDidFinishLaunching</span>(_ a<span class="tok-type">Notification</span><span class="tok-operator">:</span> <span class="tok-type">Notification</span>) {
+    window <span class="tok-operator">=</span> <span class="tok-type">AppSceneDelegate</span><span class="tok-operator">.</span><span class="tok-function">makeWindow_Mac</span>(the<span class="tok-type">VC</span><span class="tok-operator">:</span> <span class="tok-type">CommonViewController</span>())
   }
 }</code></pre>
 <h4>2.1.3. SceneDelegate for the <code>iOS</code> and <code>iPadOS</code></h4>
-<pre><code class="language-swift">import UIKit
-import AllApples
+<pre><code class="language-swift"><span class="tok-keyword">import</span> <span class="tok-type">UIKit</span>
+<span class="tok-keyword">import</span> <span class="tok-type">AllApples</span>
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-  var window: UIWindow?
-  func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    guard let aScene = (scene as? UIWindowScene) else { return }
-    window = AppSceneDelegate.makeWindow_iOS(theScene: aScene, theVC: CommonViewController())
+<span class="tok-keyword">class</span> <span class="tok-type">SceneDelegate</span><span class="tok-operator">:</span> <span class="tok-type">UIResponder</span>, <span class="tok-type">UIWindowSceneDelegate</span> {
+  <span class="tok-keyword">var</span> window<span class="tok-operator">:</span> <span class="tok-type">UIWindow</span><span class="tok-operator">?</span>
+  <span class="tok-keyword">func</span> <span class="tok-function">scene</span>(_ scene<span class="tok-operator">:</span> <span class="tok-type">UIScene</span>, will<span class="tok-type">ConnectTo</span> session<span class="tok-operator">:</span> <span class="tok-type">UISceneSession</span>, options connection<span class="tok-type">Options</span><span class="tok-operator">:</span> <span class="tok-type">UIScene</span><span class="tok-operator">.</span><span class="tok-type">ConnectionOptions</span>) {
+    <span class="tok-keyword">guard</span> <span class="tok-keyword">let</span> a<span class="tok-type">Scene</span> <span class="tok-operator">=</span> (scene <span class="tok-keyword">as</span><span class="tok-operator">?</span> <span class="tok-type">UIWindowScene</span>) <span class="tok-keyword">else</span> { <span class="tok-keyword">return</span> }
+    window <span class="tok-operator">=</span> <span class="tok-type">AppSceneDelegate</span><span class="tok-operator">.</span><span class="tok-function">makeWindow_iOS</span>(the<span class="tok-type">Scene</span><span class="tok-operator">:</span> a<span class="tok-type">Scene</span>, the<span class="tok-type">VC</span><span class="tok-operator">:</span> <span class="tok-type">CommonViewController</span>())
   }
 }</code></pre>
 <h3>2.2. Building the Basic Blocks</h3>
@@ -130,89 +130,89 @@ It is an <code>AView</code> descendant, which means that it is <code>typedef-ed<
 <p>The solution is to add an additional <code>CATransformLayer</code> to the <code>green</code> layer, and mount the <code>purple</code> layer onto it. As explained in this blog post by Oliver Drobnik <a href="https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/"> Cubed CoreAnimation Conundrum.</a></p>
 <p>But I didn’t want to lose the linearity of the solution, and I used the approach demonstrated in the mentioned WWDC session: “2011–421 Core Animation Essentials”</p>
 <p>They used the <code>zOrder</code> property of a layer, and so I put <code>purple</code> layer on top of the <code>red</code> layer to achieve that.</p>
-<pre><code class="language-swift">    if number == 4 {
-      view.layer.zPosition = 1
+<pre><code class="language-swift">    <span class="tok-keyword">if</span> number <span class="tok-operator">=</span><span class="tok-operator">=</span> <span class="tok-number">4</span> {
+      view<span class="tok-operator">.</span>layer<span class="tok-operator">.</span>z<span class="tok-type">Position</span> <span class="tok-operator">=</span> <span class="tok-number">1</span>
     }</code></pre>
 <p>As you can see in the image below, the <code>purple</code> layer is in front of the <code>red</code> layer, which is obvious when we rotate the flattened cube.</p>
 <p><img src="https://aleahim.com/images/cacube/09_layers_zPosition.png" alt=""></p>
 <h3>2.3. Turning the Transform On and Off</h3>
 <p>I did take the approach that Over Drobnik did in his article: <a href="https://www.cocoanetics.com/2012/08/cubed-coreanimation-conundrum/"> Cubed CoreAnimation Conundrum </a>, and used it like this:</p>
-<pre><code class="language-swift">	side4.layer?.zPosition = on ? CACube3DView.sideWidth : 1
-    side1.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(1, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
-    side2.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(2, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
-    side3.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(3, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
-    side4.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(4, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
-    side5.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(5, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity
-    side6.layer?.transform = on ? CATransform3D.transformFor3DCubeSide(6, zWidth: CACube3DView.sideWidth)  : CATransform3DIdentity</code></pre>
+<pre><code class="language-swift">	side<span class="tok-number">4.</span>layer<span class="tok-operator">?</span><span class="tok-operator">.</span>z<span class="tok-type">Position</span> <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span> <span class="tok-operator">:</span> <span class="tok-number">1</span>
+    side<span class="tok-number">1.</span>layer<span class="tok-operator">?</span><span class="tok-operator">.</span>transform <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CATransform3D</span><span class="tok-operator">.</span><span class="tok-function">transformFor3DCubeSide</span>(<span class="tok-number">1</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>)  <span class="tok-operator">:</span> <span class="tok-type">CATransform3DIdentity</span>
+    side<span class="tok-number">2.</span>layer<span class="tok-operator">?</span><span class="tok-operator">.</span>transform <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CATransform3D</span><span class="tok-operator">.</span><span class="tok-function">transformFor3DCubeSide</span>(<span class="tok-number">2</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>)  <span class="tok-operator">:</span> <span class="tok-type">CATransform3DIdentity</span>
+    side<span class="tok-number">3.</span>layer<span class="tok-operator">?</span><span class="tok-operator">.</span>transform <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CATransform3D</span><span class="tok-operator">.</span><span class="tok-function">transformFor3DCubeSide</span>(<span class="tok-number">3</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>)  <span class="tok-operator">:</span> <span class="tok-type">CATransform3DIdentity</span>
+    side<span class="tok-number">4.</span>layer<span class="tok-operator">?</span><span class="tok-operator">.</span>transform <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CATransform3D</span><span class="tok-operator">.</span><span class="tok-function">transformFor3DCubeSide</span>(<span class="tok-number">4</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>)  <span class="tok-operator">:</span> <span class="tok-type">CATransform3DIdentity</span>
+    side<span class="tok-number">5.</span>layer<span class="tok-operator">?</span><span class="tok-operator">.</span>transform <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CATransform3D</span><span class="tok-operator">.</span><span class="tok-function">transformFor3DCubeSide</span>(<span class="tok-number">5</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>)  <span class="tok-operator">:</span> <span class="tok-type">CATransform3DIdentity</span>
+    side<span class="tok-number">6.</span>layer<span class="tok-operator">?</span><span class="tok-operator">.</span>transform <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CATransform3D</span><span class="tok-operator">.</span><span class="tok-function">transformFor3DCubeSide</span>(<span class="tok-number">6</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>)  <span class="tok-operator">:</span> <span class="tok-type">CATransform3DIdentity</span></code></pre>
 <h3>2.4. Transforming the Layers to Form a Cube</h3>
 <p>I didn’t use his transform code, since he used that additional <code>CATransformLayer</code>, so it wouldn’t work. So, here’s a small extension on the <code>CATransform3D</code></p>
-<pre><code class="language-swift">public extension CATransform3D {
-  static func transformFor3DCubeSide(_ number: Int, zWidth: CGFloat) -&gt; CATransform3D {
+<pre><code class="language-swift"><span class="tok-keyword">public</span> <span class="tok-keyword">extension</span> <span class="tok-type">CATransform3D</span> {
+  <span class="tok-keyword">static</span> <span class="tok-keyword">func</span> <span class="tok-function">transformFor3DCubeSide</span>(_ number<span class="tok-operator">:</span> <span class="tok-type">Int</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CGFloat</span>) <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">CATransform3D</span> {
 
-    let halfPi = CGFloat(Double.pi) / 2.0
-    var trans = CATransform3DIdentity
-    switch number {
-      case 1:
-        trans = CATransform3DMakeRotation(halfPi, 0, 1, 0)
-        break
-      case 2:
-        trans = CATransform3DIdentity
-        break
-      case 3:
-        trans = CATransform3DMakeRotation(-halfPi, 0, 1, 0)
-        break
-      case 4:
-        trans = CATransform3DMakeTranslation(0, 0, zWidth)
-        break
-      case 5:
-        trans = CATransform3DMakeRotation(-halfPi, 1, 0, 0)
-        break
-      case 6:
-        trans = CATransform3DMakeRotation(halfPi, 1, 0, 0)
-        break
-      default:
-        break
+    <span class="tok-keyword">let</span> half<span class="tok-type">Pi</span> <span class="tok-operator">=</span> <span class="tok-type">CGFloat</span>(<span class="tok-type">Double</span><span class="tok-operator">.</span>pi) <span class="tok-operator">/</span> <span class="tok-number">2.0</span>
+    <span class="tok-keyword">var</span> trans <span class="tok-operator">=</span> <span class="tok-type">CATransform3DIdentity</span>
+    <span class="tok-keyword">switch</span> number {
+      <span class="tok-keyword">case</span> <span class="tok-number">1</span><span class="tok-operator">:</span>
+        trans <span class="tok-operator">=</span> <span class="tok-type">CATransform3DMakeRotation</span>(half<span class="tok-type">Pi</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>)
+        <span class="tok-keyword">break</span>
+      <span class="tok-keyword">case</span> <span class="tok-number">2</span><span class="tok-operator">:</span>
+        trans <span class="tok-operator">=</span> <span class="tok-type">CATransform3DIdentity</span>
+        <span class="tok-keyword">break</span>
+      <span class="tok-keyword">case</span> <span class="tok-number">3</span><span class="tok-operator">:</span>
+        trans <span class="tok-operator">=</span> <span class="tok-type">CATransform3DMakeRotation</span>(<span class="tok-operator">-</span>half<span class="tok-type">Pi</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>)
+        <span class="tok-keyword">break</span>
+      <span class="tok-keyword">case</span> <span class="tok-number">4</span><span class="tok-operator">:</span>
+        trans <span class="tok-operator">=</span> <span class="tok-type">CATransform3DMakeTranslation</span>(<span class="tok-number">0</span>, <span class="tok-number">0</span>, z<span class="tok-type">Width</span>)
+        <span class="tok-keyword">break</span>
+      <span class="tok-keyword">case</span> <span class="tok-number">5</span><span class="tok-operator">:</span>
+        trans <span class="tok-operator">=</span> <span class="tok-type">CATransform3DMakeRotation</span>(<span class="tok-operator">-</span>half<span class="tok-type">Pi</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>)
+        <span class="tok-keyword">break</span>
+      <span class="tok-keyword">case</span> <span class="tok-number">6</span><span class="tok-operator">:</span>
+        trans <span class="tok-operator">=</span> <span class="tok-type">CATransform3DMakeRotation</span>(half<span class="tok-type">Pi</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>)
+        <span class="tok-keyword">break</span>
+      <span class="tok-keyword">default</span><span class="tok-operator">:</span>
+        <span class="tok-keyword">break</span>
     }
-    return trans
+    <span class="tok-keyword">return</span> trans
   }
 }</code></pre>
 <p>I actually used the approach form that WWDC session, and also used <code>anchorPoint</code> properties of the <code>CALayer</code>.</p>
 <h3>2.5. Positioning Cube Sides</h3>
 <p>Here’s a little extension on <code>CGPoint</code> that returns a tuple of our cube side positions and anchor points:</p>
-<pre><code class="language-swift">public extension CGPoint {
-  static func anchorPointAndPositionForCubeSideLayer(number: Int, sideSize: CGFloat) -&gt; (anchorPoint: CGPoint, position: CGPoint) {
-    var resultAnchorPoint = CGPoint(x:0.5, y:0.5)
-    var resultPosition = CGPoint(x:0.0, y:0.0)
-    let halfSideSize: CGFloat = sideSize / 2.0
-    switch number {
-      case 1:
-        resultAnchorPoint = CGPoint(x:1.0, y:0.5)
-        resultPosition = CGPoint(x:-halfSideSize, y:0.0)
-        break
-      case 2:
-        resultAnchorPoint = CGPoint(x:0.5, y:0.5)
-        resultPosition = CGPoint(x:0.0, y:0.0)
-        break
-      case 3:
-        resultAnchorPoint = CGPoint(x:0.0, y:0.5)
-        resultPosition = CGPoint(x:halfSideSize, y:0.0)
-        break
-      case 4:
-        resultAnchorPoint = CGPoint(x:0.5, y:0.5)
-        resultPosition = CGPoint(x:0.0, y:0.0)
-        break
-      case 5:
-        resultAnchorPoint = CGPoint(x:0.5, y:1.0)
-        resultPosition = CGPoint(x:0.0, y:-halfSideSize)
-        break
-      case 6:
-        resultAnchorPoint = CGPoint(x:0.5, y:0.0)
-        resultPosition = CGPoint(x:0.0, y:halfSideSize)
-        break
-      default:
-        break
+<pre><code class="language-swift"><span class="tok-keyword">public</span> <span class="tok-keyword">extension</span> <span class="tok-type">CGPoint</span> {
+  <span class="tok-keyword">static</span> <span class="tok-keyword">func</span> <span class="tok-function">anchorPointAndPositionForCubeSideLayer</span>(number<span class="tok-operator">:</span> <span class="tok-type">Int</span>, side<span class="tok-type">Size</span><span class="tok-operator">:</span> <span class="tok-type">CGFloat</span>) <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> (anchor<span class="tok-type">Point</span><span class="tok-operator">:</span> <span class="tok-type">CGPoint</span>, position<span class="tok-operator">:</span> <span class="tok-type">CGPoint</span>) {
+    <span class="tok-keyword">var</span> result<span class="tok-type">AnchorPoint</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-number">0.5</span>, y<span class="tok-operator">:</span><span class="tok-number">0.5</span>)
+    <span class="tok-keyword">var</span> result<span class="tok-type">Position</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-number">0.0</span>, y<span class="tok-operator">:</span><span class="tok-number">0.0</span>)
+    <span class="tok-keyword">let</span> half<span class="tok-type">SideSize</span><span class="tok-operator">:</span> <span class="tok-type">CGFloat</span> <span class="tok-operator">=</span> side<span class="tok-type">Size</span> <span class="tok-operator">/</span> <span class="tok-number">2.0</span>
+    <span class="tok-keyword">switch</span> number {
+      <span class="tok-keyword">case</span> <span class="tok-number">1</span><span class="tok-operator">:</span>
+        result<span class="tok-type">AnchorPoint</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-number">1.0</span>, y<span class="tok-operator">:</span><span class="tok-number">0.5</span>)
+        result<span class="tok-type">Position</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-operator">-</span>half<span class="tok-type">SideSize</span>, y<span class="tok-operator">:</span><span class="tok-number">0.0</span>)
+        <span class="tok-keyword">break</span>
+      <span class="tok-keyword">case</span> <span class="tok-number">2</span><span class="tok-operator">:</span>
+        result<span class="tok-type">AnchorPoint</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-number">0.5</span>, y<span class="tok-operator">:</span><span class="tok-number">0.5</span>)
+        result<span class="tok-type">Position</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-number">0.0</span>, y<span class="tok-operator">:</span><span class="tok-number">0.0</span>)
+        <span class="tok-keyword">break</span>
+      <span class="tok-keyword">case</span> <span class="tok-number">3</span><span class="tok-operator">:</span>
+        result<span class="tok-type">AnchorPoint</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-number">0.0</span>, y<span class="tok-operator">:</span><span class="tok-number">0.5</span>)
+        result<span class="tok-type">Position</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span>half<span class="tok-type">SideSize</span>, y<span class="tok-operator">:</span><span class="tok-number">0.0</span>)
+        <span class="tok-keyword">break</span>
+      <span class="tok-keyword">case</span> <span class="tok-number">4</span><span class="tok-operator">:</span>
+        result<span class="tok-type">AnchorPoint</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-number">0.5</span>, y<span class="tok-operator">:</span><span class="tok-number">0.5</span>)
+        result<span class="tok-type">Position</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-number">0.0</span>, y<span class="tok-operator">:</span><span class="tok-number">0.0</span>)
+        <span class="tok-keyword">break</span>
+      <span class="tok-keyword">case</span> <span class="tok-number">5</span><span class="tok-operator">:</span>
+        result<span class="tok-type">AnchorPoint</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-number">0.5</span>, y<span class="tok-operator">:</span><span class="tok-number">1.0</span>)
+        result<span class="tok-type">Position</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-number">0.0</span>, y<span class="tok-operator">:</span><span class="tok-operator">-</span>half<span class="tok-type">SideSize</span>)
+        <span class="tok-keyword">break</span>
+      <span class="tok-keyword">case</span> <span class="tok-number">6</span><span class="tok-operator">:</span>
+        result<span class="tok-type">AnchorPoint</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-number">0.5</span>, y<span class="tok-operator">:</span><span class="tok-number">0.0</span>)
+        result<span class="tok-type">Position</span> <span class="tok-operator">=</span> <span class="tok-type">CGPoint</span>(x<span class="tok-operator">:</span><span class="tok-number">0.0</span>, y<span class="tok-operator">:</span>half<span class="tok-type">SideSize</span>)
+        <span class="tok-keyword">break</span>
+      <span class="tok-keyword">default</span><span class="tok-operator">:</span>
+        <span class="tok-keyword">break</span>
     }
-    return (anchorPoint: resultAnchorPoint, position: resultPosition)
+    <span class="tok-keyword">return</span> (anchor<span class="tok-type">Point</span><span class="tok-operator">:</span> result<span class="tok-type">AnchorPoint</span>, position<span class="tok-operator">:</span> result<span class="tok-type">Position</span>)
   }
 }</code></pre>
 <p>In the image below I have marked where the <code>anchor points</code> are for each layer:</p>
@@ -227,52 +227,52 @@ Imagine holding a playing card with two fingers. Then try to spin the card. The 
 <p>It hooks-up:</p>
 <ul><li><p><code>NSPanGestureRecognizer</code> and <code>UIPanGestureRecognizer</code></p></li><li><p><code>func rotate(with event: NSEvent)</code> and <code>UIRotationGestureRecognizer</code></p></li><li><p><code>NSClickGestureRecognizer</code> and <code>UITapGestureRecognizer</code></p></li><li><p><code>func magnify(with event: NSEvent)</code> and <code>UIPinchGestureRecognizer</code></p></li></ul>
 <p>It then exposes all those events to the developer to use:</p>
-<pre><code class="language-swift">public extension GestureRecognizerView {
-  @objc func rotationChanged(degrees: Float) {}
-  @objc func rotationChanged(radians: Float) {}
-  @objc func displacementChanged(displacement: CGPoint) {}
-  @objc func scaleChanged(scale: CGFloat) {}
-  @objc func tapHappened() {}
+<pre><code class="language-swift"><span class="tok-keyword">public</span> <span class="tok-keyword">extension</span> <span class="tok-type">GestureRecognizerView</span> {
+  <span class="tok-attribute">@objc</span> <span class="tok-keyword">func</span> <span class="tok-function">rotationChanged</span>(degrees<span class="tok-operator">:</span> <span class="tok-type">Float</span>) {}
+  <span class="tok-attribute">@objc</span> <span class="tok-keyword">func</span> <span class="tok-function">rotationChanged</span>(radians<span class="tok-operator">:</span> <span class="tok-type">Float</span>) {}
+  <span class="tok-attribute">@objc</span> <span class="tok-keyword">func</span> <span class="tok-function">displacementChanged</span>(displacement<span class="tok-operator">:</span> <span class="tok-type">CGPoint</span>) {}
+  <span class="tok-attribute">@objc</span> <span class="tok-keyword">func</span> <span class="tok-function">scaleChanged</span>(scale<span class="tok-operator">:</span> <span class="tok-type">CGFloat</span>) {}
+  <span class="tok-attribute">@objc</span> <span class="tok-keyword">func</span> <span class="tok-function">tapHappened</span>() {}
 }</code></pre>
 <h2>4. Building a Layer to hold a Cube</h2>
 <p><code>CACube3DView</code> will hold the six layers than (can) make a cube.
 In order for <code>Core Animation</code> to render the transformed views in perspective, there is a property <code>sublayerTransform</code>.</p>
 <p>You either use that property of your parent layer, or add another layer class to your layer hierarchy: <code>CATransformLayer</code>. I opted to use that.</p>
-<pre><code class="language-swift">private(set) public lazy var transformedLayer: CALayer = {
-    let l = CATransformLayer()
-    l.name = "Transform Layer"
-    #if os(OSX)
-    l.isGeometryFlipped = true
-    #endif
-    return l
+<pre><code class="language-swift"><span class="tok-keyword">private</span>(set) <span class="tok-keyword">public</span> lazy <span class="tok-keyword">var</span> transformed<span class="tok-type">Layer</span><span class="tok-operator">:</span> <span class="tok-type">CALayer</span> <span class="tok-operator">=</span> {
+    <span class="tok-keyword">let</span> l <span class="tok-operator">=</span> <span class="tok-type">CATransformLayer</span>()
+    l<span class="tok-operator">.</span>name <span class="tok-operator">=</span> <span class="tok-string">"Transform Layer"</span>
+    #<span class="tok-keyword">if</span> <span class="tok-function">os</span>(<span class="tok-type">OSX</span>)
+    l<span class="tok-operator">.</span>is<span class="tok-type">GeometryFlipped</span> <span class="tok-operator">=</span> <span class="tok-literal">true</span>
+    #end<span class="tok-keyword">if</span>
+    <span class="tok-keyword">return</span> l
 }()</code></pre>
 <p>When adding sublayers, I add them to this <code>transformedLayer</code> property, and not my view’s layer.</p>
-<pre><code class="language-swift">func addSideSubview(_ subview: AView) {
-    addSubview(subview)
+<pre><code class="language-swift"><span class="tok-keyword">func</span> <span class="tok-function">addSideSubview</span>(_ subview<span class="tok-operator">:</span> <span class="tok-type">AView</span>) {
+    <span class="tok-function">addSubview</span>(subview)
 
-    #if os(iOS) || os(tvOS)
-    transformedLayer.addSublayer(subview.layer)
-    #endif
+    #<span class="tok-keyword">if</span> <span class="tok-function">os</span>(i<span class="tok-type">OS</span>) <span class="tok-operator">|</span><span class="tok-operator">|</span> <span class="tok-function">os</span>(tv<span class="tok-type">OS</span>)
+    transformed<span class="tok-type">Layer</span><span class="tok-operator">.</span><span class="tok-function">addSublayer</span>(subview<span class="tok-operator">.</span>layer)
+    #end<span class="tok-keyword">if</span>
 
-    #if os(OSX)
-    if let aLayer = subview.layer {
-      transformedLayer.addSublayer(aLayer)
-    } else {
-      fatalError("`subview.layer` == `nil`")
+    #<span class="tok-keyword">if</span> <span class="tok-function">os</span>(<span class="tok-type">OSX</span>)
+    <span class="tok-keyword">if</span> <span class="tok-keyword">let</span> a<span class="tok-type">Layer</span> <span class="tok-operator">=</span> subview<span class="tok-operator">.</span>layer {
+      transformed<span class="tok-type">Layer</span><span class="tok-operator">.</span><span class="tok-function">addSublayer</span>(a<span class="tok-type">Layer</span>)
+    } <span class="tok-keyword">else</span> {
+      <span class="tok-function">fatalError</span>(<span class="tok-string">"`subview.layer` == `nil`"</span>)
     }
-    #endif
+    #end<span class="tok-keyword">if</span>
 }</code></pre>
 <h2>5. Perspective &amp; Rotation</h2>
 <p>When the app first runs it shows in perspective.
 I made a little extension:</p>
-<pre><code class="language-swift">public extension CATransform3D {
-  static func somePerspectiveTransform() -&gt; CATransform3D {
-    var perspective = CATransform3DIdentity;
-    perspective.m34 = -1.0 / 500.0;
-    perspective = CATransform3DRotate(perspective, CGFloat(Double.pi) / 8, 1, 0, 0);
-    perspective = CATransform3DRotate(perspective, CGFloat(Double.pi) / 8, 0, 1, 0);
-    perspective = CATransform3DScale(perspective, 0.7, 0.7, 0.7)
-    return perspective
+<pre><code class="language-swift"><span class="tok-keyword">public</span> <span class="tok-keyword">extension</span> <span class="tok-type">CATransform3D</span> {
+  <span class="tok-keyword">static</span> <span class="tok-keyword">func</span> <span class="tok-function">somePerspectiveTransform</span>() <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">CATransform3D</span> {
+    <span class="tok-keyword">var</span> perspective <span class="tok-operator">=</span> <span class="tok-type">CATransform3DIdentity</span>;
+    perspective<span class="tok-operator">.</span>m<span class="tok-number">34</span> <span class="tok-operator">=</span> <span class="tok-number">-1.0</span> <span class="tok-operator">/</span> <span class="tok-number">500.0</span>;
+    perspective <span class="tok-operator">=</span> <span class="tok-type">CATransform3DRotate</span>(perspective, <span class="tok-type">CGFloat</span>(<span class="tok-type">Double</span><span class="tok-operator">.</span>pi) <span class="tok-operator">/</span> <span class="tok-number">8</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>);
+    perspective <span class="tok-operator">=</span> <span class="tok-type">CATransform3DRotate</span>(perspective, <span class="tok-type">CGFloat</span>(<span class="tok-type">Double</span><span class="tok-operator">.</span>pi) <span class="tok-operator">/</span> <span class="tok-number">8</span>, <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>);
+    perspective <span class="tok-operator">=</span> <span class="tok-type">CATransform3DScale</span>(perspective, <span class="tok-number">0.7</span>, <span class="tok-number">0.7</span>, <span class="tok-number">0.7</span>)
+    <span class="tok-keyword">return</span> perspective
   }
 }</code></pre>
 <p>The part: <code>perspective.m34 = -1.0 / 500.0;</code> sets the perspective.
@@ -280,93 +280,93 @@ The <code>.34</code> field of a matrix shows the amount of perspective distortio
 The amount <code>500</code> is often used in examples. If it were smaller, the layers would seem very close and distorted, like a fish-eye effect.</p>
 <p>This is the initial transform, but we want to be able to move and rotate our cube (flattened or not) with our fingers.</p>
 <p>Here’s the code:</p>
-<pre><code class="language-swift">public extension CATransform3D {
+<pre><code class="language-swift"><span class="tok-keyword">public</span> <span class="tok-keyword">extension</span> <span class="tok-type">CATransform3D</span> {
 
-  func rotationFromDisplacement(_ displacement: CGPoint, sideWidth: CGFloat, is3D: Bool) -&gt; CATransform3D {
+  <span class="tok-keyword">func</span> <span class="tok-function">rotationFromDisplacement</span>(_ displacement<span class="tok-operator">:</span> <span class="tok-type">CGPoint</span>, side<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CGFloat</span>, is<span class="tok-number">3</span><span class="tok-type">D</span><span class="tok-operator">:</span> <span class="tok-type">Bool</span>) <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">CATransform3D</span> {
 
-    var currentTransform = self
+    <span class="tok-keyword">var</span> current<span class="tok-type">Transform</span> <span class="tok-operator">=</span> <span class="tok-keyword">self</span>
 
-    let totalRotation: CGFloat = sqrt(displacement.x * displacement.x + displacement.y * displacement.y)
-    let angle: CGFloat = totalRotation * .pi / 180.0
+    <span class="tok-keyword">let</span> total<span class="tok-type">Rotation</span><span class="tok-operator">:</span> <span class="tok-type">CGFloat</span> <span class="tok-operator">=</span> <span class="tok-function">sqrt</span>(displacement<span class="tok-operator">.</span>x <span class="tok-operator">*</span> displacement<span class="tok-operator">.</span>x <span class="tok-operator">+</span> displacement<span class="tok-operator">.</span>y <span class="tok-operator">*</span> displacement<span class="tok-operator">.</span>y)
+    <span class="tok-keyword">let</span> angle<span class="tok-operator">:</span> <span class="tok-type">CGFloat</span> <span class="tok-operator">=</span> total<span class="tok-type">Rotation</span> <span class="tok-operator">*</span> <span class="tok-operator">.</span>pi <span class="tok-operator">/</span> <span class="tok-number">180.0</span>
 
-    let xRotationFactor = displacement.x / angle
-    let yRotationFactor = displacement.y / angle
+    <span class="tok-keyword">let</span> x<span class="tok-type">RotationFactor</span> <span class="tok-operator">=</span> displacement<span class="tok-operator">.</span>x <span class="tok-operator">/</span> angle
+    <span class="tok-keyword">let</span> y<span class="tok-type">RotationFactor</span> <span class="tok-operator">=</span> displacement<span class="tok-operator">.</span>y <span class="tok-operator">/</span> angle
 
-    if is3D {
-      currentTransform = CATransform3DTranslate(currentTransform, 0, 0, sideWidth / 2.0)
+    <span class="tok-keyword">if</span> is<span class="tok-number">3</span><span class="tok-type">D</span> {
+      current<span class="tok-type">Transform</span> <span class="tok-operator">=</span> <span class="tok-type">CATransform3DTranslate</span>(current<span class="tok-type">Transform</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, side<span class="tok-type">Width</span> <span class="tok-operator">/</span> <span class="tok-number">2.0</span>)
     }
 
-    var rotationalTransform = CATransform3DRotate(currentTransform, angle,
-                                                  (xRotationFactor * currentTransform.m12 - yRotationFactor * currentTransform.m11),
-                                                  (xRotationFactor * currentTransform.m22 - yRotationFactor * currentTransform.m21),
-                                                  (xRotationFactor * currentTransform.m32 - yRotationFactor * currentTransform.m31))
+    <span class="tok-keyword">var</span> rotational<span class="tok-type">Transform</span> <span class="tok-operator">=</span> <span class="tok-type">CATransform3DRotate</span>(current<span class="tok-type">Transform</span>, angle,
+                                                  (x<span class="tok-type">RotationFactor</span> <span class="tok-operator">*</span> current<span class="tok-type">Transform</span><span class="tok-operator">.</span>m<span class="tok-number">12</span> <span class="tok-operator">-</span> y<span class="tok-type">RotationFactor</span> <span class="tok-operator">*</span> current<span class="tok-type">Transform</span><span class="tok-operator">.</span>m<span class="tok-number">11</span>),
+                                                  (x<span class="tok-type">RotationFactor</span> <span class="tok-operator">*</span> current<span class="tok-type">Transform</span><span class="tok-operator">.</span>m<span class="tok-number">22</span> <span class="tok-operator">-</span> y<span class="tok-type">RotationFactor</span> <span class="tok-operator">*</span> current<span class="tok-type">Transform</span><span class="tok-operator">.</span>m<span class="tok-number">21</span>),
+                                                  (x<span class="tok-type">RotationFactor</span> <span class="tok-operator">*</span> current<span class="tok-type">Transform</span><span class="tok-operator">.</span>m<span class="tok-number">32</span> <span class="tok-operator">-</span> y<span class="tok-type">RotationFactor</span> <span class="tok-operator">*</span> current<span class="tok-type">Transform</span><span class="tok-operator">.</span>m<span class="tok-number">31</span>))
 
-    if (is3D) {
-      rotationalTransform = CATransform3DTranslate(rotationalTransform, 0, 0, -sideWidth / 2.0);
+    <span class="tok-keyword">if</span> (is<span class="tok-number">3</span><span class="tok-type">D</span>) {
+      rotational<span class="tok-type">Transform</span> <span class="tok-operator">=</span> <span class="tok-type">CATransform3DTranslate</span>(rotational<span class="tok-type">Transform</span>, <span class="tok-number">0</span>, <span class="tok-number">0</span>, <span class="tok-operator">-</span>side<span class="tok-type">Width</span> <span class="tok-operator">/</span> <span class="tok-number">2.0</span>);
     }
 
-    return rotationalTransform
+    <span class="tok-keyword">return</span> rotational<span class="tok-type">Transform</span>
   }
 }</code></pre>
 <p>We call it from our pan-gesture methods</p>
-<pre><code class="language-swift">  override func displacementChanged(displacement: CGPoint) {
-    guard !(displacement.x == 0 &amp;&amp; displacement.y == 0) else { return }
+<pre><code class="language-swift">  override <span class="tok-keyword">func</span> <span class="tok-function">displacementChanged</span>(displacement<span class="tok-operator">:</span> <span class="tok-type">CGPoint</span>) {
+    <span class="tok-keyword">guard</span> <span class="tok-operator">!</span>(displacement<span class="tok-operator">.</span>x <span class="tok-operator">=</span><span class="tok-operator">=</span> <span class="tok-number">0</span> <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> displacement<span class="tok-operator">.</span>y <span class="tok-operator">=</span><span class="tok-operator">=</span> <span class="tok-number">0</span>) <span class="tok-keyword">else</span> { <span class="tok-keyword">return</span> }
 
-    let rotationTransform = transformedLayer.sublayerTransform.rotationFromDisplacement(displacement, sideWidth: CACube3DView.sideWidth, is3D: isOn)
-    transformedLayer.sublayerTransform = rotationTransform
+    <span class="tok-keyword">let</span> rotation<span class="tok-type">Transform</span> <span class="tok-operator">=</span> transformed<span class="tok-type">Layer</span><span class="tok-operator">.</span>sublayer<span class="tok-type">Transform</span><span class="tok-operator">.</span><span class="tok-function">rotationFromDisplacement</span>(displacement, side<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>, is<span class="tok-number">3</span><span class="tok-type">D</span><span class="tok-operator">:</span> is<span class="tok-type">On</span>)
+    transformed<span class="tok-type">Layer</span><span class="tok-operator">.</span>sublayer<span class="tok-type">Transform</span> <span class="tok-operator">=</span> rotation<span class="tok-type">Transform</span>
   }</code></pre>
 <p>We hooked up the pan-gestures prior:</p>
-<pre><code class="language-swift">#if os(OSX)
-private func setupPanGestureRecognizer() {
-    let panGR = NSPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-    addGestureRecognizer(panGR)
+<pre><code class="language-swift">#<span class="tok-keyword">if</span> <span class="tok-function">os</span>(<span class="tok-type">OSX</span>)
+<span class="tok-keyword">private</span> <span class="tok-keyword">func</span> <span class="tok-function">setupPanGestureRecognizer</span>() {
+    <span class="tok-keyword">let</span> pan<span class="tok-type">GR</span> <span class="tok-operator">=</span> <span class="tok-type">NSPanGestureRecognizer</span>(target<span class="tok-operator">:</span> <span class="tok-keyword">self</span>, action<span class="tok-operator">:</span> #<span class="tok-function">selector</span>(<span class="tok-function">handlePanGesture</span>(_<span class="tok-operator">:</span>)))
+    <span class="tok-function">addGestureRecognizer</span>(pan<span class="tok-type">GR</span>)
 }
-@objc func handlePanGesture(_ gestureRecognizer: NSPanGestureRecognizer) {
-    let displacement: CGPoint = gestureRecognizer.translation(in: self)
-    handlePan(displacement: displacement, changed: gestureRecognizer.state == .changed)
+<span class="tok-attribute">@objc</span> <span class="tok-keyword">func</span> <span class="tok-function">handlePanGesture</span>(_ gesture<span class="tok-type">Recognizer</span><span class="tok-operator">:</span> <span class="tok-type">NSPanGestureRecognizer</span>) {
+    <span class="tok-keyword">let</span> displacement<span class="tok-operator">:</span> <span class="tok-type">CGPoint</span> <span class="tok-operator">=</span> gesture<span class="tok-type">Recognizer</span><span class="tok-operator">.</span><span class="tok-function">translation</span>(<span class="tok-keyword">in</span><span class="tok-operator">:</span> <span class="tok-keyword">self</span>)
+    <span class="tok-function">handlePan</span>(displacement<span class="tok-operator">:</span> displacement, changed<span class="tok-operator">:</span> gesture<span class="tok-type">Recognizer</span><span class="tok-operator">.</span>state <span class="tok-operator">=</span><span class="tok-operator">=</span> <span class="tok-operator">.</span>changed)
 }
-#endif
+#end<span class="tok-keyword">if</span>
 
-#if os(iOS) || os(tvOS)
-private func setupPanGestureRecognizer() {
-    let panGR = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-    addGestureRecognizer(panGR)
+#<span class="tok-keyword">if</span> <span class="tok-function">os</span>(i<span class="tok-type">OS</span>) <span class="tok-operator">|</span><span class="tok-operator">|</span> <span class="tok-function">os</span>(tv<span class="tok-type">OS</span>)
+<span class="tok-keyword">private</span> <span class="tok-keyword">func</span> <span class="tok-function">setupPanGestureRecognizer</span>() {
+    <span class="tok-keyword">let</span> pan<span class="tok-type">GR</span> <span class="tok-operator">=</span> <span class="tok-type">UIPanGestureRecognizer</span>(target<span class="tok-operator">:</span> <span class="tok-keyword">self</span>, action<span class="tok-operator">:</span> #<span class="tok-function">selector</span>(<span class="tok-function">handlePanGesture</span>(_<span class="tok-operator">:</span>)))
+    <span class="tok-function">addGestureRecognizer</span>(pan<span class="tok-type">GR</span>)
 }
 
-@objc func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
-    let displacement: CGPoint = gestureRecognizer.translation(in: self)
+<span class="tok-attribute">@objc</span> <span class="tok-keyword">func</span> <span class="tok-function">handlePanGesture</span>(_ gesture<span class="tok-type">Recognizer</span><span class="tok-operator">:</span> <span class="tok-type">UIPanGestureRecognizer</span>) {
+    <span class="tok-keyword">let</span> displacement<span class="tok-operator">:</span> <span class="tok-type">CGPoint</span> <span class="tok-operator">=</span> gesture<span class="tok-type">Recognizer</span><span class="tok-operator">.</span><span class="tok-function">translation</span>(<span class="tok-keyword">in</span><span class="tok-operator">:</span> <span class="tok-keyword">self</span>)
 
-    handlePan(displacement: displacement, changed: gestureRecognizer.state == .changed)
+    <span class="tok-function">handlePan</span>(displacement<span class="tok-operator">:</span> displacement, changed<span class="tok-operator">:</span> gesture<span class="tok-type">Recognizer</span><span class="tok-operator">.</span>state <span class="tok-operator">=</span><span class="tok-operator">=</span> <span class="tok-operator">.</span>changed)
 
-    if gestureRecognizer.state == .changed {
-      gestureRecognizer.setTranslation(.zero, in: self)
+    <span class="tok-keyword">if</span> gesture<span class="tok-type">Recognizer</span><span class="tok-operator">.</span>state <span class="tok-operator">=</span><span class="tok-operator">=</span> <span class="tok-operator">.</span>changed {
+      gesture<span class="tok-type">Recognizer</span><span class="tok-operator">.</span><span class="tok-function">setTranslation</span>(<span class="tok-operator">.</span>zero, <span class="tok-keyword">in</span><span class="tok-operator">:</span> <span class="tok-keyword">self</span>)
     }
 }
-#endif</code></pre>
+#end<span class="tok-keyword">if</span></code></pre>
 <p>We can also add a simple rotation transform for the rotation events/ gestures.</p>
-<pre><code class="language-swift">  override func rotationChanged(radians: Float) {
-    let transform = transformedLayer.sublayerTransform
-    let rot = CATransform3DRotate(transform, CGFloat(radians), 0, 1, 0)
-    transformedLayer.sublayerTransform = rot
+<pre><code class="language-swift">  override <span class="tok-keyword">func</span> <span class="tok-function">rotationChanged</span>(radians<span class="tok-operator">:</span> <span class="tok-type">Float</span>) {
+    <span class="tok-keyword">let</span> transform <span class="tok-operator">=</span> transformed<span class="tok-type">Layer</span><span class="tok-operator">.</span>sublayer<span class="tok-type">Transform</span>
+    <span class="tok-keyword">let</span> rot <span class="tok-operator">=</span> <span class="tok-type">CATransform3DRotate</span>(transform, <span class="tok-type">CGFloat</span>(radians), <span class="tok-number">0</span>, <span class="tok-number">1</span>, <span class="tok-number">0</span>)
+    transformed<span class="tok-type">Layer</span><span class="tok-operator">.</span>sublayer<span class="tok-type">Transform</span> <span class="tok-operator">=</span> rot
   }</code></pre>
 <p>And scale, in all three axes:</p>
-<pre><code class="language-swift">  override func scaleChanged(scale: CGFloat) {
-    let scaleTransform = CATransform3DScale(transformedLayer.sublayerTransform, scale, scale, scale)
-    transformedLayer.sublayerTransform = scaleTransform
+<pre><code class="language-swift">  override <span class="tok-keyword">func</span> <span class="tok-function">scaleChanged</span>(scale<span class="tok-operator">:</span> <span class="tok-type">CGFloat</span>) {
+    <span class="tok-keyword">let</span> scale<span class="tok-type">Transform</span> <span class="tok-operator">=</span> <span class="tok-type">CATransform3DScale</span>(transformed<span class="tok-type">Layer</span><span class="tok-operator">.</span>sublayer<span class="tok-type">Transform</span>, scale, scale, scale)
+    transformed<span class="tok-type">Layer</span><span class="tok-operator">.</span>sublayer<span class="tok-type">Transform</span> <span class="tok-operator">=</span> scale<span class="tok-type">Transform</span>
   }</code></pre>
 <p>The <code>tap</code> turns on and off our 3D transform</p>
-<pre><code class="language-swift">  override func tapHappened() {
-    set3DCube(on: isOn)
+<pre><code class="language-swift">  override <span class="tok-keyword">func</span> <span class="tok-function">tapHappened</span>() {
+    <span class="tok-function">set3DCube</span>(on<span class="tok-operator">:</span> is<span class="tok-type">On</span>)
   }</code></pre>
 <p>Here’s the 3D cube code</p>
-<pre><code class="language-swift">  func set3DCube(on: Bool) {
-    side4.layer.zPosition = on ? CACube3DView.sideWidth : 1
-    side1.layer.transform = on ? CATransform3D.transformFor3DCubeSide(1, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
-    side2.layer.transform = on ? CATransform3D.transformFor3DCubeSide(2, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
-    side3.layer.transform = on ? CATransform3D.transformFor3DCubeSide(3, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
-    side4.layer.transform = on ? CATransform3D.transformFor3DCubeSide(4, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
-    side5.layer.transform = on ? CATransform3D.transformFor3DCubeSide(5, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
-    side6.layer.transform = on ? CATransform3D.transformFor3DCubeSide(6, zWidth: CACube3DView.sideWidth) : CATransform3DIdentity
+<pre><code class="language-swift">  <span class="tok-keyword">func</span> <span class="tok-function">set3DCube</span>(on<span class="tok-operator">:</span> <span class="tok-type">Bool</span>) {
+    side<span class="tok-number">4.</span>layer<span class="tok-operator">.</span>z<span class="tok-type">Position</span> <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span> <span class="tok-operator">:</span> <span class="tok-number">1</span>
+    side<span class="tok-number">1.</span>layer<span class="tok-operator">.</span>transform <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CATransform3D</span><span class="tok-operator">.</span><span class="tok-function">transformFor3DCubeSide</span>(<span class="tok-number">1</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>) <span class="tok-operator">:</span> <span class="tok-type">CATransform3DIdentity</span>
+    side<span class="tok-number">2.</span>layer<span class="tok-operator">.</span>transform <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CATransform3D</span><span class="tok-operator">.</span><span class="tok-function">transformFor3DCubeSide</span>(<span class="tok-number">2</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>) <span class="tok-operator">:</span> <span class="tok-type">CATransform3DIdentity</span>
+    side<span class="tok-number">3.</span>layer<span class="tok-operator">.</span>transform <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CATransform3D</span><span class="tok-operator">.</span><span class="tok-function">transformFor3DCubeSide</span>(<span class="tok-number">3</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>) <span class="tok-operator">:</span> <span class="tok-type">CATransform3DIdentity</span>
+    side<span class="tok-number">4.</span>layer<span class="tok-operator">.</span>transform <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CATransform3D</span><span class="tok-operator">.</span><span class="tok-function">transformFor3DCubeSide</span>(<span class="tok-number">4</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>) <span class="tok-operator">:</span> <span class="tok-type">CATransform3DIdentity</span>
+    side<span class="tok-number">5.</span>layer<span class="tok-operator">.</span>transform <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CATransform3D</span><span class="tok-operator">.</span><span class="tok-function">transformFor3DCubeSide</span>(<span class="tok-number">5</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>) <span class="tok-operator">:</span> <span class="tok-type">CATransform3DIdentity</span>
+    side<span class="tok-number">6.</span>layer<span class="tok-operator">.</span>transform <span class="tok-operator">=</span> on <span class="tok-operator">?</span> <span class="tok-type">CATransform3D</span><span class="tok-operator">.</span><span class="tok-function">transformFor3DCubeSide</span>(<span class="tok-number">6</span>, z<span class="tok-type">Width</span><span class="tok-operator">:</span> <span class="tok-type">CACube3DView</span><span class="tok-operator">.</span>side<span class="tok-type">Width</span>) <span class="tok-operator">:</span> <span class="tok-type">CATransform3DIdentity</span>
   }</code></pre>
 <p>We either set the <code>identity transform</code>, which means <code>no transform</code>, to our cube sides, or the transform appropriate for that particular side.</p>
 <h2>6. macOS Troubles</h2>

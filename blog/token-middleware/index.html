@@ -72,31 +72,31 @@
 <p>I built <code>BearerTokenAuthenticationMiddleware</code>—a minimal, zero-dependency package that solves these problems elegantly. Here’s what makes it special:</p>
 <h3>1. Actor-Isolated Token Storage</h3>
 <p>The heart of the middleware is a private <code>TokenStorage</code> actor that manages the authentication token:</p>
-<pre><code class="language-swift">private actor TokenStorage {
-    var token: String?
+<pre><code class="language-swift"><span class="tok-keyword">private</span> <span class="tok-keyword">actor</span> <span class="tok-type">TokenStorage</span> {
+    <span class="tok-keyword">var</span> token<span class="tok-operator">:</span> <span class="tok-type">String</span><span class="tok-operator">?</span>
 
-    func getToken() -&gt; String? {
+    <span class="tok-keyword">func</span> <span class="tok-function">getToken</span>() <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">String</span><span class="tok-operator">?</span> {
         token
     }
 
-    func setToken(_ newToken: String?) {
-        token = newToken
+    <span class="tok-keyword">func</span> <span class="tok-function">setToken</span>(_ new<span class="tok-type">Token</span><span class="tok-operator">:</span> <span class="tok-type">String</span><span class="tok-operator">?</span>) {
+        token <span class="tok-operator">=</span> new<span class="tok-type">Token</span>
     }
 }</code></pre>
 <p>This ensures that token reads and writes are <strong>never concurrent</strong>, eliminating race conditions completely.</p>
 <h3>2. Clean, Composable API</h3>
 <p>Setting up the middleware is straightforward:</p>
-<pre><code class="language-swift">import OpenAPIRuntime
-import BearerTokenAuthMiddleware
+<pre><code class="language-swift"><span class="tok-keyword">import</span> <span class="tok-type">OpenAPIRuntime</span>
+<span class="tok-keyword">import</span> <span class="tok-type">BearerTokenAuthMiddleware</span>
 
-let authMiddleware = BearerTokenAuthenticationMiddleware(
-    initialToken: "my-secret-token"
+<span class="tok-keyword">let</span> auth<span class="tok-type">Middleware</span> <span class="tok-operator">=</span> <span class="tok-type">BearerTokenAuthenticationMiddleware</span>(
+    initial<span class="tok-type">Token</span><span class="tok-operator">:</span> <span class="tok-string">"my-secret-token"</span>
 )
 
-let client = Client(
-    serverURL: URL(string: "https://api.example.com")!,
-    transport: AsyncHTTPClientTransport(),
-    middlewares: [authMiddleware]
+<span class="tok-keyword">let</span> client <span class="tok-operator">=</span> <span class="tok-type">Client</span>(
+    server<span class="tok-type">URL</span><span class="tok-operator">:</span> <span class="tok-type">URL</span>(string<span class="tok-operator">:</span> <span class="tok-string">"https://api.example.com"</span>)<span class="tok-operator">!</span>,
+    transport<span class="tok-operator">:</span> <span class="tok-type">AsyncHTTPClientTransport</span>(),
+    middlewares<span class="tok-operator">:</span> [auth<span class="tok-type">Middleware</span>]
 )</code></pre>
 <p>Every request now automatically includes <code>Authorization: Bearer my-secret-token</code>.</p>
 <h2>Wrapping Up</h2>

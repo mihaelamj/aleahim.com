@@ -91,11 +91,11 @@
 <h4>Highlights</h4>
 <ul><li><p><code>ApiClient</code> actor manages shared state safely across async contexts</p></li><li><p>Middleware chain introduced: <strong>Logging → Authentication → Correction</strong></p></li><li><p>Runtime environment switching between <code>.production</code>, <code>.local</code>, and <code>.mock</code></p></li><li><p>Shared singleton <code>ApiClientState</code> stores token, settings, and preferences</p></li></ul>
 <p>Example flow:</p>
-<pre><code class="language-swift">try await ApiClient.initializeShared(environment: .production)
-let client = ApiClient.shared!
-let auth = try await client.login(username: "emilys", password: "emilyspass")
-await ApiClient.setToken(auth.accessToken)
-let users = try await client.getUsers(limit: 10)</code></pre>
+<pre><code class="language-swift"><span class="tok-keyword">try</span> <span class="tok-keyword">await</span> <span class="tok-type">ApiClient</span><span class="tok-operator">.</span><span class="tok-function">initializeShared</span>(environment<span class="tok-operator">:</span> <span class="tok-operator">.</span>production)
+<span class="tok-keyword">let</span> client <span class="tok-operator">=</span> <span class="tok-type">ApiClient</span><span class="tok-operator">.</span>shared<span class="tok-operator">!</span>
+<span class="tok-keyword">let</span> auth <span class="tok-operator">=</span> <span class="tok-keyword">try</span> <span class="tok-keyword">await</span> client<span class="tok-operator">.</span><span class="tok-function">login</span>(username<span class="tok-operator">:</span> <span class="tok-string">"emilys"</span>, password<span class="tok-operator">:</span> <span class="tok-string">"emilyspass"</span>)
+<span class="tok-keyword">await</span> <span class="tok-type">ApiClient</span><span class="tok-operator">.</span><span class="tok-function">setToken</span>(auth<span class="tok-operator">.</span>access<span class="tok-type">Token</span>)
+<span class="tok-keyword">let</span> users <span class="tok-operator">=</span> <span class="tok-keyword">try</span> <span class="tok-keyword">await</span> client<span class="tok-operator">.</span><span class="tok-function">getUsers</span>(limit<span class="tok-operator">:</span> <span class="tok-number">10</span>)</code></pre>
 <p>A clear separation between environment configuration and runtime state ensures deterministic, thread-safe behavior.</p>
 <hr>
 <h3>4. Middleware Integration</h3>
@@ -128,8 +128,8 @@ This guarantees write permissions and makes the tool available to everyone check
 └── 08_ExternalDocs/</code></pre>
 <p>Each folder corresponds to a section of the OpenAPI spec, allowing multiple developers to work on different endpoints, schemas, or components without conflicts.</p>
 <h4>⚙️ Typical Workflow</h4>
-<pre><code class="language-bash"># Merge schemas before build
-./Tools/YamlMerger merge   --input Sources/SharedApiModels/schemas/   --output Sources/SharedApiModels/openapi.yaml</code></pre>
+<pre><code class="language-bash"><span class="tok-comment"># Merge schemas before build</span>
+<span class="tok-operator">.</span><span class="tok-operator">/</span>Tools<span class="tok-operator">/</span>YamlMerger merge   <span class="tok-operator">-</span><span class="tok-operator">-</span>input Sources<span class="tok-operator">/</span>SharedApiModels<span class="tok-operator">/</span>schemas<span class="tok-operator">/</span>   <span class="tok-operator">-</span><span class="tok-operator">-</span>output Sources<span class="tok-operator">/</span>SharedApiModels<span class="tok-operator">/</span>openapi<span class="tok-operator">.</span>yaml</code></pre>
 <p>You can run this manually, in a pre-build phase, or as part of CI/CD automation.</p>
 <h4>💡 Pro Tip</h4>
 <p>If your project starts <strong>without</strong> an <code>openapi.yaml</code>, placing schema fragments in structured folders under <code>Tests/</code> ensures your API structure remains organized — even before full code generation.

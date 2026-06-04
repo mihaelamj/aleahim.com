@@ -66,70 +66,70 @@
 <main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">December 5, 2025</time></div><h1 class="td-article-title">Cupertino v0.3.0: From 20 Hours to 30 Seconds</h1><p class="td-article-dek">The new setup command downloads pre-built databases instantly - no more crawling Apple&#39;s documentation for hours</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/cupertino-instant-setup/">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-instant-setup%2F&amp;text=Cupertino%20v0.3.0%3A%20From%2020%20Hours%20to%2030%20Seconds" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-instant-setup%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-instant-setup%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=Cupertino%20v0.3.0%3A%20From%2020%20Hours%20to%2030%20Seconds&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-instant-setup%2F" target="_blank" rel="noopener">Email</a></nav><nav class="td-tags td-article-tags" aria-label="Tags"><a class="td-tag" href="https://aleahim.com/tags/cupertino/">Cupertino</a><a class="td-tag" href="https://aleahim.com/tags/apple-docs/">Apple Docs</a><a class="td-tag" href="https://aleahim.com/tags/ai/">AI</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/blog/cupertino-instant-setup/hero.jpg" alt="Cupertino v0.3.0: From 20 Hours to 30 Seconds"></figure><div class="td-article-body"><p><strong>TL;DR:</strong> <code>cupertino setup</code> now downloads pre-built databases in ~30 seconds. No more 20-hour crawls.</p>
 <h2>The Problem With v0.2.x</h2>
 <p>When I released Cupertino, the setup process looked like this:</p>
-<pre><code class="language-bash">cupertino fetch --type docs --max-pages 15000  # ~20-24 hours
-cupertino fetch --type evolution               # ~5 minutes
-cupertino save                                 # ~5 minutes</code></pre>
+<pre><code class="language-bash">cupertino fetch <span class="tok-operator">-</span><span class="tok-operator">-</span>type docs <span class="tok-operator">-</span><span class="tok-operator">-</span>max<span class="tok-operator">-</span>pages <span class="tok-number">15000</span>  <span class="tok-comment"># ~20-24 hours</span>
+cupertino fetch <span class="tok-operator">-</span><span class="tok-operator">-</span>type evolution               <span class="tok-comment"># ~5 minutes</span>
+cupertino save                                 <span class="tok-comment"># ~5 minutes</span></code></pre>
 <p>Twenty hours. To respect Apple’s servers, the crawler waits 0.5 seconds between requests. 21,000 pages × 0.5s = a very long initial setup.</p>
 <p>Users loved the tool but hated the onboarding. Fair.</p>
 <h2>The Solution: Pre-built Databases</h2>
 <p>Instead of everyone crawling Apple’s documentation independently, I now publish pre-built databases on GitHub Releases. The new setup flow:</p>
-<pre><code class="language-bash">cupertino setup   # ~30 seconds
-cupertino serve   # Start MCP server</code></pre>
+<pre><code class="language-bash">cupertino setup   <span class="tok-comment"># ~30 seconds</span>
+cupertino serve   <span class="tok-comment"># Start MCP server</span></code></pre>
 <p>That’s it. Two commands. Under a minute.</p>
 <h2>How It Works</h2>
 <h3>For Users</h3>
 <p>The <code>setup</code> command downloads a zip file from GitHub Releases containing:</p>
 <ul><li><p><code>search.db</code> (~1.1 GB) - 138,000+ documentation pages</p></li><li><p><code>samples.db</code> (~183 MB) - 606 sample projects, 18,000+ source files</p></li></ul>
-<pre><code class="language-bash">$ cupertino setup
+<pre><code class="language-bash"><span class="tok-property">$</span> cupertino setup
 
 📦 Cupertino Setup
 
-⬇️  Downloading Databases...
-   ⠹ [████████████████░░░░░░░░░░░░░░]  53% (121.0 MB/228.1 MB)
-   ✓ Databases (228.1 MB)
-📂 Extracting databases...
+⬇️  Downloading Databases<span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">.</span>
+   ⠹ [████████████████░░░░░░░░░░░░░░]  <span class="tok-number">53</span><span class="tok-operator">%</span> (<span class="tok-number">121.0</span> MB<span class="tok-operator">/</span><span class="tok-number">228.1</span> MB)
+   ✓ <span class="tok-function">Databases</span> (<span class="tok-number">228.1</span> MB)
+📂 Extracting databases<span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">.</span>
    ✓ Extracted
 
-✅ Setup complete!
-   Documentation: /Users/you/.cupertino/search.db
-   Sample code:   /Users/you/.cupertino/samples.db
+✅ Setup complete<span class="tok-operator">!</span>
+   Documentation<span class="tok-operator">:</span> <span class="tok-operator">/</span>Users<span class="tok-operator">/</span>you<span class="tok-operator">/</span><span class="tok-operator">.</span>cupertino<span class="tok-operator">/</span>search<span class="tok-operator">.</span>db
+   Sample code<span class="tok-operator">:</span>   <span class="tok-operator">/</span>Users<span class="tok-operator">/</span>you<span class="tok-operator">/</span><span class="tok-operator">.</span>cupertino<span class="tok-operator">/</span>samples<span class="tok-operator">.</span>db
 
-💡 Start the server with: cupertino serve</code></pre>
+💡 Start the server with<span class="tok-operator">:</span> cupertino serve</code></pre>
 <p>If databases already exist, it skips the download:</p>
-<pre><code class="language-bash">$ cupertino setup
+<pre><code class="language-bash"><span class="tok-property">$</span> cupertino setup
 
 📦 Cupertino Setup
 
 ✅ Databases already exist
-   Documentation: /Users/you/.cupertino/search.db
-   Sample code:   /Users/you/.cupertino/samples.db
+   Documentation<span class="tok-operator">:</span> <span class="tok-operator">/</span>Users<span class="tok-operator">/</span>you<span class="tok-operator">/</span><span class="tok-operator">.</span>cupertino<span class="tok-operator">/</span>search<span class="tok-operator">.</span>db
+   Sample code<span class="tok-operator">:</span>   <span class="tok-operator">/</span>Users<span class="tok-operator">/</span>you<span class="tok-operator">/</span><span class="tok-operator">.</span>cupertino<span class="tok-operator">/</span>samples<span class="tok-operator">.</span>db
 
-💡 Use --force to overwrite with latest version
-💡 Start the server with: cupertino serve</code></pre>
+💡 Use <span class="tok-operator">-</span><span class="tok-operator">-</span>force to overwrite with latest version
+💡 Start the server with<span class="tok-operator">:</span> cupertino serve</code></pre>
 <h3>For Me (Maintainer)</h3>
 <p>A new <code>release</code> command automates publishing:</p>
-<pre><code class="language-bash">$ cupertino release
+<pre><code class="language-bash"><span class="tok-property">$</span> cupertino release
 
-📦 Cupertino Release v0.3.0
+📦 Cupertino Release v<span class="tok-number">0.3.0</span>
 
-📊 Database sizes:
-   search.db:  1.2 GB
-   samples.db: 192.2 MB
+📊 Database sizes<span class="tok-operator">:</span>
+   search<span class="tok-operator">.</span>db<span class="tok-operator">:</span>  <span class="tok-number">1.2</span> GB
+   samples<span class="tok-operator">.</span>db<span class="tok-operator">:</span> <span class="tok-number">192.2</span> MB
 
-📁 Creating cupertino-databases-v0.3.0.zip...
-   ✓ Created (228.3 MB)
+📁 Creating cupertino<span class="tok-operator">-</span>databases<span class="tok-operator">-</span>v<span class="tok-number">0.3.0.</span>zip<span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">.</span>
+   ✓ <span class="tok-function">Created</span> (<span class="tok-number">228.3</span> MB)
 
-🔐 Calculating SHA256...
-   17dac4b84adaa04b5f976a7d1b9126630545f0101fe84ca5423163da886386a6
+🔐 Calculating SHA<span class="tok-number">256...</span>
+   <span class="tok-number">17</span>dac<span class="tok-number">4</span>b<span class="tok-number">84</span>adaa<span class="tok-number">04</span>b<span class="tok-number">5</span>f<span class="tok-number">976</span>a<span class="tok-number">7</span>d<span class="tok-number">1</span>b<span class="tok-number">9126630545</span>f<span class="tok-number">0101</span>fe<span class="tok-number">84</span>ca<span class="tok-number">5423163</span>da<span class="tok-number">886386</span>a<span class="tok-number">6</span>
 
-🚀 Creating release v0.3.0...
+🚀 Creating release v<span class="tok-number">0.3.0...</span>
    ✓ Release created
 
-⬆️  Uploading cupertino-databases-v0.3.0.zip...
+⬆️  Uploading cupertino<span class="tok-operator">-</span>databases<span class="tok-operator">-</span>v<span class="tok-number">0.3.0.</span>zip<span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">.</span>
    ✓ Upload complete
 
-✅ Release v0.3.0 published!
-   https://github.com/mihaelamj/cupertino-docs/releases/tag/v0.3.0</code></pre>
+✅ Release v<span class="tok-number">0.3.0</span> published<span class="tok-operator">!</span>
+   https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>github<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">-</span>docs<span class="tok-operator">/</span>releases<span class="tok-operator">/</span>tag<span class="tok-operator">/</span>v<span class="tok-number">0.3.0</span></code></pre>
 <p>When I refresh the documentation (re-crawl Apple’s docs), I bump the version and run <code>cupertino release</code>. Users get the update with <code>cupertino setup --force</code>.</p>
 <h2>Version Parity</h2>
 <p>The CLI version matches the database release tag:</p>
@@ -138,16 +138,16 @@ cupertino serve   # Start MCP server</code></pre>
 <h2>Three Ways to Set Up Cupertino</h2>
 <p>Now you have options:</p>
 <h3>1. Instant Setup (Recommended)</h3>
-<pre><code class="language-bash">cupertino setup    # ~30 seconds
+<pre><code class="language-bash">cupertino setup    <span class="tok-comment"># ~30 seconds</span>
 cupertino serve</code></pre>
 <p>Download pre-built databases. Fastest option.</p>
 <h3>2. Build from GitHub</h3>
-<pre><code class="language-bash">cupertino save --remote    # ~45 minutes
+<pre><code class="language-bash">cupertino save <span class="tok-operator">-</span><span class="tok-operator">-</span>remote    <span class="tok-comment"># ~45 minutes</span>
 cupertino serve</code></pre>
 <p>Stream documentation from GitHub and build locally. Useful if you want to verify the build process or can’t download the 228MB zip.</p>
 <h3>3. Full Crawl (Advanced)</h3>
-<pre><code class="language-bash">cupertino fetch --type docs --max-pages 15000    # ~20-24 hours
-cupertino fetch --type evolution
+<pre><code class="language-bash">cupertino fetch <span class="tok-operator">-</span><span class="tok-operator">-</span>type docs <span class="tok-operator">-</span><span class="tok-operator">-</span>max<span class="tok-operator">-</span>pages <span class="tok-number">15000</span>    <span class="tok-comment"># ~20-24 hours</span>
+cupertino fetch <span class="tok-operator">-</span><span class="tok-operator">-</span>type evolution
 cupertino save
 cupertino serve</code></pre>
 <p>Crawl Apple’s documentation yourself. Only needed if you want to modify the crawler or need documentation not in the pre-built database.</p>
@@ -161,11 +161,11 @@ cupertino serve</code></pre>
 <h2>What’s Next</h2>
 <ul><li><p><strong>Automatic updates</strong> - Check for new database versions on startup</p></li><li><p><strong>Delta updates</strong> - Download only changed documents instead of full database</p></li><li><p><strong>More documentation sources</strong> - WWDC transcripts, Apple Tech Notes</p></li></ul>
 <h2>Try It</h2>
-<pre><code class="language-bash"># Install
-git clone https://github.com/mihaelamj/cupertino.git
-cd cupertino &amp;&amp; make build &amp;&amp; sudo make install
+<pre><code class="language-bash"><span class="tok-comment"># Install</span>
+git clone https<span class="tok-operator">:</span><span class="tok-operator">/</span><span class="tok-operator">/</span>github<span class="tok-operator">.</span>com<span class="tok-operator">/</span>mihaelamj<span class="tok-operator">/</span>cupertino<span class="tok-operator">.</span>git
+cd cupertino <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> make build <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> su<span class="tok-keyword">do</span> make install
 
-# Setup (the new way)
+<span class="tok-comment"># Setup (the new way)</span>
 cupertino setup
 cupertino serve</code></pre>
 <p>Configure Claude Desktop and you’re done. Full Apple documentation access in under a minute.</p>
