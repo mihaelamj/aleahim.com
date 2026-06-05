@@ -21,6 +21,7 @@ baseURL: {SITE_URL}
 layout: top-nav
 theme: system
 appearance: toggle
+favicon: /favicon.ico
 postsDir: blog
 postsLabel: Blog
 fontScale: 1.1
@@ -313,6 +314,7 @@ def copy_optional_file(source, destination):
 def copy_static_assets():
     copy_optional_tree(ROOT / "images", OUTPUT / "images")
     copy_optional_tree(ROOT / "css", OUTPUT / "css")
+    copy_optional_file(ROOT / "assets" / "favicon.ico", OUTPUT / "favicon.ico")
     write_deployment_files()
     copy_optional_file(
         ROOT / "Mihaela_Mihaljevic_Jakic_CV.pdf",

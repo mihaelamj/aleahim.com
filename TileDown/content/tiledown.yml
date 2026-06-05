@@ -4,6 +4,7 @@ baseURL: https://aleahim.com
 layout: top-nav
 theme: system
 appearance: toggle
+favicon: /favicon.ico
 postsDir: blog
 postsLabel: Blog
 fontScale: 1.1

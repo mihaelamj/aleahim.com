@@ -26,7 +26,7 @@ class AssetParser(HTMLParser):
             value = values.get("src")
             if value:
                 self.assets.append(value)
-        if tag == "link" and values.get("rel") == "stylesheet":
+        if tag == "link" and values.get("rel") in {"stylesheet", "icon"}:
             value = values.get("href")
             if value:
                 self.assets.append(value)
@@ -107,6 +107,12 @@ def check_static_files():
         if exists:
             text = path.read_text(errors="replace")
             check(f"{relative} has expected content", predicate(text))
+
+    favicon = TILEDOWN_DIST / "favicon.ico"
+    favicon_exists = favicon.is_file()
+    check("favicon.ico exists at output root", favicon_exists)
+    if favicon_exists:
+        check("favicon.ico has expected content", favicon.read_bytes().startswith(b"\x00\x00\x01\x00"))
 
     for relative in [
         "Mihaela_Mihaljevic_Jakic_CV.pdf",
@@ -189,6 +195,7 @@ def check_site_features():
         '<a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>'
     )
     check("Toucan analytics is injected exactly", TOUCAN_ANALYTICS_HEAD in index)
+    check("GitHub avatar favicon is linked", f'<link rel="icon" href="{SITE_URL}/favicon.ico">' in index)
     check(
         "brand title renders as Aleahim.com",
         '<span class="td-brand-title">Aleahim.com</span>' in index,

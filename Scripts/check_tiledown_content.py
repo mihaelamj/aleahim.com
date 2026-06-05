@@ -162,6 +162,7 @@ def check_config():
     check("TileDown postsDir preserves /blog/ routes", "postsDir: blog" in config)
     check("TileDown nav labels posts as Blog", "postsLabel: Blog" in config)
     check("TileDown config keeps site release tag", f"versionName: {SITE_RELEASE_TAG}" in config)
+    check("TileDown config keeps GitHub avatar favicon", "favicon: /favicon.ico" in config)
     check("TileDown config keeps CV generator", "generate.cv:" in config)
     check(
         "TileDown config ports Toucan analytics exactly",
@@ -174,6 +175,7 @@ def check_static_assets():
     for relative in [
         "CNAME",
         "robots.txt",
+        "favicon.ico",
         "deployment/.nojekyll",
         "Mihaela_Mihaljevic_Jakic_CV.pdf",
         "assets/Mihaela_Mihaljevic_Jakic_CV.pdf",
