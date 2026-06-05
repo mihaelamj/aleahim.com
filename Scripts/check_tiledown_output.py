@@ -87,9 +87,22 @@ def check_route_parity():
     new = html_routes(TILEDOWN_DIST)
     missing = sorted(old - new)
     extra = sorted(new - old)
-    unexpected_extra = [route for route in extra if not route.startswith("tags/")]
+    post_routes = {
+        f"blog/{slug}/index.html"
+        for slug in published_post_slugs()
+    }
+    unexpected_extra = [
+        route
+        for route in extra
+        if not route.startswith("tags/")
+        and route not in post_routes
+    ]
     check("TileDown preserves every Toucan HTML route", not missing, ", ".join(missing[:10]))
-    check("TileDown only adds generated tag HTML routes", not unexpected_extra, ", ".join(unexpected_extra[:10]))
+    check(
+        "TileDown only adds generated tag and source-post HTML routes",
+        not unexpected_extra,
+        ", ".join(unexpected_extra[:10]),
+    )
 
 
 def check_static_files():

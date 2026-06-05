@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>OpenAPIDoctor WebAssembly readiness</title>
+<meta name="description" content="A first compiler-grounded check of whether OpenAPIDoctor can become a local-first browser tool.">
+<link rel="canonical" href="https://aleahim.com/blog/openapi-doctor-webassembly-readiness/">
+<meta property="og:title" content="OpenAPIDoctor WebAssembly readiness">
+<meta property="og:type" content="article">
+<meta property="og:description" content="A first compiler-grounded check of whether OpenAPIDoctor can become a local-first browser tool.">
+<meta property="og:url" content="https://aleahim.com/blog/openapi-doctor-webassembly-readiness/">
+<meta property="og:site_name" content="Aleahim.com">
+<meta property="og:image" content="https://aleahim.com/images/blog/why-i-built-openapi-doctor/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenAPIDoctor WebAssembly readiness">
+<meta name="twitter:description" content="A first compiler-grounded check of whether OpenAPIDoctor can become a local-first browser tool.">
+<meta name="twitter:image" content="https://aleahim.com/images/blog/why-i-built-openapi-doctor/hero.png">
+<meta property="article:published_time" content="2026-06-05T00:00:00Z">
+<link rel="icon" href="https://aleahim.com/favicon.ico">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<!-- Umami Analytics --><script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+<body>
+<header class="td-header">
+<a class="td-brand td-brand-stacked" href="https://aleahim.com/"><span class="td-brand-title">Aleahim.com</span><span class="td-brand-subtitle">v1.17</span></a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/blog/" aria-current="page">Blog</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">June 5, 2026</time></div><h1 class="td-article-title">OpenAPIDoctor WebAssembly readiness</h1><p class="td-article-dek">A first compiler-grounded check of whether OpenAPIDoctor can become a local-first browser tool.</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/openapi-doctor-webassembly-readiness/" data-td-copy-permalink title="Copy permalink">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a><a href="https://aleahim.com/openapi-doctor-webassembly-readiness.pdf" download>Download PDF</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fopenapi-doctor-webassembly-readiness%2F&amp;text=OpenAPIDoctor%20WebAssembly%20readiness" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fopenapi-doctor-webassembly-readiness%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fopenapi-doctor-webassembly-readiness%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=OpenAPIDoctor%20WebAssembly%20readiness&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fopenapi-doctor-webassembly-readiness%2F" target="_blank" rel="noopener">Email</a></nav><nav class="td-tags td-article-tags" aria-label="Tags"><a class="td-tag" href="https://aleahim.com/tags/openapi/">OpenAPI</a><a class="td-tag" href="https://aleahim.com/tags/swift/">Swift</a><a class="td-tag" href="https://aleahim.com/tags/webassembly/">WebAssembly</a><a class="td-tag" href="https://aleahim.com/tags/tooling/">Tooling</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/blog/why-i-built-openapi-doctor/hero.png" alt="OpenAPIDoctor WebAssembly readiness"></figure><div class="td-article-body"><p>I want OpenAPIDoctor to become a no-backend browser tool.</p>
+<p>The product shape is right. A user should be able to paste or upload an OpenAPI
+spec, run the same strict Swift validator locally in the browser, see structured
+diagnostics, repair the safe cases, and download the fixed spec. No upload. No
+server. No account.</p>
+<p>The only honest way to test that idea is to ask the compiler.</p>
+<h2>What I tested</h2>
+<p>Native build first:</p>
+<pre><code class="language-bash">swift build</code></pre>
+<p>That passed with Apple Swift 6.2.</p>
+<p>Then I tested the installed WASI SDK:</p>
+<pre><code class="language-bash">swift build \
+  <span class="tok-operator">-</span><span class="tok-operator">-</span>target OpenAPIDoctor \
+  <span class="tok-operator">-</span><span class="tok-operator">-</span>swift<span class="tok-operator">-</span>sdk <span class="tok-number">6.2</span><span class="tok-operator">-</span>RELEASE<span class="tok-operator">-</span>wasm<span class="tok-number">32</span><span class="tok-operator">-</span>unknown<span class="tok-operator">-</span>wasip<span class="tok-number">1</span> \
+  <span class="tok-operator">-</span><span class="tok-operator">-</span>scratch<span class="tok-operator">-</span>path <span class="tok-operator">/</span>tmp<span class="tok-operator">/</span>openapidoctor<span class="tok-operator">-</span>wasm<span class="tok-operator">-</span>library</code></pre>
+<p>And the CLI shape:</p>
+<pre><code class="language-bash">swift build \
+  <span class="tok-operator">-</span><span class="tok-operator">-</span>product openapi<span class="tok-operator">-</span>doctor \
+  <span class="tok-operator">-</span><span class="tok-operator">-</span>swift<span class="tok-operator">-</span>sdk <span class="tok-number">6.2</span><span class="tok-operator">-</span>RELEASE<span class="tok-operator">-</span>wasm<span class="tok-number">32</span><span class="tok-operator">-</span>unknown<span class="tok-operator">-</span>wasip<span class="tok-number">1</span> \
+  <span class="tok-operator">-</span><span class="tok-operator">-</span>scratch<span class="tok-operator">-</span>path <span class="tok-operator">/</span>tmp<span class="tok-operator">/</span>openapidoctor<span class="tok-operator">-</span>wasm<span class="tok-operator">-</span>cli</code></pre>
+<p>Both failed before OpenAPIDoctor itself compiled.</p>
+<h2>The blocker</h2>
+<p>The first blocker is <code>Yams</code>, specifically its embedded <code>CYaml</code> C target:</p>
+<pre><code class="language-text">error<span class="tok-operator">:</span> unable to create target<span class="tok-operator">:</span>
+<span class="tok-string">'No available targets are compatible with triple "wasm32-unknown-wasip1"'</span></code></pre>
+<p>I confirmed it directly by building <code>Yams</code> for the same SDK. It fails in the C
+parser files: <code>parser.c</code>, <code>reader.c</code>, <code>writer.c</code>, <code>api.c</code>, <code>emitter.c</code>, and
+<code>scanner.c</code>.</p>
+<p>I also tried a tiny C compile with the same target:</p>
+<pre><code class="language-bash">clang <span class="tok-operator">-</span><span class="tok-operator">-</span>target<span class="tok-operator">=</span>wasm<span class="tok-number">32</span><span class="tok-operator">-</span>unknown<span class="tok-operator">-</span>wasip<span class="tok-number">1</span></code></pre>
+<p>That failed with the same target-support error. So the current local toolchain
+cannot compile the C YAML dependency to WASI.</p>
+<h2>What this means</h2>
+<p>OpenAPIDoctor is not WebAssembly-ready as it exists today.</p>
+<p>That does not kill the idea. It narrows the work.</p>
+<p>The core shape is still good:</p>
+<ul><li><p><code>Validator.validate(yaml:)</code> already accepts an in-memory string.</p></li><li><p><code>Repairer.repair(yaml:)</code> already returns repaired YAML in memory.</p></li><li><p>The native CLI is just a composition layer around those APIs.</p></li><li><p>The right browser boundary is a WASI command: <code>stdin</code> in, diagnostics or files
+out.</p></li></ul>
+<p>The weak point is YAML infrastructure.</p>
+<p>OpenAPIDoctor imports <code>Yams</code> in the validator, repairer, and synthesizer. It also
+uses <code>Stitcher</code> for multi-file refs, and Stitcher depends on Yams too. That means
+a browser build needs a YAML path that can cross to WASI.</p>
+<h2>The next path</h2>
+<p>There are three practical options.</p>
+<ol><li><p>Test again inside the Linux SwiftWasm toolchain we use for the TileDown
+playground builds. If that environment can compile C targets to WASI, then the
+next blocker will be runtime behavior.</p></li><li><p>Replace or isolate the YAML layer behind a WebAssembly-friendly interface.
+Single-file diagnosis could start with a smaller path before multi-file repair.</p></li><li><p>Add an OpenAPIDoctor WASI wrapper only after the dependency question is settled.
+The wrapper should read the spec from <code>stdin</code> and write JSON diagnostics to
+<code>stdout</code>.</p></li></ol>
+<p>The browser product should not use custom JavaScript exports. The better pattern
+is the same one that already works for the PDF playground:</p>
+<pre><code class="language-text">stdin <span class="tok-operator">+</span> argv <span class="tok-operator">+</span> preopened files<span class="tok-operator">/</span>directories <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> stdout or output files</code></pre>
+<p>That keeps the Swift code shaped like a normal command-line program and lets the
+browser provide an in-memory filesystem.</p>
+<h2>Current verdict</h2>
+<p>OpenAPIDoctor is product-ready as a local-first browser idea, but not yet
+compiler-ready for WebAssembly.</p>
+<p>The first concrete task is not UI. It is a dependency build proof for
+<code>OpenAPIKit</code>, <code>Yams</code>, and <code>Stitcher</code> under WASI. Only after that should the web
+tool be wrapped as a TileDown WASM tile or a standalone site.</p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a><time>May 31, 2026</time></li><li><a href="https://aleahim.com/blog/morlocks-built-swiftui/">The Morlocks Built SwiftUI</a><time>May 28, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-2-0-ironclad/">cupertino v1.2.0: lands the right Apple doc 9 times in 10</a><time>May 21, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/blog/">Blog</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
+
+<script>
+(function () {
+  function setup() {
+    document.querySelectorAll('[data-td-copy-permalink]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        if (!navigator.clipboard) return;
+        var url = link.getAttribute('href');
+        if (!url) return;
+        event.preventDefault();
+        navigator.clipboard.writeText(url).then(function () {
+          var label = link.textContent;
+          link.textContent = 'Copied';
+          link.setAttribute('data-td-copy-state', 'copied');
+          setTimeout(function () {
+            link.textContent = label;
+            link.removeAttribute('data-td-copy-state');
+          }, 1500);
+        }, function () {
+          window.location.href = url;
+        });
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', setup);
+})();
+</script>
+
+
+</body>
+</html>

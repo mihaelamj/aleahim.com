@@ -7,6 +7,75 @@
 <language>en-US</language>
 <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
 <item>
+<title>OpenAPIDoctor WebAssembly readiness</title>
+<link>https://aleahim.com/blog/openapi-doctor-webassembly-readiness/</link>
+<guid isPermaLink="true">https://aleahim.com/blog/openapi-doctor-webassembly-readiness/</guid>
+<pubDate>Fri, 05 Jun 2026 00:00:00 +0000</pubDate>
+<description>A first compiler-grounded check of whether OpenAPIDoctor can become a local-first browser tool.</description>
+<content:encoded><![CDATA[<h1>OpenAPIDoctor WebAssembly readiness</h1>
+<p>I want OpenAPIDoctor to become a no-backend browser tool.</p>
+<p>The product shape is right. A user should be able to paste or upload an OpenAPI
+spec, run the same strict Swift validator locally in the browser, see structured
+diagnostics, repair the safe cases, and download the fixed spec. No upload. No
+server. No account.</p>
+<p>The only honest way to test that idea is to ask the compiler.</p>
+<h2>What I tested</h2>
+<p>Native build first:</p>
+<pre><code class="language-bash">swift build</code></pre>
+<p>That passed with Apple Swift 6.2.</p>
+<p>Then I tested the installed WASI SDK:</p>
+<pre><code class="language-bash">swift build \
+  <span class="tok-operator">-</span><span class="tok-operator">-</span>target OpenAPIDoctor \
+  <span class="tok-operator">-</span><span class="tok-operator">-</span>swift<span class="tok-operator">-</span>sdk <span class="tok-number">6.2</span><span class="tok-operator">-</span>RELEASE<span class="tok-operator">-</span>wasm<span class="tok-number">32</span><span class="tok-operator">-</span>unknown<span class="tok-operator">-</span>wasip<span class="tok-number">1</span> \
+  <span class="tok-operator">-</span><span class="tok-operator">-</span>scratch<span class="tok-operator">-</span>path <span class="tok-operator">/</span>tmp<span class="tok-operator">/</span>openapidoctor<span class="tok-operator">-</span>wasm<span class="tok-operator">-</span>library</code></pre>
+<p>And the CLI shape:</p>
+<pre><code class="language-bash">swift build \
+  <span class="tok-operator">-</span><span class="tok-operator">-</span>product openapi<span class="tok-operator">-</span>doctor \
+  <span class="tok-operator">-</span><span class="tok-operator">-</span>swift<span class="tok-operator">-</span>sdk <span class="tok-number">6.2</span><span class="tok-operator">-</span>RELEASE<span class="tok-operator">-</span>wasm<span class="tok-number">32</span><span class="tok-operator">-</span>unknown<span class="tok-operator">-</span>wasip<span class="tok-number">1</span> \
+  <span class="tok-operator">-</span><span class="tok-operator">-</span>scratch<span class="tok-operator">-</span>path <span class="tok-operator">/</span>tmp<span class="tok-operator">/</span>openapidoctor<span class="tok-operator">-</span>wasm<span class="tok-operator">-</span>cli</code></pre>
+<p>Both failed before OpenAPIDoctor itself compiled.</p>
+<h2>The blocker</h2>
+<p>The first blocker is <code>Yams</code>, specifically its embedded <code>CYaml</code> C target:</p>
+<pre><code class="language-text">error<span class="tok-operator">:</span> unable to create target<span class="tok-operator">:</span>
+<span class="tok-string">'No available targets are compatible with triple "wasm32-unknown-wasip1"'</span></code></pre>
+<p>I confirmed it directly by building <code>Yams</code> for the same SDK. It fails in the C
+parser files: <code>parser.c</code>, <code>reader.c</code>, <code>writer.c</code>, <code>api.c</code>, <code>emitter.c</code>, and
+<code>scanner.c</code>.</p>
+<p>I also tried a tiny C compile with the same target:</p>
+<pre><code class="language-bash">clang <span class="tok-operator">-</span><span class="tok-operator">-</span>target<span class="tok-operator">=</span>wasm<span class="tok-number">32</span><span class="tok-operator">-</span>unknown<span class="tok-operator">-</span>wasip<span class="tok-number">1</span></code></pre>
+<p>That failed with the same target-support error. So the current local toolchain
+cannot compile the C YAML dependency to WASI.</p>
+<h2>What this means</h2>
+<p>OpenAPIDoctor is not WebAssembly-ready as it exists today.</p>
+<p>That does not kill the idea. It narrows the work.</p>
+<p>The core shape is still good:</p>
+<ul><li><p><code>Validator.validate(yaml:)</code> already accepts an in-memory string.</p></li><li><p><code>Repairer.repair(yaml:)</code> already returns repaired YAML in memory.</p></li><li><p>The native CLI is just a composition layer around those APIs.</p></li><li><p>The right browser boundary is a WASI command: <code>stdin</code> in, diagnostics or files
+out.</p></li></ul>
+<p>The weak point is YAML infrastructure.</p>
+<p>OpenAPIDoctor imports <code>Yams</code> in the validator, repairer, and synthesizer. It also
+uses <code>Stitcher</code> for multi-file refs, and Stitcher depends on Yams too. That means
+a browser build needs a YAML path that can cross to WASI.</p>
+<h2>The next path</h2>
+<p>There are three practical options.</p>
+<ol><li><p>Test again inside the Linux SwiftWasm toolchain we use for the TileDown
+playground builds. If that environment can compile C targets to WASI, then the
+next blocker will be runtime behavior.</p></li><li><p>Replace or isolate the YAML layer behind a WebAssembly-friendly interface.
+Single-file diagnosis could start with a smaller path before multi-file repair.</p></li><li><p>Add an OpenAPIDoctor WASI wrapper only after the dependency question is settled.
+The wrapper should read the spec from <code>stdin</code> and write JSON diagnostics to
+<code>stdout</code>.</p></li></ol>
+<p>The browser product should not use custom JavaScript exports. The better pattern
+is the same one that already works for the PDF playground:</p>
+<pre><code class="language-text">stdin <span class="tok-operator">+</span> argv <span class="tok-operator">+</span> preopened files<span class="tok-operator">/</span>directories <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> stdout or output files</code></pre>
+<p>That keeps the Swift code shaped like a normal command-line program and lets the
+browser provide an in-memory filesystem.</p>
+<h2>Current verdict</h2>
+<p>OpenAPIDoctor is product-ready as a local-first browser idea, but not yet
+compiler-ready for WebAssembly.</p>
+<p>The first concrete task is not UI. It is a dependency build proof for
+<code>OpenAPIKit</code>, <code>Yams</code>, and <code>Stitcher</code> under WASI. Only after that should the web
+tool be wrapped as a TileDown WASM tile or a standalone site.</p>]]></content:encoded>
+</item>
+<item>
 <title>cupertino v1.3.0: The Big Refactor</title>
 <link>https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/</link>
 <guid isPermaLink="true">https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/</guid>
