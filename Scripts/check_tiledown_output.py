@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 import sys
 
-from tiledown_site import SITE_DOMAIN, SITE_URL
+from tiledown_site import SITE_DOMAIN, SITE_RELEASE_TAG, SITE_URL
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -189,6 +189,14 @@ def check_site_features():
         '<a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>'
     )
     check("analytics script is injected", "cloud.umami.is/script.js" in index)
+    check(
+        "brand title renders as Aleahim.com",
+        '<span class="td-brand-title">Aleahim.com</span>' in index,
+    )
+    check(
+        "site release tag renders below Aleahim.com",
+        f'<span class="td-brand-subtitle">{SITE_RELEASE_TAG}</span>' in index,
+    )
     check("top nav replaces CV with Blog in order", expected_nav in index)
     check("top nav omits Curriculum Vitae", 'class="td-nav-link" href="https://aleahim.com/cv/">' not in index)
     check("Blog page shows tag bar", 'class="td-tagbar"' in blog)

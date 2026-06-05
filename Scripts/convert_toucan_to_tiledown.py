@@ -6,7 +6,7 @@ import re
 import shutil
 import sys
 
-from tiledown_site import SITE_DOMAIN, SITE_URL
+from tiledown_site import SITE_DOMAIN, SITE_RELEASE_TAG, SITE_URL
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,7 +15,8 @@ OUTPUT = ROOT / "TileDown" / "content"
 GENERATOR_PACKAGE_PATH = ROOT.as_posix()
 
 
-CONFIG = f"""title: Aleahim
+CONFIG = f"""title: Aleahim.com
+versionName: {SITE_RELEASE_TAG}
 baseURL: {SITE_URL}
 layout: top-nav
 theme: system

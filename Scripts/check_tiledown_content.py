@@ -4,6 +4,8 @@
 from pathlib import Path
 import sys
 
+from tiledown_site import SITE_RELEASE_TAG
+
 
 ROOT = Path(__file__).resolve().parents[1]
 TOUCAN = ROOT / "contents"
@@ -156,8 +158,10 @@ def check_redirects():
 
 def check_config():
     config = (TILEDOWN / "tiledown.yml").read_text()
+    check("TileDown config titles site as Aleahim.com", "title: Aleahim.com" in config)
     check("TileDown postsDir preserves /blog/ routes", "postsDir: blog" in config)
     check("TileDown nav labels posts as Blog", "postsLabel: Blog" in config)
+    check("TileDown config keeps site release tag", f"versionName: {SITE_RELEASE_TAG}" in config)
     check("TileDown config keeps CV generator", "generate.cv:" in config)
     check("TileDown config keeps analytics", "analytics.head:" in config)
     check("TileDown config maps .nojekyll", "static..nojekyll: deployment/.nojekyll" in config)
