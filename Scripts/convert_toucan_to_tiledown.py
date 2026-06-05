@@ -6,7 +6,7 @@ import re
 import shutil
 import sys
 
-from tiledown_site import SITE_DOMAIN, SITE_RELEASE_TAG, SITE_URL
+from tiledown_site import SITE_DOMAIN, SITE_RELEASE_TAG, SITE_URL, TOUCAN_ANALYTICS_HEAD
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,7 +32,7 @@ shareLinks: true
 articlePDF: true
 social.github: https://github.com/mihaelamj
 social.linkedin: https://www.linkedin.com/in/mihaelamj
-analytics.head: <script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+analytics.head: {TOUCAN_ANALYTICS_HEAD}
 generate.cv: swift run --package-path {GENERATOR_PACKAGE_PATH} GenerateCV --output cv/index.md
 static..nojekyll: deployment/.nojekyll
 """

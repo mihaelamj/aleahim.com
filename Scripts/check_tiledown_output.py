@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 import sys
 
-from tiledown_site import SITE_DOMAIN, SITE_RELEASE_TAG, SITE_URL
+from tiledown_site import SITE_DOMAIN, SITE_RELEASE_TAG, SITE_URL, TOUCAN_ANALYTICS_HEAD
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -188,7 +188,7 @@ def check_site_features():
         '<a class="td-nav-link" href="https://aleahim.com/blog/">Blog</a>'
         '<a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>'
     )
-    check("analytics script is injected", "cloud.umami.is/script.js" in index)
+    check("Toucan analytics is injected exactly", TOUCAN_ANALYTICS_HEAD in index)
     check(
         "brand title renders as Aleahim.com",
         '<span class="td-brand-title">Aleahim.com</span>' in index,

@@ -4,7 +4,7 @@
 from pathlib import Path
 import sys
 
-from tiledown_site import SITE_RELEASE_TAG
+from tiledown_site import SITE_RELEASE_TAG, TOUCAN_ANALYTICS_HEAD
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -163,7 +163,10 @@ def check_config():
     check("TileDown nav labels posts as Blog", "postsLabel: Blog" in config)
     check("TileDown config keeps site release tag", f"versionName: {SITE_RELEASE_TAG}" in config)
     check("TileDown config keeps CV generator", "generate.cv:" in config)
-    check("TileDown config keeps analytics", "analytics.head:" in config)
+    check(
+        "TileDown config ports Toucan analytics exactly",
+        f"analytics.head: {TOUCAN_ANALYTICS_HEAD}" in config,
+    )
     check("TileDown config maps .nojekyll", "static..nojekyll: deployment/.nojekyll" in config)
 
 
