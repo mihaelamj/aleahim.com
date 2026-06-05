@@ -1,89 +1,46 @@
 # Aleahim.com
 
-Personal website for Mihaela Mihaljević Jakić - Senior iOS Architect & Developer.
+Personal website and technical writing archive for Mihaela Mihaljevic Jakic.
 
-Built with [Toucan](https://github.com/toucansites/toucan) static site generator.
+The site contains project notes, release posts, CV material, and articles about
+Swift, OpenAPI, Apple-platform development, and AI-assisted developer tooling.
+It is currently maintained as a TileDown/Toucan migration workspace.
 
-## Features
+## What Is In This Repo
 
-- **Dark Gothic Theme** - Purple, almost-black, tan, and white color scheme
-- **Blog Posts** - 7 technical articles on Swift, OpenAPI, and iOS development
-- **CV** - Complete professional history
-- **Services** - OpenAPI consulting offerings
-- **Umami Analytics** - Privacy-friendly analytics
-- **Syntax Highlighting** - Prism.js with Tomorrow dark theme
+- `TileDown/content/`: current source content for the TileDown version of the
+  site.
+- `Sources/GenerateCV/`: Swift code used to generate CV content.
+- `Scripts/`: migration and validation helpers.
+- Root-level generated HTML: previously built static output and compatibility
+  redirects.
 
 ## Local Development
 
 ```bash
-# Build the site
 make dev
-
-# Watch for changes (runs in background)
-make watch
-
-# Serve locally
 make serve
-
-# Visit: http://localhost:3000
 ```
 
-## Adding Content
+The local server is available at `http://localhost:3000`.
 
-See [CONTENT-GUIDE.md](CONTENT-GUIDE.md) for detailed instructions on:
-- Adding new pages
-- Adding menu items
-- Adding images
-- Creating blog posts
+## Content Workflow
 
-## Site Structure
+Most authored content lives under `TileDown/content/`. Blog posts are Markdown
+files grouped by slug. Static assets live under `TileDown/content/images/` and
+`TileDown/content/assets/`.
 
-```
-aleahim.com/
-├── contents/           # All content pages
-│   ├── [home]/        # Homepage (blog listing)
-│   ├── about/         # About page
-│   ├── cv/            # Curriculum Vitae
-│   ├── services/      # Consulting services
-│   └── blog/          # Blog posts
-├── assets/
-│   ├── css/           # Custom styles
-│   └── images/        # All images
-├── templates/
-│   ├── default/       # Base templates (submodule)
-│   └── overrides/     # Custom template overrides
-├── types/             # Content type definitions
-├── pipelines/         # Build pipeline configs
-└── site.yml           # Site configuration & navigation
-```
+Useful references:
+
+- [CONTENT-GUIDE.md](CONTENT-GUIDE.md)
+- [DEPLOYMENT.md](DEPLOYMENT.md)
+- [TileDown/README.md](TileDown/README.md)
 
 ## Deployment
 
-The site automatically deploys to GitHub Pages when you push to main.
-
-```bash
-git add .
-git commit -m "Update content"
-git push origin main
-```
-
-## Tech Stack
-
-- **Generator**: Toucan (Swift-based)
-- **Templating**: Mustache
-- **Styling**: Custom CSS with CSS variables
-- **Syntax Highlighting**: Prism.js
-- **Analytics**: Umami (privacy-friendly)
-- **Hosting**: GitHub Pages
-
-## Contact
-
-- Email: mihaelamj@me.com
-- Phone: +385995491157
-- [LinkedIn](https://www.linkedin.com/in/mihaelamj)
-- [GitHub](https://github.com/mihaelamj)
-- [Website](https://aleahim.com)
+The site deploys to GitHub Pages from the generated static output on `main`.
 
 ## License
 
-Content © 2025 Mihaela Mihaljević Jakić. All rights reserved.
+Content copyright Mihaela Mihaljevic Jakic. All rights reserved unless a page
+states otherwise.
