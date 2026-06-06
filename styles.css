@@ -210,4 +210,137 @@ a { color: var(--td-accent); text-decoration-thickness: 0.08em; text-underline-o
   background: #000;
   object-fit: contain;
 }
+.td-mermaid {
+  margin-block: 1.75rem;
+}
+.td-mermaid-source {
+  background: var(--td-surface);
+  border: 1px solid var(--td-border);
+  border-radius: var(--td-radius);
+  color: var(--td-ink);
+  margin: 0;
+  min-height: 12rem;
+  overflow-x: auto;
+  padding: 1rem;
+}
+.td-mermaid-caption {
+  color: var(--td-muted);
+  font-size: 0.95rem;
+  margin-top: 0.65rem;
+  text-align: center;
+}
+.td-mermaid-source svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+.td-chart {
+  margin-block: 1.75rem;
+}
+.td-chart-caption {
+  color: var(--td-ink);
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+.td-chart-frame {
+  background: var(--td-surface);
+  border: 1px solid var(--td-border);
+  border-radius: var(--td-radius);
+  overflow-x: auto;
+  padding: 1rem;
+}
+.td-chart-svg {
+  display: block;
+  height: auto;
+  min-width: 34rem;
+  width: 100%;
+}
+.td-chart-grid {
+  stroke: var(--td-border);
+  stroke-width: 1;
+}
+.td-chart-axis {
+  stroke: var(--td-muted);
+  stroke-width: 1.25;
+}
+.td-chart-label,
+.td-chart-value,
+.td-chart-legend-text {
+  fill: var(--td-muted);
+  /* Never stroke text: it inherits the chart's line/axis stroke otherwise,
+     which fattens and blurs the labels into a faux-bold smear. */
+  stroke: none;
+  font-size: 16px;
+  font-weight: 400;
+  font-synthesis: none;
+}
+.td-chart-value {
+  font-variant-numeric: tabular-nums;
+}
+.td-chart-bar,
+.td-chart-slice {
+  fill: currentColor;
+}
+.td-chart-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+.td-chart-point {
+  fill: var(--td-surface);
+  stroke: currentColor;
+  stroke-width: 3;
+}
+.td-chart-series-0 { color: #0a84ff; }
+.td-chart-series-1 { color: #34c759; }
+.td-chart-series-2 { color: #ff9f0a; }
+.td-chart-series-3 { color: #ff375f; }
+.td-chart-series-4 { color: #af52de; }
+.td-chart-series-5 { color: #5e5ce6; }
+[data-theme="dark"] .td-chart-series-0 { color: #64d2ff; }
+[data-theme="dark"] .td-chart-series-1 { color: #30d158; }
+[data-theme="dark"] .td-chart-series-2 { color: #ffd60a; }
+[data-theme="dark"] .td-chart-series-3 { color: #ff453a; }
+[data-theme="dark"] .td-chart-series-4 { color: #bf5af2; }
+[data-theme="dark"] .td-chart-series-5 { color: #7d7aff; }
+.td-chart-bar, .td-chart-slice, .td-chart-point, .td-chart-line {
+  transition: filter 0.12s ease, stroke-width 0.12s ease;
+}
+.td-chart-bar:hover, .td-chart-slice:hover { filter: brightness(1.15); }
+.td-chart-point:hover { stroke-width: 5; }
+.td-chart-line:hover { stroke-width: 4; }
+.td-chart[data-td-chart-interactive] :is(.td-chart-bar, .td-chart-slice, .td-chart-point) { cursor: pointer; }
+.td-chart-tip {
+  position: fixed;
+  z-index: 40;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  background: var(--td-ink);
+  color: var(--td-surface);
+  padding: 0.32rem 0.55rem;
+  border-radius: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.3;
+  max-width: 18rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+}
+.td-math-svg, .td-math svg { display: inline-block; }
+/* Display math is sized in em, so it would otherwise render at body-text
+   scale and read as tiny. Enlarge it for a proper display presence; inline
+   math keeps its 1em so it sits on the text baseline. */
+.td-math-display { display: block; text-align: center; margin: 1.4rem 0; overflow-x: auto; font-size: 1.6em; }
+.td-math-display svg { vertical-align: middle; }
+.td-math-a11y {
+    position: absolute; width: 1px; height: 1px;
+    overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+}
+.td-counter { display: inline-flex; align-items: center; gap: 0.75rem; margin-block: 1.5rem; }
+.td-counter-button { cursor: pointer; border: 1px solid var(--td-border); border-radius: var(--td-radius); background: var(--td-accent); color: #fff; padding: 0.5rem 1rem; font: inherit; }
+.td-counter-value { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--td-ink); }
 }
