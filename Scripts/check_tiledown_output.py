@@ -85,7 +85,9 @@ def published_post_slugs():
 def check_route_parity():
     old = html_routes(TOUCAN_DIST)
     new = html_routes(TILEDOWN_DIST)
-    missing = sorted(old - new)
+    # Routes intentionally retired after the Toucan migration (no longer built).
+    retired = {"cv/index.html"}
+    missing = sorted(old - new - retired)
     extra = sorted(new - old)
     post_routes = {
         f"blog/{slug}/index.html"
@@ -128,8 +130,6 @@ def check_static_files():
         check("favicon.ico has expected content", favicon.read_bytes().startswith(b"\x00\x00\x01\x00"))
 
     for relative in [
-        "Mihaela_Mihaljevic_Jakic_CV.pdf",
-        "assets/Mihaela_Mihaljevic_Jakic_CV.pdf",
         "images/logo.png",
         "images/og-image.png",
         "images/blog/cupertino-first-light/hero.jpg",

@@ -90,14 +90,12 @@ def check_pages():
     )
     home_values = front_matter(TILEDOWN / "index.md")
     check("home maps Toucan blog view to TileDown latest posts", home_values.get("latest") == "true")
-    for name in ["about", "cv", "speaking"]:
+    for name in ["about", "speaking"]:
         compare_keys(
             TOUCAN / name / "index.md",
             TILEDOWN / name / "index.md",
             ["slug", "title", "description", "image"],
         )
-    cv_values = front_matter(TILEDOWN / "cv" / "index.md")
-    check("CV page stays published but hidden from top nav", cv_values.get("nav") == "false")
     compare_keys(
         TOUCAN / "404" / "index.md",
         TILEDOWN / "404" / "index.md",
@@ -163,7 +161,6 @@ def check_config():
     check("TileDown nav labels posts as Blog", "postsLabel: Blog" in config)
     check("TileDown config keeps site release tag", f"versionName: {SITE_RELEASE_TAG}" in config)
     check("TileDown config keeps GitHub avatar favicon", "favicon: /favicon.ico" in config)
-    check("TileDown config keeps CV generator", "generate.cv:" in config)
     check(
         "TileDown config ports Toucan analytics exactly",
         f"analytics.head: {TOUCAN_ANALYTICS_HEAD}" in config,

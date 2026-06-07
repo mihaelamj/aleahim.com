@@ -7,10 +7,7 @@ TILEDOWN_PREVIEW_PORT ?= 8098
 
 # brew install optipng jpegoptim
 
-cv:
-	swift run GenerateCV
-
-dev: cv
+dev:
 	toucan generate --target dev
 
 dist:
@@ -47,7 +44,7 @@ tiledown-check: tiledown-content-check tiledown-doctor tiledown-build
 tiledown-preview-build: tiledown-content
 	rm -rf "$(TILEDOWN_PREVIEW_CONTENT)" "$(TILEDOWN_PREVIEW_SITE)"
 	cp -R TileDown/content "$(TILEDOWN_PREVIEW_CONTENT)"
-	perl -0pi -e 's#^baseURL:.*\n##m; s#^generate\.cv:.*$$#generate.cv: swift run --package-path $(CURDIR) GenerateCV --output cv/index.md#m' "$(TILEDOWN_PREVIEW_CONTENT)/tiledown.yml"
+	perl -0pi -e 's#^baseURL:.*\n##m' "$(TILEDOWN_PREVIEW_CONTENT)/tiledown.yml"
 	$(TILEDOWN) build-site "$(TILEDOWN_PREVIEW_CONTENT)" "$(TILEDOWN_PREVIEW_SITE)"
 
 tiledown-preview: tiledown-preview-build

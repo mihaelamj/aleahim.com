@@ -34,7 +34,6 @@ articlePDF: true
 social.github: https://github.com/mihaelamj
 social.linkedin: https://www.linkedin.com/in/mihaelamj
 analytics.head: {TOUCAN_ANALYTICS_HEAD}
-generate.cv: swift run --package-path {GENERATOR_PACKAGE_PATH} GenerateCV --output cv/index.md
 static..nojekyll: deployment/.nojekyll
 """
 
@@ -350,7 +349,6 @@ def convert():
     write_markdown(TOUCAN / "[home]" / "index.md", OUTPUT / "index.md", latest=True)
     for name in ["404", "about", "speaking"]:
         write_markdown(TOUCAN / name / "index.md", OUTPUT / name / "index.md")
-    write_markdown(TOUCAN / "cv" / "index.md", OUTPUT / "cv" / "index.md", extra_fields=["nav: false"])
     write_blog_index()
     copy_tree_files(TOUCAN / "blog", OUTPUT / "blog", infer_post_tags=True)
     convert_redirect(TOUCAN / "services" / "index.md", OUTPUT / "services" / "index.md")
