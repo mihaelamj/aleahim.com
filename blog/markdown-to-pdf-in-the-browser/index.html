@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>&quot;Markdown to PDF in your browser, in pure Swift&quot;</title>
+<meta name="description" content="A pure-Swift Markdown to PDF engine compiled to WebAssembly, with a live in-browser playground">
+<link rel="canonical" href="https://aleahim.com/blog/markdown-to-pdf-in-the-browser/">
+<meta property="og:title" content="&quot;Markdown to PDF in your browser, in pure Swift&quot;">
+<meta property="og:type" content="article">
+<meta property="og:description" content="A pure-Swift Markdown to PDF engine compiled to WebAssembly, with a live in-browser playground">
+<meta property="og:url" content="https://aleahim.com/blog/markdown-to-pdf-in-the-browser/">
+<meta property="og:site_name" content="Aleahim.com">
+<meta property="og:image" content="https://aleahim.com/images/blog/markdown-to-pdf-in-the-browser/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="&quot;Markdown to PDF in your browser, in pure Swift&quot;">
+<meta name="twitter:description" content="A pure-Swift Markdown to PDF engine compiled to WebAssembly, with a live in-browser playground">
+<meta name="twitter:image" content="https://aleahim.com/images/blog/markdown-to-pdf-in-the-browser/hero.jpg">
+<meta property="article:published_time" content="2026-06-07T00:00:00Z">
+<link rel="icon" href="https://aleahim.com/favicon.ico">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<!-- Umami Analytics --><script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+<body>
+<header class="td-header">
+<a class="td-brand td-brand-stacked" href="https://aleahim.com/"><span class="td-brand-title">Aleahim.com</span><span class="td-brand-subtitle">v1.19</span></a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/blog/" aria-current="page">Blog</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">June 7, 2026</time></div><h1 class="td-article-title">&quot;Markdown to PDF in your browser, in pure Swift&quot;</h1><p class="td-article-dek">A pure-Swift Markdown to PDF engine compiled to WebAssembly, with a live in-browser playground</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/markdown-to-pdf-in-the-browser/" data-td-copy-permalink title="Copy permalink">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a><a href="https://aleahim.com/markdown-to-pdf-in-the-browser.pdf" download>Download PDF</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fmarkdown-to-pdf-in-the-browser%2F&amp;text=%22Markdown%20to%20PDF%20in%20your%20browser%2C%20in%20pure%20Swift%22" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fmarkdown-to-pdf-in-the-browser%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fmarkdown-to-pdf-in-the-browser%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=%22Markdown%20to%20PDF%20in%20your%20browser%2C%20in%20pure%20Swift%22&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fmarkdown-to-pdf-in-the-browser%2F" target="_blank" rel="noopener">Email</a></nav><nav class="td-tags td-article-tags" aria-label="Tags"><a class="td-tag" href="https://aleahim.com/tags/swift/">Swift</a><a class="td-tag" href="https://aleahim.com/tags/webassembly/">WebAssembly</a><a class="td-tag" href="https://aleahim.com/tags/pdf/">PDF</a><a class="td-tag" href="https://aleahim.com/tags/markdown/">Markdown</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/blog/markdown-to-pdf-in-the-browser/hero.jpg" alt="&quot;Markdown to PDF in your browser, in pure Swift&quot;"></figure><div class="td-article-body"><p>There is a playground at <a href="https://pdf.aleahim.com">pdf.aleahim.com</a>. Type Markdown
+on the left, get a real PDF on the right. No server is involved. The PDF is
+produced by a pure-Swift engine compiled to WebAssembly and run inside your
+browser.</p>
+<p><img src="https://aleahim.com/images/blog/markdown-to-pdf-in-the-browser/markdown-to-pdf-playground-light.png" alt="The playground: Markdown source on the left, the rendered PDF on the right"></p>
+<h2>What it is</h2>
+<p>MarkdownPDF turns Markdown into a PDF with no LaTeX, no headless browser, and no C
+Markdown or PDF library underneath. It parses the Markdown, lays the document out,
+and writes the PDF bytes directly in Swift. It runs on macOS and Linux, the core
+also builds for Windows and WebAssembly, and that last one is what makes the
+in-browser demo possible.</p>
+<p>The reason I wanted this: every Markdown to PDF path I tried pulled in something
+heavy. A browser to print from, a full LaTeX distribution, or a C library bound
+into the build. I wanted one Swift package that takes Markdown and emits the PDF,
+so it drops into a server or an app with nothing to provision on the machine.</p>
+<h2>What it renders</h2>
+<p>In one codebase:</p>
+<ul><li><p>A TeX-style math subset. Fractions, radicals, superscripts, and big-operator
+limits lay out as real two-dimensional math. The quadratic formula and a
+several-rows-tall continued fraction are in the default sample.</p></li><li><p>Native vector charts: bar, line, pie, and scatter, drawn with PDF path
+operators rather than rasterized images.</p></li><li><p>A Mermaid flowchart subset, drawn as native PDF shapes.</p></li><li><p>Embedded TrueType subsetting, DEFLATE compression, tagged PDF, and PDF/UA and
+PDF/A profiles checked with veraPDF on a fixture corpus.</p></li></ul>
+<p>Headings, lists, tables, code blocks with syntax highlighting, links, and images
+are all there too.</p>
+<h2>How it runs in the browser</h2>
+<p>The browser demo is small. There is a tiny executable that reads Markdown from
+standard input, renders it, and writes the PDF bytes to standard output. That
+executable is compiled to wasm32-unknown-wasip1. In the page, a WASI shim runs
+the wasm, feeds the text area in as stdin, and captures stdout as the PDF, which
+is shown in an iframe with a download fallback.</p>
+<p>Two things were worth getting right. The wasm has to be instantiated
+asynchronously, because synchronous instantiation is disallowed on the main
+thread for modules over eight megabytes. And the engine is large, so the
+playground ships a gzipped wasm, about eighteen megabytes on the wire, and
+inflates it in the browser. First load downloads it once, then it is cached.</p>
+<h2>The pieces, and where they live</h2>
+<p>The work is split into focused packages, each open source under MIT:</p>
+<ul><li><p>The engine: <a href="https://github.com/mihaelamj/MarkdownPDF">MarkdownPDF</a>. The parser,
+layout, and PDF byte serialization.</p></li><li><p>The math: <a href="https://github.com/mihaelamj/MathTypeset">MathTypeset</a>. A
+dependency-free Swift math typesetting package. It is its own package because a
+static site generator I work on shares it, so the same TeX source typesets the
+same way whether the target is a web page or a PDF.</p></li><li><p>The command line: <a href="https://github.com/mihaelamj/MarkdownPDFCli">MarkdownPDFCli</a>.
+<code>markdownpdf input.md output.pdf</code> and a resume variant.</p></li><li><p>The playground: <a href="https://pdf.aleahim.com">pdf.aleahim.com</a>, with source at
+<a href="https://github.com/mihaelamj/markdownpdf-playground">markdownpdf-playground</a>.
+The wasm build, the WASI harness, and the page itself.</p></li></ul>
+<p>There are no third-party runtime dependencies. The only package the engine pulls
+in is my own MathTypeset, which itself has none.</p>
+<h2>Honest limits</h2>
+<p>It is early and I say so. Math renders with an embedded Latin Modern Math font,
+so plus-minus, sigma, radicals, and Greek come out as real glyphs, not ASCII. One
+wrinkle worth noting: the engine embeds TrueType (glyf) fonts only for now, and
+Latin Modern Math ships as OpenType CFF, so the playground bundles a TrueType
+conversion of it (the MATH table is preserved). The full witness test suite runs
+on macOS and Linux; Windows and WebAssembly are build gates that compile the
+engine but do not yet run the suite. Text beyond Western European needs a
+supplied font, and shaping for Arabic and Hebrew is the open frontier where help
+is welcome.</p>
+<h2>Try it</h2>
+<p>The demo is at <a href="https://pdf.aleahim.com">pdf.aleahim.com</a>, the engine is at
+<a href="https://github.com/mihaelamj/MarkdownPDF">github.com/mihaelamj/MarkdownPDF</a>. If
+you render Markdown to PDF anywhere that you would rather not install a browser or
+a LaTeX stack, this might fit.</p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/why-i-built-tiledown/">Why I built TileDown</a><time>June 6, 2026</time></li><li><a href="https://aleahim.com/blog/openapi-doctor-webassembly-readiness/">OpenAPIDoctor WebAssembly readiness</a><time>June 5, 2026</time></li><li><a href="https://aleahim.com/blog/cupertino-v1-3-0-platform-filtering/">cupertino v1.3.0: The Big Refactor</a><time>May 31, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/blog/">Blog</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
+
+<script>
+(function () {
+  function setup() {
+    document.querySelectorAll('[data-td-copy-permalink]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        if (!navigator.clipboard) return;
+        var url = link.getAttribute('href');
+        if (!url) return;
+        event.preventDefault();
+        navigator.clipboard.writeText(url).then(function () {
+          var label = link.textContent;
+          link.textContent = 'Copied';
+          link.setAttribute('data-td-copy-state', 'copied');
+          setTimeout(function () {
+            link.textContent = label;
+            link.removeAttribute('data-td-copy-state');
+          }, 1500);
+        }, function () {
+          window.location.href = url;
+        });
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', setup);
+})();
+</script>
+
+
+</body>
+</html>
