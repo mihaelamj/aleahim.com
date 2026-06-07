@@ -231,7 +231,7 @@ test -f "$HERO_FILE" || { echo "abort: hero file $HERO_FILE missing; cannot depl
 grep -q "^draft: false" "contents/blog/<slug>/index.md" || { echo "abort: draft is not false in frontmatter"; exit 1; }
 ```
 
-Build with TileDown. `make tiledown-check` runs the converter (`contents/` → `TileDown/content`), the doctor with generators (rebuilds the CV PDF), the `build-site` into `TileDown/dist`, and the output checks (route parity, root files, images, RSS full content, analytics):
+Build with TileDown. `make tiledown-check` runs the converter (`contents/` → `TileDown/content`), the doctor, the `build-site` into `TileDown/dist`, and the output checks (route parity, root files, images, RSS full content, analytics):
 
 ```bash
 make tiledown-check \

@@ -44,7 +44,7 @@ location with `TILEDOWN_REPO=/path/to/tile-down`.
 |--------|--------------|
 | `tiledown-content` | Convert `contents/` into `TileDown/content` |
 | `tiledown-build` | Build `TileDown/dist` from `TileDown/content` |
-| `tiledown-doctor` | `tiledown doctor --publish --run-generators` (rebuilds the CV PDF) |
+| `tiledown-doctor` | `tiledown doctor --publish --run-generators` (no content generators declared) |
 | `tiledown-check` | content-check + doctor + build + output-check (use this before deploy) |
 | `tiledown-preview` | Build a localhost preview and serve it on port 8098 |
 
@@ -56,9 +56,9 @@ location with `TILEDOWN_REPO=/path/to/tile-down`.
 make tiledown-check
 ```
 
-This regenerates `TileDown/content`, runs the doctor with generators, builds
-`TileDown/dist`, and verifies route parity, root deployment files, images, the CV
-PDFs, RSS full content, analytics, and embeds.
+This regenerates `TileDown/content`, runs the doctor, builds `TileDown/dist`, and
+verifies route parity, root deployment files, images, RSS full content,
+analytics, and embeds.
 
 ### Step 2: Copy the built site to the repo root
 
@@ -133,9 +133,10 @@ this flow with the hero-image step and the pre/post-deploy assertions.
 ### TileDown build fails with a missing engine
 - The engine checkout must be at `../TileDown/tile-down` (or set `TILEDOWN_REPO`).
 
-### `cv` generator fails: "module compiled with Swift 6.3.2 cannot be imported by the Swift 6.2 compiler"
-- Stale `.build` left by a different Swift toolchain (for example a prior `xcrun`
-  or swiftly default). Clean it and rebuild: `rm -rf .build && make tiledown-check`.
+### Swift build fails: "module compiled with Swift X cannot be imported by Swift Y"
+- A `.build` was left by a different Swift toolchain (for example a prior `xcrun`
+  vs swiftly default). Clean the affected one and rebuild. For the TileDown engine:
+  `rm -rf ../TileDown/tile-down/Packages/.build && make tiledown-check`.
 
 ## GitHub Pages Settings
 
