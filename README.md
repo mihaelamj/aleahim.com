@@ -2,43 +2,40 @@
 
 Personal website and technical writing archive for Mihaela Mihaljevic Jakic.
 
-The site contains project notes, release posts, CV material, and articles about
-Swift, OpenAPI, Apple-platform development, and AI-assisted developer tooling.
-It is currently maintained as a TileDown/Toucan migration workspace.
+The site contains project notes, release posts, and articles about Swift, OpenAPI,
+Apple-platform development, and AI-assisted developer tooling. It is built with
+TileDown.
 
 ## What Is In This Repo
 
-- `TileDown/content/`: current source content for the TileDown version of the
-  site.
-- `Sources/GenerateCV/`: Swift code used to generate CV content.
-- `Scripts/`: migration and validation helpers.
-- Root-level generated HTML: previously built static output and compatibility
-  redirects.
+- `TileDown/content/`: the site source. Markdown posts grouped by slug under
+  `TileDown/content/blog/`, images under `TileDown/content/images/`, and
+  `tiledown.yml`.
+- Root-level HTML: the built static site that GitHub Pages serves.
 
-## Local Development
+## Local Preview
 
 ```bash
-make dev
-make serve
+make tiledown-preview
 ```
 
-The local server is available at `http://localhost:3000`.
+Serves the site at `http://localhost:8098`.
 
 ## Content Workflow
 
-Most authored content lives under `TileDown/content/`. Blog posts are Markdown
-files grouped by slug. Static assets live under `TileDown/content/images/` and
-`TileDown/content/assets/`.
+Authored content lives under `TileDown/content/`. Build and check the site with:
 
-Useful references:
+```bash
+make tiledown-check
+```
 
-- [CONTENT-GUIDE.md](CONTENT-GUIDE.md)
-- [DEPLOYMENT.md](DEPLOYMENT.md)
-- [TileDown/README.md](TileDown/README.md)
+To add a post, the `aleahim-new-post` skill scaffolds, builds, and deploys it.
+See [DEPLOYMENT.md](DEPLOYMENT.md) for the full deploy flow.
 
 ## Deployment
 
-The site deploys to GitHub Pages from the generated static output on `main`.
+Built with the TileDown engine (`make tiledown-build`) and deployed to GitHub
+Pages by committing the built static output at the repo root on `main`.
 
 ## License
 

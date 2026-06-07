@@ -1,26 +1,17 @@
 # Aleahim.com — Priority Check First
 
-## RSS full-text feed (fixed 2026-04-23)
+## RSS full-text feed
 
-**Status: deployed on `main` in commit `1461c507`.**
+`aleahim.com/rss.xml` emits `<content:encoded>` (CDATA) with the full rendered post HTML for every item. This feeds [appledevsearch.com](https://appledevsearch.com/) and [iosdevsearch.com](https://iosdevsearch.com/) via the [iOS Dev Directory](https://iosdevdirectory.com/).
 
-`aleahim.com/rss.xml` now emits `<content:encoded>` (CDATA) with the full rendered post HTML for every item. This feeds [appledevsearch.com](https://appledevsearch.com/) and [iosdevsearch.com](https://iosdevsearch.com/) via the [iOS Dev Directory](https://iosdevdirectory.com/).
-
-### What changed
-
-- `templates/default/views/rss.mustache`:
-  - Added `xmlns:content="http://purl.org/rss/1.0/modules/content/"` to `<rss>`.
-  - Added `<content:encoded><![CDATA[{{{contents.html}}}]]></content:encoded>` inside each `<item>`.
-- No pipeline change was needed — Toucan 1.0.0-rc.1's `list` scope already hydrates `contents.html`.
-
-### Verify
+The TileDown engine produces the full-text feed; `make tiledown-check` guards the invariant (every `<item>` carries `<content:encoded>`). Verify live:
 
 ```bash
 curl -s https://aleahim.com/rss.xml | grep -c '<content:encoded>'
-# Must equal the number of <item> tags (currently 18).
+# Must equal the number of <item> tags.
 ```
 
-48h after deploy, search appledevsearch.com for a distinctive phrase from an old post body (not in its title). If it matches, full-content indexing is working. Track `appledevsearch.com` referrer count in `mihaela-analytics/umami/aleahim/raw/*/metrics-referrer.json` week-over-week.
+48h after a deploy, search appledevsearch.com for a distinctive phrase from an old post body (not in its title). If it matches, full-content indexing is working. Track `appledevsearch.com` referrer count in `mihaela-analytics/umami/aleahim/raw/*/metrics-referrer.json` week-over-week.
 
 ### Still open: iOS Dev Directory entry
 

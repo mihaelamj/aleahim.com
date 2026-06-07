@@ -1,58 +1,36 @@
-# TileDown Migration Source
+# TileDown source
 
-This directory holds the TileDown source tree generated from the current Toucan
-`contents/` directory.
+`TileDown/content/` is the source for aleahim.com: Markdown posts grouped by slug
+under `blog/`, images under `images/`, and `tiledown.yml`. The TileDown engine
+builds it into `TileDown/dist/`, which is copied to the repo root for GitHub Pages.
 
-For the full migration procedure, including slug checks, local preview,
-production cutover, and rollback, see [MIGRATION.md](MIGRATION.md).
-
-Regenerate it with:
-
-```sh
-make tiledown-content
-```
-
-Check the migration end to end with:
-
-```sh
-make tiledown-check
-```
-
-That command:
-
-- regenerates `TileDown/content` from Toucan `contents/`
-- verifies converted front matter, redirects, static assets, analytics, and embed
-  conversion
-- builds `TileDown/dist` with the adjacent TileDown checkout
-- verifies route parity, root deployment files, local assets, full-content RSS,
-  analytics, and the iRelay video embed
-
-Preview locally with root-relative links:
-
-```sh
-make tiledown-preview
-```
-
-The committed generated source keeps the production `baseURL` from the shared
-TileDown site settings so canonical URLs, RSS, sitemap, and share links are
-valid for deployment. The preview target copies `TileDown/content` to `/tmp`,
-removes `baseURL` from that temporary copy, builds into
-`/tmp/aleahim-tiledown-preview-site`, and serves it with links such as
-`/styles.css`.
-
-Build only with:
+Build:
 
 ```sh
 make tiledown-build
 ```
 
-The Makefile defaults to the sibling checkout at `../TileDown/tile-down`. If the
-engine lives elsewhere, override `TILEDOWN_REPO` or provide an installed binary:
+Build, run the engine doctor, and check the RSS full-text and localhost
+invariants:
+
+```sh
+make tiledown-check
+```
+
+Preview locally with root-relative links on http://localhost:8098:
+
+```sh
+make tiledown-preview
+```
+
+The Makefile uses the sibling engine checkout at `../TileDown/tile-down`. Override
+with `TILEDOWN_REPO`, or use an installed binary with `TILEDOWN=tiledown`:
 
 ```sh
 TILEDOWN_REPO=/path/to/tile-down make tiledown-check
 TILEDOWN=tiledown make tiledown-check
 ```
 
-The current production Toucan source remains in `contents/` until the migration
-is fully verified and deployed.
+`tiledown.yml` keeps the production `baseURL` so canonical URLs, RSS, sitemap, and
+share links are valid. The preview target builds from a temporary copy with
+`baseURL` removed so links are root-relative on localhost.
