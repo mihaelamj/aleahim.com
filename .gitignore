@@ -8,3 +8,7 @@
 dist/
 .build/
 TileDown/dist/
+
+# Python bytecode cache (regenerated when Scripts/*.py import each other)
+__pycache__/
+*.pyc
