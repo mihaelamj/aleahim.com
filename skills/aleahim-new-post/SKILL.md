@@ -1,12 +1,30 @@
 ---
 name: aleahim-new-post
-description: Scaffold, hero-image, build, and deploy a new blog post on aleahim.com (Toucan + GitHub Pages). Pauses to generate an Apple Creator Studio image prompt matched to the post topic, waits for the Keynote-exported PNG/JPG in ~/Downloads, then runs the full live build + commit + push. Use when the user asks to "new blog post", "publish to aleahim", "add post", "ship blog post", "create blog post <title>", or hands you a draft markdown file/path to publish.
+description: Scaffold, hero-image, build, and deploy a new blog post on aleahim.com (TileDown + GitHub Pages). Pauses to generate an Apple Creator Studio image prompt matched to the post topic, waits for the Keynote-exported PNG/JPG in ~/Downloads, then runs the full live build + commit + push. Use when the user asks to "new blog post", "publish to aleahim", "add post", "ship blog post", "create blog post <title>", or hands you a draft markdown file/path to publish.
 argument-hint: <draft.md path | "Post Title">
 ---
 
 # aleahim-new-post
 
 End-to-end workflow for a new aleahim.com post. Wraps the steps documented in `AGENTS.md` + `CONTENT-GUIDE.md` + `DEPLOYMENT.md` with a hard pause for the hero image (Apple Creator Studio → Keynote → ~/Downloads).
+
+## Build system: TileDown (not Toucan)
+
+The site migrated from Toucan to TileDown (Mihaela's own static site generator).
+Authoring is unchanged: posts still live in `contents/blog/<slug>/index.md` with
+the same frontmatter. The build and deploy are different:
+
+- A conversion step (`Scripts/convert_toucan_to_tiledown.py`, run by the Makefile)
+  turns `contents/` into `TileDown/content`.
+- The TileDown engine builds `TileDown/content` into `TileDown/dist`.
+- Deploy = copy `TileDown/dist/*` over the repo root, commit, push. GitHub Pages
+  serves committed HTML from the root.
+- The engine is a sibling checkout at `../TileDown/tile-down` (override with
+  `TILEDOWN_REPO=...`). The Makefile `tiledown-*` targets drive everything.
+
+The old Toucan commands (`make dev`, `toucan generate`, `/tmp/output`, `dist/`)
+are dead. `DEPLOYMENT.md`'s main body still documents the old flow; only its
+"TileDown Production Check" section is current.
 
 ## 0. Always do first — repo guard
 
@@ -19,6 +37,9 @@ git remote get-url origin | grep -q "github.com[:/]mihaelamj/aleahim.com" \
 # Clean tree (modified files block; untracked files are OK).
 test -z "$(git status --porcelain | grep -v '^??')" \
   || { echo "abort: working tree has uncommitted modifications"; git status --short; exit 1; }
+# TileDown engine checkout must be present (or pass TILEDOWN_REPO to make).
+test -d "${TILEDOWN_REPO:-../TileDown/tile-down}/Packages" \
+  || { echo "abort: TileDown engine not at ${TILEDOWN_REPO:-../TileDown/tile-down}; set TILEDOWN_REPO"; exit 1; }
 ```
 
 Every subsequent step assumes pwd is the aleahim.com repo root and the tree is clean.
@@ -29,14 +50,14 @@ Every subsequent step assumes pwd is the aleahim.com repo root and the tree is c
 - A title + body pasted in chat, OR
 - A brief — ask before drafting; never invent technical content.
 
-Always confirm: slug, title, description, date (default today's local date), post body source.
+Always confirm: slug, title, description, date (default today's local date), tags, post body source.
 
 ## Slug + paths
 
 - Slug = kebab-case derived from title unless user provides one.
 - Post dir: `contents/blog/<slug>/index.md`
 - Image dir: `assets/images/blog/<slug>/`
-- Hero file: `assets/images/blog/<slug>/hero.<ext>` where `<ext>` matches the source (PNG stays PNG, JPG stays JPG). Recent posts use `hero.png` from Keynote exports; older ones use `hero.jpg`. Toucan doesn't care which — the `image:` frontmatter field just points at whatever is on disk.
+- Hero file: `assets/images/blog/<slug>/hero.<ext>` where `<ext>` matches the source (PNG stays PNG, JPG stays JPG). Recent posts use `hero.png` from Keynote exports; older ones use `hero.jpg`. TileDown doesn't care which — the `image:` frontmatter field just points at whatever is on disk.
 
 ## Frontmatter template
 
@@ -48,12 +69,13 @@ description: <one-line listing description, no period, no em dashes>
 date: <YYYY-MM-DD>
 draft: false
 image: /images/blog/<slug>/hero.<ext>   # <ext> = png or jpg, matches the file on disk
+tags: <Tag, Tag, Tag>                    # optional; comma-separated, used by the blog tag nav
 ---
 ```
 
 The `image:` extension must match the actual hero file extension (step 4 picks it from the source).
 
-`slug:` MUST be `blog/<slug>`, not bare `<slug>` (per AGENTS.md).
+`slug:` MUST be `blog/<slug>`, not bare `<slug>` (per AGENTS.md). `tags:` is optional; omit the line if the post has none.
 
 ## Workflow
 
@@ -61,7 +83,7 @@ Speak each major step: `say -v "Ava" "Ava: <8-word update>"`. Every bash block a
 
 ### 1. Confirm inputs
 
-Print proposed slug, title, description, date. Wait for user confirmation before writing any file. If slug collides:
+Print proposed slug, title, description, date, tags. Wait for user confirmation before writing any file. If slug collides:
 ```bash
 test ! -d "contents/blog/<slug>" || { echo "abort: contents/blog/<slug> already exists, ask user before overwriting"; exit 1; }
 ```
@@ -76,7 +98,7 @@ Write `contents/blog/<slug>/index.md`. If the user supplied a draft md, strip an
 
 ### 3. Generate Apple Creator Studio prompt
 
-Read the post body. Pick a style from the seven Creator Studio styles based on topic:
+Read the post body. Pick a style based on topic:
 
 | Post type | Style | Why |
 |---|---|---|
@@ -88,7 +110,7 @@ Read the post body. Pick a style from the seven Creator Studio styles based on t
 | Numbers / performance / benchmark | **Bold** | Impact |
 | Tutorial / how-to / explanatory | **Illustration** | Friendly, instructional |
 
-Always specify: **View = Any**, **Aspect = Landscape (16:9)**. This matches the recent posts (cupertino-09, cupertino-10, irelay are all 1280×720 = 16:9). If the user explicitly wants Square or Portrait for a specific post, honor that — but the default is Landscape.
+Always specify: **View = Any**, **Aspect = Landscape (16:9)**. This matches the recent posts (1280×720 = 16:9). If the user explicitly wants Square or Portrait, honor that, but the default is Landscape.
 
 **Image model: OpenAI (ChatGPT), via Apple Creator Studio in Keynote.** Mihaela does not use the on-device Apple styles; she generates the hero through the OpenAI image model. So the style table above is mood guidance only: fold the chosen style word (for example "editorial illustration" or "bold poster art") directly into the prompt sentence, because the OpenAI model reads style from the prompt text, not from a style picker. Write one rich free-form paragraph, Landscape 16:9, no text, no logos, no readable letters.
 
@@ -117,7 +139,7 @@ slide and adjust → export the slide as PNG (or JPG) to ~/Downloads. Then
 tell me "image ready" (or "use <filename>" for a specific file).
 ```
 
-**Worked example** (first OpenAI-model run, post "The Morlocks Built SwiftUI"):
+**Worked example** (post "The Morlocks Built SwiftUI"):
 
 ```
 HERO IMAGE PROMPT (Apple Creator Studio)
@@ -162,7 +184,6 @@ Show the candidate to the user. If they named a specific file, use that instead.
 
 ```bash
 SRC="<confirmed source path>"
-# Derive destination extension from source. Lowercase. jpeg → jpg.
 case "$SRC" in
   *.png|*.PNG)              EXT="png" ;;
   *.jpg|*.jpeg|*.JPG|*.JPEG) EXT="jpg" ;;
@@ -172,91 +193,81 @@ DEST="assets/images/blog/<slug>/hero.$EXT"
 cp "$SRC" "$DEST" || { echo "abort: cp failed"; exit 1; }
 test -f "$DEST" || { echo "abort: hero.$EXT not written"; exit 1; }
 
-# Frontmatter image path must match. Update contents/blog/<slug>/index.md if needed.
+# Frontmatter image path must match.
 sed -i "" "s|^image: /images/blog/<slug>/hero\\.[a-z]*$|image: /images/blog/<slug>/hero.$EXT|" \
   "contents/blog/<slug>/index.md"
 grep -q "^image: /images/blog/<slug>/hero\\.$EXT$" "contents/blog/<slug>/index.md" \
   || { echo "abort: frontmatter image path mismatch after sed"; exit 1; }
 
-# Optimise — best-effort, format-appropriate, never abort the deploy.
+# Optimise — best-effort, never abort the deploy.
 case "$EXT" in
   png) which optipng    >/dev/null && optipng -o2 "$DEST" || true ;;
   jpg) which jpegoptim  >/dev/null && jpegoptim --all-progressive --strip-all "$DEST" || true ;;
 esac
-
-# Sanity: report dimensions to the user.
 sips -g pixelWidth -g pixelHeight "$DEST" | grep pixel
 ```
 
-If `optipng`/`jpegoptim` aren't installed, the deploy still proceeds — image just isn't optimised. To enable optimisation: `brew install optipng jpegoptim` (per the Makefile note).
+If `optipng`/`jpegoptim` aren't installed, the deploy still proceeds. To enable: `brew install optipng jpegoptim`.
 
-### 5. Preview
+### 5. Preview (TileDown)
+
+`make tiledown-preview` converts the content, builds a preview site with `baseURL` stripped (so links are root-relative on localhost), and serves it on port 8098. It runs in the foreground, so start it in a separate terminal:
 
 ```bash
-make dev || { say -v "Ava" "Ava: Dev build failed."; echo "abort: make dev failed (check swift run GenerateCV + toucan output)"; exit 1; }
+make tiledown-preview     # serves http://localhost:8098/ (blocking; run in its own terminal)
 ```
 
-Print the local URL: `http://localhost:3000/blog/<slug>/` (start `make serve` in a separate terminal if not already running). Tell user to spot-check the post page AND the homepage listing card. Wait for "looks good" / "ship it" / "deploy" before step 6. If edits needed, loop back to step 2/3.
+Open `http://localhost:8098/blog/<slug>/` and spot-check the post page AND the homepage listing card. For a build-only check without serving, use `make tiledown-preview-build`. Wait for "looks good" / "ship it" / "deploy" before step 6. If edits needed, loop back to step 2/3.
 
-### 6. Live build + deploy
+### 6. Live build + deploy (TileDown)
 
 Pre-deploy assertions:
 
 ```bash
-# Hero image must exist before live build, or socials/listing break silently.
 HERO_PATH=$(grep "^image:" "contents/blog/<slug>/index.md" | sed 's/^image: *//')
 test -n "$HERO_PATH" || { echo "abort: image: missing in frontmatter"; exit 1; }
-# Convert /images/... to assets/images/...
 HERO_FILE="assets${HERO_PATH}"
-test -f "$HERO_FILE" \
-  || { echo "abort: hero file $HERO_FILE missing; cannot deploy without it"; exit 1; }
-# Confirm post frontmatter has draft: false.
-grep -q "^draft: false" "contents/blog/<slug>/index.md" \
-  || { echo "abort: draft is not false in frontmatter"; exit 1; }
+test -f "$HERO_FILE" || { echo "abort: hero file $HERO_FILE missing; cannot deploy without it"; exit 1; }
+grep -q "^draft: false" "contents/blog/<slug>/index.md" || { echo "abort: draft is not false in frontmatter"; exit 1; }
 ```
 
-Build + copy + verify:
+Build with TileDown. `make tiledown-check` runs the converter (`contents/` → `TileDown/content`), the doctor with generators (rebuilds the CV PDF), the `build-site` into `TileDown/dist`, and the output checks (route parity, root files, images, RSS full content, analytics):
 
 ```bash
-toucan generate --target live \
-  || { say -v "Ava" "Ava: Live build failed."; echo "abort: toucan generate failed"; exit 1; }
-test -d /tmp/output \
-  || { echo "abort: /tmp/output missing after build"; exit 1; }
-cp -r /tmp/output/* . \
-  || { echo "abort: cp from /tmp/output failed"; exit 1; }
-# Localhost-leak check (project convention, DEPLOYMENT.md step 3).
+make tiledown-check \
+  || { say -v "Ava" "Ava: TileDown build failed."; echo "abort: make tiledown-check failed"; exit 1; }
+test -f TileDown/dist/index.html || { echo "abort: TileDown/dist/index.html missing after build"; exit 1; }
+```
+
+Deploy: copy the built site over the repo root (GitHub Pages serves committed HTML from root). `TileDown/dist` includes `CNAME`:
+
+```bash
+cp -R TileDown/dist/* . || { echo "abort: cp from TileDown/dist failed"; exit 1; }
+```
+
+Verify the root:
+
+```bash
+test -f "blog/<slug>/index.html" || { echo "abort: blog/<slug>/index.html missing at root after copy"; exit 1; }
 LEAK=$(grep -c "localhost" index.html || true)
-test "$LEAK" -eq 0 \
-  || { echo "abort: localhost URL leaked into index.html (LEAK=$LEAK)"; exit 1; }
-# Sanity: the new post page must exist in the build.
-test -f "blog/<slug>/index.html" \
-  || { echo "abort: blog/<slug>/index.html missing after build"; exit 1; }
-# RSS full-text invariant (CLAUDE.md): every <item> must carry <content:encoded>,
-# and the new post must be in the feed. The feed powers appledevsearch.com.
-RSS_ITEMS=$(grep -c "<item>" rss.xml)
-RSS_FULLTEXT=$(grep -c "<content:encoded>" rss.xml)
-test "$RSS_ITEMS" = "$RSS_FULLTEXT" \
-  || { echo "abort: rss.xml item/content:encoded mismatch ($RSS_ITEMS items, $RSS_FULLTEXT full-text)"; exit 1; }
-grep -q "blog/<slug>/" rss.xml \
-  || { echo "abort: new post slug missing from rss.xml after build"; exit 1; }
-echo "RSS OK: $RSS_ITEMS items, all carry content:encoded, new post present"
+test "$LEAK" -eq 0 || { echo "abort: localhost URL leaked into index.html (LEAK=$LEAK)"; exit 1; }
+grep -qx "aleahim.com" CNAME || { echo "abort: root CNAME is not aleahim.com"; exit 1; }
+# RSS full-text invariant (CLAUDE.md): every <item> carries <content:encoded>, new post present.
+RSS_ITEMS=$(grep -c "<item>" rss.xml); RSS_FULLTEXT=$(grep -c "<content:encoded>" rss.xml)
+test "$RSS_ITEMS" = "$RSS_FULLTEXT" || { echo "abort: rss.xml item/content:encoded mismatch ($RSS_ITEMS/$RSS_FULLTEXT)"; exit 1; }
+grep -q "blog/<slug>/" rss.xml || { echo "abort: new post slug missing from rss.xml after build"; exit 1; }
+echo "OK: post built, no localhost leak, CNAME intact, RSS full-text, new post present"
 ```
 
 Commit + push:
 
 ```bash
-git add . \
-  || { echo "abort: git add failed"; exit 1; }
-git status   # show user what's staged
-# Commit message: lowercase scoped style (matches recent history: blog: add ...).
-# No em dashes, no AI attribution.
-git commit -m "blog: add \"<Title>\"" \
-  || { echo "abort: git commit failed (hook?)"; exit 1; }
-git push origin main \
-  || { say -v "Ava" "Ava: Push failed."; echo "abort: git push failed"; exit 1; }
+git add . || { echo "abort: git add failed"; exit 1; }
+git status   # show user what's staged (post, image, regenerated TileDown/content + TileDown/dist + root site)
+# Commit message: lowercase scoped style. No em dashes, no AI attribution.
+git commit -m "blog: add \"<Title>\"" || { echo "abort: git commit failed (hook?)"; exit 1; }
+git push origin main || { say -v "Ava" "Ava: Push failed."; echo "abort: git push failed"; exit 1; }
 ```
-
-Note on `git add .`: pre-flight (step 0) guaranteed the tree was clean of modifications; everything staged now is from this skill's work (post, image, rebuilt site).
 
 Speak: `say -v "Ava" "Ava: Pushed to main. Pages will publish soon."`
 
@@ -271,18 +282,14 @@ if [ "$CODE" != "200" ]; then
   CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://aleahim.com/blog/<slug>/")
   echo "Retry → $CODE"
 fi
-# RSS: new post present AND full-text invariant holds (feed powers appledevsearch.com, see CLAUDE.md).
 LIVE_RSS=$(curl -s https://aleahim.com/rss.xml)
-echo "$LIVE_RSS" | grep -q "blog/<slug>/" \
-  || echo "warning: new slug not in live RSS yet (Pages/CDN cache?)"
-LI=$(echo "$LIVE_RSS" | grep -c "<item>")
-LF=$(echo "$LIVE_RSS" | grep -c "<content:encoded>")
+echo "$LIVE_RSS" | grep -q "blog/<slug>/" || echo "warning: new slug not in live RSS yet (Pages/CDN cache?)"
+LI=$(echo "$LIVE_RSS" | grep -c "<item>"); LF=$(echo "$LIVE_RSS" | grep -c "<content:encoded>")
 echo "live RSS: $LI items, $LF content:encoded"
-test "$LI" = "$LF" \
-  || echo "warning: live RSS item/content:encoded mismatch ($LI/$LF), full-text feed may be broken"
+test "$LI" = "$LF" || echo "warning: live RSS item/content:encoded mismatch ($LI/$LF)"
 ```
 
-If still not 200 after retry: `gh run list --limit 3` to inspect Pages build status. Surface to user — do not loop forever.
+If still not 200 after retry: `gh run list --limit 3` to inspect Pages build status. Surface to user, do not loop forever.
 
 Final voice: `say -v "Ava" "Ava: Post is live. Aleahim dot com."`
 
@@ -290,32 +297,31 @@ Final voice: `say -v "Ava" "Ava: Post is live. Aleahim dot com."`
 
 - **NEVER** push anywhere other than `origin/main` on `github.com:mihaelamj/aleahim.com`. Repo guard in step 0 enforces this.
 - **NEVER** push to a GitLab remote (global rule). Repo guard blocks this.
-- **NEVER** copy from `dist/` to root. Always from `/tmp/output/`. `dist/` has localhost URLs.
+- **NEVER** copy from `dist/` (the dead Toucan dev output, localhost URLs) or `/tmp/output/` to root. The live site comes from `TileDown/dist/` only.
 - **NEVER** add `Co-Authored-By: Claude`, "Generated with", or any AI attribution to the commit (global rule).
 - **NEVER** use em dashes in post body, frontmatter `description`, or commit message. Commas, colons, periods.
 - **NEVER** assume the post body. Ask if the user only supplied a title.
 - **NEVER** deploy without the hero image. The pre-deploy assertion blocks this.
 - **NEVER** silently overwrite an existing slug. Step 1 blocks this.
+- **NEVER** hand-edit the `CNAME` file. It ships from `TileDown/content/CNAME` through the build; the verify step asserts it stays `aleahim.com`.
 
 ## Files this skill touches
 
 Source (committed manually):
 - `contents/blog/<slug>/index.md`               (new)
-- `assets/images/blog/<slug>/hero.<png|jpg>`    (new — extension matches source)
+- `assets/images/blog/<slug>/hero.<png|jpg>`    (new, extension matches source)
 
-Built (rebuilt by Toucan, then committed via `git add .`):
-- `blog/<slug>/index.html`
-- `blog/index.html` (listing)
-- `index.html` (homepage with blog listing)
-- `rss.xml`, `sitemap.xml`
-- Any other rebuilt root pages (Toucan rebuilds the whole site each time)
+Generated + built (regenerated by the TileDown flow, then committed via `git add .`):
+- `TileDown/content/...`   (converted from `contents/` by `Scripts/convert_toucan_to_tiledown.py`)
+- `TileDown/dist/...`      (built by the TileDown engine)
+- Root site: `blog/<slug>/index.html`, `blog/index.html`, `index.html`, `rss.xml`, `sitemap.xml`, `CNAME`, and other root pages (the whole site is rebuilt and copied each time)
 
 The clean-tree pre-flight (step 0) guarantees `git add .` stages only the skill's own output.
 
 ## Idempotency / re-runs
 
-- If `contents/blog/<slug>/index.md` exists: step 1 aborts. User must say whether this is an edit (then we skip to step 3 or 5) or a different slug.
-- If only `hero.jpg` is missing: re-enter at step 3.
+- If `contents/blog/<slug>/index.md` exists: step 1 aborts. User must say whether this is an edit (then skip to step 3 or 5) or a different slug.
+- If only the hero is missing: re-enter at step 3.
 - If build succeeded but push failed: re-run step 6 from the `git push` line.
 
 ## Cross-Mac install

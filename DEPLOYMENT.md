@@ -2,155 +2,145 @@
 
 ## Overview
 
-This site uses Toucan static site generator and is deployed to GitHub Pages at https://aleahim.com
+This site is built with **TileDown** (Mihaela's own static site generator) and
+deployed to GitHub Pages at https://aleahim.com
 
-GitHub Pages is configured to deploy from the `main` branch, root `/` folder. Built HTML files must be committed to the repo root.
+GitHub Pages serves committed HTML from the `main` branch, root `/` folder. The
+build output must be committed to the repo root.
 
-There is also a GitHub Actions workflow (`.github/workflows/deploy.yml`) that triggers on version tags (`v*`). Both deploy methods coexist — branch deploys handle content updates, tag deploys are optional.
+The site migrated from Toucan to TileDown. Authoring is unchanged (posts live in
+`contents/blog/<slug>/index.md`), but the build and deploy now go through
+TileDown. The old Toucan commands are gone.
 
 ## Deployment Setup
 
 - **Source**: Deploy from a branch
 - **Branch**: `main`
 - **Folder**: `/` (root)
-- **Custom Domain**: aleahim.com
+- **Custom Domain**: aleahim.com (CNAME ships from `TileDown/content/CNAME`)
 - **HTTPS**: Enforced
 
-## Build Targets
+## How the build works
 
-The `toucan.yml` file defines two targets:
+```
+contents/                         authored source (markdown + frontmatter + assets)
+   │  Scripts/convert_toucan_to_tiledown.py   (make tiledown-content)
+   ▼
+TileDown/content/                 TileDown source tree (generated, includes CNAME)
+   │  tiledown build-site         (make tiledown-build, engine at ../TileDown/tile-down)
+   ▼
+TileDown/dist/                    full built site
+   │  cp -R TileDown/dist/* .
+   ▼
+repo root                         committed + served by GitHub Pages
+```
 
-| Target | Output Directory | Base URL |
-|--------|-----------------|----------|
-| `dev` (default) | `dist/` | `http://localhost:3000` |
-| `live` | `/tmp/output/` | `https://aleahim.com/` |
+The TileDown engine is a sibling checkout at `../TileDown/tile-down`. Override the
+location with `TILEDOWN_REPO=/path/to/tile-down`.
 
-**The `live` target outputs to `/tmp/output/`, NOT `dist/`.** This is the most common deployment mistake — copying from `dist/` will deploy localhost URLs to production.
+## Makefile targets
+
+| Target | What it does |
+|--------|--------------|
+| `tiledown-content` | Convert `contents/` into `TileDown/content` |
+| `tiledown-build` | Build `TileDown/dist` from `TileDown/content` |
+| `tiledown-doctor` | `tiledown doctor --publish --run-generators` (rebuilds the CV PDF) |
+| `tiledown-check` | content-check + doctor + build + output-check (use this before deploy) |
+| `tiledown-preview` | Build a localhost preview and serve it on port 8098 |
 
 ## Deploy to Production
 
-### Step 1: Build with live target
+### Step 1: Build and verify
 
 ```bash
-toucan generate --target live
+make tiledown-check
 ```
 
-### Step 2: Copy from `/tmp/output/` to repo root
+This regenerates `TileDown/content`, runs the doctor with generators, builds
+`TileDown/dist`, and verifies route parity, root deployment files, images, the CV
+PDFs, RSS full content, analytics, and embeds.
+
+### Step 2: Copy the built site to the repo root
 
 ```bash
-cp -r /tmp/output/* .
+cp -R TileDown/dist/* .
 ```
 
-### Step 3: Verify no localhost URLs leaked
+`TileDown/dist` includes `CNAME`, so the custom domain is preserved.
+
+### Step 3: Verify the root
 
 ```bash
-grep -c "localhost" index.html
-# Must be 0
+grep -c "localhost" index.html   # must be 0
+grep -qx "aleahim.com" CNAME && echo "CNAME OK"   # must print CNAME OK
 ```
 
 ### Step 4: Commit and push
 
 ```bash
 git add .
-git commit -m "Deploy: [describe what changed]"
+git commit -m "deploy: rebuild site with [describe what changed]"
 git push origin main
 ```
 
-GitHub Pages deploys within 30-60 seconds.
+GitHub Pages deploys within 30 to 60 seconds.
 
-### Step 5: Verify
+### Step 5: Verify live
 
 ```bash
-curl -s https://aleahim.com/ | grep -c "localhost"
-# Must be 0
+curl -s -o /dev/null -w "%{http_code}\n" https://aleahim.com/
+curl -s https://aleahim.com/ | grep -c "localhost"   # must be 0
 ```
 
 ## Quick Deploy (copy-paste)
 
 ```bash
-toucan generate --target live
-cp -r /tmp/output/* .
-grep -c "localhost" index.html  # verify: must be 0
+make tiledown-check
+cp -R TileDown/dist/* .
+grep -c "localhost" index.html   # verify: must be 0
 git add .
-git commit -m "Deploy: update site"
+git commit -m "deploy: rebuild site"
 git push origin main
 ```
 
-## Local Development
+## Local Preview
 
 ```bash
-# Build for dev (outputs to dist/ with localhost URLs)
-make dev
-
-# Serve locally at http://localhost:3000
-make serve
-
-# Or watch for changes
-make watch
+make tiledown-preview     # serves http://localhost:8098/ (blocking, run in its own terminal)
 ```
 
-**Never deploy the dev build.** It uses `http://localhost:3000` URLs.
+The preview builds from a temporary content copy with `baseURL` removed, so CSS
+and internal links are root-relative and work on localhost. For a build-only
+check without serving, use `make tiledown-preview-build`.
 
-## TileDown Production Check
+## New blog posts
 
-The TileDown source lives under `TileDown/`. GitHub Pages still serves committed
-HTML from the repository root, so the deploy flow is: regenerate TileDown,
-verify it, then copy `TileDown/dist/` over the root generated files.
-
-```bash
-make tiledown-check
-```
-
-This regenerates `TileDown/content`, runs `tiledown doctor --publish
---run-generators`, builds `TileDown/dist` with the adjacent `../TileDown/tile-down`
-engine checkout, and verifies route parity, root deployment files, images, CV
-PDFs, RSS full content, analytics, and the converted video embed. Override the
-engine location when needed:
-
-```bash
-TILEDOWN_REPO=/path/to/tile-down make tiledown-check
-```
-
-For local browser preview, use the preview target:
-
-```bash
-make tiledown-preview
-```
-
-Production `TileDown/content/tiledown.yml` keeps `baseURL` from
-`Scripts/tiledown_site.py` for canonical URLs, RSS, sitemap, and share links.
-The preview target builds from a temporary content copy with `baseURL` removed,
-so CSS and internal links are root-relative and work on localhost.
-
-## Configuration Files
-
-- **toucan.yml**: Build targets (dev → `dist/`, live → `/tmp/output/`)
-- **site.yml**: Site metadata and navigation
-- **config.yml**: Content configuration
+Use the `aleahim-new-post` skill (`skills/aleahim-new-post/SKILL.md`), which wraps
+this flow with the hero-image step and the pre/post-deploy assertions.
 
 ## Troubleshooting
 
 ### Site shows localhost URLs in production
-- You copied from `dist/` instead of `/tmp/output/`
-- Fix: rebuild with `toucan generate --target live`, then `cp -r /tmp/output/* .`
+- You copied a preview/dev build to root. Rebuild with `make tiledown-check` and
+  copy from `TileDown/dist/` only.
 
 ### Site shows old content after deployment
-- Hard refresh: `Cmd + Shift + R`
-- Or open in incognito/private window
+- Hard refresh: `Cmd + Shift + R`, or open in a private window.
 
 ### Site shows README instead of homepage
-- Ensure you ran `cp -r /tmp/output/* .`
-- Verify `index.html` exists in the repository root
+- Ensure you ran `cp -R TileDown/dist/* .` and `index.html` exists at the repo root.
 
-### CSS not loading
-- Verify you built with `--target live` (not dev)
-- Check that `toucan.yml` has the correct URL: `https://aleahim.com/`
+### TileDown build fails with a missing engine
+- The engine checkout must be at `../TileDown/tile-down` (or set `TILEDOWN_REPO`).
+
+### `cv` generator fails: "module compiled with Swift 6.3.2 cannot be imported by the Swift 6.2 compiler"
+- Stale `.build` left by a different Swift toolchain (for example a prior `xcrun`
+  or swiftly default). Clean it and rebuild: `rm -rf .build && make tiledown-check`.
 
 ## GitHub Pages Settings
 
-Access at: https://github.com/mihaelamj/aleahim.com/settings/pages
+https://github.com/mihaelamj/aleahim.com/settings/pages
 
-Current configuration:
 - **Source**: Deploy from a branch
 - **Branch**: main
 - **Path**: / (root)
@@ -160,7 +150,14 @@ Current configuration:
 ## DNS Configuration
 
 The custom domain `aleahim.com` is configured with:
-- CNAME file in repository root containing `aleahim.com`
-- DNS records pointing to GitHub Pages servers
+- A `CNAME` file in the repo root containing `aleahim.com` (shipped from
+  `TileDown/content/CNAME` by the build; do not hand-edit it)
+- DNS records (at Namecheap) pointing the apex to GitHub Pages servers
 
-**Do not modify the CNAME file** - it's automatically generated by Toucan.
+## Legacy: Toucan (removed)
+
+The site previously used Toucan (`toucan generate --target live` to `/tmp/output/`,
+then `cp -r /tmp/output/* .`). That path is dead. `toucan.yml`, `config.yml`, and
+`site.yml` remain in the tree as historical config but are not used by the live
+build. Do not run `make dev`, `make dist`, `make serve`, or `make watch` (the
+Toucan targets) for deployment.
