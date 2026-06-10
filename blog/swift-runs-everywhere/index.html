@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>&quot;Swift Runs Everywhere. I Checked.&quot;</title>
+<meta name="description" content="Four of my Swift projects run right now on macOS, Linux, Windows, and inside the browser. A static site generator, a Markdown to PDF engine, a YAML parser, and a 2D vector graphics engine, all pure Swift, all with CI proving every platform on every push.">
+<link rel="canonical" href="https://aleahim.com/blog/swift-runs-everywhere/">
+<meta property="og:title" content="&quot;Swift Runs Everywhere. I Checked.&quot;">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Four of my Swift projects run right now on macOS, Linux, Windows, and inside the browser. A static site generator, a Markdown to PDF engine, a YAML parser, and a 2D vector graphics engine, all pure Swift, all with CI proving every platform on every push.">
+<meta property="og:url" content="https://aleahim.com/blog/swift-runs-everywhere/">
+<meta property="og:site_name" content="Aleahim.com">
+<meta property="og:image" content="https://aleahim.com/images/blog/swift-runs-everywhere/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="&quot;Swift Runs Everywhere. I Checked.&quot;">
+<meta name="twitter:description" content="Four of my Swift projects run right now on macOS, Linux, Windows, and inside the browser. A static site generator, a Markdown to PDF engine, a YAML parser, and a 2D vector graphics engine, all pure Swift, all with CI proving every platform on every push.">
+<meta name="twitter:image" content="https://aleahim.com/images/blog/swift-runs-everywhere/hero.jpg">
+<meta property="article:published_time" content="2026-06-10T00:00:00Z">
+<link rel="icon" href="https://aleahim.com/favicon.ico">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<!-- Umami Analytics --><script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+<body>
+<header class="td-header">
+<a class="td-brand td-brand-stacked" href="https://aleahim.com/"><span class="td-brand-title">Aleahim.com</span><span class="td-brand-subtitle">v1.20</span></a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/blog/" aria-current="page">Blog</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">June 10, 2026</time></div><h1 class="td-article-title">&quot;Swift Runs Everywhere. I Checked.&quot;</h1><p class="td-article-dek">Four of my Swift projects run right now on macOS, Linux, Windows, and inside the browser. A static site generator, a Markdown to PDF engine, a YAML parser, and a 2D vector graphics engine, all pure Swift, all with CI proving every platform on every push.</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/swift-runs-everywhere/" data-td-copy-permalink title="Copy permalink">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a><a href="https://aleahim.com/swift-runs-everywhere.pdf" download>Download PDF</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fswift-runs-everywhere%2F&amp;text=%22Swift%20Runs%20Everywhere.%20I%20Checked.%22" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fswift-runs-everywhere%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fswift-runs-everywhere%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=%22Swift%20Runs%20Everywhere.%20I%20Checked.%22&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fswift-runs-everywhere%2F" target="_blank" rel="noopener">Email</a></nav><nav class="td-tags td-article-tags" aria-label="Tags"><a class="td-tag" href="https://aleahim.com/tags/swift/">Swift</a><a class="td-tag" href="https://aleahim.com/tags/webassembly/">WebAssembly</a><a class="td-tag" href="https://aleahim.com/tags/linux/">Linux</a><a class="td-tag" href="https://aleahim.com/tags/portability/">Portability</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/blog/swift-runs-everywhere/hero.jpg" alt="&quot;Swift Runs Everywhere. I Checked.&quot;"></figure><div class="td-article-body"><p>“Swift runs everywhere” is usually a slide. A roadmap bullet, a conference
+promise, a footnote about a port someone started. I wanted to know what it looks
+like when it is not a slide, so I held my own projects to it: every platform
+claim must be a CI gate that runs on every push, and at least one build per
+project must be something you can click right now.</p>
+<p>Four projects pass that bar today. A static site generator, a Markdown to PDF
+engine, a YAML parser, and a 2D vector graphics engine. All pure Swift. Between
+them they cover macOS, Linux, Windows, and the browser.</p>
+<h2>Exhibit one: the page you are reading</h2>
+<p>This site is built by <a href="https://github.com/TileDown/tile-down">TileDown</a>, a
+static site generator written in Swift. The math on my posts is typeset to SVG
+at build time, the charts and diagrams are fenced text blocks rendered by the
+engine, and every article ships its own PDF from the same Markdown source. I
+wrote about the why in
+<a href="https://aleahim.com/blog/why-i-built-tiledown/">Why I built TileDown</a>.</p>
+<p>The part that belongs in this post is the CI table. On every push, TileDown
+builds and tests on macOS and on Linux in a Swift 6.1 container, the core
+targets build on Windows, and the math playground product cross-compiles to
+wasm32-unknown-wasip1 with the official Swift WebAssembly SDK. Four platforms,
+four green gates, one codebase. The generator that produced this page would
+produce it on a Linux box just as happily.</p>
+<h2>Exhibit two: a PDF engine in your browser tab</h2>
+<p><a href="https://pdf.aleahim.com">pdf.aleahim.com</a> is
+<a href="https://github.com/mihaelamj/MarkdownPDF">MarkdownPDF</a> compiled to
+WebAssembly. Type Markdown on the left, get a real PDF on the right, with no
+server involved. The engine parses the Markdown, lays out the document, and
+writes the PDF bytes directly in Swift, no LaTeX, no headless browser, no C
+library underneath. The wasm ships gzipped at about eighteen megabytes,
+downloads once, and is cached after that.</p>
+<p>The same engine runs the full witness test suite on macOS and Linux, where the
+output PDFs are checked by independent tools including veraPDF for PDF/UA and
+PDF/A conformance. Windows and WebAssembly are build gates that compile the
+engine on every push. I covered the engine itself in
+<a href="https://aleahim.com/blog/markdown-to-pdf-in-the-browser/">Markdown to PDF in your browser, in pure Swift</a>.</p>
+<h2>Exhibit three: a YAML parser with receipts</h2>
+<p><a href="https://github.com/mihaelamj/PureYAML">PureYAML</a> is a dependency-free YAML
+package: no external SwiftPM dependencies, no bundled C sources, and no
+Foundation requirement in the library target. Its single CI workflow gates
+macOS, Linux, Windows, and WASI on every push.</p>
+<p>Correctness is measured, not asserted. A comparison harness runs PureYAML and
+Yams side by side over a corpus of 111 real-world documents, OpenAPI specs,
+Kubernetes manifests, GitHub Actions workflows. In the latest checked-in run
+both parsers accept the same 110 documents and reject the same intentionally
+damaged one, with zero disagreements between them.</p>
+<p>And because a CI badge is less fun than a demo, there is a
+<a href="https://mihaelamj.github.io/PureYAMLStreaming/">live streaming benchmark</a> that
+fetches multi-megabyte YAML files and parses them as streams, in Swift, inside
+your browser tab, reporting fetch time, parse time, and throughput as it goes.</p>
+<h2>Exhibit four: a graphics engine that brings its own canvas</h2>
+<p><a href="https://github.com/mihaelamj/PureDraw">PureDraw</a> is a dependency-free 2D
+vector graphics engine, a “Virtual PostScript Machine” with an API compatible
+with CoreGraphics and the HTML5 Canvas, written without either of them. Zero
+external dependencies, zero bundled C sources, no Foundation requirement in
+the core. The capability showcase at the top of its README, a bezier-path
+character, gradients, blend modes, shadows, a 3D cube with a projective grid
+texture, is a PDF rendered entirely by the engine itself, from the test suite.</p>
+<p>This is the project where portability earns its keep most visibly: graphics is
+the domain everyone assumes belongs to the platform. PureDraw builds and runs
+its full test suite on macOS, on Linux in a Swift container, and on Windows,
+in both debug and release, and the library cross-compiles to WebAssembly on
+every push. The drawings that come out are the same bytes everywhere, because
+nothing underneath them belongs to any one platform.</p>
+<p>If Swift is your language and you have been told it stops at the Mac, the CI
+logs say otherwise.</p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/markdown-to-pdf-in-the-browser/">&quot;Markdown to PDF in your browser, in pure Swift&quot;</a><time>June 7, 2026</time></li><li><a href="https://aleahim.com/blog/why-i-built-tiledown/">Why I built TileDown</a><time>June 6, 2026</time></li><li><a href="https://aleahim.com/blog/openapi-doctor-webassembly-readiness/">OpenAPIDoctor WebAssembly readiness</a><time>June 5, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/blog/">Blog</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
+
+<script>
+(function () {
+  function setup() {
+    document.querySelectorAll('[data-td-copy-permalink]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        if (!navigator.clipboard) return;
+        var url = link.getAttribute('href');
+        if (!url) return;
+        event.preventDefault();
+        navigator.clipboard.writeText(url).then(function () {
+          var label = link.textContent;
+          link.textContent = 'Copied';
+          link.setAttribute('data-td-copy-state', 'copied');
+          setTimeout(function () {
+            link.textContent = label;
+            link.removeAttribute('data-td-copy-state');
+          }, 1500);
+        }, function () {
+          window.location.href = url;
+        });
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', setup);
+})();
+</script>
+
+
+</body>
+</html>
