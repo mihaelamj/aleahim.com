@@ -7,6 +7,145 @@
 <language>en-US</language>
 <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
 <item>
+<title>&quot;Validations Are Values&quot;</title>
+<link>https://aleahim.com/blog/validations-are-values/</link>
+<guid isPermaLink="true">https://aleahim.com/blog/validations-are-values/</guid>
+<pubDate>Sat, 13 Jun 2026 00:00:00 +0000</pubDate>
+<description>Most validation code is one giant function that walks a tree and appends to an error array through a forest of if statements. OpenAPIKit showed me a better way, a validation is a small composable value, the description states the correct state, and every error already knows where it lives</description>
+<content:encoded><![CDATA[<h1>Validations Are Values</h1>
+<p>Here is the validation function almost everyone writes the first time. You have a parsed model. You want to check it. So you write this:</p>
+<pre><code class="language-swift"><span class="tok-keyword">func</span> <span class="tok-function">validate</span>(_ document<span class="tok-operator">:</span> <span class="tok-type">Document</span>) <span class="tok-keyword">throws</span> {
+    <span class="tok-keyword">var</span> errors<span class="tok-operator">:</span> [<span class="tok-type">String</span>] <span class="tok-operator">=</span> []
+    <span class="tok-keyword">if</span> document<span class="tok-operator">.</span>servers<span class="tok-operator">.</span>is<span class="tok-type">Empty</span> {
+        errors<span class="tok-operator">.</span><span class="tok-function">append</span>(<span class="tok-string">"document has no servers"</span>)
+    }
+    <span class="tok-keyword">for</span> (path, item) <span class="tok-keyword">in</span> document<span class="tok-operator">.</span>paths {
+        <span class="tok-keyword">for</span> (method, operation) <span class="tok-keyword">in</span> item<span class="tok-operator">.</span>operations {
+            <span class="tok-keyword">if</span> operation<span class="tok-operator">.</span>responses<span class="tok-operator">.</span>is<span class="tok-type">Empty</span> {
+                errors<span class="tok-operator">.</span><span class="tok-function">append</span>(<span class="tok-string">"\(method) \(path) has no responses"</span>)
+            }
+            <span class="tok-keyword">for</span> variable <span class="tok-keyword">in</span> operation<span class="tok-operator">.</span>server<span class="tok-operator">?</span><span class="tok-operator">.</span>url<span class="tok-type">Template</span><span class="tok-operator">.</span>variables <span class="tok-operator">?</span><span class="tok-operator">?</span> [] {
+                <span class="tok-keyword">if</span> <span class="tok-operator">!</span>operation<span class="tok-operator">.</span>server<span class="tok-operator">!</span><span class="tok-operator">.</span>variables<span class="tok-operator">.</span>keys<span class="tok-operator">.</span><span class="tok-function">contains</span>(variable) {
+                    errors<span class="tok-operator">.</span><span class="tok-function">append</span>(<span class="tok-string">"\(path) uses undefined variable \(variable)"</span>)
+                }
+            }
+        }
+    }
+    <span class="tok-comment">// ... three hundred more lines ...</span>
+    <span class="tok-keyword">if</span> <span class="tok-operator">!</span>errors<span class="tok-operator">.</span>is<span class="tok-type">Empty</span> { <span class="tok-keyword">throw</span> <span class="tok-type">ValidationError</span>(errors) }
+}</code></pre>
+<p>It works. It also rots. Every new rule is another branch wedged into the same traversal. The error strings drift out of sync with the checks. Nobody can test a single rule in isolation, because there is no single rule, there is only the function. You cannot turn one check off without commenting out code. And the location of each failure is whatever you remembered to interpolate into the string, which is to say, inconsistent and usually wrong.</p>
+<p>I stopped writing validators like this when I read <a href="https://github.com/mattpolzin/OpenAPIKit">Matt Polzin’s OpenAPIKit</a>. His validation layer is the cleanest I have seen in Swift, and the core idea is one sentence:</p>
+<p><strong>A validation is not code you run. It is a value you build.</strong></p>
+<p>Once you take that seriously, everything else follows. This post is the whole idiom, distilled from how OpenAPIKit actually does it. I now hold every validation layer I write to it.</p>
+<h2>What OpenAPIKit is</h2>
+<p><a href="https://github.com/mattpolzin/OpenAPIKit">OpenAPIKit</a> is a Swift library for reading, writing, and validating <a href="https://www.openapis.org">OpenAPI</a> documents. OpenAPI is the specification format that describes an HTTP API: its paths, operations, request and response bodies, schemas, servers, and components. The documents are usually written as large YAML or JSON files.</p>
+<p>OpenAPIKit gives you three things, layered cleanly on top of each other:</p>
+<ol><li><p><strong>A typed model of the entire OpenAPI specification.</strong> Every construct in the spec, <code>OpenAPI.Document</code>, <code>OpenAPI.PathItem</code>, <code>Operation</code>, <code>Response</code>, <code>Server</code>, <code>JSONSchema</code>, and the rest, is a real Swift type. Not a <code>[String: Any]</code> you index into and pray. A real type with real fields, so the compiler knows the shape of an OpenAPI document.</p></li><li><p><strong><code>Codable</code> conformance over that model.</strong> Because the model is <code>Codable</code>, you decode a YAML or JSON spec straight into <code>OpenAPI.Document</code> and encode it back out. The decoder is where the first wall of correctness lives: a document that is not even shaped like OpenAPI fails to decode at all. This is the “parse first” pass.</p></li><li><p><strong>A validation subsystem over the decoded model.</strong> This is the part this post is about. Once you have a decoded <code>OpenAPI.Document</code>, you run a <code>Validator</code> over it to catch the semantic errors that decoding alone cannot: a <code>$ref</code> that points at a component that does not exist, an operation with no responses, a server URL template that uses a variable nobody defined. These are valid OpenAPI <em>syntax</em> describing an invalid <em>document</em>.</p></li></ol>
+<p>The validation code lives under <code>Sources/OpenAPIKit/Validator/</code>. The files worth reading are <code>Validation.swift</code> (the atom), <code>Validator.swift</code> (the engine and the default set), <code>Validation+Builtins.swift</code> (the shipped rules), and <code>ReferenceValidations.swift</code> (the reference-resolution rules). The tests under <code>Tests/OpenAPIKitTests/Validator/</code> are as instructive as the source, and I will come back to them.</p>
+<p>How you actually use it is three lines:</p>
+<pre><code class="language-swift"><span class="tok-keyword">import</span> <span class="tok-type">OpenAPIKit</span>
+<span class="tok-keyword">import</span> <span class="tok-type">Yams</span>
+
+<span class="tok-keyword">let</span> document <span class="tok-operator">=</span> <span class="tok-keyword">try</span> <span class="tok-type">YAMLDecoder</span>()<span class="tok-operator">.</span><span class="tok-function">decode</span>(<span class="tok-type">OpenAPI</span><span class="tok-operator">.</span><span class="tok-type">Document</span><span class="tok-operator">.</span><span class="tok-keyword">self</span>, from<span class="tok-operator">:</span> yaml<span class="tok-type">String</span>)
+<span class="tok-keyword">try</span> document<span class="tok-operator">.</span><span class="tok-function">validate</span>()   <span class="tok-comment">// throws a ValidationErrorCollection if anything is wrong</span></code></pre>
+<p>The first line is the parse pass. The second is the validate pass. Everything below is how that second line is built, and why it is built the way it is.</p>
+<h2>Parse first, validate second</h2>
+<p>The first move happens before any validation runs at all. Parsing and validation are two passes, not one.</p>
+<p>The parser’s job is to turn bytes into a well typed value and to make as many illegal states as it can simply unrepresentable. An enum cannot hold a case that does not exist. A non-optional field cannot be missing. By the time you have a parsed <code>Document</code>, a whole category of “errors” is gone, because the type system refused to let them exist.</p>
+<p>Validation runs <em>after</em> that, over the already typed value. It catches only what the types cannot or should not enforce: a server template that references a variable nobody defined, an operation with zero responses, a reference that points at a component that is not in the document. These are not type errors. They are semantic ones. They need their own pass.</p>
+<p>If you find yourself validating inside the parser, stop. Parse to a clean value. Then validate the value.</p>
+<h2>A validation is a small struct of closures</h2>
+<p>Here is the atom. A <code>Validation</code> over some subject type carries three things:</p>
+<ul><li><p>a <strong>description</strong> string,</p></li><li><p>a <strong>check</strong> that produces errors,</p></li><li><p>a <strong>predicate</strong> that decides whether this rule even applies here.</p></li></ul>
+<p>That is it. No inheritance, no protocol with ten requirements. A plain value you can build, store in an array, pass around, and combine.</p>
+<p>The simplest one reads almost like English:</p>
+<pre><code class="language-swift"><span class="tok-keyword">public</span> <span class="tok-keyword">static</span> <span class="tok-keyword">var</span> operations<span class="tok-type">ContainResponses</span><span class="tok-operator">:</span> <span class="tok-type">Validation</span><span class="tok-operator">&lt;</span><span class="tok-type">Operation</span><span class="tok-operator">&gt;</span> {
+    <span class="tok-operator">.</span><span class="tok-keyword">init</span>(
+        description<span class="tok-operator">:</span> <span class="tok-string">"Operations contain at least one response"</span>,
+        check<span class="tok-operator">:</span> \<span class="tok-operator">.</span>responses<span class="tok-operator">.</span>count <span class="tok-operator">&gt;</span> <span class="tok-number">0</span>
+    )
+}</code></pre>
+<p>Look at what is not there. There is no traversal. This rule does not know how to find <code>Operation</code> values in a document, and it does not care. It only knows what a correct <code>Operation</code> looks like. The machinery finds every operation in the tree and offers each one to this rule. Dispatch is directed by the subject type: a <code>Validation&lt;Operation&gt;</code> fires on operations, wherever they appear, and is invisible to everything else.</p>
+<h2>The description states the correct state, never the failure</h2>
+<p>Read that description again: “Operations contain at least one response.” Positive. It describes the world when the rule is satisfied, not the world when it breaks.</p>
+<p>This is deliberate, and it is one of my favorite details. You write the description once, phrased positively. When the rule fails, the framework derives the failure message by prefixing <code>"Failed to satisfy: "</code>. So you get:</p>
+<blockquote><p>Failed to satisfy: Operations contain at least one response</p></blockquote>
+<p>One source of truth, two readings. You never write the failure phrasing by hand, so the check and its message can never drift apart. Compare that to the if-tree above, where <code>if responses.isEmpty</code> and the string <code>"has no responses"</code> are two independent things you have to keep in agreement forever.</p>
+<p>The description does more than format messages. It is the rule’s <strong>identity</strong>. Because rules are removed by matching their description, the description must be unique and stable. Which leads to the next piece.</p>
+<h2>Every error knows where it lives</h2>
+<p>An error is a reason plus a location:</p>
+<pre><code class="language-swift"><span class="tok-type">ValidationError</span>(reason<span class="tok-operator">:</span> <span class="tok-string">"Server Object does not define the variable 'x'"</span>, at<span class="tok-operator">:</span> context<span class="tok-operator">.</span>coding<span class="tok-type">Path</span>)</code></pre>
+<p>You supply the reason. You do <em>not</em> supply the location by hand. The traversal fills in the coding path as it walks, so by the time your check runs, <code>context.codingPath</code> already says exactly where in the tree you are. The rendered message comes out consistent every time:</p>
+<blockquote><p>… at path: .paths./hello/world.get.servers</p></blockquote>
+<p>or, at the top:</p>
+<blockquote><p>… at root of document</p></blockquote>
+<p>No more interpolating <code>\(path).\(method)</code> into strings and getting it subtly wrong. The path is bookkeeping the framework owns, not you.</p>
+<h2>Application is predicate gated</h2>
+<p>Every validation has a <code>when:</code> predicate that runs before the check, with the full context in hand. The default is “always.” But when a rule should only apply to a subset, you scope it with the predicate, not with an <code>if</code> inside the check body.</p>
+<p>This matters because it keeps the check pure. The check answers “is this value correct,” full stop. The predicate answers “does this rule even apply here,” separately. A rule that only applies to OpenAPI 3.1 documents, or only to operations at a certain path, or only when some other field is present, says so in <code>when:</code> and keeps its check clean. Conditionals do not leak into the logic that decides pass or fail.</p>
+<h2>Two shapes, by how a value can fail</h2>
+<p>There are two ways to author the check, and the choice is mechanical.</p>
+<p>If a value can fail <strong>one way</strong>, use the Bool form. You give a positive description and a predicate; <code>false</code> yields exactly one error, auto-formatted from the description. That <code>operationsContainResponses</code> rule above is this form. It is the dominant case.</p>
+<p>If a single value can fail in <strong>several places at once</strong>, use the multi-error form and return one <code>ValidationError</code> per offender:</p>
+<pre><code class="language-swift"><span class="tok-keyword">public</span> <span class="tok-keyword">static</span> <span class="tok-keyword">var</span> server<span class="tok-type">VariablesAreDefined</span><span class="tok-operator">:</span> <span class="tok-type">Validation</span><span class="tok-operator">&lt;</span><span class="tok-type">Server</span><span class="tok-operator">&gt;</span> {
+    <span class="tok-operator">.</span><span class="tok-keyword">init</span>(
+        description<span class="tok-operator">:</span> <span class="tok-string">"All server template variables are defined"</span>,
+        check<span class="tok-operator">:</span> { context <span class="tok-keyword">in</span>
+            context<span class="tok-operator">.</span>subject<span class="tok-operator">.</span>url<span class="tok-type">Template</span><span class="tok-operator">.</span>variables
+                <span class="tok-operator">.</span>filter { <span class="tok-operator">!</span>context<span class="tok-operator">.</span>subject<span class="tok-operator">.</span>variables<span class="tok-operator">.</span><span class="tok-function">contains</span>(key<span class="tok-operator">:</span> $<span class="tok-number">0</span>) }
+                <span class="tok-operator">.</span>map { name <span class="tok-keyword">in</span>
+                    <span class="tok-type">ValidationError</span>(
+                        reason<span class="tok-operator">:</span> <span class="tok-string">"Server Object does not define the variable '\(name)'"</span>,
+                        at<span class="tok-operator">:</span> context<span class="tok-operator">.</span>coding<span class="tok-type">Path</span>
+                    )
+                }
+        }
+    )
+}</code></pre>
+<p>A server with three undefined variables produces three errors, each with its own reason and its own path. You do not collapse them into one “server is invalid” message, because then you would lose two thirds of the information about what to fix. The rule emits one error per problem.</p>
+<h2>A default set you can add to and subtract from</h2>
+<p>You ship two validators: a populated one with a curated default set, and a <code>blank</code> one with nothing. Builders are fluent and chainable. You compose your actual policy from the defaults, plus your own rules, minus the ones you do not want:</p>
+<pre><code class="language-swift"><span class="tok-keyword">let</span> validator <span class="tok-operator">=</span> <span class="tok-type">Validator</span>()                       <span class="tok-comment">// the defaults</span>
+    <span class="tok-operator">.</span><span class="tok-function">validating</span>(<span class="tok-operator">.</span>operations<span class="tok-type">ContainResponses</span>)      <span class="tok-comment">// add a builtin by name</span>
+    <span class="tok-operator">.</span><span class="tok-function">validating</span>(my<span class="tok-type">CustomRule</span>)                      <span class="tok-comment">// add your own</span>
+    <span class="tok-operator">.</span><span class="tok-function">withoutValidating</span>(<span class="tok-string">"All server template variables are defined"</span>)  <span class="tok-comment">// remove one by its description</span></code></pre>
+<p>This is why descriptions have to be unique and stable: the description <em>is</em> the removal key. <code>withoutValidating</code> matches on it. Rename a rule’s description and you have quietly changed its identity.</p>
+<p>When strictness comes in grades, you model the grades as whole-set swaps on the validator, not as flags threaded through individual rules. OpenAPIKit does lenient reference checks by default, swaps in the strict set with <code>validatingAllReferencesFoundInComponents()</code>, and clears them with <code>skippingReferenceValidations()</code>. Three named configurations, not a <code>strict: Bool</code> smuggled into every check.</p>
+<h2>The combinator algebra</h2>
+<p>Because validations and their checks are values, you combine them with an algebra instead of nesting <code>if</code> statements. These are the moves I reach for:</p>
+<ul><li><p><strong><code>&amp;&amp;</code> / <code>||</code></strong> combine checks. <code>&amp;&amp;</code> concatenates both error lists; <code>||</code> short-circuits and only fails if both sides fail.</p></li><li><p><strong>comparison operators</strong> (<code>==</code>, <code>&gt;</code>, <code>&gt;=</code>, and friends) lift a key path and a literal into a predicate, so <code>check: \.responses.count &gt; 0</code> is a real expression, not a closure you wrote by hand.</p></li><li><p><strong><code>take(\.path) { value in ... }</code></strong> digs to a value and runs arbitrary logic past simple equality.</p></li><li><p><strong><code>lift(\.child, into: ...)</code></strong> runs child-typed validations against a child value while keeping the parent’s path and document. This is the key compositional move for nested structure.</p></li><li><p><strong><code>unwrap(\.optional, into:description:)</code></strong> unwraps an optional, erroring if nil, otherwise running child validations on the unwrapped value.</p></li><li><p><strong><code>lookup</code> / <code>unwrapAndLookup</code></strong> resolve a reference against the document’s component store, error if it is not found, otherwise validate the resolved value.</p></li><li><p><strong><code>all(validations...)</code></strong> applies many validations to the same context.</p></li></ul>
+<p>So a compound rule reads declaratively:</p>
+<pre><code class="language-swift">check<span class="tok-operator">:</span> \<span class="tok-operator">.</span>response<span class="tok-type">Outcomes</span><span class="tok-operator">.</span>count <span class="tok-operator">&gt;</span><span class="tok-operator">=</span> <span class="tok-number">1</span>
+    <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> { $<span class="tok-number">0.</span>subject<span class="tok-operator">.</span>response<span class="tok-type">Outcomes</span><span class="tok-operator">.</span>all<span class="tok-type">Satisfy</span> { $<span class="tok-number">0.</span>status <span class="tok-operator">=</span><span class="tok-operator">=</span> <span class="tok-number">200</span> } }</code></pre>
+<p>You are describing what correct looks like by composing pieces, not writing a traversal.</p>
+<h2>Test the rules, the machinery, and the set</h2>
+<p>The test style mirrors the philosophy, and OpenAPIKit’s bar here is the part most people skip. There are three layers to it.</p>
+<p><strong>Every rule gets a failing and a succeeding test.</strong> Not just “here is a broken document, does it throw.” Also “here is a document that <em>almost</em> trips the rule but does not.” The succeeding fixture is a near miss, the value sitting exactly at the boundary the rule guards. A rule tested only in its failing direction is untested, because nothing proves it stays quiet on valid input. Assert the thrown collection’s exact count, each reason (including the <code>"Failed to satisfy: "</code> prefix), and each coding path:</p>
+<pre><code class="language-swift"><span class="tok-keyword">func</span> <span class="tok-function">test_serverCountCheckFails</span>() {
+    <span class="tok-keyword">let</span> document <span class="tok-operator">=</span> <span class="tok-comment">// ... seed the failing case</span>
+    <span class="tok-keyword">let</span> validator <span class="tok-operator">=</span> <span class="tok-type">Validator</span><span class="tok-operator">.</span>blank
+        <span class="tok-operator">.</span><span class="tok-function">validating</span>(<span class="tok-string">"All server arrays have more than 1 server"</span>, check<span class="tok-operator">:</span> \[<span class="tok-type">Server</span>]<span class="tok-operator">.</span>count <span class="tok-operator">&gt;</span> <span class="tok-number">1</span>)
+    <span class="tok-type">XCTAssertThrowsError</span>(<span class="tok-keyword">try</span> document<span class="tok-operator">.</span><span class="tok-function">validate</span>(using<span class="tok-operator">:</span> validator)) { error <span class="tok-keyword">in</span>
+        <span class="tok-keyword">let</span> error <span class="tok-operator">=</span> error <span class="tok-keyword">as</span><span class="tok-operator">?</span> <span class="tok-type">ValidationErrorCollection</span>
+        <span class="tok-type">XCTAssertEqual</span>(error<span class="tok-operator">?</span><span class="tok-operator">.</span>values<span class="tok-operator">.</span>count, <span class="tok-number">1</span>)
+        <span class="tok-type">XCTAssertEqual</span>(error<span class="tok-operator">?</span><span class="tok-operator">.</span>values<span class="tok-operator">.</span>first<span class="tok-operator">?</span><span class="tok-operator">.</span>reason,
+                       <span class="tok-string">"Failed to satisfy: All server arrays have more than 1 server"</span>)
+        <span class="tok-type">XCTAssertEqual</span>(error<span class="tok-operator">?</span><span class="tok-operator">.</span>values<span class="tok-operator">.</span>first<span class="tok-operator">?</span><span class="tok-operator">.</span>coding<span class="tok-type">Path</span><span class="tok-operator">.</span><span class="tok-function">map</span>(\<span class="tok-operator">.</span>string<span class="tok-type">Value</span>),
+                       [<span class="tok-string">"paths"</span>, <span class="tok-string">"/hello/world"</span>, <span class="tok-string">"get"</span>, <span class="tok-string">"servers"</span>])
+    }
+}</code></pre>
+<p><strong>The machinery gets its own negative tests.</strong> The type-erased wrapper that filters by runtime type has to be proven correct on its own: an optional subject yields no errors, a wrong type yields no errors, a false predicate yields no errors. And one positive control, the same value of the same type appearing twice yields two errors, to prove those negatives are not vacuously passing.</p>
+<p><strong>The configuration is pinned.</strong> A test asserts the exact, ordered list of active rule descriptions for every validator configuration. <code>blank</code> is empty. The full default set is pinned description by description. This means you cannot add, remove, or reword a rule without a test failing first, which forces every such change to be deliberate rather than accidental.</p>
+<p>The point of all this is that a validator can pass every test it ships and still be incomplete, if some field of the input model never got a rule at all. So the final discipline is a coverage law: keep a registry of every field the model can carry, and a meta-test that fails if any field lacks either a validation or an explicit “unsupported, and here is why” classification. Silent gaps get caught mechanically, not in review.</p>
+<h2>Why I hold everything to this now</h2>
+<p>I do not treat this as an OpenAPI trick. I treat it as the standard for any validation layer over any parsed model: a config, a manifest, an HTML tree, a schema, a feature model. One framework, parameterized over both the subject and the document, reused by every layer instead of copied per layer. Each rule a named, removable, isolation-testable value with a positive description. Errors that carry their own location. Combinators instead of conditionals.</p>
+<p>The if-tree at the top of this post produces correct results. That is not the bar. The bar is whether you can add a rule without touching a three-hundred-line function, turn one off by name, test it alone, and trust that its failure message points at the right place. The if-tree fails all four. Validations as values pass all four, and they do it because the design made the right thing the easy thing.</p>
+<p>Parse first. Then build your validations as values.</p>
+<hr>
+<p>Credit where it is due: this entire idiom is <a href="https://github.com/mattpolzin/OpenAPIKit">Matt Polzin’s</a>. Go read <code>Sources/OpenAPIKit/Validator/</code>. It is some of the most quietly excellent Swift in the ecosystem.</p>]]></content:encoded>
+</item>
+<item>
 <title>&quot;Swift Runs Everywhere. I Checked.&quot;</title>
 <link>https://aleahim.com/blog/swift-runs-everywhere/</link>
 <guid isPermaLink="true">https://aleahim.com/blog/swift-runs-everywhere/</guid>
