@@ -72,7 +72,7 @@ your browser tab, reporting fetch time, parse time, and throughput as it goes.
 
 ## Exhibit four: a graphics engine that brings its own canvas
 
-[PureDraw](https://github.com/mihaelamj/PureDraw) is a dependency-free 2D
+[PureDraw](https://purelayer.aleahim.com) is a dependency-free 2D
 vector graphics engine, a "Virtual PostScript Machine" with an API compatible
 with CoreGraphics and the HTML5 Canvas, written without either of them. Zero
 external dependencies, zero bundled C sources, no Foundation requirement in
@@ -86,6 +86,20 @@ its full test suite on macOS, on Linux in a Swift container, and on Windows,
 in both debug and release, and the library cross-compiles to WebAssembly on
 every push. The drawings that come out are the same bytes everywhere, because
 nothing underneath them belongs to any one platform.
+
+![A gradient card with a white star, ringed by orbiting dots, animating in a loop](/images/blog/swift-runs-everywhere/showcase3d.gif)
+
+And you do not have to take the CI's word for any of it. That badge is not a
+video. It is a few lines of PureComposition, a small language with a grammar of
+its own, compiled and rendered frame by frame. [Glow Draw](https://purelayer.aleahim.com)
+runs the same engines as WebAssembly right in your browser tab. PureDraw is
+CoreGraphics rebuilt from nothing, PureLayer is CoreAnimation rebuilt the same
+way, and PureComposition is the language that drives them: an EBNF grammar, a
+parser, a compiler that lowers it to a PureDraw virtual-machine program, and a
+command-line engine that runs the whole pipeline with no Mac in sight. The
+drawing API, the layer compositor, and the language on top, all reconstructed in
+portable Swift. If rebuilding Apple's graphics stack from first principles is the
+kind of problem you would want to talk about, get in touch.
 
 If Swift is your language and you have been told it stops at the Mac, the CI
 logs say otherwise.
