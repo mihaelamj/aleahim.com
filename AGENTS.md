@@ -59,6 +59,9 @@ cp -R TileDown/dist/* .   # GitHub Pages serves committed HTML from the repo roo
 git add .
 git commit -m "deploy: add your post (vX.Y)"
 git push origin main
+# Always tag the site: lightweight vX.Y tag matching versionName, pushed to origin.
+VER=$(grep "^versionName:" TileDown/content/tiledown.yml | sed 's/^versionName: *//')
+git tag "$VER" && git push origin "$VER"
 ```
 
 ## Important Notes

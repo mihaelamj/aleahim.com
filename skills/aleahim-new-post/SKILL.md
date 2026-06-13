@@ -182,6 +182,11 @@ git add .
 git status
 git commit -m "deploy: add \"<Title>\" (vX.Y)" || { echo "abort: git commit failed (hook?)"; exit 1; }
 git push origin main || { say -v "Ava" "Ava: Push failed."; echo "abort: git push failed"; exit 1; }
+
+# Always tag the site: one lightweight vX.Y tag per deploy, matching versionName.
+VER=$(grep "^versionName:" TileDown/content/tiledown.yml | sed 's/^versionName: *//')
+git tag "$VER" || { echo "abort: tag $VER already exists or failed"; exit 1; }
+git push origin "$VER" || { echo "abort: tag push failed"; exit 1; }
 ```
 Speak: `say -v "Ava" "Ava: Pushed to main. Pages will publish soon."`
 
@@ -199,6 +204,7 @@ Final voice: `say -v "Ava" "Ava: Post is live. Aleahim dot com."`
 
 ## Hard rules
 
+- ALWAYS tag the site on every deploy: a lightweight `vX.Y` tag matching `versionName`, pushed to origin. Backfill any missing version tags.
 - NEVER push anywhere other than `origin/main` on `github.com:mihaelamj/aleahim.com`.
 - NEVER push to a GitLab remote (global rule).
 - The live site comes from `TileDown/dist/` only. Copy that to the root.
