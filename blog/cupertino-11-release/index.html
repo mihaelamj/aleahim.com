@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>What Apple Wants You to Build This Summer (You Can Read It in the Docs)</title>
+<meta name="description" content="Apple&#39;s new frameworks and sample code read like a brief, and Cupertino v1.4.0 puts the whole signal offline">
+<link rel="canonical" href="https://aleahim.com/blog/cupertino-11-release/">
+<meta property="og:title" content="What Apple Wants You to Build This Summer (You Can Read It in the Docs)">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Apple&#39;s new frameworks and sample code read like a brief, and Cupertino v1.4.0 puts the whole signal offline">
+<meta property="og:url" content="https://aleahim.com/blog/cupertino-11-release/">
+<meta property="og:site_name" content="Aleahim.com">
+<meta property="og:image" content="https://aleahim.com/images/blog/cupertino-11-release/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Apple Wants You to Build This Summer (You Can Read It in the Docs)">
+<meta name="twitter:description" content="Apple&#39;s new frameworks and sample code read like a brief, and Cupertino v1.4.0 puts the whole signal offline">
+<meta name="twitter:image" content="https://aleahim.com/images/blog/cupertino-11-release/hero.jpg">
+<meta property="article:published_time" content="2026-06-22T00:00:00Z">
+<link rel="icon" href="https://aleahim.com/favicon.ico">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<!-- Umami Analytics --><script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+</head>
+<body>
+<header class="td-header">
+<a class="td-brand td-brand-stacked" href="https://aleahim.com/"><span class="td-brand-title">Aleahim.com</span><span class="td-brand-subtitle">v1.25</span></a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/blog/" aria-current="page">Blog</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">June 22, 2026</time></div><h1 class="td-article-title">What Apple Wants You to Build This Summer (You Can Read It in the Docs)</h1><p class="td-article-dek">Apple&#39;s new frameworks and sample code read like a brief, and Cupertino v1.4.0 puts the whole signal offline</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/cupertino-11-release/" data-td-copy-permalink title="Copy permalink">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a><a href="https://aleahim.com/cupertino-11-release.pdf" download>Download PDF</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-11-release%2F&amp;text=What%20Apple%20Wants%20You%20to%20Build%20This%20Summer%20%28You%20Can%20Read%20It%20in%20the%20Docs%29" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-11-release%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-11-release%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=What%20Apple%20Wants%20You%20to%20Build%20This%20Summer%20%28You%20Can%20Read%20It%20in%20the%20Docs%29&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fcupertino-11-release%2F" target="_blank" rel="noopener">Email</a></nav><nav class="td-tags td-article-tags" aria-label="Tags"><a class="td-tag" href="https://aleahim.com/tags/cupertino/">Cupertino</a><a class="td-tag" href="https://aleahim.com/tags/apple-intelligence/">Apple Intelligence</a><a class="td-tag" href="https://aleahim.com/tags/swift/">Swift</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/blog/cupertino-11-release/hero.jpg" alt="What Apple Wants You to Build This Summer (You Can Read It in the Docs)"></figure><div class="td-article-body"><p>The keynote tells you what Apple announced. The documentation and the sample code tell you what Apple wants you to actually ship. Those are not the same thing, and the second one is far more useful if you are deciding what to build this summer.</p>
+<p>So I did the boring, revealing thing: I diffed it. Cupertino just shipped v1.4.0, a full re-crawl of Apple’s developer documentation, and I compared it page by page against the version that has been on everyone’s disk since May. Then I read the diff like a tea leaf.</p>
+<p>The answer is not subtle. <strong>Apple wants you to build Apple Intelligence into your app, and it has written you the homework.</strong></p>
+<h2>The sample code is the smoking gun</h2>
+<p>When Apple wants you to learn an API, it announces it. When Apple wants you to <em>ship</em> something, it gives you sample code you can paste from. So the new sample projects are the clearest signal in the whole corpus, and v1.4.0 added eleven of them. Here is the entire list:</p>
+<ul><li><p>App Intents: Integrating Your <strong>Music</strong> App with Apple Intelligence</p></li><li><p>App Intents: Integrating Your <strong>Messaging</strong> App with Apple Intelligence</p></li><li><p>App Intents: Integrating Your <strong>Calendar</strong> App with Apple Intelligence</p></li><li><p>App Intents: Integrating Your <strong>Photo</strong> App with Apple Intelligence</p></li><li><p>FoundationModels: Origami, crafting a dynamic tutorial for Apple Intelligence</p></li><li><p>Evaluations: Book Tracker, using evaluations to evaluate an intelligent feature</p></li><li><p>HealthKit: Tracking heart rate zones for workouts</p></li><li><p>Metal: Training a neural network to render irradiance in real time</p></li><li><p>Metal: Running inline ML operations in a shader with Metal 4</p></li><li><p>DeclaredAgeRange: Implementing age assurance and permissions</p></li><li><p>VisionKit: Structuring recognized text on a document</p></li></ul>
+<p>Read the top four again. Apple did not write “an example of App Intents.” It wrote “Integrating <strong>Your</strong> Music App,” “<strong>Your</strong> Messaging App,” “<strong>Your</strong> Calendar App,” “<strong>Your</strong> Photo App.” That is not documentation. That is a brief. Apple has taken the four most common app categories on the platform and handed each one a template for wiring itself into Apple Intelligence through App Intents. If you ship one of those four kinds of app, your summer roadmap is sitting in a sample project with your name on it.</p>
+<p>There is not a single exception in the eleven. Every new sample is Apple Intelligence, App Intents, or on-device ML. No new SwiftUI layout sample, no new networking sample, no new Core Data sample. The signal is monochrome.</p>
+<h2>The new frameworks are the syllabus</h2>
+<p>Sample code shows you the assignments; the new frameworks show you the curriculum. v1.4.0 added <strong>19 frameworks that did not exist in the previous release</strong>, and the cluster tells the same story:</p>
+<table><thead><tr><th>Framework</th><th style="text-align:right">Pages</th><th style="text-align:right">Symbols</th></tr></thead><tbody><tr><td>USDKit</td><td style="text-align:right">854</td><td style="text-align:right">806</td></tr><tr><td>ComputeGraph</td><td style="text-align:right">539</td><td style="text-align:right">273</td></tr><tr><td>Core AI</td><td style="text-align:right">308</td><td style="text-align:right">425</td></tr><tr><td>Evaluations</td><td style="text-align:right">172</td><td style="text-align:right">527</td></tr><tr><td>App Intents Testing</td><td style="text-align:right">103</td><td style="text-align:right">363</td></tr><tr><td>Now Playing</td><td style="text-align:right">100</td><td style="text-align:right">318</td></tr><tr><td>Music Understanding</td><td style="text-align:right">94</td><td style="text-align:right">77</td></tr><tr><td>AVSystemRouting</td><td style="text-align:right">92</td><td style="text-align:right">109</td></tr><tr><td>Media Device</td><td style="text-align:right">92</td><td style="text-align:right">148</td></tr><tr><td>Trust Insights</td><td style="text-align:right">85</td><td style="text-align:right">66</td></tr><tr><td>Media Intelligence</td><td style="text-align:right">77</td><td style="text-align:right">100</td></tr><tr><td>Accessory Access</td><td style="text-align:right">63</td><td style="text-align:right">53</td></tr><tr><td>DiskImageKit</td><td style="text-align:right">58</td><td style="text-align:right">87</td></tr><tr><td>Spatial Preview</td><td style="text-align:right">57</td><td style="text-align:right">60</td></tr><tr><td>StateReporting</td><td style="text-align:right">38</td><td style="text-align:right">77</td></tr><tr><td>CrashReportExtension</td><td style="text-align:right">29</td><td style="text-align:right">36</td></tr><tr><td>Media Intents</td><td style="text-align:right">15</td><td style="text-align:right">30</td></tr><tr><td>Suggested Actions</td><td style="text-align:right">9</td><td style="text-align:right">26</td></tr><tr><td>Apple School and Business Manager API</td><td style="text-align:right">3</td><td style="text-align:right">0</td></tr></tbody></table>
+<p>Core AI. Evaluations. Media Intelligence. Music Understanding. Trust Insights. Suggested Actions. App Intents Testing. This is the connective tissue around on-device models: the pieces that let your app declare what it can do, feed a model the right context, evaluate what comes back, and route media intelligently. <strong>Evaluations</strong> is the quiet standout. Apple shipping a framework specifically for <em>evaluating</em> an intelligent feature, plus a sample that uses it, is Apple admitting that “add AI” is not a feature, it is an engineering discipline with a test loop. That is the most grown-up thing in the release.</p>
+<p>And it is not only the debutants. <code>foundationmodels</code>, the on-device model framework, was not new but it more than doubled in pages (356 to 821) and more than tripled in symbols (406 to 1,383). The framework Apple gave you last year to talk to its models is the one it spent this cycle fleshing out.</p>
+<h2>The honest part: most of the bytes are a deeper re-crawl</h2>
+<p>I am not going to oversell the numbers, because the headline flatters the truth. The documentation database grew by <strong>+12,057 pages and +67,575 symbols</strong>. But only about <strong>23% of the new pages</strong> come from those 19 new frameworks. The other 77% is a deeper re-crawl of frameworks that already existed. For symbols it is even more lopsided: roughly <strong>95%</strong> of the gain is re-crawled existing frameworks, and the Swift standard library alone accounts for over 40% of it (+27,908 symbols).</p>
+<p>So the accurate sentence is: the byte-weight is a fuller pass over everything, and the <em>signal</em> is the 19 new frameworks and eleven new samples on top. Both are true, and a release post that only quoted the big number would be lying by omission.</p>
+<p>Where did the existing-framework growth concentrate? Right where you would guess given the theme:</p>
+<table><thead><tr><th>Framework</th><th style="text-align:right">old pages</th><th style="text-align:right">new pages</th><th style="text-align:right">delta</th></tr></thead><tbody><tr><td>realitykit</td><td style="text-align:right">4,456</td><td style="text-align:right">6,133</td><td style="text-align:right">+1,677</td></tr><tr><td>appintents</td><td style="text-align:right">3,509</td><td style="text-align:right">4,376</td><td style="text-align:right">+867</td></tr><tr><td>foundation</td><td style="text-align:right">13,649</td><td style="text-align:right">14,282</td><td style="text-align:right">+633</td></tr><tr><td>appkit</td><td style="text-align:right">13,378</td><td style="text-align:right">13,917</td><td style="text-align:right">+539</td></tr><tr><td>foundationmodels</td><td style="text-align:right">356</td><td style="text-align:right">821</td><td style="text-align:right">+465</td></tr><tr><td>swift</td><td style="text-align:right">18,717</td><td style="text-align:right">19,057</td><td style="text-align:right">+340</td></tr><tr><td>metrickit</td><td style="text-align:right">249</td><td style="text-align:right">567</td><td style="text-align:right">+318</td></tr><tr><td>corespotlight</td><td style="text-align:right">403</td><td style="text-align:right">719</td><td style="text-align:right">+316</td></tr><tr><td>swiftui</td><td style="text-align:right">8,679</td><td style="text-align:right">8,938</td><td style="text-align:right">+259</td></tr></tbody></table>
+<p>RealityKit and App Intents leading the page growth is the same story from yet another angle: spatial computing and the intent system are both load-bearing for what Apple is asking you to build. No framework shrank in page count and none were removed, so at the framework level v1.4.0 is a clean superset of v1.3.0.</p>
+<h2>What did not change, honestly</h2>
+<p>A re-crawl is not a magic content generator. Four databases came back byte-for-byte identical to v1.3.0: HIG, Swift Evolution, the Swift book, and the legacy Apple Archive guides. Three of those (HIG, Swift Evolution, the Swift book) were genuinely re-crawled this cycle and simply came back unchanged because Apple had not touched them upstream; the archive corpus was the one source carried over from the previous cycle. I verified “identical” with a content fingerprint over every page, not by trusting file dates. If your work lives in those four, v1.4.0 changes nothing for you, and I would rather say so than pad the release.</p>
+<p>The Swift package index (<code>packages.db</code>) is the interesting middle case. The set of 185 packages is unchanged, but 183 were re-fetched from current upstream and re-indexed, so the database now reflects what those packages look like <em>today</em> rather than at the last crawl. That means it is honest rather than purely additive: Vapor lost 1,604 symbols where upstream refactored, while swift-package-manager and swift-async-algorithms each gained a few hundred. Net +2,836 symbols, but the real win is that the package picture is current.</p>
+<h2>Why your AI agent needs this, specifically now</h2>
+<p>Here is the part that ties the signal back to the tool. If Apple wants you to spend the summer wiring your app into Apple Intelligence, you are going to ask an assistant about Core AI, App Intents Testing, the Evaluations framework, and FoundationModels constantly. And an assistant working from a six-month-old corpus will confidently tell you those frameworks do not exist, because in its world they do not.</p>
+<p>That is exactly the failure Cupertino exists to prevent. It puts Apple’s documentation on your machine as a set of local, searchable databases an AI agent can read through MCP, offline, in milliseconds. v1.4.0 is not a flashy release: it does not add a feature or touch a line of the query engine. It does the quieter thing that actually matters for a documentation tool, which is make the corpus match what Apple shipped. The fact that the new frameworks map almost perfectly onto Apple’s summer wishlist is not a coincidence; it is the whole point. Your agent now knows about the assignment.</p>
+<h2>Getting v1.4.0</h2>
+<p>The binary is signed and notarized and lives on the tap:</p>
+<pre><code class="language-bash">brew upgrade cupertino     <span class="tok-comment"># or: brew install mihaelamj/tap/cupertino</span>
+cupertino setup            <span class="tok-comment"># downloads the v1.4.0 database bundle</span></code></pre>
+<p>Same 8 per-source databases as v1.3.0, shipped read-only in rollback-journal mode, same schema (v18, packages on their own v5 track). Nothing in your tooling changes; the corpus underneath it just got current, and it got current in a very specific, very on-message direction.</p>
+<p>Build the thing in the sample project. Apple already wrote the brief.</p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/indistinguishable-from-an-attack/">&quot;Indistinguishable From an Attack&quot;</a><time>June 21, 2026</time></li><li><a href="https://aleahim.com/blog/rules-my-coding-agent-cannot-break/">&quot;The rules my AI coding agent is not allowed to break&quot;</a><time>June 16, 2026</time></li><li><a href="https://aleahim.com/blog/validations-are-values/">&quot;Validations Are Values&quot;</a><time>June 13, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/blog/">Blog</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown</a></span></div></footer>
+
+<script>
+(function () {
+  function setup() {
+    document.querySelectorAll('[data-td-copy-permalink]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        if (!navigator.clipboard) return;
+        var url = link.getAttribute('href');
+        if (!url) return;
+        event.preventDefault();
+        navigator.clipboard.writeText(url).then(function () {
+          var label = link.textContent;
+          link.textContent = 'Copied';
+          link.setAttribute('data-td-copy-state', 'copied');
+          setTimeout(function () {
+            link.textContent = label;
+            link.removeAttribute('data-td-copy-state');
+          }, 1500);
+        }, function () {
+          window.location.href = url;
+        });
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', setup);
+})();
+</script>
+
+
+</body>
+</html>
