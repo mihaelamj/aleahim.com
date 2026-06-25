@@ -60,7 +60,7 @@
 </head>
 <body>
 <header class="td-header">
-<a class="td-brand td-brand-stacked" href="https://aleahim.com/"><span class="td-brand-title">Aleahim.com</span><span class="td-brand-subtitle">v1.28</span></a>
+<a class="td-brand td-brand-stacked" href="https://aleahim.com/"><span class="td-brand-title">Aleahim.com</span><span class="td-brand-subtitle">v1.29</span></a>
 <nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/blog/" aria-current="page">Blog</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
 <button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
 </header>
@@ -81,16 +81,16 @@
 </pre>
 </figure>
 <p>The cone is the whole efficiency story. A naive rebuild touches every body in the interface, so its cost grows with the screen. The graph touches only the dirty node and what truly depends on it, so its cost tracks the change, not the size of the UI.</p>
-<figure class="td-chart td-chart-line">
-<figcaption class="td-chart-caption">Bodies re-run per state change as the screen grows</figcaption>
+<figure class="td-chart td-chart-bar">
+<figcaption class="td-chart-caption">Bodies re-run when one row changes in a list of twenty</figcaption>
 <div class="td-chart-frame">
 <svg
   class="td-chart-svg"
-  viewBox="0 0 720 382"
+  viewBox="0 0 720 360"
   role="img"
-  aria-label="Bodies re-run per state change as the screen grows"
+  aria-label="Bodies re-run when one row changes in a list of twenty"
 >
-<desc>line chart with 0 labels and 2 series</desc>
+<desc>bar chart with 2 labels and 1 series</desc>
 <line
   class="td-chart-grid"
   x1="80"
@@ -107,55 +107,42 @@
 <line
   class="td-chart-grid"
   x1="80"
-  y1="246.4"
+  y1="232.5"
   x2="696"
-  y2="246.4"
+  y2="232.5"
 ></line>
 <text
   class="td-chart-value"
   x="70"
-  y="250.4"
+  y="236.5"
   text-anchor="end"
->2000</text>
+>5</text>
 <line
   class="td-chart-grid"
   x1="80"
-  y1="190.8"
+  y1="163"
   x2="696"
-  y2="190.8"
+  y2="163"
 ></line>
 <text
   class="td-chart-value"
   x="70"
-  y="194.8"
+  y="167"
   text-anchor="end"
->4000</text>
+>10</text>
 <line
   class="td-chart-grid"
   x1="80"
-  y1="135.2"
+  y1="93.5"
   x2="696"
-  y2="135.2"
+  y2="93.5"
 ></line>
 <text
   class="td-chart-value"
   x="70"
-  y="139.2"
+  y="97.5"
   text-anchor="end"
->6000</text>
-<line
-  class="td-chart-grid"
-  x1="80"
-  y1="79.6"
-  x2="696"
-  y2="79.6"
-></line>
-<text
-  class="td-chart-value"
-  x="70"
-  y="83.6"
-  text-anchor="end"
->8000</text>
+>15</text>
 <line
   class="td-chart-grid"
   x1="80"
@@ -168,7 +155,7 @@
   x="70"
   y="28"
   text-anchor="end"
->10000</text>
+>20</text>
 <line
   class="td-chart-axis"
   x1="80"
@@ -183,63 +170,34 @@
   x2="80"
   y2="302"
 ></line>
-<polyline class="td-chart-line td-chart-series-0" points="inf,301.72 inf,299.22 inf,274.2 inf,24"></polyline>
-<circle
-  class="td-chart-point td-chart-series-0"
-  cx="inf"
-  cy="301.72"
-  r="4"
-><title>Rebuild the world, 10</title></circle>
-<circle
-  class="td-chart-point td-chart-series-0"
-  cx="inf"
-  cy="299.22"
-  r="4"
-><title>Rebuild the world, 100</title></circle>
-<circle
-  class="td-chart-point td-chart-series-0"
-  cx="inf"
-  cy="274.2"
-  r="4"
-><title>Rebuild the world, 1000</title></circle>
-<circle
-  class="td-chart-point td-chart-series-0"
-  cx="inf"
-  cy="24"
-  r="4"
-><title>Rebuild the world, 10000</title></circle>
-<polyline class="td-chart-line td-chart-series-1" points="inf,301.97 inf,301.97 inf,301.97 inf,301.97"></polyline>
-<circle
-  class="td-chart-point td-chart-series-1"
-  cx="inf"
-  cy="301.97"
-  r="4"
-><title>Demand-driven graph, 1</title></circle>
-<circle
-  class="td-chart-point td-chart-series-1"
-  cx="inf"
-  cy="301.97"
-  r="4"
-><title>Demand-driven graph, 1</title></circle>
-<circle
-  class="td-chart-point td-chart-series-1"
-  cx="inf"
-  cy="301.97"
-  r="4"
-><title>Demand-driven graph, 1</title></circle>
-<circle
-  class="td-chart-point td-chart-series-1"
-  cx="inf"
-  cy="301.97"
-  r="4"
-><title>Demand-driven graph, 1</title></circle>
-
+<rect
+  class="td-chart-bar td-chart-series-0"
+  x="217"
+  y="24"
+  width="32"
+  height="278"
+  rx="4"
+><title>Rebuild the world: 20</title></rect>
+<rect
+  class="td-chart-bar td-chart-series-0"
+  x="525"
+  y="288.1"
+  width="32"
+  height="13.9"
+  rx="4"
+><title>Demand-driven graph: 1</title></rect>
 <text
   class="td-chart-label"
-  x="388"
-  y="368"
+  x="234"
+  y="324"
   text-anchor="middle"
->Views on screen</text>
+>Rebuild the world</text>
+<text
+  class="td-chart-label"
+  x="542"
+  y="324"
+  text-anchor="middle"
+>Demand-driven graph</text>
 <text
   class="td-chart-label"
   x="16"
@@ -261,22 +219,7 @@
   x="98"
   y="346"
   text-anchor="start"
->Rebuild the world</text>
-<rect
-  class="td-chart-series-1"
-  x="247.84"
-  y="336"
-  width="12"
-  height="12"
-  rx="3"
-  fill="currentColor"
-></rect>
-<text
-  class="td-chart-legend-text"
-  x="265.84"
-  y="346"
-  text-anchor="start"
->Demand-driven graph</text>
+>Bodies</text>
 </svg>
 </div>
 </figure>
@@ -289,16 +232,16 @@
 <h2>How it becomes pixels, and the part people get wrong</h2>
 <p>SwiftUI sits on Core Animation. Core Animation holds the layer state, position, opacity, transform, the properties the GPU composites and the render server interpolates. Core Graphics paints the content, text and shapes, into bitmaps that become a layer’s contents.</p>
 <p>Here is the part most people get wrong. SwiftUI does not make one layer per view. UIKit does that, where every view is layer backed one to one. SwiftUI coalesces. A stack of ten text labels is usually a single layer with a single drawing, not eleven layers. A view earns its own layer only when it needs a layer level property, like opacity or a transform. This is a real reason SwiftUI is efficient. A long list is a handful of layers for the compositor to manage, not thousands. The tradeoff is that coalesced content has to be redrawn when it changes, while a dedicated layer can move without a redraw. For typical interfaces that trade is a clear win.</p>
-<figure class="td-chart td-chart-line">
-<figcaption class="td-chart-caption">Layers handed to the compositor for a list of labels</figcaption>
+<figure class="td-chart td-chart-bar">
+<figcaption class="td-chart-caption">Layers for a stack of ten text labels</figcaption>
 <div class="td-chart-frame">
 <svg
   class="td-chart-svg"
-  viewBox="0 0 720 382"
+  viewBox="0 0 720 360"
   role="img"
-  aria-label="Layers handed to the compositor for a list of labels"
+  aria-label="Layers for a stack of ten text labels"
 >
-<desc>line chart with 0 labels and 2 series</desc>
+<desc>bar chart with 2 labels and 1 series</desc>
 <line
   class="td-chart-grid"
   x1="80"
@@ -324,7 +267,7 @@
   x="70"
   y="190.17"
   text-anchor="end"
->500</text>
+>5</text>
 <line
   class="td-chart-grid"
   x1="80"
@@ -337,7 +280,7 @@
   x="70"
   y="74.33"
   text-anchor="end"
->1000</text>
+>10</text>
 <line
   class="td-chart-axis"
   x1="80"
@@ -352,51 +295,34 @@
   x2="80"
   y2="302"
 ></line>
-<polyline class="td-chart-line td-chart-series-0" points="inf,299.45 inf,278.6 inf,70.1"></polyline>
-<circle
-  class="td-chart-point td-chart-series-0"
-  cx="inf"
-  cy="299.45"
-  r="4"
-><title>One layer per view, 11</title></circle>
-<circle
-  class="td-chart-point td-chart-series-0"
-  cx="inf"
-  cy="278.6"
-  r="4"
-><title>One layer per view, 101</title></circle>
-<circle
-  class="td-chart-point td-chart-series-0"
-  cx="inf"
-  cy="70.1"
-  r="4"
-><title>One layer per view, 1001</title></circle>
-<polyline class="td-chart-line td-chart-series-1" points="inf,301.77 inf,301.77 inf,301.77"></polyline>
-<circle
-  class="td-chart-point td-chart-series-1"
-  cx="inf"
-  cy="301.77"
-  r="4"
-><title>SwiftUI coalesced, 1</title></circle>
-<circle
-  class="td-chart-point td-chart-series-1"
-  cx="inf"
-  cy="301.77"
-  r="4"
-><title>SwiftUI coalesced, 1</title></circle>
-<circle
-  class="td-chart-point td-chart-series-1"
-  cx="inf"
-  cy="301.77"
-  r="4"
-><title>SwiftUI coalesced, 1</title></circle>
-
+<rect
+  class="td-chart-bar td-chart-series-0"
+  x="217"
+  y="47.17"
+  width="32"
+  height="254.83"
+  rx="4"
+><title>One layer per view: 11</title></rect>
+<rect
+  class="td-chart-bar td-chart-series-0"
+  x="525"
+  y="278.83"
+  width="32"
+  height="23.17"
+  rx="4"
+><title>SwiftUI coalesced: 1</title></rect>
 <text
   class="td-chart-label"
-  x="388"
-  y="368"
+  x="234"
+  y="324"
   text-anchor="middle"
->Text labels</text>
+>One layer per view</text>
+<text
+  class="td-chart-label"
+  x="542"
+  y="324"
+  text-anchor="middle"
+>SwiftUI coalesced</text>
 <text
   class="td-chart-label"
   x="16"
@@ -418,22 +344,7 @@
   x="98"
   y="346"
   text-anchor="start"
->One layer per view</text>
-<rect
-  class="td-chart-series-1"
-  x="256.64"
-  y="336"
-  width="12"
-  height="12"
-  rx="3"
-  fill="currentColor"
-></rect>
-<text
-  class="td-chart-legend-text"
-  x="274.64"
-  y="346"
-  text-anchor="start"
->SwiftUI coalesced</text>
+>Layers</text>
 </svg>
 </div>
 </figure>

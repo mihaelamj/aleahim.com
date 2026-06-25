@@ -38,13 +38,11 @@ flowchart TD
 The cone is the whole efficiency story. A naive rebuild touches every body in the interface, so its cost grows with the screen. The graph touches only the dirty node and what truly depends on it, so its cost tracks the change, not the size of the UI.
 
 ```chart
-type: line
-title: Bodies re-run per state change as the screen grows
-x-label: Views on screen
+type: bar
+title: Bodies re-run when one row changes in a list of twenty
 y-label: Bodies re-run
-x: 10, 100, 1000, 10000
-series: Rebuild the world = 10, 100, 1000, 10000
-series: Demand-driven graph = 1, 1, 1, 1
+categories: Rebuild the world, Demand-driven graph
+series: Bodies = 20, 1
 ```
 
 There is one more piece that matters for performance. If a recomputed value comes out equal to what it was before, propagation stops there. An unchanged value never disturbs anything downstream, so a state change that happens to produce the same result costs almost nothing.
@@ -66,13 +64,11 @@ SwiftUI sits on Core Animation. Core Animation holds the layer state, position, 
 Here is the part most people get wrong. SwiftUI does not make one layer per view. UIKit does that, where every view is layer backed one to one. SwiftUI coalesces. A stack of ten text labels is usually a single layer with a single drawing, not eleven layers. A view earns its own layer only when it needs a layer level property, like opacity or a transform. This is a real reason SwiftUI is efficient. A long list is a handful of layers for the compositor to manage, not thousands. The tradeoff is that coalesced content has to be redrawn when it changes, while a dedicated layer can move without a redraw. For typical interfaces that trade is a clear win.
 
 ```chart
-type: line
-title: Layers handed to the compositor for a list of labels
-x-label: Text labels
+type: bar
+title: Layers for a stack of ten text labels
 y-label: Layers created
-x: 10, 100, 1000
-series: One layer per view = 11, 101, 1001
-series: SwiftUI coalesced = 1, 1, 1
+categories: One layer per view, SwiftUI coalesced
+series: Layers = 11, 1
 ```
 
 ## Animation, the beautiful part
