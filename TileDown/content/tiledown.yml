@@ -16,5 +16,5 @@ shareLinks: true
 articlePDF: true
 social.github: https://github.com/mihaelamj
 social.linkedin: https://www.linkedin.com/in/mihaelamj
-analytics.head: <!-- Umami Analytics --><script defer src="https://cloud.umami.is/script.js" data-website-id="1ee8d39f-4184-4d60-89a3-13131860112a"></script>
+analytics.head: <!-- Umami Analytics --><script defer src="https://barcodehq-umami.fly.dev/script.js" data-website-id="85585e37-bdbf-44bc-83c7-83d2042cee00"></script>
 static..nojekyll: deployment/.nojekyll
