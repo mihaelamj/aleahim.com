@@ -60,7 +60,7 @@
 </head>
 <body>
 <header class="td-header">
-<a class="td-brand td-brand-stacked" href="https://aleahim.com/"><span class="td-brand-title">Aleahim.com</span><span class="td-brand-subtitle">v1.29</span></a>
+<a class="td-brand td-brand-stacked" href="https://aleahim.com/"><span class="td-brand-title">Aleahim.com</span><span class="td-brand-subtitle">v1.30</span></a>
 <nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/blog/" aria-current="page">Blog</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
 <button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
 </header>
@@ -81,16 +81,16 @@
 </pre>
 </figure>
 <p>The cone is the whole efficiency story. A naive rebuild touches every body in the interface, so its cost grows with the screen. The graph touches only the dirty node and what truly depends on it, so its cost tracks the change, not the size of the UI.</p>
-<figure class="td-chart td-chart-bar">
-<figcaption class="td-chart-caption">Bodies re-run when one row changes in a list of twenty</figcaption>
+<figure class="td-chart td-chart-line">
+<figcaption class="td-chart-caption">Bodies re-run for one change as the screen grows</figcaption>
 <div class="td-chart-frame">
 <svg
   class="td-chart-svg"
-  viewBox="0 0 720 360"
+  viewBox="0 0 720 382"
   role="img"
-  aria-label="Bodies re-run when one row changes in a list of twenty"
+  aria-label="Bodies re-run for one change as the screen grows"
 >
-<desc>bar chart with 2 labels and 1 series</desc>
+<desc>line chart with 0 labels and 2 series</desc>
 <line
   class="td-chart-grid"
   x1="80"
@@ -107,42 +107,55 @@
 <line
   class="td-chart-grid"
   x1="80"
-  y1="232.5"
+  y1="246.4"
   x2="696"
-  y2="232.5"
+  y2="246.4"
 ></line>
 <text
   class="td-chart-value"
   x="70"
-  y="236.5"
+  y="250.4"
   text-anchor="end"
->5</text>
+>200</text>
 <line
   class="td-chart-grid"
   x1="80"
-  y1="163"
+  y1="190.8"
   x2="696"
-  y2="163"
+  y2="190.8"
 ></line>
 <text
   class="td-chart-value"
   x="70"
-  y="167"
+  y="194.8"
   text-anchor="end"
->10</text>
+>400</text>
 <line
   class="td-chart-grid"
   x1="80"
-  y1="93.5"
+  y1="135.2"
   x2="696"
-  y2="93.5"
+  y2="135.2"
 ></line>
 <text
   class="td-chart-value"
   x="70"
-  y="97.5"
+  y="139.2"
   text-anchor="end"
->15</text>
+>600</text>
+<line
+  class="td-chart-grid"
+  x1="80"
+  y1="79.6"
+  x2="696"
+  y2="79.6"
+></line>
+<text
+  class="td-chart-value"
+  x="70"
+  y="83.6"
+  text-anchor="end"
+>800</text>
 <line
   class="td-chart-grid"
   x1="80"
@@ -155,7 +168,7 @@
   x="70"
   y="28"
   text-anchor="end"
->20</text>
+>1000</text>
 <line
   class="td-chart-axis"
   x1="80"
@@ -170,34 +183,92 @@
   x2="80"
   y2="302"
 ></line>
-<rect
-  class="td-chart-bar td-chart-series-0"
-  x="217"
-  y="24"
-  width="32"
-  height="278"
-  rx="4"
-><title>Rebuild the world: 20</title></rect>
-<rect
-  class="td-chart-bar td-chart-series-0"
-  x="525"
-  y="288.1"
-  width="32"
-  height="13.9"
-  rx="4"
-><title>Demand-driven graph: 1</title></rect>
 <text
   class="td-chart-label"
-  x="234"
+  x="80"
   y="324"
   text-anchor="middle"
->Rebuild the world</text>
+>200</text>
 <text
   class="td-chart-label"
-  x="542"
+  x="388"
   y="324"
   text-anchor="middle"
->Demand-driven graph</text>
+>600</text>
+<text
+  class="td-chart-label"
+  x="696"
+  y="324"
+  text-anchor="middle"
+>1000</text>
+<polyline class="td-chart-line td-chart-series-0" points="80,246.4 234,190.8 388,135.2 542,79.6 696,24"></polyline>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="80"
+  cy="246.4"
+  r="4"
+><title>Rebuild the world: (200, 200)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="234"
+  cy="190.8"
+  r="4"
+><title>Rebuild the world: (400, 400)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="388"
+  cy="135.2"
+  r="4"
+><title>Rebuild the world: (600, 600)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="542"
+  cy="79.6"
+  r="4"
+><title>Rebuild the world: (800, 800)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="696"
+  cy="24"
+  r="4"
+><title>Rebuild the world: (1000, 1000)</title></circle>
+<polyline class="td-chart-line td-chart-series-1" points="80,301.72 234,301.72 388,301.72 542,301.72 696,301.72"></polyline>
+<circle
+  class="td-chart-point td-chart-series-1"
+  cx="80"
+  cy="301.72"
+  r="4"
+><title>Demand-driven graph: (200, 1)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-1"
+  cx="234"
+  cy="301.72"
+  r="4"
+><title>Demand-driven graph: (400, 1)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-1"
+  cx="388"
+  cy="301.72"
+  r="4"
+><title>Demand-driven graph: (600, 1)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-1"
+  cx="542"
+  cy="301.72"
+  r="4"
+><title>Demand-driven graph: (800, 1)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-1"
+  cx="696"
+  cy="301.72"
+  r="4"
+><title>Demand-driven graph: (1000, 1)</title></circle>
+<text
+  class="td-chart-label"
+  x="388"
+  y="368"
+  text-anchor="middle"
+>Views on screen</text>
 <text
   class="td-chart-label"
   x="16"
@@ -219,7 +290,22 @@
   x="98"
   y="346"
   text-anchor="start"
->Bodies</text>
+>Rebuild the world</text>
+<rect
+  class="td-chart-series-1"
+  x="247.84"
+  y="336"
+  width="12"
+  height="12"
+  rx="3"
+  fill="currentColor"
+></rect>
+<text
+  class="td-chart-legend-text"
+  x="265.84"
+  y="346"
+  text-anchor="start"
+>Demand-driven graph</text>
 </svg>
 </div>
 </figure>

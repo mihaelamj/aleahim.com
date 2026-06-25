@@ -38,11 +38,13 @@ flowchart TD
 The cone is the whole efficiency story. A naive rebuild touches every body in the interface, so its cost grows with the screen. The graph touches only the dirty node and what truly depends on it, so its cost tracks the change, not the size of the UI.
 
 ```chart
-type: bar
-title: Bodies re-run when one row changes in a list of twenty
+type: line
+title: Bodies re-run for one change as the screen grows
+x-label: Views on screen
 y-label: Bodies re-run
-categories: Rebuild the world, Demand-driven graph
-series: Bodies = 20, 1
+x: 200, 400, 600, 800, 1000
+series: Rebuild the world = 200, 400, 600, 800, 1000
+series: Demand-driven graph = 1, 1, 1, 1, 1
 ```
 
 There is one more piece that matters for performance. If a recomputed value comes out equal to what it was before, propagation stops there. An unchanged value never disturbs anything downstream, so a state change that happens to produce the same result costs almost nothing.
