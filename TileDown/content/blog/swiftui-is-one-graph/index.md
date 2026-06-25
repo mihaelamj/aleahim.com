@@ -1,6 +1,6 @@
 ---
 slug: blog/swiftui-is-one-graph
-title: "SwiftUI Is One Graph"
+title: SwiftUI Is One Graph
 description: I rebuilt SwiftUI's engine in pure Swift from first principles, with no Apple frameworks, so it could run off a Mac. Then I read the patent. It described the same engine I had just written, almost field for field. Here is how SwiftUI actually works, and why the whole thing is a single demand-driven graph.
 date: 2026-06-25
 tags: Swift, SwiftUI, Architecture
@@ -28,6 +28,25 @@ The clever part is how edges form. When a rule runs and reads another attribute,
 
 Now the reactive behavior everyone loves, explained without magic. You change one piece of state. SwiftUI does not rebuild the world. It marks that single source attribute dirty and pushes the dirty flag forward along the edges, to exactly the attributes that depended on it and to nobody else. That set is the cone. Then, lazily, when the screen needs a value, it pulls. It walks down to the dirty inputs, recomputes only those, caches them, and bubbles the result back up. An attribute whose inputs did not change returns its cache and its rule never runs. That is why a screen with a thousand views re-runs the body of only the one that changed.
 
+```mermaid
+flowchart TD
+  S["@State count, a source"] -->|dirty| L["Label.body"]
+  L --> T["Text attribute"]
+  S -.->|no edge, untouched| O["Other.body"]
+```
+
+The cone is the whole efficiency story. A naive rebuild touches every body in the interface, so its cost grows with the screen. The graph touches only the dirty node and what truly depends on it, so its cost tracks the change, not the size of the UI.
+
+```chart
+type: line
+title: Bodies re-run per state change as the screen grows
+x-label: Views on screen
+y-label: Bodies re-run
+x: 10, 100, 1000, 10000
+series: Rebuild the world = 10, 100, 1000, 10000
+series: Demand-driven graph = 1, 1, 1, 1
+```
+
 There is one more piece that matters for performance. If a recomputed value comes out equal to what it was before, propagation stops there. An unchanged value never disturbs anything downstream, so a state change that happens to produce the same result costs almost nothing.
 
 ## State and identity
@@ -46,11 +65,29 @@ SwiftUI sits on Core Animation. Core Animation holds the layer state, position, 
 
 Here is the part most people get wrong. SwiftUI does not make one layer per view. UIKit does that, where every view is layer backed one to one. SwiftUI coalesces. A stack of ten text labels is usually a single layer with a single drawing, not eleven layers. A view earns its own layer only when it needs a layer level property, like opacity or a transform. This is a real reason SwiftUI is efficient. A long list is a handful of layers for the compositor to manage, not thousands. The tradeoff is that coalesced content has to be redrawn when it changes, while a dedicated layer can move without a redraw. For typical interfaces that trade is a clear win.
 
+```chart
+type: line
+title: Layers handed to the compositor for a list of labels
+x-label: Text labels
+y-label: Layers created
+x: 10, 100, 1000
+series: One layer per view = 11, 101, 1001
+series: SwiftUI coalesced = 1, 1, 1
+```
+
 ## Animation, the beautiful part
 
 When you change a value inside `withAnimation`, the model value jumps straight to its target. It does not crawl there. Instead the framework makes a copy of that destination, and into the copy it injects an intermediate value, interpolated for this exact instant. The view draws the copy. Your data is already at the final value. Only the presentation is in flight.
 
 Each animation is a tiny record: a from value, a to value, a timing function, and a start time. That is all it needs. Time itself is just another input to the graph. Every frame a clock ticks, that tick dirties only the animated attributes, and they re-pull a fresh interpolated value through the same cone machinery as everything else. The interpolation works on a delta vector, the difference between from and to, scaled by the curve. A spring is not a special case. It is a damped harmonic oscillator solved over time, which is exactly why it overshoots and then settles. And because the animation is committed once and the render server interpolates on its own clock, it keeps running smoothly even when your main thread is busy.
+
+Two lines of math carry the whole motion. The presented value is the start plus the delta, scaled by the curve, so the data sits at the target while only the presentation moves:
+
+$$v(t) = v_{from} + (v_{to} - v_{from}) p(t)$$
+
+A spring is the same machinery with the fixed curve replaced by a damped harmonic oscillator, which is exactly why it overshoots its target and then settles:
+
+$$x(t) = e^{-\zeta \omega_0 t} \cos(\omega_d t)$$
 
 ## Then I read the patent
 
