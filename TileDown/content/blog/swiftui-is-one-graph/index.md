@@ -1,18 +1,18 @@
 ---
 slug: blog/swiftui-is-one-graph
-title: SwiftUI Is One Graph
-description: I rebuilt SwiftUI's engine in pure Swift from first principles, with no Apple frameworks, so it could run off a Mac. Then I read the patent. It described the same engine I had just written, almost field for field. Here is how SwiftUI actually works, and why the whole thing is a single demand-driven graph.
+title: SwiftUI Is One Graph, Over 40+ Years of Engineering
+description: SwiftUI is the thin graph sitting above 40+ years of engineering. Measured against the real framework and read against Apple's own patent, it is a single demand-driven graph, and the least remarkable engine in the stack it rests on. Here is SwiftUI laid bare, with a hint of the far more interesting machines underneath.
 date: 2026-06-25
 tags: Swift, SwiftUI, Architecture
 draft: false
 image: /images/blog/swiftui-is-one-graph/hero.jpg
 ---
 
-# SwiftUI Is One Graph
+# SwiftUI Is One Graph, Over 40+ Years of Engineering
 
-I set out to rebuild SwiftUI's engine in pure Swift. No SwiftUI, no UIKit, no AppKit, no QuartzCore, not even Core Graphics. The goal was simple and a little stubborn: if the engine is just logic, it should run anywhere Swift runs, including Windows and Linux, with only the bottom layer that talks to the screen being platform specific. Author a view on a Mac, treat real SwiftUI as the oracle, reproduce it, then run the verified engine unchanged off the Mac.
+I wanted to know what SwiftUI really is, not what the tutorials say it is. So I came at it from two directions that cannot collude. I measured the real framework's behavior until it was predictable, the way you probe any black box, and I read Apple's own patent on it, line by line. The shipping framework is the oracle. The granted patent is Apple describing its own machine. When the two agree, you are no longer guessing.
 
-To do that you have to understand what SwiftUI really is, not what the tutorials say it is. So I derived it from first principles, measured every behavior against the real framework, and only then read Apple's patent on it. The patent described the engine I had just written. That is the story, but first the engine.
+And they agree, almost field for field. What they describe together is simpler and stranger than the usual story: not a view tree that gets diffed, but a single demand-driven graph. I will show you that graph, because it is genuinely elegant. Then, at the end, I will tell you why it is the part of Apple's stack I find least interesting, and what I have been doing about that. First the engine.
 
 ## A view is a value, not an object
 
@@ -87,18 +87,24 @@ A spring is the same machinery with the fixed curve replaced by a damped harmoni
 
 $$x(t) = e^{-\zeta \omega_0 t} \cos(\omega_d t)$$
 
-## Then I read the patent
+## What the patent says
 
 US 11,042,388 B2, granted June 22, 2021, priority June 3, 2018. Inventors Jacob Xiao, Kyle Macomber, Joshua Shaffer, and John Harper, the same John Harper who created Core Animation in 2006.
 
-Figure 13 describes the attribute graph in plain words. An attribute graph supports zero to n inputs, applies a function on the inputs to calculate an output, stores the output in a persistent memory structure, and whenever any input changes the function gets re-run. Affected attributes set a dirty bit, and the tree is traversed bottom up so that dirty attributes initiate an update. That is the node I had already written, down to the dirty bit and the bottom up pull.
+Hold that name. Apple the company would not exist without Steve Jobs. The iPhone, and the whole fluid, animated, GPU-composited kingdom that grew on top of it, iOS, iPadOS, watchOS, tvOS, and visionOS, would not exist as we know it without John Harper. The same hand drew the engine that runs underneath all of it, from Core Animation in 2006 to the very graph this post is about. SwiftUI is just the newest room in a house whose foundation he poured. He is the John Carmack of Apple, its Linus Torvalds: the engineer whose work a billion people touch every day and whose name almost none of them know. That is a shame, and correcting it, in my own small way, is part of why I am writing all this.
 
-Figure 7 describes the animation record. It has four fields: from value, to value, animation function, start time. That is the exact struct I had already written to drive my animations. Figure 8 describes the method as generating a copy of the destination state and injecting an intermediate value into the copy for rendering. That is the model and presentation split I had derived by watching the real framework.
+Figure 13 describes the attribute graph in plain words. An attribute graph supports zero to n inputs, applies a function on the inputs to calculate an output, stores the output in a persistent memory structure, and whenever any input changes the function gets re-run. Affected attributes set a dirty bit, and the tree is traversed bottom up so that dirty attributes initiate an update. That is exactly what the behavior shows, down to the dirty bit and the bottom up pull, now in Apple's own words.
 
-I had not copied the patent. I had reconstructed the engine from how SwiftUI behaves, then found the patent describing the same machine. When two people arrive at the same structure independently, it is usually because the structure was forced by the problem, not chosen by taste.
+Figure 7 describes the animation record. It has four fields: from value, to value, animation function, start time. The same four fields the behavior implies. Figure 8 describes the method as generating a copy of the destination state and injecting an intermediate value into the copy for rendering. That is the model and presentation split you can watch the real framework perform.
+
+I did not take any of this from the patent. The behavior and the patent are two independent witnesses, and they arrive at the same machine. When the framework you can observe and the patent Apple was granted describe the same structure, that structure is real, forced by the problem, not chosen by taste.
 
 ## One graph, one cone, drawn lazily
 
 That is the whole of it. A single demand-driven graph. State flows down through the environment, preferences flow up from children to parents, time is just another input, the graph recomputes only what truly changed, and it hands a coalesced layer tree to Core Animation to composite. Strip away the syntax and SwiftUI is one graph, one cone, drawn lazily.
 
-And the reason I cared enough to rebuild it: once the engine is just a graph and some Swift, the Mac stops being required. The semantics run anywhere. Only the last inch, the part that puts pixels on a panel, stays platform specific. The foundation was never the platform. It was always the graph.
+And here is the part I will only hint at. This was never really about SwiftUI. It began with Core Animation, because I wanted to understand it, and the only way I trust to understand a thing is to build it again from nothing. But you cannot understand Core Animation without the drawing layer beneath it, so that came next. A text layer pulls you into typesetting. Transitions pull you into image processing. Each engine demanded the one below it, until the whole stack stood on its own and SwiftUI settled on top almost as an afterthought. None of it ships, and none of it is for sharing. It is mine, a way to learn the machine by rebuilding it, and it has a name: SlayerMotion.
+
+Of the five, SwiftUI interests me the least, by a wide margin. It was not even born to be the future of the platform: it started as a way to make watchOS apps bearable to write, and only once it existed did Apple look at it and see what they had, and take it everywhere. It arrived with a quiet promise: that you could finally skip all of it, the dozen frameworks underneath, and just ship. That promise was a lie. You can ship, yes, but you have not learned the platform, you have learned a facade over it, and the day something leaks through, a layout that will not behave, an animation that stutters, text that measures wrong, you are standing on a stack you never met. The people who took SwiftUI as a way around the frameworks did not become Apple developers. They became SwiftUI users, and that is a different and smaller thing.
+
+Set beside the engines underneath it, SwiftUI is genuinely uninteresting, boring even, a thin and tidy graph that does one clever thing and then gets out of the way. The one that floored me at the start still floors me most, and I suspect always will: Core Animation, a compositor that keeps an animation running smooth on its own clock while your app is busy elsewhere. The drawing layer, the type engine, the image pipeline are close behind. That is where the hard, strange, beautiful problems live, and that is the series. SwiftUI was just the easiest door into the story.
