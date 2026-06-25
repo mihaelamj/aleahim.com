@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function () {
+  var root = document.documentElement;
+  function storedTheme() {
+    try {
+      var saved = localStorage.getItem('td-theme');
+      return saved === 'dark' || saved === 'light' ? saved : '';
+    } catch (e) {
+      return '';
+    }
+  }
+  function applyStoredTheme() {
+    var saved = storedTheme();
+    if (saved) root.setAttribute('data-theme', saved);
+    else root.removeAttribute('data-theme');
+  }
+  // Apply a saved choice before paint so there is no flash. With no saved
+  // choice the CSS follows the OS via prefers-color-scheme.
+  applyStoredTheme();
+  window.addEventListener('pageshow', applyStoredTheme);
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'td-theme') applyStoredTheme();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var button = document.querySelector('[data-td-theme-toggle]');
+    if (!button) return;
+    button.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = current === 'dark' ? 'light' : current === 'light' ? 'dark' : (prefersDark ? 'light' : 'dark');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('td-theme', next); } catch (e) {}
+    });
+  });
+})();
+</script>
+<title>&quot;SwiftUI Is One Graph&quot;</title>
+<meta name="description" content="I rebuilt SwiftUI&#39;s engine in pure Swift from first principles, with no Apple frameworks, so it could run off a Mac. Then I read the patent. It described the same engine I had just written, almost field for field. Here is how SwiftUI actually works, and why the whole thing is a single demand-driven graph.">
+<link rel="canonical" href="https://aleahim.com/blog/swiftui-is-one-graph/">
+<meta property="og:title" content="&quot;SwiftUI Is One Graph&quot;">
+<meta property="og:type" content="article">
+<meta property="og:description" content="I rebuilt SwiftUI&#39;s engine in pure Swift from first principles, with no Apple frameworks, so it could run off a Mac. Then I read the patent. It described the same engine I had just written, almost field for field. Here is how SwiftUI actually works, and why the whole thing is a single demand-driven graph.">
+<meta property="og:url" content="https://aleahim.com/blog/swiftui-is-one-graph/">
+<meta property="og:site_name" content="Aleahim.com">
+<meta property="og:image" content="https://aleahim.com/images/blog/swiftui-is-one-graph/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="&quot;SwiftUI Is One Graph&quot;">
+<meta name="twitter:description" content="I rebuilt SwiftUI&#39;s engine in pure Swift from first principles, with no Apple frameworks, so it could run off a Mac. Then I read the patent. It described the same engine I had just written, almost field for field. Here is how SwiftUI actually works, and why the whole thing is a single demand-driven graph.">
+<meta name="twitter:image" content="https://aleahim.com/images/blog/swiftui-is-one-graph/hero.jpg">
+<meta property="article:published_time" content="2026-06-25T00:00:00Z">
+<link rel="icon" href="https://aleahim.com/favicon.ico">
+<link rel="stylesheet" href="https://aleahim.com/styles.css">
+<link rel="alternate" type="application/rss+xml" href="https://aleahim.com/rss.xml">
+<!-- Umami Analytics --><script defer src="https://barcodehq-umami.fly.dev/script.js" data-website-id="85585e37-bdbf-44bc-83c7-83d2042cee00"></script>
+</head>
+<body>
+<header class="td-header">
+<a class="td-brand td-brand-stacked" href="https://aleahim.com/"><span class="td-brand-title">Aleahim.com</span><span class="td-brand-subtitle">v1.27</span></a>
+<nav class="td-nav"><a class="td-nav-link" href="https://aleahim.com/about/">About</a><a class="td-nav-link" href="https://aleahim.com/blog/" aria-current="page">Blog</a><a class="td-nav-link" href="https://aleahim.com/speaking/">Speaking</a></nav>
+<button class="td-theme-toggle" type="button" data-td-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">&#9728;</button>
+</header>
+<main class="td-main"><article class="td-article"><header class="td-article-header"><div class="td-article-meta"><span class="td-article-kicker">Article</span><time class="td-article-date">June 25, 2026</time></div><h1 class="td-article-title">&quot;SwiftUI Is One Graph&quot;</h1><p class="td-article-dek">I rebuilt SwiftUI&#39;s engine in pure Swift from first principles, with no Apple frameworks, so it could run off a Mac. Then I read the patent. It described the same engine I had just written, almost field for field. Here is how SwiftUI actually works, and why the whole thing is a single demand-driven graph.</p><nav class="td-article-actions" aria-label="Article actions"><a href="https://aleahim.com/blog/swiftui-is-one-graph/" data-td-copy-permalink title="Copy permalink">Permalink</a><a href="https://aleahim.com/rss.xml">RSS</a><a href="https://aleahim.com/swiftui-is-one-graph.pdf" download>Download PDF</a></nav><nav class="td-article-share" aria-label="Share article"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Faleahim.com%2Fblog%2Fswiftui-is-one-graph%2F&amp;text=%22SwiftUI%20Is%20One%20Graph%22" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faleahim.com%2Fblog%2Fswiftui-is-one-graph%2F" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faleahim.com%2Fblog%2Fswiftui-is-one-graph%2F" target="_blank" rel="noopener">Facebook</a><a href="mailto:?subject=%22SwiftUI%20Is%20One%20Graph%22&amp;body=https%3A%2F%2Faleahim.com%2Fblog%2Fswiftui-is-one-graph%2F" target="_blank" rel="noopener">Email</a></nav><nav class="td-tags td-article-tags" aria-label="Tags"><a class="td-tag" href="https://aleahim.com/tags/swift/">Swift</a><a class="td-tag" href="https://aleahim.com/tags/swiftui/">SwiftUI</a><a class="td-tag" href="https://aleahim.com/tags/architecture/">Architecture</a></nav></header><figure class="td-article-media"><img class="td-hero" src="/images/blog/swiftui-is-one-graph/hero.jpg" alt="&quot;SwiftUI Is One Graph&quot;"></figure><div class="td-article-body"><p>I set out to rebuild SwiftUI’s engine in pure Swift. No SwiftUI, no UIKit, no AppKit, no QuartzCore, not even Core Graphics. The goal was simple and a little stubborn: if the engine is just logic, it should run anywhere Swift runs, including Windows and Linux, with only the bottom layer that talks to the screen being platform specific. Author a view on a Mac, treat real SwiftUI as the oracle, reproduce it, then run the verified engine unchanged off the Mac.</p>
+<p>To do that you have to understand what SwiftUI really is, not what the tutorials say it is. So I derived it from first principles, measured every behavior against the real framework, and only then read Apple’s patent on it. The patent described the engine I had just written. That is the story, but first the engine.</p>
+<h2>A view is a value, not an object</h2>
+<p>When you write a SwiftUI view you are not creating a thing on screen. You are describing what the screen should look like, as a cheap struct that gets thrown away and rebuilt constantly. This trips people up because it feels wasteful. It is not. The struct is disposable on purpose. The part of your UI that actually persists lives somewhere else entirely.</p>
+<p>That somewhere else is the attribute graph, and it is the whole game.</p>
+<h2>The attribute graph</h2>
+<p>Every view compiles into a graph of attributes. An attribute is one node with exactly two things: a cached value, and a rule that computes that value from its inputs. A view’s <code>body</code> is itself an attribute whose rule is “evaluate this body.”</p>
+<p>The clever part is how edges form. When a rule runs and reads another attribute, an edge is recorded between them. Dependencies are never declared. They are discovered, by watching what each body actually reads while it runs. You get the dependency graph for free, just by evaluating.</p>
+<p>Now the reactive behavior everyone loves, explained without magic. You change one piece of state. SwiftUI does not rebuild the world. It marks that single source attribute dirty and pushes the dirty flag forward along the edges, to exactly the attributes that depended on it and to nobody else. That set is the cone. Then, lazily, when the screen needs a value, it pulls. It walks down to the dirty inputs, recomputes only those, caches them, and bubbles the result back up. An attribute whose inputs did not change returns its cache and its rule never runs. That is why a screen with a thousand views re-runs the body of only the one that changed.</p>
+<p>There is one more piece that matters for performance. If a recomputed value comes out equal to what it was before, propagation stops there. An unchanged value never disturbs anything downstream, so a state change that happens to produce the same result costs almost nothing.</p>
+<h2>State and identity</h2>
+<p>Because the view struct is disposable, your <code>@State</code> cannot live inside it. It lives in persistent storage, keyed by the view’s identity. Identity is structural, meaning the view’s type and position in the tree, unless you override it with an explicit <code>id</code>.</p>
+<p>This one rule explains a lot of confusing behavior. As long as the identity is stable, your state survives every rebuild of the struct. The moment the identity changes, by changing <code>.id</code> or by removing and reinserting the view, the old state is destroyed and a fresh one is created at its default. It is also why a <code>List</code> can recycle its rows without losing their state. The state follows the identity, not the position on screen. Reorder the data and each row’s state travels with its identifier.</p>
+<h2>Layout is a negotiation</h2>
+<p>Layout is three steps and one rule. The parent proposes a size to the child. The child chooses its own size. The parent then places the child. The rule is that the parent never forces a size on the child. A stack divides its space among its children, giving the least flexible ones their size first and sharing what is left. Text measures itself through the text engine, with kerning and the font’s own line metrics, which is why a label is exactly as wide as it needs to be.</p>
+<h2>How it becomes pixels, and the part people get wrong</h2>
+<p>SwiftUI sits on Core Animation. Core Animation holds the layer state, position, opacity, transform, the properties the GPU composites and the render server interpolates. Core Graphics paints the content, text and shapes, into bitmaps that become a layer’s contents.</p>
+<p>Here is the part most people get wrong. SwiftUI does not make one layer per view. UIKit does that, where every view is layer backed one to one. SwiftUI coalesces. A stack of ten text labels is usually a single layer with a single drawing, not eleven layers. A view earns its own layer only when it needs a layer level property, like opacity or a transform. This is a real reason SwiftUI is efficient. A long list is a handful of layers for the compositor to manage, not thousands. The tradeoff is that coalesced content has to be redrawn when it changes, while a dedicated layer can move without a redraw. For typical interfaces that trade is a clear win.</p>
+<h2>Animation, the beautiful part</h2>
+<p>When you change a value inside <code>withAnimation</code>, the model value jumps straight to its target. It does not crawl there. Instead the framework makes a copy of that destination, and into the copy it injects an intermediate value, interpolated for this exact instant. The view draws the copy. Your data is already at the final value. Only the presentation is in flight.</p>
+<p>Each animation is a tiny record: a from value, a to value, a timing function, and a start time. That is all it needs. Time itself is just another input to the graph. Every frame a clock ticks, that tick dirties only the animated attributes, and they re-pull a fresh interpolated value through the same cone machinery as everything else. The interpolation works on a delta vector, the difference between from and to, scaled by the curve. A spring is not a special case. It is a damped harmonic oscillator solved over time, which is exactly why it overshoots and then settles. And because the animation is committed once and the render server interpolates on its own clock, it keeps running smoothly even when your main thread is busy.</p>
+<h2>Then I read the patent</h2>
+<p>US 11,042,388 B2, granted June 22, 2021, priority June 3, 2018. Inventors Jacob Xiao, Kyle Macomber, Joshua Shaffer, and John Harper, the same John Harper who created Core Animation in 2006.</p>
+<p>Figure 13 describes the attribute graph in plain words. An attribute graph supports zero to n inputs, applies a function on the inputs to calculate an output, stores the output in a persistent memory structure, and whenever any input changes the function gets re-run. Affected attributes set a dirty bit, and the tree is traversed bottom up so that dirty attributes initiate an update. That is the node I had already written, down to the dirty bit and the bottom up pull.</p>
+<p>Figure 7 describes the animation record. It has four fields: from value, to value, animation function, start time. That is the exact struct I had already written to drive my animations. Figure 8 describes the method as generating a copy of the destination state and injecting an intermediate value into the copy for rendering. That is the model and presentation split I had derived by watching the real framework.</p>
+<p>I had not copied the patent. I had reconstructed the engine from how SwiftUI behaves, then found the patent describing the same machine. When two people arrive at the same structure independently, it is usually because the structure was forced by the problem, not chosen by taste.</p>
+<h2>One graph, one cone, drawn lazily</h2>
+<p>That is the whole of it. A single demand-driven graph. State flows down through the environment, preferences flow up from children to parents, time is just another input, the graph recomputes only what truly changed, and it hands a coalesced layer tree to Core Animation to composite. Strip away the syntax and SwiftUI is one graph, one cone, drawn lazily.</p>
+<p>And the reason I cared enough to rebuild it: once the engine is just a graph and some Swift, the Mac stops being required. The semantics run anywhere. Only the last inch, the part that puts pixels on a panel, stays platform specific. The foundation was never the platform. It was always the graph.</p></div><aside class="td-related" aria-label="Related articles"><h2>More updates</h2><ul class="td-related-list"><li><a href="https://aleahim.com/blog/cupertino-11-release/">What Apple Wants You to Build This Summer (You Can Read It in the Docs)</a><time>June 22, 2026</time></li><li><a href="https://aleahim.com/blog/indistinguishable-from-an-attack/">&quot;Indistinguishable From an Attack&quot;</a><time>June 21, 2026</time></li><li><a href="https://aleahim.com/blog/rules-my-coding-agent-cannot-break/">&quot;The rules my AI coding agent is not allowed to break&quot;</a><time>June 16, 2026</time></li></ul></aside></article></main>
+<footer class="td-footer"><div class="td-footer-inner"><nav class="td-footer-nav"><a href="https://aleahim.com/about/">About</a><a href="https://aleahim.com/blog/">Blog</a><a href="https://aleahim.com/speaking/">Speaking</a></nav><nav class="td-socials"><a href="https://github.com/mihaelamj">GitHub</a><a href="https://www.linkedin.com/in/mihaelamj">LinkedIn</a><a href="https://aleahim.com/rss.xml">RSS</a></nav><span class="td-built">Built with <a href="https://github.com/TileDown/tile-down">TileDown 0.5.0</a></span></div></footer>
+
+<script>
+(function () {
+  function setup() {
+    document.querySelectorAll('[data-td-copy-permalink]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        if (!navigator.clipboard) return;
+        var url = link.getAttribute('href');
+        if (!url) return;
+        event.preventDefault();
+        navigator.clipboard.writeText(url).then(function () {
+          var label = link.textContent;
+          link.textContent = 'Copied';
+          link.setAttribute('data-td-copy-state', 'copied');
+          setTimeout(function () {
+            link.textContent = label;
+            link.removeAttribute('data-td-copy-state');
+          }, 1500);
+        }, function () {
+          window.location.href = url;
+        });
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', setup);
+})();
+</script>
+
+
+</body>
+</html>
