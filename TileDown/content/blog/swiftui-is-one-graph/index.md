@@ -57,7 +57,7 @@ There is one more piece that matters for performance. If a recomputed value come
 
 ## State and identity
 
-Because the view struct is disposable, your `@State` cannot live inside it. It lives in persistent storage, keyed by the view's identity. Identity is structural, meaning the view's type and position in the tree, unless you override it with an explicit `id`.
+Because the view struct is disposable, your `@State` cannot live inside it. It lives in persistent storage, keyed by the view's identity. Identity is structural, meaning the view's type and position in the tree. An explicit `id` does not override that, it pairs with it: change the identifier and the view gets a new identity at that spot, but reuse the same identifier elsewhere and the two stay distinct.
 
 This one rule explains a lot of confusing behavior. As long as the identity is stable, your state survives every rebuild of the struct. The moment the identity changes, by changing `.id` or by removing and reinserting the view, the old state is destroyed and a fresh one is created at its default. It is also why a `List` can recycle its rows without losing their state. The state follows the identity, not the position on screen. Reorder the data and each row's state travels with its identifier.
 
