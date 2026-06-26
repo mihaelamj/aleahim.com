@@ -112,13 +112,15 @@ x: 0, 1, 2, 3, 4, 5, 6, 7, 8
 series: Spring = 0, 80, 120, 95, 105, 99, 101, 100, 100
 ```
 
-Two lines of math carry the whole motion. The presented value is the start plus the delta, scaled by the curve, so the data sits at the target while only the presentation moves:
+Two lines of math carry the whole motion. The presented value is the start plus the delta, scaled by the curve $p(t)$, which runs from 0 to 1, so the data sits at the target while only the presentation moves:
 
 $$v(t) = v_{from} + (v_{to} - v_{from}) p(t)$$
 
-A spring is the same machinery with the fixed curve replaced by a damped harmonic oscillator, which is exactly why it overshoots its target and then settles:
+A spring is the same machinery with the curve replaced by a damped harmonic oscillator. Released from rest, its progress curve is
 
-$$x(t) = e^{-\zeta \omega_0 t} \cos(\omega_d t)$$
+$$p(t) = 1 - e^{-\zeta \omega_0 t}\left[\cos(\omega_d t) + \frac{\zeta \omega_0}{\omega_d} \sin(\omega_d t)\right]$$
+
+which starts at 0, sweeps past 1, and settles back to 1. That overshoot past 1 is exactly why the spring overshoots its target and then settles.
 
 ## What the patent says
 
