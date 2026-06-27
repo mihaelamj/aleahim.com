@@ -683,7 +683,7 @@ precisely, since the rest of this post is about precision.</p>
 pixel comparison) were drawn by <strong>PureDraw</strong>, my dependency-free Swift-native 2D vector
 engine, through its <code>GraphicsContext</code> API. PureDraw rasterized them to the JPEGs shown here with its own <code>BitmapRenderer</code> and <code>JPEGEncoder</code>, and also produced scalable SVG and PDF masters. No external image tool touched them.</p></li><li><p>The bar chart, the spring plot, and every mathematical formula were rendered by
 <strong>TileDown</strong>, my static-site engine, from plain-text fences in this Markdown file.</p></li><li><p>This page was assembled by <strong>TileDown</strong>, and its PDF was typeset by <strong>MarkdownPDF</strong>, my Markdown-to-PDF engine.</p></li></ul>
-<p><strong>PureDraw</strong> is part of <strong>SlayerMotion</strong>, the graphics engine family this series is about. <strong>TileDown</strong> and <strong>MarkdownPDF</strong> are separate projects of mine, not part of SlayerMotion. All three are my own software; none of it is anyone else’s.</p>]]></content:encoded>
+<p><strong>PureDraw</strong> is part of <strong><a href="https://slayermotion.com">SlayerMotion</a></strong>, the graphics engine family this series is about. <strong>TileDown</strong> and <strong>MarkdownPDF</strong> are separate projects of mine, not part of SlayerMotion. All three are my own software; none of it is anyone else’s.</p>]]></content:encoded>
 </item>
 <item>
 <title>SwiftUI Is One Graph, Over 40+ Years of Engineering</title>
@@ -1299,7 +1299,7 @@ engine, through its <code>GraphicsContext</code> API. PureDraw rasterized them t
 <p>That is the whole of it. A single demand-driven graph. State flows down through the environment, preferences flow up from children to parents, time is just another input, the graph recomputes only what truly changed, and it hands a coalesced layer tree to Core Animation to composite. Strip away the syntax and SwiftUI is one graph, one cone, drawn lazily.</p>
 <p>And here is the part I will only hint at. This was never really about SwiftUI. It began with Core Animation, because I wanted to understand it, and <strong>the only way I trust to understand a thing is to build it again from nothing</strong>. But you cannot understand Core Animation without the drawing layer beneath it, so that came next.</p>
 <p><img src="https://aleahim.com/images/blog/swiftui-is-one-graph/the-stack.jpg" alt="The engines beneath SwiftUI, the stack I have been rebuilding"></p>
-<p>A text layer pulls you into typesetting. Transitions pull you into image processing. Each engine demanded the one below it, until the whole stack stood on its own and SwiftUI settled on top almost as an afterthought. None of it ships, and none of it is for sharing. It is mine, a way to learn the machine by rebuilding it, and it has a name: SlayerMotion.</p>
+<p>A text layer pulls you into typesetting. Transitions pull you into image processing. Each engine demanded the one below it, until the whole stack stood on its own and SwiftUI settled on top almost as an afterthought. None of it ships, and none of it is for sharing. It is mine, a way to learn the machine by rebuilding it, and it has a name: <a href="https://slayermotion.com">SlayerMotion</a>.</p>
 <figure class="td-mermaid" data-td-mermaid>
 <pre class="mermaid td-mermaid-source">flowchart TD
   SUI[&quot;SwiftUI, one graph&quot;] --&gt; CA[&quot;Core Animation, the compositor&quot;]

@@ -162,7 +162,7 @@ And here is the part I will only hint at. This was never really about SwiftUI. I
 
 ![The engines beneath SwiftUI, the stack I have been rebuilding](/images/blog/swiftui-is-one-graph/the-stack.jpg)
 
-A text layer pulls you into typesetting. Transitions pull you into image processing. Each engine demanded the one below it, until the whole stack stood on its own and SwiftUI settled on top almost as an afterthought. None of it ships, and none of it is for sharing. It is mine, a way to learn the machine by rebuilding it, and it has a name: SlayerMotion.
+A text layer pulls you into typesetting. Transitions pull you into image processing. Each engine demanded the one below it, until the whole stack stood on its own and SwiftUI settled on top almost as an afterthought. None of it ships, and none of it is for sharing. It is mine, a way to learn the machine by rebuilding it, and it has a name: [SlayerMotion](https://slayermotion.com).
 
 ```mermaid
 flowchart TD

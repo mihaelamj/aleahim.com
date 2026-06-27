@@ -416,4 +416,4 @@ No third-party drawing or charting tool was used anywhere in this post.
   **TileDown**, my static-site engine, from plain-text fences in this Markdown file.
 - This page was assembled by **TileDown**, and its PDF was typeset by **MarkdownPDF**, my Markdown-to-PDF engine.
 
-**PureDraw** is part of **SlayerMotion**, the graphics engine family this series is about. **TileDown** and **MarkdownPDF** are separate projects of mine, not part of SlayerMotion. All three are my own software; none of it is anyone else's.
+**PureDraw** is part of **[SlayerMotion](https://slayermotion.com)**, the graphics engine family this series is about. **TileDown** and **MarkdownPDF** are separate projects of mine, not part of SlayerMotion. All three are my own software; none of it is anyone else's.
