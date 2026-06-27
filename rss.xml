@@ -7,6 +7,685 @@
 <language>en-US</language>
 <atom:link href="https://aleahim.com/rss.xml" rel="self" type="application/rss+xml"/>
 <item>
+<title>&quot;The SwiftUI Oracle: Measuring a Clean Room Against the Real Thing&quot;</title>
+<link>https://aleahim.com/blog/the-swiftui-oracle/</link>
+<guid isPermaLink="true">https://aleahim.com/blog/the-swiftui-oracle/</guid>
+<pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
+<description>How I prove a from-scratch SwiftUI engine is correct by holding it against real SwiftUI in 125 differential tests, with the actual code, the harness, the firewall, and the floating-point floor that makes agreement mean identical</description>
+<content:encoded><![CDATA[<h1>The SwiftUI Oracle: Measuring a Clean Room Against the Real Thing</h1>
+<p>In the last post I claimed I had measured SwiftUI until its behavior was predictable. This
+post is the receipts. It is for Swift developers, so it is mostly code: the test harness,
+the firewall that keeps it honest, and the differential tests that hold a from-scratch
+engine against the real framework. If you have ever wondered what it would take to <em>prove</em>
+you understand SwiftUI rather than assert it, this is one answer.</p>
+<p>The engine is called PureView. It is a clean-room reimplementation of SwiftUI’s semantics:
+the attribute graph, identity, layout, animation, and lowering to a display list. It never
+imports SwiftUI. The proof that it is faithful is a separate test target that <em>does</em> import
+SwiftUI and compares the two, value for value.</p>
+<p><img src="https://aleahim.com/images/blog/the-swiftui-oracle/1-two-pieces.jpg" alt="Our engine, and the real framework as the answer key"></p>
+<h2>What “oracle” means here</h2>
+<p>In testing, an <strong>oracle</strong> is the source of the correct answer: the thing that tells you
+whether a result is right. Our oracle is real SwiftUI itself. For any scene, we ask the
+real framework what it does, and that answer is the ground truth we grade the engine
+against. The engine is the work; SwiftUI is the answer key.</p>
+<h2>The firewall: the engine may never import SwiftUI</h2>
+<p>A measurement is worthless if the instrument can cheat. If the engine were allowed to call
+SwiftUI, any agreement would be suspect, because the engine could simply forward to the
+framework it claims to reproduce. So the engine is sealed off, and the seal is not a
+convention. It is a test that fails <code>swift test</code> if a UI-framework import ever appears in
+the engine sources.</p>
+<p><img src="https://aleahim.com/images/blog/the-swiftui-oracle/2-firewall.jpg" alt="The firewall: the engine cannot peek"></p>
+<pre><code class="language-swift"><span class="tok-attribute">@Suite</span>(<span class="tok-string">"Engine import confinement"</span>)
+<span class="tok-keyword">struct</span> <span class="tok-type">EngineImportConfinementTests</span> {
+    <span class="tok-attribute">@Test</span>(<span class="tok-string">"Sources/PureView imports no UI framework"</span>)
+    <span class="tok-keyword">func</span> <span class="tok-function">engineImportsNoUIFramework</span>() <span class="tok-keyword">throws</span> {
+        <span class="tok-keyword">let</span> forbidden <span class="tok-operator">=</span> [<span class="tok-string">"SwiftUI"</span>, <span class="tok-string">"UIKit"</span>, <span class="tok-string">"AppKit"</span>, <span class="tok-string">"WatchKit"</span>]
+        <span class="tok-comment">// #filePath = &lt;root&gt;/Tests/PureViewTests/&lt;this file&gt;; climb to &lt;root&gt;/Sources/PureView.</span>
+        <span class="tok-keyword">let</span> engine<span class="tok-type">Root</span> <span class="tok-operator">=</span> <span class="tok-type">URL</span>(file<span class="tok-type">Path</span><span class="tok-operator">:</span> #file<span class="tok-type">Path</span>)
+            <span class="tok-operator">.</span><span class="tok-function">deletingLastPathComponent</span>() <span class="tok-comment">// PureViewTests</span>
+            <span class="tok-operator">.</span><span class="tok-function">deletingLastPathComponent</span>() <span class="tok-comment">// Tests</span>
+            <span class="tok-operator">.</span><span class="tok-function">deletingLastPathComponent</span>() <span class="tok-comment">// &lt;root&gt;</span>
+            <span class="tok-operator">.</span><span class="tok-function">appending</span>(path<span class="tok-operator">:</span> <span class="tok-string">"Sources/PureView"</span>)
+
+        <span class="tok-keyword">let</span> file<span class="tok-type">Manager</span> <span class="tok-operator">=</span> <span class="tok-type">FileManager</span><span class="tok-operator">.</span><span class="tok-keyword">default</span>
+        <span class="tok-keyword">let</span> enumerator <span class="tok-operator">=</span> <span class="tok-keyword">try</span> #<span class="tok-function">require</span>(
+            file<span class="tok-type">Manager</span><span class="tok-operator">.</span><span class="tok-function">enumerator</span>(at<span class="tok-operator">:</span> engine<span class="tok-type">Root</span>, including<span class="tok-type">PropertiesForKeys</span><span class="tok-operator">:</span> <span class="tok-literal">nil</span>),
+            <span class="tok-string">"engine source root must exist at \(engineRoot.path)"</span>
+        )
+
+        <span class="tok-keyword">func</span> <span class="tok-function">importsForbidden</span>(_ line<span class="tok-operator">:</span> <span class="tok-type">String</span>) <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">Bool</span> {
+            forbidden<span class="tok-operator">.</span>contains { framework <span class="tok-keyword">in</span>
+                line <span class="tok-operator">=</span><span class="tok-operator">=</span> <span class="tok-string">"import \(framework)"</span>
+                    <span class="tok-operator">|</span><span class="tok-operator">|</span> line <span class="tok-operator">=</span><span class="tok-operator">=</span> <span class="tok-string">"@testable import \(framework)"</span>
+                    <span class="tok-operator">|</span><span class="tok-operator">|</span> line<span class="tok-operator">.</span><span class="tok-function">hasPrefix</span>(<span class="tok-string">"import \(framework)."</span>)
+            }
+        }
+
+        <span class="tok-keyword">var</span> offenders<span class="tok-operator">:</span> [<span class="tok-type">String</span>] <span class="tok-operator">=</span> []
+        <span class="tok-keyword">for</span> <span class="tok-keyword">case</span> <span class="tok-keyword">let</span> url <span class="tok-keyword">as</span> <span class="tok-type">URL</span> <span class="tok-keyword">in</span> enumerator <span class="tok-keyword">where</span> url<span class="tok-operator">.</span>path<span class="tok-keyword">Extension</span> <span class="tok-operator">=</span><span class="tok-operator">=</span> <span class="tok-string">"swift"</span> {
+            <span class="tok-keyword">let</span> source <span class="tok-operator">=</span> <span class="tok-keyword">try</span> <span class="tok-type">String</span>(contents<span class="tok-type">Of</span><span class="tok-operator">:</span> url, encoding<span class="tok-operator">:</span> <span class="tok-operator">.</span>utf<span class="tok-number">8</span>)
+            <span class="tok-keyword">for</span> (index, line) <span class="tok-keyword">in</span> source<span class="tok-operator">.</span><span class="tok-function">split</span>(separator<span class="tok-operator">:</span> <span class="tok-string">"\n"</span>, omitting<span class="tok-type">EmptySubsequences</span><span class="tok-operator">:</span> <span class="tok-literal">false</span>)<span class="tok-operator">.</span><span class="tok-function">enumerated</span>() {
+                <span class="tok-keyword">let</span> trimmed <span class="tok-operator">=</span> line<span class="tok-operator">.</span><span class="tok-function">trimmingCharacters</span>(<span class="tok-keyword">in</span><span class="tok-operator">:</span> <span class="tok-operator">.</span>whitespaces)
+                <span class="tok-keyword">if</span> <span class="tok-function">importsForbidden</span>(trimmed) {
+                    offenders<span class="tok-operator">.</span><span class="tok-function">append</span>(<span class="tok-string">"\(url.lastPathComponent):\(index + 1): \(trimmed)"</span>)
+                }
+            }
+        }
+
+        #<span class="tok-function">expect</span>(offenders<span class="tok-operator">.</span>is<span class="tok-type">Empty</span>, <span class="tok-string">"engine must not import a UI framework, found: \(offenders)"</span>)
+    }
+}</code></pre>
+<p>SwiftUI, UIKit, and AppKit are system frameworks, so a stray <code>import SwiftUI</code> in an engine
+file would compile green and ship undetected. The convention is not enough; this test makes
+the leak fail the build. That is the whole integrity story in thirty lines.</p>
+<h2>The shape of every test: do it twice, compare</h2>
+<p>Every oracle test has the same skeleton. Describe a scene. Run it in real SwiftUI and
+record the answer. Run the same scene in the engine. Assert the two agree, to the
+floating-point floor.</p>
+<p><img src="https://aleahim.com/images/blog/the-swiftui-oracle/3-do-it-twice.jpg" alt="One scene, run in both, compared to one millionth"></p>
+<h2>The harness: running real SwiftUI headless</h2>
+<p>To use SwiftUI as the oracle we have to run it for real, with no app and no screen. The
+harness hosts a view in an offscreen window, lets it run a genuine update cycle, then reads
+the resolved geometry back out through a preference-key probe.</p>
+<pre><code class="language-swift"><span class="tok-keyword">private</span> <span class="tok-keyword">struct</span> <span class="tok-type">FrameKey</span><span class="tok-operator">:</span> <span class="tok-type">SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">PreferenceKey</span> {
+    <span class="tok-keyword">static</span> <span class="tok-keyword">let</span> default<span class="tok-type">Value</span><span class="tok-operator">:</span> [<span class="tok-type">String</span><span class="tok-operator">:</span> <span class="tok-type">CGRect</span>] <span class="tok-operator">=</span> [<span class="tok-operator">:</span>]
+    <span class="tok-keyword">static</span> <span class="tok-keyword">func</span> <span class="tok-function">reduce</span>(value<span class="tok-operator">:</span> <span class="tok-keyword">inout</span> [<span class="tok-type">String</span><span class="tok-operator">:</span> <span class="tok-type">CGRect</span>], next<span class="tok-type">Value</span><span class="tok-operator">:</span> () <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> [<span class="tok-type">String</span><span class="tok-operator">:</span> <span class="tok-type">CGRect</span>]) {
+        value<span class="tok-operator">.</span><span class="tok-function">merge</span>(<span class="tok-function">nextValue</span>(), uniquing<span class="tok-type">KeysWith</span><span class="tok-operator">:</span> { _, new <span class="tok-keyword">in</span> new })
+    }
+}
+
+<span class="tok-keyword">extension</span> <span class="tok-type">SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">View</span> {
+    <span class="tok-comment">/// Tag a view so the oracle records its resolved frame, in root coordinates.</span>
+    <span class="tok-keyword">func</span> <span class="tok-function">probe</span>(_ id<span class="tok-operator">:</span> <span class="tok-type">String</span>) <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> some <span class="tok-type">SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">View</span> {
+        <span class="tok-function">background</span>(
+            <span class="tok-type">GeometryReader</span> { proxy <span class="tok-keyword">in</span>
+                <span class="tok-type">Color</span><span class="tok-operator">.</span>clear<span class="tok-operator">.</span><span class="tok-function">preference</span>(key<span class="tok-operator">:</span> <span class="tok-type">FrameKey</span><span class="tok-operator">.</span><span class="tok-keyword">self</span>, value<span class="tok-operator">:</span> [id<span class="tok-operator">:</span> proxy<span class="tok-operator">.</span><span class="tok-function">frame</span>(<span class="tok-keyword">in</span><span class="tok-operator">:</span> <span class="tok-operator">.</span><span class="tok-function">named</span>(k<span class="tok-type">Root</span>))])
+            }
+        )
+    }
+}
+
+<span class="tok-attribute">@MainActor</span>
+<span class="tok-keyword">func</span> <span class="tok-function">oracleFrames</span>(_ content<span class="tok-operator">:</span> some <span class="tok-type">SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">View</span>, root<span class="tok-type">Size</span><span class="tok-operator">:</span> <span class="tok-type">CGSize</span>) <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> [<span class="tok-type">String</span><span class="tok-operator">:</span> <span class="tok-type">CGRect</span>] {
+    <span class="tok-keyword">let</span> box <span class="tok-operator">=</span> <span class="tok-type">FrameBox</span>()
+    <span class="tok-keyword">let</span> view <span class="tok-operator">=</span> <span class="tok-type">ZStack</span>(alignment<span class="tok-operator">:</span> <span class="tok-operator">.</span>top<span class="tok-type">Leading</span>) { content }
+        <span class="tok-operator">.</span><span class="tok-function">frame</span>(width<span class="tok-operator">:</span> root<span class="tok-type">Size</span><span class="tok-operator">.</span>width, height<span class="tok-operator">:</span> root<span class="tok-type">Size</span><span class="tok-operator">.</span>height, alignment<span class="tok-operator">:</span> <span class="tok-operator">.</span>top<span class="tok-type">Leading</span>)
+        <span class="tok-operator">.</span><span class="tok-function">coordinateSpace</span>(name<span class="tok-operator">:</span> k<span class="tok-type">Root</span>)
+        <span class="tok-operator">.</span><span class="tok-function">onPreferenceChange</span>(<span class="tok-type">FrameKey</span><span class="tok-operator">.</span><span class="tok-keyword">self</span>) { box<span class="tok-operator">.</span>frames <span class="tok-operator">=</span> $<span class="tok-number">0</span> }
+        <span class="tok-operator">.</span><span class="tok-function">environment</span>(\<span class="tok-operator">.</span>display<span class="tok-type">Scale</span>, <span class="tok-number">2</span>)   <span class="tok-comment">// pin the pixel grid for cross-machine determinism</span>
+
+    <span class="tok-keyword">let</span> host <span class="tok-operator">=</span> <span class="tok-type">NSHostingView</span>(root<span class="tok-type">View</span><span class="tok-operator">:</span> view)
+    host<span class="tok-operator">.</span>frame <span class="tok-operator">=</span> <span class="tok-type">CGRect</span>(orig<span class="tok-keyword">in</span><span class="tok-operator">:</span> <span class="tok-operator">.</span>zero, size<span class="tok-operator">:</span> root<span class="tok-type">Size</span>)
+    <span class="tok-keyword">let</span> window <span class="tok-operator">=</span> <span class="tok-type">NSWindow</span>(content<span class="tok-type">Rect</span><span class="tok-operator">:</span> host<span class="tok-operator">.</span>frame, style<span class="tok-type">Mask</span><span class="tok-operator">:</span> [<span class="tok-operator">.</span>borderless],
+                          backing<span class="tok-operator">:</span> <span class="tok-operator">.</span>buffered, <span class="tok-keyword">defer</span><span class="tok-operator">:</span> <span class="tok-literal">false</span>)
+    window<span class="tok-operator">.</span>content<span class="tok-type">View</span> <span class="tok-operator">=</span> host
+    host<span class="tok-operator">.</span><span class="tok-function">layoutSubtreeIfNeeded</span>()
+    <span class="tok-function">pump</span>(until<span class="tok-operator">:</span> { <span class="tok-operator">!</span>box<span class="tok-operator">.</span>frames<span class="tok-operator">.</span>is<span class="tok-type">Empty</span> }, timeout<span class="tok-operator">:</span> <span class="tok-number">2</span>)
+    <span class="tok-keyword">return</span> box<span class="tok-operator">.</span>frames
+}
+
+<span class="tok-comment">/// Spin the main run loop in 10 ms slices until `condition` holds or `timeout` elapses.</span>
+<span class="tok-attribute">@MainActor</span>
+<span class="tok-keyword">func</span> <span class="tok-function">pump</span>(until condition<span class="tok-operator">:</span> () <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">Bool</span>, timeout<span class="tok-operator">:</span> <span class="tok-type">TimeInterval</span>) {
+    <span class="tok-keyword">let</span> deadline <span class="tok-operator">=</span> <span class="tok-type">Date</span>()<span class="tok-operator">.</span><span class="tok-function">addingTimeInterval</span>(timeout)
+    <span class="tok-keyword">while</span> <span class="tok-operator">!</span><span class="tok-function">condition</span>(), <span class="tok-type">Date</span>() <span class="tok-operator">&lt;</span> deadline {
+        <span class="tok-type">RunLoop</span><span class="tok-operator">.</span>ma<span class="tok-keyword">in</span><span class="tok-operator">.</span><span class="tok-function">run</span>(until<span class="tok-operator">:</span> <span class="tok-type">Date</span>()<span class="tok-operator">.</span><span class="tok-function">addingTimeInterval</span>(<span class="tok-number">0.01</span>))
+    }
+}</code></pre>
+<p><code>displayScale</code> is pinned to 2 so SwiftUI’s frame snapping is identical on a Retina machine
+and a CI box. When we say “we measured what SwiftUI does,” this is the literal mechanism:
+SwiftUI runs, and a <code>GeometryReader</code> reports its own layout system’s answer.</p>
+<h2>Measuring the attribute graph: count the body re-runs</h2>
+<p>The headline claim about SwiftUI is the cone: change one value, and only the views that
+read it recompute. The problem is that a <code>body</code> re-run leaves no trace. So we give it one.
+Each probe view bumps a counter inside its <code>body</code>. The invisible event becomes an integer.</p>
+<pre><code class="language-swift"><span class="tok-comment">/// A reference counter mutated only on the main actor (inside `body`).</span>
+<span class="tok-keyword">private</span> <span class="tok-keyword">final</span> <span class="tok-keyword">class</span> <span class="tok-type">BodyCounter</span><span class="tok-operator">:</span> <span class="tok-attribute">@unchecked</span> <span class="tok-type">Sendable</span> {
+    <span class="tok-keyword">private</span>(set) <span class="tok-keyword">var</span> runs <span class="tok-operator">=</span> <span class="tok-number">0</span>
+    <span class="tok-keyword">func</span> <span class="tok-function">bump</span>() { runs <span class="tok-operator">+</span><span class="tok-operator">=</span> <span class="tok-number">1</span> }
+}
+
+<span class="tok-keyword">private</span> <span class="tok-keyword">final</span> <span class="tok-keyword">class</span> <span class="tok-type">OracleModel</span><span class="tok-operator">:</span> <span class="tok-type">SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">ObservableObject</span> {
+    <span class="tok-attribute">@SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">Published</span> <span class="tok-keyword">var</span> value<span class="tok-operator">:</span> <span class="tok-type">Int</span> <span class="tok-operator">=</span> <span class="tok-number">0</span>
+}
+
+<span class="tok-comment">/// Reads `model.value`, so it depends on the state.</span>
+<span class="tok-keyword">private</span> <span class="tok-keyword">struct</span> <span class="tok-type">ReaderView</span><span class="tok-operator">:</span> <span class="tok-type">SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">View</span> {
+    <span class="tok-attribute">@SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">ObservedObject</span> <span class="tok-keyword">var</span> model<span class="tok-operator">:</span> <span class="tok-type">OracleModel</span>
+    <span class="tok-keyword">let</span> counter<span class="tok-operator">:</span> <span class="tok-type">BodyCounter</span>
+    <span class="tok-keyword">var</span> body<span class="tok-operator">:</span> some <span class="tok-type">SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">View</span> {
+        counter<span class="tok-operator">.</span><span class="tok-function">bump</span>()
+        <span class="tok-keyword">return</span> <span class="tok-type">Text</span>(verbatim<span class="tok-operator">:</span> <span class="tok-string">"\(model.value)"</span>)
+    }
+}
+
+<span class="tok-comment">/// Reads nothing from the model, so it must not re-evaluate when the state changes.</span>
+<span class="tok-keyword">private</span> <span class="tok-keyword">struct</span> <span class="tok-type">IgnorerView</span><span class="tok-operator">:</span> <span class="tok-type">SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">View</span> {
+    <span class="tok-keyword">let</span> counter<span class="tok-operator">:</span> <span class="tok-type">BodyCounter</span>
+    <span class="tok-keyword">var</span> body<span class="tok-operator">:</span> some <span class="tok-type">SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">View</span> {
+        counter<span class="tok-operator">.</span><span class="tok-function">bump</span>()
+        <span class="tok-keyword">return</span> <span class="tok-type">Text</span>(verbatim<span class="tok-operator">:</span> <span class="tok-string">"static"</span>)
+    }
+}</code></pre>
+<p><img src="https://aleahim.com/images/blog/the-swiftui-oracle/4-body-counter.jpg" alt="Counting which views recompute: the cone"></p>
+<p>The test reads both counters, changes one value, waits for the reader to re-run, and then
+drains the run loop a little longer so a stray re-run of the ignorer would be caught. Then
+it builds the same shape in the engine’s <code>AttributeGraph</code> and asserts the cones match.</p>
+<pre><code class="language-swift"><span class="tok-attribute">@Test</span>(<span class="tok-string">"only the view that reads state re-evaluates, and the engine cone agrees"</span>)
+<span class="tok-keyword">func</span> <span class="tok-function">bodyEvalConeMatchesEngine</span>() {
+    <span class="tok-comment">// Ground truth from real SwiftUI.</span>
+    <span class="tok-keyword">let</span> swift<span class="tok-type">UI</span> <span class="tok-operator">=</span> <span class="tok-function">swiftUIBodyEvalDifferential</span>()
+    #<span class="tok-function">expect</span>(swift<span class="tok-type">UI</span><span class="tok-operator">.</span>reader<span class="tok-type">Reran</span>,  <span class="tok-string">"SwiftUI: the reader's body should re-run on the state change"</span>)
+    #<span class="tok-function">expect</span>(<span class="tok-operator">!</span>swift<span class="tok-type">UI</span><span class="tok-operator">.</span>ignorer<span class="tok-type">Reran</span>, <span class="tok-string">"SwiftUI: the ignorer's body should not re-run"</span>)
+
+    <span class="tok-comment">// The same shape modeled in the engine: a source, a reader, an ignorer.</span>
+    <span class="tok-keyword">let</span> graph <span class="tok-operator">=</span> <span class="tok-type">AttributeGraph</span>()
+    <span class="tok-keyword">let</span> state <span class="tok-operator">=</span> <span class="tok-type">Attribute</span>(graph<span class="tok-operator">:</span> graph, value<span class="tok-operator">:</span> <span class="tok-number">0</span>)
+    <span class="tok-keyword">let</span> reader <span class="tok-operator">=</span> <span class="tok-type">Attribute</span>(graph<span class="tok-operator">:</span> graph) { _ <span class="tok-keyword">in</span> state<span class="tok-operator">.</span>value }
+    <span class="tok-keyword">let</span> ignorer <span class="tok-operator">=</span> <span class="tok-type">Attribute</span>(graph<span class="tok-operator">:</span> graph) { _ <span class="tok-keyword">in</span> <span class="tok-number">0</span> }
+    _ <span class="tok-operator">=</span> reader<span class="tok-operator">.</span>value
+    _ <span class="tok-operator">=</span> ignorer<span class="tok-operator">.</span>value
+    <span class="tok-keyword">let</span> reader<span class="tok-type">Before</span> <span class="tok-operator">=</span> reader<span class="tok-operator">.</span>evaluation<span class="tok-type">Count</span>
+    <span class="tok-keyword">let</span> ignorer<span class="tok-type">Before</span> <span class="tok-operator">=</span> ignorer<span class="tok-operator">.</span>evaluation<span class="tok-type">Count</span>
+
+    state<span class="tok-operator">.</span><span class="tok-function">setValue</span>(<span class="tok-number">1</span>)
+    _ <span class="tok-operator">=</span> reader<span class="tok-operator">.</span>value
+    _ <span class="tok-operator">=</span> ignorer<span class="tok-operator">.</span>value
+
+    <span class="tok-comment">// The differential: the engine's invalidation cone matches SwiftUI's.</span>
+    #<span class="tok-function">expect</span>((reader<span class="tok-operator">.</span>evaluation<span class="tok-type">Count</span>  <span class="tok-operator">&gt;</span> reader<span class="tok-type">Before</span>)  <span class="tok-operator">=</span><span class="tok-operator">=</span> swift<span class="tok-type">UI</span><span class="tok-operator">.</span>reader<span class="tok-type">Reran</span>)
+    #<span class="tok-function">expect</span>((ignorer<span class="tok-operator">.</span>evaluation<span class="tok-type">Count</span> <span class="tok-operator">&gt;</span> ignorer<span class="tok-type">Before</span>) <span class="tok-operator">=</span><span class="tok-operator">=</span> swift<span class="tok-type">UI</span><span class="tok-operator">.</span>ignorer<span class="tok-type">Reran</span>)
+}</code></pre>
+<p>Proving an <em>absence</em> is the subtle part. To show the ignorer stayed put, the test waits for
+the expected re-run and then drains briefly for a stray. The engine side is deterministic
+and is the real regression catcher; the bounded wait on the SwiftUI side can only catch a
+stray, never manufacture a false pass.</p>
+<h2>Measuring layout: probe the resolved frame</h2>
+<p>Layout is the largest area, because there is the most to pin down. Each test lays the scene
+out in real SwiftUI, reads back every subview’s frame through the probe, and asserts the
+engine places each node at the same coordinates.</p>
+<p><img src="https://aleahim.com/images/blog/the-swiftui-oracle/8-layout-negotiation.jpg" alt="Layout is a polite negotiation"></p>
+<pre><code class="language-swift"><span class="tok-attribute">@Test</span>(<span class="tok-string">"Frame centering matches real SwiftUI"</span>)
+<span class="tok-keyword">func</span> <span class="tok-function">frameCentering</span>() {
+    <span class="tok-keyword">let</span> leaf <span class="tok-operator">=</span> <span class="tok-type">Color</span><span class="tok-operator">.</span>clear<span class="tok-operator">.</span><span class="tok-function">frame</span>(width<span class="tok-operator">:</span> <span class="tok-number">20</span>, height<span class="tok-operator">:</span> <span class="tok-number">20</span>)<span class="tok-operator">.</span><span class="tok-function">probe</span>(<span class="tok-string">"child"</span>)
+    <span class="tok-keyword">let</span> container <span class="tok-operator">=</span> leaf<span class="tok-operator">.</span><span class="tok-function">frame</span>(width<span class="tok-operator">:</span> <span class="tok-number">30</span>, height<span class="tok-operator">:</span> <span class="tok-number">30</span>)<span class="tok-operator">.</span><span class="tok-function">probe</span>(<span class="tok-string">"container"</span>)
+    <span class="tok-keyword">let</span> oracle <span class="tok-operator">=</span> <span class="tok-function">oracleFrames</span>(container, root<span class="tok-type">Size</span><span class="tok-operator">:</span> <span class="tok-type">CGSize</span>(width<span class="tok-operator">:</span> <span class="tok-number">100</span>, height<span class="tok-operator">:</span> <span class="tok-number">100</span>))
+    #<span class="tok-function">expect</span>(<span class="tok-operator">!</span>oracle<span class="tok-operator">.</span>is<span class="tok-type">Empty</span>, <span class="tok-string">"oracle produced no frames (headless measurement failed)"</span>)
+
+    <span class="tok-keyword">let</span> node <span class="tok-operator">=</span> <span class="tok-type">FrameLayout</span>(width<span class="tok-operator">:</span> <span class="tok-number">30</span>, height<span class="tok-operator">:</span> <span class="tok-number">30</span>, <span class="tok-type">FixedLeaf</span>(<span class="tok-type">Size</span>(width<span class="tok-operator">:</span> <span class="tok-number">20</span>, height<span class="tok-operator">:</span> <span class="tok-number">20</span>)))
+    <span class="tok-keyword">let</span> engine <span class="tok-operator">=</span> node<span class="tok-operator">.</span><span class="tok-function">layout</span>(<span class="tok-keyword">in</span><span class="tok-operator">:</span> <span class="tok-type">Size</span>(width<span class="tok-operator">:</span> <span class="tok-number">100</span>, height<span class="tok-operator">:</span> <span class="tok-number">100</span>))
+
+    <span class="tok-keyword">if</span> <span class="tok-keyword">let</span> oc <span class="tok-operator">=</span> oracle[<span class="tok-string">"container"</span>] {
+        #<span class="tok-function">expect</span>(<span class="tok-function">close</span>(oc, <span class="tok-function">cg</span>(engine<span class="tok-operator">.</span>frame)), <span class="tok-string">"container: oracle \(oc) vs engine \(cg(engine.frame))"</span>)
+    }
+    <span class="tok-keyword">if</span> <span class="tok-keyword">let</span> ch <span class="tok-operator">=</span> oracle[<span class="tok-string">"child"</span>] {
+        #<span class="tok-function">expect</span>(<span class="tok-function">close</span>(ch, <span class="tok-function">cg</span>(engine<span class="tok-operator">.</span>children[<span class="tok-number">0</span>]<span class="tok-operator">.</span>frame)), <span class="tok-string">"child: oracle \(ch) vs engine \(cg(engine.children[0].frame))"</span>)
+    }
+}</code></pre>
+<p><code>close</code> is where the rigor lives. The tolerance absorbs only <code>CGFloat</code> round-trip, nothing
+more.</p>
+<pre><code class="language-swift"><span class="tok-comment">/// The engine and SwiftUI must produce the *same* frame, not a close one. This 1e-6</span>
+<span class="tok-comment">/// absorbs only `CGFloat` round-trip representation. A residual above it is a real</span>
+<span class="tok-comment">/// divergence, never slack: re-derive the rule, do not widen the bound.</span>
+<span class="tok-keyword">let</span> exact<span class="tok-type">Floor</span><span class="tok-operator">:</span> <span class="tok-type">CGFloat</span> <span class="tok-operator">=</span> <span class="tok-number">1</span>e<span class="tok-number">-6</span>
+
+<span class="tok-keyword">func</span> <span class="tok-function">close</span>(_ a<span class="tok-operator">:</span> <span class="tok-type">CGRect</span>, _ b<span class="tok-operator">:</span> <span class="tok-type">CGRect</span>, tol<span class="tok-operator">:</span> <span class="tok-type">CGFloat</span> <span class="tok-operator">=</span> exact<span class="tok-type">Floor</span>) <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> <span class="tok-type">Bool</span> {
+    <span class="tok-function">abs</span>(a<span class="tok-operator">.</span>min<span class="tok-type">X</span> <span class="tok-operator">-</span> b<span class="tok-operator">.</span>min<span class="tok-type">X</span>) <span class="tok-operator">&lt;</span><span class="tok-operator">=</span> tol <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> <span class="tok-function">abs</span>(a<span class="tok-operator">.</span>min<span class="tok-type">Y</span> <span class="tok-operator">-</span> b<span class="tok-operator">.</span>min<span class="tok-type">Y</span>) <span class="tok-operator">&lt;</span><span class="tok-operator">=</span> tol <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span>
+        <span class="tok-function">abs</span>(a<span class="tok-operator">.</span>width <span class="tok-operator">-</span> b<span class="tok-operator">.</span>width) <span class="tok-operator">&lt;</span><span class="tok-operator">=</span> tol <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> <span class="tok-function">abs</span>(a<span class="tok-operator">.</span>height <span class="tok-operator">-</span> b<span class="tok-operator">.</span>height) <span class="tok-operator">&lt;</span><span class="tok-operator">=</span> tol
+}</code></pre>
+<p>When a layout test fails, the rule is to find why the behavior differs and fix the engine,
+never to widen <code>exactFloor</code> until the failure disappears. A tolerance you are allowed to
+relax is a wish, not a measurement.</p>
+<h2>Measuring animation: hold the spring against SwiftUI’s Spring</h2>
+<p>Animation is the most quantitative area, because motion is numbers over time. A spring is a
+damped harmonic oscillator. Released from rest, its progress curve is</p>
+<div class="td-math td-math-display"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 193.08 21.18" fill="currentColor" aria-hidden="true" style="width:19.31em;height:2.12em;vertical-align:-0.81em"><path d="M5.21 10.93C5.21 9.66 4.24 8.67 3.12 8.67C2.34 8.67 1.92 9.11 1.72 9.33L1.72 8.67L0.28 8.78L0.28 9.09C0.99 9.09 1.06 9.15 1.06 9.59L1.06 14.27C1.06 14.72 0.95 14.72 0.28 14.72L0.28 15.03L1.4 15L2.53 15.03L2.53 14.72C1.86 14.72 1.75 14.72 1.75 14.27L1.75 12.59L1.75 12.5C1.8 12.66 2.22 13.2 2.98 13.2C4.17 13.2 5.21 12.22 5.21 10.93ZM4.38 10.93C4.38 12.14 3.68 12.98 2.94 12.98C2.54 12.98 2.16 12.78 1.89 12.37C1.75 12.16 1.75 12.15 1.75 11.95L1.75 9.72C2.04 9.21 2.53 8.92 3.04 8.92C3.77 8.92 4.38 9.8 4.38 10.93Z"/><path d="M8.88 15.47C8.88 15.44 8.86 15.41 8.84 15.39C7.8 14.61 7.11 12.61 7.11 11.01L7.11 10.17C7.11 8.57 7.8 6.57 8.84 5.79C8.86 5.77 8.88 5.74 8.88 5.71C8.88 5.66 8.83 5.61 8.78 5.61C8.76 5.61 8.74 5.62 8.72 5.63C7.62 6.46 6.57 8.46 6.57 10.17L6.57 11.01C6.57 12.72 7.62 14.72 8.72 15.55C8.74 15.56 8.76 15.57 8.78 15.57C8.83 15.57 8.88 15.52 8.88 15.47Z"/><path d="M12.77 11.85L12.77 11.28L12.52 11.28L12.52 11.83C12.52 12.57 12.22 12.95 11.85 12.95C11.18 12.95 11.18 12.04 11.18 11.87L11.18 9.09L12.61 9.09L12.61 8.78L11.18 8.78L11.18 6.94L10.93 6.94C10.92 7.76 10.62 8.83 9.64 8.87L9.64 9.09L10.49 9.09L10.49 11.85C10.49 13.08 11.42 13.2 11.78 13.2C12.49 13.2 12.77 12.49 12.77 11.85Z"/><path d="M16.22 11.01L16.22 10.17C16.22 8.46 15.17 6.46 14.07 5.63C14.05 5.62 14.03 5.61 14.01 5.61C13.96 5.61 13.91 5.66 13.91 5.71C13.91 5.74 13.93 5.77 13.95 5.79C14.99 6.57 15.68 8.57 15.68 10.17L15.68 11.01C15.68 12.61 14.99 14.61 13.95 15.39C13.93 15.41 13.91 15.44 13.91 15.47C13.91 15.52 13.96 15.57 14.01 15.57C14.03 15.57 14.05 15.56 14.07 15.55C15.17 14.72 16.22 12.72 16.22 11.01Z"/><path d="M27.77 9.62C27.77 9.51 27.68 9.42 27.57 9.42L21.31 9.42C21.2 9.42 21.11 9.51 21.11 9.62C21.11 9.73 21.2 9.82 21.31 9.82L27.57 9.82C27.68 9.82 27.77 9.73 27.77 9.62ZM27.77 11.56C27.77 11.45 27.68 11.36 27.57 11.36L21.31 11.36C21.2 11.36 21.11 11.45 21.11 11.56C21.11 11.67 21.2 11.76 21.31 11.76L27.57 11.76C27.68 11.76 27.77 11.67 27.77 11.56Z"/><path d="M35.84 13.09L35.84 12.78L35.52 12.78C34.62 12.78 34.59 12.67 34.59 12.3L34.59 6.69C34.59 6.45 34.59 6.43 34.36 6.43C33.74 7.07 32.86 7.07 32.54 7.07L32.54 7.38C32.74 7.38 33.33 7.38 33.85 7.12L33.85 12.3C33.85 12.66 33.82 12.78 32.92 12.78L32.6 12.78L32.6 13.09C32.95 13.06 33.82 13.06 34.22 13.06C34.62 13.06 35.49 13.06 35.84 13.09Z"/><path d="M42.73 11.22L42.73 10.64L40.08 10.64L40.08 11.22Z"/><path d="M50.77 11.9C50.77 11.8 50.69 11.78 50.64 11.78C50.55 11.78 50.53 11.84 50.51 11.92C50.16 12.95 49.26 12.95 49.16 12.95C48.66 12.95 48.26 12.65 48.03 12.28C47.73 11.8 47.73 11.14 47.73 10.78L50.52 10.78C50.74 10.78 50.77 10.78 50.77 10.57C50.77 9.58 50.23 8.61 48.98 8.61C47.82 8.61 46.9 9.64 46.9 10.89C46.9 12.23 47.95 13.2 49.1 13.2C50.32 13.2 50.77 12.09 50.77 11.9ZM50.11 10.57L47.74 10.57C47.8 9.08 48.64 8.83 48.98 8.83C50.01 8.83 50.11 10.18 50.11 10.57Z"/><path d="M53.55 8.15L53.55 7.75L51.7 7.75L51.7 8.15Z"/><path d="M57.34 10.05C57.27 9.78 57.1 9.64 57.03 9.58C56.88 9.45 56.74 9.41 56.29 9.27C55.68 9.08 55.56 9.04 55.36 8.9C54.99 8.63 54.9 8.23 54.86 8.1C54.6 7.01 55.14 5.79 55.75 5.41C55.91 5.54 56.07 5.54 56.21 5.54C56.39 5.54 56.84 5.54 56.78 5.32C56.74 5.14 56.45 5.13 56.17 5.13C56.09 5.13 55.9 5.13 55.74 5.2C55.69 5.12 55.67 5.08 55.62 4.93C55.6 4.84 55.6 4.67 55.6 4.67C55.58 4.62 55.54 4.58 55.49 4.58C55.37 4.58 55.44 4.91 55.45 4.93C55.48 5.05 55.53 5.17 55.62 5.28C54.97 5.65 54.19 6.94 54.53 8.29C54.78 9.28 55.46 9.49 56.01 9.66C56.24 9.74 56.25 9.74 56.47 9.81C56.63 9.85 56.94 9.95 57.02 10.28C57.07 10.47 57.01 10.74 56.75 10.74C56.57 10.74 56.36 10.66 56.18 10.53C56.12 10.49 56.11 10.48 56.08 10.48C56.04 10.48 56.02 10.51 56.03 10.56C56.05 10.63 56.42 10.9 56.79 10.9C57.22 10.9 57.44 10.45 57.34 10.05ZM56.6 5.33C56.55 5.35 56.49 5.38 56.18 5.38C56.03 5.38 55.98 5.38 55.9 5.33C55.99 5.28 56.11 5.28 56.21 5.28C56.44 5.28 56.46 5.29 56.6 5.33Z"/><path d="M64.16 7.79C64.16 7.49 64.16 7.14 64.09 6.86C64.05 6.68 63.97 6.52 63.84 6.43C63.79 6.39 63.73 6.37 63.67 6.37C63.58 6.37 63.5 6.41 63.45 6.48C63.4 6.55 63.39 6.63 63.41 6.7C63.42 6.77 63.46 6.83 63.53 6.88C63.74 7.03 63.88 7.25 63.95 7.5C63.97 7.58 63.98 7.67 63.98 7.75C63.98 8.39 63.74 9.04 63.18 9.04C62.79 9.04 62.49 8.77 62.34 8.41C62.38 8.21 62.4 8 62.39 7.79C62.39 7.73 62.39 7.66 62.38 7.61C62.35 7.5 62.3 7.43 62.2 7.43C62.06 7.43 62.04 7.6 62.04 7.75C62.04 7.97 62.06 8.18 62.11 8.38C61.97 8.76 61.71 9.04 61.32 9.04C60.9 9.04 60.62 8.69 60.52 8.24C60.48 8.1 60.46 7.94 60.45 7.79C60.45 7.37 60.61 6.98 60.78 6.61C60.8 6.58 60.8 6.54 60.8 6.52C60.78 6.47 60.75 6.44 60.71 6.42C60.69 6.4 60.66 6.4 60.64 6.4C60.6 6.4 60.56 6.42 60.53 6.47C60.34 6.87 60.28 7.31 60.28 7.75C60.28 8.02 60.31 8.29 60.37 8.54C60.51 9.11 60.83 9.54 61.36 9.54C61.8 9.54 62.09 9.23 62.24 8.8C62.43 9.23 62.75 9.54 63.22 9.54C63.95 9.54 64.16 8.64 64.16 7.79Z"/><path d="M67.12 9.62C67.12 9.23 67.09 8.84 66.92 8.48C66.7 8.01 66.29 7.93 66.09 7.93C65.8 7.93 65.44 8.06 65.24 8.51C65.08 8.85 65.06 9.23 65.06 9.62C65.06 9.99 65.07 10.43 65.28 10.8C65.49 11.2 65.84 11.3 66.08 11.3C66.35 11.3 66.72 11.2 66.94 10.73C67.09 10.39 67.12 10.01 67.12 9.62ZM66.71 9.56C66.71 9.93 66.71 10.27 66.66 10.58C66.58 11.04 66.3 11.19 66.08 11.19C65.89 11.19 65.6 11.07 65.52 10.6C65.46 10.3 65.46 9.85 65.46 9.56C65.46 9.25 65.46 8.93 65.5 8.66C65.59 8.08 65.96 8.04 66.08 8.04C66.25 8.04 66.57 8.12 66.66 8.61C66.71 8.88 66.71 9.26 66.71 9.56Z"/><path d="M71.96 8.59L71.96 8.2L71.79 8.2L71.79 8.58C71.79 9.1 71.58 9.36 71.32 9.36C70.85 9.36 70.85 8.73 70.85 8.61L70.85 6.66L71.85 6.66L71.85 6.45L70.85 6.45L70.85 5.16L70.67 5.16C70.67 5.73 70.46 6.48 69.77 6.51L69.77 6.66L70.37 6.66L70.37 8.59C70.37 9.46 71.02 9.54 71.27 9.54C71.77 9.54 71.96 9.04 71.96 8.59Z"/><path d="M74.92 15.39C74.92 15.28 74.83 15.19 74.72 15.19L73.9 15.19L73.9 5.99L74.72 5.99C74.83 5.99 74.92 5.9 74.92 5.79C74.92 5.68 74.83 5.59 74.72 5.59L73.5 5.59L73.5 15.59L74.72 15.59C74.83 15.59 74.92 15.5 74.92 15.39Z"/><path d="M79.29 11.9C79.29 11.8 79.19 11.8 79.16 11.8C79.07 11.8 79.05 11.84 79.03 11.9C78.74 12.83 78.09 12.95 77.72 12.95C77.19 12.95 76.31 12.52 76.31 10.91C76.31 9.28 77.13 8.86 77.66 8.86C77.75 8.86 78.38 8.87 78.73 9.23C78.32 9.26 78.26 9.56 78.26 9.69C78.26 9.95 78.44 10.15 78.72 10.15C78.98 10.15 79.18 9.98 79.18 9.68C79.18 9 78.42 8.61 77.65 8.61C76.4 8.61 75.48 9.69 75.48 10.93C75.48 12.21 76.47 13.2 77.63 13.2C78.97 13.2 79.29 12 79.29 11.9Z"/><path d="M84.29 10.95C84.29 9.67 83.29 8.61 82.08 8.61C80.83 8.61 79.86 9.7 79.86 10.95C79.86 12.24 80.9 13.2 82.07 13.2C83.28 13.2 84.29 12.22 84.29 10.95ZM83.46 10.87C83.46 11.23 83.46 11.77 83.24 12.21C83.02 12.66 82.58 12.95 82.08 12.95C81.65 12.95 81.21 12.74 80.94 12.28C80.69 11.84 80.69 11.23 80.69 10.87C80.69 10.48 80.69 9.94 80.93 9.5C81.2 9.04 81.67 8.83 82.07 8.83C82.51 8.83 82.94 9.05 83.2 9.48C83.46 9.91 83.46 10.49 83.46 10.87Z"/><path d="M88.18 11.81C88.18 11.28 87.88 10.98 87.76 10.86C87.43 10.54 87.04 10.46 86.62 10.38C86.06 10.27 85.39 10.14 85.39 9.56C85.39 9.21 85.65 8.8 86.51 8.8C87.61 8.8 87.66 9.7 87.68 10.01C87.69 10.1 87.8 10.1 87.8 10.1C87.93 10.1 87.93 10.05 87.93 9.86L87.93 8.85C87.93 8.68 87.93 8.61 87.82 8.61C87.77 8.61 87.75 8.61 87.62 8.73C87.59 8.77 87.49 8.86 87.45 8.89C87.07 8.61 86.66 8.61 86.51 8.61C85.29 8.61 84.91 9.28 84.91 9.84C84.91 10.19 85.07 10.47 85.34 10.69C85.66 10.95 85.94 11.01 86.66 11.15C86.88 11.19 87.7 11.35 87.7 12.07C87.7 12.58 87.35 12.98 86.57 12.98C85.73 12.98 85.37 12.41 85.18 11.56C85.15 11.43 85.14 11.39 85.04 11.39C84.91 11.39 84.91 11.46 84.91 11.64L84.91 12.96C84.91 13.13 84.91 13.2 85.02 13.2C85.07 13.2 85.08 13.19 85.27 13C85.29 12.98 85.29 12.96 85.47 12.77C85.91 13.19 86.36 13.2 86.57 13.2C87.72 13.2 88.18 12.53 88.18 11.81Z"/><path d="M91.84 15.47C91.84 15.44 91.82 15.41 91.8 15.39C90.76 14.61 90.07 12.61 90.07 11.01L90.07 10.17C90.07 8.57 90.76 6.57 91.8 5.79C91.82 5.77 91.84 5.74 91.84 5.71C91.84 5.66 91.79 5.61 91.74 5.61C91.72 5.61 91.7 5.62 91.68 5.63C90.58 6.46 89.53 8.46 89.53 10.17L89.53 11.01C89.53 12.72 90.58 14.72 91.68 15.55C91.7 15.56 91.72 15.57 91.74 15.57C91.79 15.57 91.84 15.52 91.84 15.47Z"/><path d="M98.37 10.7C98.38 10.27 98.37 9.77 98.27 9.37C98.21 9.11 98.1 8.89 97.92 8.76C97.84 8.7 97.76 8.67 97.67 8.67C97.55 8.67 97.43 8.73 97.36 8.83C97.29 8.93 97.27 9.04 97.3 9.15C97.32 9.25 97.38 9.33 97.47 9.4C97.77 9.62 97.98 9.93 98.07 10.28C98.1 10.4 98.12 10.53 98.12 10.65C98.12 11.56 97.77 12.48 96.98 12.48C96.42 12.48 95.99 12.1 95.77 11.58C95.83 11.3 95.86 11 95.85 10.7C95.85 10.61 95.85 10.52 95.83 10.44C95.79 10.29 95.71 10.18 95.57 10.18C95.38 10.18 95.35 10.43 95.35 10.65C95.35 10.96 95.38 11.26 95.45 11.55C95.25 12.09 94.87 12.48 94.32 12.48C93.71 12.48 93.32 11.98 93.17 11.35C93.12 11.15 93.09 10.92 93.08 10.7C93.08 10.1 93.3 9.54 93.55 9.01C93.57 8.97 93.58 8.92 93.57 8.88C93.55 8.82 93.5 8.77 93.44 8.74C93.41 8.72 93.38 8.72 93.35 8.72C93.29 8.72 93.23 8.75 93.19 8.81C92.92 9.38 92.83 10.02 92.83 10.65C92.83 11.03 92.87 11.42 92.96 11.77C93.16 12.58 93.61 13.2 94.37 13.2C95 13.2 95.41 12.76 95.63 12.14C95.9 12.76 96.36 13.2 97.03 13.2C98.07 13.2 98.38 11.91 98.37 10.7Z"/><path d="M103.07 15.56L103.07 15.35C102.58 15.35 102.52 15.3 102.52 14.95L102.52 10.7L101.52 10.78L101.52 11C102.01 11 102.06 11.05 102.06 11.39L102.06 12.9C101.86 12.65 101.56 12.47 101.18 12.47C100.35 12.47 99.62 13.15 99.62 14.06C99.62 14.95 100.31 15.64 101.1 15.64C101.55 15.64 101.87 15.4 102.04 15.18L102.04 15.64ZM102.04 14.74C102.04 14.86 102.04 14.88 101.96 15C101.75 15.33 101.44 15.49 101.14 15.49C100.82 15.49 100.57 15.3 100.4 15.04C100.22 14.75 100.2 14.35 100.2 14.06C100.2 13.81 100.21 13.39 100.42 13.07C100.56 12.85 100.83 12.62 101.21 12.62C101.45 12.62 101.75 12.73 101.96 13.04C102.04 13.16 102.04 13.18 102.04 13.3Z"/><path d="M109.91 11.85L109.91 11.28L109.66 11.28L109.66 11.83C109.66 12.57 109.36 12.95 108.99 12.95C108.32 12.95 108.32 12.04 108.32 11.87L108.32 9.09L109.75 9.09L109.75 8.78L108.32 8.78L108.32 6.94L108.07 6.94C108.06 7.76 107.76 8.83 106.78 8.87L106.78 9.09L107.63 9.09L107.63 11.85C107.63 13.08 108.56 13.2 108.92 13.2C109.63 13.2 109.91 12.49 109.91 11.85Z"/><path d="M113.36 11.01L113.36 10.17C113.36 8.46 112.31 6.46 111.21 5.63C111.19 5.62 111.17 5.61 111.15 5.61C111.1 5.61 111.05 5.66 111.05 5.71C111.05 5.74 111.07 5.77 111.09 5.79C112.13 6.57 112.82 8.57 112.82 10.17L112.82 11.01C112.82 12.61 112.13 14.61 111.09 15.39C111.07 15.41 111.05 15.44 111.05 15.47C111.05 15.52 111.1 15.57 111.15 15.57C111.17 15.57 111.19 15.56 111.21 15.55C112.31 14.72 113.36 12.72 113.36 11.01Z"/><path d="M124.91 10.59C124.91 10.48 124.82 10.39 124.71 10.39L121.78 10.39L121.78 7.46C121.78 7.35 121.69 7.26 121.58 7.26C121.47 7.26 121.38 7.35 121.38 7.46L121.38 10.39L118.45 10.39C118.34 10.39 118.25 10.48 118.25 10.59C118.25 10.7 118.34 10.79 118.45 10.79L121.38 10.79L121.38 13.72C121.38 13.83 121.47 13.92 121.58 13.92C121.69 13.92 121.78 13.83 121.78 13.72L121.78 10.79L124.71 10.79C124.82 10.79 124.91 10.7 124.91 10.59Z"/><rect x="128.79" y="10.39" width="20.05" height="0.4"/><path d="M134.96 6.59C134.88 6.28 134.68 6.11 134.6 6.04C134.43 5.89 134.26 5.84 133.73 5.67C133.02 5.45 132.88 5.41 132.64 5.24C132.21 4.93 132.1 4.46 132.06 4.3C131.75 3.03 132.39 1.6 133.1 1.16C133.29 1.3 133.48 1.3 133.64 1.3C133.85 1.3 134.37 1.3 134.31 1.05C134.26 0.84 133.92 0.83 133.59 0.83C133.5 0.83 133.28 0.83 133.09 0.91C133.03 0.81 133 0.77 132.95 0.6C132.93 0.48 132.92 0.3 132.92 0.3C132.9 0.23 132.85 0.19 132.8 0.19C132.65 0.19 132.74 0.57 132.75 0.59C132.78 0.73 132.85 0.88 132.94 1C132.19 1.43 131.27 2.94 131.67 4.53C131.96 5.69 132.76 5.94 133.4 6.13C133.67 6.22 133.69 6.22 133.95 6.31C134.13 6.36 134.49 6.48 134.59 6.86C134.65 7.08 134.58 7.4 134.27 7.4C134.06 7.4 133.81 7.31 133.6 7.16C133.54 7.11 133.52 7.1 133.49 7.1C133.44 7.1 133.41 7.13 133.43 7.19C133.45 7.27 133.88 7.58 134.31 7.58C134.82 7.58 135.08 7.06 134.96 6.59ZM134.09 1.06C134.04 1.08 133.96 1.12 133.6 1.12C133.43 1.12 133.37 1.12 133.27 1.07C133.38 1.01 133.53 1.01 133.63 1.01C133.9 1.01 133.94 1.02 134.09 1.06Z"/><path d="M142.95 3.94C142.96 3.59 142.95 3.18 142.87 2.85C142.82 2.64 142.73 2.46 142.58 2.35C142.51 2.3 142.45 2.28 142.37 2.28C142.28 2.28 142.18 2.33 142.12 2.41C142.06 2.49 142.05 2.58 142.07 2.67C142.09 2.76 142.14 2.82 142.21 2.88C142.46 3.06 142.63 3.31 142.7 3.6C142.73 3.7 142.74 3.8 142.74 3.9C142.74 4.65 142.46 5.4 141.81 5.4C141.35 5.4 141 5.09 140.82 4.67C140.87 4.44 140.89 4.19 140.88 3.94C140.88 3.87 140.88 3.8 140.87 3.73C140.83 3.61 140.77 3.52 140.65 3.52C140.5 3.52 140.47 3.72 140.47 3.9C140.47 4.16 140.5 4.4 140.55 4.64C140.39 5.08 140.08 5.4 139.63 5.4C139.13 5.4 138.81 4.99 138.68 4.48C138.64 4.31 138.62 4.12 138.61 3.94C138.61 3.45 138.79 2.99 139 2.56C139.01 2.53 139.02 2.48 139.01 2.45C139 2.4 138.96 2.36 138.91 2.34C138.88 2.32 138.86 2.32 138.83 2.32C138.78 2.32 138.73 2.35 138.7 2.39C138.48 2.86 138.41 3.39 138.41 3.9C138.41 4.21 138.44 4.53 138.51 4.82C138.68 5.49 139.05 5.99 139.67 5.99C140.19 5.99 140.52 5.63 140.7 5.12C140.92 5.63 141.3 5.99 141.85 5.99C142.7 5.99 142.96 4.94 142.95 3.94Z"/><path d="M146.42 6.09C146.42 5.63 146.39 5.17 146.19 4.75C145.92 4.2 145.45 4.11 145.21 4.11C144.87 4.11 144.45 4.26 144.21 4.79C144.03 5.19 144 5.63 144 6.09C144 6.52 144.02 7.04 144.26 7.48C144.51 7.94 144.92 8.06 145.21 8.06C145.52 8.06 145.95 7.94 146.2 7.39C146.39 6.99 146.42 6.55 146.42 6.09ZM145.94 6.02C145.94 6.45 145.94 6.84 145.88 7.21C145.79 7.76 145.46 7.93 145.21 7.93C144.98 7.93 144.64 7.79 144.54 7.23C144.48 6.89 144.48 6.36 144.48 6.02C144.48 5.66 144.48 5.28 144.52 4.97C144.63 4.28 145.06 4.23 145.21 4.23C145.4 4.23 145.77 4.34 145.88 4.9C145.94 5.23 145.94 5.66 145.94 6.02Z"/><path d="M139.25 15.94C139.26 15.58 139.25 15.17 139.17 14.85C139.12 14.63 139.03 14.45 138.88 14.35C138.82 14.3 138.75 14.27 138.68 14.27C138.58 14.27 138.48 14.32 138.43 14.4C138.37 14.48 138.35 14.58 138.38 14.67C138.39 14.75 138.44 14.81 138.52 14.87C138.76 15.05 138.93 15.3 139.01 15.59C139.03 15.69 139.05 15.8 139.05 15.9C139.05 16.64 138.76 17.4 138.11 17.4C137.65 17.4 137.3 17.08 137.12 16.66C137.17 16.43 137.2 16.18 137.19 15.94C137.19 15.86 137.19 15.79 137.17 15.72C137.14 15.6 137.07 15.51 136.96 15.51C136.8 15.51 136.78 15.71 136.78 15.9C136.78 16.15 136.8 16.4 136.86 16.63C136.7 17.08 136.38 17.4 135.93 17.4C135.43 17.4 135.11 16.99 134.99 16.47C134.95 16.31 134.92 16.12 134.92 15.94C134.92 15.44 135.1 14.99 135.3 14.55C135.32 14.52 135.33 14.48 135.32 14.44C135.3 14.39 135.26 14.35 135.21 14.33C135.19 14.31 135.16 14.31 135.14 14.31C135.09 14.31 135.04 14.34 135.01 14.39C134.78 14.85 134.71 15.38 134.71 15.9C134.71 16.21 134.74 16.53 134.82 16.81C134.98 17.48 135.35 17.99 135.97 17.99C136.49 17.99 136.83 17.63 137.01 17.12C137.23 17.63 137.61 17.99 138.15 17.99C139.01 17.99 139.26 16.93 139.25 15.94Z"/><path d="M143.11 19.92L143.11 19.74C142.71 19.74 142.66 19.7 142.66 19.42L142.66 15.94L141.83 16L141.83 16.18C142.23 16.18 142.28 16.22 142.28 16.5L142.28 17.74C142.11 17.53 141.87 17.38 141.56 17.38C140.88 17.38 140.28 17.95 140.28 18.69C140.28 19.42 140.84 19.98 141.49 19.98C141.86 19.98 142.12 19.79 142.26 19.61L142.26 19.98ZM142.26 19.24C142.26 19.35 142.26 19.36 142.2 19.46C142.03 19.73 141.77 19.86 141.52 19.86C141.26 19.86 141.06 19.71 140.92 19.49C140.77 19.26 140.75 18.93 140.75 18.69C140.75 18.48 140.76 18.14 140.93 17.88C141.05 17.7 141.27 17.51 141.58 17.51C141.78 17.51 142.02 17.6 142.2 17.86C142.26 17.95 142.26 17.96 142.26 18.07Z"/><path d="M155.77 11.81C155.77 11.28 155.47 10.98 155.35 10.86C155.02 10.54 154.63 10.46 154.21 10.38C153.65 10.27 152.98 10.14 152.98 9.56C152.98 9.21 153.24 8.8 154.1 8.8C155.2 8.8 155.25 9.7 155.27 10.01C155.28 10.1 155.39 10.1 155.39 10.1C155.52 10.1 155.52 10.05 155.52 9.86L155.52 8.85C155.52 8.68 155.52 8.61 155.41 8.61C155.36 8.61 155.34 8.61 155.21 8.73C155.18 8.77 155.08 8.86 155.04 8.89C154.66 8.61 154.25 8.61 154.1 8.61C152.88 8.61 152.5 9.28 152.5 9.84C152.5 10.19 152.66 10.47 152.93 10.69C153.25 10.95 153.53 11.01 154.25 11.15C154.47 11.19 155.29 11.35 155.29 12.07C155.29 12.58 154.94 12.98 154.16 12.98C153.32 12.98 152.96 12.41 152.77 11.56C152.74 11.43 152.73 11.39 152.63 11.39C152.5 11.39 152.5 11.46 152.5 11.64L152.5 12.96C152.5 13.13 152.5 13.2 152.61 13.2C152.66 13.2 152.67 13.19 152.86 13C152.88 12.98 152.88 12.96 153.06 12.77C153.5 13.19 153.95 13.2 154.16 13.2C155.31 13.2 155.77 12.53 155.77 11.81Z"/><path d="M158.58 13.09L158.58 12.78C157.92 12.78 157.88 12.73 157.88 12.34L157.88 8.67L156.48 8.78L156.48 9.09C157.13 9.09 157.22 9.15 157.22 9.64L157.22 12.33C157.22 12.78 157.11 12.78 156.44 12.78L156.44 13.09L157.54 13.06C157.89 13.06 158.24 13.08 158.58 13.09ZM158.03 7.05C158.03 6.78 157.8 6.52 157.5 6.52C157.16 6.52 156.96 6.8 156.96 7.05C156.96 7.32 157.19 7.58 157.49 7.58C157.83 7.58 158.03 7.3 158.03 7.05Z"/><path d="M164.24 13.09L164.24 12.78C163.72 12.78 163.47 12.78 163.46 12.48L163.46 10.57C163.46 9.71 163.46 9.4 163.15 9.04C163.01 8.87 162.68 8.67 162.1 8.67C161.37 8.67 160.9 9.1 160.62 9.72L160.62 8.67L159.21 8.78L159.21 9.09C159.91 9.09 159.99 9.16 159.99 9.65L159.99 12.33C159.99 12.78 159.88 12.78 159.21 12.78L159.21 13.09L160.34 13.06L161.46 13.09L161.46 12.78C160.79 12.78 160.68 12.78 160.68 12.33L160.68 10.49C160.68 9.45 161.39 8.89 162.03 8.89C162.66 8.89 162.77 9.43 162.77 10L162.77 12.33C162.77 12.78 162.66 12.78 161.99 12.78L161.99 13.09L163.12 13.06Z"/><path d="M167.77 15.47C167.77 15.44 167.75 15.41 167.73 15.39C166.69 14.61 166 12.61 166 11.01L166 10.17C166 8.57 166.69 6.57 167.73 5.79C167.75 5.77 167.77 5.74 167.77 5.71C167.77 5.66 167.72 5.61 167.67 5.61C167.65 5.61 167.63 5.62 167.61 5.63C166.51 6.46 165.46 8.46 165.46 10.17L165.46 11.01C165.46 12.72 166.51 14.72 167.61 15.55C167.63 15.56 167.65 15.57 167.67 15.57C167.72 15.57 167.77 15.52 167.77 15.47Z"/><path d="M174.3 10.7C174.31 10.27 174.3 9.77 174.2 9.37C174.14 9.11 174.03 8.89 173.85 8.76C173.77 8.7 173.69 8.67 173.6 8.67C173.48 8.67 173.36 8.73 173.29 8.83C173.22 8.93 173.2 9.04 173.23 9.15C173.25 9.25 173.31 9.33 173.4 9.4C173.7 9.62 173.91 9.93 174 10.28C174.03 10.4 174.05 10.53 174.05 10.65C174.05 11.56 173.7 12.48 172.91 12.48C172.35 12.48 171.92 12.1 171.7 11.58C171.76 11.3 171.79 11 171.78 10.7C171.78 10.61 171.78 10.52 171.76 10.44C171.72 10.29 171.64 10.18 171.5 10.18C171.31 10.18 171.28 10.43 171.28 10.65C171.28 10.96 171.31 11.26 171.38 11.55C171.18 12.09 170.8 12.48 170.25 12.48C169.64 12.48 169.25 11.98 169.1 11.35C169.05 11.15 169.02 10.92 169.01 10.7C169.01 10.1 169.23 9.54 169.48 9.01C169.5 8.97 169.51 8.92 169.5 8.88C169.48 8.82 169.43 8.77 169.37 8.74C169.34 8.72 169.31 8.72 169.28 8.72C169.22 8.72 169.16 8.75 169.12 8.81C168.85 9.38 168.76 10.02 168.76 10.65C168.76 11.03 168.8 11.42 168.89 11.77C169.09 12.58 169.54 13.2 170.3 13.2C170.93 13.2 171.34 12.76 171.56 12.14C171.83 12.76 172.29 13.2 172.96 13.2C174 13.2 174.31 11.91 174.3 10.7Z"/><path d="M179 15.56L179 15.35C178.51 15.35 178.45 15.3 178.45 14.95L178.45 10.7L177.44 10.78L177.44 11C177.93 11 177.99 11.05 177.99 11.39L177.99 12.9C177.78 12.65 177.48 12.47 177.11 12.47C176.28 12.47 175.54 13.15 175.54 14.06C175.54 14.95 176.23 15.64 177.03 15.64C177.48 15.64 177.79 15.4 177.97 15.18L177.97 15.64ZM177.97 14.74C177.97 14.86 177.97 14.88 177.89 15C177.68 15.33 177.36 15.49 177.06 15.49C176.75 15.49 176.5 15.3 176.33 15.04C176.15 14.75 176.13 14.35 176.13 14.06C176.13 13.81 176.14 13.39 176.34 13.07C176.49 12.85 176.76 12.62 177.13 12.62C177.38 12.62 177.67 12.73 177.89 13.04C177.97 13.16 177.97 13.18 177.97 13.3Z"/><path d="M185.84 11.85L185.84 11.28L185.59 11.28L185.59 11.83C185.59 12.57 185.29 12.95 184.92 12.95C184.25 12.95 184.25 12.04 184.25 11.87L184.25 9.09L185.68 9.09L185.68 8.78L184.25 8.78L184.25 6.94L184 6.94C183.99 7.76 183.69 8.83 182.71 8.87L182.71 9.09L183.56 9.09L183.56 11.85C183.56 13.08 184.49 13.2 184.85 13.2C185.56 13.2 185.84 12.49 185.84 11.85Z"/><path d="M189.29 11.01L189.29 10.17C189.29 8.46 188.24 6.46 187.14 5.63C187.12 5.62 187.1 5.61 187.08 5.61C187.03 5.61 186.98 5.66 186.98 5.71C186.98 5.74 187 5.77 187.02 5.79C188.06 6.57 188.75 8.57 188.75 10.17L188.75 11.01C188.75 12.61 188.06 14.61 187.02 15.39C187 15.41 186.98 15.44 186.98 15.47C186.98 15.52 187.03 15.57 187.08 15.57C187.1 15.57 187.12 15.56 187.14 15.55C188.24 14.72 189.29 12.72 189.29 11.01Z"/><path d="M191.94 15.59L191.94 5.59L190.72 5.59C190.61 5.59 190.52 5.68 190.52 5.79C190.52 5.9 190.61 5.99 190.72 5.99L191.54 5.99L191.54 15.19L190.72 15.19C190.61 15.19 190.52 15.28 190.52 15.39C190.52 15.5 190.61 15.59 190.72 15.59Z"/></svg><math class="td-math-a11y" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>p</mi><mtext>(</mtext><mi>t</mi><mtext>)</mtext><mtext> </mtext><mtext>=</mtext><mtext> </mtext><mn>1</mn><mtext> </mtext><mtext>-</mtext><mtext> </mtext><msup><mrow><mi>e</mi></mrow><mrow><mrow><mtext>-</mtext><mo>ζ</mo><mtext> </mtext><msub><mrow><mo>ω</mo></mrow><mrow><mn>0</mn></mrow></msub><mtext> </mtext><mi>t</mi></mrow></mrow></msup><mrow><mtext>[</mtext><mrow><mo>cos</mo><mtext>(</mtext><msub><mrow><mo>ω</mo></mrow><mrow><mi>d</mi></mrow></msub><mtext> </mtext><mi>t</mi><mtext>)</mtext><mtext> </mtext><mtext>+</mtext><mtext> </mtext><mfrac><mrow><mrow><mo>ζ</mo><mtext> </mtext><msub><mrow><mo>ω</mo></mrow><mrow><mn>0</mn></mrow></msub></mrow></mrow><mrow><msub><mrow><mo>ω</mo></mrow><mrow><mi>d</mi></mrow></msub></mrow></mfrac><mtext> </mtext><mo>sin</mo><mtext>(</mtext><msub><mrow><mo>ω</mo></mrow><mrow><mi>d</mi></mrow></msub><mtext> </mtext><mi>t</mi><mtext>)</mtext></mrow><mtext>]</mtext></mrow></mrow></math></div>
+<p>which starts at 0, sweeps past 1, and settles back. We sample the engine’s spring and
+SwiftUI’s own <code>Spring</code> at the same times and assert they agree across all three damping
+regimes.</p>
+<pre><code class="language-swift"><span class="tok-attribute">@available</span>(mac<span class="tok-type">OS</span> <span class="tok-number">14</span>, i<span class="tok-type">OS</span> <span class="tok-number">17</span>, <span class="tok-operator">*</span>)
+<span class="tok-keyword">private</span> <span class="tok-keyword">func</span> <span class="tok-function">assertSpringMatches</span>(
+    response<span class="tok-operator">:</span> <span class="tok-type">Double</span>,
+    damping<span class="tok-type">Fraction</span><span class="tok-operator">:</span> <span class="tok-type">Double</span>,
+    tolerance<span class="tok-operator">:</span> <span class="tok-type">Double</span> <span class="tok-operator">=</span> <span class="tok-number">1</span>e<span class="tok-number">-6</span>
+) {
+    <span class="tok-keyword">let</span> engine <span class="tok-operator">=</span> <span class="tok-type">PureView</span><span class="tok-operator">.</span><span class="tok-type">Spring</span>(response<span class="tok-operator">:</span> response, damping<span class="tok-type">Fraction</span><span class="tok-operator">:</span> damping<span class="tok-type">Fraction</span>)
+    <span class="tok-keyword">let</span> oracle <span class="tok-operator">=</span> <span class="tok-type">SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">Spring</span>(response<span class="tok-operator">:</span> response, damping<span class="tok-type">Ratio</span><span class="tok-operator">:</span> damping<span class="tok-type">Fraction</span>)
+    <span class="tok-keyword">let</span> samples <span class="tok-operator">=</span> <span class="tok-number">120</span>
+    <span class="tok-keyword">for</span> step <span class="tok-keyword">in</span> <span class="tok-number">0</span> <span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">.</span> samples {
+        <span class="tok-keyword">let</span> t <span class="tok-operator">=</span> engine<span class="tok-operator">.</span>settle<span class="tok-type">Duration</span> <span class="tok-operator">*</span> <span class="tok-type">Double</span>(step) <span class="tok-operator">/</span> <span class="tok-type">Double</span>(samples)
+        <span class="tok-keyword">let</span> engine<span class="tok-type">Value</span> <span class="tok-operator">=</span> engine<span class="tok-operator">.</span><span class="tok-function">unitStepResponse</span>(at<span class="tok-operator">:</span> t)
+        <span class="tok-keyword">let</span> oracle<span class="tok-type">Value</span> <span class="tok-operator">=</span> oracle<span class="tok-operator">.</span><span class="tok-function">value</span>(target<span class="tok-operator">:</span> <span class="tok-number">1.0</span>, initial<span class="tok-type">Velocity</span><span class="tok-operator">:</span> <span class="tok-number">0.0</span>, time<span class="tok-operator">:</span> t)
+        #<span class="tok-function">expect</span>(
+            <span class="tok-function">abs</span>(engine<span class="tok-type">Value</span> <span class="tok-operator">-</span> oracle<span class="tok-type">Value</span>) <span class="tok-operator">&lt;</span><span class="tok-operator">=</span> tolerance,
+            <span class="tok-string">"spring(response=\(response), damping=\(dampingFraction)) at t=\(t): "</span> <span class="tok-operator">+</span>
+            <span class="tok-string">"engine \(engineValue) vs SwiftUI \(oracleValue)"</span>
+        )
+    }
+}</code></pre>
+<p>The assertion is the whole point, in one line:</p>
+<p>$$\max_{t}; \bigl|, v_{\text{engine}}(t) - v_{\text{SwiftUI}}(t) ,\bigr| ;\le; 10^{-6}$$</p>
+<p>Sampled point by point, the two springs are the same number to six decimals.</p>
+<figure class="td-chart td-chart-line">
+<figcaption class="td-chart-caption">The engine&#39;s spring rides on SwiftUI&#39;s</figcaption>
+<div class="td-chart-frame">
+<svg
+  class="td-chart-svg"
+  viewBox="0 0 720 382"
+  role="img"
+  aria-label="The engine&#39;s spring rides on SwiftUI&#39;s"
+>
+<desc>line chart with 0 labels and 1 series</desc>
+<line
+  class="td-chart-grid"
+  x1="80"
+  y1="302"
+  x2="696"
+  y2="302"
+></line>
+<text
+  class="td-chart-value"
+  x="70"
+  y="306"
+  text-anchor="end"
+>0</text>
+<line
+  class="td-chart-grid"
+  x1="80"
+  y1="186.17"
+  x2="696"
+  y2="186.17"
+></line>
+<text
+  class="td-chart-value"
+  x="70"
+  y="190.17"
+  text-anchor="end"
+>0.5</text>
+<line
+  class="td-chart-grid"
+  x1="80"
+  y1="70.33"
+  x2="696"
+  y2="70.33"
+></line>
+<text
+  class="td-chart-value"
+  x="70"
+  y="74.33"
+  text-anchor="end"
+>1</text>
+<line
+  class="td-chart-axis"
+  x1="80"
+  y1="302"
+  x2="696"
+  y2="302"
+></line>
+<line
+  class="td-chart-axis"
+  x1="80"
+  y1="24"
+  x2="80"
+  y2="302"
+></line>
+<text
+  class="td-chart-label"
+  x="80"
+  y="324"
+  text-anchor="middle"
+>0</text>
+<text
+  class="td-chart-label"
+  x="388"
+  y="324"
+  text-anchor="middle"
+>4</text>
+<text
+  class="td-chart-label"
+  x="696"
+  y="324"
+  text-anchor="middle"
+>8</text>
+<polyline class="td-chart-line td-chart-series-0" points="80,302 157,116.67 234,24 311,81.92 388,58.75 465,72.65 542,68.02 619,70.33 696,70.33"></polyline>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="80"
+  cy="302"
+  r="4"
+><title>Progress: (0, 0)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="157"
+  cy="116.67"
+  r="4"
+><title>Progress: (1, 0.8)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="234"
+  cy="24"
+  r="4"
+><title>Progress: (2, 1.2)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="311"
+  cy="81.92"
+  r="4"
+><title>Progress: (3, 0.95)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="388"
+  cy="58.75"
+  r="4"
+><title>Progress: (4, 1.05)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="465"
+  cy="72.65"
+  r="4"
+><title>Progress: (5, 0.99)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="542"
+  cy="68.02"
+  r="4"
+><title>Progress: (6, 1.01)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="619"
+  cy="70.33"
+  r="4"
+><title>Progress: (7, 1)</title></circle>
+<circle
+  class="td-chart-point td-chart-series-0"
+  cx="696"
+  cy="70.33"
+  r="4"
+><title>Progress: (8, 1)</title></circle>
+<text
+  class="td-chart-label"
+  x="388"
+  y="368"
+  text-anchor="middle"
+>Time</text>
+<text
+  class="td-chart-label"
+  x="16"
+  y="163"
+  text-anchor="middle"
+  transform="rotate(-90 16 163)"
+>Progress</text>
+<rect
+  class="td-chart-series-0"
+  x="80"
+  y="336"
+  width="12"
+  height="12"
+  rx="3"
+  fill="currentColor"
+></rect>
+<text
+  class="td-chart-legend-text"
+  x="98"
+  y="346"
+  text-anchor="start"
+>Progress</text>
+</svg>
+</div>
+</figure>
+<h2>Measuring pixels: compare the rendered bytes</h2>
+<p>Frames prove position. Pixels prove the rest: the actual color drawn, and the paint order
+of overlapping fills. SwiftUI’s own <code>ImageRenderer</code> rasterizes the view; the engine’s
+display list is rasterized by a reference renderer; we diff the buffers channel by channel.</p>
+<p><img src="https://aleahim.com/images/blog/the-swiftui-oracle/9-pixel-diff.jpg" alt="Two pictures, compared dot by dot"></p>
+<pre><code class="language-swift"><span class="tok-comment">/// Render a SwiftUI view to an RGBA8 buffer in the same space/scale/orientation.</span>
+<span class="tok-keyword">private</span> <span class="tok-keyword">func</span> <span class="tok-function">snapshot</span>(_ view<span class="tok-operator">:</span> some <span class="tok-type">SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">View</span>, size<span class="tok-operator">:</span> <span class="tok-type">CGSize</span>, scale<span class="tok-operator">:</span> <span class="tok-type">CGFloat</span>) <span class="tok-keyword">throws</span> <span class="tok-operator">-</span><span class="tok-operator">&gt;</span> [<span class="tok-type">UInt8</span>] {
+    <span class="tok-keyword">let</span> renderer <span class="tok-operator">=</span> <span class="tok-type">ImageRenderer</span>(content<span class="tok-operator">:</span> view<span class="tok-operator">.</span><span class="tok-function">frame</span>(width<span class="tok-operator">:</span> size<span class="tok-operator">.</span>width, height<span class="tok-operator">:</span> size<span class="tok-operator">.</span>height))
+    renderer<span class="tok-operator">.</span>scale <span class="tok-operator">=</span> scale
+    renderer<span class="tok-operator">.</span>color<span class="tok-type">Mode</span> <span class="tok-operator">=</span> <span class="tok-operator">.</span>non<span class="tok-type">Linear</span>
+    <span class="tok-keyword">let</span> image <span class="tok-operator">=</span> <span class="tok-keyword">try</span> #<span class="tok-function">require</span>(renderer<span class="tok-operator">.</span>cg<span class="tok-type">Image</span>, <span class="tok-string">"ImageRenderer produced no image"</span>)
+    <span class="tok-keyword">let</span> w <span class="tok-operator">=</span> <span class="tok-type">Int</span>(size<span class="tok-operator">.</span>width <span class="tok-operator">*</span> scale), h <span class="tok-operator">=</span> <span class="tok-type">Int</span>(size<span class="tok-operator">.</span>height <span class="tok-operator">*</span> scale)
+    <span class="tok-keyword">let</span> (ctx, raw) <span class="tok-operator">=</span> <span class="tok-keyword">try</span> <span class="tok-function">context</span>(width<span class="tok-operator">:</span> w, height<span class="tok-operator">:</span> h, scale<span class="tok-operator">:</span> <span class="tok-number">1</span>, flip<span class="tok-type">ForDrawing</span><span class="tok-operator">:</span> <span class="tok-literal">true</span>)
+    <span class="tok-keyword">defer</span> { raw<span class="tok-operator">.</span><span class="tok-function">deallocate</span>() }
+    ctx<span class="tok-operator">.</span><span class="tok-function">draw</span>(image, <span class="tok-keyword">in</span><span class="tok-operator">:</span> <span class="tok-type">CGRect</span>(x<span class="tok-operator">:</span> <span class="tok-number">0</span>, y<span class="tok-operator">:</span> <span class="tok-number">0</span>, width<span class="tok-operator">:</span> <span class="tok-type">CGFloat</span>(w), height<span class="tok-operator">:</span> <span class="tok-type">CGFloat</span>(h)))
+    <span class="tok-keyword">return</span> <span class="tok-function">bytes</span>(raw, count<span class="tok-operator">:</span> w <span class="tok-operator">*</span> <span class="tok-number">4</span> <span class="tok-operator">*</span> h)
+}
+
+<span class="tok-keyword">private</span> <span class="tok-keyword">func</span> <span class="tok-function">assertPixelsMatch</span>(
+    _ name<span class="tok-operator">:</span> <span class="tok-type">String</span>,
+    list<span class="tok-operator">:</span> <span class="tok-type">DisplayList</span>,
+    view<span class="tok-operator">:</span> some <span class="tok-type">SwiftUI</span><span class="tok-operator">.</span><span class="tok-type">View</span>,
+    size<span class="tok-operator">:</span> <span class="tok-type">CGSize</span>,
+    scale<span class="tok-operator">:</span> <span class="tok-type">CGFloat</span> <span class="tok-operator">=</span> <span class="tok-number">2</span>,
+    tolerance<span class="tok-operator">:</span> <span class="tok-type">Int</span> <span class="tok-operator">=</span> <span class="tok-number">2</span>
+) <span class="tok-keyword">throws</span> {
+    <span class="tok-keyword">let</span> engine <span class="tok-operator">=</span> <span class="tok-keyword">try</span> <span class="tok-function">rasterize</span>(list, size<span class="tok-operator">:</span> size, scale<span class="tok-operator">:</span> scale)
+    <span class="tok-keyword">let</span> swiftui <span class="tok-operator">=</span> <span class="tok-keyword">try</span> <span class="tok-function">snapshot</span>(view, size<span class="tok-operator">:</span> size, scale<span class="tok-operator">:</span> scale)
+    #<span class="tok-function">expect</span>(<span class="tok-operator">!</span>engine<span class="tok-operator">.</span>is<span class="tok-type">Empty</span> <span class="tok-operator">&amp;</span><span class="tok-operator">&amp;</span> engine<span class="tok-operator">.</span>count <span class="tok-operator">=</span><span class="tok-operator">=</span> swiftui<span class="tok-operator">.</span>count, <span class="tok-string">"\(name): buffer size mismatch"</span>)
+    <span class="tok-keyword">var</span> max<span class="tok-type">Diff</span> <span class="tok-operator">=</span> <span class="tok-number">0</span>, exceeding <span class="tok-operator">=</span> <span class="tok-number">0</span>
+    <span class="tok-keyword">for</span> i <span class="tok-keyword">in</span> <span class="tok-number">0</span> <span class="tok-operator">.</span><span class="tok-operator">.</span><span class="tok-operator">&lt;</span> <span class="tok-function">min</span>(engine<span class="tok-operator">.</span>count, swiftui<span class="tok-operator">.</span>count) {
+        <span class="tok-keyword">let</span> diff <span class="tok-operator">=</span> <span class="tok-function">abs</span>(<span class="tok-type">Int</span>(engine[i]) <span class="tok-operator">-</span> <span class="tok-type">Int</span>(swiftui[i]))
+        max<span class="tok-type">Diff</span> <span class="tok-operator">=</span> <span class="tok-function">max</span>(max<span class="tok-type">Diff</span>, diff)
+        <span class="tok-keyword">if</span> diff <span class="tok-operator">&gt;</span> tolerance { exceeding <span class="tok-operator">+</span><span class="tok-operator">=</span> <span class="tok-number">1</span> }
+    }
+    #<span class="tok-function">expect</span>(exceeding <span class="tok-operator">=</span><span class="tok-operator">=</span> <span class="tok-number">0</span>, <span class="tok-string">"\(name): \(exceeding) channels exceed tol \(tolerance) (maxDiff \(maxDiff))"</span>)
+}</code></pre>
+<p>The tolerance here is 2 on an 8-bit channel: the quantization floor is one least-significant
+bit, and integer-aligned fills at scale 2 have crisp edges, so there is no anti-aliasing
+slack to hide behind.</p>
+<h2>What it all adds up to</h2>
+<p>There are 125 of these tests today, across 19 files. The same do-it-twice method holds
+every layer the engine rebuilds.</p>
+<figure class="td-chart td-chart-bar">
+<figcaption class="td-chart-caption">125 oracle tests holding the engine to SwiftUI</figcaption>
+<div class="td-chart-frame">
+<svg
+  class="td-chart-svg"
+  viewBox="0 0 720 360"
+  role="img"
+  aria-label="125 oracle tests holding the engine to SwiftUI"
+>
+<desc>bar chart with 6 labels and 1 series</desc>
+<line
+  class="td-chart-grid"
+  x1="80"
+  y1="302"
+  x2="696"
+  y2="302"
+></line>
+<text
+  class="td-chart-value"
+  x="70"
+  y="306"
+  text-anchor="end"
+>0</text>
+<line
+  class="td-chart-grid"
+  x1="80"
+  y1="209.33"
+  x2="696"
+  y2="209.33"
+></line>
+<text
+  class="td-chart-value"
+  x="70"
+  y="213.33"
+  text-anchor="end"
+>20</text>
+<line
+  class="td-chart-grid"
+  x1="80"
+  y1="116.67"
+  x2="696"
+  y2="116.67"
+></line>
+<text
+  class="td-chart-value"
+  x="70"
+  y="120.67"
+  text-anchor="end"
+>40</text>
+<line
+  class="td-chart-grid"
+  x1="80"
+  y1="24"
+  x2="696"
+  y2="24"
+></line>
+<text
+  class="td-chart-value"
+  x="70"
+  y="28"
+  text-anchor="end"
+>60</text>
+<line
+  class="td-chart-axis"
+  x1="80"
+  y1="302"
+  x2="696"
+  y2="302"
+></line>
+<line
+  class="td-chart-axis"
+  x1="80"
+  y1="24"
+  x2="80"
+  y2="302"
+></line>
+<rect
+  class="td-chart-bar td-chart-series-0"
+  x="114.33"
+  y="278.83"
+  width="32"
+  height="23.17"
+  rx="4"
+><title>Graph: 5</title></rect>
+<rect
+  class="td-chart-bar td-chart-series-0"
+  x="217"
+  y="125.93"
+  width="32"
+  height="176.07"
+  rx="4"
+><title>Animation: 38</title></rect>
+<rect
+  class="td-chart-bar td-chart-series-0"
+  x="319.67"
+  y="283.47"
+  width="32"
+  height="18.53"
+  rx="4"
+><title>Identity: 4</title></rect>
+<rect
+  class="td-chart-bar td-chart-series-0"
+  x="422.33"
+  y="65.7"
+  width="32"
+  height="236.3"
+  rx="4"
+><title>Layout: 51</title></rect>
+<rect
+  class="td-chart-bar td-chart-series-0"
+  x="525"
+  y="288.1"
+  width="32"
+  height="13.9"
+  rx="4"
+><title>DisplayList: 3</title></rect>
+<rect
+  class="td-chart-bar td-chart-series-0"
+  x="627.67"
+  y="190.8"
+  width="32"
+  height="111.2"
+  rx="4"
+><title>Pixel: 24</title></rect>
+<text
+  class="td-chart-label"
+  x="131.33"
+  y="324"
+  text-anchor="middle"
+>Graph</text>
+<text
+  class="td-chart-label"
+  x="234"
+  y="324"
+  text-anchor="middle"
+>Animation</text>
+<text
+  class="td-chart-label"
+  x="336.67"
+  y="324"
+  text-anchor="middle"
+>Identity</text>
+<text
+  class="td-chart-label"
+  x="439.33"
+  y="324"
+  text-anchor="middle"
+>Layout</text>
+<text
+  class="td-chart-label"
+  x="542"
+  y="324"
+  text-anchor="middle"
+>DisplayList</text>
+<text
+  class="td-chart-label"
+  x="644.67"
+  y="324"
+  text-anchor="middle"
+>Pixel</text>
+<text
+  class="td-chart-label"
+  x="16"
+  y="163"
+  text-anchor="middle"
+  transform="rotate(-90 16 163)"
+>Tests</text>
+<rect
+  class="td-chart-series-0"
+  x="80"
+  y="336"
+  width="12"
+  height="12"
+  rx="3"
+  fill="currentColor"
+></rect>
+<text
+  class="td-chart-legend-text"
+  x="98"
+  y="346"
+  text-anchor="start"
+>Tests</text>
+</svg>
+</div>
+</figure>
+<h2>What measuring caught that reading never would</h2>
+<p>The payoff: the measurement caught a bug in the engine that reading the code could not. The
+spring decided it had come to rest using the bare decay envelope, which undercounts the long
+tail of a critically damped or overdamped spring. The code looked correct. Measured against
+SwiftUI, the spring clamped a few percent short of its target, a visible snap. The oracle
+failed with the exact residual, and the settling time was rederived from the real basis of
+the oscillator. Reading gives you the happy path. Measuring gives you the edges, where the
+interesting bugs live.</p>
+<h2>One honest caveat about the animation path</h2>
+<p>A committed animation keeps running smoothly when the main thread is busy only for one of
+two paths. Layer-level properties, opacity and transform, lower to Core Animation and are
+interpolated on the render server’s own clock, off the main thread. Value-driven animations,
+a spring on a custom value, are re-pulled through the graph every frame on the main thread,
+and those do stutter if you block it. The oracle measures the value and velocity of the
+motion; which thread interpolates it is a property of the lowering path. Worth stating
+precisely, since the rest of this post is about precision.</p>
+<h2>Colophon: every figure was made by my own software</h2>
+<p>No third-party drawing or charting tool was used anywhere in this post.</p>
+<ul><li><p>The conceptual diagrams (the wall, the two pieces, the counters, the negotiation, the
+pixel comparison) were drawn by <strong>PureDraw</strong>, my dependency-free Swift-native 2D vector
+engine, through its <code>GraphicsContext</code> API. PureDraw rasterized them to the JPEGs shown here with its own <code>BitmapRenderer</code> and <code>JPEGEncoder</code>, and also produced scalable SVG and PDF masters. No external image tool touched them.</p></li><li><p>The bar chart, the spring plot, and every mathematical formula were rendered by
+<strong>TileDown</strong>, my static-site engine, from plain-text fences in this Markdown file.</p></li><li><p>This page was assembled by <strong>TileDown</strong>, and its PDF was typeset by <strong>MarkdownPDF</strong>, my Markdown-to-PDF engine.</p></li></ul>
+<p><strong>PureDraw</strong> is part of <strong>SlayerMotion</strong>, the graphics engine family this series is about. <strong>TileDown</strong> and <strong>MarkdownPDF</strong> are separate projects of mine, not part of SlayerMotion. All three are my own software; none of it is anyone else’s.</p>]]></content:encoded>
+</item>
+<item>
 <title>SwiftUI Is One Graph, Over 40+ Years of Engineering</title>
 <link>https://aleahim.com/blog/swiftui-is-one-graph/</link>
 <guid isPermaLink="true">https://aleahim.com/blog/swiftui-is-one-graph/</guid>
