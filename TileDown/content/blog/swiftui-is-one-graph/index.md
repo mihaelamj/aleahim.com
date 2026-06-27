@@ -3,7 +3,7 @@ slug: blog/swiftui-is-one-graph
 title: SwiftUI Is One Graph, Over 40+ Years of Engineering
 description: SwiftUI is the thin graph sitting above 40+ years of engineering. Measured against the real framework and read against Apple's own patent, it is a single demand-driven graph, and the least remarkable engine in the stack it rests on. Here is SwiftUI laid bare, with a hint of the far more interesting machines underneath.
 date: 2026-06-25
-tags: Swift, SwiftUI, Architecture
+tags: Swift, SwiftUI, Architecture, Core Animation
 draft: false
 image: /images/blog/swiftui-is-one-graph/hero.jpg
 ---
